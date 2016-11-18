@@ -1,7 +1,7 @@
 Nombre del programa: Destruction Bombs
-Nombre corto: BomberMan jeje
+Nombre corto: BomberMan
 Licencia: GPL 2 (vea el archivo COPYING)
-Fecha: Abril del 2012
+Fecha ultima gran actualizacion: Abril del 2012
 Autor: Manuel Gonzalez 
 Email: deathmanuel@gmail.com
 Web: baulprogramas.blogspot.com
