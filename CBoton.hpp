@@ -47,9 +47,9 @@ class Boton{
             return true;
         }
         bool setGrillaImagen(SDL_Texture * grilla){
-            if(imgGrillaBoton != nullptr){
+            /*if(imgGrillaBoton != nullptr){
                 SDL_DestroyTexture(imgGrillaBoton);
-            }
+            }*/
             imgGrillaBoton=grilla;
             return true;
         };

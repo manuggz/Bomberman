@@ -1,3 +1,5 @@
+#include <zconf.h>
+#include <sys/param.h>
 #include "game_manager.hpp"
 #include "LTimer.hpp"
 
@@ -27,7 +29,6 @@ GameManager::GameManager(){
     // snd_disponible se actualiza en GameManager::iniciarSDL()
     // Este indica si se logró activar el sonido
     if(snd_disponible)galeria->cargarSonidos();
-
 }
 
 /**

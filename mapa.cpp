@@ -8,6 +8,7 @@ Mapa::Mapa(Interfaz * _parent,int coorXVis,int coorYVis,SDL_Texture * grillaTile
     #endif
     this->parent=parent;
     setEjeVisualizacion(coorXVis,coorYVis);
+    imgTiles = nullptr;
     setImgTiles(grillaTiles);
     datMapa=NULL;
 //    mapaCargado=false;
