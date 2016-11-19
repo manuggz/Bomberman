@@ -26,11 +26,12 @@ class Juego:public Interfaz{
         void procesarEvento(SDL_Event * evento);
         virtual void salir()=0;
         void update ();
-        void draw(SDL_Surface * screen);
+        void crearTexturas(SDL_Renderer * gr){};
+        void draw(SDL_Renderer * );
 
         void estadoDisplayMensage();
         virtual void estadoPlay()=0;
-        virtual void drawBarra(SDL_Surface *)=0;
+        virtual void drawBarra(SDL_Renderer *)=0;
         void displayMensage(const char * mensage);
         virtual int getEjeXVisual(){return mapa->getEjeXVisualizacion();};
         virtual int getEjeYVisual(){return mapa->getEjeYVisualizacion();};
@@ -104,7 +105,7 @@ class Juego:public Interfaz{
             if(clockTick)return clockTick->getMiliSegundos();
         }
         
-        SDL_Surface * getImagen(CodeImagen code){ return game->getImagen(code);};
+        SDL_Texture * getImagen(CodeImagen code){ return game->getImagen(code);};
         SDL_Joystick * getJoy(int id);
         virtual int getTipoNuevoItem(bool disminuir_de_mapa=true);
 
@@ -122,7 +123,7 @@ class Juego:public Interfaz{
         void romperBloque(int x,int y);
         
         virtual void aumentarNivel(){};
-        void controlaPausa(Uint8 * keys);
+        void controlaPausa(const Uint8 * keys);
         void moveAllSprites(int aumX,int aumY);
         
         virtual ~Juego();

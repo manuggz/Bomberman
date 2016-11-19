@@ -123,13 +123,13 @@ void Editor::crearReferencias(){
             #ifdef DEBUG
                 cout << "liberando Surface:"<<previews_niveles[i]<<endl;
             #endif
-             SDL_FreeSurface(previews_niveles[i]);
+             SDL_DestroyTexture(previews_niveles[i]);
             previews_niveles[i]=NULL;
          }
         #ifdef DEBUG
             cout << "liberando Surface:"<<previews_niveles[maxTerrenoBatalla]<<endl;
         #endif
-         if(botonBorrar.getVisible())SDL_FreeSurface(previews_niveles[maxTerrenoBatalla]);
+         if(botonBorrar.getVisible())SDL_DestroyTexture(previews_niveles[maxTerrenoBatalla]);
          previews_niveles[maxTerrenoBatalla]=NULL;
         #ifdef DEBUG
             cout << "liberando Previews:"<<previews_niveles<<endl;
@@ -137,13 +137,13 @@ void Editor::crearReferencias(){
         delete [] previews_niveles;
         previews_niveles=NULL;
     }
-    previews_niveles=new SDL_Surface*[maxTerrenoBatalla + 1];
+    previews_niveles=new SDL_Texture*[maxTerrenoBatalla + 1];
     #ifdef DEBUG
         cout << "creada Previews:"<<previews_niveles<<endl;
     #endif
 
     DatNivel * data2;
-    SDL_Surface * img_players[5]={game->getImagen(IMG_PLAYER_1),
+    SDL_Texture * img_players[5]={game->getImagen(IMG_PLAYER_1),
                                   game->getImagen(IMG_PLAYER_2),
                                   game->getImagen(IMG_PLAYER_3),
                                   game->getImagen(IMG_PLAYER_4),
@@ -640,60 +640,60 @@ void Editor::procesarEvento(SDL_Event * evento){
 
 }
 
-void Editor::draw(SDL_Surface * screen){
+void Editor::draw(SDL_Renderer * gRenderer){
     static int i,j;
     static char stock[30];
 
     switch(ventana){
         case EDICION_NIVEL:
-                dibujar_objeto(game->getImagen((CodeImagen)(idFondo)),0,0,screen);
-                Mapa::draw(screen,game->getImagen(IMG_TILES),mapa,EjeX,EjeY,data->getIdTile());
+                dibujar_objeto(game->getImagen((CodeImagen)(idFondo)),0,0,gRenderer);
+                Mapa::draw(gRenderer,game->getImagen(IMG_TILES),mapa,EjeX,EjeY,data->getIdTile());
 
-                dibujar_objeto(game->getImagen(IMG_TABLERO),0,yTablero,screen);
+                dibujar_objeto(game->getImagen(IMG_TABLERO),0,yTablero,gRenderer);
 
                 for(i=1;i<5;i++){
                     for(j=0;j<2;j++){
-                        imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_BOTON_MAS +j)),estados_botones[i][j],screen,rects_botones[i][j].x,rects_botones[i][j].y+yTablero,3,1,0);
+                        imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_BOTON_MAS +j)),estados_botones[i][j],gRenderer,rects_botones[i][j].x,rects_botones[i][j].y+yTablero,3,1,0);
                         }
                     }
 
             
-                dibujar_objeto(game->getImagen(IMG_LLAMA),143,20+yTablero,screen);//explosion
-                dibujar_objeto(game->getImagen(IMG_BOMBA_PEQUE),91,20+yTablero,screen);//bomba
-                dibujar_objeto(game->getImagen(IMG_CORAZON),217,20+yTablero,screen);//vidas
-                dibujar_objeto(game->getImagen(IMG_PREGUNTA),270,21+yTablero,screen);//item
+                dibujar_objeto(game->getImagen(IMG_LLAMA),143,20+yTablero,gRenderer);//explosion
+                dibujar_objeto(game->getImagen(IMG_BOMBA_PEQUE),91,20+yTablero,gRenderer);//bomba
+                dibujar_objeto(game->getImagen(IMG_CORAZON),217,20+yTablero,gRenderer);//vidas
+                dibujar_objeto(game->getImagen(IMG_PREGUNTA),270,21+yTablero,gRenderer);//item
 
-                dibujar_objeto(game->getImagen(IMG_TXT_TILES),6,3+yTablero,screen);
+                dibujar_objeto(game->getImagen(IMG_TXT_TILES),6,3+yTablero,gRenderer);
 
                 //dibujamos la cantidad de bombas iniciales
                 sprintf(stock,"x%d",data->getBombas());
-                imprimir_palabra(screen,game->getImagen(IMG_FUENTE_2),107,21+yTablero,stock,STR_NORMAL);
+                imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),107,21+yTablero,stock,STR_NORMAL);
 
                 //dibujamos el alcance de las bombas iniciales
                 sprintf(stock,"x%d",data->getAlcanceBombas());
-                imprimir_palabra(screen,game->getImagen(IMG_FUENTE_2),177,21+yTablero,stock,STR_NORMAL);
+                imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),177,21+yTablero,stock,STR_NORMAL);
 
                 //dibujamos las vidas iniciales
                 sprintf(stock,"x%d",data->getVidas());
-                imprimir_palabra(screen,game->getImagen(IMG_FUENTE_2),237,21+yTablero,stock,STR_NORMAL);
+                imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),237,21+yTablero,stock,STR_NORMAL);
 
                 //dibujamos la cantidad de items iniciales
                 sprintf(stock,"x%d",data->getNumItems());
-                imprimir_palabra(screen,game->getImagen(IMG_FUENTE_2),288,21+yTablero,stock,STR_NORMAL);
+                imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),288,21+yTablero,stock,STR_NORMAL);
                 
                 for(int j=0;j<3;j++)
-                    imprimir_desde_grilla(game->getImagen(IMG_TILES),data->getIdTile()*4+((j!=2)?j:Mapa::BLOQUE_PISO),screen,j*16+6,20+yTablero,4,4,0);
+                    imprimir_desde_grilla(game->getImagen(IMG_TILES),data->getIdTile()*4+((j!=2)?j:Mapa::BLOQUE_PISO),gRenderer,j*16+6,20+yTablero,4,4,0);
 
-                imprimir_desde_grilla(game->getImagen(IMG_BOTON_FLECHA_PEQUE_DERECHA),estados_botones[0][0],screen,rects_botones[0][0].x,rects_botones[0][0].y+yTablero,3,1,0);
+                imprimir_desde_grilla(game->getImagen(IMG_BOTON_FLECHA_PEQUE_DERECHA),estados_botones[0][0],gRenderer,rects_botones[0][0].x,rects_botones[0][0].y+yTablero,3,1,0);
 
                 static int x,y;
                 SDL_GetMouseState(&x,&y);
 
                 for(i=0;i<_PLAYERS;i++){
                     if(i!=player_activo){
-                        imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_PLAYER_1 +i)),6,screen,data->getX((IdPlayer)i),data->getY((IdPlayer)i),1,12,1);
+                        imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_PLAYER_1 +i)),6,gRenderer,data->getX((IdPlayer)i),data->getY((IdPlayer)i),1,12,1);
                     }else{
-                        imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_PLAYER_1 +i)),6,screen,x,y,1,12,1);
+                        imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_PLAYER_1 +i)),6,gRenderer,x,y,1,12,1);
                     }
                 }
 
@@ -701,42 +701,42 @@ void Editor::draw(SDL_Surface * screen){
                     static SDL_Rect rect;
                     rect.x=(x-EjeX)/16*16 + EjeX;
                     rect.y=(y-EjeY)/16*16 + EjeY;
-                    imprimir_desde_grilla(game->getImagen(IMG_TILES),data->getIdTile()*4+tile_activo,screen,rect.x,rect.y,4,4,1);
+                    imprimir_desde_grilla(game->getImagen(IMG_TILES),data->getIdTile()*4+tile_activo,gRenderer,rect.x,rect.y,4,4,1);
 
                 }
 
-                imprimir_desde_grilla(game->getImagen(IMG_BOTON_GUARDAR),estados_botones[0][1],screen,rects_botones[0][1].x,rects_botones[0][1].y,3,1,0);
-                botonBorrar.draw(screen);
+                imprimir_desde_grilla(game->getImagen(IMG_BOTON_GUARDAR),estados_botones[0][1],gRenderer,rects_botones[0][1].x,rects_botones[0][1].y,3,1,0);
+                botonBorrar.draw(gRenderer);
             break;
         case EDITOR_ABRIR_NIVEL:
 
-                dibujar_objeto(game->getImagen(IMG_FONDO_EDITOR_SELECT_FILE),0,0,screen);
+                dibujar_objeto(game->getImagen(IMG_FONDO_EDITOR_SELECT_FILE),0,0,gRenderer);
 
 
                 if(boton_visible[EDITOR_FLECHA_IZQUIERDA])
-                    imprimir_desde_grilla(game->getImagen(IMG_BOTON_FLECHA_GRANDE_IZQUIERDA),estados_botones_elegir_terreno[EDITOR_FLECHA_IZQUIERDA],screen,rects_botones_elegir_terreno[EDITOR_FLECHA_IZQUIERDA].x,rects_botones_elegir_terreno[EDITOR_FLECHA_IZQUIERDA].y,3,1,0);
+                    imprimir_desde_grilla(game->getImagen(IMG_BOTON_FLECHA_GRANDE_IZQUIERDA),estados_botones_elegir_terreno[EDITOR_FLECHA_IZQUIERDA],gRenderer,rects_botones_elegir_terreno[EDITOR_FLECHA_IZQUIERDA].x,rects_botones_elegir_terreno[EDITOR_FLECHA_IZQUIERDA].y,3,1,0);
 
                 if(boton_visible[EDITOR_FLECHA_DERECHA])
-                    imprimir_desde_grilla(game->getImagen(IMG_BOTON_FLECHA_GRANDE_DERECHA),estados_botones_elegir_terreno[EDITOR_FLECHA_DERECHA],screen,rects_botones_elegir_terreno[EDITOR_FLECHA_DERECHA].x,rects_botones_elegir_terreno[EDITOR_FLECHA_DERECHA].y,3,1,0);
+                    imprimir_desde_grilla(game->getImagen(IMG_BOTON_FLECHA_GRANDE_DERECHA),estados_botones_elegir_terreno[EDITOR_FLECHA_DERECHA],gRenderer,rects_botones_elegir_terreno[EDITOR_FLECHA_DERECHA].x,rects_botones_elegir_terreno[EDITOR_FLECHA_DERECHA].y,3,1,0);
 
 
-                imprimir_desde_grilla(game->getImagen(IMG_BOTON_ESTRANIO),(estados_botones_elegir_terreno[EDITOR_MAPA_1]==BOTON_PRESIONADO)?1:0,screen,rects_botones_elegir_terreno[EDITOR_MAPA_1].x,rects_botones_elegir_terreno[EDITOR_MAPA_1].y,2,1,0);
-                dibujar_objeto(previews_niveles[(pagina-1)*2],rects_botones_elegir_terreno[EDITOR_MAPA_1].x+7,rects_botones_elegir_terreno[EDITOR_MAPA_1].y+5,screen);
+                imprimir_desde_grilla(game->getImagen(IMG_BOTON_ESTRANIO),(estados_botones_elegir_terreno[EDITOR_MAPA_1]==BOTON_PRESIONADO)?1:0,gRenderer,rects_botones_elegir_terreno[EDITOR_MAPA_1].x,rects_botones_elegir_terreno[EDITOR_MAPA_1].y,2,1,0);
+                dibujar_objeto(previews_niveles[(pagina-1)*2],rects_botones_elegir_terreno[EDITOR_MAPA_1].x+7,rects_botones_elegir_terreno[EDITOR_MAPA_1].y+5,gRenderer);
 
 
                 if((maxTerrenoBatalla+1)-pagina*2==-1){
-                    imprimir_palabra(screen,game->getImagen(IMG_FUENTE_5),
+                    imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_5),
                                     rects_botones_elegir_terreno[EDITOR_MAPA_1].x+2,
                                     rects_botones_elegir_terreno[EDITOR_MAPA_1].y+50,
                                     "nuevo",STR_NORMAL);
 
                 }
                 if(boton_visible[EDITOR_MAPA_2]){
-                        imprimir_desde_grilla(game->getImagen(IMG_BOTON_ESTRANIO),(estados_botones_elegir_terreno[EDITOR_MAPA_2]==BOTON_PRESIONADO)?1:0,screen,rects_botones_elegir_terreno[EDITOR_MAPA_2].x,rects_botones_elegir_terreno[EDITOR_MAPA_2].y,2,1,0);
-                        dibujar_objeto(previews_niveles[(pagina-1)*2 + 1],rects_botones_elegir_terreno[EDITOR_MAPA_2].x+7,rects_botones_elegir_terreno[EDITOR_MAPA_2].y+5,screen);
+                        imprimir_desde_grilla(game->getImagen(IMG_BOTON_ESTRANIO),(estados_botones_elegir_terreno[EDITOR_MAPA_2]==BOTON_PRESIONADO)?1:0,gRenderer,rects_botones_elegir_terreno[EDITOR_MAPA_2].x,rects_botones_elegir_terreno[EDITOR_MAPA_2].y,2,1,0);
+                        dibujar_objeto(previews_niveles[(pagina-1)*2 + 1],rects_botones_elegir_terreno[EDITOR_MAPA_2].x+7,rects_botones_elegir_terreno[EDITOR_MAPA_2].y+5,gRenderer);
     
                         if((maxTerrenoBatalla+1)-pagina*2<=0)
-                            imprimir_palabra(screen,game->getImagen(IMG_FUENTE_5),
+                            imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_5),
                                             rects_botones_elegir_terreno[EDITOR_MAPA_2].x+2,
                                             rects_botones_elegir_terreno[EDITOR_MAPA_2].y+50,
                                             "nuevo",STR_NORMAL);
@@ -754,11 +754,15 @@ Editor::~Editor(){
         #ifdef DEBUG
          cout << "Liberando Surface: "<<previews_niveles[i]<<endl;
         #endif
-         SDL_FreeSurface(previews_niveles[i]);
+         SDL_DestroyTexture(previews_niveles[i]);
      }
     #ifdef DEBUG
      cout << "Liberando Preview: "<<previews_niveles<<endl;
     #endif
     delete [] previews_niveles;
     delete data;
+}
+
+void Editor::crearTexturas(SDL_Renderer * gr) {
+
 }

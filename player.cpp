@@ -85,7 +85,7 @@ void Player::updateRectColision(){
 }
 
 
-void Player::update(Uint8 * teclas){
+void Player::update(const Uint8 * teclas){
     
 	avanzarAnimacion ();//avanzamos la animacion
     updateRectColision();
@@ -149,11 +149,11 @@ void Player::update(Uint8 * teclas){
         }
     }//fin "si no esta muriendo"
 
-    /*SI COLISIONA CON ALGÚN ITEM*/
-      int id_item;//almacena la respuesta de: ¿con que item esta colisionando?
+    /*SI COLISIONA CON ALGï¿½N ITEM*/
+      int id_item;//almacena la respuesta de: ï¿½con que item esta colisionando?
 
       id_item=juego->colision(ITEM,rect);
-      if(id_item!=-1){//¿colisiono con uno?
+      if(id_item!=-1){//ï¿½colisiono con uno?
             int tipo_item=juego->getTipoItem(id_item);
             if(tipo_item==Item::ITEM_PUERTA){
                 if(juego->getActivos(GLOBO)==0)
@@ -255,12 +255,12 @@ void Player::activarPoderItem(int tipo){
         }
 }
 
-void Player::draw(SDL_Surface * screen){
+void Player::draw(SDL_Renderer * gRenderer){
     if(estado!=MURIENDO)
-    	imprimir_desde_grilla (juego->getImagen((CodeImagen)(IMG_PLAYER_1 + id)), cuadro,screen, x,y,1, 12,estaProtegido);
+    	imprimir_desde_grilla (juego->getImagen((CodeImagen)(IMG_PLAYER_1 + id)), cuadro,gRenderer, x,y,1, 12,estaProtegido);
     else
-    	imprimir_desde_grilla(juego->getImagen((CodeImagen)(IMG_PLAYER_1_MURIENDO + id)), cuadro,screen,x,y,1, 4,0);
-//    if(estaProtegido)dibujar_objeto(juego->getImagen(IMG_FONDO_BLANCO),x,y,screen);
+    	imprimir_desde_grilla(juego->getImagen((CodeImagen)(IMG_PLAYER_1_MURIENDO + id)), cuadro,gRenderer,x,y,1, 4,0);
+//    if(estaProtegido)render_texture(juego->getImagen(IMG_FONDO_BLANCO),x,y,screen);
 	/*DIBUJA EL CUADRO QUE REPRESENTA LA COLISION DEL PERSONAJE*/
 #ifdef DEBUG
             updateRectColision();
@@ -269,7 +269,7 @@ void Player::draw(SDL_Surface * screen){
 }
 
 
-void Player::ponerBomba(Uint8 * teclas){
+void Player::ponerBomba(const Uint8 * teclas){
     TipoSprite conjun_coli[]={BOMBA,GLOBO,NIVEL,ITEM};
     
     SDL_Rect rect_bomb={0,0,16,16};
@@ -307,7 +307,7 @@ bool Player::colision(SDL_Rect & rect){
     return rects_colisionan(this->rect,rect);
 }
 
-void Player::parado(Uint8 * teclas)
+void Player::parado(const Uint8 * teclas)
 {
 //     if(!es_bot){
         if(isPressed(TECLA_ARRIBA,teclas))
@@ -335,7 +335,7 @@ void Player::parado(Uint8 * teclas)
 
 }
 
-void Player::izquierda(Uint8 * teclas)
+void Player::izquierda(const Uint8 * teclas)
 {
 	mover_ip(-velocidad,0);
 	if(!isPressed(TECLA_IZQUIERDA,teclas))
@@ -346,7 +346,7 @@ void Player::izquierda(Uint8 * teclas)
 
 }
 
-void Player::derecha (Uint8 * teclas)
+void Player::derecha (const Uint8 * teclas)
 {
 	mover_ip(velocidad,0);
 	if(!isPressed(TECLA_DERECHA,teclas))
@@ -356,20 +356,20 @@ void Player::derecha (Uint8 * teclas)
 }
 
 
-bool Player::isPressed(TeclaPlayer tecla, Uint8 * _teclas){
+bool Player::isPressed(TeclaPlayer tecla, const Uint8 * _teclas){
     if(!control.isBotonJoystick(tecla) && !control.isDireccionJoystick(tecla)){
         return _teclas [control.getKey(tecla)];
 
     }else{
         for(int i=0;i<juego->getJoysActivos();i++){
-            if(!strcmp(SDL_JoystickName(i),control.getName(tecla))){//si coincide con el joistick con el que se configuro
+            if(!strcmp(SDL_JoystickName(juego->getJoy(i)),control.getName(tecla))){//si coincide con el joistick con el que se configuro
 				return estado_tecla_joy(control.getKey(tecla),juego->getJoy(i));
              }
          }
          return false;
      }
 }
-void Player::arriba (Uint8 * teclas)
+void Player::arriba (const Uint8 * teclas)
 {
     mover_ip (0,-velocidad);
 	if(!isPressed(TECLA_ARRIBA,teclas))
@@ -380,7 +380,7 @@ void Player::arriba (Uint8 * teclas)
 
 }
 
-void Player::abajo(Uint8 * teclas)
+void Player::abajo(const Uint8 * teclas)
 {
 	mover_ip(0,velocidad);
 	if(!isPressed(TECLA_ABAJO,teclas))
@@ -392,7 +392,7 @@ void Player::abajo(Uint8 * teclas)
 }
 
 /*
- * modifica el cuadro de la animación que se debe mostrar en pantalla
+ * modifica el cuadro de la animaciï¿½n que se debe mostrar en pantalla
  */
 void Player::avanzarAnimacion ()
 {

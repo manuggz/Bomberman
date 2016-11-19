@@ -14,7 +14,7 @@ using namespace std;
 class Galeria{
       public:
         Galeria();
-        SDL_Surface * getImagen(CodeImagen code){
+        SDL_Texture * getImagen(CodeImagen code){
             return baulimgs[code];  /*SIN IMPLEMENTAR*/
         };
         Mix_Chunk * getMusicEfecto(CodeMusicEfecto code){
@@ -25,11 +25,12 @@ class Galeria{
             if(!sonidoCargado)return NULL;
             return snd_musicas[code];
         };
-        ~Galeria();
+        void cargarTexturas(SDL_Renderer * gRenderer);
         void cargarSonidos();
+        ~Galeria();
       private:
         bool sonidoCargado;
-        SDL_Surface  * baulimgs[_IMAGENES];
+        SDL_Texture  * baulimgs[_IMAGENES];
         Mix_Chunk *sfx_efectos[_EFECTOS];
         Mix_Music *snd_musicas[_SONIDOS];
 

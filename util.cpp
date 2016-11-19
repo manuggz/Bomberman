@@ -30,26 +30,39 @@ void sort_array(int array_sort[5],int destino_sort[5]){
     }
 }
 
-SDL_Surface *cargar_imagen(char ruta[],bool keyclave){
-	SDL_Surface * imagen;
+SDL_Texture *cargar_textura(SDL_Renderer *gRenderer, string ruta, bool tiene_color_clave){
 
-	imagen = IMG_Load (ruta);
+    //The final texture
+    SDL_Texture* newTexture = NULL;
 
-	if (!imagen){
-		cout<< "No se puede cargar:"<< ruta<<endl;
-		exit(1);
-	}
-    
-    if(keyclave){	
-	   SDL_SetColorKey (imagen, SDL_SRCCOLORKEY, \
-				SDL_MapRGB (imagen->format, 0, 255, 0));
-	}
-	
-    cout<< "+ cargando:"<< ruta<<endl;
-    return imagen;
+    //Load image at specified path
+    SDL_Surface* loadedSurface = IMG_Load( ruta.c_str() );
+    if( loadedSurface == NULL )
+    {
+        printf( "Unable to load image %s! SDL_image Error: %s\n", ruta.c_str(), IMG_GetError() );
+    }
+    else{
+
+        if(tiene_color_clave){
+            //Color key image
+            SDL_SetColorKey( loadedSurface, SDL_TRUE, SDL_MapRGB( loadedSurface->format, 0, 0xFF, 0 ) );
+        }
+
+        //Create texture from surface pixels
+        newTexture = SDL_CreateTextureFromSurface( gRenderer, loadedSurface );
+        if( newTexture == NULL )
+        {
+            printf( "Unable to create texture from %s! SDL Error: %s\n", ruta.c_str(), SDL_GetError() );
+        }
+
+        //Get rid of old loaded surface
+        SDL_FreeSurface( loadedSurface );
+    }
+
+    return newTexture;
 }
 
-void mostrar_error(char msg[]){
+void mostrar_error_salir(string msg){
     cerr << "Error:"<<msg<<"Error SDL:"<<SDL_GetError()<<endl;
     exit(1);
 }
@@ -84,21 +97,22 @@ bool rects_colisionan(SDL_Rect & rect_1,SDL_Rect & rect_2)
 }
 
 
-void imprimir_desde_grilla(SDL_Surface * src, int cuadro, SDL_Surface *dst,int x_dest,int y_dest, int fil, int col,int alpha)
-{
+void imprimir_desde_grilla(SDL_Texture * src, int cuadro, SDL_Renderer *gRenderer,
+                           int x_dest,int y_dest, int fil, int col,int alpha) {
 	SDL_Rect srcrect,dest_rect={x_dest,y_dest,0,0};
 
-	srcrect.w = src->w / col;
-	srcrect.h = src->h / fil;
+    SDL_QueryTexture(src,NULL,NULL,&srcrect.w ,&srcrect.h);
+	srcrect.w = srcrect.w / col;
+	srcrect.h = srcrect.h / fil;
 	srcrect.x = (cuadro % col) * srcrect.w;
 	srcrect.y = (cuadro / col) * srcrect.h;
 
 	if(alpha)
-    	SDL_SetAlpha(src, SDL_SRCALPHA|SDL_RLEACCEL,150);
+        SDL_SetTextureAlphaMod(src,150);
     else
-    	SDL_SetAlpha(src, SDL_SRCALPHA|SDL_RLEACCEL, 255);
+        SDL_SetTextureAlphaMod(src, 255);
 
-	SDL_BlitSurface(src, &srcrect, dst, &dest_rect);
+    SDL_RenderCopy(gRenderer,src,&srcrect,&dest_rect);
 }
 
 
@@ -130,7 +144,7 @@ int fps_sincronizar (void)
 /*
  * Relaciona un caracter con un n�mero entero
  */
-int obtener_indice (char caracter,char * orden_letras)
+int obtener_indice (char caracter,string orden_letras)
 {
 	int i;
 				
@@ -145,23 +159,28 @@ int obtener_indice (char caracter,char * orden_letras)
 
 
 /*
- * imprime un caracter sobre la superficie dst (generalmente screen)
+ * imprime un caracter en el renderer
  */
-int imprimir_letra (SDL_Surface * dst, SDL_Surface * ima,int x, int y, char letra,char * orden_letras)
-{
+int imprimir_letra (SDL_Renderer * gRenderer, SDL_Texture * textureLetras,int x, int y, char letra,string orden_letras) {
 	SDL_Rect srcrect;
 	SDL_Rect dstrect = {x, y, 0, 0};
-	
-	int cantidad_de_letras=strlen(orden_letras);
-	
-	srcrect.w=ima->w/cantidad_de_letras;
+
+	int cantidad_de_letras= (int) orden_letras.size();
+
+    int widthTexture, heightTexture;
+    SDL_QueryTexture(textureLetras, NULL, NULL, &widthTexture, &heightTexture);
+
 	srcrect.x=srcrect.w*obtener_indice(letra,orden_letras);
 	srcrect.y=0;
-	srcrect.h=ima->h;
-	if(srcrect.x>=0)
-    	SDL_BlitSurface(ima, &srcrect, dst, &dstrect);
-	
-	return ima->w/cantidad_de_letras;
+
+	srcrect.h=heightTexture;
+    srcrect.w=widthTexture/cantidad_de_letras;
+
+	if(srcrect.x>=0){
+        SDL_RenderCopy(gRenderer,textureLetras,&srcrect,&dstrect);
+    }
+
+	return widthTexture/cantidad_de_letras;
 }
 
 
@@ -169,21 +188,21 @@ int imprimir_letra (SDL_Surface * dst, SDL_Surface * ima,int x, int y, char letr
  * imprime una cadena de textos completa sobre la superficie referenciada
  * por el primer par�metro
  */
-void imprimir_palabra (SDL_Surface * screen, SDL_Surface * ima, int x, int y,const char * cadena,char * orden_letras)
+void imprimir_palabra (SDL_Renderer * gRenderer, SDL_Texture * textureLetras, int x, int y,string cadena,string orden_letras)
 {
 	int i;
 	int dx = x;
 
 	for (i = 0; cadena [i]; i ++)
-		dx += imprimir_letra (screen, ima, dx, y, cadena [i],orden_letras);
+		dx += imprimir_letra (gRenderer, textureLetras, dx, y, cadena[i],orden_letras);
 }
-void mostrar_msg (SDL_Surface * screen, SDL_Surface * ima, int x,int y,const char * orden_letras, char * formato, ...)
+void mostrar_msg (SDL_Renderer * gRenderer, SDL_Texture * txtLetras, int x,int y,const char * orden_letras, char * formato, ...)
 {
     va_list lista;
     char buffer [1024];
     va_start (lista, formato);
         vsprintf (buffer, formato, lista);
-        imprimir_palabra (screen, ima, x, y,orden_letras, buffer);
+        imprimir_palabra (gRenderer, txtLetras, x, y,orden_letras, buffer);
     va_end (lista);
 }
 
@@ -221,9 +240,9 @@ int buscar_dato(string ruta,string nombre_dato){
     int valor;
     char linea[100],*identificador;
     
-    if(!(fscript=fopen(ruta,"r"))){
-      sprintf(linea,"Error leyendo archivo(Buscar Dato):%s\n",ruta);
-      mostrar_error(linea);
+    if(!(fscript=fopen(ruta.c_str(),"r"))){
+      sprintf(linea,"Error leyendo archivo(Buscar Dato):%s\n",ruta.c_str());
+		mostrar_error_salir(linea);
     }
 
     while(!feof(fscript)){    
@@ -258,17 +277,10 @@ bool estado_tecla_joy(SDL_Keycode tecla,SDL_Joystick * joy){
 			return SDL_JoystickGetButton(joy, tecla);
 	}
 }
-void dibujar_objeto(SDL_Surface *src,Sint16 x,Sint16 y,SDL_Surface *dst){
+void dibujar_objeto(SDL_Texture *src, Sint16 x, Sint16 y, SDL_Renderer *gRenderer){
 
-    if(src==NULL||dst==NULL){
-       cerr<<"WARNING:intento de dibujado en funcion:dibujar_objeto sobre o con valor NULL"<<endl;
-
-       return;
-    }
-
-    SDL_Rect dest={x,y,src->w,src->h};
-    SDL_BlitSurface(src,NULL,dst,&dest);
-
+    SDL_Rect dest={x,y,0,0};
+    SDL_RenderCopy(gRenderer,src,NULL,&dest);
 }
 
 
@@ -291,7 +303,7 @@ EstadoSprite invertir_estado(EstadoSprite estado){
 
 void sdl_videoinfo(void)
 {
-
+/*
     const SDL_VideoInfo *propiedades;
     SDL_Surface *pantalla;
     SDL_Rect **modos;
@@ -403,7 +415,7 @@ void sdl_videoinfo(void)
 	 printf("El rellenado de color NO está acelerado\n");
 
     printf("La memoria de video tiene %f MB\n", (float) propiedades->video_mem);
-				
+*/
 }
 
 

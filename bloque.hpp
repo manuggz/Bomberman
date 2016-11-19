@@ -11,7 +11,7 @@ class Bloque:public Animacion{
     public:
         Bloque(Juego * juego,int x,int y,int id);
         void disable();
-        void draw(SDL_Surface * screen);
+        void draw(SDL_Renderer * gRenderer);
     private:
         Juego * juego;
         int idTileBloque;

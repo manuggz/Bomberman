@@ -2,7 +2,7 @@
 
 
 
-Mapa::Mapa(Interfaz * _parent,int coorXVis,int coorYVis,SDL_Surface * grillaTiles){
+Mapa::Mapa(Interfaz * _parent,int coorXVis,int coorYVis,SDL_Texture * grillaTiles){
     #ifdef DEBUG
         cout << "Constructor de Mapa:"<<this<<endl;
     #endif
@@ -72,14 +72,14 @@ bool Mapa::cargarMapaDeArchivoBin(char rutaMapaBin[],char * buffer){
     return true;
 }
 
-void Mapa::draw(SDL_Surface * screen,SDL_Surface * tiles,char * mapa,int coorX,int coorY,int idTile)
+void Mapa::draw(SDL_Renderer * gRenderer,SDL_Texture * tiles,char * mapa,int coorX,int coorY,int idTile)
 {
     int indice;
     SDL_Rect dest={0,0,16,16};
 
     for(int i=0;i<FILAS;i++)
         for(int j=0;j<COLUMNAS;j++){
-            // calculo de la posición del tile
+            // calculo de la posiciï¿½n del tile
             dest.x = j * SIZE_TILE+coorX;
             dest.y= i * SIZE_TILE+coorY;
 
@@ -89,7 +89,7 @@ void Mapa::draw(SDL_Surface * screen,SDL_Surface * tiles,char * mapa,int coorX,i
             else if(indice==BLOQUE_ENEMIGO)
                 indice=BLOQUE_PISO;
             if(dest.x+SIZE_TILE>=0&&dest.y+SIZE_TILE>=0&&dest.x<W_SCREEN&&dest.y<H_SCREEN)
-        	imprimir_desde_grilla (tiles,idTile*4+ indice,screen,dest.x,dest.y,4,4,0);
+        	imprimir_desde_grilla (tiles,idTile*4+ indice,gRenderer,dest.x,dest.y,4,4,0);
         }
 }
 
@@ -193,8 +193,8 @@ Mapa::~Mapa(){
 }
 
 
-SDL_Surface * Mapa::getPreviewTerreno(char rutaMapa[],DatNivel * params,SDL_Surface * img_tile,SDL_Surface * imgs_players[],int x,int y){
-
+SDL_Texture * Mapa::getPreviewTerreno(char rutaMapa[],DatNivel * params,SDL_Texture * img_tile,SDL_Texture * imgs_players[],int x,int y){
+/*
     SDL_Surface * preview=SDL_GetVideoSurface(),*imagen_redimensionada;
     char ruta[50],mapa[MAXMAP + 1],variable[50];
     int i;
@@ -223,7 +223,7 @@ SDL_Surface * Mapa::getPreviewTerreno(char rutaMapa[],DatNivel * params,SDL_Surf
 
     imagen_redimensionada=(SDL_Surface * )zoomSurface(preview, 0.3515, 0.4979, 1);
     SDL_FreeSurface(preview);
-    return imagen_redimensionada;
+    return imagen_redimensionada;*/
 }
 /*
 TipoItem Nivel::getTipoNuevoItem(InterfazJuego inter){

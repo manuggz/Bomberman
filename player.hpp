@@ -14,22 +14,22 @@ class Player:public Sprite{
 //        static enum TeclasPlayer {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
     
         Player(Juego * juego,IdPlayer id,int x,int y,int vidasIni=3,int numBombasIni=1,int alcanceBombasIni=1);
-        void update(Uint8 * teclas);
-        void draw(SDL_Surface * screen);
+        void update(const Uint8 * teclas);
+        void draw(SDL_Renderer * );
         void reiniciar();
         void disable();
         int cargarTeclasFile();
         void cargarTeclas();
         void updateRectColision();
         void activarPoderItem(int tipo);
-        void ponerBomba(Uint8 * teclas);
+        void ponerBomba(const Uint8 * teclas);
         bool colision(SDL_Rect & rect_coli);
-        void parado(Uint8 * teclas);
-        void izquierda(Uint8 * teclas);
-        void derecha (Uint8 * teclas);
-        bool isPressed(TeclaPlayer tecla, Uint8 * teclas);
-        void arriba (Uint8 * teclas);
-        void abajo(Uint8 * teclas);
+        void parado(const Uint8 * teclas);
+        void izquierda(const Uint8 * teclas);
+        void derecha (const Uint8 * teclas);
+        bool isPressed(TeclaPlayer tecla,const Uint8 * teclas);
+        void arriba (const Uint8 * teclas);
+        void abajo(const Uint8 * teclas);
         void avanzarAnimacion ();
         void cambiarEstado(EstadoSprite nuevo);
         void mover_ip(int incremento_x, int incremento_y);
@@ -53,7 +53,7 @@ class Player:public Sprite{
         ~Player();
     private:
     
-    	Juego * juego;//referencia al juego que lo creó
+    	Juego * juego;//referencia al juego que lo creï¿½
     	
         ControlPlayer  control;//controla el teclado del player
     	EstadoSprite estado,//estado actual del player
@@ -72,32 +72,32 @@ class Player:public Sprite{
     	int paso,cuadro,delay;
         
         /*Controlan la proteccion*/
-    	bool estaProtegido;//True si el jugador está protegido (se representa por el desvanecimiento)
+    	bool estaProtegido;//True si el jugador estï¿½ protegido (se representa por el desvanecimiento)
     	int tiempoInicioProteccion;//contador del inicio de proteccion
         int duracionProteccion;//segundos para quitar la proteccion
 
     	int alcanBomb,//alcance que logran las llamas de las bombas
-            alcanBombIni;//alcance iniciales cuando se comenzó el modo historia o el mapa en el modo batalla
+            alcanBombIni;//alcance iniciales cuando se comenzï¿½ el modo historia o el mapa en el modo batalla
         int numBombas,//numero de bombas que puede soltar el jugador
-            numBombasIni; //numero de bombas iniciales cuando se comenzó el modo historia o el mapa en el modo batalla
+            numBombasIni; //numero de bombas iniciales cuando se comenzï¿½ el modo historia o el mapa en el modo batalla
         bool puedeAtravesarBloquesBlandos; //True si el player puede atravesar los bloques blandos
         bool puedeAtravesarBombas;//True si el player puede atravesar las bombas
         bool puedePatearBombas;
         bool puedeGolpearBombas;
         bool estaEnfermo;
     	int vidas;         //Cantidad de vidas del player
-    	int puntaje;       //puntaje acumulado del player desde que se inició el modo historia
-    	int velocidad;     //Cantidad de px que se mueve el player en las direcciones básicas
+    	int puntaje;       //puntaje acumulado del player desde que se iniciï¿½ el modo historia
+    	int velocidad;     //Cantidad de px que se mueve el player en las direcciones bï¿½sicas
     	int corazones;     //Cantidad de veces que el player puede soportar ser alcanzado por las llamas o colisionar con un enemigo
 
-/*True si el player está muerto (está remplaza a "self_kill" ya que los players 
-*NO los elimino como lo hago por ejemplo con los items.es decír, los elimino de memoria solo cuando 
+/*True si el player estï¿½ muerto (estï¿½ remplaza a "self_kill" ya que los players 
+*NO los elimino como lo hago por ejemplo con los items.es decï¿½r, los elimino de memoria solo cuando 
 *finaliza el juego)*/
     	bool muerto;       
 
-        bool entroPuerta; //True si el player está sobre la puerta
+        bool entroPuerta; //True si el player estï¿½ sobre la puerta
     
-        bool enPantalla;   //True si el player se está mostrando en pantalla
+        bool enPantalla;   //True si el player se estï¿½ mostrando en pantalla
 };
 
 #endif

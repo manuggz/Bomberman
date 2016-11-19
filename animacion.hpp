@@ -7,10 +7,10 @@
 
 class Animacion:public Sprite{
     public:
-        Animacion(SDL_Surface * img_grilla,int filas,int columnas,string frames=NULL,int x=0,int y=0,int id=-1);
-        void update(Uint8 *keys=NULL);
+        Animacion(SDL_Texture * img_grilla,int filas,int columnas,string frames=NULL,int x=0,int y=0,int id=-1);
+        void update(const Uint8 *keys=NULL);
         virtual void disable();
-        virtual void draw(SDL_Surface * screen);
+        virtual void draw(SDL_Renderer * );
 
         int getTipo(){return type;};
         int getId(){return id;};
@@ -21,7 +21,7 @@ class Animacion:public Sprite{
         
         void setCuadrosFrames(char * frames);
     private:
-        SDL_Surface * imgGrilla;
+        SDL_Texture * imgGrilla;
         ControlAnimacion control_fra;
         bool cambiarOrden;
         int f,c;

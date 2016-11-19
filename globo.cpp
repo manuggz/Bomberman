@@ -7,7 +7,7 @@
 Globo * globo_crear(){
     Globo * globo;
     globo=(Globo *)malloc(sizeof(Globo));
-    if(globo==NULL)mostrar_error("Error asignando memoria a un globo");
+    if(globo==NULL)mostrar_error_salir("Error asignando memoria a un globo");
     return globo;
 }
 

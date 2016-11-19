@@ -20,7 +20,7 @@ JuegoHistoria::JuegoHistoria (GameManager * game):Juego(game){
     if(!refeSprites[PLAYER][PLAYER_2])
         cout << "Warning--No se pudo crear el Player 2"<<endl;
     static_cast<Player *>(refeSprites[PLAYER][PLAYER_2])->setEnPantalla(false); /*Desactivamos el player2*/
-    spriteActivos[PLAYER]=1; /*Solo estará activo el player 1*/
+    spriteActivos[PLAYER]=1; /*Solo estarï¿½ activo el player 1*/
     sprites->add(refeSprites[PLAYER][PLAYER_1]); /*Lo agregamos al Grupo*/
     mayor_puntaje=0;
     setMapaPlay(1,false); /*Se empezara a jugar desde el Nivel 1*/
@@ -67,7 +67,7 @@ void JuegoHistoria::setMapaPlay(int id_nivel,bool reiniciar_jugadores){
         bombasMaxLanzado=false;
         alcanceMaxLanzado=false;
     }else{
-        displayMensage("Te terminaste el juego :P, ¡FELICIDADES!");//se presenta el mensage con el nivel actual
+        displayMensage("Te terminaste el juego :P, ï¿½FELICIDADES!");//se presenta el mensage con el nivel actual
         _quit=true;
     }
 }
@@ -89,7 +89,7 @@ void JuegoHistoria::aumentarNivel(){
 
 
 void JuegoHistoria::estadoPlay(){
-    Uint8 * teclas=SDL_GetKeyState (NULL);//se obtiene el estado actual del teclado
+    const Uint8 * teclas=SDL_GetKeyboardState (NULL);//se obtiene el estado actual del teclado
     if(!pausado){
         sprites->update(teclas);
             
@@ -133,14 +133,14 @@ inline void JuegoHistoria::salir(){
 }
 
 
-void JuegoHistoria::drawBarra(SDL_Surface * screen){
+void JuegoHistoria::drawBarra(SDL_Renderer * gRenderer){
     char tmp[50];
 
-    dibujar_objeto(game->getImagen(IMG_TABLERO),0,mapa->getYPanel(),screen);
+    dibujar_objeto(game->getImagen(IMG_TABLERO),0,mapa->getYPanel(),gRenderer);
     
     
     //Dibujamos el tiempo
-    dibujar_objeto(game->getImagen(IMG_CUADRO_GRANDE),129,3+mapa->getYPanel(),screen);
+    dibujar_objeto(game->getImagen(IMG_CUADRO_GRANDE),129,3+mapa->getYPanel(),gRenderer);
     if(clockTick){
         static char min[3],seg[3],tiempo[6];
     
@@ -150,51 +150,51 @@ void JuegoHistoria::drawBarra(SDL_Surface * screen){
         if(seg[0]==' ')seg[0]='0';
         sprintf(tiempo,"%s:%s",min,seg);
     
-    	imprimir_palabra (screen,game->getImagen(IMG_FUENTE_6),\
+    	imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),\
     						136,6+mapa->getYPanel(),tiempo,STR_MAX_ESTENDIDA);
     }
     
     if(isActivo(PLAYER,PLAYER_1)){
         
         //DIBUJAMOS LAS VIDAS
-        dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),59,5+mapa->getYPanel(),screen);
+        dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),59,5+mapa->getYPanel(),gRenderer);
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_1])->getVidas());
-    	imprimir_palabra (screen,game->getImagen(IMG_FUENTE_1),59,8+mapa->getYPanel(),tmp,STR_NORMAL);
+    	imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_1),59,8+mapa->getYPanel(),tmp,STR_NORMAL);
         
         //Dibujamos la cara
-        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_1,screen,28,-8+mapa->getYPanel(),1,5,0);
+        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_1,gRenderer,28,-8+mapa->getYPanel(),1,5,0);
 
         //DIBUJAMOS EL PUNTAJE
-        dibujar_objeto(game->getImagen(IMG_CUADRO_MEDIANO),4,23+mapa->getYPanel(),screen);
+        dibujar_objeto(game->getImagen(IMG_CUADRO_MEDIANO),4,23+mapa->getYPanel(),gRenderer);
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_1])->getPuntaje());
-        imprimir_palabra (screen,game->getImagen(IMG_FUENTE_2),40,24+mapa->getYPanel(),tmp,STR_NORMAL);
+        imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_2),40,24+mapa->getYPanel(),tmp,STR_NORMAL);
     }else{
         //Dibujamos la cara
-        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_1,screen,28,-8+mapa->getYPanel(),1,5,0);
+        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_1,gRenderer,28,-8+mapa->getYPanel(),1,5,0);
 
-        dibujar_objeto(game->getImagen(IMG_TXT_PRESIONA_START),5,27+mapa->getYPanel(),screen);
+        dibujar_objeto(game->getImagen(IMG_TXT_PRESIONA_START),5,27+mapa->getYPanel(),gRenderer);
     }
 
     if(isActivo(PLAYER,PLAYER_2)){
         
         //DIBUJAMOS LAS VIDAS
-        dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),292,5+mapa->getYPanel(),screen);
+        dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),292,5+mapa->getYPanel(),gRenderer);
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_2])->getVidas());
-    	imprimir_palabra (screen,game->getImagen(IMG_FUENTE_1),293,8+mapa->getYPanel(),tmp,STR_NORMAL);
+    	imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_1),293,8+mapa->getYPanel(),tmp,STR_NORMAL);
         
         //Dibujamos la cara
-        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_2,screen,262,-8+mapa->getYPanel(),1,5,0);
+        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_2,gRenderer,262,-8+mapa->getYPanel(),1,5,0);
 
         //DIBUJAMOS EL PUNTAJE
-        dibujar_objeto(game->getImagen(IMG_CUADRO_MEDIANO),232,23+mapa->getYPanel(),screen);
+        dibujar_objeto(game->getImagen(IMG_CUADRO_MEDIANO),232,23+mapa->getYPanel(),gRenderer);
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_2])->getPuntaje());
-        imprimir_palabra (screen,game->getImagen(IMG_FUENTE_2),273,24+mapa->getYPanel(),tmp,STR_NORMAL);
+        imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_2),273,24+mapa->getYPanel(),tmp,STR_NORMAL);
 
     }else{
         //Dibujamos la cara
-        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_2,screen,262,-8+mapa->getYPanel(),1,5,0);
+        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_2,gRenderer,262,-8+mapa->getYPanel(),1,5,0);
 
-        dibujar_objeto(game->getImagen(IMG_TXT_PRESIONA_START),225,21+mapa->getYPanel(),screen);
+        dibujar_objeto(game->getImagen(IMG_TXT_PRESIONA_START),225,21+mapa->getYPanel(),gRenderer);
     }
 }
 

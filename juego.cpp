@@ -212,7 +212,7 @@ void Juego::killSprite(int type,int id_sprite){
          refeSprites[type][id_sprite]->kill();
          spriteActivos[type]--;
          Sprite * spri=refeSprites[type][id_sprite]; // por si se necesitan saber datos delsprite que se eliminra antes de hacerlo
-         refeSprites[type][id_sprite]=NULL; /*Notese que el grupo "sprites" sige referenciandolo, por lo que él
+         refeSprites[type][id_sprite]=NULL; /*Notese que el grupo "sprites" sige referenciandolo, por lo que ï¿½l
          se encargara de eliminarlo de memoria*/
 
          if(type==BOMBA){
@@ -236,7 +236,7 @@ void Juego::soloKill(int type,int id_sprite){
      if(refeSprites[type][id_sprite]!=NULL){
          refeSprites[type][id_sprite]->kill();
          spriteActivos[type]--;
-         refeSprites[type][id_sprite]=NULL; /*Notese que el grupo "sprites" sige referenciandolo, por lo que él
+         refeSprites[type][id_sprite]=NULL; /*Notese que el grupo "sprites" sige referenciandolo, por lo que ï¿½l
          se encargara de eliminarlo de memoria*/
      }
      
@@ -351,18 +351,18 @@ void Juego::update ()
     }
 
 }
-void Juego::draw(SDL_Surface * screen){
+void Juego::draw(SDL_Renderer * gRenderer){
      
-    dibujar_objeto(game->getImagen((CodeImagen)mapa->getIdFondo()),0,0,screen);
-    drawBarra(screen);//imprimimos la barra mensage
-    mapa->draw(screen);//imprimimos el nivel
-    sprites->draw(screen);
+    dibujar_objeto(game->getImagen((CodeImagen)mapa->getIdFondo()),0,0,gRenderer);
+    drawBarra(gRenderer);//imprimimos la barra mensage
+    mapa->draw(gRenderer);//imprimimos el nivel
+    sprites->draw(gRenderer);
 
     if(pausado){
-        imprimir_palabra(screen, game->getImagen(IMG_FUENTE_5),80,100,"pausa",STR_NORMAL);
-        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN),id_quien_pauso*2 ,screen,130,90,1,10,0);
+        imprimir_palabra(gRenderer, game->getImagen(IMG_FUENTE_5),80,100,"pausa",STR_NORMAL);
+        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN),id_quien_pauso*2 ,gRenderer,130,90,1,10,0);
     }
-    if(estado==DISPLAY_MSG)imprimir_palabra (screen,game->getImagen(IMG_FUENTE_6),x_msg,y_msg,msg_mostrar,STR_MAX_ESTENDIDA);
+    if(estado==DISPLAY_MSG)imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),x_msg,y_msg,msg_mostrar,STR_MAX_ESTENDIDA);
 }
 
 void Juego::setProteccion(TipoSprite type, int id,int nuevo){
@@ -404,7 +404,7 @@ SDL_Joystick * Juego::getJoy(int id){
     return game->getJoy(id);
 }
 
-void Juego::controlaPausa(Uint8 * teclas){
+void Juego::controlaPausa(const Uint8 * teclas){
     /*SI ALGUN PLAYER PRESIONO START SE PAUSA EL JUEGO*/
     if(!hold_start){
         for(int i=0;i<totalSprite[PLAYER];i++){

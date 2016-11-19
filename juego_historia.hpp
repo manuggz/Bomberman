@@ -23,7 +23,7 @@ class JuegoHistoria:public Juego{
         void salir();
         InterfazJuego getTipoJuego(){return TIPO_NORMAL;};
         void aumentarNivel();
-        void drawBarra(SDL_Surface * screen);
+        void drawBarra(SDL_Renderer * gRenderer);
         ~JuegoHistoria();
     private:
         bool repro_war; /*True si se esta reproduciendo el sonido de advertencia de poco tiempo*/

@@ -9,7 +9,7 @@ class Juego;
 class Explosion:public Animacion{
    public:
         Explosion(Juego * juego,int x,int y,int alcance_llamas,int lanzador,int id);
-        void draw(SDL_Surface * screen);
+        void draw(SDL_Renderer * gRenderer);
         bool colision(SDL_Rect & rect_coli);
     private:
         Juego * juego;
@@ -17,7 +17,7 @@ class Explosion:public Animacion{
         int lanzador;
         Uint8 alcances[4];//alcances en los ejes
         
-        void dibujarFlama(int dir,int aum_x,int aum_y,int cuadro_normal,int cuadro_final,SDL_Surface * screen);
+        void dibujarFlama(int dir,int aum_x,int aum_y,int cuadro_normal,int cuadro_final,SDL_Renderer * gRenderer);
         void detectarAlcance(int dir,int aum_x,int aum_y);
 };
 

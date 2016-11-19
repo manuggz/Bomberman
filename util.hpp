@@ -8,23 +8,23 @@
 #include "constantes.hpp"
 using namespace std;
 
-SDL_Surface *cargar_imagen(char ruta[],bool con_color_clave);
+SDL_Texture *cargar_textura(SDL_Renderer *gRenderer, string ruta, bool tiene_color_clave);
 Mix_Chunk * cargar_sonido(char ruta[]);
 Mix_Music * cargar_musica(const char ruta[]);
-void imprimir_desde_grilla(SDL_Surface * src, int cuadro, SDL_Surface *dst,int x_dest,int y_dest, int fil, int col,int alpha);
-SDL_Surface * iniciar_modo(Uint16 w,Uint16 h,Uint8 bpp,Uint32 flags);
-int fps_sincronizar (void);
+void imprimir_desde_grilla(SDL_Texture * src, int cuadro, SDL_Renderer *,int x_dest,int y_dest, int fil, int col,int alpha);
+//SDL_Surface * iniciar_modo(Uint16 w,Uint16 h,Uint8 bpp,Uint32 flags);
+//int fps_sincronizar (void);
 bool rects_colisionan(SDL_Rect & rect_1,SDL_Rect & rect_2);
-void mostrar_error(char msg[]);
+void mostrar_error_salir(string msg);
 inline bool punto_en_rect(Sint16 x,Sint16 y,SDL_Rect * rect_coli){return (x>rect_coli->x&&x<rect_coli->x+rect_coli->w&&y>rect_coli->y&&y<rect_coli->y+rect_coli->h);}
-void dibujar_objeto(SDL_Surface *src,Sint16 x,Sint16 y,SDL_Surface *dst);
+void dibujar_objeto(SDL_Texture *src,Sint16 x,Sint16 y,SDL_Renderer *);
 int buscar_dato(string ruta,string nombre_dato);
 inline bool punto_en_rect_coordenadas(Sint16 x_1,Sint16 y_1,Sint16 x_2,Sint16 y_2,Sint16 w_2,Sint16 h_2){    return (x_1>x_2&&x_1<x_2+w_2&&y_1>y_2&&y_1<y_2+h_2);};
 bool estado_tecla_joy(SDL_Keycode tecla,SDL_Joystick * joy);
 EstadoSprite invertir_estado(EstadoSprite estado);
-void imprimir_palabra (SDL_Surface * screen, SDL_Surface * ima, int x, int y,const  char * cadena,char * orden_letras);
-void sdl_videoinfo(void);
+void imprimir_palabra (SDL_Renderer * gRenderer, SDL_Texture * textureLetras, int x, int y,string cadena,string orden_letras);
+//void sdl_videoinfo(void);
 Uint32 get_pixel (SDL_Surface * ima, int x, int y);
-void mostrar_msg (SDL_Surface * screen, SDL_Surface * ima, int x,int y,const char * orden_letras, char * formato, ...);
+//void mostrar_msg (SDL_Surface * screen, SDL_Surface * ima, int x,int y,const char * orden_letras, char * formato, ...);
 
 #endif

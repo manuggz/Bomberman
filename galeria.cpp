@@ -5,21 +5,26 @@ Galeria::Galeria(){
     #ifdef DEBUG
     cout << "Constructor de galeria:"<<this<<endl;
     #endif
-    
-    char ruta[60];
+
+    sonidoCargado=false;
+
+}
+
+void Galeria::cargarTexturas(SDL_Renderer * gRenderer){
+    string ruta;
     bool keyColor;
-    
+
     ifstream filePar("data/configuracion/images.txt");
     if(!filePar)
-        mostrar_error("No se pudo abrir archivo con RUTAS DE IMAGENES");
-    
+        mostrar_error_salir("No se pudo abrir archivo con RUTAS DE IMAGENES");
+
     for(int j=0;j<_IMAGENES;j++){
         filePar >>ruta;
         filePar >>keyColor;
-        baulimgs[j]=cargar_imagen(ruta,keyColor);
+        baulimgs[j]=cargar_textura(gRenderer,ruta,keyColor);
     }
     filePar.close();
-    sonidoCargado=false;
+
 }
 
 void Galeria::cargarSonidos(){
@@ -49,7 +54,7 @@ Galeria::~Galeria(){
     cout << "Destructor de galeria:"<<this<<endl;
     #endif
 
-    for(int i=0;i<_IMAGENES;i++)SDL_FreeSurface(baulimgs[i]);
+    for(int i=0;i<_IMAGENES;i++)SDL_DestroyTexture(baulimgs[i]);
     if(sonidoCargado){
          for(int i=0;i<_SONIDOS;i++)Mix_FreeMusic(snd_musicas[i]);
          for(int i=0;i<_EFECTOS;i++)Mix_FreeChunk(sfx_efectos[i]);

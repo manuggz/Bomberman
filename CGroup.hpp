@@ -1,6 +1,5 @@
 #ifndef GROUP_HPP
 #define GROUP_HPP
-#include <iostream>
 #include <SDL2/SDL.h>
 #include <deque>
 #include "CSprite.hpp"
@@ -15,8 +14,8 @@ class Group{
         //bool contain(Sprite *);
         //Sprite * collide(Sprite *); //detecta si un sprite colisiona con uno del grupo en el caso, regresa una referencia de con quien colisiona
         void erase(Sprite *);
-        void update(Uint8 * keys=NULL); //llama a los metodos "update" de los Sprites
-        void draw(SDL_Surface *); // llama a los metodos "draw" con la superficie pasada
+        void update(const Uint8 *keys=NULL); //llama a los metodos "update" de los Sprites
+        void draw(SDL_Renderer *); // llama a los metodos "draw" con la superficie pasada
         ~Group();
      
     protected:

@@ -32,7 +32,7 @@ JuegoBatalla::JuegoBatalla (GameManager * game,int idTerrenoBatalla,bool playerE
         }
     }
     
-    displayMensage("¡Qué gane el mejor!");//se presenta el mensage con el nivel actual
+    displayMensage("ï¿½Quï¿½ gane el mejor!");//se presenta el mensage con el nivel actual
 //    estado_siguiente=PLAY;
     id_lider_ganadas=PLAYER_NONE;
     SDL_ShowCursor(SDL_DISABLE);
@@ -129,7 +129,7 @@ int JuegoBatalla::getTipoNuevoItem(bool hacerComprobaciones){
 }
 
 void JuegoBatalla::estadoPlay(){
-    Uint8 * teclas=SDL_GetKeyState (NULL);//se obtiene el estado actual del teclado
+    const Uint8 *teclas= SDL_GetKeyboardState(NULL);//se obtiene el estado actual del teclado
 
     if(!pausado){
             sprites->update(teclas);
@@ -166,7 +166,7 @@ void JuegoBatalla::estadoPlay(){
                 game->cambiarInterfaz(new JuegoMostrarGanadas(game,this,batallasGanadas));
                 
                 if(batallasGanadas[id_activo]>=vic){
-                    sprintf(msg_ganador,"¡PLAYER %d GANÓ!",id_activo+1);
+                    sprintf(msg_ganador,"ï¿½PLAYER %d GANï¿½!",id_activo+1);
                     displayMensage(msg_ganador);
                     _quit=true;
                 }else{
@@ -190,70 +190,70 @@ void JuegoBatalla::salir(){
 
 }
 
-void JuegoBatalla::drawBarra(SDL_Surface * screen){
+void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
     char tmp[50];
     
-    dibujar_objeto(game->getImagen(IMG_TABLERO),0,mapa->getYPanel(),screen);
+    dibujar_objeto(game->getImagen(IMG_TABLERO),0,mapa->getYPanel(),gRenderer);
 
     //PLAYER_1
-    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_1]&&isActivo(PLAYER,PLAYER_1)) + PLAYER_1*2 ,screen,1,24,1,10,0);
+    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_1]&&isActivo(PLAYER,PLAYER_1)) + PLAYER_1*2 ,gRenderer,1,24,1,10,0);
 
-    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),15,21,screen);
+    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),15,21,gRenderer);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(refeSprites[PLAYER][PLAYER_1]&&isActivo(PLAYER,PLAYER_1)){
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_1])->getVidas());
-    	imprimir_palabra (screen,game->getImagen(IMG_FUENTE_3),15,24,tmp,STR_ESTENDIDA);
+    	imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),15,24,tmp,STR_ESTENDIDA);
     }
 
     //PLAYER_2
-    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_2]&&isActivo(PLAYER,PLAYER_2)) + PLAYER_2*2 ,screen,32,24,1,10,0);
+    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_2]&&isActivo(PLAYER,PLAYER_2)) + PLAYER_2*2 ,gRenderer,32,24,1,10,0);
 
-    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),48,21,screen);
+    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),48,21,gRenderer);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(refeSprites[PLAYER][PLAYER_2]&&isActivo(PLAYER,PLAYER_2)){
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_2])->getVidas());
-    	imprimir_palabra (screen,game->getImagen(IMG_FUENTE_3),48,24,tmp,STR_ESTENDIDA);
+    	imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),48,24,tmp,STR_ESTENDIDA);
     }
 
     //PLAYER_3
-    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_3]&&isActivo(PLAYER,PLAYER_3)) + PLAYER_3*2 ,screen,65,24,1,10,0);
+    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_3]&&isActivo(PLAYER,PLAYER_3)) + PLAYER_3*2 ,gRenderer,65,24,1,10,0);
 
-    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),80,21,screen);
+    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),80,21,gRenderer);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(refeSprites[PLAYER][PLAYER_3]&&isActivo(PLAYER,PLAYER_3)){
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_3])->getVidas());
-    	imprimir_palabra (screen,game->getImagen(IMG_FUENTE_3),80,24,tmp,STR_ESTENDIDA);
+    	imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),80,24,tmp,STR_ESTENDIDA);
     }
 
     //PLAYER_4
-    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_4]&&isActivo(PLAYER,PLAYER_4)) + PLAYER_4*2 ,screen,253,24,1,10,0);
+    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_4]&&isActivo(PLAYER,PLAYER_4)) + PLAYER_4*2 ,gRenderer,253,24,1,10,0);
 
-    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),270,21,screen);
+    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),270,21,gRenderer);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(refeSprites[PLAYER][PLAYER_4]&&isActivo(PLAYER,PLAYER_4)){
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_4])->getVidas());
-    	imprimir_palabra (screen,game->getImagen(IMG_FUENTE_3),271,23,tmp,STR_ESTENDIDA);
+    	imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),271,23,tmp,STR_ESTENDIDA);
     }
 
     //PLAYER_5
-    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_5]&&isActivo(PLAYER,PLAYER_5)) + PLAYER_5*2 ,screen,288,24,1,10,0);
+    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_5]&&isActivo(PLAYER,PLAYER_5)) + PLAYER_5*2 ,gRenderer,288,24,1,10,0);
 
-    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),304,21,screen);
+    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),304,21,gRenderer);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(refeSprites[PLAYER][PLAYER_5]&&isActivo(PLAYER,PLAYER_5)){
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_5])->getVidas());
-    	imprimir_palabra (screen,game->getImagen(IMG_FUENTE_3),305,23,tmp,STR_ESTENDIDA);
+    	imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),305,23,tmp,STR_ESTENDIDA);
     }
 
     if(id_lider_ganadas!=PLAYER_NONE)
-        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),id_lider_ganadas,screen,154,-10,1,5,0);
+        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),id_lider_ganadas,gRenderer,154,-10,1,5,0);
     
-    dibujar_objeto(game->getImagen(IMG_CUADRO_GRANDE),137,21,screen);
+    dibujar_objeto(game->getImagen(IMG_CUADRO_GRANDE),137,21,gRenderer);
     
     if(clockTick){
         static char min_[3],seg[3],tiempo[6];
@@ -264,7 +264,7 @@ void JuegoBatalla::drawBarra(SDL_Surface * screen){
         if(seg[0]==' ')seg[0]='0';
         sprintf(tiempo,"%s:%s",min_,seg);
     
-    	imprimir_palabra (screen,game->getImagen(IMG_FUENTE_6),\
+    	imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),\
     						142,24,tiempo,STR_MAX_ESTENDIDA);
     }
 }
@@ -276,25 +276,25 @@ JuegoBatalla::~JuegoBatalla(){
 
 /*
     cout << "1.1.1"<<endl;
-void juego_dibujar_kills(Juego * juego,SDL_Surface * screen){
+void juego_dibujar_kills(Juego * juego,SDL_Surface * gRenderer){
      char tmp[50];
-    dibujar_objeto(game->galeria->tabs_kills,0,0,screen);
+    render_texture(game->galeria->tabs_kills,0,0,gRenderer);
     int i;
     
     for(i=0;i<_PLAYERS;i++){
         dibujamos el primer player
-        imprimir_desde_grilla(game->galeria->grilla_caras_bomberman,!(i==0) + sort_kills[i]*2 ,screen,39,67 + 29*i,1,10,0);
+        imprimir_desde_grilla(game->galeria->grilla_caras_bomberman,!(i==0) + sort_kills[i]*2 ,gRenderer,39,67 + 29*i,1,10,0);
         dibujamos el player
         sprintf(tmp,"player %d",sort_kills[i]+1);
-       	imprimir_palabra (screen, game->galeria->grilla_fuente_1,58,69 + 28*i,tmp,STR_NORMAL);
+       	imprimir_palabra (gRenderer, game->galeria->grilla_fuente_1,58,69 + 28*i,tmp,STR_NORMAL);
        	
         numero de matadas
         sprintf(tmp,"%d",matadas[sort_kills[i]]);
-       	imprimir_palabra (screen, game->galeria->grilla_fuente_3,174,69 + 28*i,tmp,STR_ESTENDIDA);
+       	imprimir_palabra (gRenderer, game->galeria->grilla_fuente_3,174,69 + 28*i,tmp,STR_ESTENDIDA);
      	
         numero de kills
         sprintf(tmp,"%d",kills[sort_kills[i]]);
-       	imprimir_palabra (screen, game->galeria->grilla_fuente_3,248,68 + 28*i,tmp,STR_ESTENDIDA);
+       	imprimir_palabra (gRenderer, game->galeria->grilla_fuente_3,248,68 + 28*i,tmp,STR_ESTENDIDA);
     }
 
 }

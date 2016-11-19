@@ -12,8 +12,8 @@
 #define FILAS_EXPLO 5
 #define COLUMNAS_EXPLO 8
 #define STR_NORMAL "0123456789abcdefghijklmnopqrstuvwxyz"
-#define STR_ESTENDIDA "0123456789abcdefghijklmnopqrstuvwxyz.`+´-,º-<‘¡ç*/"
-#define STR_MAX_ESTENDIDA "0123456789abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóúÁÉÍÓÚ!¡“”·$%&/()=?¿ç|@#~¬{}‘Ç`+.-,<>:;_ÄËÏÖÜäëïöü*^[]"
+#define STR_ESTENDIDA "0123456789abcdefghijklmnopqrstuvwxyz.`+ï¿½-,ï¿½-<ï¿½ï¿½ï¿½*/"
+#define STR_MAX_ESTENDIDA "0123456789abcdefghijklmnï¿½opqrstuvwxyzABCDEFGHIJKLMNï¿½OPQRSTUVWXYZï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!ï¿½ï¿½ï¿½ï¿½$%&/()=?ï¿½ï¿½|@#~ï¿½{}ï¿½ï¿½`+.-,<>:;_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*^[]"
 
 
 #define DELAY_CAMBIO 2
@@ -171,7 +171,7 @@ typedef enum{
     PLAY,//estado del juego activo
     PAUSA,//estado pausado
     GAME_OVER,//estado del juego terminado
-    DELAY,//estado en el que solo de llama a 'Flip' y se actualiza el conteo para salir y pasar a 'estado_siguiente'
+    DELAY,//estado en el que solo de llama a 'Flip' y se actualiza el conteo para salirJuego y pasar a 'estado_siguiente'
     DISPLAY_MSG,//estado mostrando un mensage, en el que se actualiza la animacion en 'ciclo_logico'
     NONE
 }EstadoJuego;

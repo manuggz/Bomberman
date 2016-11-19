@@ -1,39 +1,50 @@
 #include "game_manager.hpp"
+#include "LTimer.hpp"
 
+/**
+ * Inicia el juego
+ *  Establece los controles iniciales
+ *  Incia el modo de video
+ *  Carga los sonidos
+ * @return
+ */
 GameManager::GameManager(){
-     /*inicializa la clase GameManager y la libreria*/
-     srand(time(0));
-     inter=NULL;
-     interfaz_last=NULL;
+    srand((unsigned int) time(0));
+    interfaz_actual   = nullptr;
+    interfaz_anterior = nullptr;
 
-     iniSDL();
-     setModeVideo();
-     
-     activarJoysticks();/*solo se activan al inicio, si un joystick se conecta a la PC despues de haber corrido esta
+    snd_disponible=false; // snd_disponible se actualiza en iniciarSDL()
+    iniciarSDL();
+    setModeVideo();
 
-     salir=false;
-     /*creamos las clases en memoria*/
-     galeria=new Galeria();
-     if(snd_disponible)galeria->cargarSonidos();
-     salir=false;
+    /* Notar que solo se activan al inicio, si un joystick se conecta a la PC después, éste no se reconocerá*/
+    activarJoysticks();
 
-	// Initialize Frame Rate Manager
-	//SDL_initFramerate(&fpsm);
-	//SDL_setFramerate(&fpsm, 60); // 60 Frames Per Second
-    //SDL_WM_SetCaption("DestructionBombs",NULL);
-//    sdl_videoinfo();
+    salir_juego=false; // Nos dice cuando debemos cerrar el juego
+
+    galeria=new Galeria(); // Almacenamiento de Imagenes/Sonidos en Memoria
+    galeria->cargarTexturas(gRenderer);
+    // snd_disponible se actualiza en GameManager::iniciarSDL()
+    // Este indica si se logró activar el sonido
+    if(snd_disponible)galeria->cargarSonidos();
+
 }
-void GameManager::iniSDL(){
+
+/**
+ * Inicia la libreria SDL
+ *  Inicia el Subsistema de Audio,Video y Joistick
+ *  Inicia la libreria Mixer
+ */
+void GameManager::iniciarSDL(){
     if(!SDL_WasInit(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK)){ 
        if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK)<0){
-           mostrar_error("No se pudo inciar SDL");
+           mostrar_error_salir("No se pudo inciar SDL");
        }
 
-        atexit(SDL_Quit);
+        atexit(SDL_Quit); // Programamos que se cierre SDL al salir
 
         if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT,MIX_DEFAULT_CHANNELS, 4096) < 0) {
             cerr << "[WARNING]%s" << SDL_GetError();
-            snd_disponible=false;
         }else{
             snd_disponible=true;
             Mix_AllocateChannels(_PLAYERS + 1);
@@ -43,18 +54,15 @@ void GameManager::iniSDL(){
 
 }
 
+/**
+ * Establece el modo de video en el juego
+ * @param pantalla_completa Dice si se quiere que se ocupe toda la pantalla
+ */
 void GameManager::setModeVideo(bool pantalla_completa){
     Uint32 banderas=0;
 
-    if(pantalla_completa)
-        banderas|=SDL_WINDOW_FULLSCREEN;
+    if(pantalla_completa) banderas= SDL_WINDOW_FULLSCREEN;
 
-    /*SDL_Surface *icono;
-    icono =SDL_LoadBMP("data/imagenes/objetos/icono.bmp");
-     // Establecemos el icono
-    SDL_WM_SetIcon(icono, NULL); // Compatible con  Windows
-    SDL_FreeSurface(icono);
-    */
     screen = SDL_CreateWindow(
             "DestructionBombs",                  // window title
             SDL_WINDOWPOS_UNDEFINED,           // initial x position
@@ -65,18 +73,27 @@ void GameManager::setModeVideo(bool pantalla_completa){
     );
 
     if(!screen){
-        mostrar_error("No se pudo crear Frame-buffer");
+        mostrar_error_salir("No se pudo crear Frame-buffer");
     }
 
-    ren = SDL_CreateRenderer(screen, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    if (ren == nullptr){
-        mostrar_error("DL_CreateRenderer Error");
+    SDL_Surface *icono;
+    icono =SDL_LoadBMP("data/imagenes/objetos/icono.bmp");
+    // Establecemos el icono
+    SDL_SetWindowIcon(screen,icono);
+    SDL_FreeSurface(icono);
+
+    gRenderer = SDL_CreateRenderer(screen, -1, SDL_RENDERER_ACCELERATED);
+    if (gRenderer == nullptr){
+        mostrar_error_salir("DL_CreateRenderer Error");
     }
 
-    SDL_SetRenderDrawColor(ren, 104, 104, 104, 255);
-    SDL_RenderClear(ren);
+    SDL_SetRenderDrawColor(gRenderer, 104, 104, 104, 255);
 }
 
+/**
+ * Busca _PLAYERS numero de joisticks conectados al sistema, abre una conexion con ellos
+ * y los guarda en un array para cada player
+ */
 void GameManager::activarJoysticks(){
      /*contamos y abrimos los Joysticks que usara nuestro juego, Maximos 5 que pueden ser distintos*/
     joys_act=SDL_NumJoysticks();
@@ -85,81 +102,108 @@ void GameManager::activarJoysticks(){
           joysticks[i]=SDL_JoystickOpen(i);//abrimos el joystick
      }
      for(int i=joys_act;i<_PLAYERS;i++)
-          joysticks[i]=NULL;//los espacios que sobran los ponemos a NULL
+          joysticks[i]= nullptr;//los espacios que sobran los ponemos a NULL
 }
 
-
+/**
+ * Obtiene el joistick en la posicion id
+ * @param id posicion en el array
+ * @return Puntero al SDL_Joystick en el array o NULL en caso que no exista
+ */
 SDL_Joystick * GameManager::getJoy(int id){
     return joysticks[id];
 }
+
+/**
+ * Obtiene el número de joistick activos
+ * @return
+ */
 int GameManager::getJoysActivos(){
     return joys_act;
 }
 
+/**
+ * Cambia la interfaz presentada al usuario actualmente
+ * @param nueva Nueva interfaz a mostrar
+ */
 void GameManager::cambiarInterfaz(Interfaz *  nueva){
-     /*cambia la interfaz del juego*/
-    #ifdef DEBUG
-        cout << "Cambiando interfaz a "<<nueva<<endl;
-    #endif
-//    cout << "1"<<endl;
-    if(interfaz_last&&nueva!=interfaz_last){        
-        #ifdef DEBUG
-            cout << "Eliminando interfaz:"<<interfaz_last<<endl;
-        #endif
-        delete interfaz_last; //Para evitar una mala accion
-        interfaz_last=NULL;
+    if(interfaz_anterior&&nueva!=interfaz_anterior){
+        delete interfaz_anterior;
+        interfaz_anterior=NULL;
     }
-//    cout << "Interfaz(ante la asignaci�n):"<<inter<<" Nueva:"<<nueva<<endl;
-    interfaz_last=inter;
-//    cout << "1"<<endl;
-    inter=nueva;
-    nueva->crearTexturas(ren);
-    #ifdef DEBUG
-        cout << "Interfaz:"<<inter<<endl;
-        cout << "Interfaz anterior:"<<interfaz_last<<endl;
-    #endif
+    interfaz_anterior=interfaz_actual;
+    interfaz_actual=nueva;
+    nueva->crearTexturas(gRenderer);
 }
 
-int GameManager::procesarEventos(){
+/**
+ * Procesa los eventos que ocurren en el sistema
+ * @return Booleano indicando si se debe o no llamar a las funciones de la interfaz actual en el frame actual
+ */
+bool GameManager::procesarEventos(){
     static bool full=1;//pantalla completa
     SDL_Event evento;
     while(SDL_PollEvent(&evento)){
         switch(evento.type){
             case SDL_QUIT:
-                salir=1;
-                return 0;
-            break;
+                salir_juego=true;
+                return false;
             case SDL_KEYDOWN:
                 if((evento.key.keysym.sym==SDLK_RETURN && evento.key.keysym.mod & SDLK_LALT)||
                 (evento.key.keysym.sym==SDLK_f && evento.key.keysym.mod & SDLK_LALT)){
                     setModeVideo(full);
                     full=!full;
-                    return 0;
+                    return false;
                 }
                 if(evento.key.keysym.sym==SDLK_F4 && evento.key.keysym.mod & SDLK_LALT){
-                    salir=1;
-                    return 0;
+                    salir_juego=true;
+                    return false;
                 }
 
             break;
+            default:break;
         }
         
-        inter->procesarEvento(&evento);
+        interfaz_actual->procesarEvento(&evento);
     }
-    return 1;//se puede continuar
+    return true;//se puede continuar
 }
 
 
+/**
+ * Controla el bucle principal del juego
+ */
 void GameManager::run(){
-    if(!inter)return;
-    while(!salir){
-        if(procesarEventos()){
-            inter->update();
-            inter->draw(ren);
+
+    if(!interfaz_actual)return;
+
+    //The frames per second timer
+    LTimer fpsTimer;
+
+    //The frames per second cap timer
+    LTimer capTimer;
+
+    //Start counting frames per second
+    fpsTimer.start();
+
+    while(!salir_juego){
+
+        //Start cap timer
+        capTimer.start();
+
+        SDL_RenderClear(gRenderer); // Borra la vista
+
+        if(procesarEventos()){ // Si se deben procesar los eventos en este frame
+            interfaz_actual->update();
+            interfaz_actual->draw(gRenderer);
         }
-        SDL_RenderPresent(ren);
-        //SDL_framerateDelay(&fpsm);
-        SDL_Delay(60);
+        SDL_RenderPresent(gRenderer); // Muestra la vista
+
+        int frameTicks = capTimer.getTicks();
+        if( frameTicks < SCREEN_TICKS_PER_FRAME ){
+            //Wait remaining time
+            SDL_Delay((Uint32) (SCREEN_TICKS_PER_FRAME - frameTicks));
+        }
     }
 
 }
@@ -171,7 +215,7 @@ void GameManager::play(CodeMusicEfecto code){
 void GameManager::playSonido(CodeMusicSonido code){
     /*Reproduce una musica de fondo*/
     static int t_ini=0;
-    static int t_pas=0;
+    //static int t_pas=0;
     
     if(snd_disponible){
         if(SDL_GetTicks()-t_ini<1000){/*Si se reproduce este sonido seguidamente del anterior (1 s)*/
@@ -182,29 +226,27 @@ void GameManager::playSonido(CodeMusicSonido code){
     }
 }
 
-SDL_Surface * GameManager::getImagen(CodeImagen code){
+SDL_Texture * GameManager::getImagen(CodeImagen code){
     return galeria->getImagen(code);
 }
 
 GameManager::~GameManager(){
-    #ifdef DEBUG
-        cout << "Destructor de GameManager:"<<this<<endl;
-    #endif
 
     // Close and destroy the window
-    SDL_DestroyWindow(window);
+    SDL_DestroyWindow(screen);
 
-    delete inter;
-    delete interfaz_last;
+    delete interfaz_actual;
+    delete interfaz_anterior;
     delete galeria;
 
-    for(int i=0;i<joys_act;i++)
-        if(joysticks[i]&&SDL_JoystickOpened(i))
+    for(int i=0;i<joys_act;i++){
+        if(joysticks[i]) {
             SDL_JoystickClose(joysticks[i]);
-            
+        }
+    }
+
     if(snd_disponible)
         Mix_CloseAudio();
-    cout <<"Fin del juego... visita:http://baulprogramas.blogspot.com/\n";
 }
 
 /*

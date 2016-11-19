@@ -68,7 +68,7 @@ void Explosion::detectarAlcance(int dir,int aum_x,int aum_y){
     }
 
 }
-void Explosion::dibujarFlama(int dir,int aum_x,int aum_y,int cuadro_normal,int cuadro_final,SDL_Surface * screen)
+void Explosion::dibujarFlama(int dir,int aum_x,int aum_y,int cuadro_normal,int cuadro_final,SDL_Renderer * gRenderer)
 {
     int i;
 	int x,y;
@@ -78,29 +78,29 @@ void Explosion::dibujarFlama(int dir,int aum_x,int aum_y,int cuadro_normal,int c
         x=this->x+aum_x*i;
         y=this->y+aum_y*i;
         if(x+16>0&&x<W_SCREEN&&y<H_SCREEN&&y+16>0)
-        imprimir_desde_grilla (juego->getImagen(IMG_EXPLOSION),cuadro_normal+COLUMNAS_EXPLO*getCuadro(),screen, x,y,FILAS_EXPLO,COLUMNAS_EXPLO,0);
+        imprimir_desde_grilla (juego->getImagen(IMG_EXPLOSION),cuadro_normal+COLUMNAS_EXPLO*getCuadro(),gRenderer, x,y,FILAS_EXPLO,COLUMNAS_EXPLO,0);
     }
     x=this->x+aum_x*i;
     y=this->y+aum_y*i;
     if(x+10>0&&x<W_SCREEN&&y<H_SCREEN&&y+16>0){
         if(alcances[dir]==alcance_llamas)
-        	imprimir_desde_grilla (juego->getImagen(IMG_EXPLOSION),cuadro_final+COLUMNAS_EXPLO*getCuadro(), screen,  x,y,FILAS_EXPLO,COLUMNAS_EXPLO,0);
+        	imprimir_desde_grilla (juego->getImagen(IMG_EXPLOSION),cuadro_final+COLUMNAS_EXPLO*getCuadro(), gRenderer,  x,y,FILAS_EXPLO,COLUMNAS_EXPLO,0);
         else if(alcances[dir])
-        	imprimir_desde_grilla (juego->getImagen(IMG_EXPLOSION),cuadro_normal+COLUMNAS_EXPLO*getCuadro(),screen,  x,y,FILAS_EXPLO,COLUMNAS_EXPLO,0);
+        	imprimir_desde_grilla (juego->getImagen(IMG_EXPLOSION),cuadro_normal+COLUMNAS_EXPLO*getCuadro(),gRenderer,  x,y,FILAS_EXPLO,COLUMNAS_EXPLO,0);
     }
 }
 
 
-void Explosion::draw(SDL_Surface * screen){
+void Explosion::draw(SDL_Renderer * gRenderer){
 
     //DIBUJAMOS EL CENTRO
     if(x+10>0&&x<W_SCREEN&&y<H_SCREEN&&y+16>0)
-	     imprimir_desde_grilla (juego->getImagen(IMG_EXPLOSION),2+COLUMNAS_EXPLO*getCuadro(), screen, x,y,FILAS_EXPLO,COLUMNAS_EXPLO,0);
+	     imprimir_desde_grilla (juego->getImagen(IMG_EXPLOSION),2+COLUMNAS_EXPLO*getCuadro(), gRenderer, x,y,FILAS_EXPLO,COLUMNAS_EXPLO,0);
 
-    dibujarFlama(DERECHA,16,0,3,4,screen);
-    dibujarFlama(IZQUIERDA,-16,0,1,0,screen);
-    dibujarFlama(ABAJO,0,16,6,7,screen);
-    dibujarFlama(ARRIBA,0,-16,6,5,screen);
+    dibujarFlama(DERECHA,16,0,3,4,gRenderer);
+    dibujarFlama(IZQUIERDA,-16,0,1,0,gRenderer);
+    dibujarFlama(ABAJO,0,16,6,7,gRenderer);
+    dibujarFlama(ARRIBA,0,-16,6,5,gRenderer);
 
 
 }

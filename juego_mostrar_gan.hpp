@@ -19,13 +19,14 @@ class JuegoMostrarGanadas:public Interfaz{
         JuegoMostrarGanadas(GameManager * game,JuegoBatalla * parent,int batallasGanadas[_PLAYERS]);
         void procesarEvento(SDL_Event * evento);
         void update();
-        void draw(SDL_Surface * screen);
+        void draw(SDL_Renderer * );
+        void crearTexturas(SDL_Renderer * );
         void salir();
         ~JuegoMostrarGanadas();
     private:
         GameManager * game;
         JuegoBatalla * juegoEnCurso;
-        SDL_Surface * fondoJuego,*fondoNegro;
+        SDL_Texture * fondoJuego,*fondoNegro;
         Animacion * animaCuadro;
         Animacion * animaTexto,**animaTrofeos;
         

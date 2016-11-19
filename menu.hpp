@@ -26,7 +26,7 @@ class Menu:public Interfaz{
         void cambiarVentana(int nueva_ventana);
         void cambiarTerrenoBatalla(int aum);
         void procesarEvento(SDL_Event * evento);
-        void draw(SDL_Renderer * screen);
+        void draw(SDL_Renderer * gRenderer);
         void clickSelected();
         void update();
         void killSprite(int a,int b){return;};
@@ -69,7 +69,7 @@ class Menu:public Interfaz{
         void clickControl(Boton<Menu> * control_click);
 
         ///  Para los efectos de desvanecimientos
-        SDL_Surface *fondoVentanaAnterior,*fondoVentanaSiguiente,*fondoNegro;
+        SDL_Texture *fondoVentanaAnterior,*fondoVentanaSiguiente,*fondoNegro;
         int ventanaSiguiente,ventanaAnterior,nivelAlpha,nAnimacion;
         bool animacion;
 

@@ -1,6 +1,6 @@
 #include "animacion.hpp"
 
-Animacion::Animacion(SDL_Surface * img_grilla,int filas,int columnas,string frames,int x,int y,int id):
+Animacion::Animacion(SDL_Texture * img_grilla,int filas,int columnas,string frames,int x,int y,int id):
     control_fra(frames){
 
     this->imgGrilla=img_grilla;
@@ -17,7 +17,7 @@ Animacion::Animacion(SDL_Surface * img_grilla,int filas,int columnas,string fram
     indexInicioAniEnd=0;
 }
 
-void Animacion::update(Uint8 * teclas){
+void Animacion::update(const Uint8 * teclas){
 
 	if (++delay > DELAY_CAMBIO){
         if(control_fra.avanzar()){
@@ -40,7 +40,7 @@ void Animacion::setCuadrosFrames(char * frames){
     control_fra.setCuadros(frames);
 }
 
-void Animacion::draw(SDL_Surface * screen){
+void Animacion::draw(SDL_Renderer * gRenderer){
     if(x+16>0&&x<W_SCREEN&&y<H_SCREEN&&y+16>0)
-        imprimir_desde_grilla (imgGrilla,control_fra.cuadro(), screen, x,y,f,c,0);
+        imprimir_desde_grilla (imgGrilla,control_fra.cuadro(), gRenderer, x,y,f,c,0);
 }

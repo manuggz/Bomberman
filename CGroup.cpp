@@ -49,15 +49,20 @@ Sprite * Group::collide(Sprite * coli){
 }*/
 void Group::erase(Sprite * borrar){
      //lo buscamos usando iteradores
-    deque<Sprite*>::iterator p_Sprite=find( v_personajes.begin(), v_personajes.end(), borrar );
-    if((p_Sprite==v_personajes.end()&&(*p_Sprite)==borrar)||p_Sprite!=v_personajes.end())
-        v_personajes.erase(p_Sprite);
+    deque<Sprite*>::iterator p_Sprite=v_personajes.begin();
+    while(p_Sprite != v_personajes.end()){
+        if((*p_Sprite) == borrar){
+            v_personajes.erase(p_Sprite);
+            return;
+        }
+        p_Sprite++;
+    }
 }
-void Group::update(Uint8 * keys){
+void Group::update(const Uint8 *keys){
     deque<Sprite*>::iterator p_Sprite= v_personajes.begin();
-    
+
     if(!keys)//si no paso las keys las obtenemos
-        keys=SDL_GetKeyState(0);
+        keys=SDL_GetKeyboardState(0);
         
     
     while(p_Sprite != v_personajes.end()){
@@ -75,10 +80,10 @@ void Group::update(Uint8 * keys){
     }
 }
 
-void Group::draw(SDL_Surface * su){
+void Group::draw(SDL_Renderer * gr){
 
    for (size_t i=0; i<v_personajes.size(); i++)
-        v_personajes[i]->draw(su);
+        v_personajes[i]->draw(gr);
 }
 
 Group::~Group(){

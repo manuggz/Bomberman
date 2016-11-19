@@ -20,6 +20,7 @@ class Editor:public Interfaz{
       public:
              Editor(GameManager * game);
             void cambiarVentana(int nueva);
+            void crearTexturas(SDL_Renderer *);
             void cambiarPagina(unsigned int num_pagina);
             void iniciarEdicion(int id);
             void update(void){return;};
@@ -27,7 +28,7 @@ class Editor:public Interfaz{
             void guardarMapa();
             void borrarMapa();
             void procesarEvento(SDL_Event * evento);
-            void draw(SDL_Surface * screen);
+            void draw(SDL_Renderer * );
             ~Editor();
       private:
             GameManager * game;
@@ -50,7 +51,7 @@ class Editor:public Interfaz{
             Estados_boton estados_botones_elegir_terreno[4];
             bool boton_visible[4];
             
-            SDL_Surface ** previews_niveles;
+            SDL_Texture ** previews_niveles;
             int maxTerrenoBatalla;
             int pagina;
             

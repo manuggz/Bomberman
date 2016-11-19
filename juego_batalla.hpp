@@ -25,7 +25,7 @@ class JuegoBatalla:public Juego{
         int getTipoNuevoItem(bool hacerComprobaciones=true);
         InterfazJuego getTipoJuego(){return TIPO_BATALLA;};
 //        void aumentarNivel();
-        void drawBarra(SDL_Surface * screen);
+        void drawBarra(SDL_Renderer * );
         ~JuegoBatalla();
     private:
         int idTerrenoActual;

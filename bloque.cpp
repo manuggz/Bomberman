@@ -15,7 +15,7 @@ void Bloque::disable(){
     kill();
 }
 
-void Bloque::draw(SDL_Surface * screen){
+void Bloque::draw(SDL_Renderer * gRenderer){
     if(x+16>0&&x<W_SCREEN&&y<H_SCREEN&&y+16>0)
-        imprimir_desde_grilla (juego->getImagen(IMG_BLOQUES_FIRE),getCuadro()+idTileBloque*6, screen, x,y,4,6,0);
+        imprimir_desde_grilla (juego->getImagen(IMG_BLOQUES_FIRE),getCuadro()+idTileBloque*6, gRenderer, x,y,4,6,0);
 }

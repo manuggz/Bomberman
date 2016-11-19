@@ -14,31 +14,36 @@ using namespace std;
 
 class GameManager{
     public:
+
+        const int SCREEN_FPS = 60;
+        const int SCREEN_TICKS_PER_FRAME = 1000 / SCREEN_FPS;
         GameManager();
-        void iniSDL();
+        void iniciarSDL();
         void setModeVideo(bool pantalla_completa=false);
         void activarJoysticks();
         SDL_Joystick * getJoy(int id);
         int getJoysActivos();
         void cambiarInterfaz(Interfaz * nueva);
-        int procesarEventos();
+        bool procesarEventos();
         void run();
-        void quit(){salir=true;};
+        void quit(){salir_juego=true;};
         void play(CodeMusicEfecto code);
         void playSonido(CodeMusicSonido code);
-        SDL_Surface * getImagen(CodeImagen code);
+        SDL_Texture * getImagen(CodeImagen code);
         ~GameManager();
 
-    private:
-        Interfaz * inter,* interfaz_last;
+    SDL_Renderer *getRenderer();
+
+private:
+        Interfaz * interfaz_actual,* interfaz_anterior;
         SDL_Window *screen;
-        SDL_Renderer *ren;
+        SDL_Renderer *gRenderer;
         Galeria * galeria;
         SDL_Joystick *joysticks[_PLAYERS];
 
         bool snd_disponible;
         int joys_act;
-        bool salir;
+        bool salir_juego;
         //FPSmanager fpsm;
 };
 #endif

@@ -39,7 +39,7 @@ class Item:public Animacion{
 
         Item(Juego * juego,int x,int y, int tipo,int id);
         int getTipoItem(){return tipo;};   
-        void draw(SDL_Surface * screen);
+        void draw(SDL_Renderer * gRenderer);
     private:
         Juego * juego;
         int tipo;
