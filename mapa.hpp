@@ -36,10 +36,10 @@ class Mapa{
             _BLOQUES//Cantidad de tipos de bloques reconocidos 
         };
         
-        Mapa(Interfaz * _parent,int coorXVis=0,int coorYVis=0,SDL_Texture * grillaTiles=NULL);
+        Mapa(Interfaz * _parent,int coorXVis=0,int coorYVis=0,LTexture * grillaTiles=NULL);
         void draw(SDL_Renderer * gRenderer){draw(gRenderer,imgTiles);};
-        void draw(SDL_Renderer * gRenderer,SDL_Texture * grillaTiles){draw(gRenderer,grillaTiles,tilesMap,coorXVisualizacion,coorYVisualizacion,datMapa->getIdTile());};
-        static void draw(SDL_Renderer * gRenderer,SDL_Texture * tiles,char * mapa,int coorX,int coorY,int idTile);
+        void draw(SDL_Renderer * gRenderer,LTexture * grillaTiles){draw(gRenderer,grillaTiles,tilesMap,coorXVisualizacion,coorYVisualizacion,datMapa->getIdTile());};
+        static void draw(SDL_Renderer * gRenderer,LTexture * tiles,char * mapa,int coorX,int coorY,int idTile);
         
         //Carga de un archivo binario la informaci�n del Mapa/
         //El archivo Bin est� creado usando "mapwin"
@@ -94,10 +94,11 @@ class Mapa{
 
         //Busca Tiles donde se tenga que poner un enemigo y llama a "addSprite" de la interfaz
         int setEnemigos(); //Regresa los enemigos colocados
-        void setImgTiles(SDL_Texture * grilla){
+        void setImgTiles(LTexture * grilla){
 
             if(imgTiles != nullptr) {
-                SDL_DestroyTexture(imgTiles);
+                imgTiles->free();
+                delete imgTiles;
             }
             imgTiles=grilla;
         };
@@ -125,13 +126,13 @@ class Mapa{
 
 //        void cargarFiles(int num_nivel,InterfazJuego inter);
 //        bool quedanBloquesMadera(); /*True si queda al menos un bloque de madera en el mapa*/
-        static SDL_Texture * getPreviewTerreno(char rutaMapa[],DatNivel * params,SDL_Texture * img_tile,SDL_Texture * imgs_players[],int x,int y);
+        static SDL_Texture * getPreviewTerreno(char rutaMapa[],DatNivel * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y);
 //        static SDL_Surface * getPreviewTerreno(int idTerreno);
         void leerInfTile(char ruta[]);
     private:
         DatNivel * datMapa; /*Para buscar los datos del mapa*/
         Interfaz * parent; /*Referencia a la interfaz que lo llama*/
-        SDL_Texture *imgTiles;
+        LTexture *imgTiles;
         
         
         char tilesMap[MAXMAP+1];//almacena los index que representan el nivel

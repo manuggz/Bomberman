@@ -201,16 +201,15 @@ Menu::Menu(GameManager * game):
     setSelected(0);
     game->playSonido(SND_MENU);
     dataNivel=NULL;;
-//    cambiarVentana(VENTANA_1);
+    //cambiarVentana(VENTANA_1);
 
 
     animacion=false;
     setDesvanecimiento(-1,VENTANA_1);
-
 }
 
 void Menu::crearTexturas(SDL_Renderer * gRenderer) {
-    SDL_Surface * tmp =  SDL_CreateRGBSurface(SDL_SWSURFACE,W_SCREEN, H_SCREEN, 24,0,0, 0, 255);
+    /*SDL_Surface * tmp =  SDL_CreateRGBSurface(SDL_SWSURFACE,W_SCREEN, H_SCREEN, 24,0,0, 0, 255);
     fondoVentanaAnterior= SDL_CreateTextureFromSurface(gRenderer,tmp);
     SDL_FreeSurface(tmp);
 
@@ -220,10 +219,11 @@ void Menu::crearTexturas(SDL_Renderer * gRenderer) {
 
     tmp = SDL_CreateRGBSurface(SDL_SWSURFACE,W_SCREEN, H_SCREEN, 24,0,0, 0, 0);
     fondoNegro= SDL_CreateTextureFromSurface(gRenderer,tmp);
-    SDL_FreeSurface(tmp);
+    SDL_FreeSurface(tmp);*/
 }
 
 void Menu::setDesvanecimiento(int last,int nueva){
+    cambiarVentana(nueva);
   	/*ventanaAnterior=last;
   	ventanaSiguiente=nueva;
     nivelAlpha=0;
@@ -232,7 +232,7 @@ void Menu::setDesvanecimiento(int last,int nueva){
         nAnimacion=2;
         nivelAlpha=255;
     }else
-        render_texture(SDL_GetVideoSurface(),0,0,fondoVentanaAnterior);
+        dibujar_objeto(SDL_GetVideoSurface(),0,0,fondoVentanaAnterior);
     if(ventanaSiguiente!=-1){
         cambiarVentana(ventanaSiguiente);
         draw(fondoVentanaSiguiente);
@@ -242,9 +242,11 @@ void Menu::setDesvanecimiento(int last,int nueva){
 }
 
 void Menu::setSelected(int nuevo){
-    if(nuevo<((ventana==VENTANA_1)?5:4)&&nuevo>=0)
+    if(nuevo<((ventana==VENTANA_1)?5:4)&&nuevo>=0){
         selected=nuevo;
-    game->play(SFX_TONO_ACUATICO);
+        game->play(SFX_TONO_ACUATICO);
+        cout << "selected on menu: " << nuevo << endl;
+    }
 }
 
 void Menu::cambiarPlayer(){
@@ -328,21 +330,26 @@ void Menu::clickSelected(){
         case VENTANA_1:
             switch(selected){
                 case MENU_NUEVO_JUEGO:
+                    cout << "MENU_NUEVO_JUEGO"<< endl;
 //                    cambiarVentana(VENTANA_2);
                     setDesvanecimiento(VENTANA_1,VENTANA_2);
                     break;
                 case MENU_EDITOR:
+                    cout << "MENU_EDITOR"<< endl;
                      game->cambiarInterfaz(new Editor(game));
                     break;
                 case MENU_CONFIGURACION:
+                    cout << "MENU_CONFIGURACION"<< endl;
 //                    cambiarVentana(VENTANA_4);
                     setDesvanecimiento(VENTANA_1,VENTANA_4);
                     break;
                 case MENU_CREDITOS:
+                    cout << "MENU_CREDITOS"<< endl;
 //                    cambiarVentana(VENTANA_CREDITOS);
                     setDesvanecimiento(VENTANA_1,VENTANA_CREDITOS);
                     break;
                 case MENU_SALIR:
+                    cout << "MENU_SALIR"<< endl;
                     setDesvanecimiento(VENTANA_1,-1);
 //                    game->quit();
                     break;
@@ -633,8 +640,7 @@ void Menu::draw(SDL_Renderer * gRenderer){
         
         switch(ventana){
             case VENTANA_1:case VENTANA_2:
-
-                SDL_RenderCopy(gRenderer,game->getImagen(IMG_FONDO_MENU),NULL,NULL); //Dibujamos el fondo
+                game->getImagen(IMG_FONDO_MENU)->render(gRenderer,0,0);
                 for(int i=0;i<5;i++)
                     if(!(ventana==VENTANA_2 && i==4))
                         imprimir_palabra(gRenderer,(i==selected)?game->getImagen(IMG_FUENTE_8):game->getImagen(IMG_FUENTE_7),
@@ -644,14 +650,14 @@ void Menu::draw(SDL_Renderer * gRenderer){
                     
                 break;
             case VENTANA_3://multijugador
-                dibujar_objeto(game->getImagen((CodeImagen)mapa.getIdFondo()),0,0,gRenderer);
-                dibujar_objeto(game->getImagen(IMG_TABLERO),0,mapa.getYPanel(),gRenderer);//imprimimos la barra mensage
-                dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),177,7+mapa.getYPanel(),gRenderer);//imprimimos la barra mensage
-                dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),280,7+mapa.getYPanel(),gRenderer);//imprimimos la barra mensage
-                dibujar_objeto(game->getImagen(IMG_TXT_PLAYERS_EN_BATALLA),15,24+mapa.getYPanel(),gRenderer);//imprimimos la barra mensage
-                dibujar_objeto(game->getImagen(IMG_TXT_TIEMPO_POR_RONDA),140,24+mapa.getYPanel(),gRenderer);//imprimimos la barra mensage
-                dibujar_objeto(game->getImagen(IMG_TXT_VICTORIAS),261,24+mapa.getYPanel(),gRenderer);//imprimimos la barra mensage
-                
+                game->getImagen((CodeImagen)mapa.getIdFondo())->render(gRenderer,0,0);
+                game->getImagen(IMG_TABLERO)->render(gRenderer,0,mapa.getYPanel());//imprimimos la barra mensage
+                game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,177,7+mapa.getYPanel());//imprimimos la barra mensage
+                game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,280,7+mapa.getYPanel());//imprimimos la barra mensage
+                game->getImagen(IMG_TXT_PLAYERS_EN_BATALLA)->render(gRenderer,15,24+mapa.getYPanel());//imprimimos la barra mensage
+                game->getImagen(IMG_TXT_TIEMPO_POR_RONDA)->render(gRenderer,140,24+mapa.getYPanel());//imprimimos la barra mensage
+                game->getImagen(IMG_TXT_VICTORIAS)->render(gRenderer,261,24+mapa.getYPanel());//imprimimos la barra mensage
+
                 static char tmp[50];
                 
                 sprintf(tmp,"%d",minutosEscogidos);
@@ -678,8 +684,8 @@ void Menu::draw(SDL_Renderer * gRenderer){
                 
                 break;
             case VENTANA_4://configuracion
-                SDL_RenderCopy(gRenderer,game->getImagen(IMG_FONDO_MENU),NULL,NULL); //Dibujamos el fondo
-    
+                game->getImagen(IMG_FONDO_MENU)->render(gRenderer,0,0);
+
                 static char nombre_tecla[20];
                 for(int i=0;i<6;i++){
                     //imprimimos el boton
@@ -715,15 +721,16 @@ void Menu::draw(SDL_Renderer * gRenderer){
     
                 break;
             case VENTANA_CREDITOS://Creditos
-                dibujar_objeto(game->getImagen(IMG_FONDO_CREDITOS),0,0,gRenderer);
+                //SDL_RenderCopy(gRenderer,game->getImagen(IMG_FONDO_CREDITOS),NULL,NULL); //Dibujamos el fondo
+                game->getImagen(IMG_FONDO_CREDITOS)->render(gRenderer,0,0);
                 break;
             }
         }else{
-            if(nAnimacion==1)
+            /*if(nAnimacion==1)
                 dibujar_objeto(fondoVentanaAnterior,0,0,gRenderer);
             else if(nAnimacion==2)
                 dibujar_objeto(fondoVentanaSiguiente,0,0,gRenderer);
-            dibujar_objeto(fondoNegro,0,0,gRenderer);
+            dibujar_objeto(fondoNegro,0,0,gRenderer);*/
       }
 
 }
@@ -747,8 +754,8 @@ Menu::~Menu(){
     delete btnSubirVictorias;
     delete btnCambiarMapa;
     delete btnJugar;
-    SDL_DestroyTexture(fondoVentanaAnterior);
-    SDL_DestroyTexture(fondoVentanaSiguiente);
-    SDL_DestroyTexture(fondoNegro);
+    //SDL_DestroyTexture(fondoVentanaAnterior);
+    //SDL_DestroyTexture(fondoVentanaSiguiente);
+    //SDL_DestroyTexture(fondoNegro);
 //    delete fuente7; 
 }

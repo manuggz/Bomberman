@@ -106,8 +106,8 @@ void JuegoMostrarGanadas::update(){
 }
 
 void JuegoMostrarGanadas::draw(SDL_Renderer * gr){
-    dibujar_objeto(fondoJuego,0,0,gr);
-    dibujar_objeto(fondoNegro,0,0,gr);
+    //dibujar_objeto(fondoJuego,0,0,gr);
+    //dibujar_objeto(fondoNegro,0,0,gr);
     if(animacion!=1)
         animaTexto->draw(gr);
     animaCuadro->draw(gr);

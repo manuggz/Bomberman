@@ -97,22 +97,21 @@ bool rects_colisionan(SDL_Rect & rect_1,SDL_Rect & rect_2)
 }
 
 
-void imprimir_desde_grilla(SDL_Texture * src, int cuadro, SDL_Renderer *gRenderer,
+void imprimir_desde_grilla(LTexture * src, int cuadro, SDL_Renderer *gRenderer,
                            int x_dest,int y_dest, int fil, int col,int alpha) {
 	SDL_Rect srcrect,dest_rect={x_dest,y_dest,0,0};
 
-    SDL_QueryTexture(src,NULL,NULL,&srcrect.w ,&srcrect.h);
-	srcrect.w = srcrect.w / col;
-	srcrect.h = srcrect.h / fil;
+	srcrect.w = src->getWidth() / col;
+	srcrect.h = src->getHeight() / fil;
 	srcrect.x = (cuadro % col) * srcrect.w;
 	srcrect.y = (cuadro / col) * srcrect.h;
 
-	if(alpha)
-        SDL_SetTextureAlphaMod(src,150);
-    else
-        SDL_SetTextureAlphaMod(src, 255);
+	if(alpha){
+        src->setAlpha(150);
+    }else
+        src->setAlpha(255);
 
-    SDL_RenderCopy(gRenderer,src,&srcrect,&dest_rect);
+    src->render(gRenderer,x_dest,y_dest,&srcrect);
 }
 
 
@@ -161,26 +160,22 @@ int obtener_indice (char caracter,string orden_letras)
 /*
  * imprime un caracter en el renderer
  */
-int imprimir_letra (SDL_Renderer * gRenderer, SDL_Texture * textureLetras,int x, int y, char letra,string orden_letras) {
+int imprimir_letra (SDL_Renderer * gRenderer, LTexture * textureLetras,int x, int y, char letra,string orden_letras) {
 	SDL_Rect srcrect;
-	SDL_Rect dstrect = {x, y, 0, 0};
 
 	int cantidad_de_letras= (int) orden_letras.size();
 
-    int widthTexture, heightTexture;
-    SDL_QueryTexture(textureLetras, NULL, NULL, &widthTexture, &heightTexture);
 
 	srcrect.x=srcrect.w*obtener_indice(letra,orden_letras);
 	srcrect.y=0;
-
-	srcrect.h=heightTexture;
-    srcrect.w=widthTexture/cantidad_de_letras;
+	srcrect.h=textureLetras->getHeight();
+    srcrect.w=textureLetras->getWidth()/cantidad_de_letras;
 
 	if(srcrect.x>=0){
-        SDL_RenderCopy(gRenderer,textureLetras,&srcrect,&dstrect);
+        textureLetras->render(gRenderer,x,y,&srcrect);
     }
 
-	return widthTexture/cantidad_de_letras;
+	return srcrect.w;
 }
 
 
@@ -188,15 +183,14 @@ int imprimir_letra (SDL_Renderer * gRenderer, SDL_Texture * textureLetras,int x,
  * imprime una cadena de textos completa sobre la superficie referenciada
  * por el primer par�metro
  */
-void imprimir_palabra (SDL_Renderer * gRenderer, SDL_Texture * textureLetras, int x, int y,string cadena,string orden_letras)
-{
+void imprimir_palabra (SDL_Renderer * gRenderer, LTexture * textureLetras, int x, int y,string cadena,string orden_letras) {
 	int i;
 	int dx = x;
 
 	for (i = 0; cadena [i]; i ++)
 		dx += imprimir_letra (gRenderer, textureLetras, dx, y, cadena[i],orden_letras);
 }
-void mostrar_msg (SDL_Renderer * gRenderer, SDL_Texture * txtLetras, int x,int y,const char * orden_letras, char * formato, ...)
+void mostrar_msg (SDL_Renderer * gRenderer, LTexture * txtLetras, int x,int y,const char * orden_letras, char * formato, ...)
 {
     va_list lista;
     char buffer [1024];
@@ -276,11 +270,6 @@ bool estado_tecla_joy(SDL_Keycode tecla,SDL_Joystick * joy){
 		default:
 			return SDL_JoystickGetButton(joy, tecla);
 	}
-}
-void dibujar_objeto(SDL_Texture *src, Sint16 x, Sint16 y, SDL_Renderer *gRenderer){
-
-    SDL_Rect dest={x,y,0,0};
-    SDL_RenderCopy(gRenderer,src,NULL,&dest);
 }
 
 

@@ -192,13 +192,13 @@ void JuegoBatalla::salir(){
 
 void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
     char tmp[50];
-    
-    dibujar_objeto(game->getImagen(IMG_TABLERO),0,mapa->getYPanel(),gRenderer);
+
+    game->getImagen(IMG_TABLERO)->render(gRenderer,0,mapa->getYPanel());
 
     //PLAYER_1
     imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_1]&&isActivo(PLAYER,PLAYER_1)) + PLAYER_1*2 ,gRenderer,1,24,1,10,0);
 
-    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),15,21,gRenderer);
+    game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,15,21);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(refeSprites[PLAYER][PLAYER_1]&&isActivo(PLAYER,PLAYER_1)){
@@ -209,7 +209,7 @@ void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
     //PLAYER_2
     imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_2]&&isActivo(PLAYER,PLAYER_2)) + PLAYER_2*2 ,gRenderer,32,24,1,10,0);
 
-    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),48,21,gRenderer);
+    game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,48,21);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(refeSprites[PLAYER][PLAYER_2]&&isActivo(PLAYER,PLAYER_2)){
@@ -220,7 +220,7 @@ void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
     //PLAYER_3
     imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_3]&&isActivo(PLAYER,PLAYER_3)) + PLAYER_3*2 ,gRenderer,65,24,1,10,0);
 
-    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),80,21,gRenderer);
+    game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,80,21);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(refeSprites[PLAYER][PLAYER_3]&&isActivo(PLAYER,PLAYER_3)){
@@ -231,7 +231,7 @@ void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
     //PLAYER_4
     imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_4]&&isActivo(PLAYER,PLAYER_4)) + PLAYER_4*2 ,gRenderer,253,24,1,10,0);
 
-    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),270,21,gRenderer);
+    game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,270,21);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(refeSprites[PLAYER][PLAYER_4]&&isActivo(PLAYER,PLAYER_4)){
@@ -242,7 +242,7 @@ void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
     //PLAYER_5
     imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_5]&&isActivo(PLAYER,PLAYER_5)) + PLAYER_5*2 ,gRenderer,288,24,1,10,0);
 
-    dibujar_objeto(game->getImagen(IMG_CUADRO_PEQUENIO),304,21,gRenderer);
+    game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,304,21);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(refeSprites[PLAYER][PLAYER_5]&&isActivo(PLAYER,PLAYER_5)){
@@ -253,7 +253,7 @@ void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
     if(id_lider_ganadas!=PLAYER_NONE)
         imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),id_lider_ganadas,gRenderer,154,-10,1,5,0);
     
-    dibujar_objeto(game->getImagen(IMG_CUADRO_GRANDE),137,21,gRenderer);
+    game->getImagen(IMG_CUADRO_GRANDE)->render(gRenderer,137,21);
     
     if(clockTick){
         static char min_[3],seg[3],tiempo[6];

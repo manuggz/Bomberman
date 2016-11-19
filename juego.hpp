@@ -105,7 +105,7 @@ class Juego:public Interfaz{
             if(clockTick)return clockTick->getMiliSegundos();
         }
         
-        SDL_Texture * getImagen(CodeImagen code){ return game->getImagen(code);};
+        LTexture * getImagen(CodeImagen code){ return game->getImagen(code);};
         SDL_Joystick * getJoy(int id);
         virtual int getTipoNuevoItem(bool disminuir_de_mapa=true);
 

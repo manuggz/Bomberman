@@ -1,4 +1,5 @@
 #include "galeria.hpp"
+#include "LTexture.hpp"
 
 
 Galeria::Galeria(){
@@ -21,7 +22,9 @@ void Galeria::cargarTexturas(SDL_Renderer * gRenderer){
     for(int j=0;j<_IMAGENES;j++){
         filePar >>ruta;
         filePar >>keyColor;
-        baulimgs[j]=cargar_textura(gRenderer,ruta,keyColor);
+        baulimgs[j] = new LTexture();
+        baulimgs[j]->loadFromFile(ruta,gRenderer,keyColor);
+        cout << "Cargando textura: " << ruta <<endl;
     }
     filePar.close();
 
@@ -54,7 +57,11 @@ Galeria::~Galeria(){
     cout << "Destructor de galeria:"<<this<<endl;
     #endif
 
-    for(int i=0;i<_IMAGENES;i++)SDL_DestroyTexture(baulimgs[i]);
+    for(int i=0;i<_IMAGENES;i++){
+        baulimgs[i]->free();
+        delete baulimgs[i];
+    }
+
     if(sonidoCargado){
          for(int i=0;i<_SONIDOS;i++)Mix_FreeMusic(snd_musicas[i]);
          for(int i=0;i<_EFECTOS;i++)Mix_FreeChunk(sfx_efectos[i]);

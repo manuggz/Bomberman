@@ -1,12 +1,13 @@
 #include "animacion.hpp"
 
-Animacion::Animacion(SDL_Texture * img_grilla,int filas,int columnas,string frames,int x,int y,int id):
+Animacion::Animacion(LTexture * img_grilla,int filas,int columnas,string frames,int x,int y,int id):
     control_fra(frames){
 
     this->imgGrilla=img_grilla;
     this->x=rect.x=x;
     this->y=rect.y=y;
     rect.w=rect.h=16;
+
     self_kill=false;
     type=ANIMACION;
     this->id=id; 
@@ -41,6 +42,7 @@ void Animacion::setCuadrosFrames(char * frames){
 }
 
 void Animacion::draw(SDL_Renderer * gRenderer){
-    if(x+16>0&&x<W_SCREEN&&y<H_SCREEN&&y+16>0)
+    if(x+16>0&&x<W_SCREEN&&y<H_SCREEN&&y+16>0){
         imprimir_desde_grilla (imgGrilla,control_fra.cuadro(), gRenderer, x,y,f,c,0);
+    }
 }

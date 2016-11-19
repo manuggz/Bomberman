@@ -227,7 +227,7 @@ void GameManager::playSonido(CodeMusicSonido code){
     }
 }
 
-SDL_Texture * GameManager::getImagen(CodeImagen code){
+LTexture * GameManager::getImagen(CodeImagen code){
     return galeria->getImagen(code);
 }
 

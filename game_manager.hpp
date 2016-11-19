@@ -29,10 +29,9 @@ class GameManager{
         void quit(){salir_juego=true;};
         void play(CodeMusicEfecto code);
         void playSonido(CodeMusicSonido code);
-        SDL_Texture * getImagen(CodeImagen code);
+        LTexture * getImagen(CodeImagen code);
         ~GameManager();
 
-    SDL_Renderer *getRenderer();
 
 private:
         Interfaz * interfaz_actual,* interfaz_anterior;

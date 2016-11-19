@@ -8,13 +8,14 @@
 #include <SDL2/SDL_mixer.h>
 #include "constantes.hpp"
 #include "util.hpp"
+#include "LTexture.hpp"
 
 using namespace std;
 
 class Galeria{
       public:
         Galeria();
-        SDL_Texture * getImagen(CodeImagen code){
+        LTexture * getImagen(CodeImagen code){
             return baulimgs[code];  /*SIN IMPLEMENTAR*/
         };
         Mix_Chunk * getMusicEfecto(CodeMusicEfecto code){
@@ -30,7 +31,7 @@ class Galeria{
         ~Galeria();
       private:
         bool sonidoCargado;
-        SDL_Texture  * baulimgs[_IMAGENES];
+        LTexture *baulimgs[_IMAGENES];
         Mix_Chunk *sfx_efectos[_EFECTOS];
         Mix_Music *snd_musicas[_SONIDOS];
 

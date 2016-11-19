@@ -7,7 +7,7 @@
 class Bomba:public Animacion{
     public:
 
-        Bomba(SDL_Texture *imgBomba,int x,int y,int alcance,int lanzador,int id);
+        Bomba(LTexture *imgBomba,int x,int y,int alcance,int lanzador,int id);
         int getLanzador(){return lanzador;};
         int getAlcance(){return alcance;};
         void setRepeticion(int nuevo){loop=nuevo;};

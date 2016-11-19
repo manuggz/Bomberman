@@ -18,8 +18,7 @@ LTexture::~LTexture()
     free();
 }
 
-bool LTexture::loadFromFile( std::string path ,SDL_Renderer * gRenderer)
-{
+bool LTexture::loadFromFile( std::string path ,SDL_Renderer * gRenderer, bool tiene_color_clave) {
     //Get rid of preexisting texture
     free();
 
@@ -28,14 +27,14 @@ bool LTexture::loadFromFile( std::string path ,SDL_Renderer * gRenderer)
 
     //Load image at specified path
     SDL_Surface* loadedSurface = IMG_Load( path.c_str() );
-    if( loadedSurface == NULL )
-    {
+    if( loadedSurface == NULL ){
         printf( "Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError() );
-    }
-    else
-    {
-        //Color key image
-        SDL_SetColorKey( loadedSurface, SDL_TRUE, SDL_MapRGB( loadedSurface->format, 0, 0xFF, 0xFF ) );
+    }else{
+
+        if(tiene_color_clave){
+            //Color key image
+            SDL_SetColorKey( loadedSurface, SDL_TRUE, SDL_MapRGB( loadedSurface->format, 0, 0xFF, 0 ) );
+        }
 
         //Create texture from surface pixels
         newTexture = SDL_CreateTextureFromSurface( gRenderer, loadedSurface );
@@ -126,8 +125,9 @@ void LTexture::setAlpha( Uint8 alpha )
     SDL_SetTextureAlphaMod( mTexture, alpha );
 }
 
-void LTexture::render( SDL_Renderer * gRenderer, int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip )
-{
+void LTexture::render( SDL_Renderer * gRenderer, int x, int y,
+                       SDL_Rect* clip , double angle ,SDL_Point* center,
+                       SDL_RendererFlip flip ) {
     //Set rendering space and render to screen
     SDL_Rect renderQuad = { x, y, mWidth, mHeight };
 

@@ -4,10 +4,11 @@
 #include "CSprite.hpp"
 #include "constantes.hpp"
 #include "Control_Animacion.hpp"
+#include "LTexture.hpp"
 
 class Animacion:public Sprite{
     public:
-        Animacion(SDL_Texture * img_grilla,int filas,int columnas,string frames=NULL,int x=0,int y=0,int id=-1);
+        Animacion(LTexture * img_grilla,int filas,int columnas,string frames=NULL,int x=0,int y=0,int id=-1);
         void update(const Uint8 *keys=NULL);
         virtual void disable();
         virtual void draw(SDL_Renderer * );
@@ -21,7 +22,7 @@ class Animacion:public Sprite{
         
         void setCuadrosFrames(char * frames);
     private:
-        SDL_Texture * imgGrilla;
+    LTexture * imgGrilla;
         ControlAnimacion control_fra;
         bool cambiarOrden;
         int f,c;

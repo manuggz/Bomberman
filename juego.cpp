@@ -352,8 +352,7 @@ void Juego::update ()
 
 }
 void Juego::draw(SDL_Renderer * gRenderer){
-     
-    dibujar_objeto(game->getImagen((CodeImagen)mapa->getIdFondo()),0,0,gRenderer);
+    game->getImagen((CodeImagen)mapa->getIdFondo())->render(gRenderer);
     drawBarra(gRenderer);//imprimimos la barra mensage
     mapa->draw(gRenderer);//imprimimos el nivel
     sprites->draw(gRenderer);

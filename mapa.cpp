@@ -2,7 +2,7 @@
 
 
 
-Mapa::Mapa(Interfaz * _parent,int coorXVis,int coorYVis,SDL_Texture * grillaTiles){
+Mapa::Mapa(Interfaz * _parent,int coorXVis,int coorYVis,LTexture * grillaTiles){
     #ifdef DEBUG
         cout << "Constructor de Mapa:"<<this<<endl;
     #endif
@@ -73,7 +73,7 @@ bool Mapa::cargarMapaDeArchivoBin(char rutaMapaBin[],char * buffer){
     return true;
 }
 
-void Mapa::draw(SDL_Renderer * gRenderer,SDL_Texture * tiles,char * mapa,int coorX,int coorY,int idTile)
+void Mapa::draw(SDL_Renderer * gRenderer,LTexture * tiles,char * mapa,int coorX,int coorY,int idTile)
 {
     int indice;
     SDL_Rect dest={0,0,16,16};
@@ -194,7 +194,7 @@ Mapa::~Mapa(){
 }
 
 
-SDL_Texture * Mapa::getPreviewTerreno(char rutaMapa[],DatNivel * params,SDL_Texture * img_tile,SDL_Texture * imgs_players[],int x,int y){
+SDL_Texture * Mapa::getPreviewTerreno(char rutaMapa[],DatNivel * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y){
 /*
     SDL_Surface * preview=SDL_GetVideoSurface(),*imagen_redimensionada;
     char ruta[50],mapa[MAXMAP + 1],variable[50];
