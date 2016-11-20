@@ -6,7 +6,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include "constantes.hpp"
-#include "LTexture.hpp"
+#include "engine/util/LTexture.hpp"
 using namespace std;
 
 SDL_Texture *cargar_textura(SDL_Renderer *gRenderer, string ruta, bool tiene_color_clave);
@@ -22,7 +22,6 @@ int buscar_dato(string ruta,string nombre_dato);
 inline bool punto_en_rect_coordenadas(Sint16 x_1,Sint16 y_1,Sint16 x_2,Sint16 y_2,Sint16 w_2,Sint16 h_2){    return (x_1>x_2&&x_1<x_2+w_2&&y_1>y_2&&y_1<y_2+h_2);};
 bool estado_tecla_joy(SDL_Keycode tecla,SDL_Joystick * joy);
 EstadoSprite invertir_estado(EstadoSprite estado);
-void imprimir_palabra (SDL_Renderer * gRenderer, LTexture * textureLetras, int x, int y,string cadena,string orden_letras);
 //void sdl_videoinfo(void);
 Uint32 get_pixel (SDL_Surface * ima, int x, int y);
 //void mostrar_msg (SDL_Surface * screen, SDL_Surface * ima, int x,int y,const char * orden_letras, char * formato, ...);

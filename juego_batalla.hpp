@@ -3,7 +3,7 @@
 #include "time.hpp"
 #include "player.hpp"
 //#include "globo.hpp"
-#include "game_manager.hpp"
+#include "engine/util/game_manager.hpp"
 #include "item.hpp"
 #include "explosion.hpp"
 #include "bomba.hpp"
@@ -21,7 +21,16 @@ class JuegoBatalla:public Juego{
         void crearReferencias();
         void setMapaPlay(int idTerreno,bool comprobar_players=true);
         void estadoPlay();
-        void salir();
+
+    virtual bool isPaused() override;
+
+    virtual void pause() override;
+
+    virtual void resume() override;
+
+    virtual void start(SDL_Renderer *renderer) override;
+
+    void salir();
         int getTipoNuevoItem(bool hacerComprobaciones=true);
         InterfazJuego getTipoJuego(){return TIPO_BATALLA;};
 //        void aumentarNivel();

@@ -1,5 +1,8 @@
-#include "game_manager.hpp"
+#include "engine/util/game_manager.hpp"
 #include "menu.hpp"
+#include "Interfaces/MenuPrincipal.hpp"
+#include "Interfaces/MenuNuevoJuego.hpp"
+
 /*
   Name: DestructionBombs
   Copyright: GNU/GPL v3
@@ -15,7 +18,7 @@
 int main(int argc, char *argv[]){
     GameManager * juego=new GameManager();
 //    juego->cambiarInterfaz(new Menu(juego,Menu::MENU_INICIO));
-    juego->cambiarInterfaz(new Menu(juego));
+    juego->cambiarInterfaz(new MenuPrincipal(juego));
     juego->run();
     delete juego;
     return EXIT_SUCCESS;

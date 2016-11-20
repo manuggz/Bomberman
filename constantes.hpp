@@ -13,7 +13,7 @@
 #define COLUMNAS_EXPLO 8
 #define STR_NORMAL "0123456789abcdefghijklmnopqrstuvwxyz"
 #define STR_ESTENDIDA "0123456789abcdefghijklmnopqrstuvwxyz.`+�-,�-<���*/"
-#define STR_MAX_ESTENDIDA "0123456789abcdefghijklmn�opqrstuvwxyzABCDEFGHIJKLMN�OPQRSTUVWXYZ����������!����$%&/()=?��|@#~�{}��`+.-,<>:;_����������*^[]"
+#define STR_MAX_ESTENDIDA "0123456789abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóúÁÉÍÓÚ!¡..·$%&/()=?¿ç|@#~¬{}´Ç`+.-,<>:;_ÄËÏÖÜäëïöü*^[]"
 
 
 #define DELAY_CAMBIO 2

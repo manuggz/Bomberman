@@ -138,3 +138,19 @@ JuegoMostrarGanadas::~JuegoMostrarGanadas(){
     }
 }
 
+bool JuegoMostrarGanadas::isPaused() {
+    return false;
+}
+
+void JuegoMostrarGanadas::pause() {
+
+}
+
+void JuegoMostrarGanadas::resume() {
+
+}
+
+void JuegoMostrarGanadas::start(SDL_Renderer *renderer) {
+
+}
+

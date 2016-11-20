@@ -150,8 +150,8 @@ void JuegoHistoria::drawBarra(SDL_Renderer * gRenderer){
         if(seg[0]==' ')seg[0]='0';
         sprintf(tiempo,"%s:%s",min,seg);
     
-    	imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),\
-    						136,6+mapa->getYPanel(),tiempo,STR_MAX_ESTENDIDA);
+    	/*imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),\
+    						136,6+mapa->getYPanel(),tiempo,STR_MAX_ESTENDIDA);*/
     }
     
     if(isActivo(PLAYER,PLAYER_1)){
@@ -159,7 +159,7 @@ void JuegoHistoria::drawBarra(SDL_Renderer * gRenderer){
         //DIBUJAMOS LAS VIDAS
         game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,59,5+mapa->getYPanel());
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_1])->getVidas());
-    	imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_1),59,8+mapa->getYPanel(),tmp,STR_NORMAL);
+    	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_1),59,8+mapa->getYPanel(),tmp,STR_NORMAL);
         
         //Dibujamos la cara
         imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_1,gRenderer,28,-8+mapa->getYPanel(),1,5,0);
@@ -167,7 +167,7 @@ void JuegoHistoria::drawBarra(SDL_Renderer * gRenderer){
         //DIBUJAMOS EL PUNTAJE
         game->getImagen(IMG_CUADRO_MEDIANO)->render(gRenderer,4,23+mapa->getYPanel());
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_1])->getPuntaje());
-        imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_2),40,24+mapa->getYPanel(),tmp,STR_NORMAL);
+        //imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_2),40,24+mapa->getYPanel(),tmp,STR_NORMAL);
     }else{
         //Dibujamos la cara
         imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_1,gRenderer,28,-8+mapa->getYPanel(),1,5,0);
@@ -180,7 +180,7 @@ void JuegoHistoria::drawBarra(SDL_Renderer * gRenderer){
         //DIBUJAMOS LAS VIDAS
         game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,292,5+mapa->getYPanel());
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_2])->getVidas());
-    	imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_1),293,8+mapa->getYPanel(),tmp,STR_NORMAL);
+    	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_1),293,8+mapa->getYPanel(),tmp,STR_NORMAL);
         
         //Dibujamos la cara
         imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_2,gRenderer,262,-8+mapa->getYPanel(),1,5,0);
@@ -188,7 +188,7 @@ void JuegoHistoria::drawBarra(SDL_Renderer * gRenderer){
         //DIBUJAMOS EL PUNTAJE
         game->getImagen(IMG_CUADRO_MEDIANO)->render(gRenderer,232,23+mapa->getYPanel());
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_2])->getPuntaje());
-        imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_2),273,24+mapa->getYPanel(),tmp,STR_NORMAL);
+        //imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_2),273,24+mapa->getYPanel(),tmp,STR_NORMAL);
 
     }else{
         //Dibujamos la cara
@@ -202,5 +202,21 @@ JuegoHistoria::~JuegoHistoria(){
     #ifdef DEBUG
         cout << "Destructor de JuegoHistoria:"<<this<<endl;
     #endif
+}
+
+bool JuegoHistoria::isPaused() {
+    return false;
+}
+
+void JuegoHistoria::pause() {
+
+}
+
+void JuegoHistoria::resume() {
+
+}
+
+void JuegoHistoria::start(SDL_Renderer *renderer) {
+
 }
 

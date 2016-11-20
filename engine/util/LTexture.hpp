@@ -22,12 +22,10 @@ public:
 
     //Loads image at specified path
     bool loadFromFile( std::string path ,SDL_Renderer * gRendered,bool tieneColorClave);
-/*
-#ifdef _SDL_TTF_H
+
     //Creates image from font string
-		bool loadFromRenderedText( std::string textureText, SDL_Color textColor );
-#endif
-*/
+    bool loadFromRenderedText(SDL_Renderer * gRenderer, TTF_Font * gFont, std::string textureText, SDL_Color textColor);
+
     //Deallocates texture
     void free();
 
@@ -44,9 +42,9 @@ public:
     void render( SDL_Renderer * gRenderer, int x=0, int y=0, SDL_Rect* clip = NULL, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE );
 
     //Gets image dimensions
-    int getWidth();
-    int getHeight();
-
+    int getWidth()const;
+    int getHeight()const;
+    std::string getPath()const;
 private:
     //The actual hardware texture
     SDL_Texture* mTexture;
@@ -54,6 +52,8 @@ private:
     //Image dimensions
     int mWidth;
     int mHeight;
+    std::string mPath;
 };
+
 
 #endif //BOMBERMAN_LTEXTURE_HPP

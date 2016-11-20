@@ -3,58 +3,8 @@
 Menu::Menu(GameManager * game):
 
     botonGuardar(game->getImagen(IMG_BOTON_GUARDAR),this,114,205),mapa(this){
-    #ifdef DEBUG
-    cout << "Constructor de Menu:"<<this<<endl;
-    #endif
     this->game=game;
 
-    
-    // ventana 1
-    strcpy(texto[VENTANA_1][MENU_NUEVO_JUEGO],"NUEVO JUEGO");
-    strcpy(texto[VENTANA_1][MENU_EDITOR],"EDITOR");
-    strcpy(texto[VENTANA_1][MENU_CONFIGURACION],"CONFIGURAR");
-    strcpy(texto[VENTANA_1][MENU_CREDITOS],"CREDITOS");
-    strcpy(texto[VENTANA_1][MENU_SALIR],"SALIR");
-
-    //ventana 2
-    strcpy(texto[VENTANA_2][MENU_MODO_HISTORIA],"HISTORIA");
-    strcpy(texto[VENTANA_2][MENU_MODO_MULTIJUGADOR],"MULTIPLAYER");
-    strcpy(texto[VENTANA_2][MENU_MODO_CONEXION],"CONEXI�N");
-    strcpy(texto[VENTANA_2][MENU_REGRESAR],"REGRESAR");
-
-
-    /*RECTS PARA IMPRIMIR LOS MENSAGES DE LA VENTANA*/
-    //ventana 1
-    rectsImpresion[VENTANA_1][MENU_NUEVO_JUEGO].x=38;
-    rectsImpresion[VENTANA_1][MENU_NUEVO_JUEGO].y=77;
-
-    rectsImpresion[VENTANA_1][MENU_EDITOR].x=102;
-    rectsImpresion[VENTANA_1][MENU_EDITOR].y=115;
-
-    rectsImpresion[VENTANA_1][MENU_CONFIGURACION].x=49;
-    rectsImpresion[VENTANA_1][MENU_CONFIGURACION].y=145;
-
-    rectsImpresion[VENTANA_1][MENU_CREDITOS].x=102;
-    rectsImpresion[VENTANA_1][MENU_CREDITOS].y=175;
-
-    rectsImpresion[VENTANA_1][MENU_CREDITOS].x=64;
-    rectsImpresion[VENTANA_1][MENU_CREDITOS].y=175;
-
-    rectsImpresion[VENTANA_1][MENU_SALIR].x=91;
-    rectsImpresion[VENTANA_1][MENU_SALIR].y=200;
-
-    //ventana 2
-    rectsImpresion[VENTANA_2][MENU_MODO_HISTORIA].x=66;
-    rectsImpresion[VENTANA_2][MENU_MODO_HISTORIA].y=77;
-
-    rectsImpresion[VENTANA_2][MENU_MODO_MULTIJUGADOR].x=42;
-    rectsImpresion[VENTANA_2][MENU_MODO_MULTIJUGADOR].y=115;
-
-    rectsImpresion[VENTANA_2][MENU_MODO_CONEXION].x=66;
-    rectsImpresion[VENTANA_2][MENU_MODO_CONEXION].y=153;
-
-    rectsImpresion[VENTANA_2][MENU_REGRESAR].x=69;
-    rectsImpresion[VENTANA_2][MENU_REGRESAR].y=195;
 
     //ventana 3 (MULTIJUGADOR)
     sprites=new Group(this);
@@ -203,23 +153,8 @@ Menu::Menu(GameManager * game):
     dataNivel=NULL;;
     //cambiarVentana(VENTANA_1);
 
-
     animacion=false;
     setDesvanecimiento(-1,VENTANA_1);
-}
-
-void Menu::crearTexturas(SDL_Renderer * gRenderer) {
-    /*SDL_Surface * tmp =  SDL_CreateRGBSurface(SDL_SWSURFACE,W_SCREEN, H_SCREEN, 24,0,0, 0, 255);
-    fondoVentanaAnterior= SDL_CreateTextureFromSurface(gRenderer,tmp);
-    SDL_FreeSurface(tmp);
-
-    tmp = SDL_CreateRGBSurface(SDL_SWSURFACE,W_SCREEN, H_SCREEN, 24,0,0, 0, 255);
-    fondoVentanaSiguiente= SDL_CreateTextureFromSurface(gRenderer,tmp);
-    SDL_FreeSurface(tmp);
-
-    tmp = SDL_CreateRGBSurface(SDL_SWSURFACE,W_SCREEN, H_SCREEN, 24,0,0, 0, 0);
-    fondoNegro= SDL_CreateTextureFromSurface(gRenderer,tmp);
-    SDL_FreeSurface(tmp);*/
 }
 
 void Menu::setDesvanecimiento(int last,int nueva){
@@ -641,13 +576,15 @@ void Menu::draw(SDL_Renderer * gRenderer){
         switch(ventana){
             case VENTANA_1:case VENTANA_2:
                 game->getImagen(IMG_FONDO_MENU)->render(gRenderer,0,0);
-                for(int i=0;i<5;i++)
-                    if(!(ventana==VENTANA_2 && i==4))
-                        imprimir_palabra(gRenderer,(i==selected)?game->getImagen(IMG_FUENTE_8):game->getImagen(IMG_FUENTE_7),
-                                        rectsImpresion[ventana][i].x,
-                                        rectsImpresion[ventana][i].y,
-                                        texto[ventana][i],STR_MAX_ESTENDIDA);
-                    
+                for(int i=0;i<5;i++) {
+                    if (!(ventana == VENTANA_2 && i == 4)) {
+
+                        LTexture * texture =  mFuente->createTextureFromText(gRenderer,texto[ventana][i]);
+                        texture->render(gRenderer,rectsImpresion[ventana][i].x,rectsImpresion[ventana][i].y);
+                        delete texture;
+                    }
+                }
+
                 break;
             case VENTANA_3://multijugador
                 game->getImagen((CodeImagen)mapa.getIdFondo())->render(gRenderer,0,0);
@@ -661,9 +598,9 @@ void Menu::draw(SDL_Renderer * gRenderer){
                 static char tmp[50];
                 
                 sprintf(tmp,"%d",minutosEscogidos);
-                imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_6),178,8+mapa.getYPanel(),tmp,STR_MAX_ESTENDIDA);
+                //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_6),178,8+mapa.getYPanel(),tmp,STR_MAX_ESTENDIDA);
                 sprintf(tmp,"%d",victoriasEscogidas);
-                imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_6),280,8+mapa.getYPanel(),tmp,STR_MAX_ESTENDIDA);
+                //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_6),280,8+mapa.getYPanel(),tmp,STR_MAX_ESTENDIDA);
     
                 btnSubirTiempo->draw(gRenderer);
                 btnSubirVictorias->draw(gRenderer);
@@ -674,7 +611,7 @@ void Menu::draw(SDL_Renderer * gRenderer){
                     if(!player_batalla[i]){
                 	   imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_PLAYER_1 + i)), 6,gRenderer, animaPlayer[i]->getX(),animaPlayer[i]->getY(),1, 12,true);
                        sprintf(tmp,"%d",i+1);
-                       imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_6),animaPlayer[i]->getX()-9+41,animaPlayer[i]->getY()+19,tmp,STR_MAX_ESTENDIDA);
+                       //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_6),animaPlayer[i]->getX()-9+41,animaPlayer[i]->getY()+19,tmp,STR_MAX_ESTENDIDA);
                     }else{
                        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN),i*2,gRenderer,i*16+20,mapa.getYPanel()+2,1,10,0);
                     }
@@ -705,7 +642,7 @@ void Menu::draw(SDL_Renderer * gRenderer){
                         strcpy(nombre_tecla,SDL_GetKeyName(control_edit.getKey((TeclaPlayer)i)));
     
                     //imprimimos la tecla
-                    imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_6),rectConfiguracion[i][MENU_CUADRO_MOSTRAR].x,rectConfiguracion[i][MENU_CUADRO_MOSTRAR].y,nombre_tecla,STR_MAX_ESTENDIDA);
+                    //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_6),rectConfiguracion[i][MENU_CUADRO_MOSTRAR].x,rectConfiguracion[i][MENU_CUADRO_MOSTRAR].y,nombre_tecla,STR_MAX_ESTENDIDA);
     
                     //imprimimos el texto
                     imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_TXT_ARRIBA + i)),id_espera_tecla==i,gRenderer,rectConfiguracion[i][MENU_TEXTO_MOSTRAR].x,rectConfiguracion[i][MENU_TEXTO_MOSTRAR].y,2,1,0);
@@ -754,8 +691,25 @@ Menu::~Menu(){
     delete btnSubirVictorias;
     delete btnCambiarMapa;
     delete btnJugar;
+    delete mFuente;
     //SDL_DestroyTexture(fondoVentanaAnterior);
     //SDL_DestroyTexture(fondoVentanaSiguiente);
     //SDL_DestroyTexture(fondoNegro);
 //    delete fuente7; 
+}
+
+void Menu::start(SDL_Renderer *renderer) {
+
+}
+
+bool Menu::isPaused() {
+    return false;
+}
+
+void Menu::pause() {
+
+}
+
+void Menu::resume() {
+
 }

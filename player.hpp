@@ -1,6 +1,6 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
-#include "CSprite.hpp"
+#include "engine/sprites/CSprite.hpp"
 #include "juego.hpp"
 #include "constantes.hpp"
 #include "control_player.hpp"

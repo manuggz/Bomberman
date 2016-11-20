@@ -3,8 +3,8 @@
 #include <math.h>
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "interfaz.hpp"
-#include "game_manager.hpp"
+#include "engine/interfaces/interfaz.hpp"
+#include "engine/util/game_manager.hpp"
 #include "control_player.hpp"
 #include "constantes.hpp"
 #include "util.hpp"
@@ -23,10 +23,19 @@ class Editor:public Interfaz{
             void crearTexturas(SDL_Renderer *);
             void cambiarPagina(unsigned int num_pagina);
             void iniciarEdicion(int id);
-            void update(void){return;};
+            void update(void){return;}
+
+    virtual bool isPaused() override;
+
+    virtual void pause() override;
+
+    virtual void resume() override;;
             bool EditPointMap(SDL_Event * evento);
             void guardarMapa();
-            void borrarMapa();
+
+    virtual void start(SDL_Renderer *renderer) override;
+
+    void borrarMapa();
             void procesarEvento(SDL_Event * evento);
             void draw(SDL_Renderer * );
             ~Editor();

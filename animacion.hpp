@@ -1,10 +1,10 @@
 #ifndef ANIMACION_HPP
 #define ANIMACION_HPP
 #include <SDL2/SDL.h>
-#include "CSprite.hpp"
+#include "engine/sprites/CSprite.hpp"
 #include "constantes.hpp"
 #include "Control_Animacion.hpp"
-#include "LTexture.hpp"
+#include "engine/util/LTexture.hpp"
 
 class Animacion:public Sprite{
     public:

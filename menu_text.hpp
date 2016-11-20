@@ -1,8 +1,8 @@
 #ifndef MENU_TEXT_HPP
 #define MENU_TEXT_HPP
 #include <SDL2/SDL.h>
-#include "interfaz.hpp"
-#include "game_manager.hpp"
+#include "engine/interfaces/interfaz.hpp"
+#include "engine/util/game_manager.hpp"
 #include "editor.hpp"
 #include "juego_historia.hpp"
 

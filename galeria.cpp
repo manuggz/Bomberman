@@ -1,5 +1,5 @@
 #include "galeria.hpp"
-#include "LTexture.hpp"
+#include "engine/util/LTexture.hpp"
 
 
 Galeria::Galeria(){
@@ -24,7 +24,9 @@ void Galeria::cargarTexturas(SDL_Renderer * gRenderer){
         filePar >>keyColor;
         baulimgs[j] = new LTexture();
         baulimgs[j]->loadFromFile(ruta,gRenderer,keyColor);
-        cout << "Cargando textura: " << ruta <<endl;
+        cout << "+Texture(Path = " << baulimgs[j]->getPath()
+                << " Height: "<<baulimgs[j]->getHeight()
+                << ", Width:" << baulimgs[j]->getWidth() <<endl;
     }
     filePar.close();
 

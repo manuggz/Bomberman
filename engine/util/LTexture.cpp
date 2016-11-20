@@ -55,11 +55,10 @@ bool LTexture::loadFromFile( std::string path ,SDL_Renderer * gRenderer, bool ti
 
     //Return success
     mTexture = newTexture;
+    mPath = path;
     return mTexture != NULL;
 }
-
-/*#ifdef _SDL_TTF_H
-bool LTexture::loadFromRenderedText( std::string textureText, SDL_Color textColor )
+bool LTexture::loadFromRenderedText(SDL_Renderer * gRenderer, TTF_Font * gFont, std::string textureText, SDL_Color textColor)
 {
 	//Get rid of preexisting texture
 	free();
@@ -91,10 +90,10 @@ bool LTexture::loadFromRenderedText( std::string textureText, SDL_Color textColo
 
 
 	//Return success
+    mPath = "";
 	return mTexture != NULL;
 }
-#endif
-*/
+
 void LTexture::free()
 {
     //Free texture if it exists
@@ -142,13 +141,17 @@ void LTexture::render( SDL_Renderer * gRenderer, int x, int y,
     SDL_RenderCopyEx( gRenderer, mTexture, clip, &renderQuad, angle, center, flip );
 }
 
-int LTexture::getWidth()
-{
+
+
+int LTexture::getWidth()const {
     return mWidth;
 }
 
-int LTexture::getHeight()
-{
+int LTexture::getHeight()const {
     return mHeight;
+}
+
+std::string LTexture::getPath()const {
+    return mPath;
 }
 

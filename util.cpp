@@ -141,37 +141,25 @@ int fps_sincronizar (void)
 
 
 /*
- * Relaciona un caracter con un n�mero entero
- */
-int obtener_indice (char caracter,string orden_letras)
-{
-	int i;
-				
-	for (i = 0; orden_letras [i]; i ++)
-	{
-		if (caracter == orden_letras [i])
-			return i;
-	}
-	
-	return -1;
-}
-
-
-/*
  * imprime un caracter en el renderer
  */
 int imprimir_letra (SDL_Renderer * gRenderer, LTexture * textureLetras,int x, int y, char letra,string orden_letras) {
 	SDL_Rect srcrect;
 
-	int cantidad_de_letras= (int) orden_letras.size();
+    cout << "imprimir letra: x " << x << " y: " << y << "letra: " << letra << "orden_letras: "<<orden_letras<< endl;
 
 
-	srcrect.x=srcrect.w*obtener_indice(letra,orden_letras);
 	srcrect.y=0;
 	srcrect.h=textureLetras->getHeight();
-    srcrect.w=textureLetras->getWidth()/cantidad_de_letras;
+    srcrect.w= (int) (textureLetras->getWidth() / orden_letras.size());
+    srcrect.x= (int) (srcrect.w * orden_letras.find(letra));
 
 	if(srcrect.x>=0){
+        cout << "srcrect.x " << srcrect.x
+            << "srcrect.y " << srcrect.y
+            << "srcrect.w " << srcrect.w
+            << "srcrect.h " << srcrect.h
+             << endl;
         textureLetras->render(gRenderer,x,y,&srcrect);
     }
 
@@ -184,12 +172,14 @@ int imprimir_letra (SDL_Renderer * gRenderer, LTexture * textureLetras,int x, in
  * por el primer par�metro
  */
 void imprimir_palabra (SDL_Renderer * gRenderer, LTexture * textureLetras, int x, int y,string cadena,string orden_letras) {
+    cout << "imprimir palabra x: " << x << " y: " << y << " cadena: " << cadena << endl;
 	int i;
 	int dx = x;
 
-	for (i = 0; cadena [i]; i ++)
+	for (i = 0; i < cadena.size(); i ++)
 		dx += imprimir_letra (gRenderer, textureLetras, dx, y, cadena[i],orden_letras);
 }
+
 void mostrar_msg (SDL_Renderer * gRenderer, LTexture * txtLetras, int x,int y,const char * orden_letras, char * formato, ...)
 {
     va_list lista;

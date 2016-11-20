@@ -5,10 +5,10 @@ using namespace std;
 #include <SDL2/SDL.h>
 #include "time.hpp"
 #include "mapa.hpp"
-#include "game_manager.hpp"
+#include "engine/util/game_manager.hpp"
 #include "constantes.hpp"
-#include "interfaz.hpp"
-#include "CGroup.hpp"
+#include "engine/interfaces/interfaz.hpp"
+#include "engine/sprites/CGroup.hpp"
 /*Personajes*/
 #include "bomba.hpp"
 #include "item.hpp"

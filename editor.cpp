@@ -667,19 +667,19 @@ void Editor::draw(SDL_Renderer * gRenderer){
 
                 //dibujamos la cantidad de bombas iniciales
                 sprintf(stock,"x%d",data->getBombas());
-                imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),107,21+yTablero,stock,STR_NORMAL);
+                //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),107,21+yTablero,stock,STR_NORMAL);
 
                 //dibujamos el alcance de las bombas iniciales
                 sprintf(stock,"x%d",data->getAlcanceBombas());
-                imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),177,21+yTablero,stock,STR_NORMAL);
+                //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),177,21+yTablero,stock,STR_NORMAL);
 
                 //dibujamos las vidas iniciales
                 sprintf(stock,"x%d",data->getVidas());
-                imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),237,21+yTablero,stock,STR_NORMAL);
+                //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),237,21+yTablero,stock,STR_NORMAL);
 
                 //dibujamos la cantidad de items iniciales
                 sprintf(stock,"x%d",data->getNumItems());
-                imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),288,21+yTablero,stock,STR_NORMAL);
+                //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),288,21+yTablero,stock,STR_NORMAL);
                 
                 for(int j=0;j<3;j++)
                     imprimir_desde_grilla(game->getImagen(IMG_TILES),data->getIdTile()*4+((j!=2)?j:Mapa::BLOQUE_PISO),gRenderer,j*16+6,20+yTablero,4,4,0);
@@ -729,10 +729,10 @@ void Editor::draw(SDL_Renderer * gRenderer){
 
 
                 if((maxTerrenoBatalla+1)-pagina*2==-1){
-                    imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_5),
+                    /*imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_5),
                                     rects_botones_elegir_terreno[EDITOR_MAPA_1].x+2,
                                     rects_botones_elegir_terreno[EDITOR_MAPA_1].y+50,
-                                    "nuevo",STR_NORMAL);
+                                    "nuevo",STR_NORMAL);*/
 
                 }
                 if(boton_visible[EDITOR_MAPA_2]){
@@ -743,11 +743,11 @@ void Editor::draw(SDL_Renderer * gRenderer){
                         SDL_QueryTexture(previews_niveles[(pagina-1)*2 + 1],NULL,NULL,&rect_dest.w,&rect_dest.h);
                         SDL_RenderCopy(gRenderer,previews_niveles[(pagina-1)*2 + 1],NULL,&rect_dest);
 
-                        if((maxTerrenoBatalla+1)-pagina*2<=0)
+                        /*if((maxTerrenoBatalla+1)-pagina*2<=0)
                             imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_5),
                                             rects_botones_elegir_terreno[EDITOR_MAPA_2].x+2,
                                             rects_botones_elegir_terreno[EDITOR_MAPA_2].y+50,
-                                                "nuevo",STR_NORMAL);
+                                                "nuevo",STR_NORMAL);*/
                 }
             break;
     }
@@ -772,5 +772,21 @@ Editor::~Editor(){
 }
 
 void Editor::crearTexturas(SDL_Renderer * gr) {
+
+}
+
+void Editor::start(SDL_Renderer *renderer) {
+
+}
+
+bool Editor::isPaused() {
+    return false;
+}
+
+void Editor::pause() {
+
+}
+
+void Editor::resume() {
 
 }

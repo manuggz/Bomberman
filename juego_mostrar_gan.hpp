@@ -4,8 +4,8 @@
 #include <SDL2/SDL.h>
 #include "constantes.hpp"
 #include "juego_batalla.hpp"
-#include "game_manager.hpp"
-#include "interfaz.hpp"
+#include "engine/util/game_manager.hpp"
+#include "engine/interfaces/interfaz.hpp"
 
 //#define DEBUG
 
@@ -20,10 +20,20 @@ class JuegoMostrarGanadas:public Interfaz{
         void procesarEvento(SDL_Event * evento);
         void update();
         void draw(SDL_Renderer * );
-        void crearTexturas(SDL_Renderer * );
+
+    virtual void start(SDL_Renderer *renderer) override;
+
+    void crearTexturas(SDL_Renderer * );
         void salir();
         ~JuegoMostrarGanadas();
-    private:
+
+    virtual bool isPaused() override;
+
+    virtual void pause() override;
+
+    virtual void resume() override;
+
+private:
         GameManager * game;
         JuegoBatalla * juegoEnCurso;
         SDL_Texture * fondoJuego,*fondoNegro;

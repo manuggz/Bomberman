@@ -3,7 +3,7 @@
 #include "time.hpp"
 #include "player.hpp"
 //#include "globo.hpp"
-#include "game_manager.hpp"
+#include "engine/util/game_manager.hpp"
 #include "item.hpp"
 #include "explosion.hpp"
 #include "bomba.hpp"
@@ -17,6 +17,9 @@ class Juego;
 class JuegoHistoria:public Juego{
     public:
         JuegoHistoria (GameManager * game);
+
+    virtual void start(SDL_Renderer *renderer) override;
+
 //        void crearReferencias();
         void setMapaPlay(int id_nivel,bool reiniciar_jugadores=false);
         void estadoPlay();
@@ -25,7 +28,14 @@ class JuegoHistoria:public Juego{
         void aumentarNivel();
         void drawBarra(SDL_Renderer * gRenderer);
         ~JuegoHistoria();
-    private:
+
+    virtual bool isPaused() override;
+
+    virtual void pause() override;
+
+    virtual void resume() override;
+
+private:
         bool repro_war; /*True si se esta reproduciendo el sonido de advertencia de poco tiempo*/
 };
 

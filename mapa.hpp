@@ -6,7 +6,7 @@
 #include "constantes.hpp"
 #include "util.hpp"
 #include "dat_nivel.hpp"
-#include "interfaz.hpp"
+#include "engine/interfaces/interfaz.hpp"
 
 /*
 *
