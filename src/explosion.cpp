@@ -13,7 +13,7 @@ Explosion::Explosion(Juego * juego,int x,int y,int alcance_llamas,int lanzador,i
     detectarAlcance(ARRIBA,0,-16);
 
     //reproducimos un sonido
-    juego->play(SFX_EXPLOSION);
+    juego->playSfx(SFX_EXPLOSION);
     this->type=EXPLOSION;
 }
 

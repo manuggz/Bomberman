@@ -76,18 +76,9 @@ public:
     }
 
 
-    virtual bool isPaused() override {
-        return mIsPaused;
-    }
-
-    virtual void pause() override {
-        mIsPaused = true;
-    }
-
     virtual void resume() override {
-        mIsPaused = false;
-        mLayoutBackGround->setDisabled(true);
-
+        Interfaz::resume();
+        //mLayoutBackGround->setDisabled(true);
     }
 
     virtual /**
@@ -149,11 +140,6 @@ public:
 
         }
     }
-
-    void update(void) override {
-
-    }
-
     void draw(SDL_Renderer *renderer) override {
         if(mLayoutBackGround->isDisabled()){
             SDL_Rect rect = {0,0,mGameManager->getWidth(),mGameManager->getHeight()};
@@ -183,7 +169,6 @@ protected:
     SDL_Color mColorLabelNormal,mColorLabelResaltado;
     int mOpcionMenuResaltadaActual;
 
-    bool mIsPaused = false;
     LayoutParent *mLayoutParent;
 };
 

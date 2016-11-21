@@ -3,18 +3,19 @@
 #include <iostream>
 using namespace std;
 #include <SDL2/SDL.h>
-#include "time.hpp"
-#include "mapa.hpp"
-#include "engine/util/game_manager.hpp"
-#include "constantes.hpp"
-#include "engine/interfaces/interfaz.hpp"
-#include "engine/sprites/CGroup.hpp"
+#include "../time.hpp"
+#include "../mapa.hpp"
+#include "../engine/util/game_manager.hpp"
+#include "../constantes.hpp"
+#include "../engine/interfaces/interfaz.hpp"
+#include "../engine/sprites/CGroup.hpp"
 /*Personajes*/
-#include "bomba.hpp"
-#include "item.hpp"
-#include "explosion.hpp"
-#include "player.hpp"
-#include "bloque.hpp"
+#include "../bomba.hpp"
+#include "../item.hpp"
+#include "../explosion.hpp"
+#include "../player.hpp"
+#include "../bloque.hpp"
+#include "../engine/util/LTimer.hpp"
 //#define DEBUG
 
 
@@ -22,7 +23,7 @@ class Mapa;
 
 class Juego:public Interfaz{
       public:
-        Juego(GameManager * mundo);
+        Juego(GameManager * gameManager,int x,int y,int idTerrenoBatalla,int victorias,int minutos,bool isPlayerActivo[_PLAYERS]);
         void procesarEvento(SDL_Event * evento);
         virtual void salir()=0;
         void update ();
@@ -33,15 +34,16 @@ class Juego:public Interfaz{
         virtual void estadoPlay()=0;
         virtual void drawBarra(SDL_Renderer *)=0;
         void displayMensage(const char * mensage);
-        virtual int getEjeXVisual(){return mapa->getEjeXVisualizacion();};
-        virtual int getEjeYVisual(){return mapa->getEjeYVisualizacion();};
-        virtual int getAnchoMapa(){return mapa->getAnchoMapa();};
-        virtual int getAltoMapa(){return mapa->getAltoMapa();};
-        virtual void resetEjes(){mapa->setEjeVisualizacion(EjeX,EjeY);};
+        virtual int getEjeXVisual(){return mMapa->getEjeXVisualizacion();};
+        virtual int getEjeYVisual(){return mMapa->getEjeYVisualizacion();};
+        virtual int getAnchoMapa(){return mMapa->getAnchoMapa();};
+        virtual int getAltoMapa(){return mMapa->getAltoMapa();};
+        virtual void resetEjes(){mMapa->setEjeVisualizacion(EjeX,EjeY);};
+        void cargarMapa();
 
         virtual bool moveLeftEjeXVisual(){
             if(getEjeXVisual()+getAnchoMapa()>W_SCREEN){
-                mapa->moveEjeXVisualizacion(-1);
+                mMapa->moveEjeXVisualizacion(-1);
                 moveAllSprites(-1,0);
                 return true;
             }
@@ -49,7 +51,7 @@ class Juego:public Interfaz{
         }
         virtual bool moveRightEjeXVisual(){
             if(getEjeXVisual()<0){
-                mapa->moveEjeXVisualizacion(1);
+                mMapa->moveEjeXVisualizacion(1);
                 moveAllSprites(1,0);
                 return true;
             }
@@ -57,7 +59,7 @@ class Juego:public Interfaz{
         }
         virtual bool moveDownEjeYVisual(){
             if(getEjeYVisual()<40){
-                mapa->moveEjeYVisualizacion(1);
+                mMapa->moveEjeYVisualizacion(1);
                 moveAllSprites(0,1);
                 return true;
             }
@@ -65,7 +67,7 @@ class Juego:public Interfaz{
         }
 
 
-        void play(CodeMusicEfecto code);
+        void playSfx(CodeMusicEfecto code);
         void playSonido(CodeMusicSonido code);
 
 
@@ -95,17 +97,17 @@ class Juego:public Interfaz{
         int getSegundosInicioNivel();
         int getActivos(TipoSprite type,int & id);
         int getActivosId(TipoSprite type,IdPlayer  id);
-        int getXPuerta()const{return mapa->getXPuerta();};
-        int getYPuerta()const{return mapa->getYPuerta();};
-        int getIdTile()const{return mapa->getIdTile();};
+        int getXPuerta()const{return mMapa->getXPuerta();};
+        int getYPuerta()const{return mMapa->getYPuerta();};
+        int getIdTile()const{return mMapa->getIdTile();};
 //        int getNivelActual();
         void getPosicion(TipoSprite type, int id,int & x,int & y);
         bool getPuertaAbierta();
         int getTick(){
-            if(clockTick)return clockTick->getMiliSegundos();
+            if(mGameTimer)return mGameTimer->getMiliSegundos();
         }
         
-        LTexture * getImagen(CodeImagen code){ return game->getImagen(code);};
+        LTexture * getImagen(CodeImagen code){ return mGameManager->getImagen(code);};
         SDL_Joystick * getJoy(int id);
         virtual int getTipoNuevoItem(bool disminuir_de_mapa=true);
 
@@ -128,40 +130,86 @@ class Juego:public Interfaz{
         
         virtual ~Juego();
 
-    protected:
-        GameManager * game;
-        Group * sprites;
-        Mapa *mapa;
-        Sprite ** refeSprites[_REFERENCIADOS];
-        bool pausado;/*True si el juego esta pausado/si se esta mostrando la imagen de pausa (carita mas pausa)*/
-        bool hold_start;/*_True si un player mantiene start presionado*/
-        int spriteActivos[_REFERENCIADOS],totalSprite[_REFERENCIADOS];
-        TimeController * clockTick;
-        
-        int inicio_pausa; /*almacena el tiempo cuando se inicio la pausa*/
-        
-        IdPlayer id_quien_pauso;/*Almacena el ID del player que acciono la pausa*/
-        IdPlayer id_quien_pauso_anterior;/*Almacena el ID del player que acciono la pausa anteriormente*/
+    virtual void prepare() override;
 
-        EstadoJuego estado,estado_siguiente;
-                        
-        int x_msg,y_msg;
-        float vel_y;
-        char msg_mostrar[50];
+    virtual void createUI(SDL_Renderer *gRenderer) override;
+
+    virtual void start() override;
+
+protected:
+
+    // Controlador del Juego en General(Interfaces,SDL y mainloop)
+    GameManager * mGameManager;
+
+    // Todos los Sprites en pantalla
+    Group * mSprites;
+    // Solo los players activos
+    //Group *mPlayers;
+
+    Mapa *mMapa;
+    //Sprite ** refeSprites[_REFERENCIADOS];
+    //bool pausado;/*True si el juego esta pausado/si se esta mostrando la imagen de pausa (carita mas pausa)*/
+    //bool hold_start;/*_True si un player mantiene start presionado*/
+    //int spriteActivos[_REFERENCIADOS],totalSprite[_REFERENCIADOS];
+    LTimer *mGameTimer;
+
+    int inicio_pausa; /*almacena el tiempo cuando se inicio la pausa*/
+
+    //IdPlayer id_quien_pauso;/*Almacena el ID del player que acciono la pausa*/
+    //IdPlayer id_quien_pauso_anterior;/*Almacena el ID del player que acciono la pausa anteriormente*/
+
+    //EstadoJuego estado,estado_siguiente;
+
+    int x_msg,y_msg;
+    float vel_y;
+    char msg_mostrar[50];
 //        int retraso;
-        int n_actual;
-        bool p_abierta;
-        
-        bool animandoEntradaMapaVertical;;
-        int desplazamiento;
+    int n_actual;
+    bool p_abierta;
 
-        int mayor_puntaje;
-        
-        bool _quit;
-        bool patinesLanzados,bombasMaxLanzado,alcanceMaxLanzado;
+    bool animandoEntradaMapaVertical;;
+    int desplazamiento;
 
-        DatNivel * data;
-        int EjeX,EjeY;
+    int mayor_puntaje;
+
+    //bool _quit;
+    //bool patinesLanzados,bombasMaxLanzado,alcanceMaxLanzado;
+
+    //DatNivel * data;
+    int EjeX,EjeY;
+    int idTerrenoActual;
+    int mRondasGanadas[_PLAYERS];
+
+    bool mIsPlayerActivo[_PLAYERS];
+    Player * mPlayerSprite[_PLAYERS];
+
+    IdPlayer id_lider_ganadas;
+
+    bool muertosPorTiempo;
+
+    int mIDTerrenoMapa;
+
+   // bool repro_war,iniciado;
+    //int vic,min;
+
+    void crearPlayersActivos();
+
+    void setMapaID(int nuevoID);
+
+    void setNVictoriasRule(int nVictorias);
+
+    int mNVictorias;
+
+    void setNMinutosRule(int nMinutos);
+
+    int mMinutos;
+
+    void setEstadoActivacionPlayer(IdPlayer player, bool nuevoEstado);
+
+    void establecerValoresPlayersDeMapa();
+
+    Group *mPlayers;
+    int mPuntajePlayer[_PLAYERS];
 };
 
 #endif

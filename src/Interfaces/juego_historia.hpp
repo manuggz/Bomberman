@@ -1,17 +1,17 @@
 #ifndef JUEGO_HISTORIA_HPP
 #define JUEGO_HISTORIA_HPP
-#include "time.hpp"
-#include "player.hpp"
+#include "../time.hpp"
+#include "../player.hpp"
 //#include "globo.hpp"
-#include "engine/util/game_manager.hpp"
-#include "item.hpp"
-#include "explosion.hpp"
-#include "bomba.hpp"
-#include "mapa.hpp"
+#include "../engine/util/game_manager.hpp"
+#include "../item.hpp"
+#include "../explosion.hpp"
+#include "../bomba.hpp"
+#include "../mapa.hpp"
 #include "juego.hpp"
-#include "menu.hpp"
+#include "../menu.hpp"
 //#define DEBUG
-
+/*
 class Juego;
 
 class JuegoHistoria:public Juego{
@@ -34,7 +34,7 @@ class JuegoHistoria:public Juego{
     virtual void resume() override;
 
 private:
-        bool repro_war; /*True si se esta reproduciendo el sonido de advertencia de poco tiempo*/
+        bool repro_war; /*True si se esta reproduciendo el sonido de advertencia de poco tiempo
 };
-
+*/
 #endif

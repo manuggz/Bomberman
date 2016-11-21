@@ -8,7 +8,7 @@
 #include "control_player.hpp"
 #include "constantes.hpp"
 #include "util.hpp"
-#include "dat_nivel.hpp"
+#include "engine/util/CMetaData.hpp"
 #include "mapa.hpp"
 #include "menu.hpp"
 #include "engine/layout/Componentes/BotonComponent.hpp"
@@ -40,7 +40,7 @@ class Editor:public Interfaz{
             ~Editor();
       private:
             GameManager * game;
-            DatNivel * data;
+            MetaData * data;
             int ventana;
         
 //            para el editor como tal

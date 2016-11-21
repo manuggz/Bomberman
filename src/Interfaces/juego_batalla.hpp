@@ -1,18 +1,18 @@
 #ifndef JUEGO_BATALLA_HPP
 #define JUEGO_BATALLA_HPP
-#include "time.hpp"
-#include "player.hpp"
+#include "../time.hpp"
+#include "../player.hpp"
 //#include "globo.hpp"
-#include "engine/util/game_manager.hpp"
-#include "item.hpp"
-#include "explosion.hpp"
-#include "bomba.hpp"
-#include "mapa.hpp"
+#include "../engine/util/game_manager.hpp"
+#include "../item.hpp"
+#include "../explosion.hpp"
+#include "../bomba.hpp"
+#include "../mapa.hpp"
 #include "juego.hpp"
-#include "menu.hpp"
+#include "../menu.hpp"
 #include "juego_mostrar_gan.hpp"
 //#define DEBUG
-
+/*
 class Juego;
 
 class JuegoBatalla:public Juego{
@@ -43,5 +43,5 @@ class JuegoBatalla:public Juego{
         bool repro_war,iniciado;
         int vic,min;
 };
-
+*/
 #endif

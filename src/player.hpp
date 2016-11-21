@@ -1,7 +1,7 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 #include "engine/sprites/CSprite.hpp"
-#include "juego.hpp"
+#include "Interfaces/juego.hpp"
 #include "constantes.hpp"
 #include "control_player.hpp"
 #include "item.hpp"
@@ -10,7 +10,9 @@
 
 class Player:public Sprite{
     public:
-         enum AreaColision {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
+	Player(Juego *pJuego, IdPlayer player);
+
+	enum AreaColision {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
 //        static enum TeclasPlayer {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
     
         Player(Juego * juego,IdPlayer id,int x,int y,int vidasIni=3,int numBombasIni=1,int alcanceBombasIni=1);
@@ -51,7 +53,12 @@ class Player:public Sprite{
         int getBombas(){return numBombas;};
         
         ~Player();
-    private:
+
+	void setNBombas(int nBombas);
+
+	void setAlcanceBombas(int alcanceBombas);
+
+private:
     
     	Juego * juego;//referencia al juego que lo cre�
     	

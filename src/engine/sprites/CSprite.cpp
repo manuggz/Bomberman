@@ -9,7 +9,7 @@ void Sprite::add(Group * nu){
     nu->add(this);
 }*/
 
-bool Sprite::isMuerto(){
+bool Sprite::isKilled(){
      return self_kill;
 }
 

@@ -4,7 +4,7 @@
 #include "engine/interfaces/interfaz.hpp"
 #include "engine/util/game_manager.hpp"
 #include "editor.hpp"
-#include "juego_historia.hpp"
+#include "Interfaces/juego_historia.hpp"
 
 class MenuText:public Interfaz{
     public:

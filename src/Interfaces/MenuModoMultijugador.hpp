@@ -13,17 +13,18 @@
 #include "../engine/layout/LayoutManager/LayoutVertical.hpp"
 #include "../engine/layout/LayoutManager/LayoutAbsolute.hpp"
 #include "../engine/layout/Componentes/ImageComponent.hpp"
+#include "../engine/layout/Componentes/TextLabelComponent.hpp"
 
 class MenuModoMultijugador: public Interfaz{
 
 public:
     MenuModoMultijugador(GameManager * gameManager){
-        cout << "MenuModoMultijugador::MenuModoMultijugador"<<endl;
+        //cout << "MenuModoMultijugador::MenuModoMultijugador"<<endl;
         mGameManager = gameManager;
         previewTerreno = nullptr;
         mSprites= nullptr;
         mMapaTerrenoSeleccionado = nullptr;
-        dataNivel = nullptr;
+        //dataNivel = nullptr;
 
         mBtnSubirTiempo = nullptr;
         mBtnSubirVictorias = nullptr;
@@ -34,7 +35,7 @@ public:
             mAnimacionPlayer[i] = nullptr;
             mAnimaPresiona[i] = nullptr;
             mAnimaActivado[i] = nullptr;
-            player_batalla[i] = false;
+            mIsPlayerActivado[i] = false;
         }
         terrenoActual = -1;
         minutosEscogidos = -1;
@@ -217,9 +218,11 @@ public:
                 }
                 break;
             case MENU_BOTON_JUGAR:
-                int total_players=player_batalla[PLAYER_1]+ player_batalla[PLAYER_2]+ player_batalla[PLAYER_3] + player_batalla[PLAYER_4] + player_batalla[PLAYER_5];
+                int total_players=mIsPlayerActivado[PLAYER_1]+ mIsPlayerActivado[PLAYER_2]+ mIsPlayerActivado[PLAYER_3] + mIsPlayerActivado[PLAYER_4] + mIsPlayerActivado[PLAYER_5];
                 if(total_players>=2){
-                    mGameManager->cambiarInterfaz(new JuegoBatalla(mGameManager,terrenoActual,player_batalla,minutosEscogidos,victoriasEscogidas)); //iniciamos en modo batalla, le pasamos el array con los players seleccionados por el usuario
+
+                    Juego * nuevoJuego = new Juego(mGameManager,27,54,terrenoActual,victoriasEscogidas,minutosEscogidos,mIsPlayerActivado);
+                    mGameManager->cambiarInterfaz(nuevoJuego); //iniciamos en modo batalla, le pasamos el array con los players seleccionados por el usuario
                     mGameManager->play(SFX_EXPLOSION);
                 }
                 break;
@@ -232,9 +235,9 @@ public:
      */
     void cambiarEstadoPlayer(int idPlayer){
         cout << "MenuModoMultijugador::cambiarEstadoPlayer"<<endl;
-        player_batalla[idPlayer]=!player_batalla[idPlayer];
+        mIsPlayerActivado[idPlayer]=!mIsPlayerActivado[idPlayer];
 
-        if(player_batalla[idPlayer]){ // Si debe agregarse al juego
+        if(mIsPlayerActivado[idPlayer]){ // Si debe agregarse al juego
             // Se activan/desactivan las animaciones
             mSprites->add(mAnimacionPlayer[idPlayer]);
             mSprites->add(mAnimaActivado[idPlayer]);
@@ -247,7 +250,7 @@ public:
         }
 
         // Si hay mas de dos botones players activados se muestra el boton de jugar
-        mBtnJugar->setVisible(player_batalla[PLAYER_1]+ player_batalla[PLAYER_2]+ player_batalla[PLAYER_3] + player_batalla[PLAYER_4] + player_batalla[PLAYER_5]>1);
+        mBtnJugar->setVisible(mIsPlayerActivado[PLAYER_1]+ mIsPlayerActivado[PLAYER_2]+ mIsPlayerActivado[PLAYER_3] + mIsPlayerActivado[PLAYER_4] + mIsPlayerActivado[PLAYER_5]>1);
         mGameManager->play(SFX_TONO_SECO);
     }
 
@@ -304,7 +307,7 @@ public:
     }
 
     virtual void draw(SDL_Renderer *gRenderer) override {
-        cout << "MenuModoMultijugador::draw"<<endl;
+        //cout << "MenuModoMultijugador::draw"<<endl;
 
         mGameManager->getImagen((CodeImagen)mMapaTerrenoSeleccionado->getIdFondo())->render(gRenderer,0,0);
         mGameManager->getImagen(IMG_TABLERO)->render(gRenderer,0,mMapaTerrenoSeleccionado->getYPanel());//imprimimos la barra mensage
@@ -319,7 +322,7 @@ public:
 
         mSprites->draw(gRenderer);
         for(int i=0;i<_PLAYERS;i++){
-            if(!player_batalla[i]){
+            if(!mIsPlayerActivado[i]){
                 imprimir_desde_grilla(mGameManager->getImagen((CodeImagen)(IMG_PLAYER_1 + i)), 6,gRenderer, mAnimacionPlayer[i]->getX(),mAnimacionPlayer[i]->getY(),1, 12,true);
             }else{
                 imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),i*2,gRenderer,i*16+20,mMapaTerrenoSeleccionado->getYPanel()+2,1,10,0);
@@ -340,38 +343,70 @@ public:
             delete mAnimaPresiona[i];
             delete mAnimaActivado[i];
         }
-        SDL_FreeSurface(previewTerreno);
-        delete dataNivel;
+        //SDL_FreeSurface(previewTerreno);
+        //delete dataNivel;
         delete mMapaTerrenoSeleccionado;
         delete mLayoutParent;
     }
 private:
 
+
+    GameManager *  mGameManager;
+
+    // Contiene las animaciones(los players que se mueven)
+    Group *        mSprites;
+
+    // Usado para dibujar el mapa seleccionado actualmente
+    Mapa *         mMapaTerrenoSeleccionado;
+
+    //DatNivel *     dataNivel;
+    //SDL_Surface *  previewTerreno;
+
+    // Botones de la interfaz
+    BotonComponent<MenuModoMultijugador> *mBtnSubirTiempo,*mBtnSubirVictorias,*mBtnCambiarMapa,*mBtnJugar;
+
+    /**
+     * Ids asignados a los botones de la interfaz, son usados en un swith cuando se llama a la funcion
+     * enlazada a los botones para saber cual boton fué presionado.
+     */
     enum{
         MENU_BOTON_SUBIR_TIEMPO,
         MENU_BOTON_SUBIR_VICTORIAS,
         MENU_BOTON_CAMBIAR_MAPA,
         MENU_BOTON_JUGAR,
-
     };
-    GameManager *  mGameManager;
-    Group *        mSprites;
-    Mapa *         mMapaTerrenoSeleccionado;
-    DatNivel *     dataNivel;
-    SDL_Surface *  previewTerreno;
 
-    BotonComponent<MenuModoMultijugador> *mBtnSubirTiempo,*mBtnSubirVictorias,*mBtnCambiarMapa,*mBtnJugar;
-    Animacion *mAnimacionPlayer[5],* mAnimaPresiona[5],* mAnimaActivado[5];
-
-    bool player_batalla[_PLAYERS];
-    int terrenoActual,minutosEscogidos,victoriasEscogidas;
+    // Dice cual boton fué clickeado / Tambien se usa para ejecutar una funcion asociada al click de un boton
     int mBotonClicked;
+
+    // Animacion del personaje
+    Animacion * mAnimacionPlayer[_PLAYERS];
+    // Animacion del texto "presiona"
+    Animacion * mAnimaPresiona[_PLAYERS];
+    // Animacion del texto "activado"
+    Animacion * mAnimaActivado[_PLAYERS];
+
+    // Dice cuales estan activados
+    bool mIsPlayerActivado[_PLAYERS];
+
+    // ID del terreno actual escogido por el usuario / EL ID del terreno dibujado en pantalla
+    int terrenoActual;
+
+    // Minutos Escogidos de duracion de cada ronda
+    int minutosEscogidos;
+
+    // Victorias escogidas para acabar el juego
+    int victoriasEscogidas;
+
+    // Maximo ID(Numero) asignado a un mapa de batalla
     int mMaxTerrenoBatalla;
 
-    bool mIsPaused;
+    // Controla los botones en un layout
     LayoutAbsolute *mLayoutParent;
-    //LayoutAbsolute *mLayoutParent;
+
+    // Muestra en la UI el numero de minutos escogidos
     TextLabelComponent *mTextLabelMinutos;
+    // Muestra en la UI el numero de victorias escogidas
     TextLabelComponent *mTextLabelVictorias;
 };
 #endif //BOMBERMAN_MENUMODOMULTIJUGADOR_HPP

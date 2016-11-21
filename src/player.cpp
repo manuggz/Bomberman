@@ -162,7 +162,7 @@ void Player::update(const Uint8 * teclas){
                 setPuntaje(getPuntaje()+20);
                 activarPoderItem(tipo_item);
                 juego->killSprite(ITEM,id_item);
-                juego->play(SFX_COGER_ITEM);
+                juego->playSfx(SFX_COGER_ITEM);
             }
        }
 
@@ -171,7 +171,7 @@ void Player::update(const Uint8 * teclas){
         if(--vidas>=0){//si sigue con vida
             reiniciar();
             setProteccion(5);
-            juego->play(SFX_PIERDE_VIDA);
+            juego->playSfx(SFX_PIERDE_VIDA);
         }
         else
             disable();
@@ -502,4 +502,18 @@ Player::~Player(){
     #ifdef DEBUG
     cout << "Destructor de Player:"<<this<<endl;
     #endif
+}
+
+void Player::setNBombas(int nBombas) {
+    numBombasIni = nBombas;
+    nBombas = nBombas;
+}
+
+void Player::setAlcanceBombas(int alcanceBombas) {
+    this->alcanBombIni = alcanceBombas;
+    this->alcanBomb = alcanceBombas;
+
+}
+
+Player::Player(Juego *pJuego, IdPlayer player) {asdA
 }

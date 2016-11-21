@@ -1,43 +1,147 @@
 #include "juego.hpp"
+#include "../engine/util/LTimer.hpp"
 
-/*
-*
-*
-*  FALTA AGREGAR UN BLOQUE EN LLAMAS
-*
-*
-*/
-
-Juego::Juego (GameManager * game){
-    #ifdef DEBUG
+Juego::Juego (GameManager * gameManager,int x,int y,int idTerrenoBatalla,int victorias,int minutos,bool isPlayerActivo[_PLAYERS])
+:Interfaz(x,y){
     cout << "Constructor de Juego:"<<this<<endl;
-    #endif
-    this->game=game;
 
-    sprites=new Group(this);
-    data=NULL;
-    clockTick=NULL;
-    pausado=hold_start=false;
-    
-    id_quien_pauso=PLAYER_NONE;
-    id_quien_pauso_anterior=PLAYER_NONE;
-    
-    estado=PLAY;
-    _quit=false;
-    estado_siguiente=NONE;
-    SDL_ShowCursor(SDL_DISABLE);
+    mGameManager = gameManager;
+    mGameTimer   = nullptr; // Controla el tiempo en el juego
+    mSprites     = nullptr;
+    mMapa        = nullptr;
+    mGameTimer   = nullptr;
 
-    totalSprite[GLOBO]=20;
-    totalSprite[EXPLOSION]=MAX_BOMBAS;
-    totalSprite[ITEM]=30;
-    totalSprite[BOMBA]=MAX_BOMBAS;
-    totalSprite[PLAYER]=5;
-    totalSprite[BLOQUE]=20;
-    totalSprite[ANIMACION]=20;
+    for(int i = 0; i < _PLAYERS;i++) {
+        mPlayerSprite[i] = nullptr;
+        mIsPlayerActivo[i] = isPlayerActivo[i];
+        mRondasGanadas[i] = 0;
+    }
+
+    mIDTerrenoMapa = idTerrenoBatalla;
+    mMinutos       = minutos*60;
+    mNVictorias    = victorias;
 }
 
-void Juego::crearReferencias(){
-    /*Inicia y crea las estructuras para administrar los personajes*/
+void Juego::prepare() override{
+    Interfaz::prepare();
+
+    mSprites   = new Group(this);
+    mPlayers   = new Group(this);
+    mMapa       = new Mapa(this,getX(),getY());
+    mGameTimer  = new LTimer();
+
+    //crearReferencias();
+
+    //this->idTerrenoActual=idTerrenoBatalla;
+    crearPlayersActivos();
+    cargarMapa();
+
+    //muertosPorTiempo=false;
+
+    //repro_war=false;
+    //iniciado=false;
+
+    //patinesLanzados=false;
+    //bombasMaxLanzado=false;
+    //alcanceMaxLanzado=false;
+
+    //animandoEntradaMapaVertical=true;
+    //desplazamiento=0;
+
+
+    //displayMensage("�Qu� gane el mejor!");//se presenta el mensage con el nivel actual
+//    estado_siguiente=PLAY;
+    //id_lider_ganadas=PLAYER_NONE;
+    //min=minutos*60;
+    //vic=victorias;
+}
+
+void Juego::start() {
+    Interfaz::start();
+    mGameTimer->start();
+    playSonido((CodeMusicSonido)(4 + rand()%1));
+}
+
+/**
+ * Carga el Mapa en donde se jugara
+ */
+void Juego::cargarMapa() {
+
+    if(mIDTerrenoMapa < 0) {
+        cerr << "[Warning] Juego::CARGAR MAPA : No establecido ID Mapa, se cargara default 0"<<endl;
+        mIDTerrenoMapa = 0;
+    }
+
+    mMapa->cargarDeArchivoBin("data/niveles/batalla/" + std::to_string(mIDTerrenoMapa + 1) + ".map",
+                              "data/niveles/batalla/" + std::to_string(mIDTerrenoMapa + 1) + ".txt");
+
+    //mMapa->setEjeVisualizacion(mMapa->getEjeX(),H_SCREEN);
+    // Establece la grilla de tiles a usar
+    mMapa->setImgTiles(mGameManager->getImagen(IMG_TILES));
+
+    //Hace que se distribuyan los items en el mapa
+    mMapa->setItems();
+    establecerValoresPlayersDeMapa();
+}
+
+/**
+ * Una vez cargado el mapa se deben iniciar los players con los valores iniciales que se establecieron que
+ * el mapa especifica
+ */
+void Juego::establecerValoresPlayersDeMapa() {
+
+    for(int i = 0; i < _PLAYERS;i++) {
+        if(mIsPlayerActivo[PLAYER_1]) {
+            mPlayerSprite[i]->move(
+                    std::stoi(mMapa->getMetaData(MAPA_KEY_X_INIT_PLAYER + std::to_string(i))),
+                    std::stoi(mMapa->getMetaData(MAPA_KEY_Y_INIT_PLAYER + std::to_string(i)))
+            );
+            mPlayerSprite[i]->setVidas(std::stoi(mMapa->getMetaData(MAPA_KEY_X_N_VIDAS_PLAYER)));
+            mPlayerSprite[i]->setNBombas(std::stoi(mMapa->getMetaData(MAPA_KEY_N_BOMBAS)));
+            mPlayerSprite[i]->setAlcanceBombas(std::stoi(mMapa->getMetaData(MAPA_KEY_ALCANCE_BOMBAS)));
+        }
+    }
+}
+
+/**
+ * Crea las clases que controlan los players en memoria
+ */
+void Juego::crearPlayersActivos() {
+
+    for (int i = 0; i < _PLAYERS; i++) {
+        mRondasGanadas[i] = 0;
+        if (mIsPlayerActivo[i]) {
+            mPlayerSprite[i] = new Player(this, (IdPlayer) i);
+            mPlayers->add(mPlayerSprite[i]);
+        }
+    }
+}
+/*mGameTimer->setTicksPerdidos(4);
+
+    if(comprobar_players){
+        for(int i=0;i<_PLAYERS;i++){
+            if(refeSprites[PLAYER][i]){//si fue elegido para que batalle
+                if(!isActivo(PLAYER,i)){//si no esta en pantalla
+                    mSprites->add(refeSprites[PLAYER][i]);
+                    spriteActivos[PLAYER]++;
+                }else{//si sobrevivio a la batalla
+                    static_cast<Player *>(refeSprites[PLAYER][i])->posicionInicial();
+                }*
+                static_cast<Player *>(refeSprites[PLAYER][i])->setVidas(data->getVidas());
+                static_cast<Player *>(refeSprites[PLAYER][i])->reiniciar();
+            }
+        }
+    }
+
+    clearSprites();
+}
+*/
+void Juego::createUI(SDL_Renderer *gRenderer) {
+    SDL_ShowCursor(SDL_DISABLE);
+}
+
+/*void Juego::crearReferencias(){
+    /*Inicia y crea las estructuras para administrar los personajes
     
     for(int i=0;i<_REFERENCIADOS;i++){
         refeSprites[i]=new Sprite* [totalSprite[i]];
@@ -46,13 +150,13 @@ void Juego::crearReferencias(){
             refeSprites[i][j]=NULL;
     }
     
-}
+}*/
 void Juego::procesarEvento(SDL_Event * evento){
     switch(evento->type){
         case SDL_KEYDOWN:
              switch(evento->key.keysym.sym){
                 case SDLK_ESCAPE:
-                    salir();
+                    mGameManager->popInterface();
                     break;
                 case SDLK_TAB:
                      /*if(estado!=DISPLAY_MSG&&!pausado){
@@ -68,6 +172,7 @@ void Juego::procesarEvento(SDL_Event * evento){
     
 }
 
+/*
 void Juego::displayMensage(const char *  mensage){
   //realiza operaciones para presentar un mensage al usuario
 
@@ -77,7 +182,6 @@ void Juego::displayMensage(const char *  mensage){
   strncpy(msg_mostrar,mensage,50);
   estado_siguiente=PLAY;
 }
-
 
 void Juego::estadoDisplayMensage(){
 //efecto sobre texto (autor: Hugo Ruscitii -http://www.loosersjuegos.com.ar- ) 
@@ -107,31 +211,28 @@ void Juego::estadoDisplayMensage(){
 	else if(x_msg < 80)
 	   dir=1;
 }
-
-void Juego::play(CodeMusicEfecto code) {
-     game->play(code);
+*/
+void Juego::playSfx(CodeMusicEfecto code) {
+     mGameManager->play(code);
 }
 void Juego::playSonido(CodeMusicSonido code){
-     game->playSonido(code);
+     mGameManager->playSonido(code);
 }
 
-int Juego::getActivos(TipoSprite type){
-    return spriteActivos[type];
-}
-
+/*
 void Juego::clearSprites(bool elimina_players){
-    /*Elimina todas las referencias de refeSprites si especifica "all_clear" sino no se borrara los players ni los cuadros en memoria*/
+    /*Elimina todas las referencias de refeSprites si especifica "all_clear" sino no se borrara los players ni los cuadros en memoria*
     #ifdef DEBUG
         cout << "Llamado a clearSprites"<<endl;
     #endif
      int count=0;
      for(int i=0;i<_REFERENCIADOS;i++){
         if(!elimina_players&&i==PLAYER)continue;
-        
+
         if(spriteActivos[i]>0){
              for(int j=0;j<totalSprite[i];j++){
                  if(refeSprites[i][j]!=NULL){
-                     sprites->erase(refeSprites[i][j]);
+                     mSprites->erase(refeSprites[i][j]);
                     #ifdef DEBUG
                         cout << "Eliminando Sprite:"<<refeSprites[i][j]<<endl;
                     #endif
@@ -146,17 +247,17 @@ void Juego::clearSprites(bool elimina_players){
              }
         }
      }
-     
-}
 
+}
+*
 int Juego::getLanzador(TipoSprite type,int id_spri){
     if(type==BOMBA||type==EXPLOSION)
         return static_cast<Bomba *>((refeSprites[type][id_spri]))->getLanzador();
 }
-
+*
 int Juego::getTipoItem(int id_item){
          return static_cast<Item *>(refeSprites[ITEM][id_item])->getTipoItem();
-}
+}*
 
 bool Juego::isActivo(TipoSprite type,int id){
      if(type==PLAYER)
@@ -164,23 +265,26 @@ bool Juego::isActivo(TipoSprite type,int id){
      else
          return refeSprites[type][id]!=NULL;
 }
-
+*/
 void Juego::setPuntaje(IdPlayer id,int nuevo){
-     static_cast<Player *>((refeSprites[PLAYER][id]))->setPuntaje(nuevo);
+    mPuntajePlayer[id]  = nuevo;
+     //static_cast<Player *>((refeSprites[PLAYER][id]))->setPuntaje(nuevo);
 }
 
 int Juego::getPuntaje(IdPlayer id){
-     return static_cast<Player *>((refeSprites[PLAYER][id]))->getPuntaje();
+    return mPuntajePlayer[id];
+     //return static_cast<Player *>((refeSprites[PLAYER][id]))->getPuntaje();
 }
-
+/*
 void Juego::setEstadoPlayer(IdPlayer id,EstadoSprite nuevo){
      static_cast<Player *>((refeSprites[PLAYER][id]))->cambiarEstado(nuevo);
-}
+}*/
 
 int Juego::getSegundosInicioNivel(){
-    return clockTick->getTickInicial();
+    return mGameTimer->getTicks()/1000;
 }
-int Juego::getActivos(TipoSprite type,int & id){
+
+/*int Juego::getActivos(TipoSprite type,int & id){
     for(int i=0;i<totalSprite[type],spriteActivos[type];i++)
         if((refeSprites[type][i]!=NULL&&type!=PLAYER)||
         (type==PLAYER&&isActivo(PLAYER,i))){
@@ -188,14 +292,14 @@ int Juego::getActivos(TipoSprite type,int & id){
              return spriteActivos[type];
         }
     return 0;
-}
-
+}*/
+/*
 void Juego::setActivos(TipoSprite type,int nuevo){
     spriteActivos[type]=nuevo;
 }
 
 int Juego::getActivosId(TipoSprite type,IdPlayer  id){
-    /*Obtiene todos los personajes activos cuyo lanzador fue el id*/
+    /*Obtiene todos los personajes activos cuyo lanzador fue el id*
     int count=0;
     if(spriteActivos[type]){
         for(int i=0;i<totalSprite[type];i++){
@@ -206,38 +310,39 @@ int Juego::getActivosId(TipoSprite type,IdPlayer  id){
     }
     return count;
 }
-
-void Juego::killSprite(int type,int id_sprite){
+*/
+/*void Juego::killSprite(int type,int id_sprite){
      if(refeSprites[type][id_sprite]!=NULL){
          refeSprites[type][id_sprite]->kill();
          spriteActivos[type]--;
          Sprite * spri=refeSprites[type][id_sprite]; // por si se necesitan saber datos delsprite que se eliminra antes de hacerlo
-         refeSprites[type][id_sprite]=NULL; /*Notese que el grupo "sprites" sige referenciandolo, por lo que �l
-         se encargara de eliminarlo de memoria*/
+         refeSprites[type][id_sprite]=NULL; /*Notese que el grupo "mSprites" sige referenciandolo, por lo que �l
+         se encargara de eliminarlo de memoria*
 
          if(type==BOMBA){
-             /*se agrega una explosion en la posicion de la bomba con el alcance que ella tenia*/
+             /*se agrega una explosion en la posicion de la bomba con el alcance que ella tenia*
              addSprite(EXPLOSION,
                  spri->getX(),spri->getY(),
                  static_cast<Bomba *>(spri)->getLanzador(),static_cast<Bomba *>(spri)->getAlcance());
              
          }
-         /*else if(type==BOMBA){
+         else if(type==BOMBA){
              /*se agrega una explosion en la posicion de la bomba con el alcance que ella tenia
              addSprite(EXPLOSION,
                  refeSprites[type][id_sprite]->getX(),refeSprites[type][id_sprite]->getY(),
                  refeSprites[type][id_sprite]->getLanzador(),refeSprites[type][id_sprite]->getAlcance());
              
-         }*/
+         }*
      }
      
-}
+}*
+
 void Juego::soloKill(int type,int id_sprite){
      if(refeSprites[type][id_sprite]!=NULL){
          refeSprites[type][id_sprite]->kill();
          spriteActivos[type]--;
-         refeSprites[type][id_sprite]=NULL; /*Notese que el grupo "sprites" sige referenciandolo, por lo que �l
-         se encargara de eliminarlo de memoria*/
+         refeSprites[type][id_sprite]=NULL; /*Notese que el grupo "mSprites" sige referenciandolo, por lo que �l
+         se encargara de eliminarlo de memoria*
      }
      
 }
@@ -245,7 +350,7 @@ void Juego::erase(int type,int id_sprite){
     //Elimina parcialmente a un sprite ya que no lo muestra pero sigue en memoria
      if(refeSprites[type][id_sprite]!=NULL){
          spriteActivos[type]--;
-         sprites->erase(refeSprites[type][id_sprite]);
+         mSprites->erase(refeSprites[type][id_sprite]);
     }
 }
 
@@ -260,7 +365,7 @@ void Juego::addSprite(Sprite * spri){
             if(refeSprites[spri->getTipo()][i]==NULL){
                 refeSprites[spri->getTipo()][i]=spri;
                 spriteActivos[spri->getTipo()]++;
-                sprites->add(refeSprites[spri->getTipo()][i]);
+                mSprites->add(refeSprites[spri->getTipo()][i]);
                 refeSprites[spri->getTipo()][i]->setId(i);
                 return;
             }
@@ -276,17 +381,17 @@ int Juego::addSprite(int type,int x,int y,int lanzador,int otra_var){
                 if(type==BOMBA)
                     refeSprites[type][i]=new Bomba(getImagen(IMG_BOMBA),x,y,static_cast<Player *>(refeSprites[PLAYER][lanzador])->getAlcanceBombas(),(IdPlayer)lanzador,i);
                 else if(type==EXPLOSION)
-                    refeSprites[type][i]=new Explosion(this,x,y,otra_var,(IdPlayer)lanzador,i);/*otra_var=alcance*/    
+                    refeSprites[type][i]=new Explosion(this,x,y,otra_var,(IdPlayer)lanzador,i);/*otra_var=alcance*
                 else if(type==ITEM)
-                    refeSprites[type][i]=new Item(this,x,y,lanzador,i);/*lanzador=TipoItem*/    
+                    refeSprites[type][i]=new Item(this,x,y,lanzador,i);/*lanzador=TipoItem*
                 else if(type==BLOQUE)
-                    refeSprites[type][i]=new Bloque(this,x,y,i);/*lanzador=TipoItem*/    
+                    refeSprites[type][i]=new Bloque(this,x,y,i);/*lanzador=TipoItem*
                 else if(type==GLOBO)
-//                    refeSprites[type][i]=new Explosion(this,x,y,otra_var,lanzador)/*otra_var=alcance*/  
+//                    refeSprites[type][i]=new Explosion(this,x,y,otra_var,lanzador)/*otra_var=alcance*
                     cout << "Not implemented yet"<<endl;  
 
                 spriteActivos[type]++;
-                sprites->add(refeSprites[type][i]);
+                mSprites->add(refeSprites[type][i]);
                 return i;
             }
     }
@@ -300,12 +405,12 @@ void Juego::getPosicion(TipoSprite type, int id,int & x,int & y){
 
 
 int Juego::colision(SDL_Rect & rect_coli,int * lado_colision,bool solo_bloques_duros){
-    /*Comprueba si un rect colisiona con el nivel*/
-    return mapa->colision(&rect_coli,lado_colision,solo_bloques_duros);
+    /*Comprueba si un rect colisiona con el nivel*
+    return mMapa->colision(&rect_coli,lado_colision,solo_bloques_duros);
 }
 
 int Juego::colision(TipoSprite  type[],int tamanyo,SDL_Rect & rect_coli){
-    /*Detecta colisiones por conjuntos de colision*/
+    /*Detecta colisiones por conjuntos de colision*
     int id_coli;
     for(int i=0;i<tamanyo;i++){
         id_coli=colision(type[i],rect_coli);
@@ -313,8 +418,9 @@ int Juego::colision(TipoSprite  type[],int tamanyo,SDL_Rect & rect_coli){
     }
     return -1;
 }
-int Juego::colision(TipoSprite type,SDL_Rect & rect_coli,int id_ignorar){
-    /*regresa True si "rect_coli" colisiona con un Sprite de refeSprites[TYPE]*/
+
+ int Juego::colision(TipoSprite type,SDL_Rect & rect_coli,int id_ignorar){
+    /*regresa True si "rect_coli" colisiona con un Sprite de refeSprites[TYPE]*
     if(type==NIVEL){
        int err=colision(rect_coli,&err,false);
        return (err)?1:-1;
@@ -331,10 +437,13 @@ int Juego::colision(TipoSprite type,SDL_Rect & rect_coli,int id_ignorar){
     }
     return -1;
 }
+*/
 
-void Juego::update ()
-{//actualiza la logica del juego
-    switch(estado){
+/**
+ * Actualiza la lógica del juego
+ */
+void Juego::update(){
+/*    switch(estado){
         case PLAY:
              if(!animandoEntradaMapaVertical)estadoPlay();
              break;
@@ -344,22 +453,22 @@ void Juego::update ()
         }
     if(animandoEntradaMapaVertical){
         desplazamiento+=2;
-        mapa->setEjeVisualizacion(mapa->getEjeX(),H_SCREEN-desplazamiento);
-        if(H_SCREEN-desplazamiento<=mapa->getEjeY()){
+        mMapa->setEjeVisualizacion(mMapa->getEjeX(),H_SCREEN-desplazamiento);
+        if(H_SCREEN-desplazamiento<=mMapa->getEjeY()){
             animandoEntradaMapaVertical=false;
         }
-    }
+    }*/
 
 }
 void Juego::draw(SDL_Renderer * gRenderer){
-    game->getImagen((CodeImagen)mapa->getIdFondo())->render(gRenderer);
+    mGameManager->getImagen((CodeImagen)mMapa->getIdFondo())->render(gRenderer);
     drawBarra(gRenderer);//imprimimos la barra mensage
-    mapa->draw(gRenderer);//imprimimos el nivel
-    sprites->draw(gRenderer);
+    mMapa->draw(gRenderer);//imprimimos el nivel
+    mSprites->draw(gRenderer);
 
     if(pausado){
         //imprimir_palabra(gRenderer, game->getImagen(IMG_FUENTE_5),80,100,"pausa",STR_NORMAL);
-        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN),id_quien_pauso*2 ,gRenderer,130,90,1,10,0);
+        imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),id_quien_pauso*2 ,gRenderer,130,90,1,10,0);
     }
     //if(estado==DISPLAY_MSG)imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),x_msg,y_msg,msg_mostrar,STR_MAX_ESTENDIDA);
 }
@@ -375,17 +484,17 @@ void Juego::setRepeticionBomba(int id,int nuevo){
          static_cast<Bomba *>(refeSprites[BOMBA][id])->setRepeticion(nuevo);
 }
 bool Juego::isBloqueRompible(int x,int y){
-     return mapa->isBloqueRompible(x,y);
+     return mMapa->isBloqueRompible(x,y);
 }
 bool Juego::isBloqueDuro(int x,int y){
-    return mapa->getTipoBloque(x,y)==Mapa::BLOQUE_METAL;
+    return mMapa->getTipoBloque(x,y)==Mapa::BLOQUE_METAL;
 }
 bool Juego::getPuertaAbierta(){
      return p_abierta;
 }
 
 bool Juego::isBloqueItem(int x,int y){
-     return mapa->getTipoBloque(x,y)==Mapa::BLOQUE_ITEM;
+     return mMapa->getTipoBloque(x,y)==Mapa::BLOQUE_ITEM;
 }
 
 void Juego::setPuertaAbierta(bool nuevo){
@@ -393,14 +502,14 @@ void Juego::setPuertaAbierta(bool nuevo){
 }
 
 void Juego::romperBloque(int x,int y){
-    mapa->romperBloque(x,y);
+    mMapa->romperBloque(x,y);
 }
 
 int Juego::getJoysActivos(){
-    return game->getJoysActivos();
+    return mGameManager->getJoysActivos();
 }
 SDL_Joystick * Juego::getJoy(int id){
-    return game->getJoy(id);
+    return mGameManager->getJoy(id);
 }
 
 void Juego::controlaPausa(const Uint8 * teclas){
@@ -413,13 +522,13 @@ void Juego::controlaPausa(const Uint8 * teclas){
                     pausado=true;
                     inicio_pausa=time(0);
                     id_quien_pauso=(IdPlayer)i;
-                    play(SFX_CAMPANADA);
+                    playSfx(SFX_CAMPANADA);
                 }else if(id_quien_pauso==(IdPlayer)i){
 					pausado=false;
-					clockTick->setTicksPerdidos(clockTick->getTickPerdidos()+time(0)-inicio_pausa);
+					mGameTimer->setTicksPerdidos(mGameTimer->getTickPerdidos()+time(0)-inicio_pausa);
 					id_quien_pauso_anterior=id_quien_pauso; //se guarda el player que habia puesto pausa, para que no mantenga START presionada
 					id_quien_pauso=PLAYER_NONE;
-					play(SFX_TONO_ACUATICO);
+                    playSfx(SFX_TONO_ACUATICO);
                     
                 }
                 break;
@@ -455,8 +564,8 @@ int Juego::getTipoNuevoItem(bool disminuir_de_mapa){
     else if(tmp<680&&tmp>=630)indice=Item::ITEM_ATRAVIESA_BOMBAS;//4%
     else indice=tipos[rand() % 5 ];//54%
     
-    if(disminuir_de_mapa&&mapa->getNumItems()>=1)
-            mapa->setNumItems(mapa->getNumItems()-1); 
+    if(disminuir_de_mapa&&mMapa->getNumItems()>=1)
+            mMapa->setNumItems(mMapa->getNumItems()-1);
     
     return indice;
 }
@@ -493,8 +602,8 @@ Juego::~Juego(){
         }
         delete [] refeSprites[i];
      }
-        delete sprites;
-        delete mapa;
+        delete mSprites;
+        delete mMapa;
         delete data;
-        delete clockTick;
+        delete mGameTimer;
 }

@@ -47,41 +47,41 @@ Sprite * Group::collide(Sprite * coli){
     return NULL;
     
 }*/
-void Group::erase(Sprite * borrar){
+void Group::erase(Sprite * pSpriteBorrar){
      //lo buscamos usando iteradores
-    deque<Sprite*>::iterator p_Sprite=v_personajes.begin();
-    while(p_Sprite != v_personajes.end()){
-        if((*p_Sprite) == borrar){
-            v_personajes.erase(p_Sprite);
+    deque<Sprite*>::iterator pSpriteBusqueda=v_personajes.begin();
+    while(pSpriteBusqueda != v_personajes.end()){
+        if((*pSpriteBusqueda) == pSpriteBorrar){
+            v_personajes.erase(pSpriteBusqueda);
             return;
         }
-        p_Sprite++;
+        pSpriteBusqueda++;
     }
 }
 void Group::update(const Uint8 *keys){
     deque<Sprite*>::iterator p_Sprite= v_personajes.begin();
-
 
     if(keys == nullptr)//si no paso las keys las obtenemos
         keys=SDL_GetKeyboardState(0);
 
     while(p_Sprite != v_personajes.end()){
         (*p_Sprite)->update(keys);
-         if(p_Sprite != v_personajes.end()){
-             if((*p_Sprite)->isMuerto()){
-                parent->killSprite((*p_Sprite)->getTipo(),(*p_Sprite)->getId());
-                delete(*p_Sprite);
-                (*p_Sprite) = 0x0;
+         /*if(p_Sprite != v_personajes.end()){
+           */
+            // Si el Sprite "está muerto" en el sentido que se quiere que se elimine de TODOS los grupos
+             if((*p_Sprite)->isKilled()){
+                //parent->killSprite((*p_Sprite)->getTipo(),(*p_Sprite)->getId());
+                //delete(*p_Sprite);
+                //(*p_Sprite) = 0x0;
                 p_Sprite = v_personajes.erase(p_Sprite);
              }else{
                  p_Sprite++;
               }
-        }
+        //}
     }
 }
 
 void Group::draw(SDL_Renderer * gr){
-
    for (size_t i=0; i<v_personajes.size(); i++)
         v_personajes[i]->draw(gr);
 }

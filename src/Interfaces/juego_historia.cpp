@@ -1,5 +1,5 @@
 #include "juego_historia.hpp"
-
+/*
 JuegoHistoria::JuegoHistoria (GameManager * game):Juego(game){
     /*Inicializa las referencias y pone todo para que se inicialize el juego*/
     #ifdef DEBUG
@@ -21,7 +21,7 @@ JuegoHistoria::JuegoHistoria (GameManager * game):Juego(game){
         cout << "Warning--No se pudo crear el Player 2"<<endl;
     static_cast<Player *>(refeSprites[PLAYER][PLAYER_2])->setEnPantalla(false); /*Desactivamos el player2*/
     spriteActivos[PLAYER]=1; /*Solo estar� activo el player 1*/
-    sprites->add(refeSprites[PLAYER][PLAYER_1]); /*Lo agregamos al Grupo*/
+    mSprites->add(refeSprites[PLAYER][PLAYER_1]); /*Lo agregamos al Grupo*/
     mayor_puntaje=0;
     setMapaPlay(1,false); /*Se empezara a jugar desde el Nivel 1*/
     static_cast<Player *>(refeSprites[PLAYER][PLAYER_2])->disable(); /*Desactivamos el player2*/
@@ -34,9 +34,9 @@ void JuegoHistoria::setMapaPlay(int id_nivel,bool reiniciar_jugadores){
     if(id_nivel<1)id_nivel=1;
 
     if(id_nivel<MAX_NIVEL){
-        if(clockTick)delete clockTick;
-        clockTick=new TimeController();
-        clockTick->setTicksPerdidos(4);
+        if(mGameTimer)delete mGameTimer;
+        mGameTimer=new TimeController();
+        mGameTimer->setTicksPerdidos(4);
 
         clearSprites();
         for(int i=PLAYER_1;i<=PLAYER_2;i++){
@@ -91,7 +91,7 @@ void JuegoHistoria::aumentarNivel(){
 void JuegoHistoria::estadoPlay(){
     const Uint8 * teclas=SDL_GetKeyboardState (NULL);//se obtiene el estado actual del teclado
     if(!pausado){
-        sprites->update(teclas);
+        mSprites->update(teclas);
             
         /*SI NO HAY PLAYERS ACTIVOS*/
         if(!isActivo(PLAYER,PLAYER_1) && !isActivo(PLAYER,PLAYER_2)){
@@ -99,13 +99,13 @@ void JuegoHistoria::estadoPlay(){
            _quit=true;
         }
         
-         clockTick->update();
+         mGameTimer->update();
         /*SI SE ACABO EL TIEMPO*/
-        if(clockTick->getMiliSegundos()>=_TIME_POR_NIVEL) 
+        if(mGameTimer->getMiliSegundos()>=_TIME_POR_NIVEL)
             setMapaPlay(n_actual,true);    
             
         /*SI SE ACERCA EL TIEMPO PARA ACABAR*/
-        if(clockTick->getMiliSegundos()==_TIME_POR_NIVEL-50&&!repro_war){
+        if(mGameTimer->getMiliSegundos()==_TIME_POR_NIVEL-50&&!repro_war){
             playSonido(SND_WARNING_TIME);
             repro_war=true;
         }
@@ -118,7 +118,7 @@ void JuegoHistoria::estadoPlay(){
                     static_cast<Player *>(refeSprites[PLAYER][i])->reiniciar();
                     static_cast<Player *>(refeSprites[PLAYER][i])->setVidas(0);
                     hold_start=true;//controlamos que no mantenga la tecla presionada
-                    sprites->add(refeSprites[PLAYER][i]);
+                    mSprites->add(refeSprites[PLAYER][i]);
                     break;
                 }
             }
@@ -141,12 +141,12 @@ void JuegoHistoria::drawBarra(SDL_Renderer * gRenderer){
     
     //Dibujamos el tiempo
     game->getImagen(IMG_CUADRO_GRANDE)->render(gRenderer,129,3+mapa->getYPanel());
-    if(clockTick){
+    if(mGameTimer){
         static char min[3],seg[3],tiempo[6];
     
-        sprintf(min,"%2d",(_TIME_POR_NIVEL-clockTick->getMiliSegundos())/60);
+        sprintf(min,"%2d",(_TIME_POR_NIVEL-mGameTimer->getMiliSegundos())/60);
         if(min[0]==' ')min[0]='0';
-        sprintf(seg,"%2d",_TIME_POR_NIVEL-clockTick->getMiliSegundos()-(_TIME_POR_NIVEL-clockTick->getMiliSegundos())/60*60);
+        sprintf(seg,"%2d",_TIME_POR_NIVEL-mGameTimer->getMiliSegundos()-(_TIME_POR_NIVEL-mGameTimer->getMiliSegundos())/60*60);
         if(seg[0]==' ')seg[0]='0';
         sprintf(tiempo,"%s:%s",min,seg);
     
@@ -216,3 +216,4 @@ void JuegoHistoria::resume() {
 
 }
 
+*/

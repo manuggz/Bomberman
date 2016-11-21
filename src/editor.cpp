@@ -142,7 +142,7 @@ void Editor::crearReferencias(){
         cout << "creada Previews:"<<previews_niveles<<endl;
     #endif
 
-    DatNivel * data2;
+    MetaData * data2;
     LTexture * img_players[5]={game->getImagen(IMG_PLAYER_1),
                                   game->getImagen(IMG_PLAYER_2),
                                   game->getImagen(IMG_PLAYER_3),
@@ -150,7 +150,7 @@ void Editor::crearReferencias(){
                                   game->getImagen(IMG_PLAYER_5)};
     for(int i=0;i<maxTerrenoBatalla;i++){
         sprintf(ruta,"data/niveles/batalla/%d.txt",i+ 1);
-        data2=new DatNivel(ruta);
+        data2=new MetaData(ruta);
         sprintf(ruta,"data/niveles/batalla/%d.map",i+ 1);
         previews_niveles[i]=Mapa::getPreviewTerreno(ruta,data2,game->getImagen(IMG_TILES),img_players,8,40);
     #ifdef DEBUG
@@ -209,7 +209,7 @@ void Editor::iniciarEdicion(int id){
         sprintf(ruta,"data/niveles/batalla/%d.txt",id + 1);
         
         if(data)delete data;
-        data=new DatNivel(ruta);
+        data=new MetaData(ruta);
         botonBorrar.setVisible(true);
         leerInfTile();
         
@@ -218,7 +218,7 @@ void Editor::iniciarEdicion(int id){
         sprintf(ruta,"data/niveles/batalla/%d.map",NIVEL_BASE);
         Mapa::cargarMapaDeArchivoBin(ruta,mapa);
         if(data)delete data;
-        data=new DatNivel();
+        data=new MetaData();
         sprintf(ruta,"data/niveles/batalla/%d.map",NIVEL_BASE + 1);  
         data->setBombas(1);
         data->setAlcanceBombas(1);

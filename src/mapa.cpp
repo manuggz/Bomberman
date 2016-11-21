@@ -15,13 +15,13 @@ Mapa::Mapa(Interfaz * _parent,int coorXVis,int coorYVis,LTexture * grillaTiles){
     tileXPuerta=tileYPuerta=-1;
 }
 
-bool Mapa::cargarDeArchivoBin(char rutaMapaBin[],char rutaParamText[]){
+bool Mapa::cargarDeArchivoBin(std::string rutaMapaBin,std::string rutaParamText){
     tileXPuerta=tileYPuerta=-1; 
     if(!cargarMapaDeArchivoBin(rutaMapaBin,tilesMap))
         return false;
 
     if(datMapa)delete datMapa;
-    datMapa=new DatNivel(rutaParamText);
+    datMapa=new MetaData(rutaParamText);
     if(!datMapa)return false;
     
     bloquesMadera=0;
@@ -194,7 +194,7 @@ Mapa::~Mapa(){
 }
 
 
-SDL_Texture * Mapa::getPreviewTerreno(char rutaMapa[],DatNivel * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y){
+SDL_Texture * Mapa::getPreviewTerreno(char rutaMapa[],MetaData * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y){
 /*
     SDL_Surface * preview=SDL_GetVideoSurface(),*imagen_redimensionada;
     char ruta[50],mapa[MAXMAP + 1],variable[50];

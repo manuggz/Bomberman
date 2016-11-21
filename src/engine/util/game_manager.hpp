@@ -3,7 +3,6 @@
 //#define DEBUG
 #include <iostream>
 #include <SDL2/SDL.h>
-//#include <SDL2/SDL_framerate.h>		// SDL_gfx Framerate Manager
 #include "../../galeria.hpp"
 #include "../interfaces/interfaz.hpp"
 #include "../../constantes.hpp"

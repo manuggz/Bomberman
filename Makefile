@@ -312,59 +312,59 @@ src/editor.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/editor.cpp.s
 .PHONY : src/editor.cpp.s
 
-src/engine/sprites/CGroup.o: src/engine/sprites/CGroup.cpp.o
+src/engine/mSprites/CGroup.o: src/engine/mSprites/CGroup.cpp.o
 
-.PHONY : src/engine/sprites/CGroup.o
-
-# target to build an object file
-src/engine/sprites/CGroup.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o
-.PHONY : src/engine/sprites/CGroup.cpp.o
-
-src/engine/sprites/CGroup.i: src/engine/sprites/CGroup.cpp.i
-
-.PHONY : src/engine/sprites/CGroup.i
-
-# target to preprocess a source file
-src/engine/sprites/CGroup.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.i
-.PHONY : src/engine/sprites/CGroup.cpp.i
-
-src/engine/sprites/CGroup.s: src/engine/sprites/CGroup.cpp.s
-
-.PHONY : src/engine/sprites/CGroup.s
-
-# target to generate assembly for a file
-src/engine/sprites/CGroup.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.s
-.PHONY : src/engine/sprites/CGroup.cpp.s
-
-src/engine/sprites/CSprite.o: src/engine/sprites/CSprite.cpp.o
-
-.PHONY : src/engine/sprites/CSprite.o
+.PHONY : src/engine/mSprites/CGroup.o
 
 # target to build an object file
-src/engine/sprites/CSprite.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.o
-.PHONY : src/engine/sprites/CSprite.cpp.o
+src/engine/mSprites/CGroup.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mSprites/CGroup.cpp.o
+.PHONY : src/engine/mSprites/CGroup.cpp.o
 
-src/engine/sprites/CSprite.i: src/engine/sprites/CSprite.cpp.i
+src/engine/mSprites/CGroup.i: src/engine/mSprites/CGroup.cpp.i
 
-.PHONY : src/engine/sprites/CSprite.i
+.PHONY : src/engine/mSprites/CGroup.i
 
 # target to preprocess a source file
-src/engine/sprites/CSprite.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.i
-.PHONY : src/engine/sprites/CSprite.cpp.i
+src/engine/mSprites/CGroup.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mSprites/CGroup.cpp.i
+.PHONY : src/engine/mSprites/CGroup.cpp.i
 
-src/engine/sprites/CSprite.s: src/engine/sprites/CSprite.cpp.s
+src/engine/mSprites/CGroup.s: src/engine/mSprites/CGroup.cpp.s
 
-.PHONY : src/engine/sprites/CSprite.s
+.PHONY : src/engine/mSprites/CGroup.s
 
 # target to generate assembly for a file
-src/engine/sprites/CSprite.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.s
-.PHONY : src/engine/sprites/CSprite.cpp.s
+src/engine/mSprites/CGroup.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mSprites/CGroup.cpp.s
+.PHONY : src/engine/mSprites/CGroup.cpp.s
+
+src/engine/mSprites/CSprite.o: src/engine/mSprites/CSprite.cpp.o
+
+.PHONY : src/engine/mSprites/CSprite.o
+
+# target to build an object file
+src/engine/mSprites/CSprite.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mSprites/CSprite.cpp.o
+.PHONY : src/engine/mSprites/CSprite.cpp.o
+
+src/engine/mSprites/CSprite.i: src/engine/mSprites/CSprite.cpp.i
+
+.PHONY : src/engine/mSprites/CSprite.i
+
+# target to preprocess a source file
+src/engine/mSprites/CSprite.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mSprites/CSprite.cpp.i
+.PHONY : src/engine/mSprites/CSprite.cpp.i
+
+src/engine/mSprites/CSprite.s: src/engine/mSprites/CSprite.cpp.s
+
+.PHONY : src/engine/mSprites/CSprite.s
+
+# target to generate assembly for a file
+src/engine/mSprites/CSprite.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mSprites/CSprite.cpp.s
+.PHONY : src/engine/mSprites/CSprite.cpp.s
 
 src/engine/util/CFont.o: src/engine/util/CFont.cpp.o
 
@@ -882,12 +882,12 @@ help:
 	@echo "... src/editor.o"
 	@echo "... src/editor.i"
 	@echo "... src/editor.s"
-	@echo "... src/engine/sprites/CGroup.o"
-	@echo "... src/engine/sprites/CGroup.i"
-	@echo "... src/engine/sprites/CGroup.s"
-	@echo "... src/engine/sprites/CSprite.o"
-	@echo "... src/engine/sprites/CSprite.i"
-	@echo "... src/engine/sprites/CSprite.s"
+	@echo "... src/engine/mSprites/CGroup.o"
+	@echo "... src/engine/mSprites/CGroup.i"
+	@echo "... src/engine/mSprites/CGroup.s"
+	@echo "... src/engine/mSprites/CSprite.o"
+	@echo "... src/engine/mSprites/CSprite.i"
+	@echo "... src/engine/mSprites/CSprite.s"
 	@echo "... src/engine/util/CFont.o"
 	@echo "... src/engine/util/CFont.i"
 	@echo "... src/engine/util/CFont.s"

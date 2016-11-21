@@ -185,16 +185,17 @@ std::string buscar_dato(std::string ruta,std::string nombreVariable,std::string 
     std::string linea;
     //std::string valorVariableFile;
 
+    int pos;
     while (fpArchivo >> linea){
-        int i = 0;
-        int pos = (int) linea.find(nombreVariable);
+        pos = (int) linea.find(nombreVariable);
 
         if(pos >= 0){
-            int pos = (int) linea.find(delim);
+            pos = (int) linea.find(delim);
             return linea.substr(pos + delim.size());
         }
 
     }
+    fpArchivo.close();
     return nullptr;
 }
 

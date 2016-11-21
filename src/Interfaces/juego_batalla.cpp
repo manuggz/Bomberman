@@ -1,5 +1,5 @@
 #include "juego_batalla.hpp"
-
+/*
 
 JuegoBatalla::JuegoBatalla (GameManager * game,int idTerrenoBatalla,bool playerEnBatalla[_PLAYERS],int minutos,int victorias):Juego(game){
     #ifdef DEBUG
@@ -12,10 +12,10 @@ JuegoBatalla::JuegoBatalla (GameManager * game,int idTerrenoBatalla,bool playerE
 
     totalSprite[GLOBO]=0;
     crearReferencias();
-    
+
     this->idTerrenoActual=idTerrenoBatalla;
     setMapaPlay(idTerrenoBatalla,false);
-    
+
     Player * player_;
     for(int i=0;i<_PLAYERS;i++){
         batallasGanadas[i]=0;
@@ -28,10 +28,10 @@ JuegoBatalla::JuegoBatalla (GameManager * game,int idTerrenoBatalla,bool playerE
                                       data->getBombas(),\
                                       data->getAlcanceBombas());
             refeSprites[PLAYER][i]=player_;
-            sprites->add(player_);
+            mSprites->add(player_);
         }
     }
-    
+
     displayMensage("�Qu� gane el mejor!");//se presenta el mensage con el nivel actual
 //    estado_siguiente=PLAY;
     id_lider_ganadas=PLAYER_NONE;
@@ -59,19 +59,19 @@ void JuegoBatalla::setMapaPlay(int idTerreno,bool comprobar_players){
     sprintf(ruta2,"data/niveles/batalla/%d.map",idTerreno + 1);
     if(data)delete data;
     data=new DatNivel(ruta);
-    if(clockTick)delete clockTick;
-    clockTick=new TimeController();
-    clockTick->setTicksPerdidos(4);
+    if(mGameTimer)delete mGameTimer;
+    mGameTimer=new TimeController();
+    mGameTimer->setTicksPerdidos(4);
     
     if(comprobar_players){
         for(int i=0;i<_PLAYERS;i++){
             if(refeSprites[PLAYER][i]){//si fue elegido para que batalle
                 if(!isActivo(PLAYER,i)){//si no esta en pantalla
-                    sprites->add(refeSprites[PLAYER][i]);
+                    mSprites->add(refeSprites[PLAYER][i]);
                     spriteActivos[PLAYER]++;
                 }/*else{//si sobrevivio a la batalla
                     static_cast<Player *>(refeSprites[PLAYER][i])->posicionInicial();
-                }*/
+                }*
                 static_cast<Player *>(refeSprites[PLAYER][i])->setVidas(data->getVidas());
                 static_cast<Player *>(refeSprites[PLAYER][i])->reiniciar();
             }
@@ -132,10 +132,10 @@ void JuegoBatalla::estadoPlay(){
     const Uint8 *teclas= SDL_GetKeyboardState(NULL);//se obtiene el estado actual del teclado
 
     if(!pausado){
-            sprites->update(teclas);
-            clockTick->update();            
-            /*SI SE ACABO EL TIEMPO*/
-            if(!muertosPorTiempo&&clockTick->getMiliSegundos()>=min){ 
+            mSprites->update(teclas);
+            mGameTimer->update();
+            /*SI SE ACABO EL TIEMPO*
+            if(!muertosPorTiempo&&mGameTimer->getMiliSegundos()>=min){
                 for(int i=0;i<_PLAYERS;i++){
                     if(refeSprites[PLAYER][i]&&isActivo(PLAYER,i)){
                         static_cast<Player *>(refeSprites[PLAYER][i])->cambiarEstado(MURIENDO);
@@ -145,8 +145,8 @@ void JuegoBatalla::estadoPlay(){
                 muertosPorTiempo=true;
             }
                 
-            /*SI SE ACERCA EL TIEMPO PARA ACABAR*/
-            if(clockTick->getMiliSegundos()>min/3&&!repro_war){
+            /*SI SE ACERCA EL TIEMPO PARA ACABAR*
+            if(mGameTimer->getMiliSegundos()>min/3&&!repro_war){
                 playSonido(SND_WARNING_TIME);
                 repro_war=true;
             }
@@ -200,7 +200,7 @@ void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
 
     game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,15,21);
 
-    /*DIBUJAMOS LAS VIDAS RESTANTES*/
+    /*DIBUJAMOS LAS VIDAS RESTANTES*
     if(refeSprites[PLAYER][PLAYER_1]&&isActivo(PLAYER,PLAYER_1)){
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_1])->getVidas());
     	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),15,24,tmp,STR_ESTENDIDA);
@@ -211,7 +211,7 @@ void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
 
     game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,48,21);
 
-    /*DIBUJAMOS LAS VIDAS RESTANTES*/
+    /*DIBUJAMOS LAS VIDAS RESTANTES*
     if(refeSprites[PLAYER][PLAYER_2]&&isActivo(PLAYER,PLAYER_2)){
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_2])->getVidas());
     	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),48,24,tmp,STR_ESTENDIDA);
@@ -222,7 +222,7 @@ void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
 
     game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,80,21);
 
-    /*DIBUJAMOS LAS VIDAS RESTANTES*/
+    /*DIBUJAMOS LAS VIDAS RESTANTES*
     if(refeSprites[PLAYER][PLAYER_3]&&isActivo(PLAYER,PLAYER_3)){
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_3])->getVidas());
     	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),80,24,tmp,STR_ESTENDIDA);
@@ -233,7 +233,7 @@ void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
 
     game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,270,21);
 
-    /*DIBUJAMOS LAS VIDAS RESTANTES*/
+    /*DIBUJAMOS LAS VIDAS RESTANTES*
     if(refeSprites[PLAYER][PLAYER_4]&&isActivo(PLAYER,PLAYER_4)){
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_4])->getVidas());
     	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),271,23,tmp,STR_ESTENDIDA);
@@ -244,7 +244,7 @@ void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
 
     game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,304,21);
 
-    /*DIBUJAMOS LAS VIDAS RESTANTES*/
+    /*DIBUJAMOS LAS VIDAS RESTANTES*
     if(refeSprites[PLAYER][PLAYER_5]&&isActivo(PLAYER,PLAYER_5)){
         sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_5])->getVidas());
     	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),305,23,tmp,STR_ESTENDIDA);
@@ -255,17 +255,17 @@ void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
     
     game->getImagen(IMG_CUADRO_GRANDE)->render(gRenderer,137,21);
     
-    if(clockTick){
+    if(mGameTimer){
         static char min_[3],seg[3],tiempo[6];
     
-        sprintf(min_,"%2d",(min-clockTick->getMiliSegundos())/60);
+        sprintf(min_,"%2d",(min-mGameTimer->getMiliSegundos())/60);
         if(min_[0]==' ')min_[0]='0';
-        sprintf(seg,"%2d",min-clockTick->getMiliSegundos()-(min-clockTick->getMiliSegundos())/60*60);
+        sprintf(seg,"%2d",min-mGameTimer->getMiliSegundos()-(min-mGameTimer->getMiliSegundos())/60*60);
         if(seg[0]==' ')seg[0]='0';
         sprintf(tiempo,"%s:%s",min_,seg);
     
     	/*imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),\
-    						142,24,tiempo,STR_MAX_ESTENDIDA);*/
+    						142,24,tiempo,STR_MAX_ESTENDIDA);
     }
 }
 JuegoBatalla::~JuegoBatalla(){
@@ -287,7 +287,7 @@ void JuegoBatalla::resume() {
 
 }
 
-/*
+
     cout << "1.1.1"<<endl;
 void juego_dibujar_kills(Juego * juego,SDL_Surface * gRenderer){
      char tmp[50];

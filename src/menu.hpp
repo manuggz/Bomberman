@@ -7,8 +7,8 @@
 #include "control_player.hpp"
 #include "constantes.hpp"
 #include "util.hpp"
-#include "juego_historia.hpp"
-#include "juego_batalla.hpp"
+#include "Interfaces/juego_historia.hpp"
+#include "Interfaces/juego_batalla.hpp"
 #include "editor.hpp"
 #include "engine/layout/Componentes/BotonComponent.hpp"
 #include "fuente_imagen.hpp"
@@ -51,7 +51,7 @@ private:
     //ventana 3(Multijugador)
     Group * sprites;
     Mapa mapa;
-    DatNivel * dataNivel;
+    MetaData * dataNivel;
     SDL_Surface * previewTerreno;
 
     BotonComponent<Menu> *btnSubirTiempo,*btnSubirVictorias,*btnCambiarMapa,*btnJugar;

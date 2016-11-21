@@ -52,14 +52,11 @@ public:
 
 
 private:
-
-
     typedef enum{
         MENU_OPCION_NUEVO_JUEGO,
         MENU_OPCION_EDITOR,
         MENU_OPCION_CONFIGURACION,
         MENU_OPCION_CREDITOS,
-        MENU_OPCION_SALIR
     }MenuOption;
 };
 #endif //BOMBERMAN_MENUPRINCIPAL_HPP

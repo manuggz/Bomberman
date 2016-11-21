@@ -5,8 +5,16 @@
 //#include <SDL2/SDL_rotozoom.h>
 #include "constantes.hpp"
 #include "util.hpp"
-#include "dat_nivel.hpp"
+#include "engine/util/CMetaData.hpp"
 #include "engine/interfaces/interfaz.hpp"
+
+#define MAPA_KEY_X_INIT_PLAYER "x_init_player_"
+#define MAPA_KEY_Y_INIT_PLAYER "y_init_player_"
+#define MAPA_KEY_X_N_VIDAS_PLAYER "vidas"
+#define MAPA_KEY_N_BOMBAS "bombas"
+#define MAPA_KEY_ALCANCE_BOMBAS "alcance"
+#define MAPA_KEY_ID_TILE "id_tile"
+#define MAPA_KEY_ITEMS "items"
 
 /*
 *
@@ -38,13 +46,20 @@ class Mapa{
         
         Mapa(Interfaz * _parent,int coorXVis=0,int coorYVis=0,LTexture * grillaTiles=NULL);
         void draw(SDL_Renderer * gRenderer){draw(gRenderer,imgTiles);};
-        void draw(SDL_Renderer * gRenderer,LTexture * grillaTiles){draw(gRenderer,grillaTiles,tilesMap,coorXVisualizacion,coorYVisualizacion,datMapa->getIdTile());};
+        void draw(SDL_Renderer * gRenderer,LTexture * grillaTiles){
+            draw(gRenderer,
+                 grillaTiles,
+                 tilesMap,
+                 coorXVisualizacion,
+                 coorYVisualizacion,
+                 std::stoi(datMapa->getMetaData(MAPA_KEY_ID_TILE)));
+        };
         static void draw(SDL_Renderer * gRenderer,LTexture * tiles,char * mapa,int coorX,int coorY,int idTile);
         
         //Carga de un archivo binario la informaci�n del Mapa/
         //El archivo Bin est� creado usando "mapwin"
         //Regresan True si se cargar�n los mapas correctamente
-        bool cargarDeArchivoBin(char rutaMapaBin[],char rutaParamText[]);
+        bool cargarDeArchivoBin(std::string rutaMapaBin,std::string rutaParamText);
         static bool cargarMapaDeArchivoBin(char rutaMapaBin[],char * buffer);
 
         //Retorna las coordenadas X y Y de la puerta en la pantalla
@@ -67,13 +82,13 @@ class Mapa{
         int getEjeY(){return coorYPredVisualizacion;};
         
         //Metodos para obtener datos adicionales del mapa
-        int getIdTile(){if(datMapa) return datMapa->getIdTile();else return -1;};//Tile con el que se dibujar� el mapa
-        int getXIniPlayer(int idPlayer){if(datMapa) return datMapa->getX(idPlayer);else return -1;};//Coordenada x inicial del "id_player"
-        int getYIniPlayer(int idPlayer){if(datMapa) return datMapa->getY(idPlayer);else return -1;}; 
-        int getBombasIniciales(){if(datMapa) return datMapa->getBombas();else return -1;};//Bombas iniciales para cada player
-        int getVidasIniciales(){if(datMapa) return datMapa->getVidas();else return -1;};
-        int getAlcanceBombasInicial(){if(datMapa) return datMapa->getAlcanceBombas();else return -1;};
-        int getNumItems(){if(datMapa) return datMapa->getNumItems();};//NUMERO DE ITEMS QUE QUEDAN EN EL MAPA
+        std::string getMetaData(std::string clave){return datMapa->getMetaData(clave);};//Tile con el que se dibujar� el mapa
+        //int getXIniPlayer(int idPlayer){if(datMapa) return datMapa->getX(idPlayer);else return -1;};//Coordenada x inicial del "id_player"
+        //int getYIniPlayer(int idPlayer){if(datMapa) return datMapa->getY(idPlayer);else return -1;};
+        //int getBombasIniciales(){if(datMapa) return datMapa->getBombas();else return -1;};//Bombas iniciales para cada player
+        //int getVidasIniciales(){if(datMapa) return datMapa->getVidas();else return -1;};
+        //int getAlcanceBombasInicial(){if(datMapa) return datMapa->getAlcanceBombas();else return -1;};
+        //int getNumItems(){if(datMapa) return datMapa->getNumItems();};//NUMERO DE ITEMS QUE QUEDAN EN EL MAPA
 
         //Metodos para establecer datos adicionales del mapa
         /*int getIdTile(){if(datMapa) return datMapa->getIdTile();else return -1;};//Tile con el que se dibujar� el mapa
@@ -126,11 +141,11 @@ class Mapa{
 
 //        void cargarFiles(int num_nivel,InterfazJuego inter);
 //        bool quedanBloquesMadera(); /*True si queda al menos un bloque de madera en el mapa*/
-        static SDL_Texture * getPreviewTerreno(char rutaMapa[],DatNivel * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y);
+        static SDL_Texture * getPreviewTerreno(char rutaMapa[],MetaData * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y);
 //        static SDL_Surface * getPreviewTerreno(int idTerreno);
         void leerInfTile(char ruta[]);
     private:
-        DatNivel * datMapa; /*Para buscar los datos del mapa*/
+        MetaData * datMapa; /*Para buscar los datos del mapa*/
         Interfaz * parent; /*Referencia a la interfaz que lo llama*/
         LTexture *imgTiles;
         

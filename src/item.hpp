@@ -2,7 +2,7 @@
 #define ITEM_HPP
 #include <SDL2/SDL.h>
 #include "animacion.hpp"
-#include "juego.hpp"
+#include "Interfaces/juego.hpp"
 #include "constantes.hpp"
 
 class Juego;

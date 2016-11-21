@@ -19,7 +19,7 @@ class Sprite{
         
         /*Funciones para administrar los grupos*/
       /*  void add(Group *);*/
-        bool isMuerto();
+        bool isKilled();
         void kill();
         
        /* void setRect(const Rect &  rect2){rect=rect2;};*/
