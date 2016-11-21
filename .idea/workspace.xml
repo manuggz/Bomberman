@@ -11,7 +11,9 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e751d25e-2544-4571-ba4e-5a2d2c3be35f" name="Default" comment="" />
+    <list default="true" id="e751d25e-2544-4571-ba4e-5a2d2c3be35f" name="Default" comment="agregados archivos del editor">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,93 +29,7 @@
     <favorites_list name="Bomberman" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="stl_deque.h" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/include/c++/5/bits/stl_deque.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2250">
-              <caret line="150" column="0" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-              <folding>
-                <marker date="1478135517000" expanded="false" signature="2527:2554" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="4355:4749" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="14484:15663" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="16463:16573" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="17593:18357" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="19064:19239" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="21024:21689" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="31240:32138" ph="..." />
-                <marker date="1478135517000" expanded="true" signature="32151:32473" ph="/**...*/" />
-                <marker date="1478135517000" expanded="false" signature="33209:34807" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="35538:35827" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="35840:35873" ph="&lt;_InputIterator&gt;" />
-                <marker date="1478135517000" expanded="true" signature="36010:36217" ph="{...}" />
-                <marker date="1478135517000" expanded="false" signature="36906:38070" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="39150:39382" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="39395:39428" ph="&lt;_InputIterator&gt;" />
-                <marker date="1478135517000" expanded="true" signature="39512:39642" ph="{...}" />
-                <marker date="1478135517000" expanded="false" signature="39684:40226" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="42796:43979" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="44421:45968" ph="..." />
-                <marker date="1478135517000" expanded="true" signature="45981:46514" ph="/**...*/" />
-                <marker date="1478135517000" expanded="true" signature="46598:46835" ph="{...}" />
-                <marker date="1478135517000" expanded="false" signature="46877:47001" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="51751:51921" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="52671:52838" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="54126:55108" ph="..." />
-                <marker date="1478135517000" expanded="true" signature="55121:55491" ph="/**...*/" />
-                <marker date="1478135517000" expanded="false" signature="55606:56644" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="56686:57399" ph="..." />
-                <marker date="1478135517000" expanded="true" signature="57412:57812" ph="/**...*/" />
-                <marker date="1478135517000" expanded="false" signature="57985:58890" ph="..." />
-                <marker date="1478135517000" expanded="true" signature="58903:59337" ph="/**...*/" />
-                <marker date="1478135517000" expanded="false" signature="59344:59377" ph="&lt;_InputIterator&gt;" />
-                <marker date="1478135517000" expanded="true" signature="59490:59705" ph="{...}" />
-                <marker date="1478135517000" expanded="false" signature="60363:60395" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="61328:61380" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="61999:62041" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="64802:64866" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="67052:67215" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="69082:69184" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="70876:70989" ph="..." />
-                <marker date="1478135517000" expanded="false" signature="72787:75365" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="1237" selection-start-line="5" selection-start-column="1237" selection-end-line="5" selection-end-column="1237" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -445,7 +361,7 @@
       <workItem from="1479583070513" duration="81986000" />
       <workItem from="1479694657196" duration="8039000" />
       <workItem from="1479703416194" duration="440000" />
-      <workItem from="1479703880074" duration="686000" />
+      <workItem from="1479703880074" duration="795000" />
     </task>
     <task id="LOCAL-00001" summary="added gitignore">
       <created>1479503971545</created>
@@ -517,17 +433,31 @@
       <option name="project" value="LOCAL" />
       <updated>1479704555792</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="agregados archivos del editor">
+      <created>1479704582973</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1479704582973</updated>
+    </task>
+    <task id="LOCAL-00012" summary="agregados archivos del editor">
+      <created>1479704632866</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1479704632866</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120657000" />
+    <option name="totallyTimeSpent" value="120766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2490392" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2490392" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32286996" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -580,7 +510,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/constantes.hpp" />
     <entry file="file://$PROJECT_DIR$/fuente_imagen.cpp" />
     <entry file="file://$PROJECT_DIR$/engine/util/CFont.cpp" />
     <entry file="file://$PROJECT_DIR$/engine/util/LTexture.cpp" />
@@ -708,14 +637,6 @@
     <entry file="file://$PROJECT_DIR$/Interfaces/MenuModoMultijugador.hpp" />
     <entry file="file://$PROJECT_DIR$/Interfaces/MenuNuevoJuego.hpp" />
     <entry file="file://$PROJECT_DIR$/Interfaces/MenuPrincipal.hpp" />
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="1237" selection-start-line="5" selection-start-column="1237" selection-end-line="5" selection-end-column="1237" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -726,10 +647,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/cmake_install.cmake">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="1237" selection-start-line="5" selection-start-column="1237" selection-end-line="5" selection-end-column="1237" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
           <folding />
         </state>
       </provider>
