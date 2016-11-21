@@ -1,2 +1,0 @@
-id_tile:1
-items:10
