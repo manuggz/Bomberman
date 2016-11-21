@@ -11,258 +11,7 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e751d25e-2544-4571-ba4e-5a2d2c3be35f" name="Default" comment="cambiada organizacion">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/Bomberman" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/GoodDog.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-Bold.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-BoldItalic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-ExtraBold.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-ExtraBoldItalic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-Italic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-Light.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-LightItalic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-Regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-Semibold.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-SemiboldItalic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_6.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_7.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_7_.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_8.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/fuentes/lazy.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_activado_desactivado.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_cambiar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_cambiar_mapa.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_cancelar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_cancelar.psd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_estranyo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_flecha.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_flecha_2_derecha.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_flecha_2_izquierda.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_guardar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_jugar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_jugar_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_mas.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_menos.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_player_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_player_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_player_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_player_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_player_5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/Thumbs.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/black_fondo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_1.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_2.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_3.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_cargando.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_creditos.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_escoja.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_menu.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/white_fondo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/Thumbs.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/bomba.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/caras_bomberman.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/caras_grande.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/cuadro_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/cuadro_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/cuadro_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/cuadro_scoreboard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/entrada_texto.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/explosion.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/icono.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/item_fire.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/items.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/kills.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/objeto_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/objeto_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/objeto_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/objeto_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tablero.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tiles.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tiles_fire.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/trofeo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/trofeo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/enemigo_1.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_1.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_1_muriendo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_2.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_2_muriendo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_3.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_3_muriendo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_4.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_4_muriendo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_5.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_5_muriendo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_activado.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_escoja_nivel_a_modificar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_mayor_puntaje.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_players_en_batalla.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_presiona.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_presiona_accion.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_presiona_start.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_presiona_startas.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_puntaje.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_puntaje_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_scoreboard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_tiempo_por_ronda.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_tiles.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_victorias.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/-1.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/1.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/2.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/3.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/4.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/5.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/6.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_1.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_10.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_11.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_12.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_13.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_14.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_15.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_16.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_2.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_3.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_4.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_5.MAP" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_6.MAP" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_7.MAP" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_8.MAP" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_9.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_1.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_10.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_11.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_2.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_3.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_4.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_5.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_6.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_7.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_8.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_9.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_1.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_2.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_3.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_4.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_5.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_6.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_7.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/configuracion/images.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/configuracion/inf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tile_1.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tile_2.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tile_3.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tile_4.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/1.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/10.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/2.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/3.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/4.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/5.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/6.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/7.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/8.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/batalla/9.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/1.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/10.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/11.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/12.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/13.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/14.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/15.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/16.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/2.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/3.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/4.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/5.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/6.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/7.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/8.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Debug/data/niveles/historia/9.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Control_Animacion.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Control_Animacion.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Interfaces/MenuModoMultijugador.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Interfaces/MenuNuevoJuego.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Interfaces/MenuPrincipal.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/animacion.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/animacion.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/bloque.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/bloque.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/bomba.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/bomba.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/constantes.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control_player.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/control_player.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dat_nivel.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dat_nivel.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/editor.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/editor.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/interfaces/MenuListLabel.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/interfaces/interfaz.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/layout/Componentes/BotonComponent.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/layout/Componentes/Component.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/layout/Componentes/ImageComponent.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/layout/Componentes/TextLabelComponent.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/layout/LayoutManager/LayoutAbsolute.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/layout/LayoutManager/LayoutComponent.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/layout/LayoutManager/LayoutParent.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/layout/LayoutManager/LayoutVertical.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/sprites/CGroup.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/sprites/CGroup.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/sprites/CSprite.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/sprites/CSprite.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/util/CFont.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/util/CFont.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/util/LTexture.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/util/LTexture.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/util/LTimer.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/util/LTimer.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/util/game_manager.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/engine/util/game_manager.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/explosion.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/explosion.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/fuente_imagen.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/fuente_imagen.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/galeria.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/galeria.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/globo.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/item.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/item.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/juego.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/juego.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/juego_batalla.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/juego_batalla.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/juego_historia.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/juego_historia.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/juego_mostrar_gan.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/juego_mostrar_gan.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/mapa.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/mapa.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu_text.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/player.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/player.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/time.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/util.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/util.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-    </list>
+    <list default="true" id="e751d25e-2544-4571-ba4e-5a2d2c3be35f" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -482,24 +231,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bomberman" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bomberman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Debug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -714,7 +445,7 @@
       <workItem from="1479583070513" duration="81986000" />
       <workItem from="1479694657196" duration="8039000" />
       <workItem from="1479703416194" duration="440000" />
-      <workItem from="1479703880074" duration="614000" />
+      <workItem from="1479703880074" duration="686000" />
     </task>
     <task id="LOCAL-00001" summary="added gitignore">
       <created>1479503971545</created>
@@ -779,11 +510,18 @@
       <option name="project" value="LOCAL" />
       <updated>1479704214274</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="agregados archivos del editor">
+      <created>1479704555792</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1479704555792</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120585000" />
+    <option name="totallyTimeSpent" value="120657000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -832,7 +570,8 @@
     <MESSAGE value="Cambiado sistema de layout" />
     <MESSAGE value="arreglado un problema y otras cosas" />
     <MESSAGE value="cambiada organizacion" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambiada organizacion" />
+    <MESSAGE value="agregados archivos del editor" />
+    <option name="LAST_COMMIT_MESSAGE" value="agregados archivos del editor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
