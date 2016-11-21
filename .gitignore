@@ -1,3 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
 CMakeCache.txt
 .idea/workspace.xml
+build/Debug/data/Thumbs.db
+build/Debug/data/imagenes/Thumbs.db
+build/Debug/data/imagenes/botones/Thumbs.db
+build/Debug/data/imagenes/personajes/Thumbs.db
+build/Debug/data/imagenes/textos/Thumbs.db
+build/Debug/data/niveles/Thumbs.db
