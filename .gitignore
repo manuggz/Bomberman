@@ -1,26 +1,2 @@
 # Created by .ignore support plugin (hsz.mobi)
-*.xml
-.idea/Bomberman.iml
-.idea/inspectionProfiles/
-CMakeLists.txt
-Debug/Bomberman
-Debug/data/configuracion/inf
-Debug/data/fuentes/GoodDog.otf
-Debug/data/fuentes/OpenSans-Bold.ttf
-Debug/data/fuentes/OpenSans-BoldItalic.ttf
-Debug/data/fuentes/OpenSans-ExtraBold.ttf
-Debug/data/fuentes/OpenSans-ExtraBoldItalic.ttf
-Debug/data/fuentes/OpenSans-Italic.ttf
-Debug/data/fuentes/OpenSans-Light.ttf
-Debug/data/fuentes/OpenSans-LightItalic.ttf
-Debug/data/fuentes/OpenSans-Regular.ttf
-Debug/data/fuentes/OpenSans-Semibold.ttf
-Debug/data/fuentes/OpenSans-SemiboldItalic.ttf
-Debug/data/fuentes/lazy.ttf
-Debug/data/niveles/batalla/-1.map
-Debug/data/niveles/batalla/1.map
-Debug/data/niveles/historia/nivel_1.map
-Debug/data/niveles/historia/nivel_2.map
-Debug/data/niveles/historia/nivel_3.map
-Debug/data/niveles/historia/nivel_4.map
-Makefile
+CMakeCache.txt
