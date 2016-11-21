@@ -216,7 +216,3 @@ void JuegoHistoria::resume() {
 
 }
 
-void JuegoHistoria::start(SDL_Renderer *renderer) {
-
-}
-

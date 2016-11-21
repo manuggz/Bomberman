@@ -24,7 +24,7 @@ class Sprite{
         
        /* void setRect(const Rect &  rect2){rect=rect2;};*/
 
-        virtual void update(const Uint8 *keys=NULL)=0;
+        virtual void update(const Uint8 *keys = nullptr)=0;
         virtual void draw(SDL_Renderer * )=0;
         virtual int getTipo(){return type;};
         virtual int getId(){return id;};

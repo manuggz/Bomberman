@@ -18,7 +18,7 @@
 
 int main(int argc, char *argv[]){
     GameManager * juego=new GameManager();
-    juego->cambiarInterfaz(new MenuModoMultijugador(juego));
+    juego->cambiarInterfaz(new MenuPrincipal(juego));
     juego->run();
     delete juego;
     return EXIT_SUCCESS;

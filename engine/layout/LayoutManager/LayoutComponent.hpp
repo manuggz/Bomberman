@@ -48,6 +48,9 @@ public:
         setDisabled(false);
     }
 
+    ~LayoutComponent(){
+        mComponentes.clear();
+    }
 
 protected:
     std::deque <Component * > mComponentes;

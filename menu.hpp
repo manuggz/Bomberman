@@ -27,9 +27,6 @@ public:
 
     virtual void resume() override;
 
-    virtual void start(SDL_Renderer *renderer) override;
-
-    void crearTexturas(SDL_Renderer *);
     void cambiarPlayerConfi(IdPlayer id);
     void guardarTeclas();
     void limpiar();

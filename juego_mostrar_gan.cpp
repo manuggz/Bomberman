@@ -150,7 +150,4 @@ void JuegoMostrarGanadas::resume() {
 
 }
 
-void JuegoMostrarGanadas::start(SDL_Renderer *renderer) {
-
-}
 

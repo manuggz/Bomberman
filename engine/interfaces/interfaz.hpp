@@ -7,12 +7,14 @@ class Interfaz{
     Interfaz(){return;}
 
     // Funciones comunes a todas las escenas
-    virtual void start(SDL_Renderer * gRenderer) = 0;
-    virtual bool isPaused() = 0;
-    virtual void pause() = 0;
-    virtual void resume() = 0;
+    virtual void prepare(){};
+    virtual void createUI(SDL_Renderer * gRenderer){};
+    virtual void start(){};
+    virtual bool isPaused(){return false;};
+    virtual void pause(){};
+    virtual void resume() {};
     virtual void procesarEvento(SDL_Event * event) = 0;
-    virtual void update(void) = 0;
+    virtual void update() = 0;
     virtual void draw(SDL_Renderer * gRenderer) = 0;
 
     virtual void killSprite(int,int){return;};

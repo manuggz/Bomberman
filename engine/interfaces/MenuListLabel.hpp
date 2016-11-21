@@ -40,7 +40,7 @@ public:
         mOpcionMenuResaltadaActual = -1;
     }
 
-    virtual void start(SDL_Renderer *renderer)  override {
+    virtual void createUI(SDL_Renderer *renderer)  override{
 
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_FILL_PARENT_HEIGHT,LAYOUT_PARAM_TRUE);
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_FILL_PARENT_WIDTH,LAYOUT_PARAM_TRUE);

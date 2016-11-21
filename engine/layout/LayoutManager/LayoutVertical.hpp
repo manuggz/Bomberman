@@ -24,8 +24,8 @@ public:
         nuevoComponente->setLayoutParam(LAYOUT_PARAM_CENTER_PARENT_HORIZONTAL,LAYOUT_PARAM_FALSE);
         nuevoComponente->setLayoutParam(LAYOUT_PARAM_CENTER_PARENT_VERTICAL,LAYOUT_PARAM_FALSE);
 
-        nuevoComponente->setLayoutParam(LAYOUT_PARAM_WIDTH,"0");
-        nuevoComponente->setLayoutParam(LAYOUT_PARAM_HEIGHT,"0");
+        nuevoComponente->addLayoutParam(LAYOUT_PARAM_WIDTH,"0");
+        nuevoComponente->addLayoutParam(LAYOUT_PARAM_HEIGHT,"0");
 
         mComponentes.push_back(nuevoComponente);
     }

@@ -775,10 +775,6 @@ void Editor::crearTexturas(SDL_Renderer * gr) {
 
 }
 
-void Editor::start(SDL_Renderer *renderer) {
-
-}
-
 bool Editor::isPaused() {
     return false;
 }

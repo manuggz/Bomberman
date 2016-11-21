@@ -21,7 +21,6 @@ class JuegoMostrarGanadas:public Interfaz{
         void update();
         void draw(SDL_Renderer * );
 
-    virtual void start(SDL_Renderer *renderer) override;
 
     void crearTexturas(SDL_Renderer * );
         void salir();

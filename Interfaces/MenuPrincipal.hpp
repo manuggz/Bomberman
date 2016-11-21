@@ -29,26 +29,21 @@ public:
         return false;
     }
 
-    virtual void start(SDL_Renderer *renderer) override {
-        MenuListLabel::start(renderer);
-        //mGameManager->playSonido(SND_MENU);
-    }
-
     void ejecutarAccionOpcionResaltada() {
         switch(mOpcionMenuResaltadaActual){
             case MENU_OPCION_NUEVO_JUEGO:
-                cout << "MENU_OPCION_NUEVO_JUEGO"<< endl;
+                //cout << "MENU_OPCION_NUEVO_JUEGO"<< endl;
                 mGameManager->cambiarInterfaz(new MenuNuevoJuego(mGameManager));
                 break;
             case MENU_OPCION_EDITOR:
-                cout << "MENU_OPCION_EDITOR"<< endl;
+                //cout << "MENU_OPCION_EDITOR"<< endl;
                 //game->cambiarInterfaz(new Editor(game));
                 break;
             case MENU_OPCION_CONFIGURACION:
-                cout << "MENU_OPCION_CONFIGURACION"<< endl;
+                //cout << "MENU_OPCION_CONFIGURACION"<< endl;
                 break;
             case MENU_OPCION_CREDITOS:
-                cout << "MENU_OPCION_CREDITOS"<< endl;
+                //cout << "MENU_OPCION_CREDITOS"<< endl;
                 break;
             default:break;
         }

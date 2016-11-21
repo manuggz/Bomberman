@@ -18,11 +18,14 @@ public:
         nuevoComponente->setLayoutParam(LAYOUT_PARAM_WRAP_WIDTH,LAYOUT_PARAM_TRUE);
         nuevoComponente->setLayoutParam(LAYOUT_PARAM_WRAP_HEIGHT,LAYOUT_PARAM_TRUE);
 
-        nuevoComponente->setLayoutParam(LAYOUT_PARAM_X,"0");
-        nuevoComponente->setLayoutParam(LAYOUT_PARAM_Y,"0");
+        nuevoComponente->setLayoutParam(LAYOUT_PARAM_FILL_PARENT_HEIGHT,LAYOUT_PARAM_FALSE);
+        nuevoComponente->setLayoutParam(LAYOUT_PARAM_FILL_PARENT_WIDTH,LAYOUT_PARAM_FALSE);
 
-        nuevoComponente->setLayoutParam(LAYOUT_PARAM_WIDTH,"0");
-        nuevoComponente->setLayoutParam(LAYOUT_PARAM_HEIGHT,"0");
+        nuevoComponente->addLayoutParam(LAYOUT_PARAM_X,"0");
+        nuevoComponente->addLayoutParam(LAYOUT_PARAM_Y,"0");
+
+        nuevoComponente->addLayoutParam(LAYOUT_PARAM_WIDTH,"0");
+        nuevoComponente->addLayoutParam(LAYOUT_PARAM_HEIGHT,"0");
 
         mComponentes.push_back(nuevoComponente);
     }

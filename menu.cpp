@@ -543,9 +543,6 @@ Menu::~Menu(){
 //    delete fuente7; 
 }
 
-void Menu::start(SDL_Renderer *renderer) {
-
-}
 
 bool Menu::isPaused() {
     return false;

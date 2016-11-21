@@ -136,6 +136,7 @@ int GameManager::getJoysActivos(){
  * @param nueva Nueva interfaz a mostrar
  */
 void GameManager::cambiarInterfaz(Interfaz *  nueva){
+    cout << "GameManager::cambiarInterfaz"<<endl;
     if(nueva!=interfaz_actual){
         interfaces.push(nueva);
     }
@@ -198,14 +199,18 @@ void GameManager::run(){
 
         if(interfaces.top() != interfaz_actual){
 
-            if(interfaz_actual != nullptr)
-            interfaz_actual->pause();
+            if(interfaz_actual != nullptr){
+                interfaz_actual->pause();
+            }
+
             interfaz_actual = interfaces.top();
-            //interfaces.top();
+
             if(interfaz_actual->isPaused()){
                 interfaz_actual->resume();
             }else{
-                interfaz_actual->start(gRenderer);
+                interfaz_actual->prepare();
+                interfaz_actual->createUI(gRenderer);
+                interfaz_actual->start();
             }
         }
 
@@ -284,6 +289,7 @@ int GameManager::getHeight() {
 }
 
 void GameManager::popInterface() {
+    cout << "GameManager::popInterface"<<endl;
 
     interfaces.pop();
 }

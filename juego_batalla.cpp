@@ -274,9 +274,6 @@ JuegoBatalla::~JuegoBatalla(){
     #endif
 }
 
-void JuegoBatalla::start(SDL_Renderer *renderer) {
-
-}
 
 bool JuegoBatalla::isPaused() {
     return false;

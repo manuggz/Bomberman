@@ -18,8 +18,6 @@ class JuegoHistoria:public Juego{
     public:
         JuegoHistoria (GameManager * game);
 
-    virtual void start(SDL_Renderer *renderer) override;
-
 //        void crearReferencias();
         void setMapaPlay(int id_nivel,bool reiniciar_jugadores=false);
         void estadoPlay();

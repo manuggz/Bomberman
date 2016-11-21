@@ -33,7 +33,6 @@ class Editor:public Interfaz{
             bool EditPointMap(SDL_Event * evento);
             void guardarMapa();
 
-    virtual void start(SDL_Renderer *renderer) override;
 
     void borrarMapa();
             void procesarEvento(SDL_Event * evento);

@@ -61,10 +61,10 @@ void Group::erase(Sprite * borrar){
 void Group::update(const Uint8 *keys){
     deque<Sprite*>::iterator p_Sprite= v_personajes.begin();
 
-    if(!keys)//si no paso las keys las obtenemos
+
+    if(keys == nullptr)//si no paso las keys las obtenemos
         keys=SDL_GetKeyboardState(0);
-        
-    
+
     while(p_Sprite != v_personajes.end()){
         (*p_Sprite)->update(keys);
          if(p_Sprite != v_personajes.end()){

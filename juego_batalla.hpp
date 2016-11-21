@@ -28,7 +28,6 @@ class JuegoBatalla:public Juego{
 
     virtual void resume() override;
 
-    virtual void start(SDL_Renderer *renderer) override;
 
     void salir();
         int getTipoNuevoItem(bool hacerComprobaciones=true);

@@ -12,20 +12,64 @@
 #include "../menu.hpp"
 #include "../engine/layout/LayoutManager/LayoutVertical.hpp"
 #include "../engine/layout/LayoutManager/LayoutAbsolute.hpp"
+#include "../engine/layout/Componentes/ImageComponent.hpp"
 
 class MenuModoMultijugador: public Interfaz{
 
 public:
     MenuModoMultijugador(GameManager * gameManager){
+        cout << "MenuModoMultijugador::MenuModoMultijugador"<<endl;
         mGameManager = gameManager;
         previewTerreno = nullptr;
+        mSprites= nullptr;
+        mMapaTerrenoSeleccionado = nullptr;
+        dataNivel = nullptr;
+
+        mBtnSubirTiempo = nullptr;
+        mBtnSubirVictorias = nullptr;
+        mBtnCambiarMapa = nullptr;
+        mBtnJugar = nullptr;
+
+        for(int i = 0; i < 5 ;i++){
+            mAnimacionPlayer[i] = nullptr;
+            mAnimaPresiona[i] = nullptr;
+            mAnimaActivado[i] = nullptr;
+            player_batalla[i] = false;
+        }
+        terrenoActual = -1;
+        minutosEscogidos = -1;
+        victoriasEscogidas = -1;
+        mBotonClicked = -1;
+        mMaxTerrenoBatalla = -1;
+
+        mIsPaused = false;
+        mLayoutParent = nullptr;
+        mTextLabelMinutos = nullptr;
+        mTextLabelVictorias = nullptr;
     }
 
-    virtual void start(SDL_Renderer *renderer) override {
+    void prepare() override {
+        cout << "MenuModoMultijugador::prepare"<<endl;
+
+        // Buscamos el Maximo numero de terrenos disponibles para usar en el juego
+        mMaxTerrenoBatalla = std::stoi(buscar_dato(RUTA_CONFIG_BASE, NAME_MAX_TERRENO_BATALLA));
+
+        //Creamos el Controlador que se encarga de dibujar el Mapa
+        mMapaTerrenoSeleccionado = new Mapa(this);
+
+        // Establecemos las imagenes para los tiles del mapa
+        mMapaTerrenoSeleccionado->setImgTiles(mGameManager->getImagen(IMG_TILES));
+
+        minutosEscogidos = 1;
+        victoriasEscogidas = 1;
+
+        establecerTerrenoBatalla(0);
+    }
+
+    void createUI(SDL_Renderer * gRenderer) override {
+        cout << "MenuModoMultijugador::createUI"<<endl;
 
         mLayoutParent = new LayoutAbsolute();
-        
-        //mLayoutParent->setBackgroundTexture(mGameManager->getImagen(IMG_FONDO_MENU));
 
         // BotonComponent para controlar cuanto tiempo para acabar una ronda
         mBtnSubirTiempo=new BotonComponent<MenuModoMultijugador>(mGameManager->getImagen(IMG_BOTON_FLECHA_PEQUE_DERECHA),this);
@@ -33,7 +77,7 @@ public:
         mBtnSubirTiempo->bindAccion(&MenuModoMultijugador::clickControl);
         mLayoutParent->addComponent(mBtnSubirTiempo);
         mBtnSubirTiempo->setLayoutParam(LAYOUT_PARAM_X,"194");
-        mBtnSubirTiempo->setLayoutParam(LAYOUT_PARAM_Y,"8");
+        mBtnSubirTiempo->setLayoutParam(LAYOUT_PARAM_Y,"10");
 
         // BotonComponent para controlar cuantas victorias son necesarias para terminar el juego
         mBtnSubirVictorias=new BotonComponent<MenuModoMultijugador>(mGameManager->getImagen(IMG_BOTON_FLECHA_PEQUE_DERECHA),this);
@@ -41,7 +85,7 @@ public:
         mBtnSubirVictorias->bindAccion(&MenuModoMultijugador::clickControl);
         mLayoutParent->addComponent(mBtnSubirVictorias);
         mBtnSubirVictorias->setLayoutParam(LAYOUT_PARAM_X,"295");
-        mBtnSubirVictorias->setLayoutParam(LAYOUT_PARAM_Y,"8");
+        mBtnSubirVictorias->setLayoutParam(LAYOUT_PARAM_Y,"10");
 
         // BotonComponent para cambiar el mapa a usar
         mBtnCambiarMapa=new BotonComponent<MenuModoMultijugador>(mGameManager->getImagen(IMG_BOTON_CAMBIAR_MAPA),this);
@@ -62,6 +106,7 @@ public:
 
         // Controla las animaciones de los personajes cuando se seleccionan para jugar
         mSprites=new Group(this);
+        cout << "mSprites : " << mSprites << endl;
 
         //Animaciones para los personajes (Hace que parezcan que caminan) cuando se seleccionan
         mAnimacionPlayer[0]=new Animacion(mGameManager->getImagen(IMG_PLAYER_1),1,12,"6,6,7,7,8,8",X_INIT_PLAYER_1,Y_INIT_PLAYER_1,0);
@@ -86,34 +131,45 @@ public:
             mSprites->add(mAnimaPresiona[i]);
         }
 
-        // Buscamos el Maximo numero de terrenos disponibles para usar en el juego
-        mMaxTerrenoBatalla=std::stoi(buscar_dato(RUTA_CONFIG_BASE,NAME_MAX_TERRENO_BATALLA));
-        //mMaxTerrenoBatalla=std::stoi(mGameManager->buscar_dato(RUTA_CONFIG_BASE,NAME_MAX_TERRENO_BATALLA));
+        SDL_Color color = {255,0,0,255};
+        mTextLabelMinutos = new TextLabelComponent();
+        mTextLabelMinutos->setText(std::to_string(minutosEscogidos));
+        mTextLabelMinutos->setFont("data/fuentes/OpenSans-Bold.ttf",15);
+        mTextLabelMinutos->setTextColor(color);
+        mTextLabelMinutos->setLayoutParam(LAYOUT_PARAM_X,"180");
+        mTextLabelMinutos->setLayoutParam(LAYOUT_PARAM_Y,std::to_string(5 + mMapaTerrenoSeleccionado->getYPanel()));
+        mLayoutParent->addComponent(mTextLabelMinutos);
 
-        //Creamos el Controlador que se encarga de dibujar el Mapa
-        mMapaTerrenoSeleccionado = new Mapa(this);
-        // Establecemos las imagenes para los tiles del mapa
-        mMapaTerrenoSeleccionado->setImgTiles(mGameManager->getImagen(IMG_TILES));
+        mTextLabelVictorias = new TextLabelComponent();
+        mTextLabelVictorias->setText(std::to_string(victoriasEscogidas));
+        mTextLabelVictorias->setFont("data/fuentes/OpenSans-Bold.ttf",15);
+        mTextLabelVictorias->setTextColor(color);
+        mTextLabelVictorias->setLayoutParam(LAYOUT_PARAM_X,"283");
+        mTextLabelVictorias->setLayoutParam(LAYOUT_PARAM_Y,std::to_string(5 + mMapaTerrenoSeleccionado->getYPanel()));
+        mLayoutParent->addComponent(mTextLabelVictorias);
 
-        for(int i=0;i<_PLAYERS;i++)
-            player_batalla[i]=false;
+        //static char tmp[50];
+        //sprintf(tmp,"%d",i+1);
+        //imprimir_palabra(gRenderer,mGameManager->getImagen(IMG_FUENTE_6),mAnimacionPlayer[i]->getX()-9+41,mAnimacionPlayer[i]->getY()+19,tmp,STR_MAX_ESTENDIDA);
 
-        minutosEscogidos   = 1;
-        victoriasEscogidas = 1;
-
-        terrenoActual = -1;
-        establecerTerrenoBatalla(0);
         //mGameManager->playSonido(SND_MENU);
 
         SDL_ShowCursor(SDL_ENABLE);
     }
 
+    void packLayout(SDL_Renderer * gRenderer){
+        cout << "MenuModoMultijugador::packLayout"<<endl;
+        SDL_Rect rect = {0,0,mGameManager->getWidth(),mGameManager->getHeight()};
+        mLayoutParent->pack(gRenderer);
+        mLayoutParent->setRectDibujo(rect);
+    }
     /**
      * Establece/Cambia el terreno en el que se jugara
      * @param nuevoTerreno
      * @return
      */
     bool establecerTerrenoBatalla(int nuevoTerreno) {
+        cout << "MenuModoMultijugador::establecerTerrenoBatalla"<<endl;
 
         if(nuevoTerreno>=0 && nuevoTerreno < mMaxTerrenoBatalla && nuevoTerreno != terrenoActual){
             static char ruta1[50],ruta2[50];
@@ -136,6 +192,7 @@ public:
      * @param control_click
      */
     void clickControl(BotonComponent<MenuModoMultijugador> * control_click) {
+        cout << "MenuModoMultijugador::clickControl"<<endl;
         mBotonClicked = control_click->getId();
         ejecutarAccionBotonClicked();
     }
@@ -144,12 +201,15 @@ public:
      * Ejecuta la opcion enlazada a un boton
      */
     void ejecutarAccionBotonClicked(){
+        cout << "MenuModoMultijugador::ejecutarAccionBotonClicked"<<endl;
         switch(mBotonClicked){
             case MENU_BOTON_SUBIR_TIEMPO:
                 if(++minutosEscogidos>5)minutosEscogidos=1;
+                mTextLabelMinutos->setText(std::to_string(minutosEscogidos));
                 break;
             case MENU_BOTON_SUBIR_VICTORIAS:
                 if(++victoriasEscogidas>8)victoriasEscogidas=1;
+                mTextLabelVictorias->setText(std::to_string(victoriasEscogidas));
                 break;
             case MENU_BOTON_CAMBIAR_MAPA:
                 if(establecerTerrenoBatalla((terrenoActual + 1 == mMaxTerrenoBatalla)?0:terrenoActual + 1)){
@@ -171,6 +231,7 @@ public:
      * @param idPlayer
      */
     void cambiarEstadoPlayer(int idPlayer){
+        cout << "MenuModoMultijugador::cambiarEstadoPlayer"<<endl;
         player_batalla[idPlayer]=!player_batalla[idPlayer];
 
         if(player_batalla[idPlayer]){ // Si debe agregarse al juego
@@ -191,18 +252,22 @@ public:
     }
 
     virtual bool isPaused() override {
+        cout << "MenuModoMultijugador::isPaused"<<endl;
         return mIsPaused;
     }
 
     virtual void pause() override {
+        cout << "MenuModoMultijugador::pause"<<endl;
         mIsPaused = true;
     }
 
     virtual void resume() override {
+        cout << "MenuModoMultijugador::resume"<<endl;
         mIsPaused = false;
     }
 
     virtual void procesarEvento(SDL_Event *event) override {
+        cout << "MenuModoMultijugador::procesarEvento"<<endl;
         if(event->type==SDL_KEYDOWN){
             switch(event->key.keysym.sym){
                 case SDLK_ESCAPE:
@@ -233,11 +298,14 @@ public:
         mBtnJugar->procesarEvento(event);
     }
 
-    virtual void update(void) override {
+    virtual void update() override {
+        cout << "MenuModoMultijugador::update"<<endl;
         mSprites->update();
     }
 
     virtual void draw(SDL_Renderer *gRenderer) override {
+        cout << "MenuModoMultijugador::draw"<<endl;
+
         mGameManager->getImagen((CodeImagen)mMapaTerrenoSeleccionado->getIdFondo())->render(gRenderer,0,0);
         mGameManager->getImagen(IMG_TABLERO)->render(gRenderer,0,mMapaTerrenoSeleccionado->getYPanel());//imprimimos la barra mensage
         mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,177,7+mMapaTerrenoSeleccionado->getYPanel());//imprimimos la barra mensage
@@ -246,42 +314,27 @@ public:
         mGameManager->getImagen(IMG_TXT_TIEMPO_POR_RONDA)->render(gRenderer,140,24+mMapaTerrenoSeleccionado->getYPanel());//imprimimos la barra mensage
         mGameManager->getImagen(IMG_TXT_VICTORIAS)->render(gRenderer,261,24+mMapaTerrenoSeleccionado->getYPanel());//imprimimos la barra mensage
 
-        static char tmp[50];
 
-        sprintf(tmp,"%d",minutosEscogidos);
-        //imprimir_palabra(gRenderer,mGameManager->getImagen(IMG_FUENTE_6),178,8+mapa.getYPanel(),tmp,STR_MAX_ESTENDIDA);
-        sprintf(tmp,"%d",victoriasEscogidas);
-        //imprimir_palabra(gRenderer,mGameManager->getImagen(IMG_FUENTE_6),280,8+mapa.getYPanel(),tmp,STR_MAX_ESTENDIDA);
-
-        /*mBtnSubirTiempo->draw(gRenderer);
-        mBtnSubirVictorias->draw(gRenderer);
-
-
-        mBtnCambiarMapa->draw(gRenderer);
-        mBtnJugar->draw(gRenderer);*/
         mMapaTerrenoSeleccionado->draw(gRenderer);//imprimimos el nivel
 
         mSprites->draw(gRenderer);
         for(int i=0;i<_PLAYERS;i++){
             if(!player_batalla[i]){
                 imprimir_desde_grilla(mGameManager->getImagen((CodeImagen)(IMG_PLAYER_1 + i)), 6,gRenderer, mAnimacionPlayer[i]->getX(),mAnimacionPlayer[i]->getY(),1, 12,true);
-                sprintf(tmp,"%d",i+1);
-                //imprimir_palabra(gRenderer,mGameManager->getImagen(IMG_FUENTE_6),mAnimacionPlayer[i]->getX()-9+41,mAnimacionPlayer[i]->getY()+19,tmp,STR_MAX_ESTENDIDA);
             }else{
                 imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),i*2,gRenderer,i*16+20,mMapaTerrenoSeleccionado->getYPanel()+2,1,10,0);
             }
         }
 
-  //      if(mLayoutParent->isDisabled()){
-        SDL_Rect rect = {0,0,mGameManager->getWidth(),mGameManager->getHeight()};
-        mLayoutParent->pack(gRenderer);
-        mLayoutParent->setRectDibujo(rect);
+        if(mLayoutParent->isDisabled()){
+            packLayout(gRenderer);
+        }
         mLayoutParent->draw(gRenderer);
-//        }
 
     }
 
     ~MenuModoMultijugador(){
+        cout << "MenuModoMultijugador::~MenuModoMultijugador"<<endl;
         for(int i=0;i<_PLAYERS;i++){
             delete mAnimacionPlayer[i];
             delete mAnimaPresiona[i];
@@ -301,11 +354,11 @@ private:
         MENU_BOTON_JUGAR,
 
     };
-    GameManager *mGameManager;
-    Group *mSprites;
-    Mapa * mMapaTerrenoSeleccionado;
-    DatNivel * dataNivel;
-    SDL_Surface * previewTerreno;
+    GameManager *  mGameManager;
+    Group *        mSprites;
+    Mapa *         mMapaTerrenoSeleccionado;
+    DatNivel *     dataNivel;
+    SDL_Surface *  previewTerreno;
 
     BotonComponent<MenuModoMultijugador> *mBtnSubirTiempo,*mBtnSubirVictorias,*mBtnCambiarMapa,*mBtnJugar;
     Animacion *mAnimacionPlayer[5],* mAnimaPresiona[5],* mAnimaActivado[5];
@@ -318,5 +371,7 @@ private:
     bool mIsPaused;
     LayoutAbsolute *mLayoutParent;
     //LayoutAbsolute *mLayoutParent;
+    TextLabelComponent *mTextLabelMinutos;
+    TextLabelComponent *mTextLabelVictorias;
 };
 #endif //BOMBERMAN_MENUMODOMULTIJUGADOR_HPP

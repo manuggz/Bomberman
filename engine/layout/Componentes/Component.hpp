@@ -35,6 +35,10 @@ public:
     void setLayoutParam(std::string nameParam,std::string valueParam){
         mLayoutParams[nameParam] = valueParam;
     }
+    void addLayoutParam(std::string nameParam,std::string valueParam){
+        if(mLayoutParams[nameParam].empty())
+            mLayoutParams[nameParam] = valueParam;
+    }
 
     std::string getLayoutParam(std::string nameParam){
         return mLayoutParams[nameParam];
@@ -43,8 +47,8 @@ public:
      * Establece la textura a dibujar en el fondo del componente
      * @param lTexture
      */
-    void setBackgroundTexture(LTexture * lTexture){
-        if(mTextureBackground != nullptr){
+    void setBackgroundTexture(LTexture * lTexture,bool deleteAnterior = true){
+        if(mTextureBackground != nullptr && deleteAnterior){
             mTextureBackground->free();
             delete lTexture;
             mTextureBackground = nullptr;

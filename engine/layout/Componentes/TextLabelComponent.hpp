@@ -24,6 +24,7 @@ public:
     }
     void setText(string nuevoTexto){
         mTexto = nuevoTexto;
+        setDisabled(true);
     }
 
     void setFont(CFont * nuevaFuente) {
