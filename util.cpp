@@ -30,40 +30,10 @@ void sort_array(int array_sort[5],int destino_sort[5]){
     }
 }
 
-SDL_Texture *cargar_textura(SDL_Renderer *gRenderer, string ruta, bool tiene_color_clave){
 
-    //The final texture
-    SDL_Texture* newTexture = NULL;
 
-    //Load image at specified path
-    SDL_Surface* loadedSurface = IMG_Load( ruta.c_str() );
-    if( loadedSurface == NULL )
-    {
-        printf( "Unable to load image %s! SDL_image Error: %s\n", ruta.c_str(), IMG_GetError() );
-    }
-    else{
-
-        if(tiene_color_clave){
-            //Color key image
-            SDL_SetColorKey( loadedSurface, SDL_TRUE, SDL_MapRGB( loadedSurface->format, 0, 0xFF, 0 ) );
-        }
-
-        //Create texture from surface pixels
-        newTexture = SDL_CreateTextureFromSurface( gRenderer, loadedSurface );
-        if( newTexture == NULL )
-        {
-            printf( "Unable to create texture from %s! SDL Error: %s\n", ruta.c_str(), SDL_GetError() );
-        }
-
-        //Get rid of old loaded surface
-        SDL_FreeSurface( loadedSurface );
-    }
-
-    return newTexture;
-}
-
-void mostrar_error_salir(string msg){
-    cerr << "Error:"<<msg<<"Error SDL:"<<SDL_GetError()<<endl;
+void mostrar_error_salir(std::string msg){
+    std::cerr << "Error:"<<msg<<"Error SDL:"<<SDL_GetError()<<std::endl;
     exit(1);
 }
 
@@ -71,20 +41,20 @@ Mix_Chunk * cargar_sonido(char ruta[]){
     Mix_Chunk * cargado;
     cargado=Mix_LoadWAV(ruta);
     if(cargado==NULL){
-        cerr<<"Error cargando sonido:"<<ruta<<Mix_GetError()<<endl;
+        std::cerr<<"Error cargando sonido:"<<ruta<<Mix_GetError()<<std::endl;
         exit(1);
     }
-	cout << "+ cargando:"<<ruta<<endl;
+    std::cout << "+ cargando:"<<ruta<<std::endl;
 	return cargado;
 }
 Mix_Music * cargar_musica(const char ruta[]){
     Mix_Music * cargado;
     cargado=Mix_LoadMUS(ruta);
     if(cargado==NULL){
-        cerr<<"Error cargando musica:"<<ruta<<Mix_GetError()<<endl;
+        std::cerr<<"Error cargando musica:"<<ruta<<Mix_GetError()<<std::endl;
         exit(1);
     }
-	cout << "+ cargando:"<<ruta<<endl;
+    std::cout << "+ cargando:"<<ruta<<std::endl;
 	return cargado;
 }
 bool rects_colisionan(SDL_Rect & rect_1,SDL_Rect & rect_2)
@@ -115,38 +85,14 @@ void imprimir_desde_grilla(LTexture * src, int cuadro, SDL_Renderer *gRenderer,
 }
 
 
-int fps_sincronizar (void)
-{
-	static int t;
-	static int tl = 0;
-	static int frecuencia = 1000 / 70;
-	static int tmp;
-
-	t = SDL_GetTicks ();
-
-	if (t - tl >= frecuencia)
-	{
-		tmp = (t - tl) / frecuencia;
-		tl += tmp * frecuencia;
-		return tmp;
-	}
-	else
-	{
-		SDL_Delay (frecuencia - (t - tl));
-		tl += frecuencia;
-		return 1;
-	}
-
-}
-
 
 /*
  * imprime un caracter en el renderer
  */
-int imprimir_letra (SDL_Renderer * gRenderer, LTexture * textureLetras,int x, int y, char letra,string orden_letras) {
+int imprimir_letra (SDL_Renderer * gRenderer, LTexture * textureLetras,int x, int y, char letra,std::string orden_letras) {
 	SDL_Rect srcrect;
 
-    cout << "imprimir letra: x " << x << " y: " << y << "letra: " << letra << "orden_letras: "<<orden_letras<< endl;
+    std::cout << "imprimir letra: x " << x << " y: " << y << "letra: " << letra << "orden_letras: "<<orden_letras<< std::endl;
 
 
 	srcrect.y=0;
@@ -155,11 +101,11 @@ int imprimir_letra (SDL_Renderer * gRenderer, LTexture * textureLetras,int x, in
     srcrect.x= (int) (srcrect.w * orden_letras.find(letra));
 
 	if(srcrect.x>=0){
-        cout << "srcrect.x " << srcrect.x
+        std::cout << "srcrect.x " << srcrect.x
             << "srcrect.y " << srcrect.y
             << "srcrect.w " << srcrect.w
             << "srcrect.h " << srcrect.h
-             << endl;
+             << std::endl;
         textureLetras->render(gRenderer,x,y,&srcrect);
     }
 
@@ -171,8 +117,8 @@ int imprimir_letra (SDL_Renderer * gRenderer, LTexture * textureLetras,int x, in
  * imprime una cadena de textos completa sobre la superficie referenciada
  * por el primer par�metro
  */
-void imprimir_palabra (SDL_Renderer * gRenderer, LTexture * textureLetras, int x, int y,string cadena,string orden_letras) {
-    cout << "imprimir palabra x: " << x << " y: " << y << " cadena: " << cadena << endl;
+void imprimir_palabra (SDL_Renderer * gRenderer, LTexture * textureLetras, int x, int y,std::string cadena,std::string orden_letras) {
+    std::cout << "imprimir palabra x: " << x << " y: " << y << " cadena: " << cadena << std::endl;
 	int i;
 	int dx = x;
 
@@ -217,30 +163,39 @@ Uint32 get_pixel (SDL_Surface * ima, int x, int y)
 	}
 }
 
+/**
+ * Abre un archivo de texto y busca el valor de "nombreVariable" en él
+ *
+ * El archivo de texto es de  la forma:
+ *
+ * [<nombre nombreVariable>:<valorVariable>]
+ * @param ruta
+ * @param nombreVariable
+ * @return
+ */
+std::string buscar_dato(std::string ruta,std::string nombreVariable,std::string delim){
 
-int buscar_dato(string ruta,string nombre_dato){
-    static FILE *fscript;
-    
-    int valor;
-    char linea[100],*identificador;
-    
-    if(!(fscript=fopen(ruta.c_str(),"r"))){
-      sprintf(linea,"Error leyendo archivo(Buscar Dato):%s\n",ruta.c_str());
-		mostrar_error_salir(linea);
+    std::ifstream fpArchivo(ruta);
+
+    if(!fpArchivo){
+        std::cerr << "Error leyendo archivo(Buscar Dato):" << ruta << std::endl;
+        exit(EXIT_FAILURE);
     }
 
-    while(!feof(fscript)){    
-        fgets(linea,100,fscript);
-        
-        identificador = strtok(linea , ":") ;
-        if(!strcmp(identificador,nombre_dato.c_str())){
-            sscanf(strtok( NULL , " "),"%d",&valor);
-            fclose(fscript);
-            return valor;
+    std::string linea;
+    //std::string valorVariableFile;
+
+    while (fpArchivo >> linea){
+        int i = 0;
+        int pos = (int) linea.find(nombreVariable);
+
+        if(pos >= 0){
+            int pos = (int) linea.find(delim);
+            return linea.substr(pos + delim.size());
         }
+
     }
-    fclose(fscript);
-    return -1;
+    return nullptr;
 }
 
 bool estado_tecla_joy(SDL_Keycode tecla,SDL_Joystick * joy){
@@ -262,6 +217,18 @@ bool estado_tecla_joy(SDL_Keycode tecla,SDL_Joystick * joy){
 	}
 }
 
+/**
+ * Crea un rectangulo que CONTIENE a los dos rectangulos rect1 y rect2
+ * @param rect1
+ * @param rect2
+ * @param rectRest
+ */
+void unir_rects(SDL_Rect & rect1,SDL_Rect & rect2,SDL_Rect & rectRest){
+    rectRest.x = std::min(rect1.x,rect2.x);
+    rectRest.y = std::min(rect1.y,rect2.y);
+    rectRest.w = std::max(rect1.x + rect1.w - rectRest.x,rect2.x + rect2.w - rectRest.x);
+    rectRest.h = std::max(rect1.y + rect1.h - rectRest.y,rect2.h + rect2.h - rectRest.y);
+}
 
 
 EstadoSprite invertir_estado(EstadoSprite estado){
@@ -278,123 +245,6 @@ EstadoSprite invertir_estado(EstadoSprite estado){
             printf("no implementado para ese estado:%d\n",estado);
             return ABAJO;
         }
-}
-
-void sdl_videoinfo(void)
-{
-/*
-    const SDL_VideoInfo *propiedades;
-    SDL_Surface *pantalla;
-    SDL_Rect **modos;
-
-    //Variables auxiliares
-    char driver[20];
-    int maxlen = 20;
-    int i = 0;
-
-    // Obtenemos la información del sistema de video
-    propiedades = SDL_GetVideoInfo();
-    if(propiedades == NULL) {
-	 fprintf(stderr, "No se pudo obtener la información %s\n",
-		  SDL_GetError());
-	 exit(1);
-    }
-
-    // Obtenemos los modos de video disponibles
-    modos = SDL_ListModes(NULL, SDL_HWSURFACE);
-
-    printf("\n\n == MODOS DE VIDEO DISPONIBLES == \n");
-
-    // Comprobamos que métodos están disponibles
-    if(modos == (SDL_Rect **)0)
-	 printf("No existen modos disponibles \n");
-    else if(modos == (SDL_Rect **)-1)
-	 printf("Todos los modos disponibles \n");
-    else {
-	 printf("Lista de modos disponibles\n");
-	 for(i = 0; modos[i]; i++)
-	     printf("%d x %d\n", modos[i]->w, modos[i]->h);
-    }
-
-    // Comprobamos que el modo a seleccionar sea compatible
-    if(SDL_VideoModeOK(640, 480, 24, SDL_SWSURFACE) == 0) {
-	 fprintf(stderr, "Modo no soportado: %s\n", SDL_GetError());
-	 exit(1);
-    }
-
- 
-    // Una vez comprobado establecemos el modo de video
-    pantalla = SDL_SetVideoMode(640, 480, 24, SDL_SWSURFACE);
-    if(pantalla == NULL)
-	 printf("SDL_SWSURFACE 640x480x24 no compatible. Error: %s\n",
-		 SDL_GetError());
-
-
-    // Obtenemos información del driver de video
-    printf("\n\n == INFORMACIÓN DRIVER VIDEO == \n");
-    SDL_VideoDriverName(driver, maxlen);
-
-    if(driver == NULL) {
-	 fprintf(stderr, "No se puede obtener nombre driver video\n");
-	 exit(1);
-    }
-
-    printf("Driver: %s\n", driver);
-
-    
-    // Obtenemos información sobre las capacidades de nuestro
-    // sistema respecto a SDL
-    printf("\n == INFORMACION SDL_INFO == \n\n");
-    if(propiedades->hw_available == 1)
-	 printf("HW Compatible\n");
-    else
-	 printf("HW no compatible\n");
-
-    if(propiedades->wm_available == 1)
-	 printf("Hay un manejador de ventanas disponible\n");
-    else
-	 printf("No hay un manejador de ventanas disponible\n");
-
-    if(propiedades->blit_hw == 1)
-	 printf("El blitting hardware - hardware está acelerado\n");
-    else
-	 printf("El blitting hardware - hardware NO está acelerado\n");
-
-    if(propiedades->blit_hw_CC == 1) {
-	 printf("El blitting con transparencias hardware - hardware ");
-	 printf("está acelerado\n");
-    }
-    else {
-	 printf("El blitting con transparencias hardware - hardware ");
-	 printf("NO está acelerado\n");
-    }
-
-    if(propiedades->blit_sw == 1)
-	 printf("El blitting software - hardware está acelerado.\n");
-    else
-	 printf("El blitting software - hardware NO está acelerado. \n");
-    
-    if(propiedades->blit_sw_CC == 1) {
-	 printf("El blitting software - hardware con transparencias");
-	 printf(" está acelerado\n");
-    }
-    else {
-	 printf("El blitting software - hardware con transparencias");
-	 printf(" NO está acelerado\n");
-    }
-
-    if(propiedades->blit_sw_A == 1)
-	 printf("El blitting software - hardware con alpha está acelerado\n");
-    else
-	 printf("El blitting software - hardware con alpha NO está acelerado\n");
-
-    if(propiedades->blit_fill == 1)
-	 printf("El rellenado de color está acelerado\n");
-    else
-	 printf("El rellenado de color NO está acelerado\n");
-
-    printf("La memoria de video tiene %f MB\n", (float) propiedades->video_mem);
-*/
 }
 
 

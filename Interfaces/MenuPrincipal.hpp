@@ -31,7 +31,7 @@ public:
 
     virtual void start(SDL_Renderer *renderer) override {
         MenuListLabel::start(renderer);
-        mGameManager->playSonido(SND_MENU);
+        //mGameManager->playSonido(SND_MENU);
     }
 
     void ejecutarAccionOpcionResaltada() {

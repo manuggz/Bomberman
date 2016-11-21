@@ -2,44 +2,13 @@
 
 Menu::Menu(GameManager * game):
 
-    botonGuardar(game->getImagen(IMG_BOTON_GUARDAR),this,114,205),mapa(this){
+    botonGuardar(game->getImagen(IMG_BOTON_GUARDAR),this),mapa(this){
     this->game=game;
 
+    // ,114,205
 
     //ventana 3 (MULTIJUGADOR)
-    sprites=new Group(this);
 
-    btnSubirTiempo=new Boton<Menu>(game->getImagen(IMG_BOTON_FLECHA_PEQUE_DERECHA),this,194,8);
-    btnSubirVictorias=new Boton<Menu>(game->getImagen(IMG_BOTON_FLECHA_PEQUE_DERECHA),this,295,8);
-    btnCambiarMapa=new Boton<Menu>(game->getImagen(IMG_BOTON_CAMBIAR_MAPA),this,160,225);
-    btnJugar=new Boton<Menu>(game->getImagen(IMG_BOTON_JUGAR_2),this,240,225);
-    
-    btnSubirTiempo->setId(MENU_BOTON_SUBIR_TIEMPO);
-    btnSubirVictorias->setId(MENU_BOTON_SUBIR_VICTORIAS);
-    btnCambiarMapa->setId(MENU_BOTON_CAMBIAR_MAPA);
-    btnJugar->setId(MENU_BOTON_JUGAR);
-    
-    btnSubirTiempo->bindAccion(&Menu::clickControl);
-    btnSubirVictorias->bindAccion(&Menu::clickControl);
-    btnCambiarMapa->bindAccion(&Menu::clickControl);
-    btnJugar->bindAccion(&Menu::clickControl);    
-    btnJugar->setVisible(false);
-    
-    animaPlayer[0]=new Animacion(game->getImagen(IMG_PLAYER_1),1,12,"6,6,7,7,8,8",X_INIT_PLAYER_1,Y_INIT_PLAYER_1,0);
-    animaPlayer[1]=new Animacion(game->getImagen(IMG_PLAYER_2),1,12,"6,6,7,7,8,8",X_INIT_PLAYER_2,Y_INIT_PLAYER_2,1);
-    animaPlayer[2]=new Animacion(game->getImagen(IMG_PLAYER_3),1,12,"6,6,7,7,8,8",X_INIT_PLAYER_3,Y_INIT_PLAYER_3,2);
-    animaPlayer[3]=new Animacion(game->getImagen(IMG_PLAYER_4),1,12,"6,6,7,7,8,8",X_INIT_PLAYER_4,Y_INIT_PLAYER_4-20,3);
-    animaPlayer[4]=new Animacion(game->getImagen(IMG_PLAYER_5),1,12,"6,6,7,7,8,8",X_INIT_PLAYER_5,Y_INIT_PLAYER_5,4);
-
-    for(int i=0;i<_PLAYERS;i++){
-        animaPresiona[i]=new Animacion(game->getImagen(IMG_TXT_PRESIONA),2,1,"0,0,1,1",animaPlayer[i]->getX()-9,animaPlayer[i]->getY()+20,i);
-        animaActivado[i]=new Animacion(game->getImagen(IMG_TXT_ACTIVADO),2,1,"0,0,0,1,1,1",animaPlayer[i]->getX()-9,animaPlayer[i]->getY()+20,i);
-        animaPlayer[i]->setLoop(-1);
-        animaActivado[i]->setLoop(-1);
-        animaPresiona[i]->setLoop(-1);
-        sprites->add(animaPresiona[i]);
-    }
-    
     /*ventana 4*/
 
     //linea de tecla arriba
@@ -118,13 +87,13 @@ Menu::Menu(GameManager * game):
 
 
     //botones para cambiar de player
-
-    botonPlayer[PLAYER_1]=new Boton<Menu>(game->getImagen(IMG_BOTON_PLAYER_1),this,3,228);
-    botonPlayer[PLAYER_2]=new Boton<Menu>(game->getImagen(IMG_BOTON_PLAYER_2),this,64,228);
-    botonPlayer[PLAYER_3]=new Boton<Menu>(game->getImagen(IMG_BOTON_PLAYER_3),this,125,228);
-    botonPlayer[PLAYER_4]=new Boton<Menu>(game->getImagen(IMG_BOTON_PLAYER_4),this,189,228);
-    botonPlayer[PLAYER_5]=new Boton<Menu>(game->getImagen(IMG_BOTON_PLAYER_5),this,252,228);
-
+    /*
+    botonPlayer[PLAYER_1]=new BotonComponent<Menu>(game->getImagen(IMG_BOTON_PLAYER_1),this,3,228);
+    botonPlayer[PLAYER_2]=new BotonComponent<Menu>(game->getImagen(IMG_BOTON_PLAYER_2),this,64,228);
+    botonPlayer[PLAYER_3]=new BotonComponent<Menu>(game->getImagen(IMG_BOTON_PLAYER_3),this,125,228);
+    botonPlayer[PLAYER_4]=new BotonComponent<Menu>(game->getImagen(IMG_BOTON_PLAYER_4),this,189,228);
+    botonPlayer[PLAYER_5]=new BotonComponent<Menu>(game->getImagen(IMG_BOTON_PLAYER_5),this,252,228);
+*/
     botonGuardar.bindAccion(&Menu::guardarTeclas);
     for(int i=0;i<_PLAYERS;i++)
         botonPlayer[i]->bindAccion(&Menu::cambiarPlayer);
@@ -142,7 +111,7 @@ Menu::Menu(GameManager * game):
 
 
 //    estado_boton_guardar=BOTON_NORMAL;
-    maxTerrenoBatalla=buscar_dato(RUTA_CONFIG_BASE,"MaxTerreno");
+    maxTerrenoBatalla=std::stoi(buscar_dato(RUTA_CONFIG_BASE,"MaxTerreno"));
     player_configurando_teclas=PLAYER_NONE;
     previewTerreno=NULL;
     mapa.setImgTiles(game->getImagen(IMG_TILES));
@@ -195,12 +164,12 @@ void Menu::cambiarPlayer(){
 void Menu::cambiarPlayerConfi(IdPlayer id){
      //cambia el estado de las variables asociadas al cambio de player al que se le configuran las teclas
       if(player_configurando_teclas!=PLAYER_NONE){
-          botonPlayer[player_configurando_teclas]->setEstado(Boton<Menu>::NORMAL);
+          botonPlayer[player_configurando_teclas]->setEstado(BotonComponent<Menu>::NORMAL);
           botonPlayer[player_configurando_teclas]->setEnable(true);  
       }      
       player_configurando_teclas=id;// guarda el id del nuevo player
       id_espera_tecla=TECLA_NULA; //variable que dice si se espera la pulsacion de una tecla[del joy] para un boton del juego
-      botonPlayer[id]->setEstado(Boton<Menu>::PRESIONADO);
+      botonPlayer[id]->setEstado(BotonComponent<Menu>::PRESIONADO);
       botonPlayer[id]->setEnable(false);
       cargarTeclas();//carga las teclas del File 
 }
@@ -226,7 +195,7 @@ void Menu::limpiar(){
      minutosEscogidos=1;
      victoriasEscogidas=1;
 }
-void Menu::clickControl(Boton<Menu> * control_click){
+void Menu::clickControl(BotonComponent<Menu> * control_click){
     selected=control_click->getId();
     clickSelected();
 }
@@ -262,51 +231,6 @@ void Menu::clickSelected(){
     int tmp;
 
     switch(ventana){
-        case VENTANA_1:
-            switch(selected){
-                case MENU_NUEVO_JUEGO:
-                    cout << "MENU_NUEVO_JUEGO"<< endl;
-//                    cambiarVentana(VENTANA_2);
-                    setDesvanecimiento(VENTANA_1,VENTANA_2);
-                    break;
-                case MENU_EDITOR:
-                    cout << "MENU_EDITOR"<< endl;
-                     game->cambiarInterfaz(new Editor(game));
-                    break;
-                case MENU_CONFIGURACION:
-                    cout << "MENU_CONFIGURACION"<< endl;
-//                    cambiarVentana(VENTANA_4);
-                    setDesvanecimiento(VENTANA_1,VENTANA_4);
-                    break;
-                case MENU_CREDITOS:
-                    cout << "MENU_CREDITOS"<< endl;
-//                    cambiarVentana(VENTANA_CREDITOS);
-                    setDesvanecimiento(VENTANA_1,VENTANA_CREDITOS);
-                    break;
-                case MENU_SALIR:
-                    cout << "MENU_SALIR"<< endl;
-                    setDesvanecimiento(VENTANA_1,-1);
-//                    game->quit();
-                    break;
-                }
-            break;
-        case VENTANA_2:
-            switch(selected){
-                case MENU_MODO_HISTORIA:
-                    game->cambiarInterfaz(new JuegoHistoria(game));
-                    break;
-                case MENU_MODO_MULTIJUGADOR:
-                    setDesvanecimiento(VENTANA_2,VENTANA_3);
-//                    cambiarVentana(VENTANA_3);
-                    break;
-                case MENU_MODO_CONEXION:
-                    break;
-                case MENU_REGRESAR:
-                    setDesvanecimiento(VENTANA_2,VENTANA_1);
-//                    cambiarVentana(VENTANA_1);
-                    break;
-                }
-            break;
         case VENTANA_3:
                 switch(selected){
                     case PLAYER_1:case PLAYER_2:case PLAYER_3:case PLAYER_4:case PLAYER_5:
@@ -323,24 +247,6 @@ void Menu::clickSelected(){
                           btnJugar->setVisible(player_batalla[PLAYER_1]+ player_batalla[PLAYER_2]+ player_batalla[PLAYER_3] + player_batalla[PLAYER_4] + player_batalla[PLAYER_5]>1);
                           game->play(SFX_TONO_SECO);
                       break;
-                    case MENU_BOTON_SUBIR_TIEMPO:
-                        if(++minutosEscogidos>5)minutosEscogidos=1;
-                        break;
-                    case MENU_BOTON_SUBIR_VICTORIAS:
-                        if(++victoriasEscogidas>8)victoriasEscogidas=1;
-                        break;
-                    case MENU_BOTON_CAMBIAR_MAPA:
-                        if(++terrenoActual==maxTerrenoBatalla)terrenoActual=0;
-                        updatePreview();
-                        game->play(SFX_TONO_ACUATICO);
-                        break;
-                    case MENU_BOTON_JUGAR:
-                        int total_players=player_batalla[PLAYER_1]+ player_batalla[PLAYER_2]+ player_batalla[PLAYER_3] + player_batalla[PLAYER_4] + player_batalla[PLAYER_5];
-                        if(total_players>=2){
-                            game->cambiarInterfaz(new JuegoBatalla(game,terrenoActual,player_batalla,minutosEscogidos,victoriasEscogidas)); //iniciamos en modo batalla, le pasamos el array con los players seleccionados por el usuario
-                            game->play(SFX_EXPLOSION);
-                        }
-                        break;
                 }
             break;
             }
@@ -418,36 +324,6 @@ void Menu::procesarEvento(SDL_Event * evento){
     
             break;
             case VENTANA_3://Multijugador
-                if(evento->type==SDL_KEYDOWN){
-                    switch(evento->key.keysym.sym){
-                        case SDLK_ESCAPE:
-                            setDesvanecimiento(-1,VENTANA_2);
-                            limpiar();
-                            break;
-                        case SDLK_RETURN:
-    						selected=MENU_BOTON_JUGAR;
-    						clickSelected();
-                            break;
-                        case SDLK_KP_1:case SDLK_KP_2:case SDLK_KP_3:case SDLK_KP_4:case SDLK_KP_5:
-    						selected=(evento->key.keysym.sym-SDLK_KP_1); //seleccionamos el player con una formula mate. SDK_1:49 y SDLK_5:53
-    						clickSelected();
-    						break;
-                        case SDLK_1:case SDLK_2:case SDLK_3:case SDLK_4:case SDLK_5:
-    						selected=(evento->key.keysym.sym-SDLK_1); //seleccionamos el player con una formula mate. SDK_1:49 y SDLK_5:53
-    						clickSelected();
-                            break;
-                        case SDLK_LEFT:case SDLK_RIGHT:
-    					    selected=MENU_BOTON_CAMBIAR_MAPA;
-    						clickSelected();
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                btnSubirTiempo->procesarEvento(evento);
-                btnSubirVictorias->procesarEvento(evento);
-                btnCambiarMapa->procesarEvento(evento);
-                btnJugar->procesarEvento(evento);
                 break;
                 
             case VENTANA_4:
@@ -587,38 +463,7 @@ void Menu::draw(SDL_Renderer * gRenderer){
 
                 break;
             case VENTANA_3://multijugador
-                game->getImagen((CodeImagen)mapa.getIdFondo())->render(gRenderer,0,0);
-                game->getImagen(IMG_TABLERO)->render(gRenderer,0,mapa.getYPanel());//imprimimos la barra mensage
-                game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,177,7+mapa.getYPanel());//imprimimos la barra mensage
-                game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,280,7+mapa.getYPanel());//imprimimos la barra mensage
-                game->getImagen(IMG_TXT_PLAYERS_EN_BATALLA)->render(gRenderer,15,24+mapa.getYPanel());//imprimimos la barra mensage
-                game->getImagen(IMG_TXT_TIEMPO_POR_RONDA)->render(gRenderer,140,24+mapa.getYPanel());//imprimimos la barra mensage
-                game->getImagen(IMG_TXT_VICTORIAS)->render(gRenderer,261,24+mapa.getYPanel());//imprimimos la barra mensage
 
-                static char tmp[50];
-                
-                sprintf(tmp,"%d",minutosEscogidos);
-                //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_6),178,8+mapa.getYPanel(),tmp,STR_MAX_ESTENDIDA);
-                sprintf(tmp,"%d",victoriasEscogidas);
-                //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_6),280,8+mapa.getYPanel(),tmp,STR_MAX_ESTENDIDA);
-    
-                btnSubirTiempo->draw(gRenderer);
-                btnSubirVictorias->draw(gRenderer);
-                mapa.draw(gRenderer);//imprimimos el nivel
-                
-                sprites->draw(gRenderer);
-                for(int i=0;i<_PLAYERS;i++){
-                    if(!player_batalla[i]){
-                	   imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_PLAYER_1 + i)), 6,gRenderer, animaPlayer[i]->getX(),animaPlayer[i]->getY(),1, 12,true);
-                       sprintf(tmp,"%d",i+1);
-                       //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_6),animaPlayer[i]->getX()-9+41,animaPlayer[i]->getY()+19,tmp,STR_MAX_ESTENDIDA);
-                    }else{
-                       imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN),i*2,gRenderer,i*16+20,mapa.getYPanel()+2,1,10,0);
-                    }
-                }
-                btnCambiarMapa->draw(gRenderer);
-                btnJugar->draw(gRenderer);
-                
                 break;
             case VENTANA_4://configuracion
                 game->getImagen(IMG_FONDO_MENU)->render(gRenderer,0,0);
@@ -647,12 +492,12 @@ void Menu::draw(SDL_Renderer * gRenderer){
                     //imprimimos el texto
                     imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_TXT_ARRIBA + i)),id_espera_tecla==i,gRenderer,rectConfiguracion[i][MENU_TEXTO_MOSTRAR].x,rectConfiguracion[i][MENU_TEXTO_MOSTRAR].y,2,1,0);
                 }
-                for(int i=0;i<_PLAYERS;i++)
+/*                for(int i=0;i<_PLAYERS;i++)
                      botonPlayer[i]->draw(gRenderer);
                      
     
     
-                botonGuardar.draw(gRenderer);
+                botonGuardar.draw(gRenderer);*/
                 imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN),player_configurando_teclas*2,gRenderer,rect_destino_cara.x,rect_destino_cara.y,1,10,0);
     
     

@@ -2,6 +2,7 @@
 #include "menu.hpp"
 #include "Interfaces/MenuPrincipal.hpp"
 #include "Interfaces/MenuNuevoJuego.hpp"
+#include "Interfaces/MenuModoMultijugador.hpp"
 
 /*
   Name: DestructionBombs
@@ -17,8 +18,7 @@
 
 int main(int argc, char *argv[]){
     GameManager * juego=new GameManager();
-//    juego->cambiarInterfaz(new Menu(juego,Menu::MENU_INICIO));
-    juego->cambiarInterfaz(new MenuPrincipal(juego));
+    juego->cambiarInterfaz(new MenuModoMultijugador(juego));
     juego->run();
     delete juego;
     return EXIT_SUCCESS;

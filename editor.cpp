@@ -1,11 +1,11 @@
 #include "editor.hpp"
 
 Editor::Editor(GameManager * game):
-    botonBorrar(game->getImagen(IMG_BOTON_BORRAR_MAPA),this,150,221){
+    botonBorrar(game->getImagen(IMG_BOTON_BORRAR_MAPA),this){
     #ifdef DEBUG
         cout << "Constructor de Editor: "<<this<<endl;
     #endif
-    
+    //,150,221
     this->game=game;
     
     rects_botones[0][EDITOR_BOTON_FLECHA].x=57;
@@ -105,7 +105,7 @@ Editor::Editor(GameManager * game):
     id_nivel=0;
 
 
-    maxTerrenoBatalla=buscar_dato(RUTA_CONFIG_BASE,"MaxTerreno");
+    maxTerrenoBatalla=std::stoi(buscar_dato(RUTA_CONFIG_BASE,"MaxTerreno"));
     //realizamos las previews de los niveles ya creados
     player_activo=PLAYER_NONE;
     previews_niveles=0;
@@ -127,7 +127,7 @@ void Editor::crearReferencias(){
             previews_niveles[i]=NULL;
          }
         #ifdef DEBUG
-            cout << "liberando Surface:"<<previews_niveles[maxTerrenoBatalla]<<endl;
+            cout << "liberando Surface:"<<previews_niveles[mMaxTerrenoBatalla]<<endl;
         #endif
          if(botonBorrar.getVisible())SDL_DestroyTexture(previews_niveles[maxTerrenoBatalla]);
          previews_niveles[maxTerrenoBatalla]=NULL;
@@ -163,7 +163,7 @@ void Editor::crearReferencias(){
     sprintf(ruta,"data/niveles/batalla/%d.map",NIVEL_BASE);
     previews_niveles[maxTerrenoBatalla]=Mapa::getPreviewTerreno(ruta,NULL,game->getImagen(IMG_TILES),NULL,8,40);
     #ifdef DEBUG
-        cout << "Creada Surface: "<<previews_niveles[maxTerrenoBatalla]<<endl;
+        cout << "Creada Surface: "<<previews_niveles[mMaxTerrenoBatalla]<<endl;
     #endif
 
 }
@@ -288,7 +288,7 @@ void Editor::guardarMapa(){
     sprintf(ruta,"data/niveles/batalla/%d.txt",id_file);
     data->guardar(ruta);
     
-    int puntaje=buscar_dato(RUTA_CONFIG_BASE,"Puntaje");;
+    int puntaje=std::stoi(buscar_dato(RUTA_CONFIG_BASE,"Puntaje"));
     ofstream file(RUTA_CONFIG_BASE);
     file << "MaxTerreno:"<<maxTerrenoBatalla<<endl;
     file << "Puntaje:"<<puntaje<<endl;
@@ -314,7 +314,7 @@ void Editor::borrarMapa(){
     }
     /*Funci�n auxiliar no estatica para poder usar el boton*/
     maxTerrenoBatalla--;
-    int puntaje=buscar_dato(RUTA_CONFIG_BASE,"Puntaje");;
+    int puntaje=std::stoi(buscar_dato(RUTA_CONFIG_BASE,"Puntaje"));
     ofstream file(RUTA_CONFIG_BASE);
     file << "MaxTerreno:"<<maxTerrenoBatalla<<endl;
     file << "Puntaje:"<<puntaje<<endl;
@@ -706,7 +706,7 @@ void Editor::draw(SDL_Renderer * gRenderer){
                 }
 
                 imprimir_desde_grilla(game->getImagen(IMG_BOTON_GUARDAR),estados_botones[0][1],gRenderer,rects_botones[0][1].x,rects_botones[0][1].y,3,1,0);
-                botonBorrar.draw(gRenderer);
+                botonBorrar.draw(gRenderer); // TODO ERRADO ARREGLAR
             break;
         case EDITOR_ABRIR_NIVEL:
 
@@ -743,7 +743,7 @@ void Editor::draw(SDL_Renderer * gRenderer){
                         SDL_QueryTexture(previews_niveles[(pagina-1)*2 + 1],NULL,NULL,&rect_dest.w,&rect_dest.h);
                         SDL_RenderCopy(gRenderer,previews_niveles[(pagina-1)*2 + 1],NULL,&rect_dest);
 
-                        /*if((maxTerrenoBatalla+1)-pagina*2<=0)
+                        /*if((mMaxTerrenoBatalla+1)-pagina*2<=0)
                             imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_5),
                                             rects_botones_elegir_terreno[EDITOR_MAPA_2].x+2,
                                             rects_botones_elegir_terreno[EDITOR_MAPA_2].y+50,

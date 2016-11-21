@@ -8,8 +8,9 @@
 #include <SDL2/SDL.h>
 #include "interfaz.hpp"
 #include "../util/game_manager.hpp"
-#include "../layout/LayoutVertical.hpp"
-#include "../layout/TextLabel.hpp"
+#include "../layout/LayoutManager/LayoutVertical.hpp"
+#include "../layout/Componentes/TextLabelComponent.hpp"
+#include "../layout/LayoutManager/LayoutParent.hpp"
 
 
 const char * rutaFont = "data/fuentes/OpenSans-BoldItalic.ttf";
@@ -32,35 +33,38 @@ public:
         mColorLabelResaltado.g = 255;
         mColorLabelResaltado.b = 0;
         mColorLabelResaltado.a = 255;
-
-        mLayoutParent = new LayoutVertical();
+        
+        mLayoutBackGround = new LayoutVertical();
         mLayout = new LayoutVertical();
+        mLayoutParent = new LayoutParent(mLayoutBackGround);
         mOpcionMenuResaltadaActual = -1;
     }
 
     virtual void start(SDL_Renderer *renderer)  override {
 
-        mLayoutParent->setFillParentHeight(true);
-        mLayoutParent->setFillParentWidth(true);
-        mLayoutParent->setBackgroundTexture(mGameManager->getImagen(IMG_FONDO_MENU));
+        mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_FILL_PARENT_HEIGHT,LAYOUT_PARAM_TRUE);
+        mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_FILL_PARENT_WIDTH,LAYOUT_PARAM_TRUE);
+        mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_WRAP_WIDTH,LAYOUT_PARAM_FALSE);
+        mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_WRAP_HEIGHT,LAYOUT_PARAM_FALSE);
+        mLayoutBackGround->setBackgroundTexture(mGameManager->getImagen(IMG_FONDO_MENU));
 
-        mLayout->setCenterParentVertical(true);
-        mLayout->setCenterParentHorizontal(true);
 
-        TextLabel * nuevoTextLabel;
+        TextLabelComponent * nuevoTextLabel;
         for(int i = 0 ; i < mMenuOpcionesText.size() ; i++){
-            nuevoTextLabel = new TextLabel();
+            nuevoTextLabel = new TextLabelComponent();
             nuevoTextLabel->setFont(rutaFont,sizeFont);
             nuevoTextLabel->setTextColor(mColorLabelNormal);
             nuevoTextLabel->setText(mMenuOpcionesText[i]);
-            nuevoTextLabel->setCenterParentHorizontal(true);
             menuTextOptions.push_back(nuevoTextLabel);
             mLayout->addComponent(nuevoTextLabel);
+            nuevoTextLabel->setLayoutParam(LAYOUT_PARAM_CENTER_PARENT_HORIZONTAL,LAYOUT_PARAM_TRUE);
         }
 
         menuTextOptions[0]->setTextColor(mColorLabelResaltado);
 
-        mLayoutParent->addComponent(mLayout);
+        mLayoutBackGround->addComponent(mLayout);
+        mLayout->setLayoutParam(LAYOUT_PARAM_CENTER_PARENT_HORIZONTAL,LAYOUT_PARAM_TRUE);
+        mLayout->setLayoutParam(LAYOUT_PARAM_CENTER_PARENT_VERTICAL,LAYOUT_PARAM_TRUE);
 
         //packLayout(renderer);
 
@@ -71,13 +75,6 @@ public:
         //mLayout->pack(renderer);
     }
 
-    void packLayout(SDL_Renderer *renderer){
-        SDL_Rect rect = {0,0,mGameManager->getWidth(),mGameManager->getHeight()};
-        mLayoutParent->pack(renderer);
-        mLayoutParent->calculateSize(rect.w,rect.h);
-        mLayoutParent->calcularPosicion(rect);
-
-    }
 
     virtual bool isPaused() override {
         return mIsPaused;
@@ -89,7 +86,7 @@ public:
 
     virtual void resume() override {
         mIsPaused = false;
-        mLayoutParent->setDisabled(true);
+        mLayoutBackGround->setDisabled(true);
 
     }
 
@@ -102,7 +99,7 @@ public:
         if(nuevaOpcion >= 0 && nuevaOpcion < menuTextOptions.size()){
             menuTextOptions[mOpcionMenuResaltadaActual]->setTextColor(mColorLabelNormal); // Cambiamos el color de la opcion
             menuTextOptions[nuevaOpcion]->setTextColor(mColorLabelResaltado); // Cambiamos el color de la opcion
-            mLayoutParent->setDisabled(true); // Para que se dibuje de nuevo
+            mLayoutBackGround->setDisabled(true); // Para que se dibuje de nuevo
             mOpcionMenuResaltadaActual =  nuevaOpcion;
             return true;
         }
@@ -158,14 +155,16 @@ public:
     }
 
     void draw(SDL_Renderer *renderer) override {
-        if(mLayoutParent->isDisabled()){
-            packLayout(renderer);
-            mLayoutParent->draw(renderer);
+        if(mLayoutBackGround->isDisabled()){
+            SDL_Rect rect = {0,0,mGameManager->getWidth(),mGameManager->getHeight()};
+            mLayoutBackGround->pack(renderer);
+            mLayoutBackGround->setRectDibujo(rect);
+            mLayoutBackGround->draw(renderer);
         }
     }
 
     virtual ~MenuListLabel() override {
-        delete mLayoutParent; // Al liberar el layout parent se liberan todos sus mComponentes
+        delete mLayoutBackGround; // Al liberar el layout parent se liberan todos sus mComponentes
 
         for(int i = 0 ; i < menuTextOptions.size();i++){
             delete menuTextOptions[i];
@@ -174,9 +173,9 @@ public:
 
 protected:
 
-    deque<TextLabel  *> menuTextOptions;
+    deque<TextLabelComponent  *> menuTextOptions;
     LayoutVertical * mLayout;
-    LayoutVertical *mLayoutParent;
+    LayoutVertical *mLayoutBackGround;
 
     deque<string> mMenuOpcionesText;
 
@@ -185,6 +184,7 @@ protected:
     int mOpcionMenuResaltadaActual;
 
     bool mIsPaused = false;
+    LayoutParent *mLayoutParent;
 };
 
 #endif //BOMBERMAN_MENULISTLABEL_HPP

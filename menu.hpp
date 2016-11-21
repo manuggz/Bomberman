@@ -10,7 +10,7 @@
 #include "juego_historia.hpp"
 #include "juego_batalla.hpp"
 #include "editor.hpp"
-#include "CBoton.hpp"
+#include "engine/layout/Componentes/BotonComponent.hpp"
 #include "fuente_imagen.hpp"
 #include "engine/util/CFont.hpp"
 
@@ -57,7 +57,7 @@ private:
     DatNivel * dataNivel;
     SDL_Surface * previewTerreno;
 
-    Boton<Menu> *btnSubirTiempo,*btnSubirVictorias,*btnCambiarMapa,*btnJugar;
+    BotonComponent<Menu> *btnSubirTiempo,*btnSubirVictorias,*btnCambiarMapa,*btnJugar;
     Animacion *animaPlayer[5],* animaPresiona[5],* animaActivado[5];
 
     bool player_batalla[_PLAYERS];
@@ -67,8 +67,8 @@ private:
     ControlPlayer control_edit;
     SDL_Rect rectConfiguracion[_TECLAS][3],rectBotonPlayer[_PLAYERS],rect_destino_cara;
     Estados_boton botones_cambiar[_TECLAS];
-    Boton<Menu>  botonGuardar;
-    Boton<Menu> * botonPlayer[_PLAYERS];
+    BotonComponent<Menu>  botonGuardar;
+    BotonComponent<Menu> * botonPlayer[_PLAYERS];
 
     IdPlayer player_configurando_teclas;
     TeclaPlayer id_espera_tecla;
@@ -76,7 +76,7 @@ private:
     int maxTerrenoBatalla;
 
     void cambiarPlayer();
-    void clickControl(Boton<Menu> * control_click);
+    void clickControl(BotonComponent<Menu> * control_click);
 
     ///  Para los efectos de desvanecimientos
     SDL_Texture *fondoVentanaAnterior,*fondoVentanaSiguiente,*fondoNegro;

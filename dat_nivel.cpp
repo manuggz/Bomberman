@@ -13,25 +13,25 @@ void DatNivel::iniciar(){
 }
 
 DatNivel::DatNivel(char ruta[]){
-    id_tile=buscar_dato(ruta,"id_tile");
+    id_tile=std::stoi(buscar_dato(ruta,"id_tile"));
     if(id_tile<0)id_tile=0;
-    items=buscar_dato(ruta,"items");
+    items=std::stoi(buscar_dato(ruta,"items"));
     if(items<0)items=0;
-    bombas_ini=buscar_dato(ruta,"bombas");
+    bombas_ini=std::stoi(buscar_dato(ruta,"bombas"));
     if(bombas_ini<0)bombas_ini=0;
-    vidas_ini=buscar_dato(ruta,"vidas");
+    vidas_ini=std::stoi(buscar_dato(ruta,"vidas"));
     if(vidas_ini<0)vidas_ini=0;
-    alcance_ini=buscar_dato(ruta,"alcance");
+    alcance_ini=std::stoi(buscar_dato(ruta,"alcance"));
     if(alcance_ini<0)alcance_ini=0;
     
     char ruta1[50];
     for(int i=0;i<5;i++){
         sprintf(ruta1,"x_init_player_%d",i+1);
-        x_init[i]=buscar_dato(ruta,ruta1);
+        x_init[i]=std::stoi(buscar_dato(ruta,ruta1));
         if(x_init[i]<0)x_init[i]=0;
 
         sprintf(ruta1,"y_init_player_%d",i+1);
-        y_init[i]=buscar_dato(ruta,ruta1);
+        y_init[i]=std::stoi(buscar_dato(ruta,ruta1));
         if(y_init[i]<0)y_init[i]=0;
     }
         

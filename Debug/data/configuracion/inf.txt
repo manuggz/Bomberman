@@ -1,2 +1,0 @@
-MaxTerreno:6
-Puntaje:0

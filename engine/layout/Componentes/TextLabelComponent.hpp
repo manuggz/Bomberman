@@ -7,13 +7,13 @@
 
 
 #include <iostream>
-#include "LayoutComponent.hpp"
-#include "../util/CFont.hpp"
+#include "../LayoutManager/LayoutComponent.hpp"
+#include "../../util/CFont.hpp"
 
 using  namespace std;
-class TextLabel: public LayoutComponent{
+class TextLabelComponent: public LayoutComponent{
 public:
-    TextLabel(){
+    TextLabelComponent(){
         mTexto = "";
         mFuente = nullptr;
         mTextureTexto = nullptr;
@@ -45,8 +45,6 @@ public:
             mTextureTexto = mFuente->createTextureFromText(gRenderer,mTexto);
             mInternalRect.w = mTextureTexto->getWidth();
             mInternalRect.h = mTextureTexto->getHeight();
-            mDrawRect.w = mInternalRect.w;
-            mDrawRect.h = mInternalRect.h;
         }
     }
 
@@ -76,7 +74,7 @@ public:
         mFuente->setTextColor(mColor);
     }
 
-    ~TextLabel(){
+    ~TextLabelComponent(){
         if(mFuente != nullptr){
             delete mFuente;
         }

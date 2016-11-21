@@ -11,7 +11,7 @@
 #include "dat_nivel.hpp"
 #include "mapa.hpp"
 #include "menu.hpp"
-#include "CBoton.hpp"
+#include "engine/layout/Componentes/BotonComponent.hpp"
 //#define DEBUG
 
 using namespace std;
@@ -64,7 +64,7 @@ class Editor:public Interfaz{
             int maxTerrenoBatalla;
             int pagina;
             
-            Boton<Editor> botonBorrar;
+            BotonComponent<Editor> botonBorrar;
 
             int EjeX,EjeY,yTablero,idFondo;
             

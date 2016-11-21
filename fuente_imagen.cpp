@@ -7,8 +7,8 @@ FuenteImagen::FuenteImagen(SDL_Surface *imagen,char orden[]){
 }
 
 /* 
- * Informa si la columna (parámetro 2) es una linea completa de pixeles
- * transparentes en la superficie ima (parámetro 1)
+ * Informa si la columna (parï¿½metro 2) es una linea completa de pixeles
+ * transparentes en la superficie ima (parï¿½metro 1)
  *
  * Se asume que el color transparente es aquel que coincide con el pixel
  * situado en la posicion (0,0) de la superficie.
@@ -28,11 +28,11 @@ bool FuenteImagen::esColumnaVacia(int columna){
 
 /*
  * Analiza la superficie ima buscando letras para registrarlas en el 
- * vector de rectángulos fuentes (segundo parámetro)
+ * vector de rectï¿½ngulos fuentes (segundo parï¿½metro)
  *
- * Para analizar, el programa recorre la imágen de izquierda a derecha
- * 'leyendo' barras verticales de píxeles. Así determina donde comienza
- * y termina cada letra (debe existir una separación de, al menos, un 
+ * Para analizar, el programa recorre la imï¿½gen de izquierda a derecha
+ * 'leyendo' barras verticales de pï¿½xeles. Asï¿½ determina donde comienza
+ * y termina cada letra (debe existir una separaciï¿½n de, al menos, un 
  * pixel entre cada caracter)
  */
 void FuenteImagen::identificarRects (){
@@ -45,7 +45,7 @@ void FuenteImagen::identificarRects (){
 		if (esColumnaVacia ( i))
 		{
 			
-			/* si estaba leyendo una letra entonces encontró 
+			/* si estaba leyendo una letra entonces encontrï¿½ 
 			 * el ancho de la misma */
 			if (esta_recorriendo_letra)
 			{
@@ -59,8 +59,8 @@ void FuenteImagen::identificarRects (){
 		}
 		else
 		{
-			/* si está recorriendo una letra aumenta el contador
-			 * de ancho, en caso contrario encontró donde comienza
+			/* si estï¿½ recorriendo una letra aumenta el contador
+			 * de ancho, en caso contrario encontrï¿½ donde comienza
 			 * la siguiente letra
 			 */
 			if (esta_recorriendo_letra)
@@ -73,12 +73,12 @@ void FuenteImagen::identificarRects (){
 		}
 	}
 
-	cout<<"Econtré " <<indice_letra <<" letras en el archivo de fuentes\n";
+	std::cout<<"Econtrï¿½ " <<indice_letra <<" letras en el archivo de fuentes\n";
 }
 
 
 /*
- * Relaciona un caracter con un número entero
+ * Relaciona un caracter con un nï¿½mero entero
  */
 int FuenteImagen::obtener_indice (char caracter){
 	int i;
@@ -92,7 +92,7 @@ int FuenteImagen::obtener_indice (char caracter){
 			return i;
 	}
 	
-	cout <<"No se puede encontrar el índice de:"<<caracter<<endl;
+	std::cout <<"No se puede encontrar el ï¿½ndice de:"<<caracter<<std::endl;
 	return -1;
 }
 
@@ -119,7 +119,7 @@ int FuenteImagen::imprimir_letra (SDL_Surface * dst,int x, int y, char letra){
 
 /*
  * imprime una cadena de textos completa sobre la superficie referenciada
- * por el primer parámetro
+ * por el primer parï¿½metro
  */
 void FuenteImagen::draw (SDL_Surface * screen, int x, int y, char * cadena)
 {

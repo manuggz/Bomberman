@@ -42,8 +42,9 @@
 #define X_INIT_PLAYER_5 161
 #define Y_INIT_PLAYER_5 110
 
-#define RUTA_CONFIG_BASE "data/configuracion/inf.txt"
+#define RUTA_CONFIG_BASE "data/configuracion/inf"
 
+#define NAME_MAX_TERRENO_BATALLA "MaxTerreno"
 #define NIVEL_BASE -1
 
 
@@ -122,21 +123,6 @@ enum{
     MENU_CUADRO_MOSTRAR,
     MENU_TEXTO_MOSTRAR,
     
-    MENU_NUEVO_JUEGO=0,    
-    MENU_EDITOR=1,    
-    MENU_CONFIGURACION=2,
-    MENU_CREDITOS=3,
-    MENU_SALIR=4,
-    
-    MENU_BOTON_SUBIR_TIEMPO=_PLAYERS,
-    MENU_BOTON_SUBIR_VICTORIAS,
-    MENU_BOTON_CAMBIAR_MAPA,
-    MENU_BOTON_JUGAR,
-    
-    MENU_MODO_HISTORIA=0,
-    MENU_MODO_MULTIJUGADOR,
-    MENU_MODO_CONEXION,
-    MENU_REGRESAR
 };
 
 typedef enum Estados_boton{

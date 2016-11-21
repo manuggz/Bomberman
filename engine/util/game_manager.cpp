@@ -74,7 +74,7 @@ void GameManager::setModeVideo(bool pantalla_completa){
             "DestructionBombs",                  // window title
             SDL_WINDOWPOS_UNDEFINED,           // initial x position
             SDL_WINDOWPOS_UNDEFINED,           // initial y position
-            W_SCREEN,                               // width, in pixels
+            W_SCREEN,                               // mWidth, in pixels
             H_SCREEN,                               // height, in pixels
             banderas                  // flags - see below
     );
@@ -199,7 +199,7 @@ void GameManager::run(){
         if(interfaces.top() != interfaz_actual){
 
             if(interfaz_actual != nullptr)
-                interfaz_actual->pause();
+            interfaz_actual->pause();
             interfaz_actual = interfaces.top();
             //interfaces.top();
             if(interfaz_actual->isPaused()){
