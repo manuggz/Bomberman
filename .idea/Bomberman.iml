@@ -2,60 +2,23 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/engine/util/CMetaData.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/menu.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/player.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/control_player.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/util.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/engine/util/CMetaData.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/constantes.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/editor.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/animacion.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/globo.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/menu_text.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/fuente_imagen.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/bomba.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/menu.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Control_Animacion.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/animacion.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/time.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/fuente_imagen.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/editor.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/bomba.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/galeria.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/control_player.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Control_Animacion.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego_historia.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego_mostrar_gan.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/MenuModoMultijugador.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego_batalla.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/MenuNuevoJuego.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego_historia.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/MenuPrincipal.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego_mostrar_gan.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego_batalla.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/util.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/constantes.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/explosion.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/item.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/bloque.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/mapa.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/galeria.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/util.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/time.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/util/LTexture.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/util/CMetaData.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/util/game_manager.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/util/LTimer.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/util/CFont.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/util/CFont.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/util/LTexture.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/util/game_manager.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/util/LTimer.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/engine/util/CFont.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CGroup.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CSprite.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CGroup.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CSprite.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/engine/interfaces/MenuListLabel.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/engine/interfaces/interfaz.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/util/CMetaData.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/util/SpriteSheet.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/Componentes/Component.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/Componentes/BotonComponent.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/Componentes/ImageComponent.hpp" isTestSource="false" />
@@ -64,12 +27,59 @@
       <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/LayoutManager/LayoutVertical.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/LayoutManager/LayoutAbsolute.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/LayoutManager/LayoutComponent.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CGroup.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CGroup.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CDrawGroup.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/SpriteContainer.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CUpdateGrow.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CSprite.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/animacion/Control_Animacion.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/animacion/animacion.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/animacion/Control_Animacion.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/animacion/animacion.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CSprite.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/interfaces/InterfazGaleria.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/interfaces/MenuListLabel.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/interfaces/InterfazUI.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/interfaces/InterfazSpriteGroup.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/mapa/include/TMXParser.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/mapa/include/rapidxml/rapidxml_iterators.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/mapa/include/rapidxml/rapidxml_print.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/mapa/include/rapidxml/rapidxml.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/mapa/include/rapidxml/rapidxml_utils.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/mapa/include/TMXParser.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/explosion.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/player.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/editor.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/personajes/player.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/personajes/player.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/personajes/bloque.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/personajes/globo.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/personajes/bloque.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/menu.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/control_player.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/menu_text.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/galeria.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego_historia.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego_mostrar_gan.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/MenuModoMultijugador.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/MenuNuevoJuego.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego_historia.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego_batalla.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/MenuPrincipal.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego_mostrar_gan.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Interfaces/juego_batalla.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/control_player.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/item.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/fuente_imagen.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/menu.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/item.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/bloque.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/mapa.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/util.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/fuente_imagen.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/niveles/mapa.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/niveles/mapa.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/editor.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "../../galeria.hpp"
-#include "../interfaces/interfaz.hpp"
+#include "../interfaces/InterfazUI.hpp"
 #include "../../constantes.hpp"
 #include "../../util.hpp"
 #include <ctime>
@@ -24,7 +24,7 @@ class GameManager{
     void activarJoysticks();
     SDL_Joystick * getJoy(int id);
     int getJoysActivos();
-    void cambiarInterfaz(Interfaz * nueva);
+    void cambiarInterfaz(InterfazUI * nueva);
     bool procesarEventos();
     void run();
     void quit(){salir_juego=true;};
@@ -40,8 +40,8 @@ class GameManager{
     void popInterface();
 
 private:
-    stack<Interfaz *> interfaces; // Pila de interfaces
-    Interfaz * interfaz_actual;
+    stack<InterfazUI *> interfaces; // Pila de interfaces
+    InterfazUI * interfaz_actual;
     SDL_Window *screen;
     SDL_Renderer *gRenderer;
     Galeria * galeria;

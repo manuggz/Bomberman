@@ -2,7 +2,7 @@ bombas:3
 vidas:0
 alcance:3
 id_tile:3
-items:22
+mGrpItems:22
 x_init_player_1:25
 y_init_player_1:50
 x_init_player_2:270

@@ -23,7 +23,7 @@ public:
 
         switch(mOpcionMenuResaltadaActual){
             case MENU_OPCION_HISTORIA:
-                mGameManager->cambiarInterfaz(new JuegoHistoria(mGameManager));
+                //mGameManager->cambiarInterfaz(new JuegoHistoria(mGameManager));
                 break;
             case MENU_OPCION_MULTIPLAYER:
                 cout << "MENU_OPCION_MULTIPLAYER"<< endl;

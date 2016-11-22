@@ -1,18 +1,18 @@
 #include "bloque.hpp"
 
 Bloque::Bloque(Juego * juego,int x,int y,int id):
-    Animacion(NULL,0,0,"0,0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,4,4,5",x,y,id){
+    Animacion(nullptr,"0,0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,4,4,5",x,y,id){
     this->juego=juego;
-    idTileBloque=juego->getIdTile();
-    type=BLOQUE;
+    //idTileBloque=juego->getIdTile();
 }
 
 void Bloque::disable(){
+    /*
     if(juego->isBloqueItem(x,y)){
         juego->addSprite(ITEM,x,y,juego->getTipoNuevoItem(true));
     }
     juego->romperBloque(x,y);
-    kill();
+    kill();*/
 }
 
 void Bloque::draw(SDL_Renderer * gRenderer){

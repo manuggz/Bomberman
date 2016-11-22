@@ -9,6 +9,8 @@ JuegoMostrarGanadas::JuegoMostrarGanadas(GameManager * game,JuegoBatalla * paren
     conteo=0;
     animacion=1;
 
+/*    SpriteSheet  * spriteSheet = new SpriteSheet();
+    spriteSheet->cargarDesdeArchivo("data/imagenes/objetos/cuadro_scoreboard.png",3,1);
 
   	animaCuadro=new Animacion(game->getImagen(IMG_CUADRO_SCOREBOARD),3,1,"0,0,1,1,2,2",80,H_SCREEN);
   	animaTexto=new Animacion(game->getImagen(IMG_TXT_SCOREBOARD),4,1,"0,0,1,1,2,2,3,3",90,38);
@@ -38,10 +40,10 @@ JuegoMostrarGanadas::JuegoMostrarGanadas(GameManager * game,JuegoBatalla * paren
                 animaTrofeos[tmp]->setY(H_SCREEN+35*i-7);
             else
                 animaTrofeos[tmp]->setY(H_SCREEN+35*i+6);
-            animaTrofeos[tmp]->setLoop(-1);            
+            animaTrofeos[tmp]->setRepeticiones(-1);
             tmp++;
         }
-    }
+    }*/
 }
 
 
@@ -123,7 +125,7 @@ void JuegoMostrarGanadas::draw(SDL_Renderer * gr){
 }
 
 void JuegoMostrarGanadas::salir(){
-    game->cambiarInterfaz(juegoEnCurso);
+    //game->cambiarInterfaz(juegoEnCurso);
 }
 JuegoMostrarGanadas::~JuegoMostrarGanadas(){
     #ifdef DEBUG

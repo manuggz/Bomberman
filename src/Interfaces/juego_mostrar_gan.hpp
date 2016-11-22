@@ -5,7 +5,8 @@
 #include "../constantes.hpp"
 #include "juego_batalla.hpp"
 #include "../engine/util/game_manager.hpp"
-#include "../engine/interfaces/interfaz.hpp"
+#include "../engine/interfaces/InterfazUI.hpp"
+#include "../engine/sprites/animacion/animacion.hpp"
 
 //#define DEBUG
 
@@ -14,7 +15,7 @@ class GameManager;
 class JuegoBatalla;
 using namespace std;
 
-class JuegoMostrarGanadas:public Interfaz{
+class JuegoMostrarGanadas:public InterfazUI{
       public:
         JuegoMostrarGanadas(GameManager * game,JuegoBatalla * parent,int batallasGanadas[_PLAYERS]);
         void procesarEvento(SDL_Event * evento);

@@ -10,12 +10,22 @@ void Sprite::add(Group * nu){
 }*/
 
 bool Sprite::isKilled(){
-     return self_kill;
+     return mSelfKill;
 }
 
 void Sprite::kill(){
-    self_kill=true;
+
+    mSelfKill=true;
+
+    for(auto const& grupo: v_grupos) {
+        grupo->erase(this);
+    }
+
 }
 bool Sprite::colision(SDL_Rect & rect_coli){       
     return rects_colisionan(rect,rect_coli);
+}
+
+void Sprite::addGroup(SpriteContainer *pGroup) {
+    v_grupos.push_back(pGroup);
 }

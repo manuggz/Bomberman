@@ -1,9 +1,9 @@
 #ifndef BLOQUE_HPP
 #define BLOQUE_HPP
 #include <SDL2/SDL.h>
-#include "animacion.hpp"
-#include "constantes.hpp"
-#include "Interfaces/juego.hpp"
+#include "../engine/sprites/animacion/animacion.hpp"
+#include "../constantes.hpp"
+#include "../Interfaces/juego.hpp"
 
 class Juego;
 

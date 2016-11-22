@@ -28,7 +28,7 @@ JuegoBatalla::JuegoBatalla (GameManager * game,int idTerrenoBatalla,bool playerE
                                       data->getBombas(),\
                                       data->getAlcanceBombas());
             refeSprites[PLAYER][i]=player_;
-            mSprites->add(player_);
+            mGrpSprites->add(player_);
         }
     }
 
@@ -67,7 +67,7 @@ void JuegoBatalla::setMapaPlay(int idTerreno,bool comprobar_players){
         for(int i=0;i<_PLAYERS;i++){
             if(refeSprites[PLAYER][i]){//si fue elegido para que batalle
                 if(!isActivo(PLAYER,i)){//si no esta en pantalla
-                    mSprites->add(refeSprites[PLAYER][i]);
+                    mGrpSprites->add(refeSprites[PLAYER][i]);
                     spriteActivos[PLAYER]++;
                 }/*else{//si sobrevivio a la batalla
                     static_cast<Player *>(refeSprites[PLAYER][i])->posicionInicial();
@@ -132,7 +132,7 @@ void JuegoBatalla::estadoPlay(){
     const Uint8 *teclas= SDL_GetKeyboardState(NULL);//se obtiene el estado actual del teclado
 
     if(!pausado){
-            mSprites->update(teclas);
+            mGrpSprites->update(teclas);
             mGameTimer->update();
             /*SI SE ACABO EL TIEMPO*
             if(!muertosPorTiempo&&mGameTimer->getMiliSegundos()>=min){

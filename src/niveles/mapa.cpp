@@ -1,47 +1,74 @@
 #include "mapa.hpp"
+#include "../engine/mapa/include/TMXParser.h"
 
 
-
-Mapa::Mapa(Interfaz * _parent,int coorXVis,int coorYVis,LTexture * grillaTiles){
-    #ifdef DEBUG
-        cout << "Constructor de Mapa:"<<this<<endl;
-    #endif
-    this->parent=parent;
-    setEjeVisualizacion(coorXVis,coorYVis);
-    imgTiles = nullptr;
-    setImgTiles(grillaTiles);
-    datMapa=NULL;
+Mapa::Mapa(){
+    //cout << "Constructor de Mapa:"<<this<<endl;
+    //this->parent = parent;
 //    mapaCargado=false;
-    tileXPuerta=tileYPuerta=-1;
+    //mSprtSTiles = spriteSheet;
+    //setEjeVisualizacion(coorXVis,coorYVis);
+    //setImgTiles(grillaTiles);
+
+    //cargar(ruta_mapa_tmx);
 }
 
-bool Mapa::cargarDeArchivoBin(std::string rutaMapaBin,std::string rutaParamText){
-    tileXPuerta=tileYPuerta=-1; 
-    if(!cargarMapaDeArchivoBin(rutaMapaBin,tilesMap))
+bool Mapa::cargar(SDL_Renderer * gRenderer,std::string ruta_mapa_tmx){
+
+    // Cargamos/ Parseamos el Mapa
+    mTmxParser.load(ruta_mapa_tmx.c_str());
+    /*mDatMapa=new MetaData(ruta,":");
+    if(!mDatMapa) return false;
+
+    if(!cargarMapaDeArchivoBin(mDatMapa->getMetaData(MAPA_KEY_RUTA_DAT), tilesMap))
         return false;
 
-    if(datMapa)delete datMapa;
-    datMapa=new MetaData(rutaParamText);
-    if(!datMapa)return false;
-    
-    bloquesMadera=0;
+    mFilaTiles = std::stoi(mDatMapa->getMetaData(MAPA_KEY_FILA_TILESET_USAR));
+    /*bloquesMadera=0;
     for(int i=0;i<MAXMAP;i++)
         if(tilesMap[i]==BLOQUE_MADERA)
-            bloquesMadera++;
-    char rutaT[50];
-    sprintf(rutaT,"data/imagenes/objetos/tile_%d.txt",datMapa->getIdTile()+1);
-    leerInfTile(rutaT);
+            bloquesMadera++;*/
 
+/*    char rutaT[50];
+    sprintf(rutaT,"data/imagenes/objetos/tile_%d.txt",std::stoi(mDatMapa->getMetaData(MAPA_KEY_ID_TILE))+1);
+    leerInfTile(rutaT);
+*/
+    /*idFondo  = std::stoi(mDatMapa->getMetaData(MAPA_KEY_ID_FONDO));
+    yTablero = std::stoi(mDatMapa->getMetaData(MAPA_KEY_Y_TABLERO));*/
+
+    if(mSprtSTiles != nullptr) {
+        mSprtSTiles = new SpriteSheet();
+        mSprtSTiles->cargarDesdeArchivo(gRenderer,mTmxParser.tilesetList[0].imgSource.source,
+                                        mTmxParser.tilesetList[0].tileCount/mTmxParser.tilesetList[0].columns,
+                                        mTmxParser.tilesetList[0].columns
+        );
+    }
+
+    /**
+     * Creamos el mapa con los indices
+     */
+    auto layer = mTmxParser.tileLayer.begin(); // Obtenemos la primera layer del mapa (solo trabajamos con ella)
+    // Obtenemos el tamaño del mapa
+    int size_mapa = mTmxParser.tileLayer[layer->first].width*mTmxParser.tileLayer[layer->first].height;
+    // Creamos el array a contener el mapa para unr apido acceso
+    mLayerMapa = new int[size_mapa] {0};
+
+    // Parseamos el contenido del mapa del archivo
+    // Debe estar encodeado con csv sin compresion
+    int  i = 0;
+    mLayerMapa[i] = std::stoi(strtok((char *) mTmxParser.tileLayer[layer->first].data.contents.c_str(), ","));
+    while(++i != size_mapa)
+        mLayerMapa[i] = std::stoi(strtok(nullptr,","));
     return true;
 }
 
-void Mapa::leerInfTile(char ruta[]){
+/*void Mapa::leerInfTile(char ruta[]){
     char key[50],valor[50];
-    ifstream ftile(ruta);
+    std::ifstream ftile(ruta);
     while(!ftile.eof()){
-        ftile >>key;
+        ftile >> key;
         if(!strcmp(key,"IMG_FONDO")){
-            ftile>>valor;
+            ftile >> valor;
             if(!strcmp(valor,"FONDO_1"))
                 idFondo=IMG_FONDO_PARTI;
             else if(!strcmp(valor,"FONDO_2"))
@@ -59,12 +86,12 @@ void Mapa::leerInfTile(char ruta[]){
     ftile.close();
     
 }
+*/
+/*bool Mapa::cargarMapaDeArchivoBin(std::string rutaMapaBin,char * buffer){
 
-bool Mapa::cargarMapaDeArchivoBin(char rutaMapaBin[],char * buffer){
-
-    ifstream fileMapa(rutaMapaBin,ios::in|ios::binary);
+    std::ifstream fileMapa(rutaMapaBin,std::ios::in|std::ios::binary);
     if(!fileMapa){
-        cerr << "WARNING-Error leyendo un archivo: -- Ruta: "<<rutaMapaBin<<endl;
+        std::cerr << "WARNING-Error leyendo un archivo: -- Ruta: "<<rutaMapaBin<<std::endl;
         return false;
     }
     fileMapa.read(reinterpret_cast<char *> (buffer),MAXMAP);
@@ -72,34 +99,36 @@ bool Mapa::cargarMapaDeArchivoBin(char rutaMapaBin[],char * buffer){
     
     return true;
 }
+*/
 
-void Mapa::draw(SDL_Renderer * gRenderer,LTexture * tiles,char * mapa,int coorX,int coorY,int idTile)
-{
+void Mapa::draw(SDL_Renderer * gRenderer,int x,int y) {
+
     int indice;
-    SDL_Rect dest={0,0,16,16};
+    int dest_x,dest_y;
 
-    for(int i=0;i<FILAS;i++)
-        for(int j=0;j<COLUMNAS;j++){
+    for(int i=0;i<mTmxParser.mapInfo.height;i++)
+        for(int j=0;j<mTmxParser.mapInfo.width;j++){
             // calculo de la posici�n del tile
-            dest.x = j * SIZE_TILE+coorX;
-            dest.y= i * SIZE_TILE+coorY;
+            dest_x = j * mTmxParser.mapInfo.tileWidth + x;
+            dest_y = i * mTmxParser.mapInfo.tileHeight + y;
 
-            indice=mapa[i*COLUMNAS+j];
-            if(indice==BLOQUE_ITEM)
+            indice=mLayerMapa[i*mTmxParser.mapInfo.tileWidth+j];
+            /*if(indice==BLOQUE_ITEM)
                 indice=BLOQUE_MADERA;
             else if(indice==BLOQUE_ENEMIGO)
-                indice=BLOQUE_PISO;
-            if(dest.x+SIZE_TILE>=0&&dest.y+SIZE_TILE>=0&&dest.x<W_SCREEN&&dest.y<H_SCREEN)
-        	imprimir_desde_grilla (tiles,idTile*4+ indice,gRenderer,dest.x,dest.y,4,4,0);
+                indice=BLOQUE_PISO;*/
+            mSprtSTiles->setCurrentCuadro(indice);
+            mSprtSTiles->draw(gRenderer,dest_x,dest_y);
         }
 }
 
-int Mapa::setItems(){
+/*int Mapa::setItems(){
 
-    int itemsPuestos=0;
-    int random_x=0,random_y=0;
+    /*int itemsPuestos=0;
+    int random_x=0;
+    int random_y=0;
 
-    while(itemsPuestos < datMapa->getNumItems()){
+    while(itemsPuestos < mDatMapa->getNumItems()){
             if(bloquesMadera>0){
                 do{
                     random_x=rand()%COLUMNAS;
@@ -108,7 +137,7 @@ int Mapa::setItems(){
     
                 tilesMap[random_y*COLUMNAS+random_x]=BLOQUE_ITEM;
                 bloquesMadera--;
-                if(tileXPuerta==-1||tileYPuerta==-1){ /*Si aun no se ha establecido la puerta nota:la segunda condicional nunca se evaluara*/
+                if(tileXPuerta==-1||tileYPuerta==-1){ /*Si aun no se ha establecido la puerta nota:la segunda condicional nunca se evaluara*
                     tileXPuerta=random_x;
                     tileYPuerta=random_y;
                 }
@@ -118,11 +147,11 @@ int Mapa::setItems(){
                 break;
             }
     }
-    datMapa->setNumItems(itemsPuestos);
-    return itemsPuestos;
+    mDatMapa->setNumItems(itemsPuestos);
+    return itemsPuestos;*
 
-}
-int Mapa::setEnemigos(){
+}*/
+/*int Mapa::setEnemigos(){
     int indice,colocados=0;
     for(int i=0;i<FILAS;i++)
         for(int j=0;j<COLUMNAS;j++){
@@ -134,7 +163,7 @@ int Mapa::setEnemigos(){
             }
         }
     return colocados;
-}
+}*
 
 bool Mapa::isBloqueRompible(int x,int y){
 
@@ -142,7 +171,7 @@ bool Mapa::isBloqueRompible(int x,int y){
     if(tipoBloque!=-1)
         return tipoBloque==BLOQUE_ITEM||tipoBloque==BLOQUE_MADERA;
     
-    cout << "Warning: Acceso invalido al mapa,X:"<<x <<"Y:"<<y<<endl;
+    std::cout << "Warning: Acceso invalido al mapa,X:"<<x <<"Y:"<<y<<std::endl;
     return false;
 }
 
@@ -161,7 +190,7 @@ bool Mapa::romperBloque(int x,int y){
 }
 
 
-bool Mapa::colision(SDL_Rect * rect, int * num_colisiones,bool solo_bloques_duros)
+int Mapa::colision(SDL_Rect * rect, int * num_colisiones,bool solo_bloques_duros)
 {//solo detecta la colision en las esquinas del rect
 
     int ret=0;
@@ -185,12 +214,13 @@ bool Mapa::colision(SDL_Rect * rect, int * num_colisiones,bool solo_bloques_duro
 
     return ret;
 
-}
+}*/
 Mapa::~Mapa(){
     #ifdef DEBUG
         cout << "Destructor de Mapa:"<<this<<endl;
     #endif
-    delete datMapa;
+    //delete mDatMapa;
+    delete mSprtSTiles;
 }
 
 
@@ -225,6 +255,12 @@ SDL_Texture * Mapa::getPreviewTerreno(char rutaMapa[],MetaData * params,LTexture
     imagen_redimensionada=(SDL_Surface * )zoomSurface(preview, 0.3515, 0.4979, 1);
     SDL_FreeSurface(preview);
     return imagen_redimensionada;*/
+    return nullptr;
+}
+
+const std::string &
+Mapa::getMapProperty(std::string propertyName) {
+    return mTmxParser.mapInfo.property[propertyName];
 }
 /*
 TipoItem Nivel::getTipoNuevoItem(InterfazJuego inter){
@@ -245,7 +281,7 @@ TipoItem Nivel::getTipoNuevoItem(InterfazJuego inter){
             case TIPO_BATALLA:
                 do{
                     indice=tipos[rand() % 5 ];
-                }while(indice==ITEM_PUERTA||indice==ITEM_VIDA||indice==ITEM_ALEATORIO);//items no permitidos en modo batalla
+                }while(indice==ITEM_PUERTA||indice==ITEM_VIDA||indice==ITEM_ALEATORIO);//mGrpItems no permitidos en modo batalla
 
                 break;
             }

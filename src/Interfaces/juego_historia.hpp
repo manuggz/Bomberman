@@ -1,15 +1,15 @@
 #ifndef JUEGO_HISTORIA_HPP
 #define JUEGO_HISTORIA_HPP
-#include "../time.hpp"
-#include "../player.hpp"
-//#include "globo.hpp"
-#include "../engine/util/game_manager.hpp"
-#include "../item.hpp"
-#include "../explosion.hpp"
-#include "../bomba.hpp"
-#include "../mapa.hpp"
-#include "juego.hpp"
-#include "../menu.hpp"
+//#include "../time.hpp"
+//#include "../personajes/player.hpp"
+////#include "globo.hpp"
+//#include "../engine/util/game_manager.hpp"
+//#include "../item.hpp"
+//#include "../explosion.hpp"
+//#include "../personajes/bomba.hpp"
+//#include "../niveles/mapa.hpp"
+//#include "juego.hpp"
+//#include "../menu.hpp"
 //#define DEBUG
 /*
 class Juego;

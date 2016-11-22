@@ -2,7 +2,7 @@ bombas:6
 vidas:5
 alcance:9
 id_tile:1
-items:30
+mGrpItems:30
 x_init_player_1:25
 y_init_player_1:50
 x_init_player_2:270

@@ -1,2 +1,2 @@
 id_tile:0
-items:30
+mGrpItems:30

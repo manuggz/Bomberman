@@ -1,16 +1,16 @@
 #ifndef JUEGO_BATALLA_HPP
 #define JUEGO_BATALLA_HPP
-#include "../time.hpp"
-#include "../player.hpp"
-//#include "globo.hpp"
-#include "../engine/util/game_manager.hpp"
-#include "../item.hpp"
-#include "../explosion.hpp"
-#include "../bomba.hpp"
-#include "../mapa.hpp"
-#include "juego.hpp"
-#include "../menu.hpp"
-#include "juego_mostrar_gan.hpp"
+//#include "../time.hpp"
+//#include "../personajes/player.hpp"
+////#include "globo.hpp"
+//#include "../engine/util/game_manager.hpp"
+//#include "../item.hpp"
+//#include "../explosion.hpp"
+//#include "../personajes/bomba.hpp"
+//#include "../niveles/mapa.hpp"
+//#include "juego.hpp"
+//#include "../menu.hpp"
+//#include "juego_mostrar_gan.hpp"
 //#define DEBUG
 /*
 class Juego;

@@ -177,32 +177,32 @@ src/animacion.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/animacion.cpp.s
 .PHONY : src/animacion.cpp.s
 
-src/bloque.o: src/bloque.cpp.o
+src/mGrpBloques.o: src/mGrpBloques.cpp.o
 
-.PHONY : src/bloque.o
+.PHONY : src/mGrpBloques.o
 
 # target to build an object file
-src/bloque.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/bloque.cpp.o
-.PHONY : src/bloque.cpp.o
+src/mGrpBloques.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/mGrpBloques.cpp.o
+.PHONY : src/mGrpBloques.cpp.o
 
-src/bloque.i: src/bloque.cpp.i
+src/mGrpBloques.i: src/mGrpBloques.cpp.i
 
-.PHONY : src/bloque.i
+.PHONY : src/mGrpBloques.i
 
 # target to preprocess a source file
-src/bloque.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/bloque.cpp.i
-.PHONY : src/bloque.cpp.i
+src/mGrpBloques.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/mGrpBloques.cpp.i
+.PHONY : src/mGrpBloques.cpp.i
 
-src/bloque.s: src/bloque.cpp.s
+src/mGrpBloques.s: src/mGrpBloques.cpp.s
 
-.PHONY : src/bloque.s
+.PHONY : src/mGrpBloques.s
 
 # target to generate assembly for a file
-src/bloque.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/bloque.cpp.s
-.PHONY : src/bloque.cpp.s
+src/mGrpBloques.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/mGrpBloques.cpp.s
+.PHONY : src/mGrpBloques.cpp.s
 
 src/bomba.o: src/bomba.cpp.o
 
@@ -312,59 +312,59 @@ src/editor.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/editor.cpp.s
 .PHONY : src/editor.cpp.s
 
-src/engine/mSprites/CGroup.o: src/engine/mSprites/CGroup.cpp.o
+src/engine/mGrpSprites/CGroup.o: src/engine/mGrpSprites/CGroup.cpp.o
 
-.PHONY : src/engine/mSprites/CGroup.o
-
-# target to build an object file
-src/engine/mSprites/CGroup.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mSprites/CGroup.cpp.o
-.PHONY : src/engine/mSprites/CGroup.cpp.o
-
-src/engine/mSprites/CGroup.i: src/engine/mSprites/CGroup.cpp.i
-
-.PHONY : src/engine/mSprites/CGroup.i
-
-# target to preprocess a source file
-src/engine/mSprites/CGroup.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mSprites/CGroup.cpp.i
-.PHONY : src/engine/mSprites/CGroup.cpp.i
-
-src/engine/mSprites/CGroup.s: src/engine/mSprites/CGroup.cpp.s
-
-.PHONY : src/engine/mSprites/CGroup.s
-
-# target to generate assembly for a file
-src/engine/mSprites/CGroup.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mSprites/CGroup.cpp.s
-.PHONY : src/engine/mSprites/CGroup.cpp.s
-
-src/engine/mSprites/CSprite.o: src/engine/mSprites/CSprite.cpp.o
-
-.PHONY : src/engine/mSprites/CSprite.o
+.PHONY : src/engine/mGrpSprites/CGroup.o
 
 # target to build an object file
-src/engine/mSprites/CSprite.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mSprites/CSprite.cpp.o
-.PHONY : src/engine/mSprites/CSprite.cpp.o
+src/engine/mGrpSprites/CGroup.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mGrpSprites/CGroup.cpp.o
+.PHONY : src/engine/mGrpSprites/CGroup.cpp.o
 
-src/engine/mSprites/CSprite.i: src/engine/mSprites/CSprite.cpp.i
+src/engine/mGrpSprites/CGroup.i: src/engine/mGrpSprites/CGroup.cpp.i
 
-.PHONY : src/engine/mSprites/CSprite.i
+.PHONY : src/engine/mGrpSprites/CGroup.i
 
 # target to preprocess a source file
-src/engine/mSprites/CSprite.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mSprites/CSprite.cpp.i
-.PHONY : src/engine/mSprites/CSprite.cpp.i
+src/engine/mGrpSprites/CGroup.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mGrpSprites/CGroup.cpp.i
+.PHONY : src/engine/mGrpSprites/CGroup.cpp.i
 
-src/engine/mSprites/CSprite.s: src/engine/mSprites/CSprite.cpp.s
+src/engine/mGrpSprites/CGroup.s: src/engine/mGrpSprites/CGroup.cpp.s
 
-.PHONY : src/engine/mSprites/CSprite.s
+.PHONY : src/engine/mGrpSprites/CGroup.s
 
 # target to generate assembly for a file
-src/engine/mSprites/CSprite.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mSprites/CSprite.cpp.s
-.PHONY : src/engine/mSprites/CSprite.cpp.s
+src/engine/mGrpSprites/CGroup.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mGrpSprites/CGroup.cpp.s
+.PHONY : src/engine/mGrpSprites/CGroup.cpp.s
+
+src/engine/mGrpSprites/CSprite.o: src/engine/mGrpSprites/CSprite.cpp.o
+
+.PHONY : src/engine/mGrpSprites/CSprite.o
+
+# target to build an object file
+src/engine/mGrpSprites/CSprite.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mGrpSprites/CSprite.cpp.o
+.PHONY : src/engine/mGrpSprites/CSprite.cpp.o
+
+src/engine/mGrpSprites/CSprite.i: src/engine/mGrpSprites/CSprite.cpp.i
+
+.PHONY : src/engine/mGrpSprites/CSprite.i
+
+# target to preprocess a source file
+src/engine/mGrpSprites/CSprite.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mGrpSprites/CSprite.cpp.i
+.PHONY : src/engine/mGrpSprites/CSprite.cpp.i
+
+src/engine/mGrpSprites/CSprite.s: src/engine/mGrpSprites/CSprite.cpp.s
+
+.PHONY : src/engine/mGrpSprites/CSprite.s
+
+# target to generate assembly for a file
+src/engine/mGrpSprites/CSprite.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mGrpSprites/CSprite.cpp.s
+.PHONY : src/engine/mGrpSprites/CSprite.cpp.s
 
 src/engine/util/CFont.o: src/engine/util/CFont.cpp.o
 
@@ -867,9 +867,9 @@ help:
 	@echo "... src/animacion.o"
 	@echo "... src/animacion.i"
 	@echo "... src/animacion.s"
-	@echo "... src/bloque.o"
-	@echo "... src/bloque.i"
-	@echo "... src/bloque.s"
+	@echo "... src/mGrpBloques.o"
+	@echo "... src/mGrpBloques.i"
+	@echo "... src/mGrpBloques.s"
 	@echo "... src/bomba.o"
 	@echo "... src/bomba.i"
 	@echo "... src/bomba.s"
@@ -882,12 +882,12 @@ help:
 	@echo "... src/editor.o"
 	@echo "... src/editor.i"
 	@echo "... src/editor.s"
-	@echo "... src/engine/mSprites/CGroup.o"
-	@echo "... src/engine/mSprites/CGroup.i"
-	@echo "... src/engine/mSprites/CGroup.s"
-	@echo "... src/engine/mSprites/CSprite.o"
-	@echo "... src/engine/mSprites/CSprite.i"
-	@echo "... src/engine/mSprites/CSprite.s"
+	@echo "... src/engine/mGrpSprites/CGroup.o"
+	@echo "... src/engine/mGrpSprites/CGroup.i"
+	@echo "... src/engine/mGrpSprites/CGroup.s"
+	@echo "... src/engine/mGrpSprites/CSprite.o"
+	@echo "... src/engine/mGrpSprites/CSprite.i"
+	@echo "... src/engine/mGrpSprites/CSprite.s"
 	@echo "... src/engine/util/CFont.o"
 	@echo "... src/engine/util/CFont.i"
 	@echo "... src/engine/util/CFont.s"

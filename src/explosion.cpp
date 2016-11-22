@@ -2,7 +2,7 @@
 
 
 Explosion::Explosion(Juego * juego,int x,int y,int alcance_llamas,int lanzador,int id):
-    Animacion(NULL,0,0,"0,1,2,3,4,4,3,2,1,1,0",x,y,id){
+    Animacion(nullptr,"0,1,2,3,4,4,3,2,1,1,0",x,y,id){
     this->juego=juego;
     
     this->lanzador=lanzador;
@@ -14,58 +14,57 @@ Explosion::Explosion(Juego * juego,int x,int y,int alcance_llamas,int lanzador,i
 
     //reproducimos un sonido
     juego->playSfx(SFX_EXPLOSION);
-    this->type=EXPLOSION;
 }
 
 void Explosion::detectarAlcance(int dir,int aum_x,int aum_y){
-
-    int es_bloque_rompible,colision_con_bomba,colision_con_item;
-    int globo_anyadido;
-    SDL_Rect coli={0,0,16,16};
-    for(int i=1;i<alcance_llamas+1;i++){
-        coli.x=x+aum_x*i;
-        coli.y=y+aum_y*i;
-        alcances[dir]=i;
-        if(coli.x<juego->getEjeXVisual()||\
-           coli.x+coli.w>juego->getEjeXVisual()+juego->getAnchoMapa()||\
-           coli.y<juego->getEjeYVisual()||\
-           coli.y+coli.h>juego->getEjeYVisual()+juego->getAltoMapa()){
-            --alcances[dir];
-            return;
-        }
-        es_bloque_rompible=juego->isBloqueRompible(coli.x,coli.y);
-        colision_con_bomba=juego->colision(BOMBA,coli);
-        colision_con_item=juego->colision(ITEM,coli);
-
-        if(colision_con_bomba!=-1){
-            juego->setRepeticionBomba(colision_con_bomba,0);//se acelera el 'explote'
-            --alcances[dir];
-            return;
-        }
-
-        if(juego->isBloqueDuro(coli.x,coli.y)||es_bloque_rompible||colision_con_item!=-1){
-
-
-            if(es_bloque_rompible&&juego->colision(BLOQUE,coli)==-1){
-                juego->addSprite(BLOQUE,coli.x,coli.y);
-            }else if(colision_con_item!=-1){
-                if(juego->getTipoItem(colision_con_item)!=Item::ITEM_PUERTA){
-                    juego->addSprite(new Animacion(juego->getImagen(IMG_ITEM_FIRE),1,7,"0,0,0,1,1,2,2,2,3,3,4,4,5,5,6,6",coli.x,coli.y));
-                    juego->killSprite(ITEM,colision_con_item);
-                }else{
-                     int x,y;
-                     juego->getPosicion(ITEM,colision_con_item,x,y);
-//                     globo_anyadido=juego->addSprite(GLOBO,new Globox,y);
-//                     if(globo_anyadido!=-1)
-//                        juego->setProteccion(GLOBO,globo_anyadido,true);
-                }
-            }
-
-            --alcances[dir];
-            return;
-        }
-
-    }
+//
+//    int es_bloque_rompible,colision_con_bomba,colision_con_item;
+//    int globo_anyadido;
+//    SDL_Rect coli={0,0,16,16};
+//    for(int i=1;i<alcance_llamas+1;i++){
+//        coli.x=x+aum_x*i;
+//        coli.y=y+aum_y*i;
+//        alcances[dir]=i;
+//        if(coli.x<juego->getEjeXVisual()||\
+//           coli.x+coli.w>juego->getEjeXVisual()+juego->getAnchoMapa()||\
+//           coli.y<juego->getEjeYVisual()||\
+//           coli.y+coli.h>juego->getEjeYVisual()+juego->getAltoMapa()){
+//            --alcances[dir];
+//            return;
+//        }
+//        es_bloque_rompible=juego->isBloqueRompible(coli.x,coli.y);
+//        colision_con_bomba=juego->colision(BOMBA,coli);
+//        colision_con_item=juego->colision(ITEM,coli);
+//
+//        if(colision_con_bomba!=-1){
+//            juego->setRepeticionBomba(colision_con_bomba,0);//se acelera el 'explote'
+//            --alcances[dir];
+//            return;
+//        }
+//
+//        if(juego->isBloqueDuro(coli.x,coli.y)||es_bloque_rompible||colision_con_item!=-1){
+//
+//
+//            if(es_bloque_rompible&&juego->colision(BLOQUE,coli)==-1){
+//                juego->addSprite(BLOQUE,coli.x,coli.y);
+//            }else if(colision_con_item!=-1){
+//                if(juego->getTipoItem(colision_con_item)!=Item::ITEM_PUERTA){
+//                    juego->addSprite(new Animacion(juego->getImagen(IMG_ITEM_FIRE),1,7,"0,0,0,1,1,2,2,2,3,3,4,4,5,5,6,6",coli.x,coli.y));
+//                    juego->killSprite(ITEM,colision_con_item);
+//                }else{
+//                     int x,y;
+//                     juego->getPosicion(ITEM,colision_con_item,x,y);
+////                     globo_anyadido=juego->addSprite(GLOBO,new Globox,y);
+////                     if(globo_anyadido!=-1)
+////                        juego->setProteccion(GLOBO,globo_anyadido,true);
+//                }
+//            }
+//
+//            --alcances[dir];
+//            return;
+//        }
+//
+//    }
 
 }
 void Explosion::dibujarFlama(int dir,int aum_x,int aum_y,int cuadro_normal,int cuadro_final,SDL_Renderer * gRenderer)

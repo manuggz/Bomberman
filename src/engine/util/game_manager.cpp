@@ -135,7 +135,7 @@ int GameManager::getJoysActivos(){
  * Cambia la interfaz presentada al usuario actualmente
  * @param nueva Nueva interfaz a mostrar
  */
-void GameManager::cambiarInterfaz(Interfaz *  nueva){
+void GameManager::cambiarInterfaz(InterfazUI *  nueva){
     cout << "GameManager::cambiarInterfaz"<<endl;
     if(nueva!=interfaz_actual){
         interfaces.push(nueva);

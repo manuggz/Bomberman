@@ -6,7 +6,7 @@
 #define BOMBERMAN_MENULISTLABEL_HPP
 
 #include <SDL2/SDL.h>
-#include "interfaz.hpp"
+#include "InterfazUI.hpp"
 #include "../util/game_manager.hpp"
 #include "../layout/LayoutManager/LayoutVertical.hpp"
 #include "../layout/Componentes/TextLabelComponent.hpp"
@@ -16,7 +16,7 @@
 const char * rutaFont = "data/fuentes/OpenSans-BoldItalic.ttf";
 const Uint8 sizeFont = 20;
 
-class MenuListLabel : public Interfaz{
+class MenuListLabel : public InterfazUI{
 public:
 
 public:
@@ -77,8 +77,8 @@ public:
 
 
     virtual void resume() override {
-        Interfaz::resume();
-        //mLayoutBackGround->setDisabled(true);
+        InterfazUI::resume();
+        mLayoutBackGround->setDisabled(true);
     }
 
     virtual /**

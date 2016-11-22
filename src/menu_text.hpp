@@ -1,12 +1,12 @@
 #ifndef MENU_TEXT_HPP
 #define MENU_TEXT_HPP
 #include <SDL2/SDL.h>
-#include "engine/interfaces/interfaz.hpp"
+#include "engine/interfaces/InterfazUI.hpp"
 #include "engine/util/game_manager.hpp"
 #include "editor.hpp"
 #include "Interfaces/juego_historia.hpp"
 
-class MenuText:public Interfaz{
+class MenuText:public InterfazUI{
     public:
         MenuText(GameManager * game,char rutaParse[]);
         void setSelected(int nuevo);

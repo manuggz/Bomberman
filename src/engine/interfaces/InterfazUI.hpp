@@ -2,9 +2,9 @@
 #define INTERFAZ_HPP
 
 
-class Interfaz{
+class InterfazUI{
  public:
-    Interfaz(int x=0,int y=0){
+    InterfazUI(int x=0,int y=0){
         mX=x;
         mY=y;
         mIsPaused = false;
@@ -20,7 +20,7 @@ class Interfaz{
     virtual void pause(){mIsPaused = true;};
     virtual void resume() {mIsPaused = false;};
     virtual void procesarEvento(SDL_Event * event) = 0;
-    virtual void update() = 0;
+    virtual void update(){};
     virtual void draw(SDL_Renderer * gRenderer) = 0;
 
 /*    virtual void setX(int nuevaX){
@@ -38,9 +38,11 @@ class Interfaz{
     /*virtual void killSprite(int,int){return;};
     virtual void erase(int type,int id_sprite){return;};
     virtual int addSprite(int ,int ,int ,int =-1,int =-1){return -1;};*/
-    virtual ~Interfaz(){};
+    virtual ~InterfazUI(){};
 
 protected:
+
+    // Coordenadas donde se dibujara la Interfaz
     int mX,mY;
     bool mIsPaused;
     bool mIsStarted;

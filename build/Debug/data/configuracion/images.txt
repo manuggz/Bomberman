@@ -67,7 +67,7 @@ data/imagenes/objetos/kills.png                      0
 data/imagenes/objetos/caras_bomberman.bmp            1
 data/imagenes/objetos/caras_grande.png               0
 data/imagenes/objetos/bomba.bmp                      1
-data/imagenes/objetos/items.bmp                      1
+data/imagenes/objetos/mGrpItems.bmp                      1
 data/imagenes/objetos/explosion.bmp                  1
 data/imagenes/objetos/cuadro_1.png                   0
 data/imagenes/objetos/cuadro_2.png                   0
