@@ -20,17 +20,17 @@
       <sourceFolder url="file://$MODULE_DIR$/src/engine/util/CMetaData.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/util/SpriteSheet.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/Componentes/Component.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/Componentes/BotonComponent.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/Componentes/ImageComponent.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/Componentes/BotonComponent.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/Componentes/TextLabelComponent.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/LayoutManager/LayoutParent.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/LayoutManager/LayoutVertical.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/LayoutManager/LayoutAbsolute.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/layout/LayoutManager/LayoutComponent.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CGroup.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/SpriteContainer.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CGroup.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CDrawGroup.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/SpriteContainer.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CGroup.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CUpdateGrow.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/CSprite.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/sprites/animacion/Control_Animacion.hpp" isTestSource="false" />
@@ -48,6 +48,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/engine/mapa/include/rapidxml/rapidxml.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/mapa/include/rapidxml/rapidxml_utils.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/engine/mapa/include/TMXParser.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/engine/mapa/CMapa.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/explosion.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/editor.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/personajes/player.hpp" isTestSource="false" />
@@ -77,8 +78,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/menu.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/item.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/fuente_imagen.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/niveles/mapa.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/niveles/mapa.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/niveles/NivelMapa.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/niveles/NivelMapa.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/editor.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>

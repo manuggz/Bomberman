@@ -4,7 +4,7 @@
 using namespace std;
 #include <SDL2/SDL.h>
 #include "../time.hpp"
-#include "../niveles/mapa.hpp"
+#include "../niveles/NivelMapa.hpp"
 #include "../engine/util/game_manager.hpp"
 #include "../constantes.hpp"
 #include "../engine/interfaces/InterfazUI.hpp"
@@ -30,11 +30,11 @@ class Juego:public InterfazUI , public InterfazSpriteGroup,public InterfazGaleri
         void update ();
         void draw(SDL_Renderer * );
 
-        virtual void killedSprite(Sprite *sprite) override;
+        void killedSprite(Sprite *sprite) override;
 
     //void estadoDisplayMensage();
         //virtual void estadoPlay()=0;
-        virtual void drawBarra(SDL_Renderer *)=0;
+        void drawBarra(SDL_Renderer *);
        // void displayMensage(const char * mensage);
         //virtual int getEjeXVisual(){return mMapa->getEjeXVisualizacion();};
         //virtual int getEjeYVisual(){return mMapa->getEjeYVisualizacion();};
@@ -156,7 +156,7 @@ protected:
     // Solo los players activos
     //Group *mPlayers;
 
-    Mapa * mMapa       = nullptr;
+    NivelMapa * mMapa       = nullptr;
     //Sprite ** refeSprites[_REFERENCIADOS];
     //bool pausado;/*True si el juego esta pausado/si se esta mostrando la imagen de pausa (carita mas pausa)*/
     //bool hold_start;/*_True si un player mantiene start presionado*/

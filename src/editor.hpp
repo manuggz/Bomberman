@@ -9,7 +9,7 @@
 #include "constantes.hpp"
 #include "util.hpp"
 #include "engine/util/CMetaData.hpp"
-#include "niveles/mapa.hpp"
+#include "niveles/NivelMapa.hpp"
 #include "menu.hpp"
 #include "engine/layout/Componentes/BotonComponent.hpp"
 //#define DEBUG

@@ -1,66 +1,6 @@
-#include "mapa.hpp"
-#include "../engine/mapa/include/TMXParser.h"
+#include "NivelMapa.hpp"
 
 
-Mapa::Mapa(){
-    //cout << "Constructor de Mapa:"<<this<<endl;
-    //this->parent = parent;
-//    mapaCargado=false;
-    //mSprtSTiles = spriteSheet;
-    //setEjeVisualizacion(coorXVis,coorYVis);
-    //setImgTiles(grillaTiles);
-
-    //cargar(ruta_mapa_tmx);
-}
-
-bool Mapa::cargar(SDL_Renderer * gRenderer,std::string ruta_mapa_tmx){
-
-    // Cargamos/ Parseamos el Mapa
-    mTmxParser.load(ruta_mapa_tmx.c_str());
-    /*mDatMapa=new MetaData(ruta,":");
-    if(!mDatMapa) return false;
-
-    if(!cargarMapaDeArchivoBin(mDatMapa->getMetaData(MAPA_KEY_RUTA_DAT), tilesMap))
-        return false;
-
-    mFilaTiles = std::stoi(mDatMapa->getMetaData(MAPA_KEY_FILA_TILESET_USAR));
-    /*bloquesMadera=0;
-    for(int i=0;i<MAXMAP;i++)
-        if(tilesMap[i]==BLOQUE_MADERA)
-            bloquesMadera++;*/
-
-/*    char rutaT[50];
-    sprintf(rutaT,"data/imagenes/objetos/tile_%d.txt",std::stoi(mDatMapa->getMetaData(MAPA_KEY_ID_TILE))+1);
-    leerInfTile(rutaT);
-*/
-    /*idFondo  = std::stoi(mDatMapa->getMetaData(MAPA_KEY_ID_FONDO));
-    yTablero = std::stoi(mDatMapa->getMetaData(MAPA_KEY_Y_TABLERO));*/
-
-    if(mSprtSTiles != nullptr) {
-        mSprtSTiles = new SpriteSheet();
-        mSprtSTiles->cargarDesdeArchivo(gRenderer,mTmxParser.tilesetList[0].imgSource.source,
-                                        mTmxParser.tilesetList[0].tileCount/mTmxParser.tilesetList[0].columns,
-                                        mTmxParser.tilesetList[0].columns
-        );
-    }
-
-    /**
-     * Creamos el mapa con los indices
-     */
-    auto layer = mTmxParser.tileLayer.begin(); // Obtenemos la primera layer del mapa (solo trabajamos con ella)
-    // Obtenemos el tamaño del mapa
-    int size_mapa = mTmxParser.tileLayer[layer->first].width*mTmxParser.tileLayer[layer->first].height;
-    // Creamos el array a contener el mapa para unr apido acceso
-    mLayerMapa = new int[size_mapa] {0};
-
-    // Parseamos el contenido del mapa del archivo
-    // Debe estar encodeado con csv sin compresion
-    int  i = 0;
-    mLayerMapa[i] = std::stoi(strtok((char *) mTmxParser.tileLayer[layer->first].data.contents.c_str(), ","));
-    while(++i != size_mapa)
-        mLayerMapa[i] = std::stoi(strtok(nullptr,","));
-    return true;
-}
 
 /*void Mapa::leerInfTile(char ruta[]){
     char key[50],valor[50];
@@ -100,27 +40,6 @@ bool Mapa::cargar(SDL_Renderer * gRenderer,std::string ruta_mapa_tmx){
     return true;
 }
 */
-
-void Mapa::draw(SDL_Renderer * gRenderer,int x,int y) {
-
-    int indice;
-    int dest_x,dest_y;
-
-    for(int i=0;i<mTmxParser.mapInfo.height;i++)
-        for(int j=0;j<mTmxParser.mapInfo.width;j++){
-            // calculo de la posici�n del tile
-            dest_x = j * mTmxParser.mapInfo.tileWidth + x;
-            dest_y = i * mTmxParser.mapInfo.tileHeight + y;
-
-            indice=mLayerMapa[i*mTmxParser.mapInfo.tileWidth+j];
-            /*if(indice==BLOQUE_ITEM)
-                indice=BLOQUE_MADERA;
-            else if(indice==BLOQUE_ENEMIGO)
-                indice=BLOQUE_PISO;*/
-            mSprtSTiles->setCurrentCuadro(indice);
-            mSprtSTiles->draw(gRenderer,dest_x,dest_y);
-        }
-}
 
 /*int Mapa::setItems(){
 
@@ -215,16 +134,9 @@ int Mapa::colision(SDL_Rect * rect, int * num_colisiones,bool solo_bloques_duros
     return ret;
 
 }*/
-Mapa::~Mapa(){
-    #ifdef DEBUG
-        cout << "Destructor de Mapa:"<<this<<endl;
-    #endif
-    //delete mDatMapa;
-    delete mSprtSTiles;
-}
 
 
-SDL_Texture * Mapa::getPreviewTerreno(char rutaMapa[],MetaData * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y){
+SDL_Texture * NivelMapa::getPreviewTerreno(char rutaMapa[],MetaData * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y){
 /*
     SDL_Surface * preview=SDL_GetVideoSurface(),*imagen_redimensionada;
     char ruta[50],mapa[MAXMAP + 1],variable[50];
@@ -258,10 +170,12 @@ SDL_Texture * Mapa::getPreviewTerreno(char rutaMapa[],MetaData * params,LTexture
     return nullptr;
 }
 
-const std::string &
-Mapa::getMapProperty(std::string propertyName) {
-    return mTmxParser.mapInfo.property[propertyName];
+bool NivelMapa::cargar(SDL_Renderer *gRenderer, std::string ruta) {
+
+    return Mapa::cargar(gRenderer, ruta);
+
 }
+
 /*
 TipoItem Nivel::getTipoNuevoItem(InterfazJuego inter){
 

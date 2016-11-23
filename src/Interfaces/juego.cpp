@@ -20,7 +20,7 @@ void Juego::prepare() {
     InterfazUI::prepare();
 
     //mMapa           = new Mapa(this,getX(),getY());
-    mMapa           = new Mapa();
+    mMapa           = new NivelMapa();
     mGameTimer      = new LTimer();
 
     //crearReferencias();
@@ -71,12 +71,12 @@ void Juego::establecerValoresPlayersDeMapa() {
     for(int i = 0; i < _PLAYERS;i++) {
         if(mIsPlayerActivado[PLAYER_1] && mPlayerSprite[i]) {
             mPlayerSprite[i]->move(
-                    std::stoi(mMapa->getMapProperty(MAPA_KEY_X_INIT_PLAYER + std::to_string(i))),
-                    std::stoi(mMapa->getMapProperty(MAPA_KEY_Y_INIT_PLAYER + std::to_string(i)))
+                    std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_X_INIT_PLAYER + std::to_string(i))),
+                    std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_Y_INIT_PLAYER + std::to_string(i)))
             );
-            mPlayerSprite[i]->setVidas(std::stoi(mMapa->getMapProperty(MAPA_KEY_X_N_VIDAS_PLAYER)));
-            mPlayerSprite[i]->setNBombas(std::stoi(mMapa->getMapProperty(MAPA_KEY_N_BOMBAS)));
-            mPlayerSprite[i]->setAlcanceBombas(std::stoi(mMapa->getMapProperty(MAPA_KEY_ALCANCE_BOMBAS)));
+            mPlayerSprite[i]->setVidas(std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_X_N_VIDAS_PLAYER)));
+            mPlayerSprite[i]->setNBombas(std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_N_BOMBAS)));
+            mPlayerSprite[i]->setAlcanceBombas(std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_ALCANCE_BOMBAS)));
         }
     }
 }
@@ -507,6 +507,86 @@ if(animandoEntradaMapaVertical){
 }*/
 
 }
+
+void Juego::drawBarra(SDL_Renderer * gRenderer){
+    char tmp[50];
+/*
+    mGameManager->getImagen(IMG_TABLERO)->render(gRenderer,0,mapa->getYPanel());
+
+    //PLAYER_1
+    imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_1]&&isActivo(PLAYER,PLAYER_1)) + PLAYER_1*2 ,gRenderer,1,24,1,10,0);
+
+    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,15,21);
+
+    /*DIBUJAMOS LAS VIDAS RESTANTES*
+    if(refeSprites[PLAYER][PLAYER_1]&&isActivo(PLAYER,PLAYER_1)){
+        sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_1])->getVidas());
+    	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),15,24,tmp,STR_ESTENDIDA);
+    }
+
+    //PLAYER_2
+    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_2]&&isActivo(PLAYER,PLAYER_2)) + PLAYER_2*2 ,gRenderer,32,24,1,10,0);
+
+    game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,48,21);
+
+    /*DIBUJAMOS LAS VIDAS RESTANTES*
+    if(refeSprites[PLAYER][PLAYER_2]&&isActivo(PLAYER,PLAYER_2)){
+        sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_2])->getVidas());
+    	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),48,24,tmp,STR_ESTENDIDA);
+    }
+
+    //PLAYER_3
+    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_3]&&isActivo(PLAYER,PLAYER_3)) + PLAYER_3*2 ,gRenderer,65,24,1,10,0);
+
+    game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,80,21);
+
+    /*DIBUJAMOS LAS VIDAS RESTANTES*
+    if(refeSprites[PLAYER][PLAYER_3]&&isActivo(PLAYER,PLAYER_3)){
+        sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_3])->getVidas());
+    	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),80,24,tmp,STR_ESTENDIDA);
+    }
+
+    //PLAYER_4
+    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_4]&&isActivo(PLAYER,PLAYER_4)) + PLAYER_4*2 ,gRenderer,253,24,1,10,0);
+
+    game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,270,21);
+
+    /*DIBUJAMOS LAS VIDAS RESTANTES*
+    if(refeSprites[PLAYER][PLAYER_4]&&isActivo(PLAYER,PLAYER_4)){
+        sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_4])->getVidas());
+    	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),271,23,tmp,STR_ESTENDIDA);
+    }
+
+    //PLAYER_5
+    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_5]&&isActivo(PLAYER,PLAYER_5)) + PLAYER_5*2 ,gRenderer,288,24,1,10,0);
+
+    game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,304,21);
+
+    /*DIBUJAMOS LAS VIDAS RESTANTES*
+    if(refeSprites[PLAYER][PLAYER_5]&&isActivo(PLAYER,PLAYER_5)){
+        sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_5])->getVidas());
+    	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_3),305,23,tmp,STR_ESTENDIDA);
+    }
+
+    if(id_lider_ganadas!=PLAYER_NONE)
+        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),id_lider_ganadas,gRenderer,154,-10,1,5,0);
+
+    game->getImagen(IMG_CUADRO_GRANDE)->render(gRenderer,137,21);
+
+    if(mGameTimer){
+        static char min_[3],seg[3],tiempo[6];
+
+        sprintf(min_,"%2d",(min-mGameTimer->getMiliSegundos())/60);
+        if(min_[0]==' ')min_[0]='0';
+        sprintf(seg,"%2d",min-mGameTimer->getMiliSegundos()-(min-mGameTimer->getMiliSegundos())/60*60);
+        if(seg[0]==' ')seg[0]='0';
+        sprintf(tiempo,"%s:%s",min_,seg);
+
+    	/*imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),\
+    						142,24,tiempo,STR_MAX_ESTENDIDA);
+    }*/
+}
+
 void Juego::draw(SDL_Renderer * gRenderer){
     //mGameManager->getImagen((CodeImagen)mMapa->getIdFondo())->render(gRenderer);
     drawBarra(gRenderer);//imprimimos la barra mensage

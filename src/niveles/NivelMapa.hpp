@@ -8,22 +8,23 @@
 #include "../engine/interfaces/InterfazUI.hpp"
 #include "../engine/util/SpriteSheet.hpp"
 #include "../engine/mapa/include/TMXParser.h"
+#include "../engine/mapa/CMapa.hpp"
 
-#define MAPA_KEY_X_INIT_PLAYER "x_init_player_"
-#define MAPA_KEY_Y_INIT_PLAYER "y_init_player_"
-#define MAPA_KEY_X_N_VIDAS_PLAYER "n_vidas"
-#define MAPA_KEY_N_BOMBAS "n_bombas"
-#define MAPA_KEY_ALCANCE_BOMBAS "alcance_bombas"
-#define MAPA_KEY_ITEMS "n_items"
-#define MAPA_KEY_RUTA_DAT "data_map"
-#define MAPA_KEY_RUTA_TILE_SET "ruta_tile_set"
-#define MAPA_KEY_NFILAS_TILESET "tile_nfilas"
-#define MAPA_KEY_NCOLUMNAS_TILESET "tile_ncolumnas"
-#define MAPA_KEY_FILA_TILESET_USAR "tile_fila"
-#define MAPA_KEY_EJE_X_MAPA "eje_x"
-#define MAPA_KEY_EJE_Y_MAPA "eje_y"
-#define MAPA_KEY_Y_TABLERO "y_tablero"
-#define MAPA_KEY_ID_FONDO "id_fondo"
+#define MAPA_PROPERTY_X_INIT_PLAYER "x_init_player_"
+#define MAPA_PROPERTY_Y_INIT_PLAYER "y_init_player_"
+#define MAPA_PROPERTY_X_N_VIDAS_PLAYER "n_vidas"
+#define MAPA_PROPERTY_N_BOMBAS "n_bombas"
+#define MAPA_PROPERTY_ALCANCE_BOMBAS "alcance_bombas"
+#define MAPA_PROPERTY_ITEMS "n_items"
+#define MAPA_PROPERTY_RUTA_DAT "data_map"
+#define MAPA_PROPERTY_RUTA_TILE_SET "ruta_tile_set"
+#define MAPA_PROPERTY_NFILAS_TILESET "tile_nfilas"
+#define MAPA_PROPERTY_NCOLUMNAS_TILESET "tile_ncolumnas"
+#define MAPA_PROPERTY_FILA_TILESET_USAR "tile_fila"
+#define MAPA_PROPERTY_EJE_X_MAPA "eje_x"
+#define MAPA_PROPERTY_EJE_Y_MAPA "eje_y"
+#define MAPA_PROPERTY_Y_TABLERO "y_tablero"
+#define MAPA_PROPERTY_ID_FONDO "id_fondo"
 
 /*
 *
@@ -34,7 +35,7 @@
 *
 */
 
-class Mapa{
+class NivelMapa: public Mapa{
 public:
     /*enum{
         SIZE_TILE=16,
@@ -53,14 +54,14 @@ public:
         _BLOQUES//Cantidad de tipos de bloques reconocidos
     };
 */
-
-    Mapa();
+    virtual bool cargar(SDL_Renderer *gRenderer, std::string ruta) override;
+    //NivelMapa();
 
     //Carga de un archivo binario la informaci�n del Mapa/
     //El archivo Bin est� creado usando "mapwin"
     //Regresan True si se cargar�n los mapas correctamente
-    bool cargar(SDL_Renderer * gRenderer,std::string ruta);
-    void draw(SDL_Renderer * gRenderer,int x,int y);
+    //bool cargar(SDL_Renderer * gRenderer,std::string ruta);
+    //void draw(SDL_Renderer * gRenderer,int x,int y);
     //static bool cargarMapaDeArchivoBin(std::string rutaMapaBin,char * buffer);
 
     //Retorna las coordenadas X y Y de la puerta en la pantalla
@@ -68,8 +69,8 @@ public:
     //int getYPuerta(){return tileYPuerta*SIZE_TILE + coorYVisualizacion; };
 
     //Retorna los ejes actuales donde se visualiza la pantalla
-    int getEjeXVisualizacion(){return coorXVisualizacion;};
-    int getEjeYVisualizacion(){return coorYVisualizacion; };
+    //int getEjeXVisualizacion(){return coorXVisualizacion;};
+    //int getEjeYVisualizacion(){return coorYVisualizacion; };
 
     //void moveEjeXVisualizacion(int aum){coorXVisualizacion+=aum;};
     //void moveEjeYVisualizacion(int aum){coorYVisualizacion+=aum;};
@@ -132,7 +133,7 @@ public:
     //regresa True si el rectangulo colisiona con un mGrpBloques colisionable del nivel
     //int colision(SDL_Rect * rect, int * num_colisiones,bool solo_bloques_duros=false);
 
-    ~Mapa();
+    //~NivelMapa();
 
 
 //        int getNivelActual(){return n_actual;};
@@ -145,10 +146,10 @@ public:
     static SDL_Texture * getPreviewTerreno(char rutaMapa[],MetaData * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y);
 //        static SDL_Surface * getPreviewTerreno(int idTerreno);
     //void leerInfTile(char ruta[]);
-    const std::string &getMapProperty(std::basic_string<char, std::char_traits<char>, std::allocator<char>> propertyName);
+    //const std::string &getMapProperty(std::basic_string<char, std::char_traits<char>, std::allocator<char>> propertyName);
 
 private:
-    TMX::Parser mTmxParser;
+    //TMX::Parser mTmxParser;
     //MetaData    * mDatMapa  = nullptr; /*Para buscar los datos del mapa*/
     //InterfazUI  * parent   = nullptr; /*Referencia a la interfaz que lo llama*/
     //LTexture    * imgTiles = nullptr;
@@ -160,8 +161,8 @@ private:
    //int tileXPuerta = -1;
     //int tileYPuerta = -1; /*Coordenadas de la puerta en pantalla*/
 
-    int coorXVisualizacion = 0;
-    int coorYVisualizacion = 0;
+    //int coorXVisualizacion = 0;
+    //int coorYVisualizacion = 0;
     //int coorXPredVisualizacion = 0;/*Ejes de visualizaci�n del mapa*/
     //int coorYPredVisualizacion = 0;
 
@@ -171,8 +172,10 @@ private:
 //        bool mapaCargado;//True si se encuentra un mapa cargado en el momento de consulta
     //int bloquesMadera = 0;//Guarda la cantidad actual de bloques de madera
 
-    SpriteSheet *mSprtSTiles = nullptr;
+    //SpriteSheet *mSprtSTiles = nullptr;
     //int mFilaTiles;
-    int *mLayerMapa;
+    //int *mLayerMapa;
+
+
 };
 #endif

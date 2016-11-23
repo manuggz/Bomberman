@@ -16,10 +16,11 @@
 #include "../engine/layout/Componentes/TextLabelComponent.hpp"
 #include "../engine/interfaces/InterfazSpriteGroup.hpp"
 #include "../engine/util/game_manager.hpp"
-#include "../niveles/mapa.hpp"
+#include "../niveles/NivelMapa.hpp"
 #include "../engine/layout/Componentes/BotonComponent.hpp"
 #include "../engine/sprites/animacion/animacion.hpp"
 #include "../engine/sprites/CDrawGroup.hpp"
+#include "juego.hpp"
 
 class MenuModoMultijugador: public InterfazUI, public InterfazSpriteGroup {
 
@@ -28,31 +29,6 @@ public:
         //cout << "MenuModoMultijugador::MenuModoMultijugador"<<endl;
         mGameManager = gameManager;
         //previewTerreno = nullptr;
-        mSprites     = nullptr;
-        mMapaTerrenoSeleccionado = nullptr;
-        //dataNivel = nullptr;
-
-        mBtnSubirTiempo    = nullptr;
-        mBtnSubirVictorias = nullptr;
-        mBtnCambiarMapa    = nullptr;
-        mBtnJugar          = nullptr;
-
-        for(int i = 0; i < 5 ;i++){
-            mAnimacionPlayer[i]   = nullptr;
-            mAnimaPresiona[i]     = nullptr;
-            mAnimaActivado[i]     = nullptr;
-            mIsPlayerActivado[i]  = false;
-        }
-        terrenoActual = -1;
-        minutosEscogidos = -1;
-        victoriasEscogidas = -1;
-        mBotonClicked = -1;
-        mMaxTerrenoBatalla = -1;
-
-        mIsPaused = false;
-        mLayoutParent = nullptr;
-        mTextLabelMinutos = nullptr;
-        mTextLabelVictorias = nullptr;
     }
 
     void prepare() override {
@@ -62,19 +38,18 @@ public:
         mMaxTerrenoBatalla = std::stoi(buscar_dato(RUTA_CONFIG_BASE, NAME_MAX_TERRENO_BATALLA));
 
         //Creamos el Controlador que se encarga de dibujar el Mapa
-        mMapaTerrenoSeleccionado = new Mapa();
-        //mMapaTerrenoSeleccionado->cargar();
-        // Establecemos las imagenes para los tiles del mapa
-        //mMapaTerrenoSeleccionado->setImgTiles(mGameManager->getImagen(IMG_TILES));
-
+        //mMapaTerrenoSeleccionado = new Mapa();
         minutosEscogidos = 1;
         victoriasEscogidas = 1;
-
-        establecerTerrenoBatalla(0);
     }
 
     void createUI(SDL_Renderer * gRenderer) override {
         cout << "MenuModoMultijugador::createUI"<<endl;
+
+
+        //mMapaTerrenoSeleccionado.cargar();
+        // Establecemos las imagenes para los tiles del mapa
+        //mMapaTerrenoSeleccionado->setImgTiles(mGameManager->getImagen(IMG_TILES));
 
         mLayoutParent = new LayoutAbsolute();
 
@@ -118,33 +93,35 @@ public:
         //Animaciones para los personajes (Hace que parezcan que caminan) cuando se seleccionan
         SpriteSheet * spriteSheetTmp = new SpriteSheet();
         spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/personajes/player_1.bmp",1,12,true);
-        mAnimacionPlayer[0]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8",X_INIT_PLAYER_1,Y_INIT_PLAYER_1,0);
+        mAnimacionPlayer[0]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8");
 
         spriteSheetTmp = new SpriteSheet();
         spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/personajes/player_2.bmp",1,12,true);
-        mAnimacionPlayer[1]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8",X_INIT_PLAYER_2,Y_INIT_PLAYER_2,1);
+        mAnimacionPlayer[1]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8");
 
         spriteSheetTmp = new SpriteSheet();
         spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/personajes/player_3.bmp",1,12,true);
-        mAnimacionPlayer[2]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8",X_INIT_PLAYER_3,Y_INIT_PLAYER_3,2);
+        mAnimacionPlayer[2]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8");
+
         spriteSheetTmp = new SpriteSheet();
         spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/personajes/player_4.bmp",1,12,true);
-        mAnimacionPlayer[3]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8",X_INIT_PLAYER_4,Y_INIT_PLAYER_4-20,3);
+        mAnimacionPlayer[3]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8");
+
         spriteSheetTmp = new SpriteSheet();
         spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/personajes/player_5.bmp",1,12,true);
-        mAnimacionPlayer[4]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8",X_INIT_PLAYER_5,Y_INIT_PLAYER_5,4);
+        mAnimacionPlayer[4]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8");
+
 
         for(int i=0;i<_PLAYERS;i++){
-
             // Animacion para cuando aun no se ha seleccionado el personaje(Hace que parpadee "presiona")
 
             spriteSheetTmp = new SpriteSheet();
             spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/textos/txt_presiona.png",2,1);
-            mAnimaPresiona[i]=new Animacion(spriteSheetTmp,"0,0,1,1",mAnimacionPlayer[i]->getX()-9,mAnimacionPlayer[i]->getY()+20,i);
+            mAnimaPresiona[i]=new Animacion(spriteSheetTmp,"0,0,1,1");
             // Animacion para cuando se selecciono el personaje(Hace que parpadee "activado")
             spriteSheetTmp = new SpriteSheet();
             spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/personajes/txt_activado.bmp",2,1);
-            mAnimaActivado[i]=new Animacion(spriteSheetTmp,"0,0,0,1,1,1",mAnimacionPlayer[i]->getX()-9,mAnimacionPlayer[i]->getY()+20,i);
+            mAnimaActivado[i]=new Animacion(spriteSheetTmp,"0,0,0,1,1,1");
 
             // Hace que las animaciones se repitan indefinidamente(Hasta que se eliminen desde el codigo)
             mAnimacionPlayer[i]->setRepeticiones(-1);
@@ -161,7 +138,6 @@ public:
         mTextLabelMinutos->setFont("data/fuentes/OpenSans-Bold.ttf",15);
         mTextLabelMinutos->setTextColor(color);
         mTextLabelMinutos->setLayoutParam(LAYOUT_PARAM_X,"180");
-        //mTextLabelMinutos->setLayoutParam(LAYOUT_PARAM_Y,std::to_string(5 + mMapaTerrenoSeleccionado->getYPanel()));
         mLayoutParent->addComponent(mTextLabelMinutos);
 
         mTextLabelVictorias = new TextLabelComponent();
@@ -169,7 +145,6 @@ public:
         mTextLabelVictorias->setFont("data/fuentes/OpenSans-Bold.ttf",15);
         mTextLabelVictorias->setTextColor(color);
         mTextLabelVictorias->setLayoutParam(LAYOUT_PARAM_X,"283");
-        //mTextLabelVictorias->setLayoutParam(LAYOUT_PARAM_Y,std::to_string(5 + mMapaTerrenoSeleccionado->getYPanel()));
         mLayoutParent->addComponent(mTextLabelVictorias);
 
         //static char tmp[50];
@@ -178,7 +153,10 @@ public:
 
         //mGameManager->playSonido(SND_MENU);
 
+        establecerTerrenoBatalla(gRenderer,0);
+
         SDL_ShowCursor(SDL_ENABLE);
+        mGRenderer = gRenderer;
     }
 
     virtual void killedSprite(Sprite *sprite) override {
@@ -196,16 +174,42 @@ public:
      * @param nuevoTerreno
      * @return
      */
-    bool establecerTerrenoBatalla(int nuevoTerreno) {
+    bool establecerTerrenoBatalla(SDL_Renderer * gRenderer,int nuevoTerreno) {
         cout << "MenuModoMultijugador::establecerTerrenoBatalla"<<endl;
 
-        if(nuevoTerreno>=0 && nuevoTerreno < mMaxTerrenoBatalla && nuevoTerreno != terrenoActual){
+        if(nuevoTerreno>=0 && nuevoTerreno < mMaxTerrenoBatalla){
             static char ruta1[50],ruta2[50];
-            sprintf(ruta1,"data/niveles/batalla/%d.tmx",nuevoTerreno+1);
-            /*if(!mMapaTerrenoSeleccionado->cargar(ruta1)){
-                cout << "ASDASD" << endl;
-            }*/
-            //mMapaTerrenoSeleccionado->setEjeVisualizacion(mMapaTerrenoSeleccionado->getEjeX(),mMapaTerrenoSeleccionado->getEjeY());
+            sprintf(ruta1,"data/niveles/batalla/mapa_batalla_%d.tmx",nuevoTerreno+1);
+            if(!mMapaTerrenoSeleccionado.cargar(gRenderer,ruta1)){
+                std::cerr << "Error cambiando el mapa" << std::endl;
+                return false;
+            }
+
+            for(int i=0;i<_PLAYERS;i++){
+
+                mAnimacionPlayer[i]->setX(
+                        std::stoi(mMapaTerrenoSeleccionado.getMapProperty(
+                                std::string(MAPA_PROPERTY_X_INIT_PLAYER) + std::to_string(i + 1))));
+                mAnimacionPlayer[i]->setY(
+                        std::stoi(mMapaTerrenoSeleccionado.getMapProperty(
+                                std::string(MAPA_PROPERTY_Y_INIT_PLAYER) + std::to_string(i + 1))));
+
+                // Animacion para cuando aun no se ha seleccionado el personaje(Hace que parpadee "presiona")
+
+                mAnimaPresiona[i]->setX(mAnimacionPlayer[i]->getX()-9);
+                mAnimaPresiona[i]->setY(mAnimacionPlayer[i]->getY()+20);
+
+                mAnimaActivado[i]->setX(mAnimacionPlayer[i]->getX()-9);
+                mAnimaActivado[i]->setY(mAnimacionPlayer[i]->getY()+20);
+
+            }
+            mTextLabelMinutos->setLayoutParam(LAYOUT_PARAM_Y,std::to_string(
+                    5 + std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO))));
+            mTextLabelVictorias->setLayoutParam(LAYOUT_PARAM_Y,std::to_string(
+                    5 + std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO))));
+            mTextLabelMinutos->setDisabled(true);
+            mTextLabelVictorias->setDisabled(true);
+            //mMapaTerrenoSeleccionado.setEjeVisualizacion(mMapaTerrenoSeleccionado->getEjeX(),mMapaTerrenoSeleccionado->getEjeY());
             terrenoActual = nuevoTerreno;
             return true;
         }
@@ -239,7 +243,7 @@ public:
                 mTextLabelVictorias->setText(std::to_string(victoriasEscogidas));
                 break;
             case MENU_BOTON_CAMBIAR_MAPA:
-                if(establecerTerrenoBatalla((terrenoActual + 1 == mMaxTerrenoBatalla)?0:terrenoActual + 1)){
+                if(establecerTerrenoBatalla(mGRenderer,(terrenoActual + 1 == mMaxTerrenoBatalla)?0:terrenoActual + 1)){
                     mGameManager->play(SFX_TONO_ACUATICO);
                 }
                 break;
@@ -247,8 +251,8 @@ public:
                 int total_players=mIsPlayerActivado[PLAYER_1]+ mIsPlayerActivado[PLAYER_2]+ mIsPlayerActivado[PLAYER_3] + mIsPlayerActivado[PLAYER_4] + mIsPlayerActivado[PLAYER_5];
                 if(total_players>=2){
 
-                    //Juego * nuevoJuego = new Juego(mGameManager,27,54,terrenoActual,victoriasEscogidas,minutosEscogidos,mIsPlayerActivado);
-                    //mGameManager->cambiarInterfaz(nuevoJuego); //iniciamos en modo batalla, le pasamos el array con los players seleccionados por el usuario
+                    Juego * nuevoJuego = new Juego(mGameManager,27,54,terrenoActual,victoriasEscogidas,minutosEscogidos,mIsPlayerActivado);
+                    mGameManager->cambiarInterfaz(nuevoJuego); //iniciamos en modo batalla, le pasamos el array con los players seleccionados por el usuario
                     mGameManager->play(SFX_EXPLOSION);
                 }
                 break;
@@ -328,30 +332,39 @@ public:
     }
 
     virtual void update() override {
-        cout << "MenuModoMultijugador::update"<<endl;
+        //cout << "MenuModoMultijugador::update"<<endl;
         mSprites->update(nullptr);
     }
 
     virtual void draw(SDL_Renderer *gRenderer) override {
         //cout << "MenuModoMultijugador::draw"<<endl;
 
-        /*mGameManager->getImagen((CodeImagen)mMapaTerrenoSeleccionado->getIdFondo())->render(gRenderer,0,0);
-        mGameManager->getImagen(IMG_TABLERO)->render(gRenderer,0,mMapaTerrenoSeleccionado->getYPanel());//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,177,7+mMapaTerrenoSeleccionado->getYPanel());//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,280,7+mMapaTerrenoSeleccionado->getYPanel());//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_TXT_PLAYERS_EN_BATALLA)->render(gRenderer,15,24+mMapaTerrenoSeleccionado->getYPanel());//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_TXT_TIEMPO_POR_RONDA)->render(gRenderer,140,24+mMapaTerrenoSeleccionado->getYPanel());//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_TXT_VICTORIAS)->render(gRenderer,261,24+mMapaTerrenoSeleccionado->getYPanel());//imprimimos la barra mensage
-*/
+        mGameManager->getImagen(
+                (CodeImagen)std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer,0,0);
+        mGameManager->getImagen(IMG_TABLERO)->render(
+                gRenderer,0,std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)));//imprimimos la barra mensage
+        mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,177
+                ,7+std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)));//imprimimos la barra mensage
+        mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,280
+                ,7+std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)));//imprimimos la barra mensage
+        mGameManager->getImagen(IMG_TXT_PLAYERS_EN_BATALLA)->render(gRenderer,15
+                ,std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)));//imprimimos la barra mensage
+        mGameManager->getImagen(IMG_TXT_TIEMPO_POR_RONDA)->render(gRenderer,140
+                ,24+std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)));//imprimimos la barra mensage
+        mGameManager->getImagen(IMG_TXT_VICTORIAS)->render(gRenderer,261
+                ,24+std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)));//imprimimos la barra mensage
 
-        mMapaTerrenoSeleccionado->draw(gRenderer,0,0);//imprimimos el nivel
+        mMapaTerrenoSeleccionado.draw(gRenderer,
+                                      std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_EJE_X_MAPA)),
+                                      std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA)));//imprimimos el nivel
 
         mSprites->draw(gRenderer);
         for(int i=0;i<_PLAYERS;i++){
             if(!mIsPlayerActivado[i]){
                 imprimir_desde_grilla(mGameManager->getImagen((CodeImagen)(IMG_PLAYER_1 + i)), 6,gRenderer, mAnimacionPlayer[i]->getX(),mAnimacionPlayer[i]->getY(),1, 12,true);
             }else{
-                //imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),i*2,gRenderer,i*16+20,mMapaTerrenoSeleccionado->getYPanel()+2,1,10,0);
+                imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),i*2,gRenderer,i*16+20,
+                                      15 + std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)),1,10,0);
             }
         }
 
@@ -371,19 +384,19 @@ public:
         }
         //SDL_FreeSurface(previewTerreno);
         //delete dataNivel;
-        delete mMapaTerrenoSeleccionado;
         delete mLayoutParent;
     }
 private:
 
 
-    GameManager *  mGameManager;
+    GameManager *  mGameManager = nullptr;
 
+    SDL_Renderer * mGRenderer = nullptr;
     // Contiene las animaciones(los players que se mueven)
-    DrawGroup *        mSprites;
+    DrawGroup * mSprites = nullptr;
 
     // Usado para dibujar el mapa seleccionado actualmente
-    Mapa *         mMapaTerrenoSeleccionado;
+    NivelMapa        mMapaTerrenoSeleccionado;
 
     //DatNivel *     dataNivel;
     //SDL_Surface *  previewTerreno;
@@ -403,36 +416,36 @@ private:
     };
 
     // Dice cual boton fué clickeado / Tambien se usa para ejecutar una funcion asociada al click de un boton
-    int mBotonClicked;
+    int mBotonClicked = -1;
 
     // Animacion del personaje
-    Animacion * mAnimacionPlayer[_PLAYERS];
+    Animacion * mAnimacionPlayer[_PLAYERS] {nullptr};
     // Animacion del texto "presiona"
-    Animacion * mAnimaPresiona[_PLAYERS];
+    Animacion * mAnimaPresiona[_PLAYERS] {nullptr};
     // Animacion del texto "activado"
-    Animacion * mAnimaActivado[_PLAYERS];
+    Animacion * mAnimaActivado[_PLAYERS] {nullptr};
 
     // Dice cuales estan activados
-    bool mIsPlayerActivado[_PLAYERS];
+    bool mIsPlayerActivado[_PLAYERS] {false};
 
     // ID del terreno actual escogido por el usuario / EL ID del terreno dibujado en pantalla
-    int terrenoActual;
+    int terrenoActual = 0;
 
     // Minutos Escogidos de duracion de cada ronda
-    int minutosEscogidos;
+    int minutosEscogidos = 1;
 
     // Victorias escogidas para acabar el juego
-    int victoriasEscogidas;
+    int victoriasEscogidas = 1;
 
     // Maximo ID(Numero) asignado a un mapa de batalla
-    int mMaxTerrenoBatalla;
+    int mMaxTerrenoBatalla = 1;
 
     // Controla los botones en un layout
-    LayoutAbsolute *mLayoutParent;
+    LayoutAbsolute *mLayoutParent = nullptr;
 
     // Muestra en la UI el numero de minutos escogidos
-    TextLabelComponent *mTextLabelMinutos;
+    TextLabelComponent *mTextLabelMinutos = nullptr;
     // Muestra en la UI el numero de victorias escogidas
-    TextLabelComponent *mTextLabelVictorias;
+    TextLabelComponent *mTextLabelVictorias = nullptr;
 };
 #endif //BOMBERMAN_MENUMODOMULTIJUGADOR_HPP

@@ -26,8 +26,8 @@ public:
 
         if(mTexture != nullptr){
             delete mTexture;
-            mTexture = new LTexture();
         }
+        mTexture = new LTexture();
         mTexture->loadFromFile(ruta,gRenderer,colorClave);
         mRectSource.x = 0;
         mRectSource.y = 0;
