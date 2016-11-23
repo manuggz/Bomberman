@@ -17,13 +17,13 @@ using namespace std;
 #include "../engine/util/LTimer.hpp"
 #include "../engine/sprites/CDrawGroup.hpp"
 #include "juego_historia.hpp"
-#include "../engine/interfaces/InterfazGaleria.hpp"
+#include "../engine/interfaces/InterfazJuego.hpp"
 #include "../personajes/player.hpp"
 //#define DEBUG
 
 
 
-class Juego:public InterfazUI , public InterfazSpriteGroup,public InterfazGaleria{
+class Juego:public InterfazUI , public InterfazSpriteGroup,public InterfazJuego{
       public:
         Juego(GameManager * gameManager,int x,int y,int idTerrenoBatalla,int victorias,int minutos,bool isPlayerActivo[_PLAYERS]);
         void procesarEvento(SDL_Event * evento);
@@ -88,11 +88,14 @@ class Juego:public InterfazUI , public InterfazSpriteGroup,public InterfazGaleri
         //void killSprite(int type,int id_sprite);
         //void soloKill(int type,int id_sprite);
         //void clearSprites(bool elimina_players=false);
-        
-        //virtual InterfazJuego getTipoJuego()=0;
+        bool isOutOfMapBounds(SDL_Rect rect) override;
+
+    //virtual InterfazJuego getTipoJuego()=0;
 //        TipoItem getTipoNuevoItem();
         //int getTipoItem(int id_item);
-        //int getJoysActivos();
+        Bomba  * colisionConBombas(SDL_Rect  rect) override;
+        int getJoysActivos();
+        int colision(SDL_Rect  rect_coli,int * lado_colision,bool solo_bloques_duros) override;
         //int getActivos(TipoSprite type);
         //int getLanzador(TipoSprite type,int id_spri);
         //int getPuntaje(IdPlayer id);
@@ -110,7 +113,7 @@ class Juego:public InterfazUI , public InterfazSpriteGroup,public InterfazGaleri
 //        }
 //
         LTexture * getImagen(CodeImagen code){ return mGameManager->getImagen(code);};
-//        SDL_Joystick * getJoy(int id);
+        SDL_Joystick * getJoy(int id);
 //        virtual int getTipoNuevoItem(bool disminuir_de_mapa=true);
 //
 //

@@ -44,9 +44,9 @@ namespace TMX {
     mapInfo.height = std::atoi( root_node->first_attribute( "height" )->value() );
     //std::cout << "Height: " << mapInfo.height << std::endl;
     mapInfo.tileWidth = std::atoi( root_node->first_attribute( "tilewidth" )->value() );
-    //std::cout << "Tile Width: " << mapInfo.tileWidth << std::endl;
+    //std::cout << "Tile Width: " << mapInfo.mTileWidth << std::endl;
     mapInfo.tileHeight = std::atoi( root_node->first_attribute( "tileheight" )->value() );
-    //std::cout << "Tile Height: " << mapInfo.tileHeight << std::endl;
+    //std::cout << "Tile Height: " << mapInfo.mTileHeight << std::endl;
 
     auto background_color = root_node->first_attribute( "backgroundcolor" );
     if( background_color && background_color->value() != 0 ) {
@@ -81,13 +81,23 @@ namespace TMX {
         tmpTileset.imgSource.source = tileset_node->first_node("image" )->first_attribute("source" )->value();
         tmpTileset.imgSource.width = (unsigned int) std::stoi(tileset_node->first_node("image" )->first_attribute("width" )->value());
         tmpTileset.imgSource.height = (unsigned int) std::stoi(tileset_node->first_node("image" )->first_attribute("height" )->value());
-        /*for( rapidxml::xml_node<>* properties_node = layer_node->first_node( "properties" )->first_node( "property" ); properties_node; properties_node = properties_node->next_sibling() ) {
-            layer.property[properties_node->first_attribute( "name" )->value()] = properties_node->first_attribute( "value" )->value();
-        }*/
+
+        for( auto tiles_node = tileset_node->first_node( "tile" ); tiles_node; tiles_node = tiles_node->next_sibling() ) {
+
+            Tile tmpTile;
+            if( tiles_node->first_node( "properties" ) != 0 ) {
+                for( rapidxml::xml_node<>* properties_node = tiles_node->first_node( "properties" )->first_node( "property" ); properties_node; properties_node = properties_node->next_sibling() ) {
+                    tmpTile.property[properties_node->first_attribute( "name" )->value()] = properties_node->first_attribute( "value" )->value();
+                }
+
+                tmpTileset.tilesMetaData[tiles_node->first_attribute( "id" )->value()] = tmpTile;
+            }
+
+        }
         /*//std::cout << "Tileset[ First GID: " << tmpTileset.firstGID
                 << " name: " << tmpTileset.name
-                << " tileWidth: " << tmpTileset.tileWidth
-                << " tileHeight: " << tmpTileset.tileHeight
+                << " mTileWidth: " << tmpTileset.mTileWidth
+                << " mTileHeight: " << tmpTileset.mTileHeight
                 << " columns: " << tmpTileset.columns
                 << std::endl;*/
         tilesetList.push_back( tmpTileset );

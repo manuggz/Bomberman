@@ -1,0 +1,3 @@
+/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles/edit_cache.dir
+/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles/rebuild_cache.dir
+/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles/Bomberman.dir

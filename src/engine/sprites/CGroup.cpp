@@ -59,3 +59,15 @@ void Group::erase(Sprite * pSpriteBorrar){
 Group::~Group(){
     v_personajes.clear();
 }
+
+Sprite * Group::collide(SDL_Rect & rect) {
+    auto pSpriteBusqueda = v_personajes.begin();
+    while(pSpriteBusqueda != v_personajes.end()){
+        if((*pSpriteBusqueda)->colision(rect)){
+            return (*pSpriteBusqueda);
+        }
+        pSpriteBusqueda++;
+    }
+
+    return nullptr;
+}

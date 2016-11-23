@@ -140,10 +140,6 @@ typedef enum Escenas{
     CREDITOS
 }Escenas;*/
 
-typedef enum Interfaz_juego{
-    TIPO_NORMAL,
-    TIPO_BATALLA
-}InterfazJuego;
 
 /*
 typedef enum Interfaz_menu{

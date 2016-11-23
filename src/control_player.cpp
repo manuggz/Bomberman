@@ -63,46 +63,47 @@ void ControlPlayer::setKey(TeclaPlayer tecla,SDL_Keycode nuevo){
 void ControlPlayer::setDefaultKeys(IdPlayer id){
     iniciar();
     if(id==PLAYER_1){
-    	keys_players[TECLA_IZQUIERDA] = SDLK_a;
-    	keys_players[TECLA_DERECHA] = SDLK_d;
-    	keys_players[TECLA_ARRIBA] = SDLK_w;
-    	keys_players[TECLA_ABAJO] = SDLK_s;
-        keys_players[TECLA_ACCION]=SDLK_e;
-        keys_players[TECLA_START]=SDLK_q;
+    	keys_players[TECLA_IZQUIERDA] = SDL_SCANCODE_A;
+    	keys_players[TECLA_DERECHA] = SDL_SCANCODE_D;
+    	keys_players[TECLA_ARRIBA] = SDL_SCANCODE_W;
+    	keys_players[TECLA_ABAJO] = SDL_SCANCODE_S;
+        keys_players[TECLA_ACCION]=SDL_SCANCODE_E;
+        keys_players[TECLA_START]=SDL_SCANCODE_Q;
 //        keys_players[TECLA_ACCION_2]=SDLK_1;
     }else if(id==PLAYER_2){
-    	keys_players[TECLA_IZQUIERDA] = SDLK_LEFT;
-    	keys_players[TECLA_DERECHA] = SDLK_RIGHT;
-    	keys_players[TECLA_ARRIBA] = SDLK_UP;
-    	keys_players[TECLA_ABAJO] = SDLK_DOWN;
-        keys_players[TECLA_ACCION]=SDLK_KP_ENTER;
-        keys_players[TECLA_START]=SDLK_p;
+    	keys_players[TECLA_IZQUIERDA] = SDL_SCANCODE_LEFT;
+    	keys_players[TECLA_DERECHA] = SDL_SCANCODE_RIGHT;
+    	keys_players[TECLA_ARRIBA] = SDL_SCANCODE_UP;
+    	keys_players[TECLA_ABAJO] = SDL_SCANCODE_DOWN;
+        keys_players[TECLA_ACCION]=SDL_SCANCODE_KP_ENTER;
+        keys_players[TECLA_START]=SDL_SCANCODE_P;
 //        keys_players[TECLA_ACCION_2]=SDLK_KP1; 
     }else if(id==PLAYER_3){
-    	keys_players[TECLA_IZQUIERDA] = SDLK_f;
-    	keys_players[TECLA_DERECHA] = SDLK_h;
-    	keys_players[TECLA_ARRIBA] = SDLK_t;
-    	keys_players[TECLA_ABAJO] = SDLK_g;
-        keys_players[TECLA_ACCION]=SDLK_r;
-        keys_players[TECLA_START]=SDLK_y;
+    	keys_players[TECLA_IZQUIERDA] = SDL_SCANCODE_F;
+    	keys_players[TECLA_DERECHA] = SDL_SCANCODE_H;
+    	keys_players[TECLA_ARRIBA] = SDL_SCANCODE_T;
+    	keys_players[TECLA_ABAJO] = SDL_SCANCODE_G;
+        keys_players[TECLA_ACCION]=SDL_SCANCODE_R;
+        keys_players[TECLA_START]=SDL_SCANCODE_Y;
 //        keys_players[TECLA_ACCION_2]=SDLK_5; 
     
     }else if(id==PLAYER_4){
-    	keys_players[TECLA_IZQUIERDA] = SDLK_j;
-    	keys_players[TECLA_DERECHA] = SDLK_l;
-    	keys_players[TECLA_ARRIBA] = SDLK_i;
-    	keys_players[TECLA_ABAJO] = SDLK_k;
-        keys_players[TECLA_ACCION]=SDLK_u;
-        keys_players[TECLA_START]=SDLK_o;
+    	keys_players[TECLA_IZQUIERDA] = SDL_SCANCODE_J;
+    	keys_players[TECLA_DERECHA] = SDL_SCANCODE_J;
+    	keys_players[TECLA_ARRIBA] = SDL_SCANCODE_I;
+    	keys_players[TECLA_ABAJO] = SDL_SCANCODE_K;
+        keys_players[TECLA_ACCION]=SDL_SCANCODE_U;
+        keys_players[TECLA_START]=SDL_SCANCODE_O;
 //        keys_players[TECLA_ACCION_2]=SDLK_8;
         
     }else if(id==PLAYER_5){
-    	keys_players[TECLA_IZQUIERDA] = SDLK_1;
-    	keys_players[TECLA_DERECHA] = SDLK_2;
-    	keys_players[TECLA_ARRIBA] = SDLK_3;
-    	keys_players[TECLA_ABAJO] = SDLK_4;
-        keys_players[TECLA_ACCION]=SDLK_5;
-        keys_players[TECLA_START]=SDLK_6;
+    	keys_players[TECLA_IZQUIERDA] = SDL_SCANCODE_1;
+    	keys_players[TECLA_DERECHA] = SDL_SCANCODE_2;
+    	keys_players[TECLA_ARRIBA] = SDL_SCANCODE_3;
+    	keys_players[TECLA_ABAJO] = SDL_SCANCODE_4;
+        keys_players[TECLA_ACCION] = SDL_SCANCODE_5;
+        keys_players[TECLA_START] =
+                SDL_SCANCODE_6;
 //        keys_players[TECLA_ACCION_2]=SDLK_8;
 
     }

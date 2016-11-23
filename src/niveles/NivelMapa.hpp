@@ -16,11 +16,6 @@
 #define MAPA_PROPERTY_N_BOMBAS "n_bombas"
 #define MAPA_PROPERTY_ALCANCE_BOMBAS "alcance_bombas"
 #define MAPA_PROPERTY_ITEMS "n_items"
-#define MAPA_PROPERTY_RUTA_DAT "data_map"
-#define MAPA_PROPERTY_RUTA_TILE_SET "ruta_tile_set"
-#define MAPA_PROPERTY_NFILAS_TILESET "tile_nfilas"
-#define MAPA_PROPERTY_NCOLUMNAS_TILESET "tile_ncolumnas"
-#define MAPA_PROPERTY_FILA_TILESET_USAR "tile_fila"
 #define MAPA_PROPERTY_EJE_X_MAPA "eje_x"
 #define MAPA_PROPERTY_EJE_Y_MAPA "eje_y"
 #define MAPA_PROPERTY_Y_TABLERO "y_tablero"
@@ -37,23 +32,6 @@
 
 class NivelMapa: public Mapa{
 public:
-    /*enum{
-        SIZE_TILE=16,
-
-        FILAS=11,
-        COLUMNAS=17,
-        MAXMAP=FILAS*COLUMNAS,
-
-        //Tipos de bloques
-        BLOQUE_METAL=0, //Bloque no traspasable
-        BLOQUE_MADERA, //Bloque traspasable y se rompe con una explosi�n
-        BLOQUE_PISO_SOMBRA,
-        BLOQUE_PISO, //Bloque que representa donde caminara el jugador
-        BLOQUE_ENEMIGO,//Bloque que representa a un enemigo (Esta en proceso de desarrollo solo representa a un "globo")
-        BLOQUE_ITEM, //Bloque donde se ubica un �tem
-        _BLOQUES//Cantidad de tipos de bloques reconocidos
-    };
-*/
     virtual bool cargar(SDL_Renderer *gRenderer, std::string ruta) override;
     //NivelMapa();
 
@@ -130,10 +108,11 @@ public:
     //Intenta cambiar la condici�n de un tile a "TIPO_PISO"
     //bool romperBloque(int x,int y);
 
-    //regresa True si el rectangulo colisiona con un mGrpBloques colisionable del nivel
-    //int colision(SDL_Rect * rect, int * num_colisiones,bool solo_bloques_duros=false);
+    //regresa True si el rectangulo colisiona con un bloque colisionable del nivel
+    int colision(SDL_Rect  rect, int * num_colisiones,bool solo_bloques_duros=false);
 
     //~NivelMapa();
+    int getBloqueAt(int x, int y);
 
 
 //        int getNivelActual(){return n_actual;};
@@ -148,7 +127,7 @@ public:
     //void leerInfTile(char ruta[]);
     //const std::string &getMapProperty(std::basic_string<char, std::char_traits<char>, std::allocator<char>> propertyName);
 
-private:
+    bool contain(SDL_Rect rect);
     //TMX::Parser mTmxParser;
     //MetaData    * mDatMapa  = nullptr; /*Para buscar los datos del mapa*/
     //InterfazUI  * parent   = nullptr; /*Referencia a la interfaz que lo llama*/
@@ -177,5 +156,10 @@ private:
     //int *mLayerMapa;
 
 
+    unsigned int mTileHeight = 0;
+    unsigned int mMapWidth   = 0;
+    unsigned int mMapHeight  = 0;
+    unsigned int mTileWidth  = 0;
+    std::map<std::string, TMX::Parser::Tile> *  tilesMetaData;
 };
 #endif

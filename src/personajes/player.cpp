@@ -1,13 +1,13 @@
 #include "player.hpp"
+#include "bomba.hpp"
 
 
-
-Player::Player(InterfazGaleria * interfazGaleria,IdPlayer id,int x,int y,int vidasIni,int numBombasIni,int alcanceBombasIni){
+Player::Player(InterfazJuego * interfazGaleria,IdPlayer id,int x,int y,int vidasIni,int numBombasIni,int alcanceBombasIni){
     #ifdef DEBUG
     cout << "Constructor de Player:"<<this<<endl;
     #endif
 
-    this->mInterGaleria=interfazGaleria;
+    this->mJuego=interfazGaleria;
 
     this->mPlayerId=id;
     
@@ -18,7 +18,7 @@ Player::Player(InterfazGaleria * interfazGaleria,IdPlayer id,int x,int y,int vid
     mSelfKill=false;
 	estaProtegido=false;
 
-    idUltimaBomba=-1;
+    //idUltimaBomba=-1;
 
     //variables para reiniciarlo
     this->alcanBombIni=alcanceBombasIni;
@@ -256,9 +256,9 @@ void Player::activarPoderItem(int tipo){
 
 void Player::draw(SDL_Renderer * gRenderer){
     if(estado!=MURIENDO)
-    	imprimir_desde_grilla (mInterGaleria->getImagen((CodeImagen)(IMG_PLAYER_1 + mPlayerId)), cuadro,gRenderer, x,y,1, 12,estaProtegido);
+    	imprimir_desde_grilla (mJuego->getImagen((CodeImagen)(IMG_PLAYER_1 + mPlayerId)), cuadro,gRenderer, x,y,1, 12,estaProtegido);
     else
-    	imprimir_desde_grilla(mInterGaleria->getImagen((CodeImagen)(IMG_PLAYER_1_MURIENDO + mPlayerId)), cuadro,gRenderer,x,y,1, 4,0);
+    	imprimir_desde_grilla(mJuego->getImagen((CodeImagen)(IMG_PLAYER_1_MURIENDO + mPlayerId)), cuadro,gRenderer,x,y,1, 4,0);
 //    if(estaProtegido)render_texture(juego->getImagen(IMG_FONDO_BLANCO),x,y,screen);
 	/*DIBUJA EL CUADRO QUE REPRESENTA LA COLISION DEL PERSONAJE*/
 #ifdef DEBUG
@@ -356,17 +356,17 @@ void Player::derecha (const Uint8 * teclas)
 
 
 bool Player::isPressed(TeclaPlayer tecla, const Uint8 * _teclas){
-//    if(!control.isBotonJoystick(tecla) && !control.isDireccionJoystick(tecla)){
-//        return _teclas [control.getKey(tecla)];
-//
-//    }else{
-//        for(int i=0;i<juego->getJoysActivos();i++){
-//            if(!strcmp(SDL_JoystickName(juego->getJoy(i)),control.getName(tecla))){//si coincide con el joistick con el que se configuro
-//				return estado_tecla_joy(control.getKey(tecla),juego->getJoy(i));
-//             }
-//         }
-//         return false;
-//     }
+    if(!control.isBotonJoystick(tecla) && !control.isDireccionJoystick(tecla)){
+        return _teclas [control.getKey(tecla)];
+
+    }else{
+        for(int i=0;i<mJuego->getJoysActivos();i++){
+            if(!strcmp(SDL_JoystickName(mJuego->getJoy(i)),control.getName(tecla))){//si coincide con el joistick con el que se configuro
+				return estado_tecla_joy(control.getKey(tecla),mJuego->getJoy(i));
+             }
+         }
+         return false;
+     }
 }
 void Player::arriba (const Uint8 * teclas)
 {
@@ -395,30 +395,30 @@ void Player::abajo(const Uint8 * teclas)
  */
 void Player::avanzarAnimacion ()
 {
-//	static int animaciones [_ESTADOS][17] = {\
-//		{3,3, 4,4, 5,5,-1},\
-//		{9,9, 10,10, 11,11, -1},\
-//		{6,6,  7,7, 8,8,-1},\
-//		{0,0, 1,1, 2,2,-1},\
-//        {0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,-1}};
-//	if (--delay < 1)
-//	{
-//		delay = 3;
-//
-//		if (animaciones [estado] [paso + 1] == -1){
-//		    if(estado!=MURIENDO)
-//    			paso = 0;
-//    		else
-//    		   muerto=1;
-//		}else
-//			paso ++;
-//	}
-//
-//
-//	if(estado!=PARADO)
-//	   cuadro = animaciones [estado][paso];
-//	else
-//	   cuadro = animaciones [estado_anterior][0];
+	static int animaciones [_ESTADOS][17] = {\
+		{3,3, 4,4, 5,5,-1},\
+		{9,9, 10,10, 11,11, -1},\
+		{6,6,  7,7, 8,8,-1},\
+		{0,0, 1,1, 2,2,-1},\
+        {0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,-1}};
+	if (--delay < 1)
+	{
+		delay = 3;
+
+		if (animaciones [estado] [paso + 1] == -1){
+		    if(estado!=MURIENDO)
+    			paso = 0;
+    		else
+    		   kill();
+		}else
+			paso ++;
+	}
+
+
+	if(estado!=PARADO)
+	   cuadro = animaciones [estado][paso];
+	else
+	   cuadro = animaciones [estado_anterior][0];
 
 }
 
@@ -437,64 +437,63 @@ void Player::setProteccion(int segundos){
 }
 void Player::mover_ip(int incremento_x, int incremento_y)
 {//mueve al personaje detectando alguna colision
-//    int temp,num_colision=0;
-//
-//    rect.x+=incremento_x;
-//    rect.y+=incremento_y;
-//    temp=juego->colision(BOMBA,rect);
-//
-//    if(temp!=-1&&temp!=idUltimaBomba&&!puedeAtravesarBombas){ /*si esta sobre una bomba que no es la que el puso*/
-//        return;
-//     }else if(temp==-1&&idUltimaBomba!=-1){
-//        idUltimaBomba=-1;
-//    }
-//
-//
-//    if(rect.x<juego->getEjeXVisual()||\
-//       rect.x+rect.w>juego->getEjeXVisual()+juego->getAnchoMapa()||\
-//       rect.y<juego->getEjeYVisual()||\
-//       rect.y+rect.h>juego->getEjeYVisual()+juego->getAltoMapa())return;
-//
-//    if(!puedeAtravesarBloquesBlandos)
-//        temp=juego->colision(rect,&num_colision,false);
-//    else
-//        temp=juego->colision(rect,&num_colision,true);
-//
-//    if(temp){
-//        if(num_colision==1){//ESTO ES PARA DESPLAZAR EL PERSONAJE UN POCO
-//            if(estado==IZQUIERDA||estado==DERECHA){
-//                if(temp==1||temp==2)
-//                    y-=1;
-//                else
-//                    y+=1;
-//            }else{
-//                if(temp==1||temp==4)
-//                    x-=1;
-//                else
-//                    x+=1;
-//            }
-//        }
-//    }else{
-//        move(x+incremento_x,y+incremento_y);
-//    }
-//
+    int temp,num_colision=0;
+
+    rect.x+=incremento_x;
+    rect.y+=incremento_y;
+
+    Bomba * bombaColision = mJuego->colisionConBombas(rect);
+    if(bombaColision&&bombaColision!=mUltimaBomba&&!puedeAtravesarBombas){ /*si esta sobre una bomba que no es la que el puso*/
+        return;
+     }else if(!bombaColision&&mUltimaBomba){
+        // Si no colisiona con una bomba y teniamos una referencia a la ultima bomba la quitamos
+        // Esta referencia solo era para permitir al usuario moverse arriba de la bomba que él puso hasta que
+        // se salga del cuadro de colision
+        mUltimaBomba= nullptr;
+    }
+
+
+    if(mJuego->isOutOfMapBounds(rect))return;
+
+    if(!puedeAtravesarBloquesBlandos)
+        temp=mJuego->colision(rect,&num_colision,false);
+    else
+        temp=mJuego->colision(rect,&num_colision,true);
+
+    if(temp){
+        if(num_colision==1){//ESTO ES PARA DESPLAZAR EL PERSONAJE UN POCO
+            if(estado==IZQUIERDA||estado==DERECHA){
+                if(temp==1||temp==2)
+                    y-=1;
+                else
+                    y+=1;
+            }else{
+                if(temp==1||temp==4)
+                    x-=1;
+                else
+                    x+=1;
+            }
+        }
+    }else{
+        move(x+incremento_x,y+incremento_y);
+    }
 }
 void Player::move(int x,int y){
     //establece al jugador en la posicion indicada
 //
-//    this->x=x;
-//    this->y=y;
-//    if(x>W_SCREEN/3*2&&estado==DERECHA){
-//        if(juego->moveLeftEjeXVisual()){
-//            this->x=W_SCREEN/3*2;
-//        }
-//
-//    }
-//    if(x<W_SCREEN/3&&estado==IZQUIERDA){
-//        if(juego->moveRightEjeXVisual()){
-//            this->x=W_SCREEN/3;
-//        }
-//    }
+    this->x=x;
+    this->y=y;
+/*    if(x>W_SCREEN/3*2&&estado==DERECHA){
+        if(juego->moveLeftEjeXVisual()){
+            this->x=W_SCREEN/3*2;
+        }
+
+    }
+    if(x<W_SCREEN/3&&estado==IZQUIERDA){
+        if(juego->moveRightEjeXVisual()){
+            this->x=W_SCREEN/3;
+        }
+    }*/
 }
 
 Player::~Player(){

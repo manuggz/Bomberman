@@ -4,7 +4,8 @@
 #include "../constantes.hpp"
 #include "../control_player.hpp"
 #include "../item.hpp"
-#include "../engine/interfaces/InterfazGaleria.hpp"
+#include "../engine/interfaces/InterfazJuego.hpp"
+#include "bomba.hpp"
 //#define DEBUG
 
 class Player:public Sprite{
@@ -13,7 +14,7 @@ class Player:public Sprite{
 	enum AreaColision {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
 //        static enum TeclasPlayer {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
 
-        Player(InterfazGaleria * interfazGaleria,IdPlayer id,int x = 0,int y = 0,int vidasIni=3,int numBombasIni=1,int alcanceBombasIni=1);
+        Player(InterfazJuego * interfazGaleria,IdPlayer id,int x = 0,int y = 0,int vidasIni=3,int numBombasIni=1,int alcanceBombasIni=1);
         void update(const Uint8 * teclas);
         void draw(SDL_Renderer * );
         void reiniciar();
@@ -59,7 +60,7 @@ class Player:public Sprite{
 private:
 
 	IdPlayer mPlayerId;
-	InterfazGaleria *mInterGaleria;//referencia al juego que lo cre�
+	InterfazJuego *mJuego;//referencia al juego que lo cre�
 
 	ControlPlayer  control;//controla el teclado del player
 	EstadoSprite estado,//estado actual del player
@@ -71,7 +72,7 @@ private:
 	bool mantieneStartPresionado;//para que el usuario no ponga infinitas bombas
 
 	//para que el player pueda pasar por encima de la bomba que acaba de colocar
-	int idUltimaBomba;//index de la ultima bomba colocada
+	//int idUltimaBomba;//index de la ultima bomba colocada
 
 
 	//para controlar la animacion
@@ -104,6 +105,7 @@ private:
 	//bool entroPuerta; //True si el player est� sobre la puerta
 
 	bool enPantalla;   //True si el player se est� mostrando en pantalla
+    Bomba *mUltimaBomba = nullptr;
 };
 
 #endif

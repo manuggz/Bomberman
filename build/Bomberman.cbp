@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Bomberman"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/manuggz/Documents/Projects/Bomberman/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/manuggz/Documents/Projects/Bomberman/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/manuggz/Documents/Projects/Bomberman/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Bomberman">
+				<Option output="/home/manuggz/Documents/Projects/Bomberman/build/Bomberman" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/manuggz/Documents/Projects/Bomberman/build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL2"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 Bomberman"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Bomberman/fast">
+				<Option output="/home/manuggz/Documents/Projects/Bomberman/build/Bomberman" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/manuggz/Documents/Projects/Bomberman/build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL2"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 Bomberman/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/manuggz/Documents/Projects/Bomberman/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/MenuModoMultijugador.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/MenuNuevoJuego.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/MenuPrincipal.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego_batalla.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego_batalla.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego_historia.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego_historia.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego_mostrar_gan.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego_mostrar_gan.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/constantes.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/control_player.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/control_player.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/editor.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/editor.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/interfaces/InterfazJuego.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/interfaces/InterfazSpriteGroup.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/interfaces/InterfazUI.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/interfaces/MenuListLabel.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/layout/Componentes/BotonComponent.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/layout/Componentes/Component.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/layout/Componentes/ImageComponent.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/layout/Componentes/TextLabelComponent.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/layout/LayoutManager/LayoutAbsolute.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/layout/LayoutManager/LayoutComponent.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/layout/LayoutManager/LayoutParent.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/layout/LayoutManager/LayoutVertical.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/mapa/CMapa.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/mapa/include/TMXParser.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/mapa/include/TMXParser.h">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/mapa/include/rapidxml/rapidxml.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/mapa/include/rapidxml/rapidxml_iterators.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/mapa/include/rapidxml/rapidxml_print.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/mapa/include/rapidxml/rapidxml_utils.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/CDrawGroup.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/CGroup.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/CGroup.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/CSprite.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/CSprite.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/CUpdateGrow.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/SpriteContainer.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/animacion/Control_Animacion.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/animacion/Control_Animacion.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/animacion/animacion.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/animacion/animacion.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/util/CFont.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/util/CFont.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/util/CMetaData.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/util/CMetaData.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/util/LTexture.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/util/LTexture.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/util/LTimer.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/util/LTimer.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/util/SpriteSheet.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/util/game_manager.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/util/game_manager.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/explosion.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/explosion.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/fuente_imagen.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/fuente_imagen.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/galeria.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/galeria.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/item.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/item.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/main.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/menu.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/menu.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/menu_text.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/niveles/NivelMapa.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/niveles/NivelMapa.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/personajes/bloque.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/personajes/bloque.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/personajes/globo.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/personajes/player.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/personajes/player.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/time.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/util.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/util.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

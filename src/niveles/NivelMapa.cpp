@@ -106,35 +106,79 @@ bool Mapa::romperBloque(int x,int y){
         return true;
     }
     return false;
-}
+}*/
 
 
-int Mapa::colision(SDL_Rect * rect, int * num_colisiones,bool solo_bloques_duros)
-{//solo detecta la colision en las esquinas del rect
+/**
+ * Detecta si uno de los extremos del rectangulo colisiona con un bloque con la propiedad de solido
+ * @param rect rectangulo
+ * @param num_colisiones Numero de extremos en colision
+ * @param solo_bloques_duros
+ * @return El ultimo extremo detectado que colisiona
+ */
+int NivelMapa::colision(SDL_Rect rect, int * num_colisiones,bool solo_bloques_duros) {
+//solo detecta la colision en las esquinas del rect
 
     int ret=0;
-    int indice;
-    int left=rect->x-coorXVisualizacion,
-        top=rect->y-coorYVisualizacion;
-    
-    for(int i=0;i<4;i++){
-        indice=(((top+rect->h*(i>=2))/SIZE_TILE)*COLUMNAS+((left + (rect->w*(i!=0&&i!=3)))/SIZE_TILE));
-        
-        if(!solo_bloques_duros){
-            if(tilesMap[indice]!=BLOQUE_PISO&&tilesMap[indice]!=BLOQUE_PISO_SOMBRA&&tilesMap[indice]!=BLOQUE_ENEMIGO){
+
+    //std::string tile_id = "0";
+    std::string is_solido_prop = "solido";
+    int              is_solido = 0;
+
+     int id_tile = 0;
+
+    for(int i=0;i<4;i++){ // Los 4 extremos
+
+        // obtenemos el id del bloque en el extremo
+        id_tile = getBloqueAt(rect.x + (rect.w*(i!=0&&i!=3)),rect.y + rect.h * (i >= 2));
+
+        if(id_tile >= 0){ // Si existe tal tile
+            is_solido = std::stoi((*tilesMetaData)[std::to_string(id_tile)].property[is_solido_prop]);
+            if(is_solido) {
                 (*num_colisiones)++;
                 ret=i+1;
             }
-        }else if(solo_bloques_duros&&tilesMap[indice]==BLOQUE_METAL){
+        }
+
+    }
+
+    /*
+    if(!solo_bloques_duros){
+        if(  mLayerMapa[indice]!=BLOQUE_PISO
+           &&mLayerMapa[indice]!=BLOQUE_PISO_SOMBRA
+           &&mLayerMapa[indice]!=BLOQUE_ENEMIGO){
             (*num_colisiones)++;
             ret=i+1;
         }
+    }else if(solo_bloques_duros&&mLayerMapa[indice]==BLOQUE_METAL){
+        (*num_colisiones)++;
+        ret=i+1;
+    }*/
+    return ret;
+}
+
+int NivelMapa::getBloqueAt(int x,int y) {
+    //solo detecta la colision en las esquinas del rect
+
+    //int ret             = 0;
+    unsigned int indice = 0;
+
+    int index_fila, index_columna;
+
+    index_fila    = y / mTileHeight;
+    if(index_fila  == mMapHeight){
+        return -1;
     }
 
-    return ret;
+    index_columna   = x / mTileWidth;
+    if(index_columna  == mMapWidth){
+        return -1;
+    }
 
-}*/
+    indice = index_fila * mMapWidth + index_columna;
 
+    return mLayerMapa[indice] - 1;
+}
 
 SDL_Texture * NivelMapa::getPreviewTerreno(char rutaMapa[],MetaData * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y){
 /*
@@ -172,9 +216,23 @@ SDL_Texture * NivelMapa::getPreviewTerreno(char rutaMapa[],MetaData * params,LTe
 
 bool NivelMapa::cargar(SDL_Renderer *gRenderer, std::string ruta) {
 
-    return Mapa::cargar(gRenderer, ruta);
+    if(!Mapa::cargar(gRenderer, ruta)) return false;
 
+    mTileHeight   = mTmxParser.mapInfo.tileHeight;
+    mTileWidth    = mTmxParser.mapInfo.tileWidth;
+    mMapWidth     = mTmxParser.mapInfo.width;
+    mMapHeight    = mTmxParser.mapInfo.height;
+    tilesMetaData = &mTmxParser.tilesetList[0].tilesMetaData;
+
+    return true;
 }
+
+bool NivelMapa::contain(SDL_Rect rect) {
+    return !(rect.x < 0 || rect.y < 0
+           ||rect.x+rect.w > 0 + mTmxParser.mapInfo.width*mTmxParser.mapInfo.tileWidth
+           ||rect.y+rect.h > 0 + mTmxParser.mapInfo.height*mTmxParser.mapInfo.tileHeight);
+}
+
 
 /*
 TipoItem Nivel::getTipoNuevoItem(InterfazJuego inter){

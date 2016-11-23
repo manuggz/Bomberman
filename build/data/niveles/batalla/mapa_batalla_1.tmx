@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-down" width="17" height="11" tilewidth="16" tileheight="16" nextobjectid="1">
+ <properties>
+  <property name="alcance_bombas" type="int" value="1"/>
+  <property name="eje_x" type="int" value="25"/>
+  <property name="eje_y" type="int" value="58"/>
+  <property name="id_fondo" type="int" value="15"/>
+  <property name="n_bombas" type="int" value="1"/>
+  <property name="n_vidas" type="int" value="0"/>
+  <property name="x_init_player_1" type="int" value="26"/>
+  <property name="x_init_player_2" type="int" value="271"/>
+  <property name="x_init_player_3" type="int" value="25"/>
+  <property name="x_init_player_4" type="int" value="279"/>
+  <property name="x_init_player_5" type="int" value="153"/>
+  <property name="y_init_player_1" type="int" value="48"/>
+  <property name="y_init_player_2" type="int" value="50"/>
+  <property name="y_init_player_3" type="int" value="208"/>
+  <property name="y_init_player_4" type="int" value="148"/>
+  <property name="y_init_player_5" type="int" value="78"/>
+  <property name="y_tablero" type="int" value="10"/>
+ </properties>
+ <tileset firstgid="1" name="tiles2" tilewidth="16" tileheight="16" tilecount="48" columns="6">
+  <image source="data/imagenes/objetos/tiles2.bmp" width="96" height="128"/>
+  <tile id="0">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="21">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+   <animation>
+    <frame tileid="1" duration="100"/>
+    <frame tileid="30" duration="100"/>
+    <frame tileid="31" duration="100"/>
+    <frame tileid="32" duration="100"/>
+    <frame tileid="33" duration="100"/>
+    <frame tileid="34" duration="100"/>
+    <frame tileid="35" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="38">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="40">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="41">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="42">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+   <animation>
+    <frame tileid="19" duration="100"/>
+    <frame tileid="42" duration="100"/>
+    <frame tileid="43" duration="100"/>
+    <frame tileid="45" duration="100"/>
+    <frame tileid="45" duration="100"/>
+    <frame tileid="46" duration="100"/>
+    <frame tileid="47" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="43">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="44">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="46">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="47">
+   <properties>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="data" width="17" height="11">
+  <data encoding="csv">
+4,4,4,4,4,4,4,4,4,4,4,6,6,6,6,6,6,
+3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
+3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+22,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+22,14,14,20,22,22,1,1,22,22,22,20,7,21,8,8,8,
+22,7,7,7,7,7,7,7,7,7,7,7,7,7,8,7,7,
+22,14,14,14,19,19,19,19,19,19,20,22,7,22,8,20,22,
+22,14,14,14,21,19,20,19,21,21,20,22,7,22,8,20,22,
+22,22,22,14,22,19,19,19,19,19,14,14,20,20,20,20,22,
+22,22,14,22,22,22,14,14,14,14,14,13,13,13,13,13,13,
+22,22,14,14,14,14,22,22,21,21,21,21,21,21,22,22,22
+</data>
+ </layer>
+</map>

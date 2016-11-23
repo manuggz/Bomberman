@@ -40,6 +40,11 @@ namespace TMX
           unsigned int width;
           unsigned int height;
       };
+
+      struct Tile{
+          std::map<std::string, std::string> property;
+      };
+
       struct Tileset {
           unsigned int firstGID;
           std::string name;
@@ -48,6 +53,7 @@ namespace TMX
           unsigned int tileCount;
           unsigned int columns;
           ImageTileSet imgSource;
+          std::map<std::string, Tile> tilesMetaData;
       };
 
       struct Data {

@@ -69,7 +69,7 @@ void Juego::start() {
 void Juego::establecerValoresPlayersDeMapa() {
 
     for(int i = 0; i < _PLAYERS;i++) {
-        if(mIsPlayerActivado[PLAYER_1] && mPlayerSprite[i]) {
+        if(mIsPlayerActivado[i] && mPlayerSprite[i]) {
             mPlayerSprite[i]->move(
                     std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_X_INIT_PLAYER + std::to_string(i + 1))),
                     std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_Y_INIT_PLAYER + std::to_string(i + 1)))
@@ -592,6 +592,12 @@ void Juego::drawBarra(SDL_Renderer * gRenderer){
 //    	imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),142,24,tiempo,STR_MAX_ESTENDIDA);
     }
 }
+int Juego::getJoysActivos(){
+    return mGameManager->getJoysActivos();
+}
+SDL_Joystick * Juego::getJoy(int id){
+    return mGameManager->getJoy(id);
+}
 
 void Juego::draw(SDL_Renderer * gRenderer){
     mGameManager->getImagen((CodeImagen)std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer);
@@ -640,12 +646,6 @@ void Juego::romperBloque(int x,int y){
     mMapa->romperBloque(x,y);
 }
 
-int Juego::getJoysActivos(){
-    return mGameManager->getJoysActivos();
-}
-SDL_Joystick * Juego::getJoy(int id){
-    return mGameManager->getJoy(id);
-}
 
 void Juego::controlaPausa(const Uint8 * teclas){
     /*SI ALGUN PLAYER PRESIONO START SE PAUSA EL JUEGO*
@@ -734,6 +734,23 @@ Juego::~Juego(){
     }
     delete mGameTimer;
     delete mMapa;
+}
+
+Bomba * Juego::colisionConBombas(SDL_Rect  rect) {
+    return reinterpret_cast<Bomba *>(mGrpBombas.collide(rect));
+}
+
+int Juego::colision(SDL_Rect  rect_coli,int * lado_colision,bool solo_bloques_duros){
+    /*Comprueba si un rect colisiona con el nivel*/
+    rect_coli.x -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
+    rect_coli.y -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
+    return mMapa->colision(rect_coli,lado_colision,solo_bloques_duros);
+}
+
+bool Juego::isOutOfMapBounds(SDL_Rect rect) {
+    rect.x -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
+    rect.y -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
+    return !mMapa->contain(rect);
 }
 
 
