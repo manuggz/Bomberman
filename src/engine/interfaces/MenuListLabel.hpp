@@ -111,7 +111,7 @@ public:
             switch(evento->key.keysym.sym){
                 case SDLK_ESCAPE:
                     cout << "Tecla Escape Presionada " << endl;
-                    mGameManager->popInterface();
+                    mGameManager->goBack();
                     break;
                 case SDLK_UP:
                     setOpcionResaltada(mOpcionMenuResaltadaActual - 1);

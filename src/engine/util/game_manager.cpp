@@ -200,7 +200,11 @@ void GameManager::run(){
         if(interfaces.top() != interfaz_actual){
 
             if(interfaz_actual != nullptr){
-                interfaz_actual->pause();
+                if(interfaz_actual->isStopped()){
+                    delete interfaz_actual;
+                }else{
+                    interfaz_actual->pause();
+                }
             }
 
             interfaz_actual = interfaces.top();
@@ -217,8 +221,10 @@ void GameManager::run(){
         //SDL_RenderClear(gRenderer); // Borra la vista
 
         if(procesarEventos()){ // Si se deben procesar los eventos en este frame
-            interfaz_actual->update();
-            interfaz_actual->draw(gRenderer);
+            if(!interfaz_actual->isStopped()) {
+                interfaz_actual->update();
+                interfaz_actual->draw(gRenderer);
+            }
         }
 
         SDL_RenderPresent(gRenderer); // Muestra la vista
@@ -263,10 +269,12 @@ GameManager::~GameManager(){
     // Close and destroy the window
     SDL_DestroyWindow(screen);
 
-    for(int i = 0 ; i < interfaces.size(); i++){
+    while(interfaces.size() > 0){
         delete interfaces.top();
         interfaces.pop();
     }
+
+
     delete galeria;
 
     for(int i=0;i<joys_act;i++){
@@ -288,12 +296,27 @@ int GameManager::getHeight() {
     return mHeight;
 }
 
-void GameManager::popInterface() {
+void GameManager::goBack() {
     cout << "GameManager::popInterface"<<endl;
-
     interfaces.pop();
 }
 
+void GameManager::setRoot(InterfazUI *nuevaInterfazRoot) {
+
+    InterfazUI * interfazUI;
+
+    while(interfaces.size() > 0){
+        interfazUI = interfaces.top();
+        interfazUI->stop();
+
+        if(interfazUI != interfaz_actual){
+            delete interfazUI;
+        }
+        interfaces.pop();
+    }
+
+    interfaces.push(nuevaInterfazRoot);
+}
 /*
 void GameManager::cargarDatos(){  
     ifstream fs(RUTA_CONFIG);

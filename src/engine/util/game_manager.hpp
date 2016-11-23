@@ -37,7 +37,9 @@ class GameManager{
     ~GameManager();
 
 
-    void popInterface();
+    void goBack();
+
+    void setRoot(InterfazUI *nuevaInterfazRoot);
 
 private:
     stack<InterfazUI *> interfaces; // Pila de interfaces

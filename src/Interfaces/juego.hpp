@@ -223,6 +223,10 @@ protected:
     void establecerValoresPlayersDeMapa();
 
     void agregarPlayersActivos();
+
+    bool estaPlayerActivo(IdPlayer);
+
+    IdPlayer mIdLiderRondasGanadas = PLAYER_NONE;
 };
 
 #endif

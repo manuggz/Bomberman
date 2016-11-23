@@ -1,7 +1,6 @@
 #include "player.hpp"
 
 
-//#define DEBUG
 
 Player::Player(InterfazGaleria * interfazGaleria,IdPlayer id,int x,int y,int vidasIni,int numBombasIni,int alcanceBombasIni){
     #ifdef DEBUG
@@ -515,5 +514,3 @@ void Player::setAlcanceBombas(int alcanceBombas) {
 
 }
 
-Player::Player(Juego *pJuego, IdPlayer player) {
-}

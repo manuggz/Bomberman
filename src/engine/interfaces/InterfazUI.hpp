@@ -14,11 +14,15 @@ class InterfazUI{
     // Funciones comunes a todas las escenas
     virtual void prepare(){};
     virtual void createUI(SDL_Renderer * gRenderer){};
+
     virtual void start(){mIsStarted=true;};
-    virtual bool isPaused(){return mIsPaused&&mIsStarted;};
+    virtual bool isPaused(){return mIsPaused&&mIsStarted&&!mIsStopped;};
     virtual bool isStarted(){return mIsStarted;};
+    virtual bool isStopped(){return mIsStopped;};
     virtual void pause(){mIsPaused = true;};
+    virtual void stop(){mIsStopped = true;}; // La detiene marcandola  para eliminacion
     virtual void resume() {mIsPaused = false;};
+
     virtual void procesarEvento(SDL_Event * event) = 0;
     virtual void update(){};
     virtual void draw(SDL_Renderer * gRenderer) = 0;
@@ -43,9 +47,11 @@ class InterfazUI{
 protected:
 
     // Coordenadas donde se dibujara la Interfaz
-    int mX,mY;
-    bool mIsPaused;
-    bool mIsStarted;
+    int mX = 0,mY = 0;
+    bool mIsPaused = false;
+    bool mIsStarted = false;
+
+    bool mIsStopped = false;
 };
 
 #endif

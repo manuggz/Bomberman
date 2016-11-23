@@ -9,12 +9,11 @@
 
 class Player:public Sprite{
     public:
-	Player(Juego *pJuego, IdPlayer player);
 
 	enum AreaColision {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
 //        static enum TeclasPlayer {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
-    
-        Player(InterfazGaleria * interfazGaleria,IdPlayer id,int x,int y,int vidasIni=3,int numBombasIni=1,int alcanceBombasIni=1);
+
+        Player(InterfazGaleria * interfazGaleria,IdPlayer id,int x = 0,int y = 0,int vidasIni=3,int numBombasIni=1,int alcanceBombasIni=1);
         void update(const Uint8 * teclas);
         void draw(SDL_Renderer * );
         void reiniciar();

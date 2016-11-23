@@ -304,7 +304,7 @@ public:
         if(event->type==SDL_KEYDOWN){
             switch(event->key.keysym.sym){
                 case SDLK_ESCAPE:
-                    mGameManager->popInterface();
+                    mGameManager->goBack();
                     break;
                 case SDLK_RETURN:
                     mBotonClicked=MENU_BOTON_JUGAR;
