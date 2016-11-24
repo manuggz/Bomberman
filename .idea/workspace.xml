@@ -12,407 +12,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e751d25e-2544-4571-ba4e-5a2d2c3be35f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Bomberman" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.6.2/CMakeDetermineCompilerABI_C.bin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.6.2/CMakeDetermineCompilerABI_CXX.bin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.6.2/CompilerIdC/a.out" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.6.2/CompilerIdCXX/a.out" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/control_player.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/editor.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/mapa/include/TMXParser.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/sprites/animacion/Control_Animacion.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/sprites/animacion/animacion.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/util/CFont.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/util/CMetaData.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/util/LTexture.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/util/LTimer.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/explosion.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/galeria.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/item.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/main.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/menu.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/personajes/bloque.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/personajes/globo.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/personajes/player.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/util.cpp.o" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/feature_tests.bin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/GoodDog.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/OpenSans-Bold.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/OpenSans-BoldItalic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/OpenSans-ExtraBold.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/OpenSans-ExtraBoldItalic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/OpenSans-Italic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/OpenSans-Light.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/OpenSans-LightItalic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/OpenSans-Regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/OpenSans-Semibold.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/OpenSans-SemiboldItalic.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/fuente_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/fuente_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/fuente_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/fuente_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/fuente_5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/fuente_6.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/fuente_6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/fuente_7.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/fuente_7_.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/fuente_8.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/fuentes/lazy.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/Thumbs.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_activado_desactivado.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_cambiar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_cambiar_mapa.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_cancelar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_cancelar.psd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_estranyo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_flecha.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_flecha_2_derecha.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_flecha_2_izquierda.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_guardar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_jugar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_jugar_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_mas.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_menos.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_player_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_player_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_player_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_player_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/botones/boton_player_5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/fondos/black_fondo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/fondos/fondo_1.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/fondos/fondo_2.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/fondos/fondo_3.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/fondos/fondo_cargando.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/fondos/fondo_creditos.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/fondos/fondo_escoja.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/fondos/fondo_menu.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/fondos/white_fondo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/bomba.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/caras_bomberman.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/caras_grande.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/cuadro_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/cuadro_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/cuadro_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/cuadro_scoreboard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/entrada_texto.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/explosion.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/icono.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/item_fire.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/items.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/kills.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/objeto_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/objeto_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/objeto_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/objeto_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/tablero.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/tiles.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/tiles2.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/tiles_fire.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/trofeo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/trofeo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/personajes/Thumbs.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/personajes/enemigo_1.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/personajes/player_1.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/personajes/player_1_muriendo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/personajes/player_2.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/personajes/player_2_muriendo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/personajes/player_3.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/personajes/player_3_muriendo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/personajes/player_4.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/personajes/player_4_muriendo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/personajes/player_5.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/personajes/player_5_muriendo.bmp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/Thumbs.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_activado.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_escoja_nivel_a_modificar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_mayor_puntaje.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_players_en_batalla.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_presiona.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_presiona_accion.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_presiona_start.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_presiona_startas.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_puntaje.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_puntaje_1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_scoreboard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_tiempo_por_ronda.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_tiles.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/textos/txt_victorias.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_1.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_10.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_11.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_12.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_13.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_14.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_15.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_16.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_2.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_3.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_4.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_5.MAP" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_6.MAP" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_7.MAP" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_8.MAP" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/nivel_9.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/musica_1.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/musica_10.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/musica_11.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/musica_2.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/musica_3.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/musica_4.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/musica_5.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/musica_6.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/musica_7.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/musica_8.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/musica_9.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/ping_1.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/ping_2.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/ping_3.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/ping_4.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/ping_5.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/ping_6.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/sonidos/ping_7.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Bomberman.cbp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeCache.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.6.2/CMakeCCompiler.cmake" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.6.2/CMakeCXXCompiler.cmake" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.6.2/CMakeSystem.cmake" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/CXX.includecache" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/DependInfo.cmake" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/build.make" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/cmake_clean.cmake" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/depend.internal" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/depend.make" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/flags.make" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/link.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/progress.make" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/CMakeDirectoryInformation.cmake" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/CMakeOutput.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Makefile.cmake" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/Makefile2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/TargetDirectories.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/clion-environment.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/clion-log.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/cmake.check_cache" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/feature_tests.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/feature_tests.cxx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/CMakeFiles/progress.marks" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/Makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/cmake_install.cmake" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/configuracion/images.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/configuracion/inf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/tile_1.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/tile_2.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/tile_3.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/imagenes/objetos/tile_4.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/batalla/mapa_batalla_1.tmx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/1.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/10.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/11.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/12.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/13.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/14.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/15.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/16.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/2.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/3.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/4.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/5.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/6.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/7.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/8.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/data/niveles/historia/9.txt" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/Bomberman" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/configuracion/images.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/configuracion/inf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/GoodDog.otf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-Bold.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-BoldItalic.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-ExtraBold.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-ExtraBoldItalic.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-Italic.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-Light.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-LightItalic.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-Regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-Semibold.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/OpenSans-SemiboldItalic.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_4.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_5.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_6.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_6.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_7.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_7_.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/fuente_8.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/fuentes/lazy.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_activado_desactivado.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_cambiar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_cambiar_mapa.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_cancelar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_cancelar.psd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_estranyo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_flecha.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_flecha_2_derecha.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_flecha_2_izquierda.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_guardar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_jugar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_jugar_2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_mas.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_menos.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_player_1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_player_2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_player_3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_player_4.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/botones/boton_player_5.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/black_fondo.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_1.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_2.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_3.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_cargando.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_creditos.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_escoja.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/fondo_menu.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/fondos/white_fondo.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/bomba.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/caras_bomberman.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/caras_grande.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/cuadro_1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/cuadro_2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/cuadro_3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/cuadro_scoreboard.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/entrada_texto.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/explosion.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/icono.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/item_fire.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/items.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/kills.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/objeto_1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/objeto_2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/objeto_3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/objeto_4.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tablero.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tile_1.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tile_2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tile_3.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tile_4.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tiles.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/tiles_fire.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/trofeo.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/objetos/trofeo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/enemigo_1.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_1.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_1_muriendo.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_2.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_2_muriendo.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_3.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_3_muriendo.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_4.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_4_muriendo.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_5.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/personajes/player_5_muriendo.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_4.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_5.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_6.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_activado.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_escoja_nivel_a_modificar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_mayor_puntaje.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_players_en_batalla.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_presiona.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_presiona_accion.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_presiona_start.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_presiona_startas.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_puntaje.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_puntaje_1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_scoreboard.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_tiempo_por_ronda.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_tiles.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/imagenes/textos/txt_victorias.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/1.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/10.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/11.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/12.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/13.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/14.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/15.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/16.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/3.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/4.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/5.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/6.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/7.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/8.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/9.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_1.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_10.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_11.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_12.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_13.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_14.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_15.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_16.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_2.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_3.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_4.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_5.MAP" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_6.MAP" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_7.MAP" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_8.MAP" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/niveles/historia/nivel_9.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_1.mid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_10.mid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_11.mid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_2.mid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_3.mid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_4.mid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_5.mid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_6.mid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_7.mid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_8.mid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/musica_9.mid" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_1.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_2.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_3.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_4.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_5.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_6.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/Debug/data/sonidos/ping_7.wav" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/engine/interfaces/InterfazGaleria.hpp" afterPath="$PROJECT_DIR$/src/engine/interfaces/InterfazJuego.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Bomberman.iml" afterPath="$PROJECT_DIR$/.idea/Bomberman.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/Bomberman" afterPath="$PROJECT_DIR$/build/Bomberman" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.o" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.o" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.o" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/sprites/animacion/animacion.cpp.o" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/engine/sprites/animacion/animacion.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/explosion.cpp.o" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/explosion.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/item.cpp.o" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/item.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/main.cpp.o" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/main.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/personajes/bloque.cpp.o" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/personajes/bloque.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/personajes/player.cpp.o" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/src/personajes/player.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/Bomberman.cbp" afterPath="$PROJECT_DIR$/build/Bomberman.cbp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/CXX.includecache" afterPath="$PROJECT_DIR$/build/CMakeFiles/Bomberman.dir/CXX.includecache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/Makefile.cmake" afterPath="$PROJECT_DIR$/build/CMakeFiles/Makefile.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/CMakeFiles/clion-log.txt" afterPath="$PROJECT_DIR$/build/CMakeFiles/clion-log.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Interfaces/juego.cpp" afterPath="$PROJECT_DIR$/src/Interfaces/juego.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Interfaces/juego.hpp" afterPath="$PROJECT_DIR$/src/Interfaces/juego.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/constantes.hpp" afterPath="$PROJECT_DIR$/src/constantes.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/control_player.cpp" afterPath="$PROJECT_DIR$/src/control_player.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/mapa/include/TMXParser.cpp" afterPath="$PROJECT_DIR$/src/engine/mapa/include/TMXParser.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/mapa/include/TMXParser.h" afterPath="$PROJECT_DIR$/src/engine/mapa/include/TMXParser.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/interfaces/InterfazJuego.hpp" afterPath="$PROJECT_DIR$/src/engine/interfaces/InterfazJuego.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/sprites/CGroup.cpp" afterPath="$PROJECT_DIR$/src/engine/sprites/CGroup.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/sprites/CGroup.hpp" afterPath="$PROJECT_DIR$/src/engine/sprites/CGroup.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/sprites/CSprite.hpp" afterPath="$PROJECT_DIR$/src/engine/sprites/CSprite.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/sprites/CUpdateGrow.hpp" afterPath="$PROJECT_DIR$/src/engine/sprites/CUpdateGrow.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/sprites/animacion/animacion.cpp" afterPath="$PROJECT_DIR$/src/engine/sprites/animacion/animacion.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/sprites/animacion/animacion.hpp" afterPath="$PROJECT_DIR$/src/engine/sprites/animacion/animacion.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/util/SpriteSheet.hpp" afterPath="$PROJECT_DIR$/src/engine/util/SpriteSheet.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/niveles/NivelMapa.cpp" afterPath="$PROJECT_DIR$/src/niveles/NivelMapa.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/niveles/NivelMapa.hpp" afterPath="$PROJECT_DIR$/src/niveles/NivelMapa.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/personajes/bomba.hpp" afterPath="$PROJECT_DIR$/src/personajes/bomba.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/personajes/player.cpp" afterPath="$PROJECT_DIR$/src/personajes/player.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/personajes/player.hpp" afterPath="$PROJECT_DIR$/src/personajes/player.hpp" />
     </list>
@@ -432,27 +62,118 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NivelMapa.hpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/niveles/NivelMapa.hpp">
+      <file leaf-file-name="juego.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Interfaces/juego.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="137" column="0" lean-forward="true" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+            <state relative-caret-position="122">
+              <caret line="733" column="81" lean-forward="false" selection-start-line="733" selection-start-column="81" selection-end-line="733" selection-end-column="81" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NivelMapa.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/niveles/NivelMapa.cpp">
+      <file leaf-file-name="CUpdateGrow.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/engine/sprites/CUpdateGrow.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="129">
+              <caret line="37" column="6" lean-forward="true" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CGroup.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/engine/sprites/CGroup.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stl_deque.h" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/include/c++/5/bits/stl_deque.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="355" column="0" lean-forward="false" selection-start-line="355" selection-start-column="0" selection-end-line="355" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CGroup.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/engine/sprites/CGroup.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="49" column="83" lean-forward="false" selection-start-line="49" selection-start-column="83" selection-end-line="49" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bomba.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/personajes/bomba.hpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
-              <caret line="92" column="9" lean-forward="true" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
+              <caret line="11" column="71" lean-forward="false" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="71" />
+              <folding>
+                <element signature="e#36#57#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/personajes/player.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3308">
+              <caret line="293" column="27" lean-forward="true" selection-start-line="293" selection-start-column="27" selection-end-line="293" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CSprite.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/engine/sprites/CSprite.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="animacion.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/engine/sprites/animacion/animacion.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="56" column="10" lean-forward="false" selection-start-line="56" selection-start-column="10" selection-end-line="56" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="animacion.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/engine/sprites/animacion/animacion.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding>
+                <marker date="1479949315170" expanded="true" signature="353:1437" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>bomba</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -460,7 +181,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/engine/sprites/CUpdateGrow.hpp" />
         <option value="$PROJECT_DIR$/src/engine/sprites/CDrawGroup.hpp" />
         <option value="$PROJECT_DIR$/src/animacion.hpp" />
         <option value="$PROJECT_DIR$/src/animacion.cpp" />
@@ -469,12 +189,9 @@
         <option value="$PROJECT_DIR$/src/niveles/mapa.hpp" />
         <option value="$PROJECT_DIR$/src/player.hpp" />
         <option value="$PROJECT_DIR$/src/personajes/bloque.cpp" />
-        <option value="$PROJECT_DIR$/src/engine/sprites/animacion/animacion.cpp" />
         <option value="$PROJECT_DIR$/src/personajes/bomba.cpp" />
-        <option value="$PROJECT_DIR$/src/personajes/bomba.hpp" />
         <option value="$PROJECT_DIR$/src/engine/sprites/animacion/animacion.hpp" />
         <option value="$PROJECT_DIR$/src/Interfaces/MenuNuevoJuego.hpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/editor.cpp" />
         <option value="$PROJECT_DIR$/src/editor.hpp" />
         <option value="$PROJECT_DIR$/src/explosion.cpp" />
@@ -492,7 +209,6 @@
         <option value="$PROJECT_DIR$/src/engine/sprites/SpriteContainer.hpp" />
         <option value="$PROJECT_DIR$/src/engine/sprites/CSprite.cpp" />
         <option value="$PROJECT_DIR$/src/engine/interfaces/MenuListLabel.hpp" />
-        <option value="$PROJECT_DIR$/src/engine/util/SpriteSheet.hpp" />
         <option value="$PROJECT_DIR$/src/niveles/mapa.cpp" />
         <option value="$PROJECT_DIR$/src/engine/mapa/CMapa.hpp" />
         <option value="$PROJECT_DIR$/src/engine/util/game_manager.hpp" />
@@ -501,16 +217,21 @@
         <option value="$PROJECT_DIR$/src/Interfaces/MenuModoMultijugador.hpp" />
         <option value="$PROJECT_DIR$/src/constantes.hpp" />
         <option value="$PROJECT_DIR$/src/control_player.cpp" />
-        <option value="$PROJECT_DIR$/src/engine/sprites/CGroup.hpp" />
-        <option value="$PROJECT_DIR$/src/engine/sprites/CGroup.cpp" />
+        <option value="$PROJECT_DIR$/src/niveles/NivelMapa.hpp" />
         <option value="$PROJECT_DIR$/src/personajes/player.hpp" />
-        <option value="$PROJECT_DIR$/src/engine/sprites/CSprite.hpp" />
-        <option value="$PROJECT_DIR$/src/personajes/player.cpp" />
+        <option value="$PROJECT_DIR$/src/niveles/NivelMapa.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/src/engine/util/SpriteSheet.hpp" />
         <option value="$PROJECT_DIR$/src/engine/interfaces/InterfazJuego.hpp" />
         <option value="$PROJECT_DIR$/src/Interfaces/juego.hpp" />
+        <option value="$PROJECT_DIR$/src/personajes/bomba.hpp" />
+        <option value="$PROJECT_DIR$/src/engine/sprites/CSprite.hpp" />
+        <option value="$PROJECT_DIR$/src/engine/sprites/animacion/animacion.cpp" />
+        <option value="$PROJECT_DIR$/src/engine/sprites/CGroup.hpp" />
+        <option value="$PROJECT_DIR$/src/engine/sprites/CGroup.cpp" />
+        <option value="$PROJECT_DIR$/src/engine/sprites/CUpdateGrow.hpp" />
+        <option value="$PROJECT_DIR$/src/personajes/player.cpp" />
         <option value="$PROJECT_DIR$/src/Interfaces/juego.cpp" />
-        <option value="$PROJECT_DIR$/src/niveles/NivelMapa.hpp" />
-        <option value="$PROJECT_DIR$/src/niveles/NivelMapa.cpp" />
       </list>
     </option>
   </component>
@@ -666,6 +387,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sprites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bomberman" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bomberman" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="animacion" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1021,7 +768,7 @@
       <workItem from="1479872922572" duration="1599000" />
       <workItem from="1479875405842" duration="36000" />
       <workItem from="1479875478093" duration="3383000" />
-      <workItem from="1479930916109" duration="8079000" />
+      <workItem from="1479930916109" duration="19310000" />
     </task>
     <task id="LOCAL-00001" summary="added gitignore">
       <created>1479503971545</created>
@@ -1149,17 +896,24 @@
       <option name="project" value="LOCAL" />
       <updated>1479866539004</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="lots of change">
+      <created>1479940663673</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1479940663673</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197983000" />
+    <option name="totallyTimeSpent" value="209214000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27440432" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27363566" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32286996" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -1170,7 +924,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40807176" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40807176" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1230,29 +984,16 @@
     <MESSAGE value="Comentado 45% del codigo Holy Shit.&#10;...&#10;Muchos Cambios" />
     <MESSAGE value="arreglado el menu de seleccion de nivel" />
     <MESSAGE value="arreglado el dibujo del fondo y partes del tablero del estado juego" />
-    <option name="LAST_COMMIT_MESSAGE" value="arreglado el dibujo del fondo y partes del tablero del estado juego" />
+    <MESSAGE value="lots of change" />
+    <option name="LAST_COMMIT_MESSAGE" value="lots of change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="58" />
+      <option name="time" value="78" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Interfaces/juego_historia.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="11" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="549" column="2" lean-forward="false" selection-start-line="549" selection-start-column="2" selection-end-line="549" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Interfaces/MenuNuevoJuego.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1316,27 +1057,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/util/SpriteSheet.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/sprites/animacion/animacion.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/sprites/animacion/animacion.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/editor.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1383,13 +1103,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/c++/5/bits/stl_deque.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1456,46 +1169,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/sprites/CGroup.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/sprites/CGroup.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="71" column="19" lean-forward="false" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/personajes/player.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="74" column="6" lean-forward="false" selection-start-line="74" selection-start-column="6" selection-end-line="74" selection-end-column="6" />
-          <folding>
-            <element signature="e#38#78#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/sprites/CSprite.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/sprites/CSprite.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="56" column="20" lean-forward="false" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/util/CMetaData.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1522,14 +1195,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interfaces/juego.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="95" column="59" lean-forward="false" selection-start-line="95" selection-start-column="59" selection-end-line="95" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1537,40 +1202,6 @@
           <folding>
             <element signature="e#0#39#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/sprites/CUpdateGrow.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/interfaces/InterfazJuego.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="24" column="2" lean-forward="true" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/personajes/player.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="458" column="0" lean-forward="false" selection-start-line="458" selection-start-column="0" selection-end-line="458" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interfaces/juego.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="746" column="0" lean-forward="false" selection-start-line="746" selection-start-column="0" selection-end-line="746" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1606,18 +1237,152 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/niveles/NivelMapa.cpp">
+    <entry file="file://$PROJECT_DIR$/src/niveles/NivelMapa.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="92" column="9" lean-forward="true" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
+        <state relative-caret-position="265">
+          <caret line="147" column="22" lean-forward="false" selection-start-line="147" selection-start-column="22" selection-end-line="147" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/niveles/NivelMapa.hpp">
+    <entry file="file://$PROJECT_DIR$/src/personajes/player.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="137" column="0" lean-forward="true" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+        <state relative-caret-position="609">
+          <caret line="108" column="4" lean-forward="false" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/sprites/CSprite.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/niveles/NivelMapa.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="241" column="22" lean-forward="false" selection-start-line="241" selection-start-column="22" selection-end-line="241" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="1982" lean-forward="false" selection-start-line="5" selection-start-column="1982" selection-end-line="5" selection-end-column="1982" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/util/SpriteSheet.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/interfaces/InterfazJuego.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="21" column="111" lean-forward="false" selection-start-line="21" selection-start-column="111" selection-end-line="21" selection-end-column="111" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interfaces/juego.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="100" column="42" lean-forward="true" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/personajes/bomba.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="71" lean-forward="false" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="71" />
+          <folding>
+            <element signature="e#36#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/5/bits/stl_deque.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="355" column="0" lean-forward="false" selection-start-line="355" selection-start-column="0" selection-end-line="355" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/sprites/CSprite.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/sprites/animacion/animacion.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <marker date="1479949315170" expanded="true" signature="353:1437" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/sprites/animacion/animacion.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="56" column="10" lean-forward="false" selection-start-line="56" selection-start-column="10" selection-end-line="56" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/sprites/CGroup.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/sprites/CGroup.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="49" column="83" lean-forward="false" selection-start-line="49" selection-start-column="83" selection-end-line="49" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/sprites/CUpdateGrow.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="37" column="6" lean-forward="true" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/personajes/player.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3308">
+          <caret line="293" column="27" lean-forward="true" selection-start-line="293" selection-start-column="27" selection-end-line="293" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interfaces/juego.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="733" column="81" lean-forward="false" selection-start-line="733" selection-start-column="81" selection-end-line="733" selection-end-column="81" />
           <folding />
         </state>
       </provider>

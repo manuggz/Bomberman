@@ -51,6 +51,7 @@ void Juego::prepare() {
 void Juego::createUI(SDL_Renderer *gRenderer) {
     SDL_ShowCursor(SDL_DISABLE);
     mMapa->cargar(gRenderer,"data/niveles/batalla/mapa_batalla_" + std::to_string(mIDTerrenoMapa + 1) + ".tmx");
+    mGameRenderer = gRenderer;
 }
 
 void Juego::start() {
@@ -724,8 +725,16 @@ void Juego::moveAllSprites(int aumX,int aumY){
 }
 */
 
-void Juego::killedSprite(Sprite *sprite) {
+void Juego::killedSprite(Sprite * sprite) {
+    //cout << "Kill sprite: " << sprite << endl;
 
+    Bomba * bomba = nullptr;
+    if((bomba = dynamic_cast<Bomba * >(sprite)) != nullptr){
+        Player * playerLanzador = bomba->getPlayerPropietario();
+        playerLanzador->setBombasColocadas(playerLanzador->getBombasColocadas() - 1);
+    }
+
+    delete sprite;
 }
 
 Juego::~Juego(){
@@ -736,11 +745,11 @@ Juego::~Juego(){
     delete mMapa;
 }
 
-Bomba * Juego::colisionConBombas(SDL_Rect  rect) {
-    return reinterpret_cast<Bomba *>(mGrpBombas.collide(rect));
+std::deque<Sprite *> Juego::colisionConBombas(SDL_Rect  rect) {
+    return mGrpBombas.collide(rect);
 }
 
-int Juego::colision(SDL_Rect  rect_coli,int * lado_colision,bool solo_bloques_duros){
+int Juego::colisionConMapa(SDL_Rect rect_coli, int *lado_colision, bool solo_bloques_duros){
     /*Comprueba si un rect colisiona con el nivel*/
     rect_coli.x -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
     rect_coli.y -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
@@ -751,6 +760,48 @@ bool Juego::isOutOfMapBounds(SDL_Rect rect) {
     rect.x -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
     rect.y -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
     return !mMapa->contain(rect);
+}
+
+Bomba *Juego::agregarBomba(Player * player) {
+
+    //int id_bomba_colocada=juego->addSprite(BOMBA,(x+7-juego->getEjeXVisual())/16*16+juego->getEjeXVisual(),(y+11-juego->getEjeYVisual())/16*16+juego->getEjeYVisual(),(int)id);
+    //SpriteSheet * nuevaSpriteSheet = new SpriteSheet();
+
+    // Pasamos la posicion X a la coordenada del Mapa
+    int nuevaPosicionX = player->getX() + 7 - std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
+    // Formateamos la posicion X a que sea proporcional al ancho de los tiles
+    nuevaPosicionX = nuevaPosicionX/mMapa->getTileWidth()*mMapa->getTileWidth();
+    // Pasamos la posicion X a la coordenada de la pantalla
+    nuevaPosicionX = nuevaPosicionX + std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
+
+    // Pasamos la posicion Y a la coordenada del Mapa
+    int nuevaPosicionY = player->getY() + 11 - std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
+    // Formateamos la posicion Y a que sea proporcional al alto de los tiles
+    nuevaPosicionY = nuevaPosicionY/mMapa->getTileHeight()*mMapa->getTileHeight();
+    // Pasamos la posicion Y a la coordenada de la pantalla
+    nuevaPosicionY = nuevaPosicionY + std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
+
+
+    Bomba * nuevaBomba = new Bomba(mGameRenderer,player);
+    nuevaBomba->move(nuevaPosicionX,nuevaPosicionY);
+
+    if(   mGrpEnemigos.collide(nuevaBomba).size() == 0
+       && mGrpItems.collide(nuevaBomba).size()    == 0
+       && mGrpPlayers.collide(nuevaBomba).size()  == 1){
+        mGrpBombas.add(nuevaBomba);
+        mGrpSprites.add(nuevaBomba);
+        return nuevaBomba;
+    }
+
+    delete nuevaBomba;
+//                (mJuego->getNumBombasLanzadas(mPlayerId) < numBombas)&&!mJuego->colisionConBombas(rect)
+//                &&!mJuego->colisionConEnemigos(rect)
+//                &&!mJuego->colisionConMapa(rect)
+//                &&!mJuego->colisionConItems(rect)){
+    /*anyadimos la bomba inocentemente*/
+
+    //mUltimaBomba = mJuego->agregarBomba(mPlayerId,x+7,y+11);
+    return nullptr;
 }
 
 

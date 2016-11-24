@@ -20,6 +20,7 @@ public :
      * @param keys
      */
     void update(const Uint8 *keys){
+        Group::update();
         deque<Sprite*>::iterator p_Sprite= v_personajes.begin();
         Sprite * spriteActual;
         if(keys == nullptr)//si no paso las keys las obtenemos
@@ -31,6 +32,7 @@ public :
             // Pueda que el Sprite haya sido eliminado en el parent o en otro grupo
             // Si ocurrio uno de los casos anteriores hay un problema de lógica del juego pero igual
             // hay que revisar
+
             if((*p_Sprite) == nullptr){
                 // Lo sacamos del grupo
                 p_Sprite = v_personajes.erase(p_Sprite);
@@ -45,10 +47,10 @@ public :
                 if(spriteActual->isKilled()) {
                     parent->killedSprite(spriteActual);
                     //delete spriteActual;
-                    p_Sprite = v_personajes.erase(p_Sprite);
-                }
 
-                if((*p_Sprite) == spriteActual){
+                    p_Sprite = v_personajes.erase(p_Sprite);
+                    spriteActual = nullptr;
+                }else{
                     p_Sprite++;
                 }
             }

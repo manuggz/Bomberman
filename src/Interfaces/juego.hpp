@@ -90,12 +90,14 @@ class Juego:public InterfazUI , public InterfazSpriteGroup,public InterfazJuego{
         //void clearSprites(bool elimina_players=false);
         bool isOutOfMapBounds(SDL_Rect rect) override;
 
+    Bomba *agregarBomba(Player *playerPropietario) override;
+
     //virtual InterfazJuego getTipoJuego()=0;
 //        TipoItem getTipoNuevoItem();
         //int getTipoItem(int id_item);
-        Bomba  * colisionConBombas(SDL_Rect  rect) override;
+    deque<Sprite *> colisionConBombas(SDL_Rect  rect) override;
         int getJoysActivos();
-        int colision(SDL_Rect  rect_coli,int * lado_colision,bool solo_bloques_duros) override;
+        int colisionConMapa(SDL_Rect rect_coli, int *lado_colision = nullptr, bool solo_bloques_duros=false) override;
         //int getActivos(TipoSprite type);
         //int getLanzador(TipoSprite type,int id_spri);
         //int getPuntaje(IdPlayer id);
@@ -230,6 +232,7 @@ protected:
     bool estaPlayerActivo(IdPlayer);
 
     IdPlayer mIdLiderRondasGanadas = PLAYER_NONE;
+    SDL_Renderer *mGameRenderer;
 };
 
 #endif

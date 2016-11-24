@@ -50,3 +50,9 @@ void Animacion::setCuadrosFrames(char * frames){
 void Animacion::draw(SDL_Renderer * gRenderer){
     mSprSCuadros->draw(gRenderer,x,y);
 }
+
+void Animacion::move(int nuevaX, int nuevaY) {
+    Sprite::move(nuevaX, nuevaY);
+    rect.w = mSprSCuadros->getWidthCuadro();
+    rect.h = mSprSCuadros->getHeightCuadro();
+}

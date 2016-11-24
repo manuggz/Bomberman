@@ -21,6 +21,7 @@ public:
     virtual void disable();
     virtual void draw(SDL_Renderer * );
 
+    void move(int nuevaX, int nuevaY) override;
     /*int getTipo(){return type;};
     int getId(){return id;};*/
     //int getLoop(){return mLoop;};

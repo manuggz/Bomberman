@@ -555,6 +555,8 @@ SDL2/SDL.h
 /home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/animacion/animacion.hpp
 ../constantes.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/constantes.hpp
+player.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/personajes/player.hpp
 
 /home/manuggz/Documents/Projects/Bomberman/src/personajes/globo.cpp
 objetos.h
@@ -567,6 +569,8 @@ engine/util.h
 /home/manuggz/Documents/Projects/Bomberman/src/personajes/engine/util.h
 
 /home/manuggz/Documents/Projects/Bomberman/src/personajes/player.cpp
+deque
+-
 player.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/personajes/player.hpp
 bomba.hpp

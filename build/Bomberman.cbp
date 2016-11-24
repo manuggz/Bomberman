@@ -305,6 +305,9 @@
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/personajes/bloque.hpp">
 			<Option target="Bomberman"/>
 		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/personajes/bomba.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/personajes/globo.cpp">
 			<Option target="Bomberman"/>
 		</Unit>

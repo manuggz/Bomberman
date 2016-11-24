@@ -1,3 +1,4 @@
+#include <deque>
 #include "player.hpp"
 #include "bomba.hpp"
 
@@ -44,7 +45,8 @@ void Player::reiniciar(){
     //entroPuerta=false;
     puedeAtravesarBloquesBlandos=false;
     alcanBomb=alcanBombIni;
-    numBombas=numBombasIni;
+    mNBombasDisponibles=numBombasIni;
+    mNBombasColocadas = 0;
     velocidad=1;
     puedeAtravesarBombas=false;
     puedeGolpearBombas=false;
@@ -204,8 +206,8 @@ void Player::activarPoderItem(int tipo){
             vidas++;
             break;
         case Item::ITEM_BOMBA:
-            if(numBombas < MAX_BOMBAS)
-                numBombas++;
+            if(mNBombasDisponibles < MAX_BOMBAS)
+                mNBombasDisponibles++;
             break;
         case Item::ITEM_ATRAVIESA_PAREDES:
             puedeAtravesarBloquesBlandos=true;
@@ -214,7 +216,7 @@ void Player::activarPoderItem(int tipo){
             //activarPoderItem(juego->getTipoNuevoItem(false));
             break;
         case Item::ITEM_BOMBA_MAX:
-            numBombas=MAX_BOMBAS;
+            mNBombasDisponibles=MAX_BOMBAS;
             break;
         case Item::ITEM_ALCANCE_MAX:
             alcanBomb=MAX_ALCANCE_EXPLOSION;
@@ -270,34 +272,32 @@ void Player::draw(SDL_Renderer * gRenderer){
 
 void Player::ponerBomba(const Uint8 * teclas){
     TipoSprite conjun_coli[]={BOMBA,GLOBO,NIVEL,ITEM};
-    
-//    SDL_Rect rect_bomb={0,0,16,16};
-//    updateRectColision();
-//	if(!mantieneStartPresionado&&\
-//        isPressed(TECLA_ACCION,teclas)&&\
-//        (juego->getActivosId(BOMBA,(IdPlayer)id) < numBombas)&&\
-//        (juego->colision(conjun_coli,4,rect)==-1)){
-//
-//                /*anyadimos la bomba inocentemente*/
-//               int id_bomba_colocada=juego->addSprite(BOMBA,(x+7-juego->getEjeXVisual())/16*16+juego->getEjeXVisual(),(y+11-juego->getEjeYVisual())/16*16+juego->getEjeYVisual(),(int)id);
-//               /*si se logro anyadir*/
-//    	       if(id_bomba_colocada!=-1){
-//                    /*si la bomba que colocamos colisiona con un personaje la quitamos porque el PLAYER CON EL QUE COLISIONA
-//                    NO SE MOVERA NUNCA*/
-//                    int x,y;
-//                   juego->getPosicion(BOMBA,id_bomba_colocada,x,y);
-//                   rect_bomb.x=x;
-//                   rect_bomb.y=y;
-//    	           if(juego->colision(PLAYER,rect_bomb,id)!=-1||juego->colision(GLOBO,rect_bomb)!=-1){
-//                            juego->soloKill(BOMBA,id_bomba_colocada);
-//                            return;
-//                    }
-//                    /*sino ocurre lo de arriba continuamos  */
-//                   idUltimaBomba=id_bomba_colocada;
+
+    //SDL_Rect rect_bomb={0,0,16,16};
+    updateRectColision();
+	if(!mantieneStartPresionado&&isPressed(TECLA_ACCION,teclas)
+       &&mNBombasColocadas < mNBombasDisponibles){
+
+           mUltimaBomba = mJuego->agregarBomba(this);
+           /*si se logro anyadir*/
+           if(mUltimaBomba != nullptr){
+                /*si la bomba que colocamos colisiona con un personaje la quitamos porque el PLAYER CON EL QUE COLISIONA
+                NO SE MOVERA NUNCA*/
+//                int x,y;
+//               juego->getPosicion(BOMBA,id_bomba_colocada,x,y);
+//               rect_bomb.x=x;
+//               rect_bomb.y=y;
+//               if(juego->colision(PLAYER,rect_bomb,id)!=-1||juego->colision(GLOBO,rect_bomb)!=-1){
+//                        juego->soloKill(BOMBA,id_bomba_colocada);
+//                        return;
 //                }
-//        }
-//
-//	mantieneStartPresionado=isPressed(TECLA_ACCION,teclas);
+               mNBombasColocadas++;
+                /*sino ocurre lo de arriba continuamos  */
+               //idUltimaBomba=id_bomba_colocada;
+            }
+        }
+
+	mantieneStartPresionado=isPressed(TECLA_ACCION,teclas);
 }
 
 bool Player::colision(SDL_Rect & rect){
@@ -442,23 +442,31 @@ void Player::mover_ip(int incremento_x, int incremento_y)
     rect.x+=incremento_x;
     rect.y+=incremento_y;
 
-    Bomba * bombaColision = mJuego->colisionConBombas(rect);
-    if(bombaColision&&bombaColision!=mUltimaBomba&&!puedeAtravesarBombas){ /*si esta sobre una bomba que no es la que el puso*/
-        return;
-     }else if(!bombaColision&&mUltimaBomba){
+    auto setBombasColision = mJuego->colisionConBombas(rect);
+    // assert 0 <= setBombasColision.size() <= 1
+
+    if(setBombasColision.size() > 0){
+        auto pBomba = setBombasColision.begin();
+        while(pBomba != setBombasColision.end()){
+            // Si colisiona con una bomba que no es la ultima colocada no movemos al personaje
+            if((*pBomba) != mUltimaBomba && !puedeAtravesarBombas){
+                return;
+            }
+            pBomba++;
+        }
+    }else{
         // Si no colisiona con una bomba y teniamos una referencia a la ultima bomba la quitamos
         // Esta referencia solo era para permitir al usuario moverse arriba de la bomba que él puso hasta que
         // se salga del cuadro de colision
         mUltimaBomba= nullptr;
     }
 
-
     if(mJuego->isOutOfMapBounds(rect))return;
 
     if(!puedeAtravesarBloquesBlandos)
-        temp=mJuego->colision(rect,&num_colision,false);
+        temp= mJuego->colisionConMapa(rect, &num_colision, false);
     else
-        temp=mJuego->colision(rect,&num_colision,true);
+        temp= mJuego->colisionConMapa(rect, &num_colision, true);
 
     if(temp){
         if(num_colision==1){//ESTO ES PARA DESPLAZAR EL PERSONAJE UN POCO
@@ -511,5 +519,13 @@ void Player::setAlcanceBombas(int alcanceBombas) {
     this->alcanBombIni = alcanceBombas;
     this->alcanBomb = alcanceBombas;
 
+}
+
+int Player::getBombasColocadas() {
+    return mNBombasColocadas;
+}
+
+void Player::setBombasColocadas(int n) {
+    mNBombasColocadas = n;
 }
 

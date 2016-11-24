@@ -12,9 +12,11 @@ public:
 
     SpriteSheet()= default;
 
+    SpriteSheet(SDL_Renderer * gRenderer,std::string ruta, int nFilas, int nColumnas,bool colorClave = false){
+        cargarDesdeArchivo(gRenderer,ruta,nFilas,nColumnas,colorClave);
+    }
+
     SpriteSheet(LTexture * texture, int nFilas, int nColumnas){
-        mRectSource.x = 0;
-        mRectSource.y = 0;
         mRectSource.w = texture->getWidth()/nColumnas;
         mRectSource.h = texture->getHeight()/nFilas;
         mFilas = nFilas;
@@ -35,8 +37,6 @@ public:
         mRectSource.h = mTexture->getHeight()/nFilas;
         mFilas = nFilas;
         mColumnas =nColumnas;
-        mTexture = mTexture;
-        cargada_desde_archivo = true;
     }
 
     int getWidthCuadro() {
@@ -65,8 +65,7 @@ public:
     }
 
     ~SpriteSheet(){
-        if(cargada_desde_archivo)
-            delete mTexture;
+        delete mTexture;
     }
 
 private:
@@ -75,7 +74,6 @@ private:
     int mFilas = 0;
     int mColumnas = 0;
 
-    bool cargada_desde_archivo = false;
     //int mAlpha = -1;
 };
 #endif //BOMBERMAN_SPRITESHEET_HPP

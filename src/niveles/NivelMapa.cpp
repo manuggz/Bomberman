@@ -135,7 +135,8 @@ int NivelMapa::colision(SDL_Rect rect, int * num_colisiones,bool solo_bloques_du
         if(id_tile >= 0){ // Si existe tal tile
             is_solido = std::stoi((*tilesMetaData)[std::to_string(id_tile)].property[is_solido_prop]);
             if(is_solido) {
-                (*num_colisiones)++;
+                if(num_colisiones)
+                    (*num_colisiones)++;
                 ret=i+1;
             }
         }
@@ -231,6 +232,14 @@ bool NivelMapa::contain(SDL_Rect rect) {
     return !(rect.x < 0 || rect.y < 0
            ||rect.x+rect.w > 0 + mTmxParser.mapInfo.width*mTmxParser.mapInfo.tileWidth
            ||rect.y+rect.h > 0 + mTmxParser.mapInfo.height*mTmxParser.mapInfo.tileHeight);
+}
+
+int NivelMapa::getTileWidth() {
+    return mTileWidth;
+}
+
+int NivelMapa::getTileHeight() {
+    return mTileHeight;
 }
 
 

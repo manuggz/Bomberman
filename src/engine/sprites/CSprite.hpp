@@ -41,6 +41,12 @@ class Sprite{
     virtual int getY(){return y;};
     virtual void setX(int nuevo){x=nuevo;};
     virtual void setY(int nuevo){y=nuevo;};
+    virtual void move(int nuevaX,int nuevaY){
+        x = nuevaX;
+        y = nuevaY;
+        rect.x = nuevaX;
+        rect.y = nuevaY;
+    };
 //        virtual void moveIp(int,int){};
 
     virtual ~Sprite(){

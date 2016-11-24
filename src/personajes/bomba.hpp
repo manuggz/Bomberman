@@ -3,24 +3,27 @@
 #include <SDL2/SDL.h>
 #include "../engine/sprites/animacion/animacion.hpp"
 #include "../constantes.hpp"
+#include "player.hpp"
 
 class Bomba:public Animacion{
 public:
 
-    Bomba(SpriteSheet *spriteSheet,int x,int y,int alcance,int lanzador,int id):
-            Animacion(spriteSheet,"0,0,0,1,1,1,2,2,2,2,2,2,1,1,1,0,0,0",x,y,id){
-        this->lanzador=lanzador;
-        this->alcance= (Uint8) alcance;
+    Bomba(SDL_Renderer * gRenderer,Player * propietario):
+            Animacion(new SpriteSheet(gRenderer,"data/imagenes/objetos/bomba.bmp",1,3,true),
+                      "0,0,0,1,1,1,2,2,2,2,2,2,1,1,1,0,0,0"){
+
+        mPlayerPropietario = propietario;
+        //this->alcance= (Uint8) alcance;
         //type=BOMBA;
         mRepeticiones=2;
     }
 
-    int getLanzador(){return lanzador;};
-    int getAlcance(){return alcance;};
+    Player * getPlayerPropietario(){return mPlayerPropietario;};
     void setRepeticion(int nuevo){mRepeticiones=nuevo;};
 private:
-    Uint8 alcance;//alcance de la bomba en los ejes
-    int lanzador;
+    Player * mPlayerPropietario;
+    //Uint8 alcance;//alcance de la bomba en los ejes
+    //int lanzador;
 //        bool estaMoviendose
 };
 

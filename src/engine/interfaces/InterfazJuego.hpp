@@ -12,15 +12,17 @@
 ///enum CodeImagen;
 
 class Bomba;
-
+class Player;
 class InterfazJuego{
 
 public:
     virtual LTexture * getImagen(CodeImagen code) = 0;
     virtual SDL_Joystick * getJoy(int id) = 0;
     virtual int getJoysActivos()=0;
-    virtual int colision(SDL_Rect  rect_coli,int * lado_colision,bool solo_bloques_duros)= 0;
-    virtual Bomba * colisionConBombas(SDL_Rect  rect) = 0;
+    virtual int colisionConMapa(SDL_Rect rect_coli, int *lado_colision = nullptr, bool solo_bloques_duros=false)= 0;
+    virtual deque<Sprite *> colisionConBombas(SDL_Rect  rect) = 0;
     virtual bool isOutOfMapBounds(SDL_Rect  rect) = 0;
+
+    virtual Bomba *agregarBomba(Player *playerPropietario)= 0 ;
 };
 #endif //BOMBERMAN_INTERFAZGALERIA_HPP

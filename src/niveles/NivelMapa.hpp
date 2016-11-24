@@ -161,5 +161,9 @@ public:
     unsigned int mMapHeight  = 0;
     unsigned int mTileWidth  = 0;
     std::map<std::string, TMX::Parser::Tile> *  tilesMetaData;
+
+    int getTileWidth();
+
+    int getTileHeight();
 };
 #endif

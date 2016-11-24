@@ -49,13 +49,17 @@ class Player:public Sprite{
         //int getTipo(){return 4;};
         int getId(){return mPlayerId;};
         int getAlcanceBombas(){return alcanBomb;};
-        int getBombas(){return numBombas;};
+        int getBombas(){return mNBombasDisponibles;};
         
         ~Player();
 
 	void setNBombas(int nBombas);
 
 	void setAlcanceBombas(int alcanceBombas);
+
+    int getBombasColocadas();
+
+	void setBombasColocadas(int n);
 
 private:
 
@@ -85,7 +89,7 @@ private:
 
 	int alcanBomb,//alcance que logran las llamas de las bombas
 		alcanBombIni;//alcance iniciales cuando se comenz� el modo historia o el mapa en el modo batalla
-	int numBombas,//numero de bombas que puede soltar el jugador
+	int mNBombasDisponibles,//numero de bombas que puede soltar el jugador
 		numBombasIni; //numero de bombas iniciales cuando se comenz� el modo historia o el mapa en el modo batalla
 	bool puedeAtravesarBloquesBlandos; //True si el player puede atravesar los bloques blandos
 	bool puedeAtravesarBombas;//True si el player puede atravesar las bombas
@@ -106,6 +110,7 @@ private:
 
 	bool enPantalla;   //True si el player se est� mostrando en pantalla
     Bomba *mUltimaBomba = nullptr;
+    int mNBombasColocadas;
 };
 
 #endif
