@@ -726,15 +726,58 @@ void Juego::moveAllSprites(int aumX,int aumY){
 */
 
 void Juego::killedSprite(Sprite * sprite) {
-    //cout << "Kill sprite: " << sprite << endl;
 
     Bomba * bomba = nullptr;
     if((bomba = dynamic_cast<Bomba * >(sprite)) != nullptr){
+
+        // Obtenemos el player que ha lanzado la bomba
         Player * playerLanzador = bomba->getPlayerPropietario();
+
+        // Le restamos uno a las bombas colocadas por el player que la hanzado
         playerLanzador->setBombasColocadas(playerLanzador->getBombasColocadas() - 1);
+
+        // Creamos una nueva Explosion
+        Explosion * explosion = new Explosion(this,mGameRenderer,playerLanzador);
+
+        // Establecemos la posicion de inicio donde estaba la bomba
+        explosion->move(bomba->getX(),bomba->getY());
+        explosion->detectarAlcances();
+
+        mGrpExplosiones.add(explosion);
+        mGrpSprites.add(explosion);
+
+        //reproducimos un sonido
+        mGameManager->play(SFX_EXPLOSION);
+
+        //refeSprites[type][i]=new Explosion(this,x,y,otra_var,(IdPlayer)lanzador,i);/*otra_var=alcance*/
+
     }
 
     delete sprite;
+}
+
+deque<Sprite *> Juego::colisionBloqueEnLlamas(SDL_Rect rect) {
+    return mGrpBloques.collide(rect);
+}
+
+deque<Sprite *> Juego::colisionConItems(SDL_Rect rect) {
+    return mGrpItems.collide(rect);
+}
+
+Bloque *Juego::agregarBloqueEnLlamas(int x, int y) {
+    return nullptr;
+}
+
+bool Juego::esBloqueSolido(int x, int y) {
+    x -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
+    y -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
+    return mMapa->esBloqueSolido(x,y);
+}
+
+bool Juego::esBloqueRompible(int x, int y) {
+    x -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
+    y -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
+    return mMapa->esBloqueRompible(x,y);
 }
 
 Juego::~Juego(){

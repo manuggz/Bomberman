@@ -7,18 +7,34 @@
 
 class Juego;
 class Explosion:public Animacion{
-   public:
-        Explosion(Juego * juego,int x,int y,int alcance_llamas,int lanzador,int id);
-        void draw(SDL_Renderer * gRenderer);
-        bool colision(SDL_Rect & rect_coli);
-    private:
-        Juego * juego;
-        int alcance_llamas;//alcance que logran en los ejes
-        int lanzador;
-        Uint8 alcances[4];//alcances en los ejes
-        
-        void dibujarFlama(int dir,int aum_x,int aum_y,int cuadro_normal,int cuadro_final,SDL_Renderer * gRenderer);
-        void detectarAlcance(int dir,int aum_x,int aum_y);
+public:
+
+    Explosion(InterfazJuego * juego,SDL_Renderer * gRenderer, Player * playerLanzador);
+    void draw(SDL_Renderer * gRenderer);
+    bool colision(SDL_Rect & rect_coli);
+
+    void detectarAlcances();
+
+private:
+
+    enum {
+        DERECHA,
+        IZQUIERDA,
+        ABAJO,
+        ARRIBA,
+    };
+    //Juego * juego;
+    //int alcance_llamas;//alcance que logran en los ejes
+    //int lanzador;
+    Uint8 alcances[4] {0};//alcances en los ejes
+
+    void dibujarFlama(int dir,int aum_x,int aum_y,int cuadro_normal,int cuadro_final,SDL_Renderer * gRenderer);
+    void detectarAlcance(int dir,int aum_x,int aum_y);
+
+    Player *        mPlayerCreador = nullptr;
+    InterfazJuego * mJuego = nullptr;
+    int mAlcanceLlamas = 0;
+
 };
 
 #endif

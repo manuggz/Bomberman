@@ -109,6 +109,7 @@ bool Mapa::romperBloque(int x,int y){
 }*/
 
 
+
 /**
  * Detecta si uno de los extremos del rectangulo colisiona con un bloque con la propiedad de solido
  * @param rect rectangulo
@@ -122,8 +123,6 @@ int NivelMapa::colision(SDL_Rect rect, int * num_colisiones,bool solo_bloques_du
     int ret=0;
 
     //std::string tile_id = "0";
-    std::string is_solido_prop = "solido";
-    int              is_solido = 0;
 
      int id_tile = 0;
 
@@ -133,8 +132,7 @@ int NivelMapa::colision(SDL_Rect rect, int * num_colisiones,bool solo_bloques_du
         id_tile = getBloqueAt(rect.x + (rect.w*(i!=0&&i!=3)),rect.y + rect.h * (i >= 2));
 
         if(id_tile >= 0){ // Si existe tal tile
-            is_solido = std::stoi((*tilesMetaData)[std::to_string(id_tile)].property[is_solido_prop]);
-            if(is_solido) {
+            if(getMetaDataTile(id_tile,TILE_PROPERTY_SOLIDO) == "1") {
                 if(num_colisiones)
                     (*num_colisiones)++;
                 ret=i+1;
@@ -223,7 +221,7 @@ bool NivelMapa::cargar(SDL_Renderer *gRenderer, std::string ruta) {
     mTileWidth    = mTmxParser.mapInfo.tileWidth;
     mMapWidth     = mTmxParser.mapInfo.width;
     mMapHeight    = mTmxParser.mapInfo.height;
-    tilesMetaData = &mTmxParser.tilesetList[0].tilesMetaData;
+    mpTilesMetaData = &mTmxParser.tilesetList[0].tilesMetaData;
 
     return true;
 }
@@ -240,6 +238,28 @@ int NivelMapa::getTileWidth() {
 
 int NivelMapa::getTileHeight() {
     return mTileHeight;
+}
+
+bool NivelMapa::esBloqueSolido(int x, int y) {
+
+    int id_tile = getBloqueAt(x,y);
+
+    if(id_tile >= 0) { // Si existe tal tile
+        return getMetaDataTile(id_tile,TILE_PROPERTY_SOLIDO) == "1";
+    }
+    return false;
+}
+std::string NivelMapa::getMetaDataTile(int id_tile,std::string clave){
+    return (*mpTilesMetaData)[std::to_string(id_tile)].property[clave];
+}
+
+bool NivelMapa::esBloqueRompible(int x, int y) {
+    int id_tile = getBloqueAt(x,y);
+
+    if(id_tile >= 0) { // Si existe tal tile
+        return getMetaDataTile(id_tile,TILE_PROPERTY_ROMPIBLE) == "1";
+    }
+    return false;
 }
 
 

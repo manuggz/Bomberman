@@ -34,7 +34,6 @@ public:
         delete mSprSCuadros;
     }
 private:
-    SpriteSheet * mSprSCuadros;
     //LTexture * mTextuGrilla = nullptr;
     ControlAnimacion mControlFrames;
     //bool cambiarOrden = false;
@@ -47,6 +46,7 @@ private:
 
     int mDelayCambioFrame;
 protected:
+    SpriteSheet * mSprSCuadros;
     int mRepeticiones;
 };
 

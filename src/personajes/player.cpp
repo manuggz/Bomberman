@@ -1,6 +1,7 @@
 #include <deque>
 #include "player.hpp"
 #include "bomba.hpp"
+#include "../engine/util/LTimer.hpp"
 
 
 Player::Player(InterfazJuego * interfazGaleria,IdPlayer id,int x,int y,int vidasIni,int numBombasIni,int alcanceBombasIni){
@@ -30,6 +31,7 @@ Player::Player(InterfazJuego * interfazGaleria,IdPlayer id,int x,int y,int vidas
 
     this->vidas=vidasIni;
 
+    mTimer = LTimer();
 
 	estado = ABAJO;//estado del personaje que pasara a ser el anterior(solo para que mire para abajo)
     reiniciar();
@@ -56,8 +58,8 @@ void Player::reiniciar(){
     cambiarEstado(PARADO);
     estaProtegido=false;
     move(xIni,yIni);
-//    juego->resetEjes();
-//    setProteccion(10);
+    //juego->resetEjes();
+    setProteccion(10);
 
 }
 
@@ -281,16 +283,6 @@ void Player::ponerBomba(const Uint8 * teclas){
            mUltimaBomba = mJuego->agregarBomba(this);
            /*si se logro anyadir*/
            if(mUltimaBomba != nullptr){
-                /*si la bomba que colocamos colisiona con un personaje la quitamos porque el PLAYER CON EL QUE COLISIONA
-                NO SE MOVERA NUNCA*/
-//                int x,y;
-//               juego->getPosicion(BOMBA,id_bomba_colocada,x,y);
-//               rect_bomb.x=x;
-//               rect_bomb.y=y;
-//               if(juego->colision(PLAYER,rect_bomb,id)!=-1||juego->colision(GLOBO,rect_bomb)!=-1){
-//                        juego->soloKill(BOMBA,id_bomba_colocada);
-//                        return;
-//                }
                mNBombasColocadas++;
                 /*sino ocurre lo de arriba continuamos  */
                //idUltimaBomba=id_bomba_colocada;
@@ -422,8 +414,7 @@ void Player::avanzarAnimacion ()
 
 }
 
-void Player::cambiarEstado(EstadoSprite nuevo)
-{
+void Player::cambiarEstado(EstadoSprite nuevo) {
     estado_anterior=estado;
 	estado = nuevo;
 	paso = 0;
@@ -431,9 +422,10 @@ void Player::cambiarEstado(EstadoSprite nuevo)
 }
 
 void Player::setProteccion(int segundos){
-//    duracionProteccion=segundos;
-//    tiempoInicioProteccion=juego->getTick();
-//    estaProtegido=true;
+    duracionProteccion=segundos;
+    //tiempoInicioProteccion=juego->getTick();
+    estaProtegido=true;
+    mTimer.start();
 }
 void Player::mover_ip(int incremento_x, int incremento_y)
 {//mueve al personaje detectando alguna colision

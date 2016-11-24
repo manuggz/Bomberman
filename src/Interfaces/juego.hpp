@@ -142,6 +142,16 @@ class Juego:public InterfazUI , public InterfazSpriteGroup,public InterfazJuego{
 
     void start() override;
 
+    deque<Sprite *> colisionBloqueEnLlamas(SDL_Rect rect) override;
+
+    deque<Sprite *> colisionConItems(SDL_Rect rect) override;
+
+    Bloque *agregarBloqueEnLlamas(int x, int y) override;
+
+    bool esBloqueSolido(int x, int y) override;
+
+    bool esBloqueRompible(int x, int y) override;
+
 protected:
 
     // Controlador del Juego en General(Interfaces,SDL y mainloop)

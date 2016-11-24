@@ -1002,6 +1002,7 @@ CMakeFiles/Bomberman.dir/src/personajes/player.cpp.o
  /home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/animacion/Control_Animacion.hpp
  /home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/animacion/animacion.hpp
  /home/manuggz/Documents/Projects/Bomberman/src/engine/util/LTexture.hpp
+ /home/manuggz/Documents/Projects/Bomberman/src/engine/util/LTimer.hpp
  /home/manuggz/Documents/Projects/Bomberman/src/engine/util/SpriteSheet.hpp
  /home/manuggz/Documents/Projects/Bomberman/src/item.hpp
  /home/manuggz/Documents/Projects/Bomberman/src/personajes/bomba.hpp

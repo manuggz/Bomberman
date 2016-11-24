@@ -575,6 +575,8 @@ player.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/personajes/player.hpp
 bomba.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/personajes/bomba.hpp
+../engine/util/LTimer.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/engine/util/LTimer.hpp
 
 /home/manuggz/Documents/Projects/Bomberman/src/personajes/player.hpp
 ../engine/sprites/CSprite.hpp
@@ -589,6 +591,8 @@ bomba.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/engine/interfaces/InterfazJuego.hpp
 bomba.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/personajes/bomba.hpp
+../engine/util/LTimer.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/engine/util/LTimer.hpp
 
 /home/manuggz/Documents/Projects/Bomberman/src/time.hpp
 ctime

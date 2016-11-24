@@ -21,6 +21,8 @@
 #define MAPA_PROPERTY_Y_TABLERO "y_tablero"
 #define MAPA_PROPERTY_ID_FONDO "id_fondo"
 
+#define TILE_PROPERTY_SOLIDO "solido"
+#define TILE_PROPERTY_ROMPIBLE "rompible"
 /*
 *
 *   Representaci�n abstracta de un mapa concreto del juego,dibuja y coloca los items y enemigos en el juego
@@ -160,10 +162,16 @@ public:
     unsigned int mMapWidth   = 0;
     unsigned int mMapHeight  = 0;
     unsigned int mTileWidth  = 0;
-    std::map<std::string, TMX::Parser::Tile> *  tilesMetaData;
+    std::map<std::string, TMX::Parser::Tile> *  mpTilesMetaData;
 
     int getTileWidth();
 
     int getTileHeight();
+
+    bool esBloqueSolido(int x, int y);
+
+    bool esBloqueRompible(int x, int y);
+
+    std::string getMetaDataTile(int id_tile, std::string clave);
 };
 #endif

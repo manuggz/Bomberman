@@ -6,6 +6,7 @@
 #include "../item.hpp"
 #include "../engine/interfaces/InterfazJuego.hpp"
 #include "bomba.hpp"
+#include "../engine/util/LTimer.hpp"
 //#define DEBUG
 
 class Player:public Sprite{
@@ -84,7 +85,7 @@ private:
 
 	/*Controlan la proteccion*/
 	bool estaProtegido;//True si el jugador est� protegido (se representa por el desvanecimiento)
-	int tiempoInicioProteccion;//contador del inicio de proteccion
+	//int tiempoInicioProteccion;//contador del inicio de proteccion
 	int duracionProteccion;//segundos para quitar la proteccion
 
 	int alcanBomb,//alcance que logran las llamas de las bombas
@@ -111,6 +112,7 @@ private:
 	bool enPantalla;   //True si el player se est� mostrando en pantalla
     Bomba *mUltimaBomba = nullptr;
     int mNBombasColocadas;
+    LTimer mTimer;
 };
 
 #endif
