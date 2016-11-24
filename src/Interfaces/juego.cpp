@@ -1036,6 +1036,10 @@ Bomba *Juego::agregarBomba(Player * player) {
     // Pasamos la posicion Y a la coordenada de la pantalla
     nuevaPosicionY = nuevaPosicionY + MAPA_EJE_Y;
 
+    // Si en esa posición hay un bloque solido no se coloca una bomba ahí
+    if(mMapa->esBloqueSolido(nuevaPosicionX - MAPA_EJE_X,nuevaPosicionY - MAPA_EJE_Y)){
+        return nullptr;
+    }
 
     Bomba * nuevaBomba = new Bomba(mGameRenderer,player);
     nuevaBomba->move(nuevaPosicionX,nuevaPosicionY);
