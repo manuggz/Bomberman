@@ -19,7 +19,7 @@ class Player:public Sprite{
         void draw(SDL_Renderer * );
         void cargarTeclas();
         void updateRectColision();
-        void activarPoderItem(int tipo);
+        void activarPoderItem(Item::TipoItem tipo);
         void ponerBomba(const Uint8 * teclas);
         bool colision(SDL_Rect & rect_coli);
         void parado(const Uint8 * teclas);
@@ -39,7 +39,7 @@ class Player:public Sprite{
         void setEnPantalla(bool nuevo){mEnPantalla=nuevo;};
         
         int getVidas(){return mVidas;};
-        int getId(){return mPlayerId;};
+        IdPlayer getId(){return mPlayerId;};
         int getAlcanceBombas(){return mAlcanBombas;};
         int getBombasDisponibles(){return mNBombasDisponibles;};
         
@@ -52,6 +52,12 @@ class Player:public Sprite{
     int getBombasColocadas();
 
 	void setBombasColocadas(int n);
+
+    int getNCorazones();
+
+    EstadoSprite getEstado();
+
+    void setNCorazones(int nuevosNCorazones);
 
 private:
 
@@ -96,6 +102,8 @@ private:
 	bool mEnPantalla       = false;   //True si el player se est� mostrando en pantalla
     int mNBombasColocadas  = 0; // Numero de Bombas que el Player ha colocado en el mapa
     LTimer mTimer;
+
+    //Sprite * mSpriteCausanteMuerte;
 };
 
 #endif

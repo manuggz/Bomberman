@@ -3,6 +3,7 @@
 #include "bomba.hpp"
 #include "../engine/util/LTimer.hpp"
 #include "../niveles/NivelMapa.hpp"
+#include "../objetos/explosion.hpp"
 
 
 /**
@@ -79,91 +80,51 @@ void Player::update(const Uint8 * teclas){
             cerr << "Error, player en estado inconsistente." << endl;
     }
 
-//    if(estado_actual!=MURIENDO){
-//        if(!mEstaProtegido){//si no esta protegido
-//            static int id_explo;
-//            if(juego->colision(GLOBO,rect)!=-1){
-//                if(!mCorazones)
-//                    cambiarEstado(MURIENDO);
-//                else{
-//                    setProteccion(10);
-//                    mCorazones--;
-//                }
-//            }else if((id_explo=juego->colision(EXPLOSION,rect))!=-1){
-//                if(!mCorazones){
-//                    cambiarEstado(MURIENDO);
-//                    if(juego->getTipoJuego()==TIPO_BATALLA){
-//                        /*if(juego->explosiones[id_explo-1]->lanzador!=id)
-//                            juego->matadas[personajes->juego->objetos->explosiones[id_explo-1]->lanzador]++;
-//                        else
-//                            juego->matadas[personajes->juego->objetos->explosiones[id_explo-1]->lanzador]--;
-//                        juego->kills[id]++;*/
-//                        if(juego->getLanzador(EXPLOSION,id_explo)!=this->id);
-//    //                        juego->matadas[personajes->juego->objetos->explosiones[id_explo-1]->lanzador]++;
-//                        else;
-//    //                        juego->matadas[personajes->juego->objetos->explosiones[id_explo-1]->lanzador]--;
-//    //                    juego->kills[id]++;
-//
-//                    }//fin "si tipo de juego es BATALLA"
-//                }else{
-//                    setProteccion(10);
-//                    mCorazones--;
-//                }
-//            }//fin "si el id de la explosion no es -1"
-//        }else{//si esta protegido
-//            if(juego->getTick()-tiempoInicioProteccion>=duracionProteccion){
-//                mEstaProtegido=false;
-//            }
-//        }
-//    }//fin "si no esta muriendo"
-//
-//    /*SI COLISIONA CON ALG�N ITEM*/
-//      int id_item;//almacena la respuesta de: �con que item esta colisionando?
-//
-//      id_item=juego->colision(ITEM,rect);
-//      if(id_item!=-1){//�colisiono con uno?
-//            int tipo_item=juego->getTipoItem(id_item);
-//            if(tipo_item==Item::ITEM_PUERTA){
-//                if(juego->getActivos(GLOBO)==0)
-//                    entroPuerta=true;
-//            }else{
-//                setPuntaje(getPuntaje()+20);
-//                activarPoderItem(tipo_item);
-//                juego->killSprite(ITEM,id_item);
-//                juego->playSfx(SFX_COGER_ITEM);
-//            }
-//       }
-//
-//    /*SI EL PLAYER ESTA MUERTO*/
-//    if(muerto){//si el player esta muerto
-//        if(--mVidas>=0){//si sigue con vida
-//            reiniciar();
-//            setProteccion(5);
-//            juego->playSfx(SFX_PIERDE_VIDA);
-//        }
-//        else
-//            disable();
-//    }
-//
-//
-//    if (entroPuerta&&juego->getTipoJuego()==TIPO_NORMAL){//si entro en la puerta de fin de nivel
-//            /*entro_puerta=false;
-//            proteccion=true;
-//            cambiarEstado(PARADO);
-//            int bonus=time(0)-juego->getSegundosInicioNivel();
-//            setPuntaje(getPuntaje()+bonus);
-//            if(juego->isActivo(PLAYER,PLAYER_2)){
-//                juego->setPuntaje(PLAYER_2,juego->getPuntaje(PLAYER_2) + bonus);
-//                juego->cambiarEstadoPlayer(PLAYER_2,PARADO);
-//            }
-//            juego->setNivelPlay(juego->getNivelActual() + 1,false);*/
-//            juego->aumentarNivel();
-//
-//    }
+    if(estado_actual != EstadoSprite::MURIENDO){
+        // Si el estado es distinto de mueriendo, entonces el player esta activo en el juego
+        // En ese caso una vez actualizado su estado se deben detectar colisiones con el entorno
+        // Recordar que en mover_ip solo se detectaron colisiones que podian detener el movimiento
+        // una vez realizado el movimiento hay que detectar si colisiona por ejemplo con un item
+        if(!mEstaProtegido){//si no esta protegido
+
+            // DETECTAMOS COLISIONES CON LAS EXPLOSIONES
+            auto setColisionExplosiones = mpJuego->colisionConExplosiones(rect);
+
+            auto pSpriteExplosion = setColisionExplosiones.begin();
+            Player *mSpriteCausanteMuerte;
+            if(pSpriteExplosion  != setColisionExplosiones.end()){
+                // Notar que solo tomamos en cuenta la primera explosion
+                // Esto es porque una vez que se colisiona con una explosion o se muere o se activa la proteccion
+
+                // Decimos HEy! este es quien nos ha matado
+                mSpriteCausanteMuerte = dynamic_cast<Explosion *>(*pSpriteExplosion)->getCreador();
+                // Dejamos que el Juego se encarge de nosotros
+                mpJuego->playerMuerto(this,mSpriteCausanteMuerte);
+            }
+
+        }else{//si esta protegido
+            if(mTimer.getTicks() / 1000 >= mDuracionProteccion){
+                mEstaProtegido=false;
+            }
+        }
+
+        auto setColisionItems  = mpJuego->colisionConItems(rect);
+        if(setColisionItems.size() > 0) {
+            auto pItem = setColisionItems.begin();
+            while (pItem != setColisionItems.end()) {
+                (dynamic_cast<Item * >(*pItem))->setPlayerActivador(this);
+                (*pItem)->kill(); // Dejamos que el Juego encargado de las eliminaciones se encargue del resto
+                pItem++;
+            }
+            return;
+        }
+
+    }//fin "si no esta muriendo"
+
+
 }
 
-void Player::activarPoderItem(int tipo){
-//    cout <<"activando poder item:"<<tipo<<endl;
+void Player::activarPoderItem(Item::TipoItem tipo){
     switch(tipo){
         case Item::ITEM_ALCANCE:
             if(mAlcanBombas < MAX_ALCANCE_EXPLOSION)
@@ -333,12 +294,11 @@ void Player::avanzarAnimacion () {
         {0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,-1}};
 	if (--delay < 1) {
 		delay = 3;
-
 		if (animaciones [estado_actual] [paso + 1] == -1){
 		    if(estado_actual!=MURIENDO)
     			paso = 0;
     		else
-    		   kill();
+                mpJuego->playerMuerto(this, nullptr);
 		}else
 			paso ++;
 	}
@@ -374,6 +334,7 @@ void Player::setProteccion(int segundos){
 
 /**
  * Mueve al personaje detectando alguna colision
+ * Las colisiones que se detectan son solo las que pueden detener el movimiento como colision con una bomba
  * @param incremento_x
  * @param incremento_y
  */
@@ -481,5 +442,18 @@ int Player::getBombasColocadas() {
 
 void Player::setBombasColocadas(int n) {
     mNBombasColocadas = n;
+}
+
+int Player::getNCorazones() {
+    return mCorazones;
+}
+
+EstadoSprite Player::getEstado() {
+    return estado_actual;
+}
+
+void Player::setNCorazones(int nuevosNCorazones) {
+    mCorazones = nuevosNCorazones;
+
 }
 

@@ -15,6 +15,8 @@ public:
 
     void detectarAlcances();
 
+    Player *getCreador();
+
 private:
 
     enum {

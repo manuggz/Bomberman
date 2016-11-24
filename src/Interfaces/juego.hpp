@@ -113,7 +113,9 @@ class Juego:public InterfazUI ,public InterfazJuego{
 //            if(mGameTimer)return mGameTimer->getMiliSegundos();
 //        }
 //
-        LTexture * getImagen(CodeImagen code){ return mGameManager->getImagen(code);};
+        LTexture * getImagen(CodeImagen code){ return mGameManager->getImagen(code);}
+
+    deque<Sprite *> colisionConExplosiones(SDL_Rect rect) override;;
         SDL_Joystick * getJoy(int id);
 //        virtual int getTipoNuevoItem(bool disminuir_de_mapa=true);
 //
@@ -150,6 +152,7 @@ class Juego:public InterfazUI ,public InterfazJuego{
     bool esBloqueSolido(int x, int y) override;
 
     bool esBloqueRompible(int x, int y) override;
+    void playerMuerto(Player *pPlayer, Sprite *pPlayerCausante) override;
 
 protected:
 
@@ -234,7 +237,7 @@ protected:
 
     void setEstadoActivacionPlayer(IdPlayer player, bool nuevoEstado);*/
 
-    void establecerValoresPlayersDeMapa();
+    void establecerValoresDeMapaPlayers();
 
     void agregarPlayersActivos();
 
@@ -244,6 +247,11 @@ protected:
     SDL_Renderer *mGameRenderer;
 
     Item::TipoItem getTipoNuevoItem();
+
+    void establecerValoresDeMapaPlayer(IdPlayer idPlayer);
+
+    void agregarPlayerActivo(IdPlayer idPlayer);
+
 };
 
 #endif

@@ -59,7 +59,7 @@ void Juego::createUI(SDL_Renderer *gRenderer) {
 
 void Juego::start() {
     InterfazUI::start();
-    establecerValoresPlayersDeMapa();
+    establecerValoresDeMapaPlayers();
     agregarPlayersActivos();
     mGameTimer->start();
     //playSonido((CodeMusicSonido)(4 + rand()%1));
@@ -70,16 +70,18 @@ void Juego::start() {
  * Una vez cargado el mapa se deben iniciar los players con los valores iniciales que se establecieron que
  * el mapa especifica
  */
-void Juego::establecerValoresPlayersDeMapa() {
-
+void Juego::establecerValoresDeMapaPlayers() {
     for(int i = 0; i < _PLAYERS;i++) {
-        if(mIsPlayerActivado[i] && mPlayerSprite[i]) {
-            mPlayerSprite[i]->move(mMapa->getPosXPlayer((IdPlayer)(PLAYER_1 + i))
-                    ,mMapa->getPosYPlayer((IdPlayer)(PLAYER_1 + i)));
-            mPlayerSprite[i]->setVidas(std::stoi(mMapa->getPropertyMap(MAPA_PROPERTY_X_N_VIDAS_PLAYER)));
-            mPlayerSprite[i]->setNBombas(std::stoi(mMapa->getPropertyMap(MAPA_PROPERTY_N_BOMBAS)));
-            mPlayerSprite[i]->setAlcanceBombas(std::stoi(mMapa->getPropertyMap(MAPA_PROPERTY_ALCANCE_BOMBAS)));
-        }
+        establecerValoresDeMapaPlayer((IdPlayer)(PLAYER_1 + i));
+    }
+}
+
+void Juego::establecerValoresDeMapaPlayer(IdPlayer idPlayer){
+    if(mIsPlayerActivado[idPlayer] && mPlayerSprite[idPlayer]) {
+        mPlayerSprite[idPlayer]->move(mMapa->getPosXPlayer(idPlayer),mMapa->getPosYPlayer(idPlayer));
+        mPlayerSprite[idPlayer]->setVidas(std::stoi(mMapa->getPropertyMap(MAPA_PROPERTY_X_N_VIDAS_PLAYER)));
+        mPlayerSprite[idPlayer]->setNBombas(std::stoi(mMapa->getPropertyMap(MAPA_PROPERTY_N_BOMBAS)));
+        mPlayerSprite[idPlayer]->setAlcanceBombas(std::stoi(mMapa->getPropertyMap(MAPA_PROPERTY_ALCANCE_BOMBAS)));
     }
 }
 
@@ -102,15 +104,20 @@ void Juego::crearPlayersActivos() {
 void Juego::agregarPlayersActivos() {
     for (int i = 0; i < _PLAYERS; i++) {
         if (mIsPlayerActivado[i]) {
-            mPlayerSprite[i]->setEnPantalla(true);
-            mPlayerSprite[i]->cambiarEstado(EstadoSprite::PARADO);
-            mPlayerSprite[i]->setProteccion(10);
-            mGrpSprites.add(mPlayerSprite[i]);
-            mGrpPlayers.add(mPlayerSprite[i]);
+            agregarPlayerActivo((IdPlayer) i);
         }
     }
 }
 
+void Juego::agregarPlayerActivo(IdPlayer idPlayer){
+    if (mIsPlayerActivado[idPlayer] && mPlayerSprite[idPlayer]) {
+        mPlayerSprite[idPlayer]->setEnPantalla(true);
+        mPlayerSprite[idPlayer]->cambiarEstado(EstadoSprite::PARADO);
+        mPlayerSprite[idPlayer]->setProteccion(10);
+        mGrpSprites.add(mPlayerSprite[idPlayer]);
+        mGrpPlayers.add(mPlayerSprite[idPlayer]);
+    }
+}
 
 /*mGameTimer->setTicksPerdidos(4);
 
@@ -782,7 +789,8 @@ void Juego::eliminarSprite(Sprite *sprite) {
         if(tipoNuevoItem != Item::NINGUNO){
 
             // Creamos los frames de su animacion
-            std::string frames = std::to_string(tipoNuevoItem/8*8) + "," + std::to_string(tipoNuevoItem/8*8 + 8);
+            std::string frames = std::to_string(tipoNuevoItem/8*8 + tipoNuevoItem) + "," +
+                    std::to_string(tipoNuevoItem/8*8 + 8 + tipoNuevoItem);
 
             // Creamos el objeto ITem
             Item * nuevoItem = new Item(mGameRenderer,frames,tipoNuevoItem);
@@ -801,22 +809,91 @@ void Juego::eliminarSprite(Sprite *sprite) {
     }
 
     Item * pItemEliminado     = nullptr;
-
+    /**
+     * Si un item es eliminado puede ser :
+     * Que una explosion lo ha alcanzado y la explosion le aplico kill lo cual lo mando aquí indirectamente
+     * Que un player ha colisionado con él y le ha dicho "hey yo te he activado!" y le ha hecho kill()
+     * lo cual tambien lo ha mandado aqui.
+     * Por lo que al inicio solo obtenemos el player que ha activado el item
+     * el cual si ha ocurrido el primer caso debería ser null y por consiguiente se agrega un item en llamas ahí
+     * sino entonces se le dice al player "bien hecho toma tu recompensa!"
+     */
     if((pItemEliminado = dynamic_cast<Item *>(sprite))){
 
-        Animacion * nuevaAnimacion = new Animacion(new SpriteSheet(mGameRenderer,"data/imagenes/objetos/item_fire.png",1,7),
-                                                   "0,0,0,1,1,2,2,2,3,3,4,4,5,5,6,6");
-        nuevaAnimacion->move(pItemEliminado->getX(),pItemEliminado->getY());
-        mGrpAnimaciones.add(nuevaAnimacion);
-        mGrpSprites.add(nuevaAnimacion);
+        Player * pPlayerActivadorItem = pItemEliminado->getPlayerActivador();
+
+        if(!pPlayerActivadorItem){
+            Animacion * nuevaAnimacion = new Animacion(new SpriteSheet(mGameRenderer,"data/imagenes/objetos/item_fire.png",1,7),
+                                                       "0,0,0,1,1,2,2,2,3,3,4,4,5,5,6,6");
+            nuevaAnimacion->move(pItemEliminado->getX(),pItemEliminado->getY());
+            mGrpAnimaciones.add(nuevaAnimacion);
+            mGrpSprites.add(nuevaAnimacion);
+        }else{
+            Item::TipoItem tipo_item= pItemEliminado->getTipo();
+            pPlayerActivadorItem->activarPoderItem(tipo_item);
+            mGameManager->play(CodeMusicEfecto::SFX_COGER_ITEM);
+
+        }
         delete sprite;
         return;
     }
 
-    //delete sprite;
-//                        new Animacion(new SpriteSheet("data/imagenes/")
+    return;
 }
+/**
+ * Este metodo es llamado por los players para decir "hey estoy muerto! y este tipo me ha matado! dime que hago"
+ * o simplemente "hey estoy muerto dime que hago"
+ * @param pPlayer
+ * @param pPlayerCausante
+ */
+void Juego::playerMuerto(Player * pPlayer,Sprite * pPlayerCausante){
 
+    if(pPlayer->getEstado() != EstadoSprite::MURIENDO){
+        if(!pPlayer->getNCorazones()){
+
+            pPlayer->cambiarEstado(EstadoSprite::MURIENDO);
+
+            /*if(juego->explosiones[id_explo-1]->lanzador!=id)
+                juego->matadas[personajes->juego->objetos->explosiones[id_explo-1]->lanzador]++;
+            else
+                juego->matadas[personajes->juego->objetos->explosiones[id_explo-1]->lanzador]--;
+            juego->kills[id]++;*/
+            //if(juego->getLanzador(EXPLOSION,id_explo)!=this->id);
+            //                        juego->matadas[personajes->juego->objetos->explosiones[id_explo-1]->lanzador]++;
+            //else;
+            //                        juego->matadas[personajes->juego->objetos->explosiones[id_explo-1]->lanzador]--;
+            //                    juego->kills[id]++;
+        }else{
+            pPlayer->setProteccion(10);
+            pPlayer->setNCorazones(pPlayer->getNCorazones() - 1);
+        }
+        //mGrpSprites.add(pPlayer);
+        //mGrpPlayers.add(pPlayer);
+    }else {
+
+//    /*SI EL PLAYER ESTA MUERTO*/
+//    if(muerto){//si el player esta muerto
+//        if(--mVidas>=0){//si sigue con vida
+//            reiniciar();
+//            setProteccion(5);
+//            juego->playSfx(SFX_PIERDE_VIDA);
+//        }
+//        else
+//            disable();
+//    }
+        if (pPlayer->getVidas() > 0) {
+            establecerValoresDeMapaPlayer(pPlayer->getId());
+            pPlayer->cambiarEstado(EstadoSprite::PARADO);
+            pPlayer->setProteccion(5);
+            mGameManager->play(SFX_PIERDE_VIDA);
+        } else {
+            pPlayer->setEnPantalla(false);
+            pPlayer->kill();
+            //mGrpPlayers.erase(pPlayer);
+            //mGrpSprites.erase(pPlayer);
+        }
+    }
+}
 Item::TipoItem Juego::getTipoNuevoItem(){
 
 //    static int tipos[5]={Item::ITEM_BOLA_ARROZ,
@@ -980,6 +1057,10 @@ Bomba *Juego::agregarBomba(Player * player) {
 
     //mUltimaBomba = mJuego->agregarBomba(mPlayerId,x+7,y+11);
     return nullptr;
+}
+
+deque<Sprite *> Juego::colisionConExplosiones(SDL_Rect rect) {
+    return mGrpExplosiones.collide(rect);
 }
 
 

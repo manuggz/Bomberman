@@ -219,3 +219,7 @@ bool Explosion::colision(SDL_Rect & rect_coli){
     return false;
      
 }
+
+Player *Explosion::getCreador() {
+    return mPlayerCreador;
+}

@@ -127,7 +127,7 @@ bool Mapa::romperBloque(int x,int y){
  *  3 --> extremo BOTTOM-RIGHT
  *  4 --> extremo BOTTOM-LEFT
  */
-ExtremoColision NivelMapa::colision(SDL_Rect rect, int * num_colisiones,bool soloBloquesNoTraspasables) {
+NivelMapa::ExtremoColision NivelMapa::colision(SDL_Rect rect, int * num_colisiones,bool soloBloquesNoTraspasables) {
 //solo detecta la colision en las esquinas del rect
 
     int ret=0;

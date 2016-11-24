@@ -6,3 +6,13 @@ build/Debug/data/imagenes/botones/Thumbs.db
 build/Debug/data/imagenes/personajes/Thumbs.db
 build/Debug/data/imagenes/textos/Thumbs.db
 build/Debug/data/niveles/Thumbs.db
+build/CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o
+build/CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o
+build/CMakeFiles/Bomberman.dir/src/objetos/
+build/CMakeFiles/CMakeTmp/
+build/core
+build/data/imagenes/fondos/bomberman.gif
+build/data/imagenes/fondos/bomberman.png
+build/data/imagenes/fondos/fondo_menu_3.bmp
+*.[oa]
+*~

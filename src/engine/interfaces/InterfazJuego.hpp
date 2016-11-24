@@ -10,13 +10,14 @@
 
 //class LTexture;
 ///enum CodeImagen;
-
+#include "../../niveles/NivelMapa.hpp"
 
 #include "InterfazSpriteGroup.hpp"
 
 class Bomba;
 class Player;
 class Bloque;
+
 class InterfazJuego : public InterfazSpriteGroup{
 
 public:
@@ -30,6 +31,7 @@ public:
     virtual deque<Sprite *> colisionConBombas(SDL_Rect  rect) = 0;
     virtual deque<Sprite *> colisionBloqueEnLlamas(SDL_Rect  rect) = 0;
     virtual deque<Sprite *> colisionConItems(SDL_Rect  rect) = 0;
+    virtual deque<Sprite *> colisionConExplosiones(SDL_Rect  rect) = 0;
 
     virtual bool isOutOfMapBounds(SDL_Rect  rect) = 0;
 
@@ -39,5 +41,6 @@ public:
 
     virtual bool esBloqueSolido(int x, int y) = 0;
     virtual bool esBloqueRompible(int x, int y) = 0;
+    virtual void playerMuerto(Player *pPlayer, Sprite *pPlayerCausante)=0;
 };
 #endif //BOMBERMAN_INTERFAZGALERIA_HPP
