@@ -2,7 +2,8 @@
 <map version="1.0" orientation="orthogonal" renderorder="left-down" width="20" height="13" tilewidth="16" tileheight="16" nextobjectid="20">
  <properties>
   <property name="alcance_bombas" type="int" value="1"/>
-  <property name="id_fondo" type="int" value="15"/>
+  <property name="id_tile_piso" type="int" value="24"/>
+  <property name="id_tile_piso_con_sombra" type="int" value="25"/>
   <property name="n_bombas" type="int" value="1"/>
   <property name="n_vidas" type="int" value="0"/>
   <property name="tile_on_fire" type="int" value="44"/>
@@ -297,7 +298,7 @@
     <frame tileid="47" duration="100"/>
     <frame tileid="48" duration="100"/>
     <frame tileid="48" duration="100"/>
-    <frame tileid="50" duration="100"/>
+    <frame tileid="49" duration="100"/>
    </animation>
   </tile>
   <tile id="45">

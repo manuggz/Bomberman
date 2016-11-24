@@ -6,6 +6,6 @@
 #define BOMBERMAN_INTERFAZSPRITEGROUP_HPP
 class InterfazSpriteGroup{
 public:
-    virtual void killedSprite(Sprite * ) = 0;
+    virtual void eliminarSprite(Sprite *) = 0;
 };
 #endif //BOMBERMAN_INTERFAZSPRITEGROUP_HPP

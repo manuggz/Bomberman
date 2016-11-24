@@ -45,7 +45,7 @@ public :
                 // por lo que ahora p_Sprite puede apuntar a otro elemento
 
                 if(spriteActual->isKilled()) {
-                    parent->killedSprite(spriteActual);
+                    parent->eliminarSprite(spriteActual);
                     //delete spriteActual;
 
                     p_Sprite = v_personajes.erase(p_Sprite);

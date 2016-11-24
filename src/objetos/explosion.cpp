@@ -100,16 +100,16 @@ void Explosion::detectarAlcance(int dir,int aum_x,int aum_y){
 
         setColisionItems  = mJuego->colisionConItems(coli);
         if(setColisionItems.size() > 0) {
-//            auto pItem = setColisionItems.begin();
-//            while (pItem != setColisionItems.end()) {
-//                dynamic_cast<Item * >((*pItem))->setRepeticiones(0);
-//                juego->agregarAnimacion(
-//                        new Animacion(
-//                                new SpriteSheet("data/imagenes")
+            auto pItem = setColisionItems.begin();
+            while (pItem != setColisionItems.end()) {
+                (*pItem)->kill();
+//                mJuego->eliminarSprite((*pItem));
+//                        new Animacion(new SpriteSheet("data/imagenes/")
 //                juego->getImagen(IMG_ITEM_FIRE), 1, 7, "0,0,0,1,1,2,2,2,3,3,4,4,5,5,6,6", coli.x, coli.y));
 //                juego->killSprite((*pItem));
 //                pBomba++;
-//            }
+                pItem++;
+            }
             return;
         }
 

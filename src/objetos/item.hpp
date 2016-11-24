@@ -10,7 +10,7 @@ class Juego;
 class Item:public Animacion{
     public:
 
-        enum {
+        enum TipoItem{
             ITEM_BOMBA,
             ITEM_ALCANCE,
             ITEM_BOMBA_MAX,
@@ -34,15 +34,16 @@ class Item:public Animacion{
             ITEM_MANZANA,
             ITEM_EXTINGUIDOR,
             ITEM_PALETA,
-            ITEM_BARQUILLA    
+            ITEM_BARQUILLA,
+            NINGUNO
         };
 
-        Item(Juego * juego,int x,int y, int tipo,int id);
-        int getTipoItem(){return tipo;};   
-        void draw(SDL_Renderer * gRenderer);
+        Item(SDL_Renderer * gRenderer,string frames,TipoItem tipo,int x=0,int y=0);
+        TipoItem getTipoItem(){return mTipo;};
+        //void draw(SDL_Renderer * gRenderer);
     private:
-        Juego * juego;
-        int tipo;
+        //Juego * juego;
+        TipoItem mTipo;
 };
 
 #endif

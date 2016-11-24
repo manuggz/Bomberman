@@ -50,6 +50,8 @@ MenuModoMultijugador.hpp
 MenuNuevoJuego.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/MenuNuevoJuego.hpp
 
+/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/editor.cpp
+
 /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego.cpp
 juego.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego.hpp
@@ -61,8 +63,6 @@ iostream
 -
 SDL2/SDL.h
 -
-../time.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/time.hpp
 ../niveles/NivelMapa.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/niveles/NivelMapa.hpp
 ../engine/util/game_manager.hpp
@@ -75,10 +75,10 @@ SDL2/SDL.h
 /home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/CGroup.hpp
 ../personajes/bomba.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/personajes/bomba.hpp
-../item.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/item.hpp
-../explosion.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/explosion.hpp
+../objetos/item.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/objetos/item.hpp
+../objetos/explosion.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/objetos/explosion.hpp
 ../personajes/bloque.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/personajes/bloque.hpp
 ../engine/util/LTimer.hpp
@@ -124,6 +124,10 @@ juego_batalla.hpp
 ../engine/sprites/animacion/animacion.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/animacion/animacion.hpp
 
+/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/menu.cpp
+
+/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/menu.hpp
+
 /home/manuggz/Documents/Projects/Bomberman/src/constantes.hpp
 
 /home/manuggz/Documents/Projects/Bomberman/src/control_player.cpp
@@ -142,9 +146,9 @@ SDL2/SDL.h
 constantes.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/constantes.hpp
 
-/home/manuggz/Documents/Projects/Bomberman/src/editor.cpp
-
 /home/manuggz/Documents/Projects/Bomberman/src/engine/interfaces/InterfazJuego.hpp
+InterfazSpriteGroup.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/engine/interfaces/InterfazSpriteGroup.hpp
 
 /home/manuggz/Documents/Projects/Bomberman/src/engine/interfaces/InterfazSpriteGroup.hpp
 
@@ -442,30 +446,6 @@ deque
 stack
 -
 
-/home/manuggz/Documents/Projects/Bomberman/src/explosion.cpp
-explosion.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/explosion.hpp
-
-/home/manuggz/Documents/Projects/Bomberman/src/explosion.hpp
-SDL2/SDL.h
--
-constantes.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/constantes.hpp
-Interfaces/juego.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego.hpp
-engine/sprites/animacion/animacion.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/animacion/animacion.hpp
-
-/home/manuggz/Documents/Projects/Bomberman/src/fuente_imagen.cpp
-fuente_imagen.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/fuente_imagen.hpp
-
-/home/manuggz/Documents/Projects/Bomberman/src/fuente_imagen.hpp
-SDL2/SDL.h
--
-util.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/util.hpp
-
 /home/manuggz/Documents/Projects/Bomberman/src/galeria.cpp
 galeria.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/galeria.hpp
@@ -490,29 +470,13 @@ util.hpp
 engine/util/LTexture.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/engine/util/LTexture.hpp
 
-/home/manuggz/Documents/Projects/Bomberman/src/item.cpp
-item.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/item.hpp
-
-/home/manuggz/Documents/Projects/Bomberman/src/item.hpp
-SDL2/SDL.h
--
-engine/sprites/animacion/animacion.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/animacion/animacion.hpp
-constantes.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/constantes.hpp
-
 /home/manuggz/Documents/Projects/Bomberman/src/main.cpp
 engine/util/game_manager.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/engine/util/game_manager.hpp
-menu.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/menu.hpp
+Interfaces/menu.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/menu.hpp
 Interfaces/MenuPrincipal.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/MenuPrincipal.hpp
-
-/home/manuggz/Documents/Projects/Bomberman/src/menu.cpp
-
-/home/manuggz/Documents/Projects/Bomberman/src/menu.hpp
 
 /home/manuggz/Documents/Projects/Bomberman/src/niveles/NivelMapa.cpp
 NivelMapa.hpp
@@ -533,6 +497,32 @@ SDL2/SDL.h
 /home/manuggz/Documents/Projects/Bomberman/src/engine/mapa/include/TMXParser.h
 ../engine/mapa/CMapa.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/engine/mapa/CMapa.hpp
+
+/home/manuggz/Documents/Projects/Bomberman/src/objetos/explosion.cpp
+explosion.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/objetos/explosion.hpp
+
+/home/manuggz/Documents/Projects/Bomberman/src/objetos/explosion.hpp
+SDL2/SDL.h
+-
+../constantes.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/constantes.hpp
+../Interfaces/juego.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego.hpp
+../engine/sprites/animacion/animacion.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/animacion/animacion.hpp
+
+/home/manuggz/Documents/Projects/Bomberman/src/objetos/item.cpp
+item.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/objetos/item.hpp
+
+/home/manuggz/Documents/Projects/Bomberman/src/objetos/item.hpp
+SDL2/SDL.h
+-
+../engine/sprites/animacion/animacion.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/animacion/animacion.hpp
+../constantes.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/constantes.hpp
 
 /home/manuggz/Documents/Projects/Bomberman/src/personajes/bloque.cpp
 bloque.hpp
@@ -585,18 +575,14 @@ bomba.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/constantes.hpp
 ../control_player.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/control_player.hpp
-../item.hpp
-/home/manuggz/Documents/Projects/Bomberman/src/item.hpp
+../objetos/item.hpp
+/home/manuggz/Documents/Projects/Bomberman/src/objetos/item.hpp
 ../engine/interfaces/InterfazJuego.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/engine/interfaces/InterfazJuego.hpp
 bomba.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/personajes/bomba.hpp
 ../engine/util/LTimer.hpp
 /home/manuggz/Documents/Projects/Bomberman/src/engine/util/LTimer.hpp
-
-/home/manuggz/Documents/Projects/Bomberman/src/time.hpp
-ctime
--
 
 /home/manuggz/Documents/Projects/Bomberman/src/util.cpp
 util.hpp

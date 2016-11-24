@@ -123,6 +123,33 @@ Bomberman/fast:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/build
 .PHONY : Bomberman/fast
 
+src/Interfaces/editor.o: src/Interfaces/editor.cpp.o
+
+.PHONY : src/Interfaces/editor.o
+
+# target to build an object file
+src/Interfaces/editor.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o
+.PHONY : src/Interfaces/editor.cpp.o
+
+src/Interfaces/editor.i: src/Interfaces/editor.cpp.i
+
+.PHONY : src/Interfaces/editor.i
+
+# target to preprocess a source file
+src/Interfaces/editor.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.i
+.PHONY : src/Interfaces/editor.cpp.i
+
+src/Interfaces/editor.s: src/Interfaces/editor.cpp.s
+
+.PHONY : src/Interfaces/editor.s
+
+# target to generate assembly for a file
+src/Interfaces/editor.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.s
+.PHONY : src/Interfaces/editor.cpp.s
+
 src/Interfaces/juego.o: src/Interfaces/juego.cpp.o
 
 .PHONY : src/Interfaces/juego.o
@@ -231,6 +258,33 @@ src/Interfaces/juego_mostrar_gan.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.s
 .PHONY : src/Interfaces/juego_mostrar_gan.cpp.s
 
+src/Interfaces/menu.o: src/Interfaces/menu.cpp.o
+
+.PHONY : src/Interfaces/menu.o
+
+# target to build an object file
+src/Interfaces/menu.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o
+.PHONY : src/Interfaces/menu.cpp.o
+
+src/Interfaces/menu.i: src/Interfaces/menu.cpp.i
+
+.PHONY : src/Interfaces/menu.i
+
+# target to preprocess a source file
+src/Interfaces/menu.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.i
+.PHONY : src/Interfaces/menu.cpp.i
+
+src/Interfaces/menu.s: src/Interfaces/menu.cpp.s
+
+.PHONY : src/Interfaces/menu.s
+
+# target to generate assembly for a file
+src/Interfaces/menu.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.s
+.PHONY : src/Interfaces/menu.cpp.s
+
 src/control_player.o: src/control_player.cpp.o
 
 .PHONY : src/control_player.o
@@ -257,33 +311,6 @@ src/control_player.s: src/control_player.cpp.s
 src/control_player.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/control_player.cpp.s
 .PHONY : src/control_player.cpp.s
-
-src/editor.o: src/editor.cpp.o
-
-.PHONY : src/editor.o
-
-# target to build an object file
-src/editor.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/editor.cpp.o
-.PHONY : src/editor.cpp.o
-
-src/editor.i: src/editor.cpp.i
-
-.PHONY : src/editor.i
-
-# target to preprocess a source file
-src/editor.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/editor.cpp.i
-.PHONY : src/editor.cpp.i
-
-src/editor.s: src/editor.cpp.s
-
-.PHONY : src/editor.s
-
-# target to generate assembly for a file
-src/editor.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/editor.cpp.s
-.PHONY : src/editor.cpp.s
 
 src/engine/mapa/include/TMXParser.o: src/engine/mapa/include/TMXParser.cpp.o
 
@@ -555,60 +582,6 @@ src/engine/util/game_manager.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.s
 .PHONY : src/engine/util/game_manager.cpp.s
 
-src/explosion.o: src/explosion.cpp.o
-
-.PHONY : src/explosion.o
-
-# target to build an object file
-src/explosion.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/explosion.cpp.o
-.PHONY : src/explosion.cpp.o
-
-src/explosion.i: src/explosion.cpp.i
-
-.PHONY : src/explosion.i
-
-# target to preprocess a source file
-src/explosion.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/explosion.cpp.i
-.PHONY : src/explosion.cpp.i
-
-src/explosion.s: src/explosion.cpp.s
-
-.PHONY : src/explosion.s
-
-# target to generate assembly for a file
-src/explosion.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/explosion.cpp.s
-.PHONY : src/explosion.cpp.s
-
-src/fuente_imagen.o: src/fuente_imagen.cpp.o
-
-.PHONY : src/fuente_imagen.o
-
-# target to build an object file
-src/fuente_imagen.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o
-.PHONY : src/fuente_imagen.cpp.o
-
-src/fuente_imagen.i: src/fuente_imagen.cpp.i
-
-.PHONY : src/fuente_imagen.i
-
-# target to preprocess a source file
-src/fuente_imagen.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.i
-.PHONY : src/fuente_imagen.cpp.i
-
-src/fuente_imagen.s: src/fuente_imagen.cpp.s
-
-.PHONY : src/fuente_imagen.s
-
-# target to generate assembly for a file
-src/fuente_imagen.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.s
-.PHONY : src/fuente_imagen.cpp.s
-
 src/galeria.o: src/galeria.cpp.o
 
 .PHONY : src/galeria.o
@@ -635,33 +608,6 @@ src/galeria.s: src/galeria.cpp.s
 src/galeria.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/galeria.cpp.s
 .PHONY : src/galeria.cpp.s
-
-src/item.o: src/item.cpp.o
-
-.PHONY : src/item.o
-
-# target to build an object file
-src/item.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/item.cpp.o
-.PHONY : src/item.cpp.o
-
-src/item.i: src/item.cpp.i
-
-.PHONY : src/item.i
-
-# target to preprocess a source file
-src/item.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/item.cpp.i
-.PHONY : src/item.cpp.i
-
-src/item.s: src/item.cpp.s
-
-.PHONY : src/item.s
-
-# target to generate assembly for a file
-src/item.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/item.cpp.s
-.PHONY : src/item.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -690,33 +636,6 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/menu.o: src/menu.cpp.o
-
-.PHONY : src/menu.o
-
-# target to build an object file
-src/menu.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/menu.cpp.o
-.PHONY : src/menu.cpp.o
-
-src/menu.i: src/menu.cpp.i
-
-.PHONY : src/menu.i
-
-# target to preprocess a source file
-src/menu.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/menu.cpp.i
-.PHONY : src/menu.cpp.i
-
-src/menu.s: src/menu.cpp.s
-
-.PHONY : src/menu.s
-
-# target to generate assembly for a file
-src/menu.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/menu.cpp.s
-.PHONY : src/menu.cpp.s
-
 src/niveles/NivelMapa.o: src/niveles/NivelMapa.cpp.o
 
 .PHONY : src/niveles/NivelMapa.o
@@ -743,6 +662,60 @@ src/niveles/NivelMapa.s: src/niveles/NivelMapa.cpp.s
 src/niveles/NivelMapa.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.s
 .PHONY : src/niveles/NivelMapa.cpp.s
+
+src/objetos/explosion.o: src/objetos/explosion.cpp.o
+
+.PHONY : src/objetos/explosion.o
+
+# target to build an object file
+src/objetos/explosion.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o
+.PHONY : src/objetos/explosion.cpp.o
+
+src/objetos/explosion.i: src/objetos/explosion.cpp.i
+
+.PHONY : src/objetos/explosion.i
+
+# target to preprocess a source file
+src/objetos/explosion.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.i
+.PHONY : src/objetos/explosion.cpp.i
+
+src/objetos/explosion.s: src/objetos/explosion.cpp.s
+
+.PHONY : src/objetos/explosion.s
+
+# target to generate assembly for a file
+src/objetos/explosion.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.s
+.PHONY : src/objetos/explosion.cpp.s
+
+src/objetos/item.o: src/objetos/item.cpp.o
+
+.PHONY : src/objetos/item.o
+
+# target to build an object file
+src/objetos/item.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o
+.PHONY : src/objetos/item.cpp.o
+
+src/objetos/item.i: src/objetos/item.cpp.i
+
+.PHONY : src/objetos/item.i
+
+# target to preprocess a source file
+src/objetos/item.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/objetos/item.cpp.i
+.PHONY : src/objetos/item.cpp.i
+
+src/objetos/item.s: src/objetos/item.cpp.s
+
+.PHONY : src/objetos/item.s
+
+# target to generate assembly for a file
+src/objetos/item.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/objetos/item.cpp.s
+.PHONY : src/objetos/item.cpp.s
 
 src/personajes/bloque.o: src/personajes/bloque.cpp.o
 
@@ -861,6 +834,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Bomberman"
+	@echo "... src/Interfaces/editor.o"
+	@echo "... src/Interfaces/editor.i"
+	@echo "... src/Interfaces/editor.s"
 	@echo "... src/Interfaces/juego.o"
 	@echo "... src/Interfaces/juego.i"
 	@echo "... src/Interfaces/juego.s"
@@ -873,12 +849,12 @@ help:
 	@echo "... src/Interfaces/juego_mostrar_gan.o"
 	@echo "... src/Interfaces/juego_mostrar_gan.i"
 	@echo "... src/Interfaces/juego_mostrar_gan.s"
+	@echo "... src/Interfaces/menu.o"
+	@echo "... src/Interfaces/menu.i"
+	@echo "... src/Interfaces/menu.s"
 	@echo "... src/control_player.o"
 	@echo "... src/control_player.i"
 	@echo "... src/control_player.s"
-	@echo "... src/editor.o"
-	@echo "... src/editor.i"
-	@echo "... src/editor.s"
 	@echo "... src/engine/mapa/include/TMXParser.o"
 	@echo "... src/engine/mapa/include/TMXParser.i"
 	@echo "... src/engine/mapa/include/TMXParser.s"
@@ -909,27 +885,21 @@ help:
 	@echo "... src/engine/util/game_manager.o"
 	@echo "... src/engine/util/game_manager.i"
 	@echo "... src/engine/util/game_manager.s"
-	@echo "... src/explosion.o"
-	@echo "... src/explosion.i"
-	@echo "... src/explosion.s"
-	@echo "... src/fuente_imagen.o"
-	@echo "... src/fuente_imagen.i"
-	@echo "... src/fuente_imagen.s"
 	@echo "... src/galeria.o"
 	@echo "... src/galeria.i"
 	@echo "... src/galeria.s"
-	@echo "... src/item.o"
-	@echo "... src/item.i"
-	@echo "... src/item.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/menu.o"
-	@echo "... src/menu.i"
-	@echo "... src/menu.s"
 	@echo "... src/niveles/NivelMapa.o"
 	@echo "... src/niveles/NivelMapa.i"
 	@echo "... src/niveles/NivelMapa.s"
+	@echo "... src/objetos/explosion.o"
+	@echo "... src/objetos/explosion.i"
+	@echo "... src/objetos/explosion.s"
+	@echo "... src/objetos/item.o"
+	@echo "... src/objetos/item.i"
+	@echo "... src/objetos/item.s"
 	@echo "... src/personajes/bloque.o"
 	@echo "... src/personajes/bloque.i"
 	@echo "... src/personajes/bloque.s"

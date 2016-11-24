@@ -76,9 +76,9 @@ void Juego::establecerValoresPlayersDeMapa() {
         if(mIsPlayerActivado[i] && mPlayerSprite[i]) {
             mPlayerSprite[i]->move(mMapa->getPosXPlayer((IdPlayer)(PLAYER_1 + i))
                     ,mMapa->getPosYPlayer((IdPlayer)(PLAYER_1 + i)));
-            mPlayerSprite[i]->setVidas(std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_X_N_VIDAS_PLAYER)));
-            mPlayerSprite[i]->setNBombas(std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_N_BOMBAS)));
-            mPlayerSprite[i]->setAlcanceBombas(std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_ALCANCE_BOMBAS)));
+            mPlayerSprite[i]->setVidas(std::stoi(mMapa->getPropertyMap(MAPA_PROPERTY_X_N_VIDAS_PLAYER)));
+            mPlayerSprite[i]->setNBombas(std::stoi(mMapa->getPropertyMap(MAPA_PROPERTY_N_BOMBAS)));
+            mPlayerSprite[i]->setAlcanceBombas(std::stoi(mMapa->getPropertyMap(MAPA_PROPERTY_ALCANCE_BOMBAS)));
         }
     }
 }
@@ -601,7 +601,7 @@ SDL_Joystick * Juego::getJoy(int id){
 }
 
 void Juego::draw(SDL_Renderer * gRenderer){
-    //mGameManager->getImagen((CodeImagen)std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer);
+    //mGameManager->getImagen((CodeImagen)std::stoi(mMapa->getPropertyMap(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer);
     drawBarra(gRenderer);//imprimimos la barra mensage
     mMapa->draw(gRenderer,
                 MAPA_EJE_X,
@@ -725,14 +725,21 @@ void Juego::moveAllSprites(int aumX,int aumY){
 }
 */
 
-void Juego::killedSprite(Sprite * sprite) {
+/**
+ * Elimina un Sprite del juego
+ * Dependiendo del tipo de sprite a eliminar se hace una accion correspondiente
+ * @param sprite
+ */
+void Juego::eliminarSprite(Sprite *sprite) {
 
+
+    // En caso de que el sprite a eliminar sea una bomba
+    // Agregamos la explosion
     Bomba * pBombaEliminada   = nullptr;
-    Bloque * pBloqueEliminado = nullptr;
 
     if((pBombaEliminada = dynamic_cast<Bomba * >(sprite)) != nullptr){
 
-        // Obtenemos el player que ha lanzado la pBombaEliminada
+        // Obtenemos el player que ha lanzado la bomba
         Player * playerLanzador = pBombaEliminada->getPlayerPropietario();
 
         // Le restamos uno a las bombas colocadas por el player que la hanzado
@@ -750,30 +757,106 @@ void Juego::killedSprite(Sprite * sprite) {
 
         //reproducimos un sonido
         mGameManager->play(SFX_EXPLOSION);
-    }else if((pBloqueEliminado = dynamic_cast<Bloque * >(sprite)) != nullptr){
-        
-        Item * nuevoItem = new Item();
-        // Obtenemos el player que ha lanzado la pBombaEliminada
-        Player * playerLanzador = pBombaEliminada->getPlayerPropietario();
 
-        // Le restamos uno a las bombas colocadas por el player que la hanzado
-        playerLanzador->setBombasColocadas(playerLanzador->getBombasColocadas() - 1);
-
-        // Creamos una nueva Explosion
-        Explosion * explosion = new Explosion(this,mGameRenderer,playerLanzador);
-
-        // Establecemos la posicion de inicio donde estaba la pBombaEliminada
-        explosion->move(pBombaEliminada->getX(),pBombaEliminada->getY());
-        explosion->detectarAlcances();
-
-        mGrpExplosiones.add(explosion);
-        mGrpSprites.add(explosion);
-
-        //reproducimos un sonido
-        mGameManager->play(SFX_EXPLOSION);
+        delete sprite;
+        return;
     }
 
-    delete sprite;
+    Bloque * pBloqueEliminado = nullptr;
+    // En caso que el sprite a eliminar sea un Bloque En Llamas
+    // eliminamos el bloque del mapa
+    if((pBloqueEliminado = dynamic_cast<Bloque * >(sprite)) != nullptr){
+
+        // Eliminamos/Rompemos el tile/bloque del mapa
+        // Aun no se habia roto
+        mMapa->romperBloque(pBloqueEliminado->getX() - MAPA_EJE_X,pBloqueEliminado->getY() - MAPA_EJE_Y);
+
+        // Obtenemos un posible item a Colocar
+        Item::TipoItem tipoNuevoItem = getTipoNuevoItem();
+
+        // Si se ha obtenido uno
+        if(tipoNuevoItem != Item::NINGUNO){
+
+            // Creamos los frames de su animacion
+            std::string frames = std::to_string(tipoNuevoItem/8*8) + "," + std::to_string(tipoNuevoItem/8*8 + 8);
+
+            // Creamos el objeto ITem
+            Item * nuevoItem = new Item(mGameRenderer,frames,tipoNuevoItem);
+
+            // Lo posicionamos en donde estaba el bloque
+            nuevoItem->move(pBloqueEliminado->getX(),pBloqueEliminado->getY());
+
+            // Lo Agregamos a los grupos del juego para que se actualizen/dibujen
+            // y para que se detecten las colisones
+            mGrpItems.add(nuevoItem);
+            mGrpSprites.add(nuevoItem);
+        }
+
+        delete sprite;
+        return;
+    }
+
+    Item * pItemEliminado     = nullptr;
+
+    if((pItemEliminado = dynamic_cast<Item *>(sprite))){
+
+        Animacion * nuevaAnimacion = new Animacion(new SpriteSheet(mGameRenderer,"data/imagenes/objetos/item_fire.png",1,7),
+                                                   "0,0,0,1,1,2,2,2,3,3,4,4,5,5,6,6");
+        nuevaAnimacion->move(pItemEliminado->getX(),pItemEliminado->getY());
+        mGrpAnimaciones.add(nuevaAnimacion);
+        mGrpSprites.add(nuevaAnimacion);
+        delete sprite;
+        return;
+    }
+
+    //delete sprite;
+//                        new Animacion(new SpriteSheet("data/imagenes/")
+}
+
+Item::TipoItem Juego::getTipoNuevoItem(){
+
+//    static int tipos[5]={Item::ITEM_BOLA_ARROZ,
+//                         Item::ITEM_PASTEL,
+//                         Item::ITEM_PALETA,
+//                         Item::ITEM_BARQUILLA,
+//                         Item::ITEM_MANZANA};
+//
+//    int tmp=rand()%1200,indice;
+//    if(tmp<10&&tmp>=0)indice=Item::ITEM_BOMBA_MAX; //0.8% probabilidades de aparecer
+//    else if(tmp<20&&tmp>=10)indice=Item::ITEM_ALCANCE_MAX;//0.8%
+//    else if(tmp<120&&tmp>=20)indice=Item::ITEM_ALCANCE; //8%
+//    else if(tmp<180&&tmp>=120)indice=Item::ITEM_VIDA; //4%
+//    else if(tmp<280&&tmp>=180)indice=Item::ITEM_BOMBA;//8%
+//    else if(tmp<330&&tmp>=280)indice=Item::ITEM_ATRAVIESA_PAREDES;//4%
+//    else if(tmp<430&&tmp>=330)indice=Item::ITEM_PROTECCION;//8%
+//    else if(tmp<530&&tmp>=430)indice=Item::ITEM_ALEATORIO;//8%
+//    else if(tmp<580&&tmp>=530)indice=Item::ITEM_PATINETA; //4%
+//    else if(tmp<630&&tmp>=580)indice=Item::ITEM_CORAZON; //4%
+//    else if(tmp<680&&tmp>=630)indice=Item::ITEM_ATRAVIESA_BOMBAS;//4%
+//    else indice=tipos[rand() % 5 ];//54%
+    std::vector<Item::TipoItem > disponibles = {
+            Item::ITEM_BOMBA_MAX,
+            Item::ITEM_ALCANCE_MAX,
+            Item::ITEM_ALCANCE,
+            Item::ITEM_BOMBA,
+            Item::ITEM_ATRAVIESA_PAREDES,
+            Item::ITEM_PROTECCION,
+            Item::ITEM_ALEATORIO,
+            Item::ITEM_PATINETA,
+            Item::ITEM_CORAZON,
+            Item::ITEM_ATRAVIESA_BOMBAS,
+            Item::ITEM_PATINETA
+    };
+    //int tmp = ;
+    //else indice=tipos[rand() % 5 ];//54%
+
+//    if(disminuir_de_mapa&&mapa->getNumItems()>=1)
+//        mapa->setNumItems(mapa->getNumItems()-1);
+    if(rand() % 100 >= 60){
+        return disponibles[rand() % disponibles.size()];
+    }else{
+        return  Item::NINGUNO;
+    }
 }
 
 deque<Sprite *> Juego::colisionBloqueEnLlamas(SDL_Rect rect) {
@@ -788,7 +871,7 @@ Bloque *Juego::agregarBloqueEnLlamas(int x, int y) {
 
     // Buscamos la animacion del mapa para los bloques en llamas
     vector<string> *aniBloqueLlamas = mMapa->getAnimacionFrames(
-            mMapa->getMapProperty(MAPA_PROPERTY_ID_TILE_LLAMAS)
+            mMapa->getPropertyMap(MAPA_PROPERTY_ID_TILE_LLAMAS)
     );
 
     // Creamos los frames de la animacion

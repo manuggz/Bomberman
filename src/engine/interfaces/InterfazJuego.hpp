@@ -12,10 +12,12 @@
 ///enum CodeImagen;
 
 
+#include "InterfazSpriteGroup.hpp"
+
 class Bomba;
 class Player;
 class Bloque;
-class InterfazJuego{
+class InterfazJuego : public InterfazSpriteGroup{
 
 public:
     virtual LTexture * getImagen(CodeImagen code) = 0;

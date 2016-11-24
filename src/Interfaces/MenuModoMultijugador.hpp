@@ -161,7 +161,7 @@ public:
         mGRenderer = gRenderer;
     }
 
-    virtual void killedSprite(Sprite *sprite) override {
+    virtual void eliminarSprite(Sprite *sprite) override {
 
     }
 
@@ -333,7 +333,7 @@ public:
     virtual void draw(SDL_Renderer *gRenderer) override {
         //cout << "MenuModoMultijugador::draw"<<endl;
 
-        //mGameManager->getImagen((CodeImagen)std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer,0,0);*/
+        //mGameManager->getImagen((CodeImagen)std::stoi(mMapaTerrenoSeleccionado.getPropertyMap(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer,0,0);*/
         mGameManager->getImagen(IMG_TABLERO)->render(gRenderer,0,0);//imprimimos la barra mensage
         mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,177,0);//imprimimos la barra mensage
         mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,280,0);//imprimimos la barra mensage

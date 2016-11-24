@@ -201,81 +201,57 @@ CMakeFiles/Bomberman.dir/src/engine/util/CMetaData.cpp.o.provides: CMakeFiles/Bo
 CMakeFiles/Bomberman.dir/src/engine/util/CMetaData.cpp.o.provides.build: CMakeFiles/Bomberman.dir/src/engine/util/CMetaData.cpp.o
 
 
-CMakeFiles/Bomberman.dir/src/editor.cpp.o: CMakeFiles/Bomberman.dir/flags.make
-CMakeFiles/Bomberman.dir/src/editor.cpp.o: ../src/editor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Bomberman.dir/src/editor.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/editor.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/editor.cpp
+CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o: CMakeFiles/Bomberman.dir/flags.make
+CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o: ../src/Interfaces/editor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/editor.cpp
 
-CMakeFiles/Bomberman.dir/src/editor.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Bomberman.dir/src/editor.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manuggz/Documents/Projects/Bomberman/src/editor.cpp > CMakeFiles/Bomberman.dir/src/editor.cpp.i
+CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/editor.cpp > CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.i
 
-CMakeFiles/Bomberman.dir/src/editor.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Bomberman.dir/src/editor.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manuggz/Documents/Projects/Bomberman/src/editor.cpp -o CMakeFiles/Bomberman.dir/src/editor.cpp.s
+CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/editor.cpp -o CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.s
 
-CMakeFiles/Bomberman.dir/src/editor.cpp.o.requires:
+CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o.requires:
 
-.PHONY : CMakeFiles/Bomberman.dir/src/editor.cpp.o.requires
+.PHONY : CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o.requires
 
-CMakeFiles/Bomberman.dir/src/editor.cpp.o.provides: CMakeFiles/Bomberman.dir/src/editor.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/editor.cpp.o.provides.build
-.PHONY : CMakeFiles/Bomberman.dir/src/editor.cpp.o.provides
+CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o.provides: CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o.provides.build
+.PHONY : CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o.provides
 
-CMakeFiles/Bomberman.dir/src/editor.cpp.o.provides.build: CMakeFiles/Bomberman.dir/src/editor.cpp.o
-
-
-CMakeFiles/Bomberman.dir/src/explosion.cpp.o: CMakeFiles/Bomberman.dir/flags.make
-CMakeFiles/Bomberman.dir/src/explosion.cpp.o: ../src/explosion.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Bomberman.dir/src/explosion.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/explosion.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/explosion.cpp
-
-CMakeFiles/Bomberman.dir/src/explosion.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Bomberman.dir/src/explosion.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manuggz/Documents/Projects/Bomberman/src/explosion.cpp > CMakeFiles/Bomberman.dir/src/explosion.cpp.i
-
-CMakeFiles/Bomberman.dir/src/explosion.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Bomberman.dir/src/explosion.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manuggz/Documents/Projects/Bomberman/src/explosion.cpp -o CMakeFiles/Bomberman.dir/src/explosion.cpp.s
-
-CMakeFiles/Bomberman.dir/src/explosion.cpp.o.requires:
-
-.PHONY : CMakeFiles/Bomberman.dir/src/explosion.cpp.o.requires
-
-CMakeFiles/Bomberman.dir/src/explosion.cpp.o.provides: CMakeFiles/Bomberman.dir/src/explosion.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/explosion.cpp.o.provides.build
-.PHONY : CMakeFiles/Bomberman.dir/src/explosion.cpp.o.provides
-
-CMakeFiles/Bomberman.dir/src/explosion.cpp.o.provides.build: CMakeFiles/Bomberman.dir/src/explosion.cpp.o
+CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o.provides.build: CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o
 
 
-CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o: CMakeFiles/Bomberman.dir/flags.make
-CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o: ../src/fuente_imagen.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/fuente_imagen.cpp
+CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o: CMakeFiles/Bomberman.dir/flags.make
+CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o: ../src/objetos/explosion.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/objetos/explosion.cpp
 
-CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manuggz/Documents/Projects/Bomberman/src/fuente_imagen.cpp > CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.i
+CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manuggz/Documents/Projects/Bomberman/src/objetos/explosion.cpp > CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.i
 
-CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manuggz/Documents/Projects/Bomberman/src/fuente_imagen.cpp -o CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.s
+CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manuggz/Documents/Projects/Bomberman/src/objetos/explosion.cpp -o CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.s
 
-CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o.requires:
+CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o.requires:
 
-.PHONY : CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o.requires
+.PHONY : CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o.requires
 
-CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o.provides: CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o.provides.build
-.PHONY : CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o.provides
+CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o.provides: CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o.provides.build
+.PHONY : CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o.provides
 
-CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o.provides.build: CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o
+CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o.provides.build: CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o
 
 
 CMakeFiles/Bomberman.dir/src/galeria.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/galeria.cpp.o: ../src/galeria.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Bomberman.dir/src/galeria.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Bomberman.dir/src/galeria.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/galeria.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/galeria.cpp
 
 CMakeFiles/Bomberman.dir/src/galeria.cpp.i: cmake_force
@@ -299,7 +275,7 @@ CMakeFiles/Bomberman.dir/src/galeria.cpp.o.provides.build: CMakeFiles/Bomberman.
 
 CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.o: ../src/engine/util/game_manager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/engine/util/game_manager.cpp
 
 CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.i: cmake_force
@@ -323,7 +299,7 @@ CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.o.provides.build: CMak
 
 CMakeFiles/Bomberman.dir/src/personajes/globo.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/personajes/globo.cpp.o: ../src/personajes/globo.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Bomberman.dir/src/personajes/globo.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Bomberman.dir/src/personajes/globo.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/personajes/globo.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/personajes/globo.cpp
 
 CMakeFiles/Bomberman.dir/src/personajes/globo.cpp.i: cmake_force
@@ -345,33 +321,33 @@ CMakeFiles/Bomberman.dir/src/personajes/globo.cpp.o.provides: CMakeFiles/Bomberm
 CMakeFiles/Bomberman.dir/src/personajes/globo.cpp.o.provides.build: CMakeFiles/Bomberman.dir/src/personajes/globo.cpp.o
 
 
-CMakeFiles/Bomberman.dir/src/item.cpp.o: CMakeFiles/Bomberman.dir/flags.make
-CMakeFiles/Bomberman.dir/src/item.cpp.o: ../src/item.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Bomberman.dir/src/item.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/item.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/item.cpp
+CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o: CMakeFiles/Bomberman.dir/flags.make
+CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o: ../src/objetos/item.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/objetos/item.cpp
 
-CMakeFiles/Bomberman.dir/src/item.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Bomberman.dir/src/item.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manuggz/Documents/Projects/Bomberman/src/item.cpp > CMakeFiles/Bomberman.dir/src/item.cpp.i
+CMakeFiles/Bomberman.dir/src/objetos/item.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Bomberman.dir/src/objetos/item.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manuggz/Documents/Projects/Bomberman/src/objetos/item.cpp > CMakeFiles/Bomberman.dir/src/objetos/item.cpp.i
 
-CMakeFiles/Bomberman.dir/src/item.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Bomberman.dir/src/item.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manuggz/Documents/Projects/Bomberman/src/item.cpp -o CMakeFiles/Bomberman.dir/src/item.cpp.s
+CMakeFiles/Bomberman.dir/src/objetos/item.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Bomberman.dir/src/objetos/item.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manuggz/Documents/Projects/Bomberman/src/objetos/item.cpp -o CMakeFiles/Bomberman.dir/src/objetos/item.cpp.s
 
-CMakeFiles/Bomberman.dir/src/item.cpp.o.requires:
+CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o.requires:
 
-.PHONY : CMakeFiles/Bomberman.dir/src/item.cpp.o.requires
+.PHONY : CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o.requires
 
-CMakeFiles/Bomberman.dir/src/item.cpp.o.provides: CMakeFiles/Bomberman.dir/src/item.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/item.cpp.o.provides.build
-.PHONY : CMakeFiles/Bomberman.dir/src/item.cpp.o.provides
+CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o.provides: CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o.provides.build
+.PHONY : CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o.provides
 
-CMakeFiles/Bomberman.dir/src/item.cpp.o.provides.build: CMakeFiles/Bomberman.dir/src/item.cpp.o
+CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o.provides.build: CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o
 
 
 CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.o: ../src/Interfaces/juego.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego.cpp
 
 CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.i: cmake_force
@@ -395,7 +371,7 @@ CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.o.provides.build: CMakeFiles/B
 
 CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.o: ../src/Interfaces/juego_batalla.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego_batalla.cpp
 
 CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.i: cmake_force
@@ -419,7 +395,7 @@ CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.o.provides.build: CMak
 
 CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.o: ../src/Interfaces/juego_historia.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego_historia.cpp
 
 CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.i: cmake_force
@@ -443,7 +419,7 @@ CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.o.provides.build: CMa
 
 CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.o: ../src/Interfaces/juego_mostrar_gan.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego_mostrar_gan.cpp
 
 CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.i: cmake_force
@@ -467,7 +443,7 @@ CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.o.provides.build: 
 
 CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o: ../src/niveles/NivelMapa.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/niveles/NivelMapa.cpp
 
 CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.i: cmake_force
@@ -489,33 +465,33 @@ CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o.provides: CMakeFiles/Bomber
 CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o.provides.build: CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o
 
 
-CMakeFiles/Bomberman.dir/src/menu.cpp.o: CMakeFiles/Bomberman.dir/flags.make
-CMakeFiles/Bomberman.dir/src/menu.cpp.o: ../src/menu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/Bomberman.dir/src/menu.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/menu.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/menu.cpp
+CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o: CMakeFiles/Bomberman.dir/flags.make
+CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o: ../src/Interfaces/menu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/menu.cpp
 
-CMakeFiles/Bomberman.dir/src/menu.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Bomberman.dir/src/menu.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manuggz/Documents/Projects/Bomberman/src/menu.cpp > CMakeFiles/Bomberman.dir/src/menu.cpp.i
+CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/menu.cpp > CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.i
 
-CMakeFiles/Bomberman.dir/src/menu.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Bomberman.dir/src/menu.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manuggz/Documents/Projects/Bomberman/src/menu.cpp -o CMakeFiles/Bomberman.dir/src/menu.cpp.s
+CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manuggz/Documents/Projects/Bomberman/src/Interfaces/menu.cpp -o CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.s
 
-CMakeFiles/Bomberman.dir/src/menu.cpp.o.requires:
+CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o.requires:
 
-.PHONY : CMakeFiles/Bomberman.dir/src/menu.cpp.o.requires
+.PHONY : CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o.requires
 
-CMakeFiles/Bomberman.dir/src/menu.cpp.o.provides: CMakeFiles/Bomberman.dir/src/menu.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/menu.cpp.o.provides.build
-.PHONY : CMakeFiles/Bomberman.dir/src/menu.cpp.o.provides
+CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o.provides: CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o.provides.build
+.PHONY : CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o.provides
 
-CMakeFiles/Bomberman.dir/src/menu.cpp.o.provides.build: CMakeFiles/Bomberman.dir/src/menu.cpp.o
+CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o.provides.build: CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o
 
 
 CMakeFiles/Bomberman.dir/src/personajes/player.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/personajes/player.cpp.o: ../src/personajes/player.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/Bomberman.dir/src/personajes/player.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/Bomberman.dir/src/personajes/player.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/personajes/player.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/personajes/player.cpp
 
 CMakeFiles/Bomberman.dir/src/personajes/player.cpp.i: cmake_force
@@ -539,7 +515,7 @@ CMakeFiles/Bomberman.dir/src/personajes/player.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/Bomberman.dir/src/util.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/util.cpp.o: ../src/util.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/Bomberman.dir/src/util.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/Bomberman.dir/src/util.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/util.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/util.cpp
 
 CMakeFiles/Bomberman.dir/src/util.cpp.i: cmake_force
@@ -563,7 +539,7 @@ CMakeFiles/Bomberman.dir/src/util.cpp.o.provides.build: CMakeFiles/Bomberman.dir
 
 CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o: ../src/engine/sprites/CGroup.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/CGroup.cpp
 
 CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.i: cmake_force
@@ -587,7 +563,7 @@ CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.o: ../src/engine/sprites/CSprite.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/engine/sprites/CSprite.cpp
 
 CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.i: cmake_force
@@ -611,7 +587,7 @@ CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.o.provides.build: CMakeF
 
 CMakeFiles/Bomberman.dir/src/engine/util/LTexture.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/engine/util/LTexture.cpp.o: ../src/engine/util/LTexture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/util/LTexture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/util/LTexture.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/engine/util/LTexture.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/engine/util/LTexture.cpp
 
 CMakeFiles/Bomberman.dir/src/engine/util/LTexture.cpp.i: cmake_force
@@ -635,7 +611,7 @@ CMakeFiles/Bomberman.dir/src/engine/util/LTexture.cpp.o.provides.build: CMakeFil
 
 CMakeFiles/Bomberman.dir/src/engine/util/LTimer.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/engine/util/LTimer.cpp.o: ../src/engine/util/LTimer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/util/LTimer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/util/LTimer.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/engine/util/LTimer.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/engine/util/LTimer.cpp
 
 CMakeFiles/Bomberman.dir/src/engine/util/LTimer.cpp.i: cmake_force
@@ -659,7 +635,7 @@ CMakeFiles/Bomberman.dir/src/engine/util/LTimer.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/Bomberman.dir/src/engine/util/CFont.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/engine/util/CFont.cpp.o: ../src/engine/util/CFont.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/util/CFont.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/util/CFont.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/engine/util/CFont.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/engine/util/CFont.cpp
 
 CMakeFiles/Bomberman.dir/src/engine/util/CFont.cpp.i: cmake_force
@@ -683,7 +659,7 @@ CMakeFiles/Bomberman.dir/src/engine/util/CFont.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/Bomberman.dir/src/engine/mapa/include/TMXParser.cpp.o: CMakeFiles/Bomberman.dir/flags.make
 CMakeFiles/Bomberman.dir/src/engine/mapa/include/TMXParser.cpp.o: ../src/engine/mapa/include/TMXParser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/mapa/include/TMXParser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/Bomberman.dir/src/engine/mapa/include/TMXParser.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Bomberman.dir/src/engine/mapa/include/TMXParser.cpp.o -c /home/manuggz/Documents/Projects/Bomberman/src/engine/mapa/include/TMXParser.cpp
 
 CMakeFiles/Bomberman.dir/src/engine/mapa/include/TMXParser.cpp.i: cmake_force
@@ -713,19 +689,18 @@ Bomberman_OBJECTS = \
 "CMakeFiles/Bomberman.dir/src/engine/sprites/animacion/Control_Animacion.cpp.o" \
 "CMakeFiles/Bomberman.dir/src/control_player.cpp.o" \
 "CMakeFiles/Bomberman.dir/src/engine/util/CMetaData.cpp.o" \
-"CMakeFiles/Bomberman.dir/src/editor.cpp.o" \
-"CMakeFiles/Bomberman.dir/src/explosion.cpp.o" \
-"CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o" \
+"CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o" \
+"CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o" \
 "CMakeFiles/Bomberman.dir/src/galeria.cpp.o" \
 "CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.o" \
 "CMakeFiles/Bomberman.dir/src/personajes/globo.cpp.o" \
-"CMakeFiles/Bomberman.dir/src/item.cpp.o" \
+"CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o" \
 "CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.o" \
 "CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.o" \
 "CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.o" \
 "CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.o" \
 "CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o" \
-"CMakeFiles/Bomberman.dir/src/menu.cpp.o" \
+"CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o" \
 "CMakeFiles/Bomberman.dir/src/personajes/player.cpp.o" \
 "CMakeFiles/Bomberman.dir/src/util.cpp.o" \
 "CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o" \
@@ -744,19 +719,18 @@ Bomberman: CMakeFiles/Bomberman.dir/src/personajes/bloque.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/engine/sprites/animacion/Control_Animacion.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/control_player.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/engine/util/CMetaData.cpp.o
-Bomberman: CMakeFiles/Bomberman.dir/src/editor.cpp.o
-Bomberman: CMakeFiles/Bomberman.dir/src/explosion.cpp.o
-Bomberman: CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o
+Bomberman: CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o
+Bomberman: CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/galeria.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/personajes/globo.cpp.o
-Bomberman: CMakeFiles/Bomberman.dir/src/item.cpp.o
+Bomberman: CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o
-Bomberman: CMakeFiles/Bomberman.dir/src/menu.cpp.o
+Bomberman: CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/personajes/player.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/util.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o
@@ -767,7 +741,7 @@ Bomberman: CMakeFiles/Bomberman.dir/src/engine/util/CFont.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/src/engine/mapa/include/TMXParser.cpp.o
 Bomberman: CMakeFiles/Bomberman.dir/build.make
 Bomberman: CMakeFiles/Bomberman.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Linking CXX executable Bomberman"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/manuggz/Documents/Projects/Bomberman/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Linking CXX executable Bomberman"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Bomberman.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -781,19 +755,18 @@ CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/personajes/bloqu
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/engine/sprites/animacion/Control_Animacion.cpp.o.requires
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/control_player.cpp.o.requires
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/engine/util/CMetaData.cpp.o.requires
-CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/editor.cpp.o.requires
-CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/explosion.cpp.o.requires
-CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/fuente_imagen.cpp.o.requires
+CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o.requires
+CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/objetos/explosion.cpp.o.requires
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/galeria.cpp.o.requires
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.o.requires
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/personajes/globo.cpp.o.requires
-CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/item.cpp.o.requires
+CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/objetos/item.cpp.o.requires
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.o.requires
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.o.requires
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.o.requires
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.o.requires
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/niveles/NivelMapa.cpp.o.requires
-CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/menu.cpp.o.requires
+CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o.requires
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/personajes/player.cpp.o.requires
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/util.cpp.o.requires
 CMakeFiles/Bomberman.dir/requires: CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o.requires

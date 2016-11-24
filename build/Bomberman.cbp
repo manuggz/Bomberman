@@ -95,6 +95,12 @@
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/MenuPrincipal.hpp">
 			<Option target="Bomberman"/>
 		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/editor.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/editor.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego.cpp">
 			<Option target="Bomberman"/>
 		</Unit>
@@ -119,6 +125,12 @@
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/juego_mostrar_gan.hpp">
 			<Option target="Bomberman"/>
 		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/menu.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/Interfaces/menu.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/constantes.hpp">
 			<Option target="Bomberman"/>
 		</Unit>
@@ -126,12 +138,6 @@
 			<Option target="Bomberman"/>
 		</Unit>
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/control_player.hpp">
-			<Option target="Bomberman"/>
-		</Unit>
-		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/editor.cpp">
-			<Option target="Bomberman"/>
-		</Unit>
-		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/editor.hpp">
 			<Option target="Bomberman"/>
 		</Unit>
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/interfaces/InterfazJuego.hpp">
@@ -257,46 +263,31 @@
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/engine/util/game_manager.hpp">
 			<Option target="Bomberman"/>
 		</Unit>
-		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/explosion.cpp">
-			<Option target="Bomberman"/>
-		</Unit>
-		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/explosion.hpp">
-			<Option target="Bomberman"/>
-		</Unit>
-		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/fuente_imagen.cpp">
-			<Option target="Bomberman"/>
-		</Unit>
-		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/fuente_imagen.hpp">
-			<Option target="Bomberman"/>
-		</Unit>
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/galeria.cpp">
 			<Option target="Bomberman"/>
 		</Unit>
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/galeria.hpp">
 			<Option target="Bomberman"/>
 		</Unit>
-		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/item.cpp">
-			<Option target="Bomberman"/>
-		</Unit>
-		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/item.hpp">
-			<Option target="Bomberman"/>
-		</Unit>
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/main.cpp">
-			<Option target="Bomberman"/>
-		</Unit>
-		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/menu.cpp">
-			<Option target="Bomberman"/>
-		</Unit>
-		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/menu.hpp">
-			<Option target="Bomberman"/>
-		</Unit>
-		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/menu_text.hpp">
 			<Option target="Bomberman"/>
 		</Unit>
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/niveles/NivelMapa.cpp">
 			<Option target="Bomberman"/>
 		</Unit>
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/niveles/NivelMapa.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/objetos/explosion.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/objetos/explosion.hpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/objetos/item.cpp">
+			<Option target="Bomberman"/>
+		</Unit>
+		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/objetos/item.hpp">
 			<Option target="Bomberman"/>
 		</Unit>
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/personajes/bloque.cpp">
@@ -315,9 +306,6 @@
 			<Option target="Bomberman"/>
 		</Unit>
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/personajes/player.hpp">
-			<Option target="Bomberman"/>
-		</Unit>
-		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/time.hpp">
 			<Option target="Bomberman"/>
 		</Unit>
 		<Unit filename="/home/manuggz/Documents/Projects/Bomberman/src/util.cpp">

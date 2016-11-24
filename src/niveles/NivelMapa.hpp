@@ -18,6 +18,8 @@
 #define MAPA_PROPERTY_ALCANCE_BOMBAS "alcance_bombas"
 #define MAPA_PROPERTY_ITEMS "n_items"
 #define MAPA_PROPERTY_ID_TILE_LLAMAS "tile_on_fire"
+#define MAPA_PROPERTY_TILE_PISO "id_tile_piso"
+#define MAPA_PROPERTY_TILE_PISO_SOMBRA "id_tile_piso_con_sombra"
 //#define MAPA_PROPERTY_EJE_X_MAPA "eje_x"
 //#define MAPA_PROPERTY_EJE_Y_MAPA "eje_y"
 //#define MAPA_PROPERTY_Y_TABLERO "y_tablero"
@@ -116,7 +118,7 @@ public:
     int colision(SDL_Rect  rect, int * num_colisiones,bool solo_bloques_duros=false);
 
     //~NivelMapa();
-    int getBloqueAt(int x, int y);
+    int getTileAt(int x, int y);
 
 
 //        int getNivelActual(){return n_actual;};
@@ -129,7 +131,7 @@ public:
     static SDL_Texture * getPreviewTerreno(char rutaMapa[],MetaData * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y);
 //        static SDL_Surface * getPreviewTerreno(int idTerreno);
     //void leerInfTile(char ruta[]);
-    //const std::string &getMapProperty(std::basic_string<char, std::char_traits<char>, std::allocator<char>> propertyName);
+    //const std::string &getPropertyMap(std::basic_string<char, std::char_traits<char>, std::allocator<char>> propertyName);
 
     bool contain(SDL_Rect rect);
     //TMX::Parser mTmxParser;
@@ -189,5 +191,13 @@ public:
     int getNFilasTileSet();
 
     int getNColumnasTileSet();
+
+    bool romperBloque(int x, int y);
+
+    int getIndiceMapaAt(int x, int y);
+
+    int getIndiceFilaMapaAt(int y);
+
+    int getIndiceColumnaMapaAt(int x);
 };
 #endif

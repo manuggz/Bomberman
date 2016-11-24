@@ -129,7 +129,7 @@ int NivelMapa::colision(SDL_Rect rect, int * num_colisiones,bool solo_bloques_du
     for(int i=0;i<4;i++){ // Los 4 extremos
 
         // obtenemos el id del bloque en el extremo
-        id_tile = getBloqueAt(rect.x + (rect.w*(i!=0&&i!=3)),rect.y + rect.h * (i >= 2));
+        id_tile = getTileAt(rect.x + (rect.w * (i != 0 && i != 3)), rect.y + rect.h * (i >= 2));
 
         if(id_tile >= 0){ // Si existe tal tile
             if(getPropertyTile(id_tile, TILE_PROPERTY_SOLIDO) == "1") {
@@ -156,29 +156,51 @@ int NivelMapa::colision(SDL_Rect rect, int * num_colisiones,bool solo_bloques_du
     return ret;
 }
 
-int NivelMapa::getBloqueAt(int x,int y) {
+int NivelMapa::getTileAt(int x, int y) {
     //solo detecta la colision en las esquinas del rect
 
     //int ret             = 0;
-    unsigned int indice = 0;
+    int indice = getIndiceMapaAt(x,y);
 
-    int index_fila, index_columna;
+    if(indice >=0)return mLayerMapa[indice] - 1;
 
-    index_fila    = y / mTileHeight;
-    if(index_fila  == mMapHeight){
-        return -1;
-    }
+    return -1;
 
-    index_columna   = x / mTileWidth;
-    if(index_columna  == mMapWidth){
-        return -1;
-    }
-
-    indice = index_fila * mMapWidth + index_columna;
-
-    return mLayerMapa[indice] - 1;
 }
 
+int NivelMapa::getIndiceFilaMapaAt(int y){
+    if(y < 0) return -1;
+
+    auto index_fila    = y / mTileHeight;
+    if(index_fila  >= mMapHeight){
+        return -1;
+    }
+    return index_fila;
+}
+
+int NivelMapa::getIndiceColumnaMapaAt(int x){
+    if(x < 0) return -1;
+    auto index_columna   = x / mTileWidth;
+    if(index_columna  >= mMapWidth){
+        return -1;
+    }
+    return index_columna;
+}
+
+int NivelMapa::getIndiceMapaAt(int x,int y){
+
+    int index_fila    = getIndiceFilaMapaAt(y);
+    if(index_fila  == -1){
+        return -1;
+    }
+
+    int index_columna   = getIndiceColumnaMapaAt(x);
+    if(index_columna  == -1){
+        return -1;
+    }
+
+    return index_fila * mMapWidth + index_columna;;
+}
 SDL_Texture * NivelMapa::getPreviewTerreno(char rutaMapa[],MetaData * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y){
 /*
     SDL_Surface * preview=SDL_GetVideoSurface(),*imagen_redimensionada;
@@ -242,7 +264,7 @@ int NivelMapa::getTileHeight() {
 
 bool NivelMapa::esBloqueSolido(int x, int y) {
 
-    int id_tile = getBloqueAt(x,y);
+    int id_tile = getTileAt(x, y);
 
     if(id_tile >= 0) { // Si existe tal tile
         return getPropertyTile(id_tile, TILE_PROPERTY_SOLIDO) == "1";
@@ -254,7 +276,7 @@ std::string NivelMapa::getPropertyTile(int id_tile, std::string clave){
 }
 
 bool NivelMapa::esBloqueRompible(int x, int y) {
-    int id_tile = getBloqueAt(x,y);
+    int id_tile = getTileAt(x, y);
 
     if(id_tile >= 0) { // Si existe tal tile
         return getPropertyTile(id_tile, TILE_PROPERTY_ROMPIBLE) == "1";
@@ -288,6 +310,33 @@ std::string NivelMapa::getRutaTileSet() {
 
 int NivelMapa::getNColumnasTileSet() {
     return mTmxParser.tilesetList[0].columns;
+}
+
+bool NivelMapa::romperBloque(int x, int y) {
+
+    if(!esBloqueRompible(x,y)) return false;
+
+    // Obtenemos el indice del tile a esa posicion
+    int indice = getIndiceMapaAt(x,y);
+
+    int id_tile_piso_sombra = std::stoi(getPropertyMap(MAPA_PROPERTY_TILE_PISO_SOMBRA));
+    int id_tile_piso = std::stoi(getPropertyMap(MAPA_PROPERTY_TILE_PISO));
+
+    // Si el que esta arriba de el es solido ponemos un tile con sombra debajo
+    if(esBloqueSolido(x, y - mTileHeight)){
+        mLayerMapa[indice] =  id_tile_piso_sombra + 1;
+    }else{
+        mLayerMapa[indice] = id_tile_piso + 1;
+    }
+
+    // si el que esta debajo es un tile piso con sombra lo ponemos sin sombra ya que no hay quien le genere la sombra
+    indice = getTileAt(x,y + mTileHeight);
+    if(indice == id_tile_piso_sombra){
+        mLayerMapa[getIndiceMapaAt(x,y+16)] = id_tile_piso + 1;
+    }
+
+    return true;
+
 }
 
 

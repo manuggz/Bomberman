@@ -3,7 +3,6 @@
 #include <iostream>
 using namespace std;
 #include <SDL2/SDL.h>
-#include "../time.hpp"
 #include "../niveles/NivelMapa.hpp"
 #include "../engine/util/game_manager.hpp"
 #include "../constantes.hpp"
@@ -23,14 +22,14 @@ using namespace std;
 
 
 
-class Juego:public InterfazUI , public InterfazSpriteGroup,public InterfazJuego{
+class Juego:public InterfazUI ,public InterfazJuego{
       public:
         Juego(GameManager * gameManager,int x,int y,int idTerrenoBatalla,int victorias,int minutos,bool isPlayerActivo[_PLAYERS]);
         void procesarEvento(SDL_Event * evento);
         void update ();
         void draw(SDL_Renderer * );
 
-        void killedSprite(Sprite *sprite) override;
+        void eliminarSprite(Sprite *sprite) override;
 
     //void estadoDisplayMensage();
         //virtual void estadoPlay()=0;
@@ -243,6 +242,8 @@ protected:
 
     IdPlayer mIdLiderRondasGanadas = PLAYER_NONE;
     SDL_Renderer *mGameRenderer;
+
+    Item::TipoItem getTipoNuevoItem();
 };
 
 #endif
