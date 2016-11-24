@@ -102,6 +102,9 @@ void Juego::crearPlayersActivos() {
 void Juego::agregarPlayersActivos() {
     for (int i = 0; i < _PLAYERS; i++) {
         if (mIsPlayerActivado[i]) {
+            mPlayerSprite[i]->setEnPantalla(true);
+            mPlayerSprite[i]->cambiarEstado(EstadoSprite::PARADO);
+            mPlayerSprite[i]->setProteccion(10);
             mGrpSprites.add(mPlayerSprite[i]);
             mGrpPlayers.add(mPlayerSprite[i]);
         }
@@ -149,7 +152,7 @@ void Juego::procesarEvento(SDL_Event * evento){
                     mGameManager->goBack();
                     break;
                 case SDLK_TAB:
-                     /*if(estado!=DISPLAY_MSG&&!pausado){
+                     /*if(estado_actual!=DISPLAY_MSG&&!pausado){
                          mostrar_kills=!mostrar_kills;
                          if(mostrar_kills)
                              juego_preparar_kills(juego);
@@ -166,7 +169,7 @@ void Juego::procesarEvento(SDL_Event * evento){
 void Juego::displayMensage(const char *  mensage){
   //realiza operaciones para presentar un mensage al usuario
 
-  estado=DISPLAY_MSG;
+  estado_actual=DISPLAY_MSG;
   y_msg=x_msg=0;
   vel_y=0.0;
   strncpy(msg_mostrar,mensage,50);
@@ -186,7 +189,7 @@ void Juego::estadoDisplayMensage(){
         if((int)vel_y==0)
         {
             vel_y=0;
-           estado=estado_siguiente;
+           estado_actual=estado_siguiente;
 //           retraso=50;
            if(_quit){
                 salir();
@@ -249,7 +252,8 @@ int Juego::getTipoItem(int id_item){
          return static_cast<Item *>(refeSprites[ITEM][id_item])->getTipoItem();
 }*
 
-bool Juego::isActivo(TipoSprite type,int id){
+bool Juego::isActivo(TipoSp
+ rite type,int id){
      if(type==PLAYER)
          return refeSprites[type][id]!=NULL&&static_cast<Player *>(refeSprites[type][id])->isActivo();
      else
@@ -433,7 +437,7 @@ int Juego::colision(TipoSprite  type[],int tamanyo,SDL_Rect & rect_coli){
  * Actualiza la lógica del juego
  */
 void Juego::update(){
-    const Uint8 *teclas= SDL_GetKeyboardState(NULL);//se obtiene el estado actual del teclado
+    const Uint8 *teclas= SDL_GetKeyboardState(NULL);//se obtiene el estado_actual actual del teclado
 
     mGrpSprites.update(teclas);
     //mPlayers->update(teclas);
@@ -492,7 +496,7 @@ void Juego::update(){
 controlaPausa(teclas);
 
 
-/*    switch(estado){
+/*    switch(estado_actual){
     case PLAY:
          if(!animandoEntradaMapaVertical)estadoPlay();
          break;
@@ -612,7 +616,7 @@ void Juego::draw(SDL_Renderer * gRenderer){
         //imprimir_palabra(gRenderer, game->getImagen(IMG_FUENTE_5),80,100,"pausa",STR_NORMAL);
         imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),id_quien_pauso*2 ,gRenderer,130,90,1,10,0);
     }*/
-    //if(estado==DISPLAY_MSG)imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),x_msg,y_msg,msg_mostrar,STR_MAX_ESTENDIDA);
+    //if(estado_actual==DISPLAY_MSG)imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),x_msg,y_msg,msg_mostrar,STR_MAX_ESTENDIDA);
 }
 
 /*void Juego::setProteccion(TipoSprite type, int id,int nuevo){
@@ -923,11 +927,11 @@ std::deque<Sprite *> Juego::colisionConBombas(SDL_Rect  rect) {
     return mGrpBombas.collide(rect);
 }
 
-int Juego::colisionConMapa(SDL_Rect rect_coli, int *lado_colision, bool solo_bloques_duros){
+NivelMapa::ExtremoColision Juego::colisionConMapa(SDL_Rect rect_coli, int *lado_colision, bool soloBloquesNoTraspasables){
     /*Comprueba si un rect colisiona con el nivel*/
     rect_coli.x -= MAPA_EJE_X;
     rect_coli.y -= MAPA_EJE_Y;
-    return mMapa->colision(rect_coli,lado_colision,solo_bloques_duros);
+    return mMapa->colision(rect_coli,lado_colision,soloBloquesNoTraspasables);
 }
 
 bool Juego::isOutOfMapBounds(SDL_Rect rect) {

@@ -23,7 +23,9 @@ public:
     virtual LTexture * getImagen(CodeImagen code) = 0;
     virtual SDL_Joystick * getJoy(int id) = 0;
     virtual int getJoysActivos()=0;
-    virtual int colisionConMapa(SDL_Rect rect_coli, int *lado_colision = nullptr, bool solo_bloques_duros=false)= 0;
+    virtual NivelMapa::ExtremoColision colisionConMapa(SDL_Rect rect_coli,
+                                                       int *lado_colision = nullptr,
+                                                       bool soloBloquesNoTraspasables = false)= 0;
 
     virtual deque<Sprite *> colisionConBombas(SDL_Rect  rect) = 0;
     virtual deque<Sprite *> colisionBloqueEnLlamas(SDL_Rect  rect) = 0;

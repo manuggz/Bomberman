@@ -82,7 +82,7 @@ int globo_colision_con_otros(Globo * globo){
 	   /* for(i=0;i<globo->personajes->globos_actuales;i++){
             //basicamente lo que hace esto es comprobar colision con los globos de los alrededores
 	       if((globo->personajes->globos[i]->en_pantalla)&&(i!=globo->id)){
-                if(globo->personajes->globos[i]->estado!=MURIENDO&&globo_colision(globo->personajes->globos[i],&globo->rect_coli)){
+                if(globo->personajes->globos[i]->estado_actual!=MURIENDO&&globo_colision(globo->personajes->globos[i],&globo->rect_coli)){
                         return i+1;
 
                 }//fin if colision con globo
@@ -108,10 +108,10 @@ int globo_mover (Globo * globo){
 
         null=globo_colision_con_otros(globo);
         if(null){
-            estado_globo_colision=globo->personajes->globos[null-1]->estado;
+            estado_globo_colision=globo->personajes->globos[null-1]->estado_actual;
             do
                 globo_cambiar_estado(globo,estados_rand[rand()%4]);
-            while(globo->estado==invertir_estado(estado_globo_colision));
+            while(globo->estado_actual==invertir_estado(estado_globo_colision));
         }
 
         if(objetos_colision_con_bombas(globo->personajes->juego->objetos,&globo->rect_coli))
@@ -124,7 +124,7 @@ int globo_mover (Globo * globo){
 }
 
 void globo_imprimir(Globo * globo,SDL_Surface * screen){
-    	imprimir_desde_grilla (globo->personajes->juego->mundo->galeria->grilla_globo,globo->cuadro, screen, globo->x,globo->y,1, 6,globo->estado==MURIENDO||globo->protegido);
+    	imprimir_desde_grilla (globo->personajes->juego->mundo->galeria->grilla_globo,globo->cuadro, screen, globo->x,globo->y,1, 6,globo->estado_actual==MURIENDO||globo->protegido);
 
 
 }
@@ -153,8 +153,8 @@ void globo_avanzar_animacion (Globo * globo)
 }
 
 void globo_cambiar_estado (Globo * globo, Estados nuevo){
-	globo->estado = nuevo;
-	switch(globo->estado){
+	globo->estado_actual = nuevo;
+	switch(globo->estado_actual){
         case DERECHA:
             globo->incremento_x=1;
             globo->incremento_y=0;

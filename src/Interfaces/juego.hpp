@@ -96,7 +96,7 @@ class Juego:public InterfazUI ,public InterfazJuego{
         //int getTipoItem(int id_item);
     deque<Sprite *> colisionConBombas(SDL_Rect  rect) override;
         int getJoysActivos();
-        int colisionConMapa(SDL_Rect rect_coli, int *lado_colision = nullptr, bool solo_bloques_duros=false) override;
+        NivelMapa::ExtremoColision colisionConMapa(SDL_Rect rect_coli, int *lado_colision = nullptr, bool soloBloquesNoTraspasables=false) override;
         //int getActivos(TipoSprite type);
         //int getLanzador(TipoSprite type,int id_spri);
         //int getPuntaje(IdPlayer id);
@@ -194,7 +194,7 @@ protected:
     //IdPlayer id_quien_pauso;/*Almacena el ID del player que acciono la pausa*/
     //IdPlayer id_quien_pauso_anterior;/*Almacena el ID del player que acciono la pausa anteriormente*/
 
-    //EstadoJuego estado,estado_siguiente;
+    //EstadoJuego estado_actual,estado_siguiente;
 
     /*int x_msg,y_msg;
     float vel_y;

@@ -38,6 +38,14 @@
 
 class NivelMapa: public Mapa{
 public:
+
+    enum ExtremoColision{
+        NINGUNO,
+        TOPLEFT,
+        TOPRIGHT,
+        BOTTOMRIGHT,
+        BOTTOMLEFT
+    };
     virtual bool cargar(SDL_Renderer *gRenderer, std::string ruta) override;
     //NivelMapa();
 
@@ -71,7 +79,7 @@ public:
     //std::string getMetaData(std::string clave){return mDatMapa->getMetaData(clave);};//Tile con el que se dibujar� el mapa
     //int getXIniPlayer(int idPlayer){if(mDatMapa) return mDatMapa->getX(idPlayer);else return -1;};//Coordenada x inicial del "id_player"
     //int getYIniPlayer(int idPlayer){if(mDatMapa) return mDatMapa->getY(idPlayer);else return -1;};
-    //int getBombasIniciales(){if(mDatMapa) return mDatMapa->getBombas();else return -1;};//Bombas iniciales para cada player
+    //int getBombasIniciales(){if(mDatMapa) return mDatMapa->getBombasDisponibles();else return -1;};//Bombas iniciales para cada player
     //int getVidasIniciales(){if(mDatMapa) return mDatMapa->getVidas();else return -1;};
     //int getAlcanceBombasInicial(){if(mDatMapa) return mDatMapa->getAlcanceBombas();else return -1;};
     //int getNumItems(){if(mDatMapa) return mDatMapa->getNumItems();};//NUMERO DE ITEMS QUE QUEDAN EN EL MAPA
@@ -80,7 +88,7 @@ public:
     /*int getIdTile(){if(mDatMapa) return mDatMapa->getIdTile();else return -1;};//Tile con el que se dibujar� el mapa
     int getXIniPlayer(int idPlayer){if(mDatMapa) return mDatMapa->getX(idPlayer);else return -1;};//Coordenada x inicial del "id_player"
     int getYIniPlayer(int idPlayer){if(mDatMapa) return mDatMapa->getY(idPlayer);else return -1;};
-    int getBombasIniciales(){if(mDatMapa) return mDatMapa->getBombas();else return -1;};//Bombas iniciales para cada player
+    int getBombasIniciales(){if(mDatMapa) return mDatMapa->getBombasDisponibles();else return -1;};//Bombas iniciales para cada player
     int getVidasIniciales(){if(mDatMapa) return mDatMapa->getVidas();else return -1;};
     int getAlcanceBombasInicial(){if(mDatMapa) return mDatMapa->getAlcanceBombas();else return -1;};*/
     //int setNumItems(int nuevo){mDatMapa->setNumItems(nuevo);};//NUMERO DE ITEMS QUE QUEDAN EN EL MAPA
@@ -115,7 +123,7 @@ public:
     //bool romperBloque(int x,int y);
 
     //regresa True si el rectangulo colisiona con un bloque colisionable del nivel
-    int colision(SDL_Rect  rect, int * num_colisiones,bool solo_bloques_duros=false);
+    ExtremoColision colision(SDL_Rect  rect, int * num_colisiones, bool soloBloquesNoTraspasables=false);
 
     //~NivelMapa();
     int getTileAt(int x, int y);

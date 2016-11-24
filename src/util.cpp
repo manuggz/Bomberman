@@ -243,7 +243,7 @@ EstadoSprite invertir_estado(EstadoSprite estado){
         case ABAJO:
             return ARRIBA;
         default:
-            printf("no implementado para ese estado:%d\n",estado);
+            printf("no implementado para ese estado_actual:%d\n",estado);
             return ABAJO;
         }
 }

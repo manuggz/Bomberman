@@ -25,7 +25,7 @@ JuegoBatalla::JuegoBatalla (GameManager * game,int idTerrenoBatalla,bool playerE
                                       data->getX(i),\
                                       data->getY(i),\
                                       data->getVidas(),\
-                                      data->getBombas(),\
+                                      data->getBombasDisponibles(),\
                                       data->getAlcanceBombas());
             refeSprites[PLAYER][i]=player_;
             mGrpSprites->add(player_);

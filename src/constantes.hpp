@@ -101,8 +101,9 @@ enum EstadoSprite{
     ABAJO,
     ARRIBA,
     MURIENDO,
-    _ESTADOS,
-    PARADO
+    _ESTADOS_ANIMACION,
+    PARADO,
+    NINGUNO,
 };
 
 enum{
@@ -150,11 +151,11 @@ typedef enum Interfaz_menu{
 }Interfaz_menu;*/
 
 typedef enum{
-    PLAY,//estado del juego activo
-    PAUSA,//estado pausado
-    GAME_OVER,//estado del juego terminado
-    DELAY,//estado en el que solo de llama a 'Flip' y se actualiza el conteo para salirJuego y pasar a 'estado_siguiente'
-    DISPLAY_MSG,//estado mostrando un mensage, en el que se actualiza la animacion en 'ciclo_logico'
+    PLAY,//estado_actual del juego activo
+    PAUSA,//estado_actual pausado
+    GAME_OVER,//estado_actual del juego terminado
+    DELAY,//estado_actual en el que solo de llama a 'Flip' y se actualiza el conteo para salirJuego y pasar a 'estado_siguiente'
+    DISPLAY_MSG,//estado_actual mostrando un mensage, en el que se actualiza la animacion en 'ciclo_logico'
     NONE
 }EstadoJuego;
 

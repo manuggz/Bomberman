@@ -491,12 +491,12 @@
 //                                                break;
 //                                            case EDITOR_MODIF_BOMBA:
 //                                                if(j==EDITOR_BOTON_MAS){
-//                                                    data->setBombas(data->getBombas()+1);
-//                                                    if(data->getBombas()>MAX_BOMBAS)
+//                                                    data->setBombas(data->getBombasDisponibles()+1);
+//                                                    if(data->getBombasDisponibles()>MAX_BOMBAS)
 //                                                        data->setBombas(MAX_BOMBAS);
 //                                                }else{
-//                                                    data->setBombas(data->getBombas()-1);
-//                                                    if(data->getBombas()<0)
+//                                                    data->setBombas(data->getBombasDisponibles()-1);
+//                                                    if(data->getBombasDisponibles()<0)
 //                                                        data->setBombas(0);
 //                                                }
 //
@@ -667,7 +667,7 @@
 //                game->getImagen(IMG_TXT_TILES)->render(gRenderer,6,3+yTablero);
 //
 //                //dibujamos la cantidad de bombas iniciales
-//                sprintf(stock,"x%d",data->getBombas());
+//                sprintf(stock,"x%d",data->getBombasDisponibles());
 //                //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),107,21+yTablero,stock,STR_NORMAL);
 //
 //                //dibujamos el alcance de las bombas iniciales

@@ -114,46 +114,70 @@ bool Mapa::romperBloque(int x,int y){
  * Detecta si uno de los extremos del rectangulo colisiona con un bloque con la propiedad de solido
  * @param rect rectangulo
  * @param num_colisiones Numero de extremos en colision
- * @param solo_bloques_duros
+ * @param soloBloquesNoTraspasables
  * @return El ultimo extremo detectado que colisiona
+ *
+ * Nota, en el caso que sea un player el que quiera detectar la colision éste usa un cuadro de colision(size=10) menor
+ * que el de los tiles(size=16) por lo que num_colisiones será 1 o 2.
+ *
+ * Se regresa i + 1 , para que el 0 represente NO COLISION, el i + 1 significa:
+ *
+ *  1 --> extremo TOP-LEFT
+ *  2 --> extremo TOP-RIGHT
+ *  3 --> extremo BOTTOM-RIGHT
+ *  4 --> extremo BOTTOM-LEFT
  */
-int NivelMapa::colision(SDL_Rect rect, int * num_colisiones,bool solo_bloques_duros) {
+ExtremoColision NivelMapa::colision(SDL_Rect rect, int * num_colisiones,bool soloBloquesNoTraspasables) {
 //solo detecta la colision en las esquinas del rect
 
     int ret=0;
 
     //std::string tile_id = "0";
 
-     int id_tile = 0;
+    int id_tile = 0;
 
+    // Se evaluan los extremos en el orden-->
+    // TOP-LEFT , TOP-RIGHT , BOTTOM-RIGHT,BOTTOM-LEFT
     for(int i=0;i<4;i++){ // Los 4 extremos
 
         // obtenemos el id del bloque en el extremo
         id_tile = getTileAt(rect.x + (rect.w * (i != 0 && i != 3)), rect.y + rect.h * (i >= 2));
 
         if(id_tile >= 0){ // Si existe tal tile
+
+            // Si colisiona con un bloque solido
             if(getPropertyTile(id_tile, TILE_PROPERTY_SOLIDO) == "1") {
-                if(num_colisiones)
-                    (*num_colisiones)++;
-                ret=i+1;
+                /// Si se quiere que solo sean los bloques que no se pueden traspasar
+                // Eso equivale a decir que se quieren los solidos tales que no sean rompibles(por explosiones)
+                if(soloBloquesNoTraspasables){
+                    if(getPropertyTile(id_tile,TILE_PROPERTY_ROMPIBLE) == "0"){
+                        if(num_colisiones)
+                            (*num_colisiones)++;
+                        ret=i+1;
+                    }
+                }else{ // Si solo basta con que sean solidos
+                    if(num_colisiones)
+                        (*num_colisiones)++;
+                    ret=i+1;
+                }
             }
         }
 
     }
 
     /*
-    if(!solo_bloques_duros){
+    if(!soloBloquesNoTraspasables){
         if(  mLayerMapa[indice]!=BLOQUE_PISO
            &&mLayerMapa[indice]!=BLOQUE_PISO_SOMBRA
            &&mLayerMapa[indice]!=BLOQUE_ENEMIGO){
             (*num_colisiones)++;
             ret=i+1;
         }
-    }else if(solo_bloques_duros&&mLayerMapa[indice]==BLOQUE_METAL){
+    }else if(soloBloquesNoTraspasables&&mLayerMapa[indice]==BLOQUE_METAL){
         (*num_colisiones)++;
         ret=i+1;
     }*/
-    return ret;
+    return (ExtremoColision) ret;
 }
 
 int NivelMapa::getTileAt(int x, int y) {

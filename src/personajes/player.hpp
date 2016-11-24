@@ -12,15 +12,11 @@
 class Player:public Sprite{
     public:
 
-	enum AreaColision {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
-//        static enum TeclasPlayer {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
+        enum AreaColision {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
 
-        Player(InterfazJuego * interfazGaleria,IdPlayer id,int x = 0,int y = 0,int vidasIni=3,int numBombasIni=1,int alcanceBombasIni=1);
+        Player(InterfazJuego * interfazGaleria,IdPlayer id);
         void update(const Uint8 * teclas);
         void draw(SDL_Renderer * );
-        void reiniciar();
-        void disable();
-        int cargarTeclasFile();
         void cargarTeclas();
         void updateRectColision();
         void activarPoderItem(int tipo);
@@ -36,21 +32,16 @@ class Player:public Sprite{
         void cambiarEstado(EstadoSprite nuevo);
         void mover_ip(int incremento_x, int incremento_y);
         void move(int x,int y);
-        void posicionInicial(){move(xIni,yIni);};
-        bool isActivo(){return enPantalla;};
+        bool isActivo(){return mEnPantalla;};
 
-        void setVidas(int nuevo){vidas=nuevo;};
-        void setPuntaje(int nuevo){puntaje=nuevo;};
-        //void setEntroPuerta(bool nuevo){entroPuerta=nuevo;};
+        void setVidas(int nuevo){mVidas=nuevo;};
         void setProteccion(int segundos);
-        void setEnPantalla(bool nuevo){enPantalla=nuevo;};
+        void setEnPantalla(bool nuevo){mEnPantalla=nuevo;};
         
-        int getPuntaje(){return puntaje;};
-        int getVidas(){return vidas;};
-        //int getTipo(){return 4;};
+        int getVidas(){return mVidas;};
         int getId(){return mPlayerId;};
-        int getAlcanceBombas(){return alcanBomb;};
-        int getBombas(){return mNBombasDisponibles;};
+        int getAlcanceBombas(){return mAlcanBombas;};
+        int getBombasDisponibles(){return mNBombasDisponibles;};
         
         ~Player();
 
@@ -64,54 +55,46 @@ class Player:public Sprite{
 
 private:
 
-	IdPlayer mPlayerId;
-	InterfazJuego *mJuego;//referencia al juego que lo cre�
+	IdPlayer mPlayerId = PLAYER_NONE;
+	InterfazJuego * mpJuego = nullptr;//referencia al juego que lo cre�
 
 	ControlPlayer  control;//controla el teclado del player
-	EstadoSprite estado,//estado actual del player
-			estado_anterior;//estado que uso para saber cual cuadro dibujar cuando este en el estado "PARADO"
-
-	int xIni,yIni;//coordenadas del player al inicio del juego
+	EstadoSprite estado_actual   = NINGUNO;//estado_actual actual del player
+    EstadoSprite estado_anterior = NINGUNO;//estado_actual que uso para saber cual cuadro dibujar cuando este en el estado_actual "PARADO"
 
 	//Como no controlo por eventos lo de poner bombas
-	bool mantieneStartPresionado;//para que el usuario no ponga infinitas bombas
+	bool mMantieneAccionPresionado = false;//para que el usuario no ponga infinitas bombas
 
 	//para que el player pueda pasar por encima de la bomba que acaba de colocar
-	//int idUltimaBomba;//index de la ultima bomba colocada
-
+	Bomba *mpUltimaBomba = nullptr; // Referencia a la ultima bomba colocada
 
 	//para controlar la animacion
-	int paso,cuadro,delay;
+	int paso = 0,cuadro = 0,delay = 0;
 
 	/*Controlan la proteccion*/
-	bool estaProtegido;//True si el jugador est� protegido (se representa por el desvanecimiento)
+	bool mEstaProtegido = false;//True si el jugador est� protegido (se representa por el desvanecimiento)
 	//int tiempoInicioProteccion;//contador del inicio de proteccion
-	int duracionProteccion;//segundos para quitar la proteccion
+	int mDuracionProteccion;//segundos para quitar la proteccion
 
-	int alcanBomb,//alcance que logran las llamas de las bombas
-		alcanBombIni;//alcance iniciales cuando se comenz� el modo historia o el mapa en el modo batalla
-	int mNBombasDisponibles,//numero de bombas que puede soltar el jugador
-		numBombasIni; //numero de bombas iniciales cuando se comenz� el modo historia o el mapa en el modo batalla
-	bool puedeAtravesarBloquesBlandos; //True si el player puede atravesar los bloques blandos
-	bool puedeAtravesarBombas;//True si el player puede atravesar las bombas
-	bool puedePatearBombas;
-	bool puedeGolpearBombas;
-	bool estaEnfermo;
-	int vidas;         //Cantidad de vidas del player
-	int puntaje;       //puntaje acumulado del player desde que se inici� el modo historia
-	int velocidad;     //Cantidad de px que se mueve el player en las direcciones b�sicas
-	int corazones;     //Cantidad de veces que el player puede soportar ser alcanzado por las llamas o colisionar con un enemigo
+	int mAlcanBombas        = 1;//alcance que logran las llamas de las bombas
+	int mNBombasDisponibles = 1;//numero de bombas que puede soltar el jugador
 
-/*True si el player est� muerto (est� remplaza a "self_kill" ya que los players 
-*NO los elimino como lo hago por ejemplo con los items dec�r, los elimino de memoria solo cuando
-*finaliza el juego)*/
-	//bool muerto;
+	bool mPuedeAtravesarBloques = false; //True si el player puede atravesar los bloques blandos
+	bool mPuedeAtravesarBombas  = false;//True si el player puede atravesar las bombas
+	bool mPuedePatearBombas     = false;
+	bool mPuedeGolpearBombas    = false;
+	bool mEstaEnfermo           = false;
+
+	int mVidas     = 1;         //Cantidad de mVidas del player
+	//int puntaje;       //puntaje acumulado del player desde que se inici� el modo historia
+	int mVelocidad = 1;     //Cantidad de px que se mueve el player en las direcciones b�sicas
+	int mCorazones = 0;     //Cantidad de veces que el player puede soportar ser alcanzado por las llamas o colisionar con un enemigo
+
 
 	//bool entroPuerta; //True si el player est� sobre la puerta
 
-	bool enPantalla;   //True si el player se est� mostrando en pantalla
-    Bomba *mUltimaBomba = nullptr;
-    int mNBombasColocadas;
+	bool mEnPantalla       = false;   //True si el player se est� mostrando en pantalla
+    int mNBombasColocadas  = 0; // Numero de Bombas que el Player ha colocado en el mapa
     LTimer mTimer;
 };
 
