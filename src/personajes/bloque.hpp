@@ -8,13 +8,17 @@
 class Juego;
 
 class Bloque:public Animacion{
-    public:
-        Bloque(Juego * juego,int x,int y,int id);
-        void disable();
-        void draw(SDL_Renderer * gRenderer);
-    private:
-        Juego * juego;
-        int idTileBloque;
+public:
+    Bloque(SpriteSheet *spriteSheet, string frames, int x, int y, int delayCambioFrame);
+
+//Bloque();
+    //void disable();
+    //void draw(SDL_Renderer * gRenderer);
+    //void setAnimacion(SpriteSheet *pSheet, map<string, string> *pAnimacion);
+
+private:
+        //Juego * juego;
+        //int idTileBloque;
 };
 
 #endif

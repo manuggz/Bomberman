@@ -43,6 +43,7 @@ namespace TMX
 
       struct Tile{
           std::map<std::string, std::string> property;
+          std::vector<std::string> animation;
       };
 
       struct Tileset {
@@ -85,10 +86,10 @@ namespace TMX
       };
 
       struct ObjectGroup {
-        std::string color;
+        //std::string color;
         std::string name;
-        float opacity;
-        bool visible;
+        //float opacity;
+        //bool visible;
         std::map<std::string, Object> object;
         std::map<std::string, std::string> property;
       };

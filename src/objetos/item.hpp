@@ -1,9 +1,9 @@
 #ifndef ITEM_HPP
 #define ITEM_HPP
 #include <SDL2/SDL.h>
-#include "engine/sprites/animacion/animacion.hpp"
+#include "../engine/sprites/animacion/animacion.hpp"
 //#include "Interfaces/juego.hpp"
-#include "constantes.hpp"
+#include "../constantes.hpp"
 
 class Juego;
 

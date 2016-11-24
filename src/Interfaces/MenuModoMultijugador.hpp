@@ -58,23 +58,23 @@ public:
         mBtnSubirTiempo->setId(MENU_BOTON_SUBIR_TIEMPO);
         mBtnSubirTiempo->bindAccion(&MenuModoMultijugador::clickControl);
         mLayoutParent->addComponent(mBtnSubirTiempo);
-        mBtnSubirTiempo->setLayoutParam(LAYOUT_PARAM_X,"194");
-        mBtnSubirTiempo->setLayoutParam(LAYOUT_PARAM_Y,"10");
+        mBtnSubirTiempo->setLayoutParam(LAYOUT_PARAM_X,"197");
+        mBtnSubirTiempo->setLayoutParam(LAYOUT_PARAM_Y,"2");
 
         // BotonComponent para controlar cuantas victorias son necesarias para terminar el juego
         mBtnSubirVictorias=new BotonComponent<MenuModoMultijugador>(mGameManager->getImagen(IMG_BOTON_FLECHA_PEQUE_DERECHA),this);
         mBtnSubirVictorias->setId(MENU_BOTON_SUBIR_VICTORIAS);
         mBtnSubirVictorias->bindAccion(&MenuModoMultijugador::clickControl);
         mLayoutParent->addComponent(mBtnSubirVictorias);
-        mBtnSubirVictorias->setLayoutParam(LAYOUT_PARAM_X,"295");
-        mBtnSubirVictorias->setLayoutParam(LAYOUT_PARAM_Y,"10");
+        mBtnSubirVictorias->setLayoutParam(LAYOUT_PARAM_X,"297");
+        mBtnSubirVictorias->setLayoutParam(LAYOUT_PARAM_Y,"2");
 
         // BotonComponent para cambiar el mapa a usar
         mBtnCambiarMapa=new BotonComponent<MenuModoMultijugador>(mGameManager->getImagen(IMG_BOTON_CAMBIAR_MAPA),this);
         mBtnCambiarMapa->setId(MENU_BOTON_CAMBIAR_MAPA);
         mBtnCambiarMapa->bindAccion(&MenuModoMultijugador::clickControl);
         mLayoutParent->addComponent(mBtnCambiarMapa);
-        mBtnCambiarMapa->setLayoutParam(LAYOUT_PARAM_X,"160");
+        mBtnCambiarMapa->setLayoutParam(LAYOUT_PARAM_X,"10");
         mBtnCambiarMapa->setLayoutParam(LAYOUT_PARAM_Y,"225");
 
         // BotonComponent para comenzar a jugar
@@ -138,6 +138,7 @@ public:
         mTextLabelMinutos->setFont("data/fuentes/OpenSans-Bold.ttf",15);
         mTextLabelMinutos->setTextColor(color);
         mTextLabelMinutos->setLayoutParam(LAYOUT_PARAM_X,"180");
+        mTextLabelMinutos->setLayoutParam(LAYOUT_PARAM_Y,"0");
         mLayoutParent->addComponent(mTextLabelMinutos);
 
         mTextLabelVictorias = new TextLabelComponent();
@@ -145,6 +146,7 @@ public:
         mTextLabelVictorias->setFont("data/fuentes/OpenSans-Bold.ttf",15);
         mTextLabelVictorias->setTextColor(color);
         mTextLabelVictorias->setLayoutParam(LAYOUT_PARAM_X,"283");
+        mTextLabelVictorias->setLayoutParam(LAYOUT_PARAM_Y,"0");
         mLayoutParent->addComponent(mTextLabelVictorias);
 
         //static char tmp[50];
@@ -187,12 +189,8 @@ public:
 
             for(int i=0;i<_PLAYERS;i++){
 
-                mAnimacionPlayer[i]->setX(
-                        std::stoi(mMapaTerrenoSeleccionado.getMapProperty(
-                                std::string(MAPA_PROPERTY_X_INIT_PLAYER) + std::to_string(i + 1))));
-                mAnimacionPlayer[i]->setY(
-                        std::stoi(mMapaTerrenoSeleccionado.getMapProperty(
-                                std::string(MAPA_PROPERTY_Y_INIT_PLAYER) + std::to_string(i + 1))));
+                mAnimacionPlayer[i]->setX(mMapaTerrenoSeleccionado.getPosXPlayer((IdPlayer)(PLAYER_1 + i)));
+                mAnimacionPlayer[i]->setY(mMapaTerrenoSeleccionado.getPosYPlayer((IdPlayer)(PLAYER_1 + i)));
 
                 // Animacion para cuando aun no se ha seleccionado el personaje(Hace que parpadee "presiona")
 
@@ -203,12 +201,8 @@ public:
                 mAnimaActivado[i]->setY(mAnimacionPlayer[i]->getY()+20);
 
             }
-            mTextLabelMinutos->setLayoutParam(LAYOUT_PARAM_Y,std::to_string(
-                    5 + std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO))));
-            mTextLabelVictorias->setLayoutParam(LAYOUT_PARAM_Y,std::to_string(
-                    5 + std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO))));
-            mTextLabelMinutos->setDisabled(true);
-            mTextLabelVictorias->setDisabled(true);
+            //mTextLabelMinutos->setDisabled(true);
+            //mTextLabelVictorias->setDisabled(true);
             //mMapaTerrenoSeleccionado.setEjeVisualizacion(mMapaTerrenoSeleccionado->getEjeX(),mMapaTerrenoSeleccionado->getEjeY());
             terrenoActual = nuevoTerreno;
             return true;
@@ -339,24 +333,15 @@ public:
     virtual void draw(SDL_Renderer *gRenderer) override {
         //cout << "MenuModoMultijugador::draw"<<endl;
 
-        mGameManager->getImagen(
-                (CodeImagen)std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer,0,0);
-        mGameManager->getImagen(IMG_TABLERO)->render(
-                gRenderer,0,std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)));//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,177
-                ,7+std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)));//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,280
-                ,7+std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)));//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_TXT_PLAYERS_EN_BATALLA)->render(gRenderer,15
-                ,std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)));//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_TXT_TIEMPO_POR_RONDA)->render(gRenderer,140
-                ,24+std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)));//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_TXT_VICTORIAS)->render(gRenderer,261
-                ,24+std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)));//imprimimos la barra mensage
+        //mGameManager->getImagen((CodeImagen)std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer,0,0);*/
+        mGameManager->getImagen(IMG_TABLERO)->render(gRenderer,0,0);//imprimimos la barra mensage
+        mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,177,0);//imprimimos la barra mensage
+        mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,280,0);//imprimimos la barra mensage
+        mGameManager->getImagen(IMG_TXT_PLAYERS_EN_BATALLA)->render(gRenderer,15,0);//imprimimos la barra mensage
+        mGameManager->getImagen(IMG_TXT_TIEMPO_POR_RONDA)->render(gRenderer,140,18);//imprimimos la barra mensage
+        mGameManager->getImagen(IMG_TXT_VICTORIAS)->render(gRenderer,261,18);//imprimimos la barra mensage
 
-        mMapaTerrenoSeleccionado.draw(gRenderer,
-                                      std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_EJE_X_MAPA)),
-                                      std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA)));//imprimimos el nivel
+        mMapaTerrenoSeleccionado.draw(gRenderer,0,32);//imprimimos el nivel
 
         mSprites->draw(gRenderer);
         for(int i=0;i<_PLAYERS;i++){
@@ -364,7 +349,7 @@ public:
                 imprimir_desde_grilla(mGameManager->getImagen((CodeImagen)(IMG_PLAYER_1 + i)), 6,gRenderer, mAnimacionPlayer[i]->getX(),mAnimacionPlayer[i]->getY(),1, 12,true);
             }else{
                 imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),i*2,gRenderer,i*16+20,
-                                      15 + std::stoi(mMapaTerrenoSeleccionado.getMapProperty(MAPA_PROPERTY_Y_TABLERO)),1,10,0);
+                                      15 + 0,1,10,0);
             }
         }
 

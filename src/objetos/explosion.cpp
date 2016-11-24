@@ -187,20 +187,21 @@ void Explosion::draw(SDL_Renderer * gRenderer){
     mSprSCuadros->setCurrentCuadro(2 + mSprSCuadros->getNColumnas()*getCuadro());
     mSprSCuadros->draw(gRenderer,x,y);
 
-    dibujarFlama(DERECHA,16,0,3,4,gRenderer);
-    dibujarFlama(IZQUIERDA,-16,0,1,0,gRenderer);
-    dibujarFlama(ABAJO,0,16,6,7,gRenderer);
-    dibujarFlama(ARRIBA,0,-16,6,5,gRenderer);
+    dibujarFlama(DERECHA,mSprSCuadros->getWidthCuadro(),0,3,4,gRenderer);
+    dibujarFlama(IZQUIERDA,-mSprSCuadros->getWidthCuadro(),0,1,0,gRenderer);
+    dibujarFlama(ABAJO,0,mSprSCuadros->getHeightCuadro(),6,7,gRenderer);
+    dibujarFlama(ARRIBA,0,-mSprSCuadros->getHeightCuadro(),6,5,gRenderer);
 
 
 }
 
 bool Explosion::colision(SDL_Rect & rect_coli){
-    //COLISION CON EL EJE X de la bomba
 
-    rect.x=x - alcances[IZQUIERDA]*16;
+    //COLISION CON EL EJE X de la bomba
+    rect.x=x - alcances[IZQUIERDA]*mSprSCuadros->getWidthCuadro();
     rect.y=y;
-    rect.w=alcances[IZQUIERDA]*16+16 + alcances[DERECHA]*16;
+    rect.w=alcances[IZQUIERDA]*mSprSCuadros->getWidthCuadro()+mSprSCuadros->getWidthCuadro() +
+            alcances[DERECHA]*mSprSCuadros->getWidthCuadro();
     rect.h=16;
     if(rects_colisionan(rect,rect_coli))
         return true;
@@ -208,8 +209,10 @@ bool Explosion::colision(SDL_Rect & rect_coli){
     //COLISION CON EL EJE Y de la bomba
     rect.w=16;
     rect.x=x;
-    rect.y=y - alcances[ARRIBA]*16;
-    rect.h=alcances[ARRIBA]*16+16 + alcances[ABAJO]*16;
+    rect.y=y - alcances[ARRIBA]*mSprSCuadros->getHeightCuadro();
+    rect.h=alcances[ARRIBA]*mSprSCuadros->getHeightCuadro()+mSprSCuadros->getHeightCuadro() +
+            alcances[ABAJO]*mSprSCuadros->getHeightCuadro();
+
     if(rects_colisionan(rect,rect_coli))
         return true;
 

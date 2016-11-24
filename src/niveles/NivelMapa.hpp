@@ -10,19 +10,21 @@
 #include "../engine/mapa/include/TMXParser.h"
 #include "../engine/mapa/CMapa.hpp"
 
-#define MAPA_PROPERTY_X_INIT_PLAYER "x_init_player_"
-#define MAPA_PROPERTY_Y_INIT_PLAYER "y_init_player_"
+//#define MAPA_PROPERTY_X_INIT_PLAYER "x_init_player_"
+#define OBJECTSGROUP_PLAYERS_NAME "players"
+#define OBJECT_PLAYER_NAME "Player"
 #define MAPA_PROPERTY_X_N_VIDAS_PLAYER "n_vidas"
 #define MAPA_PROPERTY_N_BOMBAS "n_bombas"
 #define MAPA_PROPERTY_ALCANCE_BOMBAS "alcance_bombas"
 #define MAPA_PROPERTY_ITEMS "n_items"
-#define MAPA_PROPERTY_EJE_X_MAPA "eje_x"
-#define MAPA_PROPERTY_EJE_Y_MAPA "eje_y"
-#define MAPA_PROPERTY_Y_TABLERO "y_tablero"
-#define MAPA_PROPERTY_ID_FONDO "id_fondo"
+#define MAPA_PROPERTY_ID_TILE_LLAMAS "tile_on_fire"
+//#define MAPA_PROPERTY_EJE_X_MAPA "eje_x"
+//#define MAPA_PROPERTY_EJE_Y_MAPA "eje_y"
+//#define MAPA_PROPERTY_Y_TABLERO "y_tablero"
+//#define MAPA_PROPERTY_ID_FONDO "id_fondo"
 
-#define TILE_PROPERTY_SOLIDO "solido"
-#define TILE_PROPERTY_ROMPIBLE "rompible"
+#define TILE_PROPERTY_SOLIDO    "solido"
+#define TILE_PROPERTY_ROMPIBLE  "rompible"
 /*
 *
 *   Representaci�n abstracta de un mapa concreto del juego,dibuja y coloca los items y enemigos en el juego
@@ -172,6 +174,20 @@ public:
 
     bool esBloqueRompible(int x, int y);
 
-    std::string getMetaDataTile(int id_tile, std::string clave);
+    std::string getPropertyTile(int id_tile, std::string clave);
+
+    int getPosXPlayer(IdPlayer player);
+
+    int getPosYPlayer(IdPlayer player);
+
+    std::vector<std::string> * getAnimacionFrames(const std::string &basic_string);
+
+    SpriteSheet *getSpriteSheetTiles();
+
+    std::string getRutaTileSet();
+
+    int getNFilasTileSet();
+
+    int getNColumnasTileSet();
 };
 #endif

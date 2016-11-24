@@ -132,7 +132,7 @@ int NivelMapa::colision(SDL_Rect rect, int * num_colisiones,bool solo_bloques_du
         id_tile = getBloqueAt(rect.x + (rect.w*(i!=0&&i!=3)),rect.y + rect.h * (i >= 2));
 
         if(id_tile >= 0){ // Si existe tal tile
-            if(getMetaDataTile(id_tile,TILE_PROPERTY_SOLIDO) == "1") {
+            if(getPropertyTile(id_tile, TILE_PROPERTY_SOLIDO) == "1") {
                 if(num_colisiones)
                     (*num_colisiones)++;
                 ret=i+1;
@@ -245,11 +245,11 @@ bool NivelMapa::esBloqueSolido(int x, int y) {
     int id_tile = getBloqueAt(x,y);
 
     if(id_tile >= 0) { // Si existe tal tile
-        return getMetaDataTile(id_tile,TILE_PROPERTY_SOLIDO) == "1";
+        return getPropertyTile(id_tile, TILE_PROPERTY_SOLIDO) == "1";
     }
     return false;
 }
-std::string NivelMapa::getMetaDataTile(int id_tile,std::string clave){
+std::string NivelMapa::getPropertyTile(int id_tile, std::string clave){
     return (*mpTilesMetaData)[std::to_string(id_tile)].property[clave];
 }
 
@@ -257,9 +257,37 @@ bool NivelMapa::esBloqueRompible(int x, int y) {
     int id_tile = getBloqueAt(x,y);
 
     if(id_tile >= 0) { // Si existe tal tile
-        return getMetaDataTile(id_tile,TILE_PROPERTY_ROMPIBLE) == "1";
+        return getPropertyTile(id_tile, TILE_PROPERTY_ROMPIBLE) == "1";
     }
     return false;
+}
+
+int NivelMapa::getPosYPlayer(IdPlayer player) {
+    return mTmxParser.objectGroup[OBJECTSGROUP_PLAYERS_NAME].object[OBJECT_PLAYER_NAME + std::to_string(player + 1)].y;
+}
+
+int NivelMapa::getPosXPlayer(IdPlayer player) {
+    return mTmxParser.objectGroup[OBJECTSGROUP_PLAYERS_NAME].object[OBJECT_PLAYER_NAME + std::to_string(player + 1)].x;
+}
+
+std::vector<std::string> * NivelMapa::getAnimacionFrames(const std::string & id_tile) {
+    return &(*mpTilesMetaData)[id_tile].animation;
+}
+
+SpriteSheet *NivelMapa::getSpriteSheetTiles() {
+    return mSprtSTiles;
+}
+
+int NivelMapa::getNFilasTileSet() {
+    return mTmxParser.tilesetList[0].tileCount/mTmxParser.tilesetList[0].columns;
+}
+
+std::string NivelMapa::getRutaTileSet() {
+    return mTmxParser.tilesetList[0].imgSource.source;
+}
+
+int NivelMapa::getNColumnasTileSet() {
+    return mTmxParser.tilesetList[0].columns;
 }
 
 

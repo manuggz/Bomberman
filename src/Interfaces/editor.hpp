@@ -3,15 +3,15 @@
 #include <math.h>
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "engine/interfaces/InterfazUI.hpp"
-#include "engine/util/game_manager.hpp"
-#include "control_player.hpp"
-#include "constantes.hpp"
-#include "util.hpp"
-#include "engine/util/CMetaData.hpp"
-#include "niveles/NivelMapa.hpp"
+#include "../engine/interfaces/InterfazUI.hpp"
+#include "../engine/util/game_manager.hpp"
+#include "../control_player.hpp"
+#include "../constantes.hpp"
+#include "../util.hpp"
+#include "../engine/util/CMetaData.hpp"
+#include "../niveles/NivelMapa.hpp"
 #include "menu.hpp"
-#include "engine/layout/Componentes/BotonComponent.hpp"
+#include "../engine/layout/Componentes/BotonComponent.hpp"
 //#define DEBUG
 
 using namespace std;

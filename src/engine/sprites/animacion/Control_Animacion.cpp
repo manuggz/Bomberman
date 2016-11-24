@@ -19,10 +19,11 @@ void ControlAnimacion::setCuadros(string frames){
 
     for(proximo = strtok(frames_tmp, ","); proximo; i++){
 
-	// Desmembramos la cadena separada por comas
+        // Desmembramos la cadena separada por comas
 
-	this->cuadros[i] = atoi(proximo);
-	proximo = strtok(NULL, ",\0");
+        this->cuadros[i] = atoi(proximo);
+        //cout << "cuadro["<<i<<"] =" << cuadros[i] << endl;
+        proximo = strtok(NULL, ",\0");
     }
 
     // Inicializamos las variables

@@ -1,7 +1,10 @@
 #include "juego.hpp"
 #include "../engine/util/LTimer.hpp"
 
-Juego::Juego (GameManager * gameManager,int x,int y,int idTerrenoBatalla,int victorias,int minutos,bool isPlayerActivo[_PLAYERS])
+#define MAPA_EJE_X 0
+#define MAPA_EJE_Y 32
+
+Juego::Juego (GameManager * gameManager, int x, int y, int idTerrenoBatalla, int victorias, int minutos, bool isPlayerActivo[_PLAYERS])
 :InterfazUI(x,y),mGrpSprites(this){
     cout << "Constructor de Juego:"<<this<<endl;
 
@@ -71,10 +74,8 @@ void Juego::establecerValoresPlayersDeMapa() {
 
     for(int i = 0; i < _PLAYERS;i++) {
         if(mIsPlayerActivado[i] && mPlayerSprite[i]) {
-            mPlayerSprite[i]->move(
-                    std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_X_INIT_PLAYER + std::to_string(i + 1))),
-                    std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_Y_INIT_PLAYER + std::to_string(i + 1)))
-            );
+            mPlayerSprite[i]->move(mMapa->getPosXPlayer((IdPlayer)(PLAYER_1 + i))
+                    ,mMapa->getPosYPlayer((IdPlayer)(PLAYER_1 + i)));
             mPlayerSprite[i]->setVidas(std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_X_N_VIDAS_PLAYER)));
             mPlayerSprite[i]->setNBombas(std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_N_BOMBAS)));
             mPlayerSprite[i]->setAlcanceBombas(std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_ALCANCE_BOMBAS)));
@@ -513,14 +514,13 @@ bool Juego::estaPlayerActivo(IdPlayer playerId){
 }
 void Juego::drawBarra(SDL_Renderer * gRenderer){
     char tmp[50];
-    mGameManager->getImagen(IMG_TABLERO)->render(gRenderer,0,std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_Y_TABLERO)));
+    mGameManager->getImagen(IMG_TABLERO)->render(gRenderer,0,0);
 
     //PLAYER_1
     imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),
-                          !(estaPlayerActivo(PLAYER_1)) + PLAYER_1*2 ,
-                          gRenderer,1,24,1,10,0);
+                          !(estaPlayerActivo(PLAYER_1)) + PLAYER_1*2 ,gRenderer,1,6,1,10,0);
 
-    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,15,21);
+    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,15,3);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(estaPlayerActivo(PLAYER_1)){
@@ -530,9 +530,9 @@ void Juego::drawBarra(SDL_Renderer * gRenderer){
 //
     //PLAYER_2
     imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),
-                          !(estaPlayerActivo(PLAYER_2)) + PLAYER_2*2 ,gRenderer,32,24,1,10,0);
+                          !(estaPlayerActivo(PLAYER_2)) + PLAYER_2*2 ,gRenderer,32,6,1,10,0);
 
-    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,48,21);
+    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,48,3);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(estaPlayerActivo(PLAYER_2)){
@@ -542,9 +542,9 @@ void Juego::drawBarra(SDL_Renderer * gRenderer){
 //
     //PLAYER_3
     imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),
-                          !(estaPlayerActivo(PLAYER_3)) + PLAYER_3*2 ,gRenderer,65,24,1,10,0);
+                          !(estaPlayerActivo(PLAYER_3)) + PLAYER_3*2 ,gRenderer,65,6,1,10,0);
 
-    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,80,21);
+    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,80,3);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(estaPlayerActivo(PLAYER_3)){
@@ -554,9 +554,9 @@ void Juego::drawBarra(SDL_Renderer * gRenderer){
 //
 //    //PLAYER_4
     imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),
-                          !(estaPlayerActivo(PLAYER_4)) + PLAYER_4*2 ,gRenderer,253,24,1,10,0);
+                          !(estaPlayerActivo(PLAYER_4)) + PLAYER_4*2 ,gRenderer,253,6,1,10,0);
 
-    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,270,21);
+    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,270,3);
 //
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(estaPlayerActivo(PLAYER_4)){
@@ -566,9 +566,9 @@ void Juego::drawBarra(SDL_Renderer * gRenderer){
 //
     //PLAYER_5
     imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),
-                          !(estaPlayerActivo(PLAYER_5)) + PLAYER_5*2 ,gRenderer,288,24,1,10,0);
+                          !(estaPlayerActivo(PLAYER_5)) + PLAYER_5*2 ,gRenderer,288,6,1,10,0);
 
-    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,304,21);
+    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,304,3);
 
     /*DIBUJAMOS LAS VIDAS RESTANTES*/
     if(estaPlayerActivo(PLAYER_5)){
@@ -579,7 +579,7 @@ void Juego::drawBarra(SDL_Renderer * gRenderer){
     if(mIdLiderRondasGanadas!=PLAYER_NONE)
         imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),mIdLiderRondasGanadas,gRenderer,154,-10,1,5,0);
 
-    mGameManager->getImagen(IMG_CUADRO_GRANDE)->render(gRenderer,137,21);
+    mGameManager->getImagen(IMG_CUADRO_GRANDE)->render(gRenderer,137,3);
 
     if(mGameTimer){
 //        static char min_[3],seg[3],tiempo[6];
@@ -601,11 +601,11 @@ SDL_Joystick * Juego::getJoy(int id){
 }
 
 void Juego::draw(SDL_Renderer * gRenderer){
-    mGameManager->getImagen((CodeImagen)std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer);
+    //mGameManager->getImagen((CodeImagen)std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer);
     drawBarra(gRenderer);//imprimimos la barra mensage
     mMapa->draw(gRenderer,
-                std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA)),
-                std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA)));//imprimimos el nivel
+                MAPA_EJE_X,
+                MAPA_EJE_Y);//imprimimos el nivel
     mGrpSprites.draw(gRenderer);
 
 /*    if(pausado){
@@ -727,11 +727,13 @@ void Juego::moveAllSprites(int aumX,int aumY){
 
 void Juego::killedSprite(Sprite * sprite) {
 
-    Bomba * bomba = nullptr;
-    if((bomba = dynamic_cast<Bomba * >(sprite)) != nullptr){
+    Bomba * pBombaEliminada   = nullptr;
+    Bloque * pBloqueEliminado = nullptr;
 
-        // Obtenemos el player que ha lanzado la bomba
-        Player * playerLanzador = bomba->getPlayerPropietario();
+    if((pBombaEliminada = dynamic_cast<Bomba * >(sprite)) != nullptr){
+
+        // Obtenemos el player que ha lanzado la pBombaEliminada
+        Player * playerLanzador = pBombaEliminada->getPlayerPropietario();
 
         // Le restamos uno a las bombas colocadas por el player que la hanzado
         playerLanzador->setBombasColocadas(playerLanzador->getBombasColocadas() - 1);
@@ -739,8 +741,8 @@ void Juego::killedSprite(Sprite * sprite) {
         // Creamos una nueva Explosion
         Explosion * explosion = new Explosion(this,mGameRenderer,playerLanzador);
 
-        // Establecemos la posicion de inicio donde estaba la bomba
-        explosion->move(bomba->getX(),bomba->getY());
+        // Establecemos la posicion de inicio donde estaba la pBombaEliminada
+        explosion->move(pBombaEliminada->getX(),pBombaEliminada->getY());
         explosion->detectarAlcances();
 
         mGrpExplosiones.add(explosion);
@@ -748,9 +750,27 @@ void Juego::killedSprite(Sprite * sprite) {
 
         //reproducimos un sonido
         mGameManager->play(SFX_EXPLOSION);
+    }else if((pBloqueEliminado = dynamic_cast<Bloque * >(sprite)) != nullptr){
+        
+        Item * nuevoItem = new Item();
+        // Obtenemos el player que ha lanzado la pBombaEliminada
+        Player * playerLanzador = pBombaEliminada->getPlayerPropietario();
 
-        //refeSprites[type][i]=new Explosion(this,x,y,otra_var,(IdPlayer)lanzador,i);/*otra_var=alcance*/
+        // Le restamos uno a las bombas colocadas por el player que la hanzado
+        playerLanzador->setBombasColocadas(playerLanzador->getBombasColocadas() - 1);
 
+        // Creamos una nueva Explosion
+        Explosion * explosion = new Explosion(this,mGameRenderer,playerLanzador);
+
+        // Establecemos la posicion de inicio donde estaba la pBombaEliminada
+        explosion->move(pBombaEliminada->getX(),pBombaEliminada->getY());
+        explosion->detectarAlcances();
+
+        mGrpExplosiones.add(explosion);
+        mGrpSprites.add(explosion);
+
+        //reproducimos un sonido
+        mGameManager->play(SFX_EXPLOSION);
     }
 
     delete sprite;
@@ -765,18 +785,46 @@ deque<Sprite *> Juego::colisionConItems(SDL_Rect rect) {
 }
 
 Bloque *Juego::agregarBloqueEnLlamas(int x, int y) {
-    return nullptr;
+
+    // Buscamos la animacion del mapa para los bloques en llamas
+    vector<string> *aniBloqueLlamas = mMapa->getAnimacionFrames(
+            mMapa->getMapProperty(MAPA_PROPERTY_ID_TILE_LLAMAS)
+    );
+
+    // Creamos los frames de la animacion
+    // notar que se ignora la duracion de los frames
+    // Eso es porque aun no esta implementado
+    std::string frames = "";
+    auto itAnimacion = aniBloqueLlamas->begin();
+    while(itAnimacion != aniBloqueLlamas->end()){
+        frames += (*itAnimacion);
+        itAnimacion++;
+        if(itAnimacion != aniBloqueLlamas->end()){
+            frames+=",";
+        }
+    }
+
+
+    // Se crea el bloque CON UNA COPIA DEL TILESET DEL MAPA
+    Bloque * nuevoBloque = new Bloque(new SpriteSheet(mGameRenderer,
+                                                      mMapa->getRutaTileSet(),
+                                                      mMapa->getNFilasTileSet(),
+                                                      mMapa->getNColumnasTileSet()),frames,x,y,1);
+    //nuevoBloque->setAnimacion(mMapa->getSpriteSheetTiles(),aniBloqueLlamas);
+    mGrpBloques.add(nuevoBloque);
+    mGrpSprites.add(nuevoBloque);
+    return nuevoBloque;
 }
 
 bool Juego::esBloqueSolido(int x, int y) {
-    x -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
-    y -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
+    x -= MAPA_EJE_X;
+    y -= MAPA_EJE_Y;
     return mMapa->esBloqueSolido(x,y);
 }
 
 bool Juego::esBloqueRompible(int x, int y) {
-    x -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
-    y -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
+    x -= MAPA_EJE_X;
+    y -= MAPA_EJE_Y;
     return mMapa->esBloqueRompible(x,y);
 }
 
@@ -794,14 +842,14 @@ std::deque<Sprite *> Juego::colisionConBombas(SDL_Rect  rect) {
 
 int Juego::colisionConMapa(SDL_Rect rect_coli, int *lado_colision, bool solo_bloques_duros){
     /*Comprueba si un rect colisiona con el nivel*/
-    rect_coli.x -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
-    rect_coli.y -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
+    rect_coli.x -= MAPA_EJE_X;
+    rect_coli.y -= MAPA_EJE_Y;
     return mMapa->colision(rect_coli,lado_colision,solo_bloques_duros);
 }
 
 bool Juego::isOutOfMapBounds(SDL_Rect rect) {
-    rect.x -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
-    rect.y -= std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
+    rect.x -= MAPA_EJE_X;
+    rect.y -= MAPA_EJE_Y;
     return !mMapa->contain(rect);
 }
 
@@ -811,18 +859,18 @@ Bomba *Juego::agregarBomba(Player * player) {
     //SpriteSheet * nuevaSpriteSheet = new SpriteSheet();
 
     // Pasamos la posicion X a la coordenada del Mapa
-    int nuevaPosicionX = player->getX() + 7 - std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
+    int nuevaPosicionX = player->getX() + 7 - MAPA_EJE_X;
     // Formateamos la posicion X a que sea proporcional al ancho de los tiles
     nuevaPosicionX = nuevaPosicionX/mMapa->getTileWidth()*mMapa->getTileWidth();
     // Pasamos la posicion X a la coordenada de la pantalla
-    nuevaPosicionX = nuevaPosicionX + std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_X_MAPA));
+    nuevaPosicionX = nuevaPosicionX + MAPA_EJE_X;
 
     // Pasamos la posicion Y a la coordenada del Mapa
-    int nuevaPosicionY = player->getY() + 11 - std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
+    int nuevaPosicionY = player->getY() + 11 - MAPA_EJE_Y;
     // Formateamos la posicion Y a que sea proporcional al alto de los tiles
     nuevaPosicionY = nuevaPosicionY/mMapa->getTileHeight()*mMapa->getTileHeight();
     // Pasamos la posicion Y a la coordenada de la pantalla
-    nuevaPosicionY = nuevaPosicionY + std::stoi(mMapa->getMapProperty(MAPA_PROPERTY_EJE_Y_MAPA));
+    nuevaPosicionY = nuevaPosicionY + MAPA_EJE_Y;
 
 
     Bomba * nuevaBomba = new Bomba(mGameRenderer,player);

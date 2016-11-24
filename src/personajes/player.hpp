@@ -3,7 +3,7 @@
 #include "../engine/sprites/CSprite.hpp"
 #include "../constantes.hpp"
 #include "../control_player.hpp"
-#include "../item.hpp"
+#include "../objetos/item.hpp"
 #include "../engine/interfaces/InterfazJuego.hpp"
 #include "bomba.hpp"
 #include "../engine/util/LTimer.hpp"

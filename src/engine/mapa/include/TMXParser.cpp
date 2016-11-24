@@ -85,13 +85,17 @@ namespace TMX {
         for( auto tiles_node = tileset_node->first_node( "tile" ); tiles_node; tiles_node = tiles_node->next_sibling() ) {
 
             Tile tmpTile;
-            if( tiles_node->first_node( "properties" ) != 0 ) {
-                for( rapidxml::xml_node<>* properties_node = tiles_node->first_node( "properties" )->first_node( "property" ); properties_node; properties_node = properties_node->next_sibling() ) {
-                    tmpTile.property[properties_node->first_attribute( "name" )->value()] = properties_node->first_attribute( "value" )->value();
-                }
-
-                tmpTileset.tilesMetaData[tiles_node->first_attribute( "id" )->value()] = tmpTile;
+          if( tiles_node->first_node( "properties" ) != 0 ) {
+            for( rapidxml::xml_node<>* properties_node = tiles_node->first_node( "properties" )->first_node( "property" ); properties_node; properties_node = properties_node->next_sibling() ) {
+              tmpTile.property[properties_node->first_attribute( "name" )->value()] = properties_node->first_attribute( "value" )->value();
             }
+          }
+          if( tiles_node->first_node( "animation" ) != 0 ) {
+            for( rapidxml::xml_node<>* frame_node = tiles_node->first_node( "animation" )->first_node( "frame" ); frame_node; frame_node = frame_node->next_sibling() ) {
+              tmpTile.animation.push_back(frame_node->first_attribute( "tileid" )->value());
+            }
+          }
+          tmpTileset.tilesMetaData[tiles_node->first_attribute( "id" )->value()] = tmpTile;
 
         }
         /*//std::cout << "Tileset[ First GID: " << tmpTileset.firstGID
@@ -141,13 +145,17 @@ namespace TMX {
     for( rapidxml::xml_node<>* oGroup_node = root_node->first_node( "objectgroup" ); oGroup_node; oGroup_node = oGroup_node->next_sibling( "objectgroup" ) ) {
       ObjectGroup oGroup;
       //std::cout << std::endl;
-      oGroup.color = oGroup_node->first_attribute( "color" )->value();
+//      if(oGroup_node->first_attribute( "color" ))
+  //      oGroup.color = oGroup_node->first_attribute( "color" )->value();
       //std::cout << "Object Group Color: " << oGroup.color << std::endl;
-      oGroup.name = oGroup_node->first_attribute( "name" )->value();
+      if(oGroup_node->first_attribute( "name" ))
+        oGroup.name = oGroup_node->first_attribute( "name" )->value();
       //std::cout << "Object Group Name: " << oGroup.name << std::endl;
-      oGroup.opacity = std::atof( oGroup_node->first_attribute( "opacity" )->value() );
-      //std::cout << "Object Group Opacity: " << oGroup.opacity << std::endl;
-      oGroup.visible = std::atoi( oGroup_node->first_attribute( "visible" )->value() );
+//      if(oGroup_node->first_attribute( "opacity" ))
+//        oGroup.opacity = std::atof( oGroup_node->first_attribute( "opacity" )->value() );
+//      //std::cout << "Object Group Opacity: " << oGroup.opacity << std::endl;
+//      if(oGroup_node->first_attribute( "visible" ))
+//        oGroup.visible = std::atoi( oGroup_node->first_attribute( "visible" )->value() );
       //std::cout << "Object Group Visible: " << oGroup.visible << std::endl;
 
       if( oGroup_node->first_node( "properties" ) != 0 ) {
@@ -161,6 +169,16 @@ namespace TMX {
           //std::cout << "-> " << it->first << " : " << it->second << std::endl;
         }
       }
+
+      for( rapidxml::xml_node<>* objects_node = oGroup_node->first_node( "object" ); objects_node; objects_node = objects_node->next_sibling() ) {
+        Object object;
+        object.name = objects_node->first_attribute( "name" )->value();
+        object.type = objects_node->first_attribute( "type" )->value();
+        object.x = std::stoi(objects_node->first_attribute( "x" )->value());
+        object.y = std::stoi(objects_node->first_attribute( "y" )->value());
+        oGroup.object[object.name] = object;
+      }
+
 
       objectGroup[oGroup.name] = oGroup;
     }

@@ -1,9 +1,9 @@
 #ifndef EXPLOSION_HPP
 #define EXPLOSION_HPP
 #include <SDL2/SDL.h>
-#include "constantes.hpp"
-#include "Interfaces/juego.hpp"
-#include "engine/sprites/animacion/animacion.hpp"
+#include "../constantes.hpp"
+#include "../Interfaces/juego.hpp"
+#include "../engine/sprites/animacion/animacion.hpp"
 
 class Juego;
 class Explosion:public Animacion{

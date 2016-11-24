@@ -28,6 +28,7 @@ public:
     int getCuadro(){return mControlFrames.cuadro();};
     void setRepeticiones(int nuevo){mRepeticiones=nuevo;};
     void setCuadroDespues(int nuevo){indexInicioAniEnd=nuevo;};
+    void setDelayCambioFrame(int nuevo){mDelayCambioFrame=nuevo;};
 
     void setCuadrosFrames(char * frames);
     ~Animacion(){
@@ -37,17 +38,17 @@ private:
     //LTexture * mTextuGrilla = nullptr;
     ControlAnimacion mControlFrames;
     //bool cambiarOrden = false;
-    int mFilas,mColumnas;
-    int cuadro,delay,paso;
+    //int mFilas,mColumnas;
+    int delay = 0;
 
     //cuando la animacion termine una ejecuci�n,
     // si se especif�ca �sta variable se dibujara solo los frames que comienzen desde su valor
-    int indexInicioAniEnd;
+    int indexInicioAniEnd = 0;
 
-    int mDelayCambioFrame;
+    int mDelayCambioFrame = 0;
 protected:
-    SpriteSheet * mSprSCuadros;
-    int mRepeticiones;
+    SpriteSheet * mSprSCuadros = nullptr;
+    int mRepeticiones = 0;
 };
 
 #endif

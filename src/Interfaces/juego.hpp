@@ -11,8 +11,8 @@ using namespace std;
 #include "../engine/sprites/CGroup.hpp"
 /*Personajes*/
 #include "../personajes/bomba.hpp"
-#include "../item.hpp"
-#include "../explosion.hpp"
+#include "../objetos/item.hpp"
+#include "../objetos/explosion.hpp"
 #include "../personajes/bloque.hpp"
 #include "../engine/util/LTimer.hpp"
 #include "../engine/sprites/CDrawGroup.hpp"
