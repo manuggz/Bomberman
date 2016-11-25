@@ -2,7 +2,7 @@
 #define EXPLOSION_HPP
 #include <SDL2/SDL.h>
 #include "../constantes.hpp"
-#include "../Interfaces/juego.hpp"
+#include "../Interfaces/juego/juego.hpp"
 #include "../engine/sprites/animacion/animacion.hpp"
 
 class Juego;

@@ -23,8 +23,6 @@ public :
         Group::update();
         deque<Sprite*>::iterator p_Sprite= v_personajes.begin();
         Sprite * spriteActual;
-        if(keys == nullptr)//si no paso las keys las obtenemos
-            keys=SDL_GetKeyboardState(0);
 
         while(p_Sprite != v_personajes.end()){
 

@@ -97,6 +97,15 @@ public:
                 drawRect.h = (*pComponente)->getInternalHeight();
             }
 
+            if((*pComponente)->getLayoutParam(LAYOUT_PARAM_CENTER_PARENT_HORIZONTAL) == LAYOUT_PARAM_TRUE){
+                drawRect.x = drawRect.x +  rect.w/2  - drawRect.w/2;
+            }
+
+            if((*pComponente)->getLayoutParam(LAYOUT_PARAM_CENTER_PARENT_VERTICAL) == LAYOUT_PARAM_TRUE){
+                drawRect.y = drawRect.y +  rect.h/2  - drawRect.h/2;
+            }
+
+            // Notar que si está centrado entonces estas coordendas son relativas a su posicion en el centro
             drawRect.x +=  std::stoi((*pComponente)->getLayoutParam(LAYOUT_PARAM_X));
             drawRect.y += std::stoi((*pComponente)->getLayoutParam(LAYOUT_PARAM_Y));
 

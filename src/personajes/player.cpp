@@ -255,6 +255,7 @@ void Player::derecha (const Uint8 * teclas) {
 
 
 bool Player::isPressed(TeclaPlayer tecla, const Uint8 * _teclas){
+    if(!_teclas)return false;
     if(!control.isBotonJoystick(tecla) && !control.isDireccionJoystick(tecla)){
         return _teclas [control.getKey(tecla)];
 

@@ -170,11 +170,6 @@ public:
     //int *mLayerMapa;
 
 
-    unsigned int mTileHeight = 0;
-    unsigned int mMapWidth   = 0;
-    unsigned int mMapHeight  = 0;
-    unsigned int mTileWidth  = 0;
-    std::map<std::string, TMX::Parser::Tile> *  mpTilesMetaData;
 
     int getTileWidth();
 
@@ -207,5 +202,12 @@ public:
     int getIndiceFilaMapaAt(int y);
 
     int getIndiceColumnaMapaAt(int x);
+
+private:
+    unsigned int mTileHeight = 0;
+    unsigned int mMapWidth   = 0;
+    unsigned int mMapHeight  = 0;
+    unsigned int mTileWidth  = 0;
+    std::map<std::string, TMX::Parser::Tile> *  mpTilesMetaData;
 };
 #endif

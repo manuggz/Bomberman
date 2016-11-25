@@ -123,167 +123,167 @@ Bomberman/fast:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/build
 .PHONY : Bomberman/fast
 
-src/Interfaces/editor.o: src/Interfaces/editor.cpp.o
+src/Interfaces/editor/editor.o: src/Interfaces/editor/editor.cpp.o
 
-.PHONY : src/Interfaces/editor.o
-
-# target to build an object file
-src/Interfaces/editor.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o
-.PHONY : src/Interfaces/editor.cpp.o
-
-src/Interfaces/editor.i: src/Interfaces/editor.cpp.i
-
-.PHONY : src/Interfaces/editor.i
-
-# target to preprocess a source file
-src/Interfaces/editor.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.i
-.PHONY : src/Interfaces/editor.cpp.i
-
-src/Interfaces/editor.s: src/Interfaces/editor.cpp.s
-
-.PHONY : src/Interfaces/editor.s
-
-# target to generate assembly for a file
-src/Interfaces/editor.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.s
-.PHONY : src/Interfaces/editor.cpp.s
-
-src/Interfaces/juego.o: src/Interfaces/juego.cpp.o
-
-.PHONY : src/Interfaces/juego.o
+.PHONY : src/Interfaces/editor/editor.o
 
 # target to build an object file
-src/Interfaces/juego.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.o
-.PHONY : src/Interfaces/juego.cpp.o
+src/Interfaces/editor/editor.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/editor/editor.cpp.o
+.PHONY : src/Interfaces/editor/editor.cpp.o
 
-src/Interfaces/juego.i: src/Interfaces/juego.cpp.i
+src/Interfaces/editor/editor.i: src/Interfaces/editor/editor.cpp.i
 
-.PHONY : src/Interfaces/juego.i
+.PHONY : src/Interfaces/editor/editor.i
 
 # target to preprocess a source file
-src/Interfaces/juego.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.i
-.PHONY : src/Interfaces/juego.cpp.i
+src/Interfaces/editor/editor.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/editor/editor.cpp.i
+.PHONY : src/Interfaces/editor/editor.cpp.i
 
-src/Interfaces/juego.s: src/Interfaces/juego.cpp.s
+src/Interfaces/editor/editor.s: src/Interfaces/editor/editor.cpp.s
 
-.PHONY : src/Interfaces/juego.s
+.PHONY : src/Interfaces/editor/editor.s
 
 # target to generate assembly for a file
-src/Interfaces/juego.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego.cpp.s
-.PHONY : src/Interfaces/juego.cpp.s
+src/Interfaces/editor/editor.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/editor/editor.cpp.s
+.PHONY : src/Interfaces/editor/editor.cpp.s
 
-src/Interfaces/juego_batalla.o: src/Interfaces/juego_batalla.cpp.o
+src/Interfaces/juego/juego.o: src/Interfaces/juego/juego.cpp.o
 
-.PHONY : src/Interfaces/juego_batalla.o
+.PHONY : src/Interfaces/juego/juego.o
 
 # target to build an object file
-src/Interfaces/juego_batalla.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.o
-.PHONY : src/Interfaces/juego_batalla.cpp.o
+src/Interfaces/juego/juego.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego.cpp.o
+.PHONY : src/Interfaces/juego/juego.cpp.o
 
-src/Interfaces/juego_batalla.i: src/Interfaces/juego_batalla.cpp.i
+src/Interfaces/juego/juego.i: src/Interfaces/juego/juego.cpp.i
 
-.PHONY : src/Interfaces/juego_batalla.i
+.PHONY : src/Interfaces/juego/juego.i
 
 # target to preprocess a source file
-src/Interfaces/juego_batalla.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.i
-.PHONY : src/Interfaces/juego_batalla.cpp.i
+src/Interfaces/juego/juego.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego.cpp.i
+.PHONY : src/Interfaces/juego/juego.cpp.i
 
-src/Interfaces/juego_batalla.s: src/Interfaces/juego_batalla.cpp.s
+src/Interfaces/juego/juego.s: src/Interfaces/juego/juego.cpp.s
 
-.PHONY : src/Interfaces/juego_batalla.s
+.PHONY : src/Interfaces/juego/juego.s
 
 # target to generate assembly for a file
-src/Interfaces/juego_batalla.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego_batalla.cpp.s
-.PHONY : src/Interfaces/juego_batalla.cpp.s
+src/Interfaces/juego/juego.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego.cpp.s
+.PHONY : src/Interfaces/juego/juego.cpp.s
 
-src/Interfaces/juego_historia.o: src/Interfaces/juego_historia.cpp.o
+src/Interfaces/juego/juego_batalla.o: src/Interfaces/juego/juego_batalla.cpp.o
 
-.PHONY : src/Interfaces/juego_historia.o
+.PHONY : src/Interfaces/juego/juego_batalla.o
 
 # target to build an object file
-src/Interfaces/juego_historia.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.o
-.PHONY : src/Interfaces/juego_historia.cpp.o
+src/Interfaces/juego/juego_batalla.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego_batalla.cpp.o
+.PHONY : src/Interfaces/juego/juego_batalla.cpp.o
 
-src/Interfaces/juego_historia.i: src/Interfaces/juego_historia.cpp.i
+src/Interfaces/juego/juego_batalla.i: src/Interfaces/juego/juego_batalla.cpp.i
 
-.PHONY : src/Interfaces/juego_historia.i
+.PHONY : src/Interfaces/juego/juego_batalla.i
 
 # target to preprocess a source file
-src/Interfaces/juego_historia.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.i
-.PHONY : src/Interfaces/juego_historia.cpp.i
+src/Interfaces/juego/juego_batalla.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego_batalla.cpp.i
+.PHONY : src/Interfaces/juego/juego_batalla.cpp.i
 
-src/Interfaces/juego_historia.s: src/Interfaces/juego_historia.cpp.s
+src/Interfaces/juego/juego_batalla.s: src/Interfaces/juego/juego_batalla.cpp.s
 
-.PHONY : src/Interfaces/juego_historia.s
+.PHONY : src/Interfaces/juego/juego_batalla.s
 
 # target to generate assembly for a file
-src/Interfaces/juego_historia.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego_historia.cpp.s
-.PHONY : src/Interfaces/juego_historia.cpp.s
+src/Interfaces/juego/juego_batalla.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego_batalla.cpp.s
+.PHONY : src/Interfaces/juego/juego_batalla.cpp.s
 
-src/Interfaces/juego_mostrar_gan.o: src/Interfaces/juego_mostrar_gan.cpp.o
+src/Interfaces/juego/juego_historia.o: src/Interfaces/juego/juego_historia.cpp.o
 
-.PHONY : src/Interfaces/juego_mostrar_gan.o
+.PHONY : src/Interfaces/juego/juego_historia.o
 
 # target to build an object file
-src/Interfaces/juego_mostrar_gan.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.o
-.PHONY : src/Interfaces/juego_mostrar_gan.cpp.o
+src/Interfaces/juego/juego_historia.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego_historia.cpp.o
+.PHONY : src/Interfaces/juego/juego_historia.cpp.o
 
-src/Interfaces/juego_mostrar_gan.i: src/Interfaces/juego_mostrar_gan.cpp.i
+src/Interfaces/juego/juego_historia.i: src/Interfaces/juego/juego_historia.cpp.i
 
-.PHONY : src/Interfaces/juego_mostrar_gan.i
+.PHONY : src/Interfaces/juego/juego_historia.i
 
 # target to preprocess a source file
-src/Interfaces/juego_mostrar_gan.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.i
-.PHONY : src/Interfaces/juego_mostrar_gan.cpp.i
+src/Interfaces/juego/juego_historia.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego_historia.cpp.i
+.PHONY : src/Interfaces/juego/juego_historia.cpp.i
 
-src/Interfaces/juego_mostrar_gan.s: src/Interfaces/juego_mostrar_gan.cpp.s
+src/Interfaces/juego/juego_historia.s: src/Interfaces/juego/juego_historia.cpp.s
 
-.PHONY : src/Interfaces/juego_mostrar_gan.s
+.PHONY : src/Interfaces/juego/juego_historia.s
 
 # target to generate assembly for a file
-src/Interfaces/juego_mostrar_gan.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego_mostrar_gan.cpp.s
-.PHONY : src/Interfaces/juego_mostrar_gan.cpp.s
+src/Interfaces/juego/juego_historia.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego_historia.cpp.s
+.PHONY : src/Interfaces/juego/juego_historia.cpp.s
 
-src/Interfaces/menu.o: src/Interfaces/menu.cpp.o
+src/Interfaces/juego/juego_mostrar_gan.o: src/Interfaces/juego/juego_mostrar_gan.cpp.o
 
-.PHONY : src/Interfaces/menu.o
+.PHONY : src/Interfaces/juego/juego_mostrar_gan.o
 
 # target to build an object file
-src/Interfaces/menu.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o
-.PHONY : src/Interfaces/menu.cpp.o
+src/Interfaces/juego/juego_mostrar_gan.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego_mostrar_gan.cpp.o
+.PHONY : src/Interfaces/juego/juego_mostrar_gan.cpp.o
 
-src/Interfaces/menu.i: src/Interfaces/menu.cpp.i
+src/Interfaces/juego/juego_mostrar_gan.i: src/Interfaces/juego/juego_mostrar_gan.cpp.i
 
-.PHONY : src/Interfaces/menu.i
+.PHONY : src/Interfaces/juego/juego_mostrar_gan.i
 
 # target to preprocess a source file
-src/Interfaces/menu.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.i
-.PHONY : src/Interfaces/menu.cpp.i
+src/Interfaces/juego/juego_mostrar_gan.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego_mostrar_gan.cpp.i
+.PHONY : src/Interfaces/juego/juego_mostrar_gan.cpp.i
 
-src/Interfaces/menu.s: src/Interfaces/menu.cpp.s
+src/Interfaces/juego/juego_mostrar_gan.s: src/Interfaces/juego/juego_mostrar_gan.cpp.s
 
-.PHONY : src/Interfaces/menu.s
+.PHONY : src/Interfaces/juego/juego_mostrar_gan.s
 
 # target to generate assembly for a file
-src/Interfaces/menu.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.s
-.PHONY : src/Interfaces/menu.cpp.s
+src/Interfaces/juego/juego_mostrar_gan.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego_mostrar_gan.cpp.s
+.PHONY : src/Interfaces/juego/juego_mostrar_gan.cpp.s
+
+src/Interfaces/menu/menu.o: src/Interfaces/menu/menu.cpp.o
+
+.PHONY : src/Interfaces/menu/menu.o
+
+# target to build an object file
+src/Interfaces/menu/menu.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/menu/menu.cpp.o
+.PHONY : src/Interfaces/menu/menu.cpp.o
+
+src/Interfaces/menu/menu.i: src/Interfaces/menu/menu.cpp.i
+
+.PHONY : src/Interfaces/menu/menu.i
+
+# target to preprocess a source file
+src/Interfaces/menu/menu.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/menu/menu.cpp.i
+.PHONY : src/Interfaces/menu/menu.cpp.i
+
+src/Interfaces/menu/menu.s: src/Interfaces/menu/menu.cpp.s
+
+.PHONY : src/Interfaces/menu/menu.s
+
+# target to generate assembly for a file
+src/Interfaces/menu/menu.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/menu/menu.cpp.s
+.PHONY : src/Interfaces/menu/menu.cpp.s
 
 src/control_player.o: src/control_player.cpp.o
 
@@ -834,24 +834,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Bomberman"
-	@echo "... src/Interfaces/editor.o"
-	@echo "... src/Interfaces/editor.i"
-	@echo "... src/Interfaces/editor.s"
-	@echo "... src/Interfaces/juego.o"
-	@echo "... src/Interfaces/juego.i"
-	@echo "... src/Interfaces/juego.s"
-	@echo "... src/Interfaces/juego_batalla.o"
-	@echo "... src/Interfaces/juego_batalla.i"
-	@echo "... src/Interfaces/juego_batalla.s"
-	@echo "... src/Interfaces/juego_historia.o"
-	@echo "... src/Interfaces/juego_historia.i"
-	@echo "... src/Interfaces/juego_historia.s"
-	@echo "... src/Interfaces/juego_mostrar_gan.o"
-	@echo "... src/Interfaces/juego_mostrar_gan.i"
-	@echo "... src/Interfaces/juego_mostrar_gan.s"
-	@echo "... src/Interfaces/menu.o"
-	@echo "... src/Interfaces/menu.i"
-	@echo "... src/Interfaces/menu.s"
+	@echo "... src/Interfaces/editor/editor.o"
+	@echo "... src/Interfaces/editor/editor.i"
+	@echo "... src/Interfaces/editor/editor.s"
+	@echo "... src/Interfaces/juego/juego.o"
+	@echo "... src/Interfaces/juego/juego.i"
+	@echo "... src/Interfaces/juego/juego.s"
+	@echo "... src/Interfaces/juego/juego_batalla.o"
+	@echo "... src/Interfaces/juego/juego_batalla.i"
+	@echo "... src/Interfaces/juego/juego_batalla.s"
+	@echo "... src/Interfaces/juego/juego_historia.o"
+	@echo "... src/Interfaces/juego/juego_historia.i"
+	@echo "... src/Interfaces/juego/juego_historia.s"
+	@echo "... src/Interfaces/juego/juego_mostrar_gan.o"
+	@echo "... src/Interfaces/juego/juego_mostrar_gan.i"
+	@echo "... src/Interfaces/juego/juego_mostrar_gan.s"
+	@echo "... src/Interfaces/menu/menu.o"
+	@echo "... src/Interfaces/menu/menu.i"
+	@echo "... src/Interfaces/menu/menu.s"
 	@echo "... src/control_player.o"
 	@echo "... src/control_player.i"
 	@echo "... src/control_player.s"

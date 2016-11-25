@@ -23,8 +23,10 @@ class InterfazUI{
     virtual void stop(){mIsStopped = true;}; // La detiene marcandola  para eliminacion
     virtual void resume() {mIsPaused = false;};
 
-    virtual void procesarEvento(SDL_Event * event) = 0;
+    virtual void procesarEvento(SDL_Event * event) {};
     virtual void update(){};
+    virtual void updateWhenPopUp(){};
+    virtual void resultPopUp(void *result){};
     virtual void draw(SDL_Renderer * gRenderer) = 0;
 
 /*    virtual void setX(int nuevaX){

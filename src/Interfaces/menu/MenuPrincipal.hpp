@@ -6,7 +6,7 @@
 #define BOMBERMAN_MENUPRINCIPAL_HPP
 
 
-#include "../engine/interfaces/MenuListLabel.hpp"
+#include "../../engine/interfaces/MenuListLabel.hpp"
 #include "MenuNuevoJuego.hpp"
 
 class MenuPrincipal : public MenuListLabel{

@@ -64,6 +64,11 @@ public:
             mFuente->setTextColor(nuevo);
             mColor = nuevo;
         }
+        setDisabled(true);
+    }
+    void setTextSize(int nuevaSize) {
+        setFont(mFuente->getPathFont(),nuevaSize);
+        setDisabled(true);
     }
 
     void setFont(string rutaFuente, int size) {
@@ -73,6 +78,7 @@ public:
         mFuente = new CFont();
         mFuente->loadFont(rutaFuente,size);
         mFuente->setTextColor(mColor);
+        setDisabled(true);
     }
 
     ~TextLabelComponent(){
@@ -80,6 +86,7 @@ public:
             delete mFuente;
         }
     }
+
 
 private:
     string mTexto;

@@ -55,7 +55,7 @@ void LTimer::pause()
     }
 }
 
-void LTimer::unpause()
+void LTimer::resume()
 {
     //If the timer is running and paused
     if( mStarted && mPaused )

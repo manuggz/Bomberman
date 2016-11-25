@@ -1,6 +1,6 @@
 #include "engine/util/game_manager.hpp"
-#include "Interfaces/menu.hpp"
-#include "Interfaces/MenuPrincipal.hpp"
+#include "Interfaces/menu/menu.hpp"
+#include "Interfaces/menu/MenuPrincipal.hpp"
 
 /*
   Name: DestructionBombs

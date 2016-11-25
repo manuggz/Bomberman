@@ -13,7 +13,6 @@ class Mapa{
 
 public:
 
-    Mapa() = default;
 
     virtual /**
      * Carga los datos de un mapa de un archivo TMX
@@ -78,7 +77,7 @@ public:
         delete mSprtSTiles;
     }
 
-    const std::string &getPropertyMap(
+    const std::string &getMapProperty(
             std::basic_string<char, std::char_traits<char>, std::allocator<char>> propertyName){
         return mTmxParser.mapInfo.property[propertyName];
     }

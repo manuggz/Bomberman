@@ -196,34 +196,77 @@ void GameManager::run(){
         //Start cap timer
         capTimer.start();
 
-
-        if(interfaces.top() != interfaz_actual){
+        if(mpPopUp&& mpPopUp->isStopped()){
 
             if(interfaz_actual != nullptr){
-                if(interfaz_actual->isStopped()){
-                    delete interfaz_actual;
-                }else{
-                    interfaz_actual->pause();
-                }
+                interfaz_actual->resultPopUp(mpResultPopUp);
+                interfaz_actual->resume();
             }
 
+            delete mpPopUp;
+            mpPopUp = nullptr;
+
+        }
+        // Si el top de nuestra pila de interfazes es distinto de nuestra interfaz actual
+        // significa que se ha hecho un cambio de interfaz o que se ha eliminado la actual
+        if(interfaces.top() != interfaz_actual){
+            // Si la interfaz actual es distinta de null es porque élla es la que ha llamado el cambio de interfaz
+            // o se pudo llamar desde otro lado, tal como cuando se inicia el GameManager en un main.
+            if(interfaz_actual != nullptr){
+                // Si la actual está detenida significa que ésta ya no quiere seguir en el stack de interfaces
+                // y por consiguiente se ha incluso eliminado de él
+                if(interfaz_actual->isStopped()){
+                    delete interfaz_actual; // Se elimina de memoria ya que no tendrá uso
+                }else{
+                    // Si la actual no esta detenida significa que ésta seguirá viva
+                    // y que el usuario puede volver a élla una vez haya acabado de interactuar con la nueva actual
+                    // para volver a ella puede presionar ESCAPE
+                    interfaz_actual->pause(); // Linea 214
+                }
+            }
+            // Si la interfaz actual es null es porque se está comenzando el juego
+
+            // Se cambia el puntero a la interfaz actual por la nueva actual
             interfaz_actual = interfaces.top();
 
+            // Si la interfaz actual en el top era una en el historial de interfaces
+            // esta entonces estaba pausada(ver linea 214~ de este archivo, más arriba)
             if(interfaz_actual->isPaused()){
+                // Se resume la interfaz
                 interfaz_actual->resume();
-            }else{
+            }else{ // Si no estaba pausada significa que es una completamente nueva
                 interfaz_actual->prepare();
                 interfaz_actual->createUI(gRenderer);
                 interfaz_actual->start();
             }
         }
 
-        //SDL_RenderClear(gRenderer); // Borra la vista
+        // Si tenemos un pop up y no se ha iniciado
+        if(mpPopUp != nullptr && !mpPopUp->isStarted()){
+            // Pausamos la interfaz actual
+            interfaz_actual->pause();
+            mpPopUp->prepare();
+            mpPopUp->createUI(gRenderer);
+            mpPopUp->start();
+        }
 
         if(procesarEventos()){ // Si se deben procesar los eventos en este frame
+
             if(!interfaz_actual->isStopped()) {
-                interfaz_actual->update();
+
+                if(mpPopUp && mpPopUp->isStarted()){
+                    mpPopUp->update();
+                    // A pesar que se esta mostrando un pop up, como esto es un juego
+                    // no implica que el juego se debe detener, pueden haber animaciones en el juego ejecutandose
+                    interfaz_actual->updateWhenPopUp();
+                }else{ // Si n hay pop up entonces actualizamos la interfaz actual
+                    interfaz_actual->update();
+                }
+
                 interfaz_actual->draw(gRenderer);
+                if(mpPopUp && mpPopUp->isStarted()){
+                    mpPopUp->draw(gRenderer);
+                }
             }
         }
 
@@ -299,6 +342,9 @@ int GameManager::getHeight() {
 void GameManager::goBack() {
     cout << "GameManager::popInterface"<<endl;
     interfaces.pop();
+    if(mpPopUp){
+        mpPopUp->stop();
+    }
 }
 
 void GameManager::setRoot(InterfazUI *nuevaInterfazRoot) {
@@ -316,6 +362,28 @@ void GameManager::setRoot(InterfazUI *nuevaInterfazRoot) {
     }
 
     interfaces.push(nuevaInterfazRoot);
+
+    if(mpPopUp){
+        mpPopUp->stop();
+    }
+}
+
+SDL_Rect GameManager::getRectScreen() {
+    return {0,0,mWidth,mHeight};
+}
+
+void GameManager::closePopUp(void * result) {
+
+    if(mpPopUp){
+        mpPopUp->stop();
+    }
+    mpResultPopUp = result;
+}
+
+void GameManager::showPopUp(PopUpInterfaz *pPopUp) {
+
+    closePopUp(nullptr);
+    mpPopUp = pPopUp;
 }
 /*
 void GameManager::cargarDatos(){  

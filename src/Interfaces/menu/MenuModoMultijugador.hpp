@@ -7,20 +7,20 @@
 
 #include <SDL_render.h>
 #include <SDL_events.h>
-#include "../engine/interfaces/InterfazUI.hpp"
-#include "../engine/sprites/CGroup.hpp"
+#include "../../engine/interfaces/InterfazUI.hpp"
+#include "../../engine/sprites/CGroup.hpp"
 //#include "../menu.hpp"
-#include "../engine/layout/LayoutManager/LayoutVertical.hpp"
-#include "../engine/layout/LayoutManager/LayoutAbsolute.hpp"
-#include "../engine/layout/Componentes/ImageComponent.hpp"
-#include "../engine/layout/Componentes/TextLabelComponent.hpp"
-#include "../engine/interfaces/InterfazSpriteGroup.hpp"
-#include "../engine/util/game_manager.hpp"
-#include "../niveles/NivelMapa.hpp"
-#include "../engine/layout/Componentes/BotonComponent.hpp"
-#include "../engine/sprites/animacion/animacion.hpp"
-#include "../engine/sprites/CDrawGroup.hpp"
-#include "juego.hpp"
+#include "../../engine/layout/LayoutManager/LayoutVertical.hpp"
+#include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
+#include "../../engine/layout/Componentes/ImageComponent.hpp"
+#include "../../engine/layout/Componentes/TextLabelComponent.hpp"
+#include "../../engine/interfaces/InterfazSpriteGroup.hpp"
+#include "../../engine/util/game_manager.hpp"
+#include "../../niveles/NivelMapa.hpp"
+#include "../../engine/layout/Componentes/BotonComponent.hpp"
+#include "../../engine/sprites/animacion/animacion.hpp"
+#include "../../engine/sprites/CDrawGroup.hpp"
+#include "../juego/juego.hpp"
 
 class MenuModoMultijugador: public InterfazUI, public InterfazSpriteGroup {
 
@@ -244,8 +244,13 @@ public:
             case MENU_BOTON_JUGAR:
                 int total_players=mIsPlayerActivado[PLAYER_1]+ mIsPlayerActivado[PLAYER_2]+ mIsPlayerActivado[PLAYER_3] + mIsPlayerActivado[PLAYER_4] + mIsPlayerActivado[PLAYER_5];
                 if(total_players>=2){
-
-                    Juego * nuevoJuego = new Juego(mGameManager,27,54,terrenoActual,victoriasEscogidas,minutosEscogidos,mIsPlayerActivado);
+                    Juego * nuevoJuego = new Juego(
+                            mGameManager,
+                            "data/niveles/batalla/mapa_batalla_" + std::to_string(terrenoActual + 1) + ".tmx",
+                            victoriasEscogidas,
+                            minutosEscogidos,
+                            mIsPlayerActivado
+                    );
                     mGameManager->cambiarInterfaz(nuevoJuego); //iniciamos en modo batalla, le pasamos el array con los players seleccionados por el usuario
                     mGameManager->play(SFX_EXPLOSION);
                 }

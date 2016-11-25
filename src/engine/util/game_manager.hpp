@@ -7,6 +7,7 @@
 #include "../interfaces/InterfazUI.hpp"
 #include "../../constantes.hpp"
 #include "../../util.hpp"
+#include "../interfaces/PopUpInterfaz.hpp"
 #include <ctime>
 #include <deque>
 #include <stack>
@@ -41,6 +42,12 @@ class GameManager{
 
     void setRoot(InterfazUI *nuevaInterfazRoot);
 
+    SDL_Rect getRectScreen();
+
+    void closePopUp(void * result);
+
+    void showPopUp(PopUpInterfaz *pPopUp);
+
 private:
     stack<InterfazUI *> interfaces; // Pila de interfaces
     InterfazUI * interfaz_actual;
@@ -56,5 +63,7 @@ private:
     int mWidth;
     int mHeight;
 
+    PopUpInterfaz * mpPopUp = nullptr;
+    void *mpResultPopUp = nullptr;
 };
 #endif

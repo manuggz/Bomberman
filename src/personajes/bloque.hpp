@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 #include "../engine/sprites/animacion/animacion.hpp"
 #include "../constantes.hpp"
-#include "../Interfaces/juego.hpp"
+#include "../Interfaces/juego/juego.hpp"
 
 class Juego;
 

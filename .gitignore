@@ -1,13 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/workspace.xml
-build/Debug/data/Thumbs.db
-build/Debug/data/imagenes/Thumbs.db
-build/Debug/data/imagenes/botones/Thumbs.db
-build/Debug/data/imagenes/personajes/Thumbs.db
-build/Debug/data/imagenes/textos/Thumbs.db
-build/Debug/data/niveles/Thumbs.db
-build/CMakeFiles/Bomberman.dir/src/Interfaces/editor.cpp.o
-build/CMakeFiles/Bomberman.dir/src/Interfaces/menu.cpp.o
 build/CMakeFiles/Bomberman.dir/src/objetos/
 build/CMakeFiles/CMakeTmp/
 build/core

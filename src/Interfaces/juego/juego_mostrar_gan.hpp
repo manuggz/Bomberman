@@ -2,11 +2,11 @@
 #define JUEGOMOSTRARGANADAS_HPP
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "../constantes.hpp"
+#include "../../constantes.hpp"
 #include "juego_batalla.hpp"
-#include "../engine/util/game_manager.hpp"
-#include "../engine/interfaces/InterfazUI.hpp"
-#include "../engine/sprites/animacion/animacion.hpp"
+#include "../../engine/util/game_manager.hpp"
+#include "../../engine/interfaces/InterfazUI.hpp"
+#include "../../engine/sprites/animacion/animacion.hpp"
 
 //#define DEBUG
 

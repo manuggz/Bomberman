@@ -343,8 +343,8 @@ bool NivelMapa::romperBloque(int x, int y) {
     // Obtenemos el indice del tile a esa posicion
     int indice = getIndiceMapaAt(x,y);
 
-    int id_tile_piso_sombra = std::stoi(getPropertyMap(MAPA_PROPERTY_TILE_PISO_SOMBRA));
-    int id_tile_piso = std::stoi(getPropertyMap(MAPA_PROPERTY_TILE_PISO));
+    int id_tile_piso_sombra = std::stoi(getMapProperty(MAPA_PROPERTY_TILE_PISO_SOMBRA));
+    int id_tile_piso = std::stoi(getMapProperty(MAPA_PROPERTY_TILE_PISO));
 
     // Si el que esta arriba de el es solido ponemos un tile con sombra debajo
     if(esBloqueSolido(x, y - mTileHeight)){

@@ -23,7 +23,7 @@ public:
     void start();
     void stop();
     void pause();
-    void unpause();
+    void resume();
 
     //Gets the timer's time
     Uint32 getTicks();

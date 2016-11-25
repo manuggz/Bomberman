@@ -5,7 +5,7 @@
 #ifndef BOMBERMAN_MENUNUEVOJUEGO_HPP
 #define BOMBERMAN_MENUNUEVOJUEGO_HPP
 
-#include "../engine/interfaces/MenuListLabel.hpp"
+#include "../../engine/interfaces/MenuListLabel.hpp"
 #include "MenuModoMultijugador.hpp"
 
 class MenuNuevoJuego : public MenuListLabel{

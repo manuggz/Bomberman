@@ -48,7 +48,7 @@ public:
         setDisabled(false);
     }
 
-    ~LayoutComponent(){
+    virtual ~LayoutComponent(){
         mComponentes.clear();
     }
 
