@@ -127,7 +127,7 @@ SDL_Joystick * GameManager::getJoy(int id){
  * Obtiene el número de joistick activos
  * @return
  */
-int GameManager::getJoysActivos(){
+int GameManager::getActiveJoys(){
     return joys_act;
 }
 
@@ -290,11 +290,11 @@ void GameManager::run(){
 
 }
 
-void GameManager::play(CodeMusicEfecto code){
+void GameManager::play(Galeria::CodeMusicEfecto code){
     /*Reproduce un Chunk*/
     if(snd_disponible)Mix_PlayChannel(-1,galeria->getMusicEfecto(code), 0);
 }
-void GameManager::playSonido(CodeMusicSonido code){
+void GameManager::playSound(Galeria::CodeMusicSonido code){
     /*Reproduce una musica de fondo*/
     static int t_ini=0;
     //static int t_pas=0;
@@ -308,7 +308,7 @@ void GameManager::playSonido(CodeMusicSonido code){
     }
 }
 
-LTexture * GameManager::getImagen(CodeImagen code){
+LTexture * GameManager::getTexture(Galeria::CodeImagen code){
     return galeria->getImagen(code);
 }
 

@@ -401,12 +401,12 @@ SDL_Surface * Mapa::getPreviewTerreno(int idTerreno,Interfaz * game){
                               game->getImagen(IMG_PLAYER_2),
                               game->getImagen(IMG_PLAYER_3),
                               game->getImagen(IMG_PLAYER_4),
-                              game->getImagen(IMG_PLAYER_5)};
+                              game->getTexture(IMG_PLAYER_5)};
                               
     sprintf(ruta,"data/niveles/batalla/%d.txt",idTerreno+ 1);
     data2=new DatNivel(ruta);
     sprintf(ruta,"data/niveles/batalla/%d.map",idTerreno+ 1);
-    preview=Mapa::getPreviewTerreno(ruta,data2,game->getImagen((CodeImagen)(IMG_TILE_1+data2->getIdTile())),img_players,EJE_X,EJE_Y);
+    preview=Mapa::getPreviewTerreno(ruta,data2,game->getTexture((CodeImagen)(IMG_TILE_1+data2->getIdTile())),img_players,EJE_X,EJE_Y);
 //        cout << "Creada: "<<previews_niveles[i]<<endl;
     delete data2;
 }

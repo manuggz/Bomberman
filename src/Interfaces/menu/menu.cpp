@@ -2,7 +2,7 @@
 //
 //Menu::Menu(GameManager * game):
 //
-//    botonGuardar(game->getImagen(IMG_BOTON_GUARDAR),this),mapa(this){
+//    botonGuardar(game->getTexture(IMG_BOTON_GUARDAR),this),mapa(this){
 //    this->game=game;
 //
 //    // ,114,205
@@ -88,11 +88,11 @@
 //
 //    //botones para cambiar de player
 //    /*
-//    botonPlayer[PLAYER_1]=new BotonComponent<Menu>(game->getImagen(IMG_BOTON_PLAYER_1),this,3,228);
-//    botonPlayer[PLAYER_2]=new BotonComponent<Menu>(game->getImagen(IMG_BOTON_PLAYER_2),this,64,228);
-//    botonPlayer[PLAYER_3]=new BotonComponent<Menu>(game->getImagen(IMG_BOTON_PLAYER_3),this,125,228);
-//    botonPlayer[PLAYER_4]=new BotonComponent<Menu>(game->getImagen(IMG_BOTON_PLAYER_4),this,189,228);
-//    botonPlayer[PLAYER_5]=new BotonComponent<Menu>(game->getImagen(IMG_BOTON_PLAYER_5),this,252,228);
+//    botonPlayer[PLAYER_1]=new BotonComponent<Menu>(game->getTexture(IMG_BOTON_PLAYER_1),this,3,228);
+//    botonPlayer[PLAYER_2]=new BotonComponent<Menu>(game->getTexture(IMG_BOTON_PLAYER_2),this,64,228);
+//    botonPlayer[PLAYER_3]=new BotonComponent<Menu>(game->getTexture(IMG_BOTON_PLAYER_3),this,125,228);
+//    botonPlayer[PLAYER_4]=new BotonComponent<Menu>(game->getTexture(IMG_BOTON_PLAYER_4),this,189,228);
+//    botonPlayer[PLAYER_5]=new BotonComponent<Menu>(game->getTexture(IMG_BOTON_PLAYER_5),this,252,228);
 //*/
 //    botonGuardar.bindAccion(&Menu::guardarTeclas);
 //    for(int i=0;i<_PLAYERS;i++)
@@ -114,11 +114,11 @@
 //    maxTerrenoBatalla=std::stoi(buscar_dato(RUTA_CONFIG_BASE,"MaxTerreno"));
 //    player_configurando_teclas=PLAYER_NONE;
 //    previewTerreno=NULL;
-//    mapa.setImgTiles(game->getImagen(IMG_TILES));
+//    mapa.setImgTiles(game->getTexture(IMG_TILES));
 //    limpiar();
 //    updatePreview();
 //    setSelected(0);
-//    game->playSonido(SND_MENU);
+//    game->playSound(SND_MENU);
 //    dataNivel=NULL;;
 //    //cambiarVentana(VENTANA_1);
 //
@@ -451,7 +451,7 @@
 //
 //        switch(ventana){
 //            case VENTANA_1:case VENTANA_2:
-//                game->getImagen(IMG_FONDO_MENU)->render(gRenderer,0,0);
+//                game->getTexture(IMG_FONDO_MENU)->render(gRenderer,0,0);
 //                for(int i=0;i<5;i++) {
 //                    if (!(ventana == VENTANA_2 && i == 4)) {
 //
@@ -466,15 +466,15 @@
 //
 //                break;
 //            case VENTANA_4://configuracion
-//                game->getImagen(IMG_FONDO_MENU)->render(gRenderer,0,0);
+//                game->getTexture(IMG_FONDO_MENU)->render(gRenderer,0,0);
 //
 //                static char nombre_tecla[20];
 //                for(int i=0;i<6;i++){
 //                    //imprimimos el boton
-//                    imprimir_desde_grilla(game->getImagen(IMG_BOTON_CAMBIAR),(id_espera_tecla==i)?3:botones_cambiar[i],gRenderer,rectConfiguracion[i][MENU_BOTON_CAMBIAR].x,rectConfiguracion[i][MENU_BOTON_CAMBIAR].y,4,1,0);
+//                    imprimir_desde_grilla(game->getTexture(IMG_BOTON_CAMBIAR),(id_espera_tecla==i)?3:botones_cambiar[i],gRenderer,rectConfiguracion[i][MENU_BOTON_CAMBIAR].x,rectConfiguracion[i][MENU_BOTON_CAMBIAR].y,4,1,0);
 //
 //                    //imprimimos la caja de mensaje
-//                    imprimir_desde_grilla(game->getImagen(IMG_GUI_INPUT_TEXT),id_espera_tecla==i,gRenderer,rectConfiguracion[i][MENU_CUADRO_MOSTRAR].x,rectConfiguracion[i][MENU_CUADRO_MOSTRAR].y,2,1,0);
+//                    imprimir_desde_grilla(game->getTexture(IMG_GUI_INPUT_TEXT),id_espera_tecla==i,gRenderer,rectConfiguracion[i][MENU_CUADRO_MOSTRAR].x,rectConfiguracion[i][MENU_CUADRO_MOSTRAR].y,2,1,0);
 //
 //
 //                    if(control_edit.isBotonJoystick((TeclaPlayer)i))
@@ -487,10 +487,10 @@
 //                        strcpy(nombre_tecla,SDL_GetKeyName(control_edit.getKey((TeclaPlayer)i)));
 //
 //                    //imprimimos la tecla
-//                    //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_6),rectConfiguracion[i][MENU_CUADRO_MOSTRAR].x,rectConfiguracion[i][MENU_CUADRO_MOSTRAR].y,nombre_tecla,STR_MAX_ESTENDIDA);
+//                    //imprimir_palabra(gRenderer,game->getTexture(IMG_FUENTE_6),rectConfiguracion[i][MENU_CUADRO_MOSTRAR].x,rectConfiguracion[i][MENU_CUADRO_MOSTRAR].y,nombre_tecla,STR_MAX_ESTENDIDA);
 //
 //                    //imprimimos el texto
-//                    imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_TXT_ARRIBA + i)),id_espera_tecla==i,gRenderer,rectConfiguracion[i][MENU_TEXTO_MOSTRAR].x,rectConfiguracion[i][MENU_TEXTO_MOSTRAR].y,2,1,0);
+//                    imprimir_desde_grilla(game->getTexture((CodeImagen)(IMG_TXT_ARRIBA + i)),id_espera_tecla==i,gRenderer,rectConfiguracion[i][MENU_TEXTO_MOSTRAR].x,rectConfiguracion[i][MENU_TEXTO_MOSTRAR].y,2,1,0);
 //                }
 ///*                for(int i=0;i<_PLAYERS;i++)
 //                     botonPlayer[i]->draw(gRenderer);
@@ -498,13 +498,13 @@
 //
 //
 //                botonGuardar.draw(gRenderer);*/
-//                imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN),player_configurando_teclas*2,gRenderer,rect_destino_cara.x,rect_destino_cara.y,1,10,0);
+//                imprimir_desde_grilla(game->getTexture(IMG_CARAS_BOMBERMAN),player_configurando_teclas*2,gRenderer,rect_destino_cara.x,rect_destino_cara.y,1,10,0);
 //
 //
 //                break;
 //            case VENTANA_CREDITOS://Creditos
-//                //SDL_RenderCopy(gRenderer,game->getImagen(IMG_FONDO_CREDITOS),NULL,NULL); //Dibujamos el fondo
-//                game->getImagen(IMG_FONDO_CREDITOS)->render(gRenderer,0,0);
+//                //SDL_RenderCopy(gRenderer,game->getTexture(IMG_FONDO_CREDITOS),NULL,NULL); //Dibujamos el fondo
+//                game->getTexture(IMG_FONDO_CREDITOS)->render(gRenderer,0,0);
 //                break;
 //            }
 //        }else{

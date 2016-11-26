@@ -17,12 +17,6 @@ class BotonComponent : public LayoutComponent{
             _ESTADOS
         };
         
-        /*BotonComponent(SDL_Renderer * gRenderer,string rutaImagen,T * parent=NULL,int posX=0,int posY=0){
-            if(setGrillaImagen(gRenderer,rutaImagen)){
-                BotonComponent(imgGrillaBoton,parent,posX,posY);
-                desdeFile=true;
-            }
-        }*/
         BotonComponent(LTexture * grilla,T * parent=NULL){
 
             imgGrillaBoton=grilla; // Grilla/ Columna con las tres filas representando los estados del boton

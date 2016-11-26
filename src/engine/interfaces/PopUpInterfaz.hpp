@@ -14,6 +14,7 @@
 /**
  * Esta clase define un Layout que se va a mostrar en pantalla.
  * Esta clase no es un manejador principal de la pantalla
+ * Funciona parecido a un Modal en una Web.
  */
 class PopUpInterfaz{
 public:

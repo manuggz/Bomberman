@@ -18,6 +18,6 @@ void Item::draw(SDL_Renderer * gRenderer){
     mSprSCuadros->setCurrentCuadro(mTipo/8*8 + mTipo + 8*getCuadro());
     Animacion::draw(gRenderer);
     //if(x+16>0&&x<W_SCREEN&&y<H_SCREEN&&y+16>0)return;
-    	//imprimir_desde_grilla(juego->getImagen(IMG_ITEM), , gRenderer, x,y,6,8,0);
+    	//imprimir_desde_grilla(juego->getTexture(IMG_ITEM), , gRenderer, x,y,6,8,0);
 }
 */

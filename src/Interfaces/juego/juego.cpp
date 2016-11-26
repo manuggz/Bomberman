@@ -140,7 +140,7 @@ void Juego::start() {
     PopUpCountDown *  mostrarMensajeTexto = new PopUpCountDown(mGameManagerInterfaz,"El juego comienza en ",3);
     mostrarMensajeTexto->setSizeText(20);
     mGameManagerInterfaz->showPopUp(mostrarMensajeTexto,ID_POPUP_JUEGO_COMIENZA);
-    mGameManagerInterfaz->playSonido((CodeMusicSonido)(4 + rand()%1));
+    mGameManagerInterfaz->playSound((Galeria::CodeMusicSonido)(4 + rand() % 1));
 }
 
 
@@ -167,7 +167,7 @@ void Juego::resultPopUp(void *result, int popUpCode) {
         case ID_POPUP_JUEGO_MOSTRAR_GAN_TERMINAR:{
 
             IdPlayer idPlayerActivo = PLAYER_NONE;
-            for(int j = 0 ; j < _PLAYERS,idPlayerActivo == PLAYER_NONE;j++){
+            for(int j = 0 ; j < _PLAYERS;j++){
                 if(estaPlayerActivo((IdPlayer) j)){
                     idPlayerActivo = (IdPlayer) j;
                 }
@@ -287,7 +287,7 @@ void Juego::update(){
 
     // Si solo quedan 20 segundos o menos
     if((mMinutos*60 - getSegundosInicioNivel()) <= 20 && !mIsPlayingWarningSound){
-        mGameManagerInterfaz->playSonido(SND_WARNING_TIME);
+        mGameManagerInterfaz->playSound(Galeria::CodeMusicSonido::SND_WARNING_TIME);
         mIsPlayingWarningSound = true;
     }
 
@@ -365,49 +365,49 @@ bool Juego::estaPlayerActivo(IdPlayer playerId){
 void Juego::drawBarra(SDL_Renderer * gRenderer){
 
     // Dibuja un cuadro anaranjado donde van a estar los datos
-    mGameManagerInterfaz->getImagen(IMG_TABLERO)->render(gRenderer,0,0);
+    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_TABLERO)->render(gRenderer,0,0);
 
     //PLAYER_1
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManagerInterfaz->getImagen(IMG_CARAS_BOMBERMAN),
+    imprimir_desde_grilla(mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CARAS_BOMBERMAN),
                           !(estaPlayerActivo(PLAYER_1)) + PLAYER_1*2 ,gRenderer,1,6,1,10,0);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mGameManagerInterfaz->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,15,3);
+    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CUADRO_PEQUENIO)->render(gRenderer,15,3);
 
     //PLAYER_2
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManagerInterfaz->getImagen(IMG_CARAS_BOMBERMAN),
+    imprimir_desde_grilla(mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CARAS_BOMBERMAN),
                           !(estaPlayerActivo(PLAYER_2)) + PLAYER_2*2 ,gRenderer,32,6,1,10,0);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mGameManagerInterfaz->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,48,3);
+    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CUADRO_PEQUENIO)->render(gRenderer,48,3);
 
     //PLAYER_3
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManagerInterfaz->getImagen(IMG_CARAS_BOMBERMAN),
+    imprimir_desde_grilla(mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CARAS_BOMBERMAN),
                           !(estaPlayerActivo(PLAYER_3)) + PLAYER_3*2 ,gRenderer,65,6,1,10,0);
 
-    mGameManagerInterfaz->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,80,3);
+    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CUADRO_PEQUENIO)->render(gRenderer,80,3);
 
 //    //PLAYER_4
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManagerInterfaz->getImagen(IMG_CARAS_BOMBERMAN),
+    imprimir_desde_grilla(mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CARAS_BOMBERMAN),
                           !(estaPlayerActivo(PLAYER_4)) + PLAYER_4*2 ,gRenderer,253,6,1,10,0);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mGameManagerInterfaz->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,270,3);
+    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CUADRO_PEQUENIO)->render(gRenderer,270,3);
 
     //PLAYER_5
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManagerInterfaz->getImagen(IMG_CARAS_BOMBERMAN),
+    imprimir_desde_grilla(mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CARAS_BOMBERMAN),
                           !(estaPlayerActivo(PLAYER_5)) + PLAYER_5*2 ,gRenderer,288,6,1,10,0);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mGameManagerInterfaz->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,304,3);
+    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CUADRO_PEQUENIO)->render(gRenderer,304,3);
 
     // Dibujamos el cuadro donde se dibujara el tiempo restante
-    mGameManagerInterfaz->getImagen(IMG_CUADRO_GRANDE)->render(gRenderer,137,3);
+    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CUADRO_GRANDE)->render(gRenderer,137,3);
 
     // Calculamos y dibujamos el tiempo restante
     if(mGameTimer.isStarted()){
@@ -426,7 +426,7 @@ void Juego::drawBarra(SDL_Renderer * gRenderer){
 
 }
 int Juego::getJoysActivos(){
-    return mGameManagerInterfaz->getJoysActivos();
+    return mGameManagerInterfaz->getActiveJoys();
 }
 SDL_Joystick * Juego::getJoy(int id){
     return mGameManagerInterfaz->getJoy(id);
@@ -445,10 +445,10 @@ void Juego::draw(SDL_Renderer * gRenderer){
     mLayoutParent->draw(gRenderer);
 
 /*    if(pausado){
-        //imprimir_palabra(gRenderer, game->getImagen(IMG_FUENTE_5),80,100,"pausa",STR_NORMAL);
-        imprimir_desde_grilla(mGameManagerInterfaz->getImagen(IMG_CARAS_BOMBERMAN),id_quien_pauso*2 ,gRenderer,130,90,1,10,0);
+        //imprimir_palabra(gRenderer, game->getTexture(IMG_FUENTE_5),80,100,"pausa",STR_NORMAL);
+        imprimir_desde_grilla(mGameManagerInterfaz->getTexture(IMG_CARAS_BOMBERMAN),id_quien_pauso*2 ,gRenderer,130,90,1,10,0);
     }*/
-    //if(estado_actual==DISPLAY_MSG)imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),x_msg,y_msg,msg_mostrar,STR_MAX_ESTENDIDA);
+    //if(estado_actual==DISPLAY_MSG)imprimir_palabra (gRenderer,game->getTexture(IMG_FUENTE_6),x_msg,y_msg,msg_mostrar,STR_MAX_ESTENDIDA);
 }
 
 
@@ -483,7 +483,7 @@ void Juego::eliminarSprite(Sprite *sprite) {
         mGrpSprites.add(explosion);
 
         //reproducimos un sonido
-        mGameManagerInterfaz->play(SFX_EXPLOSION);
+        mGameManagerInterfaz->play(Galeria::CodeMusicEfecto::SFX_EXPLOSION);
 
         delete sprite;
         return;
@@ -546,7 +546,7 @@ void Juego::eliminarSprite(Sprite *sprite) {
         }else{
             Item::TipoItem tipo_item= pItemEliminado->getTipo();
             pPlayerActivadorItem->activarPoderItem(tipo_item);
-            mGameManagerInterfaz->play(CodeMusicEfecto::SFX_COGER_ITEM);
+            mGameManagerInterfaz->play(Galeria::CodeMusicEfecto::SFX_COGER_ITEM);
 
         }
         delete sprite;
@@ -589,7 +589,7 @@ void Juego::playerMuerto(Player * pPlayer,Sprite * pPlayerCausante){
             establecerValoresDeMapaPlayer(pPlayer->getId());
             pPlayer->cambiarEstado(EstadoSprite::PARADO);
             pPlayer->setProteccion(5);
-            mGameManagerInterfaz->play(SFX_PIERDE_VIDA);
+            mGameManagerInterfaz->play(Galeria::CodeMusicEfecto::SFX_PIERDE_VIDA);
         } else {
             pPlayer->setEnPantalla(false);
             pPlayer->kill();

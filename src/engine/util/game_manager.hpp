@@ -24,14 +24,14 @@ class GameManager : public GameManagerInterfazUI{
     void setModeVideo(bool pantalla_completa=false);
     void activarJoysticks();
     SDL_Joystick * getJoy(int id);
-    int getJoysActivos();
+    int getActiveJoys();
     void cambiarInterfaz(InterfazUI * nueva);
     bool procesarEventos();
     void run();
     void quit(){salir_juego=true;};
-    void play(CodeMusicEfecto code);
-    void playSonido(CodeMusicSonido code);
-    LTexture * getImagen(CodeImagen code);
+    void play(Galeria::CodeMusicEfecto code) override ;
+    void playSound(Galeria::CodeMusicSonido code) override ;
+    LTexture * getTexture(Galeria::CodeImagen code) override ;
     int getWidth();
     int getHeight();
 

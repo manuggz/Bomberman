@@ -9,12 +9,14 @@
 #include "InterfazUI.hpp"
 #include "../layout/LayoutManager/LayoutVertical.hpp"
 #include "../layout/Componentes/TextLabelComponent.hpp"
-#include "../layout/LayoutManager/LayoutParent.hpp"
 
 
 const char * rutaFont = "data/fuentes/OpenSans-BoldItalic.ttf";
 const Uint8 sizeFont = 20;
 
+/**
+ * Representa un menu de opciones simple en el que el usuario se puede desplazar usando las teclas UP y DOWN
+ */
 class MenuListLabel : public InterfazUI{
 public:
 
@@ -23,32 +25,23 @@ public:
     MenuListLabel(GameManagerInterfazUI *gameManagerInterfaz)
             : InterfazUI(gameManagerInterfaz) {
 
-        mColorLabelNormal.r = 255;
-        mColorLabelNormal.g = 0;
-        mColorLabelNormal.b = 0;
-        mColorLabelNormal.a = 255;
+    }
 
-        mColorLabelResaltado.r = 255;
-        mColorLabelResaltado.g = 255;
-        mColorLabelResaltado.b = 0;
-        mColorLabelResaltado.a = 255;
-        
-        mLayoutBackGround = new LayoutVertical();
-        mLayout = new LayoutVertical();
-        mLayoutParent = new LayoutParent(mLayoutBackGround);
-        mOpcionMenuResaltadaActual = -1;
+    void prepare() override {
+        InterfazUI::prepare();
+        mLayoutBackGround          = new LayoutVertical();
+        mLayout                    = new LayoutVertical();
     }
 
     virtual void createUI(SDL_Renderer *renderer)  override{
 
+        // Establecemos el fondo con los parametros adecados para que ocupe toda la pantalla
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_FILL_PARENT_HEIGHT,LAYOUT_PARAM_TRUE);
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_FILL_PARENT_WIDTH,LAYOUT_PARAM_TRUE);
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_WRAP_WIDTH,LAYOUT_PARAM_FALSE);
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_WRAP_HEIGHT,LAYOUT_PARAM_FALSE);
-        LTexture * lTexture = new LTexture();
-        lTexture->loadFromFile("data/imagenes/fondos/fondo_menu.bmp",renderer,false);
-        mLayoutBackGround->setBackgroundTexture(lTexture);
 
+        mLayoutBackGround->setBackgroundTexture(renderer,"data/imagenes/fondos/fondo_menu.bmp",false);
 
         TextLabelComponent * nuevoTextLabel;
         for(int i = 0 ; i < mMenuOpcionesText.size() ; i++){
@@ -80,14 +73,15 @@ public:
     virtual void resume() override {
         InterfazUI::resume();
         mLayoutBackGround->setDisabled(true);
+        SDL_ShowCursor(SDL_DISABLE);//ocultamos el cursor
     }
 
-    virtual /**
+     /**
      * Establece la nueva opcion del menu resaltada al usuario
      * @param nuevaOpcion Nueva seleccion
      * @return True en caso que se haya resaltado con exito, false en caso contrario
      */
-    bool setOpcionResaltada(int nuevaOpcion){
+     virtual bool setOpcionResaltada(int nuevaOpcion){
         if(nuevaOpcion >= 0 && nuevaOpcion < menuTextOptions.size()){
             menuTextOptions[mOpcionMenuResaltadaActual]->setTextColor(mColorLabelNormal); // Cambiamos el color de la opcion
             menuTextOptions[nuevaOpcion]->setTextColor(mColorLabelResaltado); // Cambiamos el color de la opcion
@@ -111,7 +105,6 @@ public:
         if(evento->type==SDL_KEYDOWN){
             switch(evento->key.keysym.sym){
                 case SDLK_ESCAPE:
-                    //cout << "Tecla Escape Presionada " << endl;
                     mGameManagerInterfaz->goBack();
                     break;
                 case SDLK_UP:
@@ -161,15 +154,14 @@ public:
 protected:
 
     deque<TextLabelComponent  *> menuTextOptions;
-    LayoutVertical * mLayout;
-    LayoutVertical *mLayoutBackGround;
+    LayoutVertical * mLayout    = nullptr;
+    LayoutVertical *mLayoutBackGround = nullptr;
 
     deque<string> mMenuOpcionesText;
 
-    SDL_Color mColorLabelNormal,mColorLabelResaltado;
-    int mOpcionMenuResaltadaActual;
-
-    LayoutParent *mLayoutParent;
+    SDL_Color mColorLabelNormal    {255,0,0,255};
+    SDL_Color mColorLabelResaltado {255,255,0,255};
+    int mOpcionMenuResaltadaActual = -1;
 };
 
 #endif //BOMBERMAN_MENULISTLABEL_HPP

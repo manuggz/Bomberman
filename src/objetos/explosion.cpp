@@ -105,7 +105,7 @@ void Explosion::detectarAlcance(int dir,int aum_x,int aum_y){
                 (*pItem)->kill();
 //                mJuego->eliminarSprite((*pItem));
 //                        new Animacion(new SpriteSheet("data/imagenes/")
-//                juego->getImagen(IMG_ITEM_FIRE), 1, 7, "0,0,0,1,1,2,2,2,3,3,4,4,5,5,6,6", coli.x, coli.y));
+//                juego->getTexture(IMG_ITEM_FIRE), 1, 7, "0,0,0,1,1,2,2,2,3,3,4,4,5,5,6,6", coli.x, coli.y));
 //                juego->killSprite((*pItem));
 //                pBomba++;
                 pItem++;
@@ -114,7 +114,7 @@ void Explosion::detectarAlcance(int dir,int aum_x,int aum_y){
         }
 
             /*if(juego->getTipoItem(setColisionItems)!=Item::ITEM_PUERTA){
-                juego->addSprite(new Animacion(juego->getImagen(IMG_ITEM_FIRE),1,7,"0,0,0,1,1,2,2,2,3,3,4,4,5,5,6,6",coli.x,coli.y));
+                juego->addSprite(new Animacion(juego->getTexture(IMG_ITEM_FIRE),1,7,"0,0,0,1,1,2,2,2,3,3,4,4,5,5,6,6",coli.x,coli.y));
                 juego->killSprite(ITEM,setColisionItems);
             }else{*/
 //                 int x,y;
@@ -158,7 +158,7 @@ void Explosion::dibujarFlama(int dir,int aum_x,int aum_y,int cuadro_normal,int c
         // Notar el uso de getCuadro(), esto es para obtener el respectivo cuadro de la animacion
         mSprSCuadros->setCurrentCuadro(cuadro_normal + mSprSCuadros->getNColumnas()*getCuadro());
         mSprSCuadros->draw(gRenderer,x,y);
-        //imprimir_desde_grilla (mJuego->getImagen(IMG_EXPLOSION),cuadro_normal+COLUMNAS_EXPLO*getCuadro(),gRenderer, x,y,FILAS_EXPLO,COLUMNAS_EXPLO,0);
+        //imprimir_desde_grilla (mJuego->getTexture(IMG_EXPLOSION),cuadro_normal+COLUMNAS_EXPLO*getCuadro(),gRenderer, x,y,FILAS_EXPLO,COLUMNAS_EXPLO,0);
     }
 
     // Posicion de la flama final

@@ -2,7 +2,7 @@
 //
 //
 //Editor::Editor(GameManager * game):
-//    botonBorrar(game->getImagen(IMG_BOTON_BORRAR_MAPA),this){
+//    botonBorrar(game->getTexture(IMG_BOTON_BORRAR_MAPA),this){
 //    #ifdef DEBUG
 //        cout << "Constructor de Editor: "<<this<<endl;
 //    #endif
@@ -111,7 +111,7 @@
 //    player_activo=PLAYER_NONE;
 //    previews_niveles=0;
 //    crearReferencias();
-//    game->playSonido(SND_EDITOR);
+//    game->playSound(SND_EDITOR);
 //
 //    cambiarVentana(EDITOR_ABRIR_NIVEL);
 //
@@ -144,16 +144,16 @@
 //    #endif
 //
 //    MetaData * data2;
-//    LTexture * img_players[5]={game->getImagen(IMG_PLAYER_1),
-//                                  game->getImagen(IMG_PLAYER_2),
-//                                  game->getImagen(IMG_PLAYER_3),
-//                                  game->getImagen(IMG_PLAYER_4),
-//                                  game->getImagen(IMG_PLAYER_5)};
+//    LTexture * img_players[5]={game->getTexture(IMG_PLAYER_1),
+//                                  game->getTexture(IMG_PLAYER_2),
+//                                  game->getTexture(IMG_PLAYER_3),
+//                                  game->getTexture(IMG_PLAYER_4),
+//                                  game->getTexture(IMG_PLAYER_5)};
 //    for(int i=0;i<maxTerrenoBatalla;i++){
 //        sprintf(ruta,"data/niveles/batalla/%d.txt",i+ 1);
 //        data2=new MetaData(ruta);
 //        sprintf(ruta,"data/niveles/batalla/%d.map",i+ 1);
-//        previews_niveles[i]=Mapa::getPreviewTerreno(ruta,data2,game->getImagen(IMG_TILES),img_players,8,40);
+//        previews_niveles[i]=Mapa::getPreviewTerreno(ruta,data2,game->getTexture(IMG_TILES),img_players,8,40);
 //    #ifdef DEBUG
 //        cout << "Creada Surface: "<<previews_niveles[i]<<endl;
 //    #endif
@@ -162,7 +162,7 @@
 //    //realizamos la preview del "nuevo nivel"
 //
 //    sprintf(ruta,"data/niveles/batalla/%d.map",NIVEL_BASE);
-//    previews_niveles[maxTerrenoBatalla]=Mapa::getPreviewTerreno(ruta,NULL,game->getImagen(IMG_TILES),NULL,8,40);
+//    previews_niveles[maxTerrenoBatalla]=Mapa::getPreviewTerreno(ruta,NULL,game->getTexture(IMG_TILES),NULL,8,40);
 //    #ifdef DEBUG
 //        cout << "Creada Surface: "<<previews_niveles[mMaxTerrenoBatalla]<<endl;
 //    #endif
@@ -647,54 +647,54 @@
 //
 //    switch(ventana){
 //        case EDICION_NIVEL:
-//                game->getImagen((CodeImagen)(idFondo))->render(gRenderer);
-//                Mapa::draw(gRenderer,game->getImagen(IMG_TILES),mapa,EjeX,EjeY,data->getIdTile());
+//                game->getTexture((CodeImagen)(idFondo))->render(gRenderer);
+//                Mapa::draw(gRenderer,game->getTexture(IMG_TILES),mapa,EjeX,EjeY,data->getIdTile());
 //
-//                game->getImagen(IMG_TABLERO)->render(gRenderer,0,yTablero);
+//                game->getTexture(IMG_TABLERO)->render(gRenderer,0,yTablero);
 //
 //                for(i=1;i<5;i++){
 //                    for(j=0;j<2;j++){
-//                        imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_BOTON_MAS +j)),estados_botones[i][j],gRenderer,rects_botones[i][j].x,rects_botones[i][j].y+yTablero,3,1,0);
+//                        imprimir_desde_grilla(game->getTexture((CodeImagen)(IMG_BOTON_MAS +j)),estados_botones[i][j],gRenderer,rects_botones[i][j].x,rects_botones[i][j].y+yTablero,3,1,0);
 //                        }
 //                    }
 //
 //
-//                game->getImagen(IMG_LLAMA)->render(gRenderer,143,20+yTablero);//explosion
-//                game->getImagen(IMG_BOMBA_PEQUE)->render(gRenderer,91,20+yTablero);//bomba
-//                game->getImagen(IMG_CORAZON)->render(gRenderer,217,20+yTablero);//vidas
-//                game->getImagen(IMG_PREGUNTA)->render(gRenderer,270,21+yTablero);//item
+//                game->getTexture(IMG_LLAMA)->render(gRenderer,143,20+yTablero);//explosion
+//                game->getTexture(IMG_BOMBA_PEQUE)->render(gRenderer,91,20+yTablero);//bomba
+//                game->getTexture(IMG_CORAZON)->render(gRenderer,217,20+yTablero);//vidas
+//                game->getTexture(IMG_PREGUNTA)->render(gRenderer,270,21+yTablero);//item
 //
-//                game->getImagen(IMG_TXT_TILES)->render(gRenderer,6,3+yTablero);
+//                game->getTexture(IMG_TXT_TILES)->render(gRenderer,6,3+yTablero);
 //
 //                //dibujamos la cantidad de bombas iniciales
 //                sprintf(stock,"x%d",data->getBombasDisponibles());
-//                //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),107,21+yTablero,stock,STR_NORMAL);
+//                //imprimir_palabra(gRenderer,game->getTexture(IMG_FUENTE_2),107,21+yTablero,stock,STR_NORMAL);
 //
 //                //dibujamos el alcance de las bombas iniciales
 //                sprintf(stock,"x%d",data->getAlcanceBombas());
-//                //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),177,21+yTablero,stock,STR_NORMAL);
+//                //imprimir_palabra(gRenderer,game->getTexture(IMG_FUENTE_2),177,21+yTablero,stock,STR_NORMAL);
 //
 //                //dibujamos las vidas iniciales
 //                sprintf(stock,"x%d",data->getVidas());
-//                //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),237,21+yTablero,stock,STR_NORMAL);
+//                //imprimir_palabra(gRenderer,game->getTexture(IMG_FUENTE_2),237,21+yTablero,stock,STR_NORMAL);
 //
 //                //dibujamos la cantidad de mGrpItems iniciales
 //                sprintf(stock,"x%d",data->getNumItems());
-//                //imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_2),288,21+yTablero,stock,STR_NORMAL);
+//                //imprimir_palabra(gRenderer,game->getTexture(IMG_FUENTE_2),288,21+yTablero,stock,STR_NORMAL);
 //
 //                for(int j=0;j<3;j++)
-//                    imprimir_desde_grilla(game->getImagen(IMG_TILES),data->getIdTile()*4+((j!=2)?j:Mapa::BLOQUE_PISO),gRenderer,j*16+6,20+yTablero,4,4,0);
+//                    imprimir_desde_grilla(game->getTexture(IMG_TILES),data->getIdTile()*4+((j!=2)?j:Mapa::BLOQUE_PISO),gRenderer,j*16+6,20+yTablero,4,4,0);
 //
-//                imprimir_desde_grilla(game->getImagen(IMG_BOTON_FLECHA_PEQUE_DERECHA),estados_botones[0][0],gRenderer,rects_botones[0][0].x,rects_botones[0][0].y+yTablero,3,1,0);
+//                imprimir_desde_grilla(game->getTexture(IMG_BOTON_FLECHA_PEQUE_DERECHA),estados_botones[0][0],gRenderer,rects_botones[0][0].x,rects_botones[0][0].y+yTablero,3,1,0);
 //
 //                static int x,y;
 //                SDL_GetMouseState(&x,&y);
 //
 //                for(i=0;i<_PLAYERS;i++){
 //                    if(i!=player_activo){
-//                        imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_PLAYER_1 +i)),6,gRenderer,data->getX((IdPlayer)i),data->getY((IdPlayer)i),1,12,1);
+//                        imprimir_desde_grilla(game->getTexture((CodeImagen)(IMG_PLAYER_1 +i)),6,gRenderer,data->getX((IdPlayer)i),data->getY((IdPlayer)i),1,12,1);
 //                    }else{
-//                        imprimir_desde_grilla(game->getImagen((CodeImagen)(IMG_PLAYER_1 +i)),6,gRenderer,x,y,1,12,1);
+//                        imprimir_desde_grilla(game->getTexture((CodeImagen)(IMG_PLAYER_1 +i)),6,gRenderer,x,y,1,12,1);
 //                    }
 //                }
 //
@@ -702,26 +702,26 @@
 //                    static SDL_Rect rect;
 //                    rect.x=(x-EjeX)/16*16 + EjeX;
 //                    rect.y=(y-EjeY)/16*16 + EjeY;
-//                    imprimir_desde_grilla(game->getImagen(IMG_TILES),data->getIdTile()*4+tile_activo,gRenderer,rect.x,rect.y,4,4,1);
+//                    imprimir_desde_grilla(game->getTexture(IMG_TILES),data->getIdTile()*4+tile_activo,gRenderer,rect.x,rect.y,4,4,1);
 //
 //                }
 //
-//                imprimir_desde_grilla(game->getImagen(IMG_BOTON_GUARDAR),estados_botones[0][1],gRenderer,rects_botones[0][1].x,rects_botones[0][1].y,3,1,0);
+//                imprimir_desde_grilla(game->getTexture(IMG_BOTON_GUARDAR),estados_botones[0][1],gRenderer,rects_botones[0][1].x,rects_botones[0][1].y,3,1,0);
 //                botonBorrar.draw(gRenderer); // TODO ERRADO ARREGLAR
 //            break;
 //        case EDITOR_ABRIR_NIVEL:
 //
-//                game->getImagen(IMG_FONDO_EDITOR_SELECT_FILE)->render(gRenderer,0,0);
+//                game->getTexture(IMG_FONDO_EDITOR_SELECT_FILE)->render(gRenderer,0,0);
 //
 //
 //                if(boton_visible[EDITOR_FLECHA_IZQUIERDA])
-//                    imprimir_desde_grilla(game->getImagen(IMG_BOTON_FLECHA_GRANDE_IZQUIERDA),estados_botones_elegir_terreno[EDITOR_FLECHA_IZQUIERDA],gRenderer,rects_botones_elegir_terreno[EDITOR_FLECHA_IZQUIERDA].x,rects_botones_elegir_terreno[EDITOR_FLECHA_IZQUIERDA].y,3,1,0);
+//                    imprimir_desde_grilla(game->getTexture(IMG_BOTON_FLECHA_GRANDE_IZQUIERDA),estados_botones_elegir_terreno[EDITOR_FLECHA_IZQUIERDA],gRenderer,rects_botones_elegir_terreno[EDITOR_FLECHA_IZQUIERDA].x,rects_botones_elegir_terreno[EDITOR_FLECHA_IZQUIERDA].y,3,1,0);
 //
 //                if(boton_visible[EDITOR_FLECHA_DERECHA])
-//                    imprimir_desde_grilla(game->getImagen(IMG_BOTON_FLECHA_GRANDE_DERECHA),estados_botones_elegir_terreno[EDITOR_FLECHA_DERECHA],gRenderer,rects_botones_elegir_terreno[EDITOR_FLECHA_DERECHA].x,rects_botones_elegir_terreno[EDITOR_FLECHA_DERECHA].y,3,1,0);
+//                    imprimir_desde_grilla(game->getTexture(IMG_BOTON_FLECHA_GRANDE_DERECHA),estados_botones_elegir_terreno[EDITOR_FLECHA_DERECHA],gRenderer,rects_botones_elegir_terreno[EDITOR_FLECHA_DERECHA].x,rects_botones_elegir_terreno[EDITOR_FLECHA_DERECHA].y,3,1,0);
 //
 //
-//                imprimir_desde_grilla(game->getImagen(IMG_BOTON_ESTRANIO),(estados_botones_elegir_terreno[EDITOR_MAPA_1]==BOTON_PRESIONADO)?1:0,gRenderer,rects_botones_elegir_terreno[EDITOR_MAPA_1].x,rects_botones_elegir_terreno[EDITOR_MAPA_1].y,2,1,0);
+//                imprimir_desde_grilla(game->getTexture(IMG_BOTON_ESTRANIO),(estados_botones_elegir_terreno[EDITOR_MAPA_1]==BOTON_PRESIONADO)?1:0,gRenderer,rects_botones_elegir_terreno[EDITOR_MAPA_1].x,rects_botones_elegir_terreno[EDITOR_MAPA_1].y,2,1,0);
 //
 //                SDL_Rect rect_dest = {rects_botones_elegir_terreno[EDITOR_MAPA_1].x+7,
 //                                      rects_botones_elegir_terreno[EDITOR_MAPA_1].y+5,0,0};
@@ -730,14 +730,14 @@
 //
 //
 //                if((maxTerrenoBatalla+1)-pagina*2==-1){
-//                    /*imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_5),
+//                    /*imprimir_palabra(gRenderer,game->getTexture(IMG_FUENTE_5),
 //                                    rects_botones_elegir_terreno[EDITOR_MAPA_1].x+2,
 //                                    rects_botones_elegir_terreno[EDITOR_MAPA_1].y+50,
 //                                    "nuevo",STR_NORMAL);*/
 //
 //                }
 //                if(boton_visible[EDITOR_MAPA_2]){
-//                        imprimir_desde_grilla(game->getImagen(IMG_BOTON_ESTRANIO),(estados_botones_elegir_terreno[EDITOR_MAPA_2]==BOTON_PRESIONADO)?1:0,gRenderer,rects_botones_elegir_terreno[EDITOR_MAPA_2].x,rects_botones_elegir_terreno[EDITOR_MAPA_2].y,2,1,0);
+//                        imprimir_desde_grilla(game->getTexture(IMG_BOTON_ESTRANIO),(estados_botones_elegir_terreno[EDITOR_MAPA_2]==BOTON_PRESIONADO)?1:0,gRenderer,rects_botones_elegir_terreno[EDITOR_MAPA_2].x,rects_botones_elegir_terreno[EDITOR_MAPA_2].y,2,1,0);
 //
 //                        rect_dest.x = rects_botones_elegir_terreno[EDITOR_MAPA_2].x+7;
 //                        rect_dest.y = rects_botones_elegir_terreno[EDITOR_MAPA_2].y+5;
@@ -745,7 +745,7 @@
 //                        SDL_RenderCopy(gRenderer,previews_niveles[(pagina-1)*2 + 1],NULL,&rect_dest);
 //
 //                        /*if((mMaxTerrenoBatalla+1)-pagina*2<=0)
-//                            imprimir_palabra(gRenderer,game->getImagen(IMG_FUENTE_5),
+//                            imprimir_palabra(gRenderer,game->getTexture(IMG_FUENTE_5),
 //                                            rects_botones_elegir_terreno[EDITOR_MAPA_2].x+2,
 //                                            rects_botones_elegir_terreno[EDITOR_MAPA_2].y+50,
 //                                                "nuevo",STR_NORMAL);*/

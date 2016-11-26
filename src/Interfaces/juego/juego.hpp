@@ -53,7 +53,7 @@ public:
     int getJoysActivos() override ;
     SDL_Joystick * getJoy(int id) override ;
 
-    LTexture * getImagen(CodeImagen code) override { return mGameManagerInterfaz->getImagen(code);}
+    LTexture * getImagen(Galeria::CodeImagen code) override { return mGameManagerInterfaz->getTexture(code);}
 
     Bloque *agregarBloqueEnLlamas(int x, int y) override;
 

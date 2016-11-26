@@ -9,7 +9,7 @@
 //    EjeX=0;
 //    EjeY=0;
 //    mapa=new Mapa(this);
-//    mapa->setImgTiles(game->getImagen(IMG_TILES ));
+//    mapa->setImgTiles(game->getTexture(IMG_TILES ));
 //
 //    totalSprite[PLAYER]=2;
 //    crearReferencias();
@@ -60,7 +60,7 @@
 //        sprintf(mens,"NIVEL %d",id_nivel);
 //        displayMensage(mens);//se presenta el mensage con el nivel actual
 //        repro_war=false;
-//        playSonido((CodeMusicSonido)(4 + rand() % 1));
+//        playSound((CodeMusicSonido)(4 + rand() % 1));
 //        n_actual=id_nivel;
 //        p_abierta=false;
 //        patinesLanzados=false;
@@ -106,7 +106,7 @@
 //
 //        /*SI SE ACERCA EL TIEMPO PARA ACABAR*/
 //        if(mGameTimer->getMiliSegundos()==_TIME_POR_NIVEL-50&&!repro_war){
-//            playSonido(SND_WARNING_TIME);
+//            playSound(SND_WARNING_TIME);
 //            repro_war=true;
 //        }
 //
@@ -136,11 +136,11 @@
 //void JuegoHistoria::drawBarra(SDL_Renderer * gRenderer){
 //    char tmp[50];
 //
-//    game->getImagen(IMG_TABLERO)->render(gRenderer,0,mapa->getYPanel());
+//    game->getTexture(IMG_TABLERO)->render(gRenderer,0,mapa->getYPanel());
 //
 //
 //    //Dibujamos el tiempo
-//    game->getImagen(IMG_CUADRO_GRANDE)->render(gRenderer,129,3+mapa->getYPanel());
+//    game->getTexture(IMG_CUADRO_GRANDE)->render(gRenderer,129,3+mapa->getYPanel());
 //    if(mGameTimer){
 //        static char min[3],seg[3],tiempo[6];
 //
@@ -150,51 +150,51 @@
 //        if(seg[0]==' ')seg[0]='0';
 //        sprintf(tiempo,"%s:%s",min,seg);
 //
-//    	/*imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),\
+//    	/*imprimir_palabra (gRenderer,game->getTexture(IMG_FUENTE_6),\
 //    						136,6+mapa->getYPanel(),tiempo,STR_MAX_ESTENDIDA);*/
 //    }
 //
 //    if(isActivo(PLAYER,PLAYER_1)){
 //
 //        //DIBUJAMOS LAS VIDAS
-//        game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,59,5+mapa->getYPanel());
+//        game->getTexture(IMG_CUADRO_PEQUENIO)->render(gRenderer,59,5+mapa->getYPanel());
 //        sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_1])->getVidas());
-//    	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_1),59,8+mapa->getYPanel(),tmp,STR_NORMAL);
+//    	//imprimir_palabra (gRenderer,game->getTexture(IMG_FUENTE_1),59,8+mapa->getYPanel(),tmp,STR_NORMAL);
 //
 //        //Dibujamos la cara
-//        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_1,gRenderer,28,-8+mapa->getYPanel(),1,5,0);
+//        imprimir_desde_grilla(game->getTexture(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_1,gRenderer,28,-8+mapa->getYPanel(),1,5,0);
 //
 //        //DIBUJAMOS EL PUNTAJE
-//        game->getImagen(IMG_CUADRO_MEDIANO)->render(gRenderer,4,23+mapa->getYPanel());
+//        game->getTexture(IMG_CUADRO_MEDIANO)->render(gRenderer,4,23+mapa->getYPanel());
 //        sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_1])->getPuntaje());
-//        //imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_2),40,24+mapa->getYPanel(),tmp,STR_NORMAL);
+//        //imprimir_palabra (gRenderer,game->getTexture(IMG_FUENTE_2),40,24+mapa->getYPanel(),tmp,STR_NORMAL);
 //    }else{
 //        //Dibujamos la cara
-//        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_1,gRenderer,28,-8+mapa->getYPanel(),1,5,0);
+//        imprimir_desde_grilla(game->getTexture(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_1,gRenderer,28,-8+mapa->getYPanel(),1,5,0);
 //
-//        game->getImagen(IMG_TXT_PRESIONA_START)->render(gRenderer,5,27+mapa->getYPanel());
+//        game->getTexture(IMG_TXT_PRESIONA_START)->render(gRenderer,5,27+mapa->getYPanel());
 //    }
 //
 //    if(isActivo(PLAYER,PLAYER_2)){
 //
 //        //DIBUJAMOS LAS VIDAS
-//        game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,292,5+mapa->getYPanel());
+//        game->getTexture(IMG_CUADRO_PEQUENIO)->render(gRenderer,292,5+mapa->getYPanel());
 //        sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_2])->getVidas());
-//    	//imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_1),293,8+mapa->getYPanel(),tmp,STR_NORMAL);
+//    	//imprimir_palabra (gRenderer,game->getTexture(IMG_FUENTE_1),293,8+mapa->getYPanel(),tmp,STR_NORMAL);
 //
 //        //Dibujamos la cara
-//        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_2,gRenderer,262,-8+mapa->getYPanel(),1,5,0);
+//        imprimir_desde_grilla(game->getTexture(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_2,gRenderer,262,-8+mapa->getYPanel(),1,5,0);
 //
 //        //DIBUJAMOS EL PUNTAJE
-//        game->getImagen(IMG_CUADRO_MEDIANO)->render(gRenderer,232,23+mapa->getYPanel());
+//        game->getTexture(IMG_CUADRO_MEDIANO)->render(gRenderer,232,23+mapa->getYPanel());
 //        sprintf(tmp,"%d",static_cast<Player *>(refeSprites[PLAYER][PLAYER_2])->getPuntaje());
-//        //imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_2),273,24+mapa->getYPanel(),tmp,STR_NORMAL);
+//        //imprimir_palabra (gRenderer,game->getTexture(IMG_FUENTE_2),273,24+mapa->getYPanel(),tmp,STR_NORMAL);
 //
 //    }else{
 //        //Dibujamos la cara
-//        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_2,gRenderer,262,-8+mapa->getYPanel(),1,5,0);
+//        imprimir_desde_grilla(game->getTexture(IMG_CARAS_BOMBERMAN_GRANDES),PLAYER_2,gRenderer,262,-8+mapa->getYPanel(),1,5,0);
 //
-//        game->getImagen(IMG_TXT_PRESIONA_START)->render(gRenderer,225,21+mapa->getYPanel());
+//        game->getTexture(IMG_TXT_PRESIONA_START)->render(gRenderer,225,21+mapa->getYPanel());
 //    }
 //}
 //

@@ -23,7 +23,7 @@ public:
 
     virtual bool setOpcionResaltada(int nuevaOpcion) override {
         if(MenuListLabel::setOpcionResaltada(nuevaOpcion)){
-            mGameManagerInterfaz->play(SFX_TONO_ACUATICO);
+            mGameManagerInterfaz->play(Galeria::CodeMusicEfecto::SFX_TONO_ACUATICO);
             return true;
         }
         return false;

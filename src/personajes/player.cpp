@@ -186,10 +186,10 @@ void Player::activarPoderItem(Item::TipoItem tipo){
 
 void Player::draw(SDL_Renderer * gRenderer){
     if(estado_actual!=MURIENDO)
-    	imprimir_desde_grilla (mpJuego->getImagen((CodeImagen)(IMG_PLAYER_1 + mPlayerId)), cuadro,gRenderer, x,y,1, 12,mEstaProtegido);
+    	imprimir_desde_grilla (mpJuego->getImagen((Galeria::CodeImagen)(Galeria::CodeImagen::IMG_PLAYER_1 + mPlayerId)), cuadro,gRenderer, x,y,1, 12,mEstaProtegido);
     else
-    	imprimir_desde_grilla(mpJuego->getImagen((CodeImagen)(IMG_PLAYER_1_MURIENDO + mPlayerId)), cuadro,gRenderer,x,y,1, 4,0);
-//    if(mEstaProtegido)render_texture(juego->getImagen(IMG_FONDO_BLANCO),x,y,screen);
+    	imprimir_desde_grilla(mpJuego->getImagen((Galeria::CodeImagen)(Galeria::CodeImagen::IMG_PLAYER_1_MURIENDO + mPlayerId)), cuadro,gRenderer,x,y,1, 4,0);
+//    if(mEstaProtegido)render_texture(juego->getTexture(IMG_FONDO_BLANCO),x,y,screen);
 	/*DIBUJA EL CUADRO QUE REPRESENTA LA COLISION DEL PERSONAJE*/
 #ifdef DEBUG
             updateRectColision();

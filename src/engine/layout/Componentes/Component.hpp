@@ -132,6 +132,13 @@ public:
     };
 
 
+    void setBackgroundTexture(SDL_Renderer *pRenderer, std::string ruta, bool tieneColorClave) {
+        if(!mTextureBackground){
+            mTextureBackground = new LTexture();
+        }
+        mTextureBackground->loadFromFile("data/imagenes/fondos/fondo_menu.bmp",pRenderer,false);
+    }
+
 protected:
 
     std::unordered_map<std::string,std::string> mLayoutParams;

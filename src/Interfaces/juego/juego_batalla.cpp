@@ -83,7 +83,7 @@ void JuegoBatalla::setMapaPlay(int idTerreno,bool comprobar_players){
     mapa->setEjeVisualizacion(mapa->getEjeX(),H_SCREEN);
     mapa->setItems();
 
-    playSonido((CodeMusicSonido)(4 + rand()%1));
+    playSound((CodeMusicSonido)(4 + rand()%1));
     muertosPorTiempo=false;
     repro_war=false;
     iniciado=false;
@@ -147,7 +147,7 @@ void JuegoBatalla::estadoPlay(){
                 
             /*SI SE ACERCA EL TIEMPO PARA ACABAR*
             if(mGameTimer->getMiliSegundos()>min/3&&!repro_war){
-                playSonido(SND_WARNING_TIME);
+                playSound(SND_WARNING_TIME);
                 repro_war=true;
             }
 
@@ -229,7 +229,7 @@ void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
     }
 
     //PLAYER_4
-    imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_4]&&isActivo(PLAYER,PLAYER_4)) + PLAYER_4*2 ,gRenderer,253,24,1,10,0);
+    imprimir_desde_grilla(game->getTexture(IMG_CARAS_BOMBERMAN), !(refeSprites[PLAYER][PLAYER_4]&&isActivo(PLAYER,PLAYER_4)) + PLAYER_4*2 ,gRenderer,253,24,1,10,0);
 
     game->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,270,21);
 
@@ -251,7 +251,7 @@ void JuegoBatalla::drawBarra(SDL_Renderer * gRenderer){
     }
 
     if(id_lider_ganadas!=PLAYER_NONE)
-        imprimir_desde_grilla(game->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),id_lider_ganadas,gRenderer,154,-10,1,5,0);
+        imprimir_desde_grilla(game->getTexture(IMG_CARAS_BOMBERMAN_GRANDES),id_lider_ganadas,gRenderer,154,-10,1,5,0);
     
     game->getImagen(IMG_CUADRO_GRANDE)->render(gRenderer,137,21);
     
