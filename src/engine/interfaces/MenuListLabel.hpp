@@ -7,7 +7,6 @@
 
 #include <SDL2/SDL.h>
 #include "InterfazUI.hpp"
-#include "../util/game_manager.hpp"
 #include "../layout/LayoutManager/LayoutVertical.hpp"
 #include "../layout/Componentes/TextLabelComponent.hpp"
 #include "../layout/LayoutManager/LayoutParent.hpp"
@@ -21,9 +20,9 @@ public:
 
 public:
 
-    MenuListLabel(GameManager * gameManager) {
+    MenuListLabel(GameManagerInterfazUI *gameManagerInterfaz)
+            : InterfazUI(gameManagerInterfaz) {
 
-        mGameManager = gameManager;
         mColorLabelNormal.r = 255;
         mColorLabelNormal.g = 0;
         mColorLabelNormal.b = 0;
@@ -46,7 +45,9 @@ public:
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_FILL_PARENT_WIDTH,LAYOUT_PARAM_TRUE);
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_WRAP_WIDTH,LAYOUT_PARAM_FALSE);
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_WRAP_HEIGHT,LAYOUT_PARAM_FALSE);
-        mLayoutBackGround->setBackgroundTexture(mGameManager->getImagen(IMG_FONDO_MENU));
+        LTexture * lTexture = new LTexture();
+        lTexture->loadFromFile("data/imagenes/fondos/fondo_menu.bmp",renderer,false);
+        mLayoutBackGround->setBackgroundTexture(lTexture);
 
 
         TextLabelComponent * nuevoTextLabel;
@@ -110,8 +111,8 @@ public:
         if(evento->type==SDL_KEYDOWN){
             switch(evento->key.keysym.sym){
                 case SDLK_ESCAPE:
-                    cout << "Tecla Escape Presionada " << endl;
-                    mGameManager->goBack();
+                    //cout << "Tecla Escape Presionada " << endl;
+                    mGameManagerInterfaz->goBack();
                     break;
                 case SDLK_UP:
                     setOpcionResaltada(mOpcionMenuResaltadaActual - 1);
@@ -142,7 +143,7 @@ public:
     }
     void draw(SDL_Renderer *renderer) override {
         if(mLayoutBackGround->isDisabled()){
-            SDL_Rect rect = {0,0,mGameManager->getWidth(),mGameManager->getHeight()};
+            SDL_Rect rect = mGameManagerInterfaz->getRectScreen();
             mLayoutBackGround->pack(renderer);
             mLayoutBackGround->setRectDibujo(rect);
             mLayoutBackGround->draw(renderer);
@@ -165,7 +166,6 @@ protected:
 
     deque<string> mMenuOpcionesText;
 
-    GameManager *mGameManager;
     SDL_Color mColorLabelNormal,mColorLabelResaltado;
     int mOpcionMenuResaltadaActual;
 

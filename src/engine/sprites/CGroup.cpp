@@ -19,30 +19,6 @@ void Group::kill(Sprite *pSpriteBorrar){
         pSpriteBusqueda++;
     }
 }
-
-/*
-bool Group::contain(Sprite * bus){
-     //lo vuscamos usando iteradores
-    list<Sprite*>::iterator p_Sprite=find( v_personajes.begin(), v_personajes.end(), bus );
-    
-    //si es distinto del final es porque lo contiene
-    return p_Sprite!=v_personajes.end();
-}*/
-/*
-Sprite * Group::collide(Sprite * coli){
-    list<Sprite*>::iterator p_Sprite= v_personajes.begin();
-    
-    while(p_Sprite != v_personajes.end()){
-         if(rects_colisionan(coli->rect(),(*p_Sprite)->rect())){
-              return (*p_Sprite);
-         }
-         p_Sprite++;
-        
-    }
-    
-    return NULL;
-    
-}*/
 void Group::erase(Sprite * pSpriteBorrar){
      //lo buscamos usando iteradores
 
@@ -55,6 +31,7 @@ void Group::erase(Sprite * pSpriteBorrar){
     while(pSpriteBusqueda != v_personajes.end()){
         if((*pSpriteBusqueda) == pSpriteBorrar){
             v_personajes.erase(pSpriteBusqueda);
+            // Remover Este grupo de los grupos que guarda (*pSpriteBusqueda)
             return;
         }
         pSpriteBusqueda++;

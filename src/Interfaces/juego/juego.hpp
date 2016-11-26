@@ -4,7 +4,6 @@
 using namespace std;
 #include <SDL2/SDL.h>
 #include "../../niveles/NivelMapa.hpp"
-#include "../../engine/util/game_manager.hpp"
 #include "../../constantes.hpp"
 #include "../../engine/interfaces/InterfazUI.hpp"
 #include "../../engine/sprites/CGroup.hpp"
@@ -15,18 +14,18 @@ using namespace std;
 #include "../../personajes/bloque.hpp"
 #include "../../engine/util/LTimer.hpp"
 #include "../../engine/sprites/CDrawGroup.hpp"
-#include "juego_historia.hpp"
-#include "../../engine/interfaces/InterfazJuego.hpp"
+//#include "juego_historia.hpp"
+#include "InterfazJuego.hpp"
 #include "../../personajes/player.hpp"
 #include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
 #include "../../engine/layout/Componentes/TextLabelComponent.hpp"
 
 
 
-class Juego:public InterfazUI ,public InterfazJuego{
+class Juego:public InterfazUI ,public InterfazJuego,public InterfazSpriteGroup{
 public:
 
-    Juego(GameManager * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[_PLAYERS]);
+    Juego(GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[_PLAYERS]);
     void prepare() override;
     void createUI(SDL_Renderer *gRenderer) override;
     void start() override;
@@ -54,7 +53,7 @@ public:
     int getJoysActivos() override ;
     SDL_Joystick * getJoy(int id) override ;
 
-    LTexture * getImagen(CodeImagen code) override { return mGameManager->getImagen(code);}
+    LTexture * getImagen(CodeImagen code) override { return mGameManagerInterfaz->getImagen(code);}
 
     Bloque *agregarBloqueEnLlamas(int x, int y) override;
 
@@ -77,7 +76,6 @@ protected:
     static const int ID_POPUP_JUEGO_COMIENZA                  = 103;
     static const int ID_POPUP_JUEGO_GANADOR                   = 104;
     // Controlador del Juego en General(Interfaces,SDL y mainloop)
-    GameManager * mGameManager = nullptr;
 
     // Todos los Sprites en pantalla que se dibujaran
     DrawGroup mGrpSprites;

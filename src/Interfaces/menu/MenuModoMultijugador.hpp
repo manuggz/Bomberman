@@ -9,13 +9,11 @@
 #include <SDL_events.h>
 #include "../../engine/interfaces/InterfazUI.hpp"
 #include "../../engine/sprites/CGroup.hpp"
-//#include "../menu.hpp"
 #include "../../engine/layout/LayoutManager/LayoutVertical.hpp"
 #include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
 #include "../../engine/layout/Componentes/ImageComponent.hpp"
 #include "../../engine/layout/Componentes/TextLabelComponent.hpp"
 #include "../../engine/interfaces/InterfazSpriteGroup.hpp"
-#include "../../engine/util/game_manager.hpp"
 #include "../../niveles/NivelMapa.hpp"
 #include "../../engine/layout/Componentes/BotonComponent.hpp"
 #include "../../engine/sprites/animacion/animacion.hpp"
@@ -25,36 +23,27 @@
 class MenuModoMultijugador: public InterfazUI, public InterfazSpriteGroup {
 
 public:
-    MenuModoMultijugador(GameManager * gameManager){
-        //cout << "MenuModoMultijugador::MenuModoMultijugador"<<endl;
-        mGameManager = gameManager;
-        //previewTerreno = nullptr;
+    MenuModoMultijugador(GameManagerInterfazUI * gameManagerInterfazUI):
+            InterfazUI(gameManagerInterfazUI){
     }
 
     void prepare() override {
-        cout << "MenuModoMultijugador::prepare"<<endl;
+        //cout << "MenuModoMultijugador::prepare"<<endl;
 
         // Buscamos el Maximo numero de terrenos disponibles para usar en el juego
         mMaxTerrenoBatalla = std::stoi(buscar_dato(RUTA_CONFIG_BASE, NAME_MAX_TERRENO_BATALLA));
 
-        //Creamos el Controlador que se encarga de dibujar el Mapa
-        //mMapaTerrenoSeleccionado = new Mapa();
-        minutosEscogidos = 1;
+        minutosEscogidos   = 1;
         victoriasEscogidas = 1;
     }
 
     void createUI(SDL_Renderer * gRenderer) override {
-        cout << "MenuModoMultijugador::createUI"<<endl;
-
-
-        //mMapaTerrenoSeleccionado.cargar();
-        // Establecemos las imagenes para los tiles del mapa
-        //mMapaTerrenoSeleccionado->setImgTiles(mGameManager->getImagen(IMG_TILES));
+        //cout << "MenuModoMultijugador::createUI"<<endl;
 
         mLayoutParent = new LayoutAbsolute();
 
         // BotonComponent para controlar cuanto tiempo para acabar una ronda
-        mBtnSubirTiempo=new BotonComponent<MenuModoMultijugador>(mGameManager->getImagen(IMG_BOTON_FLECHA_PEQUE_DERECHA),this);
+        mBtnSubirTiempo=new BotonComponent<MenuModoMultijugador>(mGameManagerInterfaz->getImagen(IMG_BOTON_FLECHA_PEQUE_DERECHA),this);
         mBtnSubirTiempo->setId(MENU_BOTON_SUBIR_TIEMPO);
         mBtnSubirTiempo->bindAccion(&MenuModoMultijugador::clickControl);
         mLayoutParent->addComponent(mBtnSubirTiempo);
@@ -62,7 +51,7 @@ public:
         mBtnSubirTiempo->setLayoutParam(LAYOUT_PARAM_Y,"2");
 
         // BotonComponent para controlar cuantas victorias son necesarias para terminar el juego
-        mBtnSubirVictorias=new BotonComponent<MenuModoMultijugador>(mGameManager->getImagen(IMG_BOTON_FLECHA_PEQUE_DERECHA),this);
+        mBtnSubirVictorias=new BotonComponent<MenuModoMultijugador>(mGameManagerInterfaz->getImagen(IMG_BOTON_FLECHA_PEQUE_DERECHA),this);
         mBtnSubirVictorias->setId(MENU_BOTON_SUBIR_VICTORIAS);
         mBtnSubirVictorias->bindAccion(&MenuModoMultijugador::clickControl);
         mLayoutParent->addComponent(mBtnSubirVictorias);
@@ -70,7 +59,7 @@ public:
         mBtnSubirVictorias->setLayoutParam(LAYOUT_PARAM_Y,"2");
 
         // BotonComponent para cambiar el mapa a usar
-        mBtnCambiarMapa=new BotonComponent<MenuModoMultijugador>(mGameManager->getImagen(IMG_BOTON_CAMBIAR_MAPA),this);
+        mBtnCambiarMapa=new BotonComponent<MenuModoMultijugador>(mGameManagerInterfaz->getImagen(IMG_BOTON_CAMBIAR_MAPA),this);
         mBtnCambiarMapa->setId(MENU_BOTON_CAMBIAR_MAPA);
         mBtnCambiarMapa->bindAccion(&MenuModoMultijugador::clickControl);
         mLayoutParent->addComponent(mBtnCambiarMapa);
@@ -78,7 +67,7 @@ public:
         mBtnCambiarMapa->setLayoutParam(LAYOUT_PARAM_Y,"225");
 
         // BotonComponent para comenzar a jugar
-        mBtnJugar=new BotonComponent<MenuModoMultijugador>(mGameManager->getImagen(IMG_BOTON_JUGAR_2),this);
+        mBtnJugar=new BotonComponent<MenuModoMultijugador>(mGameManagerInterfaz->getImagen(IMG_BOTON_JUGAR_2),this);
         mBtnJugar->setId(MENU_BOTON_JUGAR);
         mBtnJugar->bindAccion(&MenuModoMultijugador::clickControl);
         mBtnJugar->setVisible(false); // Lo ocultamos hasta que se seleccionen dos jugadores
@@ -151,9 +140,9 @@ public:
 
         //static char tmp[50];
         //sprintf(tmp,"%d",i+1);
-        //imprimir_palabra(gRenderer,mGameManager->getImagen(IMG_FUENTE_6),mAnimacionPlayer[i]->getX()-9+41,mAnimacionPlayer[i]->getY()+19,tmp,STR_MAX_ESTENDIDA);
+        //imprimir_palabra(gRenderer,mGameManagerInterfaz->getImagen(IMG_FUENTE_6),mAnimacionPlayer[i]->getX()-9+41,mAnimacionPlayer[i]->getY()+19,tmp,STR_MAX_ESTENDIDA);
 
-        //mGameManager->playSonido(SND_MENU);
+        //mGameManagerInterfaz->playSonido(SND_MENU);
 
         establecerTerrenoBatalla(gRenderer,0);
 
@@ -167,7 +156,7 @@ public:
 
     void packLayout(SDL_Renderer * gRenderer){
         cout << "MenuModoMultijugador::packLayout"<<endl;
-        SDL_Rect rect = {0,0,mGameManager->getWidth(),mGameManager->getHeight()};
+        SDL_Rect rect = mGameManagerInterfaz->getRectScreen();
         mLayoutParent->pack(gRenderer);
         mLayoutParent->setRectDibujo(rect);
     }
@@ -201,9 +190,6 @@ public:
                 mAnimaActivado[i]->setY(mAnimacionPlayer[i]->getY()+20);
 
             }
-            //mTextLabelMinutos->setDisabled(true);
-            //mTextLabelVictorias->setDisabled(true);
-            //mMapaTerrenoSeleccionado.setEjeVisualizacion(mMapaTerrenoSeleccionado->getEjeX(),mMapaTerrenoSeleccionado->getEjeY());
             terrenoActual = nuevoTerreno;
             return true;
         }
@@ -238,21 +224,21 @@ public:
                 break;
             case MENU_BOTON_CAMBIAR_MAPA:
                 if(establecerTerrenoBatalla(mGRenderer,(terrenoActual + 1 == mMaxTerrenoBatalla)?0:terrenoActual + 1)){
-                    mGameManager->play(SFX_TONO_ACUATICO);
+                    mGameManagerInterfaz->play(SFX_TONO_ACUATICO);
                 }
                 break;
             case MENU_BOTON_JUGAR:
                 int total_players=mIsPlayerActivado[PLAYER_1]+ mIsPlayerActivado[PLAYER_2]+ mIsPlayerActivado[PLAYER_3] + mIsPlayerActivado[PLAYER_4] + mIsPlayerActivado[PLAYER_5];
                 if(total_players>=2){
                     Juego * nuevoJuego = new Juego(
-                            mGameManager,
+                            mGameManagerInterfaz,
                             "data/niveles/batalla/mapa_batalla_" + std::to_string(terrenoActual + 1) + ".tmx",
                             victoriasEscogidas,
                             minutosEscogidos,
                             mIsPlayerActivado
                     );
-                    mGameManager->cambiarInterfaz(nuevoJuego); //iniciamos en modo batalla, le pasamos el array con los players seleccionados por el usuario
-                    mGameManager->play(SFX_EXPLOSION);
+                    mGameManagerInterfaz->cambiarInterfaz(nuevoJuego); //iniciamos en modo batalla, le pasamos el array con los players seleccionados por el usuario
+                    mGameManagerInterfaz->play(SFX_EXPLOSION);
                 }
                 break;
         }
@@ -280,7 +266,7 @@ public:
 
         // Si hay mas de dos botones players activados se muestra el boton de jugar
         mBtnJugar->setVisible(mIsPlayerActivado[PLAYER_1]+ mIsPlayerActivado[PLAYER_2]+ mIsPlayerActivado[PLAYER_3] + mIsPlayerActivado[PLAYER_4] + mIsPlayerActivado[PLAYER_5]>1);
-        mGameManager->play(SFX_TONO_SECO);
+        mGameManagerInterfaz->play(SFX_TONO_SECO);
     }
 
     virtual bool isPaused() override {
@@ -303,7 +289,7 @@ public:
         if(event->type==SDL_KEYDOWN){
             switch(event->key.keysym.sym){
                 case SDLK_ESCAPE:
-                    mGameManager->goBack();
+                    mGameManagerInterfaz->goBack();
                     break;
                 case SDLK_RETURN:
                     mBotonClicked=MENU_BOTON_JUGAR;
@@ -338,22 +324,22 @@ public:
     virtual void draw(SDL_Renderer *gRenderer) override {
         //cout << "MenuModoMultijugador::draw"<<endl;
 
-        //mGameManager->getImagen((CodeImagen)std::stoi(mMapaTerrenoSeleccionado.getPropertyMap(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer,0,0);*/
-        mGameManager->getImagen(IMG_TABLERO)->render(gRenderer,0,0);//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,177,0);//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,280,0);//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_TXT_PLAYERS_EN_BATALLA)->render(gRenderer,15,0);//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_TXT_TIEMPO_POR_RONDA)->render(gRenderer,140,18);//imprimimos la barra mensage
-        mGameManager->getImagen(IMG_TXT_VICTORIAS)->render(gRenderer,261,18);//imprimimos la barra mensage
+        //mGameManagerInterfaz->getImagen((CodeImagen)std::stoi(mMapaTerrenoSeleccionado.getPropertyMap(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer,0,0);*/
+        mGameManagerInterfaz->getImagen(IMG_TABLERO)->render(gRenderer,0,0);//imprimimos la barra mensage
+        mGameManagerInterfaz->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,177,0);//imprimimos la barra mensage
+        mGameManagerInterfaz->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,280,0);//imprimimos la barra mensage
+        mGameManagerInterfaz->getImagen(IMG_TXT_PLAYERS_EN_BATALLA)->render(gRenderer,15,0);//imprimimos la barra mensage
+        mGameManagerInterfaz->getImagen(IMG_TXT_TIEMPO_POR_RONDA)->render(gRenderer,140,18);//imprimimos la barra mensage
+        mGameManagerInterfaz->getImagen(IMG_TXT_VICTORIAS)->render(gRenderer,261,18);//imprimimos la barra mensage
 
         mMapaTerrenoSeleccionado.draw(gRenderer,0,32);//imprimimos el nivel
 
         mSprites->draw(gRenderer);
         for(int i=0;i<_PLAYERS;i++){
             if(!mIsPlayerActivado[i]){
-                imprimir_desde_grilla(mGameManager->getImagen((CodeImagen)(IMG_PLAYER_1 + i)), 6,gRenderer, mAnimacionPlayer[i]->getX(),mAnimacionPlayer[i]->getY(),1, 12,true);
+                imprimir_desde_grilla(mGameManagerInterfaz->getImagen((CodeImagen)(IMG_PLAYER_1 + i)), 6,gRenderer, mAnimacionPlayer[i]->getX(),mAnimacionPlayer[i]->getY(),1, 12,true);
             }else{
-                imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),i*2,gRenderer,i*16+20,
+                imprimir_desde_grilla(mGameManagerInterfaz->getImagen(IMG_CARAS_BOMBERMAN),i*2,gRenderer,i*16+20,
                                       15 + 0,1,10,0);
             }
         }
@@ -377,10 +363,7 @@ public:
         delete mLayoutParent;
     }
 private:
-
-
-    GameManager *  mGameManager = nullptr;
-
+    
     SDL_Renderer * mGRenderer = nullptr;
     // Contiene las animaciones(los players que se mueven)
     DrawGroup * mSprites = nullptr;

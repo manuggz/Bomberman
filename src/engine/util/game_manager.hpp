@@ -14,7 +14,7 @@
 
 using namespace std;
 
-class GameManager : public GameManagerPopUpInterfaz{
+class GameManager : public GameManagerInterfazUI{
     public:
 
     const int SCREEN_FPS = 60;

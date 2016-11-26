@@ -53,6 +53,8 @@ public :
                 }
             }
         }
+
+        isUpdating = false;
     }
 
 protected:

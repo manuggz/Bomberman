@@ -13,7 +13,7 @@ class MenuPrincipal : public MenuListLabel{
 
 public:
 
-    MenuPrincipal(GameManager *gameManager) : MenuListLabel(gameManager) {
+    MenuPrincipal(GameManagerInterfazUI *gameManager) : MenuListLabel(gameManager) {
 
         mMenuOpcionesText.push_back("Nuevo Juego");
         mMenuOpcionesText.push_back("Editor");
@@ -23,7 +23,7 @@ public:
 
     virtual bool setOpcionResaltada(int nuevaOpcion) override {
         if(MenuListLabel::setOpcionResaltada(nuevaOpcion)){
-            mGameManager->play(SFX_TONO_ACUATICO);
+            mGameManagerInterfaz->play(SFX_TONO_ACUATICO);
             return true;
         }
         return false;
@@ -33,7 +33,7 @@ public:
         switch(mOpcionMenuResaltadaActual){
             case MENU_OPCION_NUEVO_JUEGO:
                 //cout << "MENU_OPCION_NUEVO_JUEGO"<< endl;
-                mGameManager->cambiarInterfaz(new MenuNuevoJuego(mGameManager));
+                mGameManagerInterfaz->cambiarInterfaz(new MenuNuevoJuego(mGameManagerInterfaz));
                 break;
             case MENU_OPCION_EDITOR:
                 //cout << "MENU_OPCION_EDITOR"<< endl;

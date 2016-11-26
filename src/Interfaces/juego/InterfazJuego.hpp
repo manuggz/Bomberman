@@ -1,21 +1,25 @@
-//
-// Created by manuggz on 22/11/16.
-//
+/**
+ * @file InterfazJuego.hpp
+ * @author manuelggonzalezm@gmail.com
+ * @date 26/11/2017
+ */
 
 #ifndef BOMBERMAN_INTERFAZGALERIA_HPP
 #define BOMBERMAN_INTERFAZGALERIA_HPP
 
 #include "../../niveles/NivelMapa.hpp"
 
-#include "InterfazSpriteGroup.hpp"
-
 class Bomba;
 class Player;
 class Bloque;
 
-class InterfazJuego : public InterfazSpriteGroup{
+/**
+ * Esta clase contiene las funciones que un
+ */
+class InterfazJuego{
 
 public:
+
     virtual LTexture * getImagen(CodeImagen code) = 0;
     virtual SDL_Joystick * getJoy(int id) = 0;
     virtual int getJoysActivos()=0;

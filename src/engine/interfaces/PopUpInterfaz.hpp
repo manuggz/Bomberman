@@ -9,7 +9,7 @@
 #include <SDL_system.h>
 #include <SDL_events.h>
 #include "InterfazUI.hpp"
-#include "../util/GameManagerPopUpInterfaz.hpp"
+#include "GameManagerPopUpInterfaz.hpp"
 
 /**
  * Esta clase define un Layout que se va a mostrar en pantalla.

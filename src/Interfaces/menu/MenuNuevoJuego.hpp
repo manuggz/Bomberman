@@ -12,7 +12,7 @@ class MenuNuevoJuego : public MenuListLabel{
 
 public:
 
-    MenuNuevoJuego(GameManager *game) : MenuListLabel(game) {
+    MenuNuevoJuego(GameManagerInterfazUI *game) : MenuListLabel(game) {
         mMenuOpcionesText.push_back("Historia");
         mMenuOpcionesText.push_back("Multiplayer");
         mMenuOpcionesText.push_back("Conexion");
@@ -27,7 +27,7 @@ public:
                 break;
             case MENU_OPCION_MULTIPLAYER:
                 cout << "MENU_OPCION_MULTIPLAYER"<< endl;
-                mGameManager->cambiarInterfaz(new MenuModoMultijugador(mGameManager));
+                mGameManagerInterfaz->cambiarInterfaz(new MenuModoMultijugador(mGameManagerInterfaz));
                 break;
             case MENU_OPCION_CONEXION:
                 //cout << "MENU_OPCION_CONEXION"<< endl;

@@ -21,10 +21,9 @@
  * @param isPlayerActivo Array con los players que jugaran
  *
  */
-Juego::Juego (GameManager * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[_PLAYERS])
-:mGrpSprites(this){
+Juego::Juego (GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[_PLAYERS])
+:InterfazUI(gameManager),mGrpSprites(this){
 
-    mGameManager = gameManager;
 
     // Establecemos como activos los players seleccionados a que jueguen
     // Notar que el uso de esta variable recae en que tenemos un array de punteros a clases Players
@@ -138,10 +137,10 @@ void Juego::createUI(SDL_Renderer *gRenderer) {
 void Juego::start() {
     InterfazUI::start();
     reiniciarEstado();
-    PopUpCountDown *  mostrarMensajeTexto = new PopUpCountDown(mGameManager,"El juego comienza en ",3);
+    PopUpCountDown *  mostrarMensajeTexto = new PopUpCountDown(mGameManagerInterfaz,"El juego comienza en ",3);
     mostrarMensajeTexto->setSizeText(20);
-    mGameManager->showPopUp(mostrarMensajeTexto,ID_POPUP_JUEGO_COMIENZA);
-    mGameManager->playSonido((CodeMusicSonido)(4 + rand()%1));
+    mGameManagerInterfaz->showPopUp(mostrarMensajeTexto,ID_POPUP_JUEGO_COMIENZA);
+    mGameManagerInterfaz->playSonido((CodeMusicSonido)(4 + rand()%1));
 }
 
 
@@ -174,16 +173,16 @@ void Juego::resultPopUp(void *result, int popUpCode) {
                 }
             }
 
-            PopUpMostrarMensajeTexto *  mostrarMensajeTexto = new PopUpMostrarMensajeTexto(mGameManager,
+            PopUpMostrarMensajeTexto *  mostrarMensajeTexto = new PopUpMostrarMensajeTexto(mGameManagerInterfaz,
                                                                                            "Player " + std::to_string(
-                                                                                                   idPlayerActivo) +
+                                                                                                   idPlayerActivo + 1) +
                                                                                            " ha ganado el juego!",3);
-            mGameManager->showPopUp(mostrarMensajeTexto,ID_POPUP_JUEGO_GANADOR);
+            mGameManagerInterfaz->showPopUp(mostrarMensajeTexto,ID_POPUP_JUEGO_GANADOR);
 
             }
             break;
         case ID_POPUP_JUEGO_GANADOR:
-            mGameManager->goBack();
+            mGameManagerInterfaz->goBack();
             break;
         case ID_POPUP_JUEGO_COMIENZA:
             break;
@@ -242,7 +241,7 @@ void Juego::procesarEvento(SDL_Event * evento){
         case SDL_KEYDOWN:
              switch(evento->key.keysym.sym){
                 case SDLK_ESCAPE:
-                    mGameManager->goBack();
+                    mGameManagerInterfaz->goBack();
                     break;
                 case SDLK_TAB:
                      /*if(estado_actual!=DISPLAY_MSG&&!pausado){
@@ -288,7 +287,7 @@ void Juego::update(){
 
     // Si solo quedan 20 segundos o menos
     if((mMinutos*60 - getSegundosInicioNivel()) <= 20 && !mIsPlayingWarningSound){
-        mGameManager->playSonido(SND_WARNING_TIME);
+        mGameManagerInterfaz->playSonido(SND_WARNING_TIME);
         mIsPlayingWarningSound = true;
     }
 
@@ -318,15 +317,15 @@ void Juego::update(){
                 // se establece el codigo del POP UP, esto es para que una vez que se ha mostrado el pop up realizar
                 // una acción distinta y no tener que agregar una variable de más
                 // tal como: terminoJuego = true
-                mGameManager->showPopUp(new JuegoMostrarGanadas(mGameManager, mRondasGanadas), ID_POPUP_JUEGO_MOSTRAR_GAN_TERMINAR);
+                mGameManagerInterfaz->showPopUp(new JuegoMostrarGanadas(mGameManagerInterfaz, mRondasGanadas), ID_POPUP_JUEGO_MOSTRAR_GAN_TERMINAR);
             }else{
-                mGameManager->showPopUp(new JuegoMostrarGanadas(mGameManager, mRondasGanadas), ID_POPUP_JUEGO_MOSTRAR_GAN_CONTINUAR);
+                mGameManagerInterfaz->showPopUp(new JuegoMostrarGanadas(mGameManagerInterfaz, mRondasGanadas), ID_POPUP_JUEGO_MOSTRAR_GAN_CONTINUAR);
             }
         }
     }else if(totalPlayersActivos==0){
-        PopUpMostrarMensajeTexto *  mostrarMensajeTexto = new PopUpMostrarMensajeTexto(mGameManager,
+        PopUpMostrarMensajeTexto *  mostrarMensajeTexto = new PopUpMostrarMensajeTexto(mGameManagerInterfaz,
                                                                                        "Nadie gana en esta ronda! :( ",3);
-        mGameManager->showPopUp(mostrarMensajeTexto,ID_POPUP_JUEGO_NADIE_GANA_RONDA);
+        mGameManagerInterfaz->showPopUp(mostrarMensajeTexto,ID_POPUP_JUEGO_NADIE_GANA_RONDA);
     }
 
     /**
@@ -366,49 +365,49 @@ bool Juego::estaPlayerActivo(IdPlayer playerId){
 void Juego::drawBarra(SDL_Renderer * gRenderer){
 
     // Dibuja un cuadro anaranjado donde van a estar los datos
-    mGameManager->getImagen(IMG_TABLERO)->render(gRenderer,0,0);
+    mGameManagerInterfaz->getImagen(IMG_TABLERO)->render(gRenderer,0,0);
 
     //PLAYER_1
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),
+    imprimir_desde_grilla(mGameManagerInterfaz->getImagen(IMG_CARAS_BOMBERMAN),
                           !(estaPlayerActivo(PLAYER_1)) + PLAYER_1*2 ,gRenderer,1,6,1,10,0);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,15,3);
+    mGameManagerInterfaz->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,15,3);
 
     //PLAYER_2
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),
+    imprimir_desde_grilla(mGameManagerInterfaz->getImagen(IMG_CARAS_BOMBERMAN),
                           !(estaPlayerActivo(PLAYER_2)) + PLAYER_2*2 ,gRenderer,32,6,1,10,0);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,48,3);
+    mGameManagerInterfaz->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,48,3);
 
     //PLAYER_3
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),
+    imprimir_desde_grilla(mGameManagerInterfaz->getImagen(IMG_CARAS_BOMBERMAN),
                           !(estaPlayerActivo(PLAYER_3)) + PLAYER_3*2 ,gRenderer,65,6,1,10,0);
 
-    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,80,3);
+    mGameManagerInterfaz->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,80,3);
 
 //    //PLAYER_4
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),
+    imprimir_desde_grilla(mGameManagerInterfaz->getImagen(IMG_CARAS_BOMBERMAN),
                           !(estaPlayerActivo(PLAYER_4)) + PLAYER_4*2 ,gRenderer,253,6,1,10,0);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,270,3);
+    mGameManagerInterfaz->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,270,3);
 
     //PLAYER_5
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),
+    imprimir_desde_grilla(mGameManagerInterfaz->getImagen(IMG_CARAS_BOMBERMAN),
                           !(estaPlayerActivo(PLAYER_5)) + PLAYER_5*2 ,gRenderer,288,6,1,10,0);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,304,3);
+    mGameManagerInterfaz->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,304,3);
 
     // Dibujamos el cuadro donde se dibujara el tiempo restante
-    mGameManager->getImagen(IMG_CUADRO_GRANDE)->render(gRenderer,137,3);
+    mGameManagerInterfaz->getImagen(IMG_CUADRO_GRANDE)->render(gRenderer,137,3);
 
     // Calculamos y dibujamos el tiempo restante
     if(mGameTimer.isStarted()){
@@ -427,10 +426,10 @@ void Juego::drawBarra(SDL_Renderer * gRenderer){
 
 }
 int Juego::getJoysActivos(){
-    return mGameManager->getJoysActivos();
+    return mGameManagerInterfaz->getJoysActivos();
 }
 SDL_Joystick * Juego::getJoy(int id){
-    return mGameManager->getJoy(id);
+    return mGameManagerInterfaz->getJoy(id);
 }
 
 void Juego::draw(SDL_Renderer * gRenderer){
@@ -447,7 +446,7 @@ void Juego::draw(SDL_Renderer * gRenderer){
 
 /*    if(pausado){
         //imprimir_palabra(gRenderer, game->getImagen(IMG_FUENTE_5),80,100,"pausa",STR_NORMAL);
-        imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN),id_quien_pauso*2 ,gRenderer,130,90,1,10,0);
+        imprimir_desde_grilla(mGameManagerInterfaz->getImagen(IMG_CARAS_BOMBERMAN),id_quien_pauso*2 ,gRenderer,130,90,1,10,0);
     }*/
     //if(estado_actual==DISPLAY_MSG)imprimir_palabra (gRenderer,game->getImagen(IMG_FUENTE_6),x_msg,y_msg,msg_mostrar,STR_MAX_ESTENDIDA);
 }
@@ -484,7 +483,7 @@ void Juego::eliminarSprite(Sprite *sprite) {
         mGrpSprites.add(explosion);
 
         //reproducimos un sonido
-        mGameManager->play(SFX_EXPLOSION);
+        mGameManagerInterfaz->play(SFX_EXPLOSION);
 
         delete sprite;
         return;
@@ -547,7 +546,7 @@ void Juego::eliminarSprite(Sprite *sprite) {
         }else{
             Item::TipoItem tipo_item= pItemEliminado->getTipo();
             pPlayerActivadorItem->activarPoderItem(tipo_item);
-            mGameManager->play(CodeMusicEfecto::SFX_COGER_ITEM);
+            mGameManagerInterfaz->play(CodeMusicEfecto::SFX_COGER_ITEM);
 
         }
         delete sprite;
@@ -590,7 +589,7 @@ void Juego::playerMuerto(Player * pPlayer,Sprite * pPlayerCausante){
             establecerValoresDeMapaPlayer(pPlayer->getId());
             pPlayer->cambiarEstado(EstadoSprite::PARADO);
             pPlayer->setProteccion(5);
-            mGameManager->play(SFX_PIERDE_VIDA);
+            mGameManagerInterfaz->play(SFX_PIERDE_VIDA);
         } else {
             pPlayer->setEnPantalla(false);
             pPlayer->kill();
@@ -735,7 +734,7 @@ Bomba *Juego::agregarBomba(Player * player) {
 
 
 void Juego::packLayout(SDL_Renderer *pRenderer) {
-    SDL_Rect rect = mGameManager->getRectScreen();
+    SDL_Rect rect = mGameManagerInterfaz->getRectScreen();
     mLayoutParent->pack(pRenderer);
     mLayoutParent->setRectDibujo(rect);
 }
