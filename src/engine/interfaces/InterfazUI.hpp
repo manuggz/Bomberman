@@ -4,9 +4,7 @@
 
 class InterfazUI{
  public:
-    InterfazUI(int x=0,int y=0){
-        mX=x;
-        mY=y;
+    InterfazUI(){
         mIsPaused = false;
         mIsStarted = false;
     }
@@ -26,30 +24,13 @@ class InterfazUI{
     virtual void procesarEvento(SDL_Event * event) {};
     virtual void update(){};
     virtual void updateWhenPopUp(){};
-    virtual void resultPopUp(void *result){};
+    virtual void resultPopUp(void *result, int i) {};
     virtual void draw(SDL_Renderer * gRenderer) = 0;
 
-/*    virtual void setX(int nuevaX){
-        mX = nuevaX;
-    }
-    virtual void setY(int nuevaY){
-        mY = nuevaY;
-    }
-    */virtual int getX(){
-        return mX;
-    }
-    virtual int getY(){
-        return mY;
-    }
-    /*virtual void killSprite(int,int){return;};
-    virtual void erase(int type,int id_sprite){return;};
-    virtual int addSprite(int ,int ,int ,int =-1,int =-1){return -1;};*/
     virtual ~InterfazUI(){};
 
 protected:
 
-    // Coordenadas donde se dibujara la Interfaz
-    int mX = 0,mY = 0;
     bool mIsPaused = false;
     bool mIsStarted = false;
 

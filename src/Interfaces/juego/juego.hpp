@@ -67,10 +67,15 @@ public:
 
     void resume() override;
 
-    void resultPopUp(void *result) override;
+    void resultPopUp(void *result, int popUpCode) override;
 
 protected:
 
+    static const int ID_POPUP_JUEGO_MOSTRAR_GAN_TERMINAR      = 100;
+    static const int ID_POPUP_JUEGO_MOSTRAR_GAN_CONTINUAR     = 101;
+    static const int ID_POPUP_JUEGO_NADIE_GANA_RONDA          = 102;
+    static const int ID_POPUP_JUEGO_COMIENZA                  = 103;
+    static const int ID_POPUP_JUEGO_GANADOR                   = 104;
     // Controlador del Juego en General(Interfaces,SDL y mainloop)
     GameManager * mGameManager = nullptr;
 
@@ -113,7 +118,6 @@ protected:
 
     Item::TipoItem getTipoNuevoItem();
     void establecerValoresDeMapaPlayer(IdPlayer idPlayer);
-    void agregarPlayerActivo(IdPlayer idPlayer);
     void packLayout(SDL_Renderer *pRenderer);
     void drawBarra(SDL_Renderer *);
     void establecerValoresDeMapaPlayers();

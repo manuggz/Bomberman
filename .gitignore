@@ -8,3 +8,6 @@ build/data/imagenes/fondos/bomberman.png
 build/data/imagenes/fondos/fondo_menu_3.bmp
 *.[oa]
 *~
+build/CMakeFiles/Bomberman.dir/src/Interfaces/editor/
+build/CMakeFiles/Bomberman.dir/src/Interfaces/juego/
+build/CMakeFiles/Bomberman.dir/src/Interfaces/menu/

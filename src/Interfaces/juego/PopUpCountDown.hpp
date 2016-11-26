@@ -9,11 +9,10 @@
 
 class PopUpCountDown : public PopUpMostrarMensajeTexto{
 public:
-    PopUpCountDown(GameManager *gameManager,std::string mensaje,Uint8 tiempoDeMuestraSegundos)
-            : PopUpMostrarMensajeTexto(
-            gameManager,
-            mensaje + std::to_string(tiempoDeMuestraSegundos) + "!",
-            tiempoDeMuestraSegundos) {
+    PopUpCountDown(GameManagerPopUpInterfaz *gameManager,std::string mensaje,Uint8 tiempoDeMuestraSegundos)
+            : PopUpMostrarMensajeTexto(gameManager,
+                                       mensaje + std::to_string(tiempoDeMuestraSegundos) + "!",
+                                       tiempoDeMuestraSegundos) {
         mpMensajeCrudo = mensaje;
     }
 

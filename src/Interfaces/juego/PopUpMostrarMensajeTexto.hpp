@@ -24,10 +24,10 @@ public:
      * @param mensaje MEnsaje a mostrar
      * @param tiempoDeMuestraSegundos  segundos que durará el mensaje
      */
-    PopUpMostrarMensajeTexto(GameManager * gameManager,std::string mensaje,Uint8 tiempoDeMuestraSegundos){
+    PopUpMostrarMensajeTexto(GameManagerPopUpInterfaz *gameManager1, std::string mensaje,
+                             Uint8 tiempoDeMuestraSegundos) : PopUpInterfaz(gameManager1) {
         mMensajeMostrar          = mensaje;
         mTiempoDeMuestraSegundos = tiempoDeMuestraSegundos;
-        mGameManager             = gameManager;
     }
 
     void setText(std::string nuevoTexto){
@@ -51,7 +51,7 @@ public:
         }
     }
     void createUI(SDL_Renderer *gRenderer) override {
-        InterfazUI::createUI(gRenderer);
+        PopUpInterfaz::createUI(gRenderer);
 
         mLayoutParent   = new LayoutAbsolute();
 
@@ -74,20 +74,20 @@ public:
         mLayoutParent->setRectDibujo(rect);
     }
     void start() override {
-        InterfazUI::start();
+        PopUpInterfaz::start();
         mControlTimer.start();
     }
 
     void update() override {
-        InterfazUI::update();
+        PopUpInterfaz::update();
 
         if(mControlTimer.getTicks()/1000 >= mTiempoDeMuestraSegundos){
-            mGameManager->closePopUp(nullptr);
+            std::string * resultado = new std::string(mMensajeMostrar);
+            mGameManager->closePopUp(resultado);
         }
     }
 
     void draw(SDL_Renderer *gRenderer) override {
-
         PopUpInterfaz::draw(gRenderer);
 
         if(mLayoutParent->isDisabled()){
@@ -102,8 +102,8 @@ protected:
     LayoutAbsolute *mLayoutParent;
     LTimer mControlTimer;
     Uint8 mTiempoDeMuestraSegundos = 0;
-    GameManager *mGameManager;
     TextLabelComponent *mpMensajeTexto = nullptr;
+
     SDL_Color mColorTexto {255,255,0,255};
     int mSizeText = 15;
     SDL_Renderer *mpGameRenderer;

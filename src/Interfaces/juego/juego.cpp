@@ -11,6 +11,7 @@
 // Eje Y en el que se dibuja el mapa
 #define MAPA_EJE_Y 32
 
+
 /**
  * Inicializa la clase Juego
  * @param gameManager
@@ -139,7 +140,7 @@ void Juego::start() {
     reiniciarEstado();
     PopUpCountDown *  mostrarMensajeTexto = new PopUpCountDown(mGameManager,"El juego comienza en ",3);
     mostrarMensajeTexto->setSizeText(20);
-    mGameManager->showPopUp(mostrarMensajeTexto);
+    mGameManager->showPopUp(mostrarMensajeTexto,ID_POPUP_JUEGO_COMIENZA);
     mGameManager->playSonido((CodeMusicSonido)(4 + rand()%1));
 }
 
@@ -154,9 +155,42 @@ void Juego::resume() {
     mGameTimer.resume();
 }
 
-void Juego::resultPopUp(void *result) {
-    InterfazUI::resultPopUp(result);
+void Juego::resultPopUp(void *result, int popUpCode) {
+    InterfazUI::resultPopUp(result, popUpCode);
 
+    switch(popUpCode){
+        case ID_POPUP_JUEGO_NADIE_GANA_RONDA:
+            reiniciarEstado();
+            break;
+        case ID_POPUP_JUEGO_MOSTRAR_GAN_CONTINUAR:
+            reiniciarEstado();
+            break;
+        case ID_POPUP_JUEGO_MOSTRAR_GAN_TERMINAR:{
+
+            IdPlayer idPlayerActivo = PLAYER_NONE;
+            for(int j = 0 ; j < _PLAYERS,idPlayerActivo == PLAYER_NONE;j++){
+                if(estaPlayerActivo((IdPlayer) j)){
+                    idPlayerActivo = (IdPlayer) j;
+                }
+            }
+
+            PopUpMostrarMensajeTexto *  mostrarMensajeTexto = new PopUpMostrarMensajeTexto(mGameManager,
+                                                                                           "Player " + std::to_string(
+                                                                                                   idPlayerActivo) +
+                                                                                           " ha ganado el juego!",3);
+            mGameManager->showPopUp(mostrarMensajeTexto,ID_POPUP_JUEGO_GANADOR);
+
+            }
+            break;
+        case ID_POPUP_JUEGO_GANADOR:
+            mGameManager->goBack();
+            break;
+        case ID_POPUP_JUEGO_COMIENZA:
+            break;
+        default:break;
+    }
+
+    if(result)delete result;
 }
 /**
  * Una vez cargado el mapa se deben iniciar los players con los valores iniciales que se establecieron que
@@ -188,24 +222,18 @@ void Juego::establecerValoresDeMapaPlayer(IdPlayer idPlayer){
  */
 void Juego::agregarPlayersActivos() {
     for (int i = 0; i < _PLAYERS; i++) {
-        if (mIsPlayerActivado[i]) {
-            agregarPlayerActivo((IdPlayer) i);
+        if(mIsPlayerActivado[i]){
+
+            mPlayerSprite[i]->cambiarEstado(EstadoSprite::ABAJO);
+            mPlayerSprite[i]->cambiarEstado(EstadoSprite::PARADO);
+            mPlayerSprite[i]->setProteccion(10);
+
+            if(!mPlayerSprite[i]->isActivo()){
+                mPlayerSprite[i]->setEnPantalla(true);
+                mGrpSprites.add(mPlayerSprite[i]);
+                mGrpPlayers.add(mPlayerSprite[i]);
+            }
         }
-    }
-}
-/**
- * Agrega un player a los grupos del juego
- * @param idPlayer
- */
-void Juego::agregarPlayerActivo(IdPlayer idPlayer){
-    if (mIsPlayerActivado[idPlayer] && mPlayerSprite[idPlayer]) {
-
-        mPlayerSprite[idPlayer]->setEnPantalla(true);
-        mPlayerSprite[idPlayer]->cambiarEstado(EstadoSprite::PARADO);
-        mPlayerSprite[idPlayer]->setProteccion(10);
-
-        mGrpSprites.add(mPlayerSprite[idPlayer]);
-        mGrpPlayers.add(mPlayerSprite[idPlayer]);
     }
 }
 
@@ -284,37 +312,24 @@ void Juego::update(){
                     &&mRondasGanadas[idPlayerActivo] == mRondasGanadas[mIdLiderRondasGanadas])
                 mIdLiderRondasGanadas = PLAYER_NONE;
 
-            //mGameRenderer-> (new JuegoMostrarGanadas(mGameManager,mRondasGanadas));
 
             if(mRondasGanadas[idPlayerActivo] >= mNVictorias){
-                PopUpMostrarMensajeTexto *  mostrarMensajeTexto = new PopUpMostrarMensajeTexto(
-                        mGameManager,
-                        "Player " + std::to_string(idPlayerActivo + 1) + " ha ganado!",
-                        3
-                );
-                //mostrarMensajeTexto->setSizeText(20);
-                mGameManager->showPopUp(mostrarMensajeTexto);
-                //displayMensage(msg_ganador);
-                //_quit=true;
+                // Notar que dependiendo si se terminó el juego una vez que se muestre quien lleva la mayoria de copas
+                // se establece el codigo del POP UP, esto es para que una vez que se ha mostrado el pop up realizar
+                // una acción distinta y no tener que agregar una variable de más
+                // tal como: terminoJuego = true
+                mGameManager->showPopUp(new JuegoMostrarGanadas(mGameManager, mRondasGanadas), ID_POPUP_JUEGO_MOSTRAR_GAN_TERMINAR);
             }else{
-                //reiniciarMapa();
-                //setMapaPlay(idTerrenoActual);
+                mGameManager->showPopUp(new JuegoMostrarGanadas(mGameManager, mRondasGanadas), ID_POPUP_JUEGO_MOSTRAR_GAN_CONTINUAR);
             }
         }
     }else if(totalPlayersActivos==0){
-        char msg_ganador[20];
-        sprintf(msg_ganador,"empate");
-        std::cout << msg_ganador << std::endl;
-        //displayMensage(msg_ganador);
-        //setMapaPlay(idTerrenoActual);
+        PopUpMostrarMensajeTexto *  mostrarMensajeTexto = new PopUpMostrarMensajeTexto(mGameManager,
+                                                                                       "Nadie gana en esta ronda! :( ",3);
+        mGameManager->showPopUp(mostrarMensajeTexto,ID_POPUP_JUEGO_NADIE_GANA_RONDA);
     }
 
     /**
-
-    int id_activo=-1;
-    int total_activos=0;
-
-    total_activos=getActivos(PLAYER,id_activo);
 
 
 
@@ -391,10 +406,6 @@ void Juego::drawBarra(SDL_Renderer * gRenderer){
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
     mGameManager->getImagen(IMG_CUADRO_PEQUENIO)->render(gRenderer,304,3);
-
-    // Dibujamos la cara del player que va llevando el mayor numero de rondas ganadas
-    if(mIdLiderRondasGanadas != PLAYER_NONE)
-        imprimir_desde_grilla(mGameManager->getImagen(IMG_CARAS_BOMBERMAN_GRANDES),mIdLiderRondasGanadas,gRenderer,154,-10,1,5,0);
 
     // Dibujamos el cuadro donde se dibujara el tiempo restante
     mGameManager->getImagen(IMG_CUADRO_GRANDE)->render(gRenderer,137,3);

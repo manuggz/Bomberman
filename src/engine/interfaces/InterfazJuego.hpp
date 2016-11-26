@@ -5,11 +5,6 @@
 #ifndef BOMBERMAN_INTERFAZGALERIA_HPP
 #define BOMBERMAN_INTERFAZGALERIA_HPP
 
-//#include "../util/LTexture.hpp"
-//#include "../../constantes.hpp"
-
-//class LTexture;
-///enum CodeImagen;
 #include "../../niveles/NivelMapa.hpp"
 
 #include "InterfazSpriteGroup.hpp"

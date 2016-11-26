@@ -14,7 +14,7 @@
 
 using namespace std;
 
-class GameManager{
+class GameManager : public GameManagerPopUpInterfaz{
     public:
 
     const int SCREEN_FPS = 60;
@@ -42,11 +42,11 @@ class GameManager{
 
     void setRoot(InterfazUI *nuevaInterfazRoot);
 
-    SDL_Rect getRectScreen();
+    SDL_Rect getRectScreen() override;
 
-    void closePopUp(void * result);
+    void closePopUp(void * result = nullptr) override;
 
-    void showPopUp(PopUpInterfaz *pPopUp);
+    void showPopUp(PopUpInterfaz *pPopUp,int showPopUp);
 
 private:
     stack<InterfazUI *> interfaces; // Pila de interfaces
@@ -65,5 +65,8 @@ private:
 
     PopUpInterfaz * mpPopUp = nullptr;
     void *mpResultPopUp = nullptr;
+    // IDentificador del Actual PopUp
+    // USado para identificar en el codigo cual es el popup que se cerró
+    int mIDCodePopUp;
 };
 #endif

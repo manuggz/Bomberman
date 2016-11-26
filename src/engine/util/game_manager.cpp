@@ -66,14 +66,14 @@ void GameManager::iniciarSDL(){
  * @param pantalla_completa Dice si se quiere que se ocupe toda la pantalla
  */
 void GameManager::setModeVideo(bool pantalla_completa){
-    Uint32 banderas=0;
+    Uint32 banderas=SDL_WINDOW_INPUT_FOCUS|SDL_WINDOW_ALLOW_HIGHDPI|SDL_WINDOW_MOUSE_CAPTURE;
 
-    if(pantalla_completa) banderas= SDL_WINDOW_FULLSCREEN;
+    if(pantalla_completa) banderas|= SDL_WINDOW_FULLSCREEN;
 
     screen = SDL_CreateWindow(
-            "DestructionBombs",                  // window title
-            SDL_WINDOWPOS_UNDEFINED,           // initial x position
-            SDL_WINDOWPOS_UNDEFINED,           // initial y position
+            "DestructionBombs v0.8",                  // window title
+            SDL_WINDOWPOS_CENTERED,           // initial x position
+            SDL_WINDOWPOS_CENTERED,           // initial y position
             W_SCREEN,                               // mWidth, in pixels
             H_SCREEN,                               // height, in pixels
             banderas                  // flags - see below
@@ -155,8 +155,8 @@ bool GameManager::procesarEventos(){
                 salir_juego=true;
                 return false;
             case SDL_KEYDOWN:
-                if((evento.key.keysym.sym==SDLK_RETURN && evento.key.keysym.mod & SDLK_LALT)||
-                (evento.key.keysym.sym==SDLK_f && evento.key.keysym.mod & SDLK_LALT)){
+                if((evento.key.keysym.sym==SDLK_RETURN && evento.key.keysym.mod & SDLK_LSHIFT)||
+                (evento.key.keysym.sym==SDLK_f && evento.key.keysym.mod & SDLK_LSHIFT)){
                     setModeVideo(full);
                     full=!full;
                     return false;
@@ -169,8 +169,12 @@ bool GameManager::procesarEventos(){
             break;
             default:break;
         }
-        
-        interfaz_actual->procesarEvento(&evento);
+
+        if(interfaz_actual && (!mpPopUp || !mpPopUp->isStarted()))
+            interfaz_actual->procesarEvento(&evento);
+
+        if(mpPopUp && mpPopUp->isStarted())
+            mpPopUp->procesarEvento(&evento);
     }
     return true;//se puede continuar
 }
@@ -198,13 +202,15 @@ void GameManager::run(){
 
         if(mpPopUp&& mpPopUp->isStopped()){
 
-            if(interfaz_actual != nullptr){
-                interfaz_actual->resultPopUp(mpResultPopUp);
-                interfaz_actual->resume();
-            }
-
             delete mpPopUp;
             mpPopUp = nullptr;
+
+            if(interfaz_actual != nullptr){
+                interfaz_actual->resultPopUp(mpResultPopUp, mIDCodePopUp);
+                if(!interfaz_actual->isStopped())
+                    interfaz_actual->resume();
+            }
+
 
         }
         // Si el top de nuestra pila de interfazes es distinto de nuestra interfaz actual
@@ -342,6 +348,7 @@ int GameManager::getHeight() {
 void GameManager::goBack() {
     cout << "GameManager::popInterface"<<endl;
     interfaces.pop();
+    interfaz_actual->stop();
     if(mpPopUp){
         mpPopUp->stop();
     }
@@ -375,15 +382,24 @@ SDL_Rect GameManager::getRectScreen() {
 void GameManager::closePopUp(void * result) {
 
     if(mpPopUp){
-        mpPopUp->stop();
+        if(!mpPopUp->isStopped())
+            mpPopUp->stop();
     }
     mpResultPopUp = result;
 }
 
-void GameManager::showPopUp(PopUpInterfaz *pPopUp) {
+void GameManager::showPopUp(PopUpInterfaz *pPopUp,int CodePopUp) {
 
-    closePopUp(nullptr);
-    mpPopUp = pPopUp;
+    if(mpPopUp){
+        if(!mpPopUp->isStopped())
+            mpPopUp->stop();
+
+        interfaz_actual->resultPopUp(nullptr,mIDCodePopUp);
+        delete mpPopUp;
+    }
+
+    mpPopUp      = pPopUp;
+    mIDCodePopUp = CodePopUp;
 }
 /*
 void GameManager::cargarDatos(){  

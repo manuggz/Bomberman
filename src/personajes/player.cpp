@@ -313,11 +313,7 @@ void Player::avanzarAnimacion () {
 }
 
 void Player::cambiarEstado(EstadoSprite nuevo) {
-    if(estado_actual == NINGUNO){
-        estado_anterior = ABAJO;
-    }else{
-        estado_anterior = estado_actual;
-    }
+    estado_anterior = estado_actual;
 	estado_actual   = nuevo;
 	paso  = 0;
 	delay = 3;

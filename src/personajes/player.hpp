@@ -36,7 +36,15 @@ class Player:public Sprite{
 
         void setVidas(int nuevo){mVidas=nuevo;};
         void setProteccion(int segundos);
-        void setEnPantalla(bool nuevo){mEnPantalla=nuevo;};
+        void setEnPantalla(bool nuevo){
+			mEnPantalla=nuevo;
+			if(mEnPantalla){
+				mTimer.start();
+				mSelfKill = false;
+			}else{
+				mTimer.stop();
+			}
+		};
         
         int getVidas(){return mVidas;};
         IdPlayer getId(){return mPlayerId;};
