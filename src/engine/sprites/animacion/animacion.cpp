@@ -19,6 +19,7 @@ Animacion::Animacion(SpriteSheet * spriteSheet,string frames,int x,int y,int del
     mRepeticiones = 0;
     indexInicioAniEnd = 0;
     mDelayCambioFrame = delayCambioFrame;
+    mSprSCuadros->setCurrentCuadro(mControlFrames.cuadro());
 }
 
 void Animacion::update(const Uint8 * teclas){

@@ -43,7 +43,7 @@ namespace TMX
 
       struct Tile{
           std::map<std::string, std::string> property;
-          std::vector<std::string> animation;
+          std::vector<std::string> animation ;
       };
 
       struct Tileset {

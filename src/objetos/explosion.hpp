@@ -1,7 +1,7 @@
 #ifndef EXPLOSION_HPP
 #define EXPLOSION_HPP
 #include <SDL2/SDL.h>
-#include "../constantes.hpp"
+#include "../util/constantes.hpp"
 #include "../Interfaces/juego/juego.hpp"
 #include "../engine/sprites/animacion/animacion.hpp"
 

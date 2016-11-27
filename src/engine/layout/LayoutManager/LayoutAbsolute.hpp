@@ -7,7 +7,7 @@
 
 #include <deque>
 #include "LayoutComponent.hpp"
-#include "../../../util.hpp"
+#include "../../../util/util.hpp"
 
 class LayoutAbsolute: public LayoutComponent{
 public:

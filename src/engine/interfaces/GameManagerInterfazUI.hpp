@@ -6,7 +6,7 @@
 #define BOMBERMAN_GAMEMANAGERINTERFAZ_HPP
 
 #include "GameManagerPopUpInterfaz.hpp"
-#include "../../galeria.hpp"
+#include "../../util/galeria.hpp"
 
 class InterfazUI;
 class PopUpInterfaz;

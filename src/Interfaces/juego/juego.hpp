@@ -4,14 +4,14 @@
 using namespace std;
 #include <SDL2/SDL.h>
 #include "../../niveles/NivelMapa.hpp"
-#include "../../constantes.hpp"
+#include "../../util/constantes.hpp"
 #include "../../engine/interfaces/InterfazUI.hpp"
 #include "../../engine/sprites/CGroup.hpp"
 /*Personajes*/
 #include "../../personajes/bomba.hpp"
 #include "../../objetos/item.hpp"
 #include "../../objetos/explosion.hpp"
-#include "../../personajes/bloque.hpp"
+#include "../../engine/mapa/TileEnLlamas.hpp"
 #include "../../engine/util/LTimer.hpp"
 #include "../../engine/sprites/CDrawGroup.hpp"
 //#include "juego_historia.hpp"
@@ -55,7 +55,7 @@ public:
 
     LTexture * getImagen(Galeria::CodeImagen code) override { return mGameManagerInterfaz->getTexture(code);}
 
-    Bloque *agregarBloqueEnLlamas(int x, int y) override;
+    TileEnLlamas *agregarBloqueEnLlamas(int x, int y) override;
 
     bool esBloqueSolido(int x, int y) override;
     bool esBloqueRompible(int x, int y) override;
@@ -93,7 +93,7 @@ protected:
     Group mGrpBloques;
 
 
-    NivelMapa  mMapa;
+    NivelMapa mMapa;
     LTimer mGameTimer ;
 
     int      mRondasGanadas [_PLAYERS] {0};
@@ -124,6 +124,7 @@ protected:
     void reiniciarEstado();
     int getSegundosInicioNivel();
 
+    TextLabelComponent * mpVidasRestantesPlayer[_PLAYERS];
 };
 
 #endif

@@ -14,51 +14,67 @@ public :
         this->parent = parent;
     };
 
+    bool erase(Sprite *sprite) override {
+        if(Group::erase(sprite)){
+            if(isUpdating)
+                mEliminadosEnUpdate.push_back(sprite);
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Actualiza todos los sprites
      * Itera y llama a Sprite->update
      * @param keys
      */
     void update(const Uint8 *keys){
-        Group::update();
-        deque<Sprite*>::iterator p_Sprite= v_personajes.begin();
-        Sprite * spriteActual;
 
-        while(p_Sprite != v_personajes.end()){
+        isUpdating = true;
+
+        deque<Sprite * > copia            = v_personajes;
+        deque<Sprite*>::iterator p_Sprite = copia.begin();
+
+        while(p_Sprite != copia.end()){
 
             // Notar que el sprite pueda que ya no exista
             // Pueda que el Sprite haya sido eliminado en el parent o en otro grupo
             // Si ocurrio uno de los casos anteriores hay un problema de lógica del juego pero igual
             // hay que revisar
 
-            if((*p_Sprite) == nullptr){
-                // Lo sacamos del grupo
-                p_Sprite = v_personajes.erase(p_Sprite);
-            }else{
-                spriteActual = (*p_Sprite);
-                // El sprite existe, Ok , lo actualizamos
-                spriteActual->update(keys);
+            // Si no está eliminado
+            bool estaEliminado = false;
+            auto iteSprEliminado = mEliminadosEnUpdate.begin();
+            while(iteSprEliminado != mEliminadosEnUpdate.end()){
+                if(*iteSprEliminado == *p_Sprite){
+                    estaEliminado = true;
+                    break;
+                }
+                iteSprEliminado++;
+            }
+
+            if(!estaEliminado){
+                (*p_Sprite)->update(keys);
 
                 // En este punto, el Sprite pudo llamar a una funcion que hace que se elimine él o otro del grupo
                 // por lo que ahora p_Sprite puede apuntar a otro elemento
 
-                if(spriteActual->isKilled()) {
-                    parent->eliminarSprite(spriteActual);
-                    //delete spriteActual;
-
-                    p_Sprite = v_personajes.erase(p_Sprite);
-                    spriteActual = nullptr;
-                }else{
-                    p_Sprite++;
-                }
+                if((*p_Sprite)->isKilled())
+                    parent->eliminarSprite((*p_Sprite));
             }
+            p_Sprite
+                    ++;
+
         }
 
         isUpdating = false;
+        mEliminadosEnUpdate.clear();
     }
 
 protected:
     InterfazSpriteGroup * parent;
+    bool isUpdating = false;
+    std::deque <Sprite * > mEliminadosEnUpdate;
 
 };
 

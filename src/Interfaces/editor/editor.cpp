@@ -723,10 +723,10 @@
 //
 //                imprimir_desde_grilla(game->getTexture(IMG_BOTON_ESTRANIO),(estados_botones_elegir_terreno[EDITOR_MAPA_1]==BOTON_PRESIONADO)?1:0,gRenderer,rects_botones_elegir_terreno[EDITOR_MAPA_1].x,rects_botones_elegir_terreno[EDITOR_MAPA_1].y,2,1,0);
 //
-//                SDL_Rect rect_dest = {rects_botones_elegir_terreno[EDITOR_MAPA_1].x+7,
+//                SDL_Rect mRectDest = {rects_botones_elegir_terreno[EDITOR_MAPA_1].x+7,
 //                                      rects_botones_elegir_terreno[EDITOR_MAPA_1].y+5,0,0};
-//                SDL_QueryTexture(previews_niveles[(pagina-1)*2],NULL,NULL,&rect_dest.w,&rect_dest.h);
-//                SDL_RenderCopy(gRenderer,previews_niveles[(pagina-1)*2],NULL,&rect_dest);
+//                SDL_QueryTexture(previews_niveles[(pagina-1)*2],NULL,NULL,&mRectDest.w,&mRectDest.h);
+//                SDL_RenderCopy(gRenderer,previews_niveles[(pagina-1)*2],NULL,&mRectDest);
 //
 //
 //                if((maxTerrenoBatalla+1)-pagina*2==-1){
@@ -739,10 +739,10 @@
 //                if(boton_visible[EDITOR_MAPA_2]){
 //                        imprimir_desde_grilla(game->getTexture(IMG_BOTON_ESTRANIO),(estados_botones_elegir_terreno[EDITOR_MAPA_2]==BOTON_PRESIONADO)?1:0,gRenderer,rects_botones_elegir_terreno[EDITOR_MAPA_2].x,rects_botones_elegir_terreno[EDITOR_MAPA_2].y,2,1,0);
 //
-//                        rect_dest.x = rects_botones_elegir_terreno[EDITOR_MAPA_2].x+7;
-//                        rect_dest.y = rects_botones_elegir_terreno[EDITOR_MAPA_2].y+5;
-//                        SDL_QueryTexture(previews_niveles[(pagina-1)*2 + 1],NULL,NULL,&rect_dest.w,&rect_dest.h);
-//                        SDL_RenderCopy(gRenderer,previews_niveles[(pagina-1)*2 + 1],NULL,&rect_dest);
+//                        mRectDest.x = rects_botones_elegir_terreno[EDITOR_MAPA_2].x+7;
+//                        mRectDest.y = rects_botones_elegir_terreno[EDITOR_MAPA_2].y+5;
+//                        SDL_QueryTexture(previews_niveles[(pagina-1)*2 + 1],NULL,NULL,&mRectDest.w,&mRectDest.h);
+//                        SDL_RenderCopy(gRenderer,previews_niveles[(pagina-1)*2 + 1],NULL,&mRectDest);
 //
 //                        /*if((mMaxTerrenoBatalla+1)-pagina*2<=0)
 //                            imprimir_palabra(gRenderer,game->getTexture(IMG_FUENTE_5),

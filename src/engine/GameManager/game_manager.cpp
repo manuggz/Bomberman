@@ -1,7 +1,7 @@
 #include <zconf.h>
 #include <sys/param.h>
 #include "game_manager.hpp"
-#include "LTimer.hpp"
+#include "../util/LTimer.hpp"
 
 /**
  * Inicia el juego

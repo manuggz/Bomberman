@@ -7,7 +7,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include "constantes.hpp"
-#include "engine/util/LTexture.hpp"
+#include "../engine/util/LTexture.hpp"
 
 //SDL_Texture *cargar_textura(SDL_Renderer *gRenderer, std::string ruta, bool tiene_color_clave);
 Mix_Chunk * cargar_sonido(char ruta[]);

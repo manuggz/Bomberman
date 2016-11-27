@@ -1,8 +1,8 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 #include "../engine/sprites/CSprite.hpp"
-#include "../constantes.hpp"
-#include "../control_player.hpp"
+#include "../util/constantes.hpp"
+#include "../util/control_player.hpp"
 #include "../objetos/item.hpp"
 #include "../Interfaces/juego/InterfazJuego.hpp"
 #include "bomba.hpp"
@@ -93,7 +93,30 @@ private:
 	int mAlcanBombas        = 1;//alcance que logran las llamas de las bombas
 	int mNBombasDisponibles = 1;//numero de bombas que puede soltar el jugador
 
-	bool mPuedeAtravesarBloques = false; //True si el player puede atravesar los bloques blandos
+	bool mPuedeAtravesarBloques = false;
+public:
+	bool isMPuedeAtravesarBloques() const;
+
+	void setMPuedeAtravesarBloques(bool mPuedeAtravesarBloques);
+
+	bool isMPuedeAtravesarBombas() const;
+
+	void setMPuedeAtravesarBombas(bool mPuedeAtravesarBombas);
+
+	bool isMPuedePatearBombas() const;
+
+	void setMPuedePatearBombas(bool mPuedePatearBombas);
+
+	bool isMPuedeGolpearBombas() const;
+
+	void setMPuedeGolpearBombas(bool mPuedeGolpearBombas);
+
+	bool isMEstaEnfermo() const;
+
+	void setMEstaEnfermo(bool mEstaEnfermo);
+
+private:
+	//True si el player puede atravesar los bloques blandos
 	bool mPuedeAtravesarBombas  = false;//True si el player puede atravesar las bombas
 	bool mPuedePatearBombas     = false;
 	bool mPuedeGolpearBombas    = false;

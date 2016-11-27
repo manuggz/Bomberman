@@ -454,3 +454,43 @@ void Player::setNCorazones(int nuevosNCorazones) {
 
 }
 
+bool Player::isMPuedeAtravesarBloques() const {
+    return mPuedeAtravesarBloques;
+}
+
+void Player::setMPuedeAtravesarBloques(bool mPuedeAtravesarBloques) {
+    Player::mPuedeAtravesarBloques = mPuedeAtravesarBloques;
+}
+
+bool Player::isMPuedeAtravesarBombas() const {
+    return mPuedeAtravesarBombas;
+}
+
+void Player::setMPuedeAtravesarBombas(bool mPuedeAtravesarBombas) {
+    Player::mPuedeAtravesarBombas = mPuedeAtravesarBombas;
+}
+
+bool Player::isMPuedePatearBombas() const {
+    return mPuedePatearBombas;
+}
+
+void Player::setMPuedePatearBombas(bool mPuedePatearBombas) {
+    Player::mPuedePatearBombas = mPuedePatearBombas;
+}
+
+bool Player::isMPuedeGolpearBombas() const {
+    return mPuedeGolpearBombas;
+}
+
+void Player::setMPuedeGolpearBombas(bool mPuedeGolpearBombas) {
+    Player::mPuedeGolpearBombas = mPuedeGolpearBombas;
+}
+
+bool Player::isMEstaEnfermo() const {
+    return mEstaEnfermo;
+}
+
+void Player::setMEstaEnfermo(bool mEstaEnfermo) {
+    Player::mEstaEnfermo = mEstaEnfermo;
+}
+

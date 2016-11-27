@@ -24,7 +24,7 @@ class MenuModoMultijugador: public InterfazUI, public InterfazSpriteGroup {
 
 public:
     MenuModoMultijugador(GameManagerInterfazUI * gameManagerInterfazUI):
-            InterfazUI(gameManagerInterfazUI){
+            InterfazUI(gameManagerInterfazUI),mMapaTerrenoSeleccionado(0,32){
     }
 
     void prepare() override {
@@ -313,6 +313,7 @@ public:
     virtual void update() override {
         //cout << "MenuModoMultijugador::update"<<endl;
         mSprites->update(nullptr);
+        mMapaTerrenoSeleccionado.update();
     }
 
     virtual void draw(SDL_Renderer *gRenderer) override {
@@ -326,7 +327,7 @@ public:
         mGameManagerInterfaz->getTexture(Galeria::CodeImagen::IMG_TXT_TIEMPO_POR_RONDA)->render(gRenderer,140,18);//imprimimos la barra mensage
         mGameManagerInterfaz->getTexture(Galeria::CodeImagen::IMG_TXT_VICTORIAS)->render(gRenderer,261,18);//imprimimos la barra mensage
 
-        mMapaTerrenoSeleccionado.draw(gRenderer,0,32);//imprimimos el nivel
+        mMapaTerrenoSeleccionado.draw(gRenderer);//imprimimos el nivel
 
         mSprites->draw(gRenderer);
         for(int i=0;i<_PLAYERS;i++){
@@ -363,7 +364,7 @@ private:
     DrawGroup * mSprites = nullptr;
 
     // Usado para dibujar el mapa seleccionado actualmente
-    NivelMapa        mMapaTerrenoSeleccionado;
+    NivelMapa mMapaTerrenoSeleccionado;
 
     //DatNivel *     dataNivel;
     //SDL_Surface *  previewTerreno;

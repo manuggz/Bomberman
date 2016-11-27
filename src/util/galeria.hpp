@@ -8,7 +8,7 @@
 #include <SDL2/SDL_mixer.h>
 #include "constantes.hpp"
 #include "util.hpp"
-#include "engine/util/LTexture.hpp"
+#include "../engine/util/LTexture.hpp"
 
 using namespace std;
 

@@ -3,7 +3,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <vector>
-#include "../../util.hpp"
+#include "../../util/util.hpp"
 #include "SpriteContainer.hpp"
 //#define DEBUG
 using namespace std;
@@ -12,10 +12,12 @@ using namespace std;
  * Inspirada de la clase Sprite de pygame.
  */
 class Group;
+class UpdateGroup;
 
 class Sprite{
 
-  friend class Group;
+    friend class Group;
+    friend class UpdateGroup;
 
   public:
      Sprite(){
@@ -26,7 +28,6 @@ class Sprite{
 
     /*Funciones para administrar los grupos*/
   /*  void add(Group *);*/
-    bool isKilled();
     void kill();
 
    /* void setRect(const Rect &  rect2){rect=rect2;};*/
@@ -65,6 +66,10 @@ protected:
     //int id;
     //int type;
 
+
+private:
+    bool isKilled();
     void addGroup(SpriteContainer *pGroup);
+    void removeFromGroup(SpriteContainer *pGroup);
 };
 #endif

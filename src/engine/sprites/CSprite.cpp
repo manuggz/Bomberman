@@ -18,9 +18,10 @@ void Sprite::kill(){
     mSelfKill=true;
 
     for(auto const& grupo: v_grupos) {
-        grupo->erase(this);
+        grupo->eraseSprite(this);
     }
 
+    v_grupos.clear();
 }
 bool Sprite::colision(SDL_Rect & rect_coli){       
     return rects_colisionan(rect,rect_coli);
@@ -28,4 +29,15 @@ bool Sprite::colision(SDL_Rect & rect_coli){
 
 void Sprite::addGroup(SpriteContainer *pGroup) {
     v_grupos.push_back(pGroup);
+}
+
+void Sprite::removeFromGroup(SpriteContainer *pGroup) {
+    auto pIteGroup = v_grupos.begin();
+    while(pIteGroup != v_grupos.end()){
+        if(*pIteGroup == pGroup){
+            v_grupos.erase(pIteGroup);
+            return;
+        }
+        pIteGroup++;
+    }
 }

@@ -3,10 +3,10 @@
 //#define DEBUG
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "../../galeria.hpp"
+#include "../../util/galeria.hpp"
 #include "../interfaces/InterfazUI.hpp"
-#include "../../constantes.hpp"
-#include "../../util.hpp"
+#include "../../util/constantes.hpp"
+#include "../../util/util.hpp"
 #include "../interfaces/PopUpInterfaz.hpp"
 #include <ctime>
 #include <deque>

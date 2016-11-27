@@ -37,6 +37,7 @@ public:
         mRectSource.h = mTexture->getHeight()/nFilas;
         mFilas = nFilas;
         mColumnas =nColumnas;
+        return true;
     }
 
     int getWidthCuadro() {
@@ -46,8 +47,11 @@ public:
     void setCurrentCuadro(int nCuadro){
         mRectSource.x = (nCuadro % mColumnas) * mRectSource.w;
         mRectSource.y = (nCuadro / mColumnas) * mRectSource.h;
+        mIndiceCuadro = nCuadro;
     }
-
+    int getCurrentCuadroIndice(){
+        return mIndiceCuadro;
+    }
     void setAlpha(Uint8 nuevoValor){
         //mAlpha = nuevoValor;
         mTexture->setAlpha(nuevoValor);
@@ -63,11 +67,17 @@ public:
     int getNColumnas() {
         return mColumnas;
     }
+    int getNFilas() {
+        return mFilas;
+    }
 
     ~SpriteSheet(){
         delete mTexture;
     }
 
+    std::string getPath(){
+        return mTexture->getPath();
+    }
 private:
     LTexture * mTexture = nullptr;
     SDL_Rect mRectSource {0,0,0,0};
@@ -75,5 +85,6 @@ private:
     int mColumnas = 0;
 
     //int mAlpha = -1;
+    int mIndiceCuadro = 0;
 };
 #endif //BOMBERMAN_SPRITESHEET_HPP

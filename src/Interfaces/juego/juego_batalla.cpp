@@ -163,7 +163,7 @@ void JuegoBatalla::estadoPlay(){
                         id_lider_ganadas=(IdPlayer)id_activo;
                 else if(id_lider_ganadas!=PLAYER_NONE&&id_lider_ganadas!=id_activo&&batallasGanadas[id_activo] == batallasGanadas[id_lider_ganadas])
                         id_lider_ganadas=PLAYER_NONE;
-                game->cambiarInterfaz(new JuegoMostrarGanadas(game,this,batallasGanadas));
+                game->cambiarInterfaz(new PopUpJuegoMostrarGanadas(game,this,batallasGanadas));
                 
                 if(batallasGanadas[id_activo]>=vic){
                     sprintf(msg_ganador,"�PLAYER %d GAN�!",id_activo+1);

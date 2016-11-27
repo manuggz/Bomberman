@@ -2,15 +2,9 @@
 #include "../../engine/util/LTimer.hpp"
 #include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
 #include "../../engine/layout/Componentes/TextLabelComponent.hpp"
-#include "juego_mostrar_gan.hpp"
+#include "PopUpJuegoMostrarRondasGan.hpp"
 #include "PopUpMostrarMensajeTexto.hpp"
 #include "PopUpCountDown.hpp"
-
-// Eje X en el que se dibuja el Mapa
-#define MAPA_EJE_X 0
-// Eje Y en el que se dibuja el mapa
-#define MAPA_EJE_Y 32
-
 
 /**
  * Inicializa la clase Juego
@@ -22,7 +16,7 @@
  *
  */
 Juego::Juego (GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[_PLAYERS])
-:InterfazUI(gameManager),mGrpSprites(this){
+:InterfazUI(gameManager),mGrpSprites(this),mMapa(0,32){
 
 
     // Establecemos como activos los players seleccionados a que jueguen
@@ -77,54 +71,29 @@ void Juego::createUI(SDL_Renderer *gRenderer) {
     mLayoutParent->addComponent(mpTxtTiempoRestante);
 
     // Componente para las vidas restantes del player 1
-    TextLabelComponent *mpVidasRestantesPlayer1 = new TextLabelComponent();
-    mpVidasRestantesPlayer1->setText("0");
-    mpVidasRestantesPlayer1->setFont("data/fuentes/OpenSans-Bold.ttf",15);
-    mpVidasRestantesPlayer1->setTextColor(color);
-    mpVidasRestantesPlayer1->setLayoutParam(LAYOUT_PARAM_X,"18");
-    mpVidasRestantesPlayer1->setLayoutParam(LAYOUT_PARAM_Y,"1");
+    for(int i = 0; i < _PLAYERS ; i++){
+        mpVidasRestantesPlayer[i] = new TextLabelComponent();
+        mpVidasRestantesPlayer[i]->setText("0");
+        mpVidasRestantesPlayer[i]->setFont("data/fuentes/OpenSans-Bold.ttf",15);
+        mpVidasRestantesPlayer[i]->setTextColor(color);
+        mLayoutParent->addComponent(mpVidasRestantesPlayer[i]);
 
-    mLayoutParent->addComponent(mpVidasRestantesPlayer1);
+    }
+    mpVidasRestantesPlayer[PLAYER_1]->setLayoutParam(LAYOUT_PARAM_X,"18");
+    mpVidasRestantesPlayer[PLAYER_1]->setLayoutParam(LAYOUT_PARAM_Y,"1");
 
     // Componente para las vidas restantes del player 2
-    TextLabelComponent *mpVidasRestantesPlayer2 = new TextLabelComponent();
-    mpVidasRestantesPlayer2->setText("0");
-    mpVidasRestantesPlayer2->setFont("data/fuentes/OpenSans-Bold.ttf",15);
-    mpVidasRestantesPlayer2->setTextColor(color);
-    mpVidasRestantesPlayer2->setLayoutParam(LAYOUT_PARAM_X,"51");
-    mpVidasRestantesPlayer2->setLayoutParam(LAYOUT_PARAM_Y,"1");
+    mpVidasRestantesPlayer[PLAYER_2]->setLayoutParam(LAYOUT_PARAM_X,"51");
+    mpVidasRestantesPlayer[PLAYER_2]->setLayoutParam(LAYOUT_PARAM_Y,"1");
 
-    mLayoutParent->addComponent(mpVidasRestantesPlayer2);
+    mpVidasRestantesPlayer[PLAYER_3]->setLayoutParam(LAYOUT_PARAM_X,"83");
+    mpVidasRestantesPlayer[PLAYER_3]->setLayoutParam(LAYOUT_PARAM_Y,"1");
 
-    // Componente para las vidas restantes del player 3
-    TextLabelComponent *mpVidasRestantesPlayer3 = new TextLabelComponent();
-    mpVidasRestantesPlayer3->setText("0");
-    mpVidasRestantesPlayer3->setFont("data/fuentes/OpenSans-Bold.ttf",15);
-    mpVidasRestantesPlayer3->setTextColor(color);
-    mpVidasRestantesPlayer3->setLayoutParam(LAYOUT_PARAM_X,"83");
-    mpVidasRestantesPlayer3->setLayoutParam(LAYOUT_PARAM_Y,"1");
+    mpVidasRestantesPlayer[PLAYER_4]->setLayoutParam(LAYOUT_PARAM_X,"273");
+    mpVidasRestantesPlayer[PLAYER_4]->setLayoutParam(LAYOUT_PARAM_Y,"1");
 
-    mLayoutParent->addComponent(mpVidasRestantesPlayer3);
-
-    // Componente para las vidas restantes del player 4
-    TextLabelComponent *mpVidasRestantesPlayer4 = new TextLabelComponent();
-    mpVidasRestantesPlayer4->setText("0");
-    mpVidasRestantesPlayer4->setFont("data/fuentes/OpenSans-Bold.ttf",15);
-    mpVidasRestantesPlayer4->setTextColor(color);
-    mpVidasRestantesPlayer4->setLayoutParam(LAYOUT_PARAM_X,"273");
-    mpVidasRestantesPlayer4->setLayoutParam(LAYOUT_PARAM_Y,"1");
-
-    mLayoutParent->addComponent(mpVidasRestantesPlayer4);
-
-    // Componente para las vidas restantes del player 5
-    TextLabelComponent *mpVidasRestantesPlayer5 = new TextLabelComponent();
-    mpVidasRestantesPlayer5->setText("0");
-    mpVidasRestantesPlayer5->setFont("data/fuentes/OpenSans-Bold.ttf",15);
-    mpVidasRestantesPlayer5->setTextColor(color);
-    mpVidasRestantesPlayer5->setLayoutParam(LAYOUT_PARAM_X,"307");
-    mpVidasRestantesPlayer5->setLayoutParam(LAYOUT_PARAM_Y,"1");
-
-    mLayoutParent->addComponent(mpVidasRestantesPlayer5);
+    mpVidasRestantesPlayer[PLAYER_5]->setLayoutParam(LAYOUT_PARAM_X,"307");
+    mpVidasRestantesPlayer[PLAYER_5]->setLayoutParam(LAYOUT_PARAM_Y,"1");
 
     mGameRenderer = gRenderer;
 
@@ -159,9 +128,11 @@ void Juego::resultPopUp(void *result, int popUpCode) {
 
     switch(popUpCode){
         case ID_POPUP_JUEGO_NADIE_GANA_RONDA:
+            mGrpSprites.kill();
             reiniciarEstado();
             break;
         case ID_POPUP_JUEGO_MOSTRAR_GAN_CONTINUAR:
+            mGrpSprites.kill();
             reiniciarEstado();
             break;
         case ID_POPUP_JUEGO_MOSTRAR_GAN_TERMINAR:{
@@ -208,9 +179,14 @@ void Juego::establecerValoresDeMapaPlayers() {
 void Juego::establecerValoresDeMapaPlayer(IdPlayer idPlayer){
     if(mIsPlayerActivado[idPlayer] && mPlayerSprite[idPlayer]) {
         mPlayerSprite[idPlayer]->move(mMapa.getPosXPlayer(idPlayer),mMapa.getPosYPlayer(idPlayer));
-        mPlayerSprite[idPlayer]->setVidas(std::stoi(mMapa.getMapProperty(MAPA_PROPERTY_X_N_VIDAS_PLAYER)));
+        mPlayerSprite[idPlayer]->setVidas(std::stoi(mMapa.getMapProperty(MAPA_PROPERTY_N_VIDAS_PLAYER)));
         mPlayerSprite[idPlayer]->setNBombas(std::stoi(mMapa.getMapProperty(MAPA_PROPERTY_N_BOMBAS)));
         mPlayerSprite[idPlayer]->setAlcanceBombas(std::stoi(mMapa.getMapProperty(MAPA_PROPERTY_ALCANCE_BOMBAS)));
+        mPlayerSprite[idPlayer]->setNCorazones(0);
+        mPlayerSprite[idPlayer]->setMPuedeAtravesarBloques(false);
+        mPlayerSprite[idPlayer]->setMPuedeAtravesarBombas(false);
+        mPlayerSprite[idPlayer]->setMEstaEnfermo(false);
+        mpVidasRestantesPlayer[idPlayer]->setText(std::to_string(mPlayerSprite[idPlayer]->getVidas()));
     }
 }
 
@@ -269,6 +245,7 @@ void Juego::update(){
     const Uint8 *teclas= SDL_GetKeyboardState(NULL);//se obtiene el estado_actual actual del teclado
 
     mGrpSprites.update(teclas);
+    mMapa.update();
 
     /*SI SE ACABO EL TIEMPO*/
     if(getSegundosInicioNivel() > mMinutos*60){
@@ -317,9 +294,9 @@ void Juego::update(){
                 // se establece el codigo del POP UP, esto es para que una vez que se ha mostrado el pop up realizar
                 // una acción distinta y no tener que agregar una variable de más
                 // tal como: terminoJuego = true
-                mGameManagerInterfaz->showPopUp(new JuegoMostrarGanadas(mGameManagerInterfaz, mRondasGanadas), ID_POPUP_JUEGO_MOSTRAR_GAN_TERMINAR);
+                mGameManagerInterfaz->showPopUp(new PopUpJuegoMostrarGanadas(mGameManagerInterfaz, mRondasGanadas), ID_POPUP_JUEGO_MOSTRAR_GAN_TERMINAR);
             }else{
-                mGameManagerInterfaz->showPopUp(new JuegoMostrarGanadas(mGameManagerInterfaz, mRondasGanadas), ID_POPUP_JUEGO_MOSTRAR_GAN_CONTINUAR);
+                mGameManagerInterfaz->showPopUp(new PopUpJuegoMostrarGanadas(mGameManagerInterfaz, mRondasGanadas), ID_POPUP_JUEGO_MOSTRAR_GAN_CONTINUAR);
             }
         }
     }else if(totalPlayersActivos==0){
@@ -435,7 +412,7 @@ SDL_Joystick * Juego::getJoy(int id){
 void Juego::draw(SDL_Renderer * gRenderer){
 
     drawBarra(gRenderer);//imprimimos la barra mensage
-    mMapa.draw(gRenderer,MAPA_EJE_X,MAPA_EJE_Y);//imprimimos el nivel
+    mMapa.draw(gRenderer);//imprimimos el nivel
     mGrpSprites.draw(gRenderer);
 
     if(mLayoutParent->isDisabled()){
@@ -489,14 +466,14 @@ void Juego::eliminarSprite(Sprite *sprite) {
         return;
     }
 
-    Bloque * pBloqueEliminado = nullptr;
-    // En caso que el sprite a eliminar sea un Bloque En Llamas
+    TileEnLlamas * pBloqueEliminado = nullptr;
+    // En caso que el sprite a eliminar sea un TileEnLlamas En Llamas
     // eliminamos el bloque del mapa
-    if((pBloqueEliminado = dynamic_cast<Bloque * >(sprite)) != nullptr){
+    if((pBloqueEliminado = dynamic_cast<TileEnLlamas * >(sprite)) != nullptr){
 
         // Eliminamos/Rompemos el tile/bloque del mapa
         // Aun no se habia roto
-        mMapa.romperBloque(pBloqueEliminado->getX() - MAPA_EJE_X,pBloqueEliminado->getY() - MAPA_EJE_Y);
+        mMapa.romperBloque(pBloqueEliminado->getX() - mMapa.getX(),pBloqueEliminado->getY() - mMapa.getY());
 
         // Obtenemos un posible item a Colocar
         Item::TipoItem tipoNuevoItem = getTipoNuevoItem();
@@ -589,6 +566,8 @@ void Juego::playerMuerto(Player * pPlayer,Sprite * pPlayerCausante){
             establecerValoresDeMapaPlayer(pPlayer->getId());
             pPlayer->cambiarEstado(EstadoSprite::PARADO);
             pPlayer->setProteccion(5);
+            pPlayer->setVidas(pPlayer->getVidas() - 1);
+            mpVidasRestantesPlayer[pPlayer->getId()]->setText(std::to_string(pPlayer->getVidas()));
             mGameManagerInterfaz->play(Galeria::CodeMusicEfecto::SFX_PIERDE_VIDA);
         } else {
             pPlayer->setEnPantalla(false);
@@ -629,7 +608,7 @@ deque<Sprite *> Juego::colisionConItems(SDL_Rect rect) {
     return mGrpItems.collide(rect);
 }
 
-Bloque *Juego::agregarBloqueEnLlamas(int x, int y) {
+TileEnLlamas *Juego::agregarBloqueEnLlamas(int x, int y) {
 
     // Buscamos la animacion del mapa para los bloques en llamas
     vector<string> *aniBloqueLlamas = mMapa.getAnimacionFrames(
@@ -651,7 +630,7 @@ Bloque *Juego::agregarBloqueEnLlamas(int x, int y) {
 
 
     // Se crea el bloque CON UNA COPIA DEL TILESET DEL MAPA
-    Bloque * nuevoBloque = new Bloque(new SpriteSheet(mGameRenderer,
+    TileEnLlamas * nuevoBloque = new TileEnLlamas(new SpriteSheet(mGameRenderer,
                                                       mMapa.getRutaTileSet(),
                                                       mMapa.getNFilasTileSet(),
                                                       mMapa.getNColumnasTileSet()),frames,x,y,1);
@@ -662,14 +641,14 @@ Bloque *Juego::agregarBloqueEnLlamas(int x, int y) {
 }
 
 bool Juego::esBloqueSolido(int x, int y) {
-    x -= MAPA_EJE_X;
-    y -= MAPA_EJE_Y;
+    x -= mMapa.getX();
+    y -= mMapa.getY();
     return mMapa.esBloqueSolido(x,y);
 }
 
 bool Juego::esBloqueRompible(int x, int y) {
-    x -= MAPA_EJE_X;
-    y -= MAPA_EJE_Y;
+    x -= mMapa.getX();
+    y -= mMapa.getY();
     return mMapa.esBloqueRompible(x,y);
 }
 
@@ -684,35 +663,35 @@ std::deque<Sprite *> Juego::colisionConBombas(SDL_Rect  rect) {
 
 NivelMapa::ExtremoColision Juego::colisionConMapa(SDL_Rect rect_coli, int *lado_colision, bool soloBloquesNoTraspasables){
     /*Comprueba si un rect colisiona con el nivel*/
-    rect_coli.x -= MAPA_EJE_X;
-    rect_coli.y -= MAPA_EJE_Y;
+    rect_coli.x -= mMapa.getX();
+    rect_coli.y -= mMapa.getY();
     return mMapa.colision(rect_coli,lado_colision,soloBloquesNoTraspasables);
 }
 
 bool Juego::isOutOfMapBounds(SDL_Rect rect) {
-    rect.x -= MAPA_EJE_X;
-    rect.y -= MAPA_EJE_Y;
+    rect.x -= mMapa.getX();
+    rect.y -= mMapa.getY();
     return !mMapa.contain(rect);
 }
 
 Bomba *Juego::agregarBomba(Player * player) {
 
     // Pasamos la posicion X a la coordenada del Mapa
-    int nuevaPosicionX = player->getX() + 7 - MAPA_EJE_X;
+    int nuevaPosicionX = player->getX() + 7 - mMapa.getX();
     // Formateamos la posicion X a que sea proporcional al ancho de los tiles
     nuevaPosicionX = nuevaPosicionX/mMapa.getTileWidth()*mMapa.getTileWidth();
     // Pasamos la posicion X a la coordenada de la pantalla
-    nuevaPosicionX = nuevaPosicionX + MAPA_EJE_X;
+    nuevaPosicionX = nuevaPosicionX + mMapa.getX();
 
     // Pasamos la posicion Y a la coordenada del Mapa
-    int nuevaPosicionY = player->getY() + 11 - MAPA_EJE_Y;
+    int nuevaPosicionY = player->getY() + 11 - mMapa.getY();
     // Formateamos la posicion Y a que sea proporcional al alto de los tiles
     nuevaPosicionY = nuevaPosicionY/mMapa.getTileHeight()*mMapa.getTileHeight();
     // Pasamos la posicion Y a la coordenada de la pantalla
-    nuevaPosicionY = nuevaPosicionY + MAPA_EJE_Y;
+    nuevaPosicionY = nuevaPosicionY + mMapa.getY();
 
     // Si en esa posición hay un bloque solido no se coloca una bomba ahí
-    if(mMapa.esBloqueSolido(nuevaPosicionX - MAPA_EJE_X,nuevaPosicionY - MAPA_EJE_Y)){
+    if(mMapa.esBloqueSolido(nuevaPosicionX - mMapa.getX(),nuevaPosicionY - mMapa.getY())){
         return nullptr;
     }
 
@@ -749,9 +728,11 @@ void Juego::reiniciarEstado() {
 Juego::~Juego(){
     for(int i= 0;i<_PLAYERS;i++){
         delete mPlayerSprite[i];
+        delete mpVidasRestantesPlayer[i];
     }
 }
 
 void Juego::updateWhenPopUp() {
     mGrpSprites.update(nullptr);
+    mMapa.update();
 }

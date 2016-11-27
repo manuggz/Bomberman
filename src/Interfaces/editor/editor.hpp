@@ -4,10 +4,10 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "../../engine/interfaces/InterfazUI.hpp"
-#include "../../engine/util/game_manager.hpp"
-#include "../../control_player.hpp"
-#include "../../constantes.hpp"
-#include "../../util.hpp"
+#include "../../engine/GameManager/game_manager.hpp"
+#include "../../util/control_player.hpp"
+#include "../../util/constantes.hpp"
+#include "../../util/util.hpp"
 #include "../../engine/util/CMetaData.hpp"
 #include "../../niveles/NivelMapa.hpp"
 #include "../menu/menu.hpp"

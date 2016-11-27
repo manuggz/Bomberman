@@ -1,6 +1,6 @@
-#include "juego_mostrar_gan.hpp"
+#include "PopUpJuegoMostrarRondasGan.hpp"
 
-JuegoMostrarGanadas::JuegoMostrarGanadas(GameManagerPopUpInterfaz *gameManager,
+PopUpJuegoMostrarGanadas::PopUpJuegoMostrarGanadas(GameManagerPopUpInterfaz *gameManager,
                                          int rondasGanadas[5]) : PopUpInterfaz(gameManager) {
 
     for(int i=0;i<_PLAYERS;i++)
@@ -11,7 +11,7 @@ JuegoMostrarGanadas::JuegoMostrarGanadas(GameManagerPopUpInterfaz *gameManager,
 
 }
 
-void JuegoMostrarGanadas::createUI(SDL_Renderer *gRenderer) {
+void PopUpJuegoMostrarGanadas::createUI(SDL_Renderer *gRenderer) {
     PopUpInterfaz::createUI(gRenderer);
 
     mSpriteSheetCarasBomberman = new SpriteSheet();
@@ -62,7 +62,7 @@ void JuegoMostrarGanadas::createUI(SDL_Renderer *gRenderer) {
     }
 }
 
-void JuegoMostrarGanadas::procesarEvento(SDL_Event * evento){
+void PopUpJuegoMostrarGanadas::procesarEvento(SDL_Event * evento){
     PopUpInterfaz::procesarEvento(evento);
     if(animacion==3)
         switch(evento->type){
@@ -76,7 +76,7 @@ void JuegoMostrarGanadas::procesarEvento(SDL_Event * evento){
 }
 
 
-void JuegoMostrarGanadas::update(){
+void PopUpJuegoMostrarGanadas::update(){
     PopUpInterfaz::update();
     if(animacion==1){
         if((conteo+=3)>=255){
@@ -109,7 +109,7 @@ void JuegoMostrarGanadas::update(){
     }
 }
 
-void JuegoMostrarGanadas::draw(SDL_Renderer * gr){
+void PopUpJuegoMostrarGanadas::draw(SDL_Renderer * gr){
     PopUpInterfaz::draw(gr);
 
     if(animacion!=1)
@@ -136,7 +136,7 @@ void JuegoMostrarGanadas::draw(SDL_Renderer * gr){
     mSpriteSheetCarasBomberman->draw(gr,64,animaCuadro->getY()+PLAYER_5*35+1);
 }
 
-JuegoMostrarGanadas::~JuegoMostrarGanadas(){
+PopUpJuegoMostrarGanadas::~PopUpJuegoMostrarGanadas(){
     delete animaCuadro;
     delete animaTexto;
     for(int i=0;i<totalTrofeosCreados;i++){

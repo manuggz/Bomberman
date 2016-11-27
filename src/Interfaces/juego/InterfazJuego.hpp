@@ -11,7 +11,7 @@
 
 class Bomba;
 class Player;
-class Bloque;
+class TileEnLlamas;
 
 /**
  * Esta clase contiene las funciones que un
@@ -36,7 +36,7 @@ public:
 
     virtual Bomba * agregarBomba(Player *playerPropietario)= 0 ;
 
-    virtual Bloque * agregarBloqueEnLlamas(int x, int y)= 0 ;
+    virtual TileEnLlamas * agregarBloqueEnLlamas(int x, int y)= 0 ;
 
     virtual bool esBloqueSolido(int x, int y) = 0;
     virtual bool esBloqueRompible(int x, int y) = 0;

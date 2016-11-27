@@ -11,6 +11,8 @@ public:
     virtual void add(Sprite *)=0; //A�ade un sprite al grupo
     //bool contain(Sprite *);
     //Sprite * collide(Sprite *); //detecta si un sprite colisiona con uno del grupo en el caso, regresa una referencia de con quien colisiona
-    virtual void erase(Sprite *) = 0;
+    virtual bool erase(Sprite *) = 0;
+
+    virtual void eraseSprite(Sprite *) = 0;
 };
 #endif //BOMBERMAN_CONTAINER_HPP

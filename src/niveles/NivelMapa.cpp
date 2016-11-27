@@ -2,111 +2,6 @@
 
 
 
-/*void Mapa::leerInfTile(char ruta[]){
-    char key[50],valor[50];
-    std::ifstream ftile(ruta);
-    while(!ftile.eof()){
-        ftile >> key;
-        if(!strcmp(key,"IMG_FONDO")){
-            ftile >> valor;
-            if(!strcmp(valor,"FONDO_1"))
-                idFondo=IMG_FONDO_PARTI;
-            else if(!strcmp(valor,"FONDO_2"))
-                idFondo=IMG_FONDO_EDIFICIOS;
-            else if(!strcmp(valor,"FONDO_3"))
-                idFondo=IMG_FONDO_METAL;
-        }else if(!strcmp(key,"EJES")){
-            ftile>>coorXPredVisualizacion>>coorYPredVisualizacion;
-        }else if(!strcmp(key,"Y_TABLERO")){
-            ftile>>yTablero;
-        }else{
-            ftile>>valor;
-        }
-    }
-    ftile.close();
-    
-}
-*/
-/*bool Mapa::cargarMapaDeArchivoBin(std::string rutaMapaBin,char * buffer){
-
-    std::ifstream fileMapa(rutaMapaBin,std::ios::in|std::ios::binary);
-    if(!fileMapa){
-        std::cerr << "WARNING-Error leyendo un archivo: -- Ruta: "<<rutaMapaBin<<std::endl;
-        return false;
-    }
-    fileMapa.read(reinterpret_cast<char *> (buffer),MAXMAP);
-    fileMapa.close();
-    
-    return true;
-}
-*/
-
-/*int Mapa::setItems(){
-
-    /*int itemsPuestos=0;
-    int random_x=0;
-    int random_y=0;
-
-    while(itemsPuestos < mDatMapa->getNumItems()){
-            if(bloquesMadera>0){
-                do{
-                    random_x=rand()%COLUMNAS;
-                    random_y=rand()%FILAS;
-                }while(tilesMap[random_y*COLUMNAS+random_x]!=BLOQUE_MADERA);
-    
-                tilesMap[random_y*COLUMNAS+random_x]=BLOQUE_ITEM;
-                bloquesMadera--;
-                if(tileXPuerta==-1||tileYPuerta==-1){ /*Si aun no se ha establecido la puerta nota:la segunda condicional nunca se evaluara*
-                    tileXPuerta=random_x;
-                    tileYPuerta=random_y;
-                }
-                itemsPuestos++;
-            }
-            else{
-                break;
-            }
-    }
-    mDatMapa->setNumItems(itemsPuestos);
-    return itemsPuestos;*
-
-}*/
-/*int Mapa::setEnemigos(){
-    int indice,colocados=0;
-    for(int i=0;i<FILAS;i++)
-        for(int j=0;j<COLUMNAS;j++){
-            indice=tilesMap[i*COLUMNAS+j];
-            if(indice==BLOQUE_ENEMIGO){
-                  tilesMap[i*COLUMNAS+j]=BLOQUE_PISO;
-                  colocados++;
-//                  parent->addSprite(GLOBO,2,j * W_H_BLOQUE+EJE_X,i * W_H_BLOQUE+EJE_Y);
-            }
-        }
-    return colocados;
-}*
-
-bool Mapa::isBloqueRompible(int x,int y){
-
-    int tipoBloque=getTipoBloque(x,y);
-    if(tipoBloque!=-1)
-        return tipoBloque==BLOQUE_ITEM||tipoBloque==BLOQUE_MADERA;
-    
-    std::cout << "Warning: Acceso invalido al mapa,X:"<<x <<"Y:"<<y<<std::endl;
-    return false;
-}
-
-bool Mapa::romperBloque(int x,int y){
-    if(isBloqueRompible(x,y)){
-        if((y==getEjeYVisualizacion())||\
-           (y!=getEjeYVisualizacion()&&getTipoBloque(x,y-16)!=BLOQUE_PISO&&getTipoBloque(x,y-16)!=BLOQUE_PISO_SOMBRA))
-            tilesMap[getIndiceMapa(x,y)]=BLOQUE_PISO_SOMBRA;
-        else
-            tilesMap[getIndiceMapa(x,y)]=BLOQUE_PISO;
-        if(y+16!=getEjeYVisualizacion()+getAltoMapa()&&getTipoBloque(x,y+16)==BLOQUE_PISO_SOMBRA)
-            tilesMap[getIndiceMapa(x,y+16)]=BLOQUE_PISO;
-        return true;
-    }
-    return false;
-}*/
 
 
 
@@ -165,18 +60,6 @@ NivelMapa::ExtremoColision NivelMapa::colision(SDL_Rect rect, int * num_colision
 
     }
 
-    /*
-    if(!soloBloquesNoTraspasables){
-        if(  mLayerMapa[indice]!=BLOQUE_PISO
-           &&mLayerMapa[indice]!=BLOQUE_PISO_SOMBRA
-           &&mLayerMapa[indice]!=BLOQUE_ENEMIGO){
-            (*num_colisiones)++;
-            ret=i+1;
-        }
-    }else if(soloBloquesNoTraspasables&&mLayerMapa[indice]==BLOQUE_METAL){
-        (*num_colisiones)++;
-        ret=i+1;
-    }*/
     return (ExtremoColision) ret;
 }
 
@@ -186,7 +69,7 @@ int NivelMapa::getTileAt(int x, int y) {
     //int ret             = 0;
     int indice = getIndiceMapaAt(x,y);
 
-    if(indice >=0)return mLayerMapa[indice] - 1;
+    if(indice >=0)return mLayerMapa[indice];
 
     return -1;
 
@@ -259,23 +142,10 @@ SDL_Texture * NivelMapa::getPreviewTerreno(char rutaMapa[],MetaData * params,LTe
     return nullptr;
 }
 
-bool NivelMapa::cargar(SDL_Renderer *gRenderer, std::string ruta) {
-
-    if(!Mapa::cargar(gRenderer, ruta)) return false;
-
-    mTileHeight   = mTmxParser.mapInfo.tileHeight;
-    mTileWidth    = mTmxParser.mapInfo.tileWidth;
-    mMapWidth     = mTmxParser.mapInfo.width;
-    mMapHeight    = mTmxParser.mapInfo.height;
-    mpTilesMetaData = &mTmxParser.tilesetList[0].tilesMetaData;
-
-    return true;
-}
-
 bool NivelMapa::contain(SDL_Rect rect) {
     return !(rect.x < 0 || rect.y < 0
-           ||rect.x+rect.w > 0 + mTmxParser.mapInfo.width*mTmxParser.mapInfo.tileWidth
-           ||rect.y+rect.h > 0 + mTmxParser.mapInfo.height*mTmxParser.mapInfo.tileHeight);
+           ||rect.x+rect.w > 0 + mTmxParser->mapInfo.width*mTmxParser->mapInfo.tileWidth
+           ||rect.y+rect.h > 0 + mTmxParser->mapInfo.height*mTmxParser->mapInfo.tileHeight);
 }
 
 int NivelMapa::getTileWidth() {
@@ -296,7 +166,7 @@ bool NivelMapa::esBloqueSolido(int x, int y) {
     return false;
 }
 std::string NivelMapa::getPropertyTile(int id_tile, std::string clave){
-    return (*mpTilesMetaData)[std::to_string(id_tile)].property[clave];
+    return mTmxParser->tilesetList[0].tilesMetaData[std::to_string(id_tile)].property[clave];
 }
 
 bool NivelMapa::esBloqueRompible(int x, int y) {
@@ -309,15 +179,15 @@ bool NivelMapa::esBloqueRompible(int x, int y) {
 }
 
 int NivelMapa::getPosYPlayer(IdPlayer player) {
-    return mTmxParser.objectGroup[OBJECTSGROUP_PLAYERS_NAME].object[OBJECT_PLAYER_NAME + std::to_string(player + 1)].y;
+    return mTmxParser->objectGroup[OBJECTSGROUP_PLAYERS_NAME].object[OBJECT_PLAYER_NAME + std::to_string(player + 1)].y;
 }
 
 int NivelMapa::getPosXPlayer(IdPlayer player) {
-    return mTmxParser.objectGroup[OBJECTSGROUP_PLAYERS_NAME].object[OBJECT_PLAYER_NAME + std::to_string(player + 1)].x;
+    return mTmxParser->objectGroup[OBJECTSGROUP_PLAYERS_NAME].object[OBJECT_PLAYER_NAME + std::to_string(player + 1)].x;
 }
 
 std::vector<std::string> * NivelMapa::getAnimacionFrames(const std::string & id_tile) {
-    return &(*mpTilesMetaData)[id_tile].animation;
+    return &mTmxParser->tilesetList[0].tilesMetaData[id_tile].animation;
 }
 
 SpriteSheet *NivelMapa::getSpriteSheetTiles() {
@@ -325,15 +195,15 @@ SpriteSheet *NivelMapa::getSpriteSheetTiles() {
 }
 
 int NivelMapa::getNFilasTileSet() {
-    return mTmxParser.tilesetList[0].tileCount/mTmxParser.tilesetList[0].columns;
+    return mTmxParser->tilesetList[0].tileCount/mTmxParser->tilesetList[0].columns;
 }
 
 std::string NivelMapa::getRutaTileSet() {
-    return mTmxParser.tilesetList[0].imgSource.source;
+    return mTmxParser->tilesetList[0].imgSource.source;
 }
 
 int NivelMapa::getNColumnasTileSet() {
-    return mTmxParser.tilesetList[0].columns;
+    return mTmxParser->tilesetList[0].columns;
 }
 
 bool NivelMapa::romperBloque(int x, int y) {
@@ -343,92 +213,47 @@ bool NivelMapa::romperBloque(int x, int y) {
     // Obtenemos el indice del tile a esa posicion
     int indice = getIndiceMapaAt(x,y);
 
-    int id_tile_piso_sombra = std::stoi(getMapProperty(MAPA_PROPERTY_TILE_PISO_SOMBRA));
-    int id_tile_piso = std::stoi(getMapProperty(MAPA_PROPERTY_TILE_PISO));
+    int id_tile_piso_sombra_rompible = std::stoi(getMapProperty(MAPA_PROPERTY_TILE_PISO_SOMBRA_ROMPIBLE));
+    int id_tile_piso_sombra_no_rompible = std::stoi(getMapProperty(MAPA_PROPERTY_TILE_PISO_SOMBRA_NO_ROMPIBLE));
+    int id_tile_piso_sin_sombra = std::stoi(getMapProperty(MAPA_PROPERTY_TILE_PISO_SIN_SOMBRA));
 
-    // Si el que esta arriba de el es solido ponemos un tile con sombra debajo
+    //Buscamos el tile animado que representaba el tile en esa posición
+    auto setTileAnimado = mGrpTilesAnimados.collide(SDL_Rect {x + getX(),y + getY(),mTileWidth,mTileHeight});
+
+    //Eliminamos las animaciones en esa posicion
+    auto pitTileAnimado = setTileAnimado.begin();
+    while(pitTileAnimado != setTileAnimado.end()){
+        (*pitTileAnimado)->kill();
+        pitTileAnimado++;
+    }
+
+    // Si el que esta arriba de él es solido ponemos un tile con sombra debajo
     if(esBloqueSolido(x, y - mTileHeight)){
-        mLayerMapa[indice] =  id_tile_piso_sombra + 1;
+        if(esBloqueRompible(x,y-mTileHeight))
+            mLayerMapa[indice] =  id_tile_piso_sombra_rompible;
+        else
+            mLayerMapa[indice] =  id_tile_piso_sombra_no_rompible;
     }else{
-        mLayerMapa[indice] = id_tile_piso + 1;
+        mLayerMapa[indice] = id_tile_piso_sin_sombra;
     }
 
     // si el que esta debajo es un tile piso con sombra lo ponemos sin sombra ya que no hay quien le genere la sombra
     indice = getTileAt(x,y + mTileHeight);
-    if(indice == id_tile_piso_sombra){
-        mLayerMapa[getIndiceMapaAt(x,y+16)] = id_tile_piso + 1;
+    if(indice == id_tile_piso_sombra_rompible || indice == id_tile_piso_sombra_no_rompible){
+        mLayerMapa[getIndiceMapaAt(x,y+mTileHeight)] = id_tile_piso_sin_sombra;
     }
 
     return true;
 
 }
 
-
-/*
-TipoItem Nivel::getTipoNuevoItem(InterfazJuego inter){
-
-    static TipoItem tipos[5]={ITEM_ALCANCE,ITEM_VIDA,ITEM_BOMBA,ITEM_PARED,ITEM_ALEATORIO};
-    static int salido_anterior=-1;
-
-    TipoItem indice=ITEM_ALCANCE;
-
-    if(dat_nivel->getNumItems()>=1){
-        switch(inter){
-            case TIPO_NORMAL:
-                 do
-                    indice=tipos[rand() % 5 ];
-                 while(indice==salido_anterior);
-                salido_anterior=indice;
-                break;
-            case TIPO_BATALLA:
-                do{
-                    indice=tipos[rand() % 5 ];
-                }while(indice==ITEM_PUERTA||indice==ITEM_VIDA||indice==ITEM_ALEATORIO);//mGrpItems no permitidos en modo batalla
-
-                break;
-            }
-
-       dat_nivel->setNumItems(dat_nivel->getNumItems()-1); 
-    }
-
-    return indice;
-}*/
-
-/*
-SDL_Surface * Mapa::getPreviewTerreno(int idTerreno,Interfaz * game){
-    SDL_Surface * preview;
-    SDL_Surface * img_players[5]={game->getImagen(IMG_PLAYER_1),
-                              game->getImagen(IMG_PLAYER_2),
-                              game->getImagen(IMG_PLAYER_3),
-                              game->getImagen(IMG_PLAYER_4),
-                              game->getTexture(IMG_PLAYER_5)};
-                              
-    sprintf(ruta,"data/niveles/batalla/%d.txt",idTerreno+ 1);
-    data2=new DatNivel(ruta);
-    sprintf(ruta,"data/niveles/batalla/%d.map",idTerreno+ 1);
-    preview=Mapa::getPreviewTerreno(ruta,data2,game->getTexture((CodeImagen)(IMG_TILE_1+data2->getIdTile())),img_players,EJE_X,EJE_Y);
-//        cout << "Creada: "<<previews_niveles[i]<<endl;
-    delete data2;
+int NivelMapa::getX() {
+    return mRectDest.x;
 }
-*/
-/*
-void Nivel::cargarFiles(int num_nivel,InterfazJuego inter)
-{
-    char ruta1[50],ruta2[50];
-    
-    switch(inter){
-        case TIPO_NORMAL:
-            sprintf(ruta1,"data/niveles/historia/nivel_%d.map",num_nivel);
-            sprintf(ruta2,"data/niveles/historia/%d.txt",num_nivel);
-            break;
-        case TIPO_BATALLA:
-            sprintf(ruta1,"data/niveles/batalla/%d.map",num_nivel);
-            sprintf(ruta2,"data/niveles/batalla/%d.txt",num_nivel);
-            break;
-        }
-    cargarFileNivel(mapa,ruta1);
-    
-    if(dat_nivel)delete dat_nivel;
-    dat_nivel=new DatNivel(ruta2);
+int NivelMapa::getY() {
+    return mRectDest.y;
 }
-*/
+
+NivelMapa::NivelMapa(int x, int y) : Mapa(x, y) {}
+
+

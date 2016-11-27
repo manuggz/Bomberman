@@ -1,17 +1,17 @@
 #ifndef BLOQUE_HPP
 #define BLOQUE_HPP
 #include <SDL2/SDL.h>
-#include "../engine/sprites/animacion/animacion.hpp"
-#include "../constantes.hpp"
-#include "../Interfaces/juego/juego.hpp"
+#include "../sprites/animacion/animacion.hpp"
+#include "../../util/constantes.hpp"
+#include "../../Interfaces/juego/juego.hpp"
 
 class Juego;
 
-class Bloque:public Animacion{
+class TileEnLlamas:public Animacion{
 public:
-    Bloque(SpriteSheet *spriteSheet, string frames, int x, int y, int delayCambioFrame);
+    TileEnLlamas(SpriteSheet *spriteSheet, string frames, int x, int y, int delayCambioFrame);
 
-//Bloque();
+//TileEnLlamas();
     //void disable();
     //void draw(SDL_Renderer * gRenderer);
     //void setAnimacion(SpriteSheet *pSheet, map<string, string> *pAnimacion);

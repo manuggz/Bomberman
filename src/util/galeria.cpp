@@ -1,5 +1,5 @@
 #include "galeria.hpp"
-#include "engine/util/LTexture.hpp"
+#include "../engine/util/LTexture.hpp"
 
 
 Galeria::Galeria(){

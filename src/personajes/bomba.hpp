@@ -2,7 +2,7 @@
 #define BOMBA_HPP
 #include <SDL2/SDL.h>
 #include "../engine/sprites/animacion/animacion.hpp"
-#include "../constantes.hpp"
+#include "../util/constantes.hpp"
 #include "player.hpp"
 
 class Bomba:public Animacion{

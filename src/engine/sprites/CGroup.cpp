@@ -6,44 +6,48 @@ void Group::add(Sprite * pSprite){
     pSprite->addGroup(this);
 }
 
-void Group::kill(Sprite *pSpriteBorrar){
-    //lo buscamos usando iteradores
-    auto pSpriteBusqueda=v_personajes.begin();
-    while(pSpriteBusqueda != v_personajes.end()){
-        if((*pSpriteBusqueda) == pSpriteBorrar){
-            v_personajes.erase(pSpriteBusqueda);
-            delete (*pSpriteBusqueda);
-            (*pSpriteBusqueda) = 0x0;
-            return;
-        }
-        pSpriteBusqueda++;
-    }
-}
-void Group::erase(Sprite * pSpriteBorrar){
+bool Group::erase(Sprite * pSpriteBorrar){
      //lo buscamos usando iteradores
 
     // Si se esta actualizando el grupo de sprites no se hacen eliminaciones
     // Este sprite se debería eliminar en la actualizacion si se establece selfkill
-    if(isUpdating)
-        return;
+//    if(isUpdating)
+  //      return;
 
     auto pSpriteBusqueda = v_personajes.begin();
     while(pSpriteBusqueda != v_personajes.end()){
         if((*pSpriteBusqueda) == pSpriteBorrar){
             v_personajes.erase(pSpriteBusqueda);
             // Remover Este grupo de los grupos que guarda (*pSpriteBusqueda)
-            return;
+            (*pSpriteBusqueda)->removeFromGroup(this);
+            return true;
         }
         pSpriteBusqueda++;
     }
+
+    return false;
 }
 
+/**
+ * Función llamada por Sprite, para que solo se elimine él del grupo.
+ * @param pSprite
+ */
+void Group::eraseSprite(Sprite * pSprite){
+    auto pIteSprite = v_personajes.begin();
+    while(pIteSprite != v_personajes.end()){
+        if((*pIteSprite) == pSprite){
+            v_personajes.erase(pIteSprite);
+            return;
+        }
+        pIteSprite++;
+    }
 
+}
 Group::~Group(){
-    v_personajes.clear();
+    clear();
 }
 
-std::deque<Sprite *> Group::collide(SDL_Rect & rect) {
+std::deque<Sprite *> Group::collide(SDL_Rect  rect) {
     std::deque<Sprite *> setColision;
     auto pSpriteBusqueda = v_personajes.begin();
     while(pSpriteBusqueda != v_personajes.end()){
@@ -58,4 +62,31 @@ std::deque<Sprite *> Group::collide(SDL_Rect & rect) {
 
 std::deque<Sprite *> Group::collide(Sprite * sprite) {
     return collide(sprite->rect);
+}
+
+void Group::clear() {
+    deque<Sprite *> copia = v_personajes;
+    v_personajes.clear();
+
+    auto pSprite = copia.begin();
+    while(pSprite != copia.end()){
+        // Remover Este grupo de los grupos que guarda (*pSprite)
+        (*pSprite)->removeFromGroup(this);
+        pSprite++;
+    }
+}
+
+void Group::kill() {
+    deque<Sprite *> copia = v_personajes;
+    v_personajes.clear();
+
+    auto pSprite = copia.begin();
+    while(pSprite != copia.end()){
+        // Remover Este grupo de los grupos que guarda (*pSprite)
+        // Antes de llamar a kill, porque en kill el sprite hace un bucle por todos los grupos que lo incluyen
+        // incluyendonos
+        (*pSprite)->removeFromGroup(this);
+        (*pSprite)->kill();
+        pSprite++;
+    }
 }
