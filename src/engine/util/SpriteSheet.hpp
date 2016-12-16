@@ -54,6 +54,7 @@ public:
     }
     void setAlpha(Uint8 nuevoValor){
         //mAlpha = nuevoValor;
+        mTexture->setBlendMode(SDL_BLENDMODE_BLEND);
         mTexture->setAlpha(nuevoValor);
     }
     int getHeightCuadro() {

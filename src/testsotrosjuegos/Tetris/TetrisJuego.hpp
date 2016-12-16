@@ -19,6 +19,7 @@ static const int POS_NO_VISITADA_RECURSION = 0;
 #include "AnimacionDesvanecerOut.hpp"
 #include "BitmapFont.hpp"
 #include "../../engine/util/LTimer.hpp"
+#include "RandomGenerator.hpp"
 
 
 class InterfazJuegoTetris{
@@ -42,22 +43,22 @@ public:
 class TetrisJuego : public ControlaAnimacionInterfaz {
 
 public:
-    TetrisJuego(InterfazJuegoTetris * parent,int id,int x,int y,int filas,int columnas){
+    TetrisJuego(InterfazJuegoTetris * parent,int id,int x,int y){
 
         mParent = parent;
         mId = id;
         mSizeCuadro = 32;
+        mFilas      = 23;
+        mColumnas   = 10;
 
         mRectAreaJuego.x = x;
         mRectAreaJuego.y = y;
-        mRectAreaJuego.w = columnas * mSizeCuadro;
-        mRectAreaJuego.h = filas    * mSizeCuadro;
+        mRectAreaJuego.w = mColumnas * mSizeCuadro;
+        mRectAreaJuego.h = mFilas    * mSizeCuadro;
 
-        mFilas      = filas;
-        mColumnas   = columnas;
 
-        mArrayEstadoJuegoTetrominosCaidos = (Uint8 *) std::malloc(sizeof(Uint8)* (size_t) (filas * columnas));
-        mArrayEstadoJuegoRecursion =  (Uint8 *) std::malloc(sizeof(Uint8) *(size_t) (filas * columnas));
+        mArrayEstadoJuegoTetrominosCaidos = (Uint8 *) std::malloc(sizeof(Uint8)* (size_t) (mFilas * mColumnas));
+        mArrayEstadoJuegoRecursion =  (Uint8 *) std::malloc(sizeof(Uint8) *(size_t) (mFilas * mColumnas));
 
         //mSprites = new DrawGroup(this);
 
@@ -126,25 +127,18 @@ public:
 
         mControlAnimaciones = new ControlaAnimacion(this);
         //mPlayerPuntaje = 0;
-        mDelayActualBajarTetraminoActual = 0;
-        mMaxDelayBajarTetraminoActual = 40;
+        mDelayActualBajarTetrominoActual = 0;
+        mMaxDelayBajarTetrominoActual = 40;
         mEstadoJuego = EstadoJuego ::RUNNING;
         mMantieneTeclaPausaPresionada = true;
+        mTetrominoGhost     = new Tetromino(Tetromino::FormaTetromino ::Z,0,0,
+                                            mSizeCuadro,
+                                            new SpriteSheet(mGRenderer,"resources/blocks.png",5,8,false),false);
         crearTetrominos();
     }
 
     Tetromino * generarTetrominoAleatorio(){
-        Tetromino::TetrisForma tipos[] ={
-                Tetromino::TetrisForma::L,
-                Tetromino::TetrisForma::J,
-                Tetromino::TetrisForma::S,
-                Tetromino::TetrisForma::Z,
-                Tetromino::TetrisForma::O,
-                Tetromino::TetrisForma::I,
-                Tetromino::TetrisForma::T,
-        };
-        Tetromino * nuevo = new Tetromino(tipos[rand()%Tetromino::N_FORMAS],0,0,mSizeCuadro,mSpriteSheetBloques);
-        return nuevo;
+        return new Tetromino(mRandomGenerator.getNextFormaTetromino(),0,0,mSizeCuadro,mSpriteSheetBloques);
     }
 
     void crearTetrominos(){
@@ -164,16 +158,20 @@ public:
             mEstadoJuego = EstadoJuego ::GAME_OVER;
             mParent->tetrisGameOver(mId);
         }
-//        mFormaActualSombra = new Tetromino(
-//                Tetromino::TetrisForma::L,
-//                mRectAreaJuego.x + mRectAreaJuego.w/2,mRectAreaJuego.y,mSizeCuadro,mSpriteSheetBloques);
+
+        mTetrominoGhost->cambiarForma(mTetrominoActual->getForma());
+        mTetrominoGhost->setAlpha(150);
+        mTetrominoGhost->setIndiceCuadroBloque(12);
     }
 
     void estadoRunningDraw(SDL_Renderer * gRenderer){
 
         dibujarArrayFondoJuego(gRenderer);
 
-        if(mTetrominoActual != nullptr)mTetrominoActual->draw(gRenderer);
+        if(mTetrominoActual != nullptr) {
+            mTetrominoGhost->draw(gRenderer);
+            mTetrominoActual->draw(gRenderer);
+        }
 
         for (auto itBloqueAnimacionCayendo = mDequeTetraminosCayendo.begin();
              itBloqueAnimacionCayendo != mDequeTetraminosCayendo.end();
@@ -270,29 +268,206 @@ public:
 
         return false;
     }
-    void girarFormaActualDesc() {
-        if(!mTetrominoActual) return;
 
-        mTetrominoActual->rotate();
+    void procesarEventoRunning(SDL_Event * evento){
+        if(evento->type==SDL_KEYDOWN) {
+            switch (evento->key.keysym.sym) {
+                case SDLK_ESCAPE:
+                    break;
+                case SDLK_RIGHT:
+                    if(mTetrominoActual != nullptr) {
+                        if (moverIpTetromino(mTetrominoActual, mSizeCuadro, 0)) {
+                            mParent->playSfx(mSfxPieceMove);
+                            mDelayActualBajarTetrominoActual = 0;
+                        } else {
+                            mParent->playSfx(mSfxPieceTouch);
+                        }
+                    }
+                    break;
+                case SDLK_LEFT:
+                    if(mTetrominoActual != nullptr) {
+                        if (moverIpTetromino(mTetrominoActual, -mSizeCuadro, 0)) {
+                            mParent->playSfx(mSfxPieceMove);
+                            mDelayActualBajarTetrominoActual = 0;
+                        } else {
+                            mParent->playSfx(mSfxPieceTouch);
+                        }
+                    }
+                    break;
+                case SDLK_UP:
+                    if(mTetrominoActual != nullptr) {
+                        int nCeldasDropeadas = hardDropTetramino(mTetrominoActual);
+                        if(nCeldasDropeadas > 0){
+                            mParent->tetrisHardDrop(mId,nCeldasDropeadas);
+                        }
 
-        if(estaTetraminoEnPosicionInvalida(mTetrominoActual)){
-            mTetrominoActual->rotate(-1);
-            mParent->playSfx(mSfxPieceRotateFail);
-        }else{
-            mParent->playSfx(mSfxPieceRotate);
+                        mDelayActualBajarTetrominoActual = mMaxDelayBajarTetrominoActual + 1;
+                        mParent->playSfx(mSfxHoldPiece);
+                    }
+                    break;
+                case SDLK_DOWN:
+                    if(mTetrominoActual != nullptr) {
+                        if (!mEstaUtilizandoSoftDrop) {
+                            mDelayActualBajarTetrominoActual = mMaxDelayBajarTetrominoActual + 1;
+                            mMaxDelayBajarTetrominoActual /= 4;
+                            mParent->playSfx(mSfxSoftDrop);
+                            mCeldasAvanzadasSoftDrop = 0;
+                            mEstaUtilizandoSoftDrop = true;
+                        }
+                    }
+                    break;
+                case SDLK_z:
+                    if(mTetrominoActual != nullptr) {
+                        if (girarFormaActualDesc(1)) {
+                            mDelayActualBajarTetrominoActual = 0;
+                            mTetrominoGhost->rotate(1);
+                        }
+                    }
+                    break;
+                case SDLK_x:
+                    if(mTetrominoActual != nullptr) {
+                        if (girarFormaActualDesc(-1)) {
+                            mTetrominoGhost->rotate(-1);
+                            mDelayActualBajarTetrominoActual = 0;
+                        }
+                    }
+                    break;
+                case SDLK_RETURN:
+                    mParent->tetrisPaused(mId);
+                    mEstadoJuego = EstadoJuego ::PAUSADO;
+                    mOpcionSeleccionadaMenuPausa = 0;
+                    mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[EstadoOpcionMenu::RESALTADO]);
+                    break;
+                default:
+                    break;
+            }
+        }else if (evento->type == SDL_KEYUP){
+            switch (evento->key.keysym.sym) {
+                case SDLK_DOWN:
+                    if(mEstaUtilizandoSoftDrop) {
+                        mMaxDelayBajarTetrominoActual *= 4;
+                        mParent->playSfx(mSfxHardDrop);
+                        if (mCeldasAvanzadasSoftDrop) {
+                            mParent->tetrisSoftDrop(mId, mCeldasAvanzadasSoftDrop);
+                            mCeldasAvanzadasSoftDrop = 0;
+                        }
+                        mEstaUtilizandoSoftDrop = false;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+        }
+    }
+    void procesarEvento(SDL_Event * evento){
+
+        switch(mEstadoJuego){
+
+            case STOPPED:break;
+            case RUNNING:
+                procesarEventoRunning(evento);
+                break;
+            case PAUSADO:
+                procesarEventoPausado(evento);
+                break;
+            case GAME_OVER:
+                procesarEventoGameOver(evento);
+                break;
         }
     }
 
-    void hardDropTetramino(Tetromino *pForma) {
+    void procesarEventoPausado(SDL_Event * evento){
+
+        if(evento->type == SDL_KEYDOWN){
+            switch (evento->key.keysym.sym) {
+                case SDLK_UP:
+                    if(mOpcionSeleccionadaMenuPausa - 1 >= 0){
+                        mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[NORMAL]);
+                        mOpcionSeleccionadaMenuPausa--;
+                        mParent->playSfx(mSfxPieceTouch);
+                        mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[RESALTADO]);
+                    }
+                    break;
+                case SDLK_DOWN:
+                    if(mOpcionSeleccionadaMenuPausa + 1 < N_OPCIONES_PAUSA){
+                        mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[NORMAL]);
+                        mOpcionSeleccionadaMenuPausa++;
+                        mParent->playSfx(mSfxPieceTouch);
+                        mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[RESALTADO]);
+                    }
+                    break;
+                case SDLK_RETURN:
+                    mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[NORMAL]);
+                    switch(mOpcionSeleccionadaMenuPausa){
+                        case OpcionesPausa::CONTINUE:
+                            std::cout << "TetrisJuego::CONTINUE" << std::endl;
+                            mEstadoJuego = EstadoJuego ::RUNNING;
+                            mParent->tetrisResumed(mId);
+                            mParent->playSfx(mSfxHoldPiece);
+                            break;
+                        case OpcionesPausa ::RETRY:
+                            std::cout << "TetrisJuego::RETRY" << std::endl;
+                            mParent->tetrisRetry(mId);
+                            break;
+                        case OpcionesPausa ::END:
+                            std::cout << "TetrisJuego::END" << std::endl;
+                            mParent->tetrisEnd(mId);
+                            break;
+                        default:break; // No debería ocurrir, ayuda a quitar warnings
+                    }
+                    mOpcionSeleccionadaMenuPausa = 0;
+                    break;
+            }
+        }
+
+
+    }
+
+    void procesarEventoGameOver(SDL_Event * evento){
+        if(evento->type == SDL_KEYDOWN){
+
+            if(evento->key.keysym.sym == SDLK_RETURN){
+                mParent->tetrisRetry(mId);
+            }
+        }
+    }
+
+
+    bool girarFormaActualDesc(int direccion) {
+        if(!mTetrominoActual) return false;
+
+        mTetrominoActual->rotate(direccion);
+
+        if(estaTetraminoEnPosicionInvalida(mTetrominoActual)){
+
+            mTetrominoActual->moveIp(mSizeCuadro,0);
+
+            if(estaTetraminoEnPosicionInvalida(mTetrominoActual)){
+
+                mTetrominoActual->moveIp(-2*mSizeCuadro,0);
+
+                if(estaTetraminoEnPosicionInvalida(mTetrominoActual)){
+                    mTetrominoActual->rotate(-direccion);
+                    mTetrominoActual->moveIp(mSizeCuadro,0);
+                    mParent->playSfx(mSfxPieceRotateFail);
+                    return false;
+                }
+            }
+        }else{
+            mParent->playSfx(mSfxPieceRotate);
+        }
+        return true;
+    }
+
+    int hardDropTetramino(Tetromino *pForma) {
 
         int celdasAvanzadas = 0;
         while(moverIpTetromino(pForma, 0, mSizeCuadro)){
             celdasAvanzadas++;
         };
 
-        if(celdasAvanzadas){
-            mParent->tetrisHardDrop(mId,celdasAvanzadas);
-        }
+        return celdasAvanzadas;
     }
 
     int limpiarLineasCompletas() {
@@ -333,11 +508,6 @@ public:
         return nLineasEliminadas;
     }
 
-    /*void actualizarPlayerPuntaje(int nLineasCompletas) {
-        if(nLineasCompletas == 0) return;
-        //mPlayerPuntaje += (nLineasCompletas - 1)*200 + 100;
-        mParent->tetrisPuntajeCambio(mId,mPlayerPuntaje);
-    }*/
 
     void estadoRunningUpdate(){
 
@@ -350,10 +520,8 @@ public:
             if(mActualDelayBajarTetraminosFlotantes >= mMaxDelayBajarTetraminosFlotantes){
                 mActualDelayBajarTetraminosFlotantes = 0;
 
-                //bool algunTetraminoTocoPiso;
                 bool almenosUnTetraminoTocoPiso = false;
-                //do {
-                //algunTetraminoTocoPiso = false;
+
                 auto itBloqueAnimacionCayendo = mDequeTetraminosCayendo.begin();
                 while (itBloqueAnimacionCayendo != mDequeTetraminosCayendo.end()) {
 
@@ -362,20 +530,16 @@ public:
                         (*itBloqueAnimacionCayendo)->moveIp(0, -mSizeCuadro);
                         guardarTetrominoEnFondo((*itBloqueAnimacionCayendo));
                         itBloqueAnimacionCayendo = mDequeTetraminosCayendo.erase(itBloqueAnimacionCayendo);
-                        //algunTetraminoTocoPiso = true;
                         almenosUnTetraminoTocoPiso = true;
                     } else {
-                        //(*itBloqueAnimacionCayendo)->moveIp(0, -mSizeCuadro);
                         ++itBloqueAnimacionCayendo;
                     }
                 }
-                //} while (algunTetraminoTocoPiso);
 
                 if(almenosUnTetraminoTocoPiso) {
                     int nLineasCompletas = limpiarLineasCompletas();
                     if(nLineasCompletas){
                         mParent->tetrisLineasCompletadas(mId,nLineasCompletas);
-                        //actualizarPlayerPuntaje(nLineasCompletas);
                     }
                 }
 
@@ -389,73 +553,18 @@ public:
 
         if(mTetrominoActual != nullptr){
 
-            mTetrominoActual->update(nullptr);
+            //mTetrominoActual->update(nullptr);
 
-            const Uint8 * keysState = SDL_GetKeyboardState(nullptr);
+            mDelayActualBajarTetrominoActual++;
 
-            if(keysState[SDL_SCANCODE_RIGHT] && ! mMantieneTeclaRightPresionada){
-                if(moverIpTetromino(mTetrominoActual, mSizeCuadro, 0)){
-                    mParent->playSfx(mSfxPieceMove);
-                }else{
-                    mParent->playSfx(mSfxPieceTouch);
-                }
-            }
-            mMantieneTeclaRightPresionada = keysState[SDL_SCANCODE_RIGHT];
+            mTetrominoGhost->move(mTetrominoActual->getX(),mTetrominoActual->getY());
+            hardDropTetramino(mTetrominoGhost);
 
-            if(keysState[SDL_SCANCODE_LEFT] && ! mMantieneTeclaLeftPresionada){
-                if(moverIpTetromino(mTetrominoActual, -mSizeCuadro, 0)){
-                    mParent->playSfx(mSfxPieceMove);
-                }else{
-                    mParent->playSfx(mSfxPieceTouch);
-                }
-            }
-            mMantieneTeclaLeftPresionada = keysState[SDL_SCANCODE_LEFT];
-
-            if(keysState[SDL_SCANCODE_UP] && ! mMantieneTeclaGiroPresionada){
-                girarFormaActualDesc();
-                //mFormaActualSombra->rotate();
-            }
-            mMantieneTeclaGiroPresionada = keysState[SDL_SCANCODE_UP];
-
-            if(keysState[SDL_SCANCODE_SPACE] && ! mMantieneTeclaHardDropPresionada){
-                hardDropTetramino(mTetrominoActual);
-                mDelayActualBajarTetraminoActual = mMaxDelayBajarTetraminoActual + 1;
-                mParent->playSfx(mSfxHoldPiece);
-            }
-            mMantieneTeclaHardDropPresionada = keysState[SDL_SCANCODE_SPACE];
-
-            if(keysState[SDL_SCANCODE_DOWN] && !mMantieneTeclaSoftDropPresionada){
-                mDelayActualBajarTetraminoActual = mMaxDelayBajarTetraminoActual + 1;
-                mMaxDelayBajarTetraminoActual /= 4;
-                mParent->playSfx(mSfxSoftDrop);
-                mCeldasAvanzadasSoftDrop = 0;
-            }else if(keysState[SDL_SCANCODE_DOWN] && mMantieneTeclaSoftDropPresionada){
-            }else if(!keysState[SDL_SCANCODE_DOWN] && mMantieneTeclaSoftDropPresionada){
-                mMaxDelayBajarTetraminoActual *= 4;
-                mParent->playSfx(mSfxHardDrop);
-                if(mCeldasAvanzadasSoftDrop){
-                    mParent->tetrisSoftDrop(mId,mCeldasAvanzadasSoftDrop);
-                    mCeldasAvanzadasSoftDrop = 0;
-                }
-            }
-
-            mMantieneTeclaSoftDropPresionada = keysState[SDL_SCANCODE_DOWN];
-
-            if(keysState[SDL_SCANCODE_RETURN] && !mMantieneTeclaPausaPresionada){
-                mParent->tetrisPaused(mId);
-                mEstadoJuego = EstadoJuego ::PAUSADO;
-                mOpcionSeleccionadaMenuPausa = 0;
-                mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[EstadoOpcionMenu::RESALTADO]);
-            }
-            mMantieneTeclaPausaPresionada = keysState[SDL_SCANCODE_RETURN];
-
-            mDelayActualBajarTetraminoActual++;
-
-            if(mDelayActualBajarTetraminoActual >= mMaxDelayBajarTetraminoActual){
-                mDelayActualBajarTetraminoActual = 0;
+            if(mDelayActualBajarTetrominoActual >= mMaxDelayBajarTetrominoActual){
+                mDelayActualBajarTetrominoActual = 0;
 
                 if(!moverIpTetromino(mTetrominoActual, 0, mSizeCuadro)){
-                    if(keysState[SDL_SCANCODE_DOWN] && mMantieneTeclaSoftDropPresionada){
+                    if(mEstaUtilizandoSoftDrop){
                         if(mCeldasAvanzadasSoftDrop){
                             mParent->tetrisSoftDrop(mId,mCeldasAvanzadasSoftDrop);
                             mCeldasAvanzadasSoftDrop = 0;
@@ -475,7 +584,7 @@ public:
                         mParent->tetrisLineasCompletadas(mId,lineasCompletas);
                     }
                 }else{
-                    if(keysState[SDL_SCANCODE_DOWN] && mMantieneTeclaSoftDropPresionada){
+                    if(mEstaUtilizandoSoftDrop){
                         mCeldasAvanzadasSoftDrop++;
                     }
 
@@ -488,64 +597,9 @@ public:
     }
 
     void estadoGameOverUpdate(){
-        const Uint8 * keysState = SDL_GetKeyboardState(nullptr);
-
-        if(keysState[SDL_SCANCODE_RETURN] && !mMantieneTeclaPausaPresionada){
-            mParent->tetrisRetry(mId);
-        }
-
-        mMantieneTeclaPausaPresionada = keysState[SDL_SCANCODE_RETURN];
-
     }
 
     void estadoPausadoUpdate(){
-        const Uint8 * keysState = SDL_GetKeyboardState(nullptr);
-
-
-        if(keysState[SDL_SCANCODE_UP] && ! mMantieneTeclaGiroPresionada){
-            if(mOpcionSeleccionadaMenuPausa - 1 >= 0){
-                mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[NORMAL]);
-                mOpcionSeleccionadaMenuPausa--;
-                mParent->playSfx(mSfxPieceTouch);
-                mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[RESALTADO]);
-            }
-            //mFormaActualSombra->rotate();
-        }
-        mMantieneTeclaGiroPresionada = keysState[SDL_SCANCODE_UP];
-
-        if(keysState[SDL_SCANCODE_DOWN] && !mMantieneTeclaSoftDropPresionada){
-            if(mOpcionSeleccionadaMenuPausa + 1 < N_OPCIONES_PAUSA){
-                mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[NORMAL]);
-                mOpcionSeleccionadaMenuPausa++;
-                mParent->playSfx(mSfxPieceTouch);
-                mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[RESALTADO]);
-            }
-        }
-        mMantieneTeclaSoftDropPresionada = keysState[SDL_SCANCODE_DOWN];
-
-        if(keysState[SDL_SCANCODE_RETURN] && !mMantieneTeclaPausaPresionada){
-            mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[NORMAL]);
-            switch(mOpcionSeleccionadaMenuPausa){
-                case OpcionesPausa::CONTINUE:
-                    std::cout << "TetrisJuego::CONTINUE" << std::endl;
-                    mEstadoJuego = EstadoJuego ::RUNNING;
-                    mParent->tetrisResumed(mId);
-                    mParent->playSfx(mSfxHoldPiece);
-                    break;
-                case OpcionesPausa ::RETRY:
-                    std::cout << "TetrisJuego::RETRY" << std::endl;
-                    mParent->tetrisRetry(mId);
-                    break;
-                case OpcionesPausa ::END:
-                    std::cout << "TetrisJuego::END" << std::endl;
-                    mParent->tetrisEnd(mId);
-                    break;
-                default:break; // No debería ocurrir, ayuda a quitar warnings
-            }
-            mOpcionSeleccionadaMenuPausa = 0;
-        }
-
-        mMantieneTeclaPausaPresionada = keysState[SDL_SCANCODE_RETURN];
     }
 
 
@@ -720,7 +774,7 @@ public:
         }
         delete plTextureFlechaOpcionSeleccionada;
         delete pBFGameOver;
-        //delete mFormaActualSombra;
+        //delete mTetrominoGhost;
         Mix_FreeChunk(mSfxPieceRotate);
         Mix_FreeChunk(mSfxPieceRotateFail);
         Mix_FreeChunk(mSfxPieceTouch);
@@ -735,6 +789,15 @@ public:
         Mix_FreeChunk(mSfxHoldPiece);
     }
 
+
+    int getTickDelayBajarTetromino() {
+        return mMaxDelayBajarTetrominoActual;
+    }
+
+    void setTickDelayBajarTetromino(int nuevoTickEspera) {
+        mDelayActualBajarTetrominoActual = 0;
+        mMaxDelayBajarTetrominoActual = nuevoTickEspera;
+    }
 
 private:
 
@@ -760,15 +823,15 @@ private:
     int mSizeCuadro = 0;
 
     Tetromino * mTetrominoActual = nullptr;
-    int mDelayActualBajarTetraminoActual = 0;
-    int mMaxDelayBajarTetraminoActual = 0;
+    int mDelayActualBajarTetrominoActual = 0;
+    int mMaxDelayBajarTetrominoActual = 0;
 
     int mActualDelayBajarTetraminosFlotantes = 0;
     int mMaxDelayBajarTetraminosFlotantes = 0;
 
     bool mMantieneTeclaLeftPresionada = false;
     bool mMantieneTeclaRightPresionada = false;
-    bool mMantieneTeclaGiroPresionada = false;
+    bool mMantieneTeclaGiroCounterClockPresionada = false;
     bool mMantieneTeclaHardDropPresionada = false;
     bool mMantieneTeclaSoftDropPresionada = false;
     bool mMantieneTeclaPausaPresionada = false;
@@ -778,7 +841,7 @@ private:
     //LTexture *mTextureBackground;
     ControlaAnimacion * mControlAnimaciones;
     std::deque<Tetromino *> mDequeTetraminosCayendo;
-    //Tetromino *mFormaActualSombra;
+    //Tetromino *mTetrominoGhost;
     InterfazJuegoTetris * mParent;
     int mId;
 
@@ -823,6 +886,9 @@ private:
 
 
     int mCeldasAvanzadasSoftDrop = 0;
+    bool mEstaUtilizandoSoftDrop = false;
+    RandomGenerator mRandomGenerator;
+    Tetromino *mTetrominoGhost;
 };
 #endif //TETRIS_TETRISJUEGO_HPP
 //

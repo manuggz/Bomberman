@@ -41,7 +41,7 @@ public:
         std::cout << "TetrisInterfaz::prepare" << std::endl;
         InterfazUI::prepare();
         mLayoutBackGround          = new LayoutAbsolute();
-        mTetrisJuego = new TetrisJuego(this, TETRIS_PLAYER_1, 32, 0, 23, 10);
+        mTetrisJuego = new TetrisJuego(this, TETRIS_PLAYER_1, 32, 0);
 
         mMetaData = new MetaData();
         if(mMetaData->cargarMetaData("resources/settings.db",":")){
@@ -53,6 +53,7 @@ public:
         mMusicaFondo = cargar_musica("resources/music/music.mp3");
         mSfxChunkGameOver = cargar_sonido((char *) "resources/music/SFX_GameOver.ogg");
         mSfxChunkGameStart = cargar_sonido((char *) "resources/music/SFX_GameStart.ogg");
+        mSfxLevelUp =  cargar_sonido((char *) "resources/music/SFX_LevelUp.ogg");
         mSfxClearLines[0] = cargar_sonido((char *) "resources/music/SFX_SpecialLineClearSingle.ogg");
         mSfxClearLines[1] = cargar_sonido((char *) "resources/music/SFX_SpecialLineClearDouble.ogg");
         mSfxClearLines[2] = cargar_sonido((char *) "resources/music/SFX_SpecialLineClearTriple.ogg");
@@ -111,6 +112,18 @@ public:
         std::fill_n(textoDigitalizado,11,0);
 
         mLineasCompletas += nLineasCompletadas;
+
+        if((mLineasCompletas / 10 + 1) > mLevelTetrisPlayer){
+            int nuevoTick = mTetrisJuego->getTickDelayBajarTetromino() - 2;
+            if(nuevoTick <= 2){
+                nuevoTick = 2;
+            }
+            mTetrisJuego->setTickDelayBajarTetromino(nuevoTick);
+            mLevelTetrisPlayer += 1;
+            setTextWithDigits(mBitmapLevelPlayer1Valor,mLevelTetrisPlayer,N_DIGITOS_ENTEROS);
+            mGameManagerInterfaz->play(mSfxLevelUp);
+        }
+
         sprintf(textoDigitalizado,"%10d",mLineasCompletas);
         i = 0;
         while(textoDigitalizado[i] == ' ')textoDigitalizado[i++]='0';
@@ -149,16 +162,6 @@ public:
         lTexture->loadFromFile("resources/backgroundSinglePlayer.png",renderer,false);
         mLayoutBackGround->setBackgroundTexture(lTexture);
 
-        /*LabelComponent * labelComponentScore = new LabelComponent();
-        labelComponentScore->setText("SCORE:");
-        //labelComponentScore->setText(std::to_string(minutosEscogidos));
-        labelComponentScore->setFont("resources/fuentes/OpenSans-Bold.ttf",25);
-        //labelComponentScore->setTextColor(color);
-        labelComponentScore->setLayoutParam(LAYOUT_PARAM_X,"700");
-        labelComponentScore->setLayoutParam(LAYOUT_PARAM_Y,"100");
-
-        mLayoutBackGround->addComponent(labelComponentScore);*/
-
         mBitmapFont = new BitmapFont(renderer,"resources/fuentes/fuente_1.png");
 
         mBitmapHighScore = new BitmapFontRenderer(mBitmapFont,721,313);
@@ -167,7 +170,6 @@ public:
         mBitmapHighScorePlayer1Valor = new BitmapFontRenderer(mBitmapFont,0,355);
         mBitmapHighScorePlayer1Valor->setRight(907);
         setTextWithDigits(mBitmapHighScorePlayer1Valor,mHighScore,N_DIGITOS_ENTEROS);
-//        mBitmapHighScorePlayer1Valor->setText("000000000");
 
         mBitmapScore = new BitmapFontRenderer(mBitmapFont,763,430);
         mBitmapScore->setText("SCORE");
@@ -197,15 +199,6 @@ public:
         mBitmapLinesPlayer1Valor->setRight(970);
         mBitmapLinesPlayer1Valor->setText("0000000000");
 
-        /*mLabelComponentScoreActual = new LabelComponent();
-        mLabelComponentScoreActual->setText("0");
-        //labelComponentScore->setText(std::to_string(minutosEscogidos));
-        mLabelComponentScoreActual->setFont("resources/fuentes/OpenSans-Bold.ttf",25);
-        //labelComponentScore->setTextColor(color);
-        mLabelComponentScoreActual->setLayoutParam(LAYOUT_PARAM_X,"800");
-        mLabelComponentScoreActual->setLayoutParam(LAYOUT_PARAM_Y,"100");
-
-        mLayoutBackGround->addComponent(mLabelComponentScoreActual);*/
         mTetrisJuego->crearUI(renderer);
         SDL_ShowCursor(SDL_DISABLE);//ocultamos el cursor
 
@@ -292,6 +285,8 @@ public:
                     break;
             }
         }
+
+        mTetrisJuego->procesarEvento(evento);
     }
 
     void stop() override {
@@ -366,6 +361,7 @@ public:
         Mix_FreeMusic(mMusicaFondo);
         Mix_FreeChunk(mSfxChunkGameOver);
         Mix_FreeChunk(mSfxChunkGameStart);
+        Mix_FreeChunk(mSfxLevelUp);
 
         for(int i = 0; i < 4;i++){
             Mix_FreeChunk(mSfxClearLines[i]);
@@ -400,6 +396,7 @@ private:
     Mix_Music * mMusicaFondo;
     Mix_Chunk * mSfxChunkGameStart;
     Mix_Chunk * mSfxChunkGameOver;
+    Mix_Chunk * mSfxLevelUp;
 
     Mix_Chunk * mSfxClearLines[4];
     int mLevelTetrisPlayer = 1;
