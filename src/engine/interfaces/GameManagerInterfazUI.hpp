@@ -6,7 +6,7 @@
 #define BOMBERMAN_GAMEMANAGERINTERFAZ_HPP
 
 #include "GameManagerPopUpInterfaz.hpp"
-#include "../../util/galeria.hpp"
+#include "../util/galeria.hpp"
 
 class InterfazUI;
 class PopUpInterfaz;
@@ -21,6 +21,7 @@ public:
      * @param codeMusic
      */
     virtual void play(Galeria::CodeMusicEfecto codeMusic) = 0;
+    virtual void play(Mix_Chunk *  pSfxChunk) = 0;
     /**
      * Reproduce una musica de fondo
      * @param codigoSonido
@@ -61,5 +62,9 @@ public:
      * Regresa en la pila de navegación, si no hay nada en la pila se sale del juego.
      */
     virtual void goBack()=0;
+
+    virtual void playSound(Mix_Music * pMusic,Uint8 volumen) = 0;
+    virtual void playFadeInSound(Mix_Music *music, Uint8 volumen) = 0;
+
 };
 #endif //BOMBERMAN_GAMEMANAGERINTERFAZ_HPP

@@ -1,7 +1,7 @@
 #include "juego.hpp"
 #include "../../engine/util/LTimer.hpp"
 #include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
-#include "../../engine/layout/Componentes/TextLabelComponent.hpp"
+#include "../../engine/layout/Componentes/LabelComponent.hpp"
 #include "PopUpJuegoMostrarRondasGan.hpp"
 #include "PopUpMostrarMensajeTexto.hpp"
 #include "PopUpCountDown.hpp"
@@ -61,7 +61,7 @@ void Juego::createUI(SDL_Renderer *gRenderer) {
     SDL_Color color = {255,0,0,255}; // Red
 
     // Componente para el tiempo restante de la ronda
-    mpTxtTiempoRestante = new TextLabelComponent();
+    mpTxtTiempoRestante = new LabelComponent();
     mpTxtTiempoRestante->setText("0");
     mpTxtTiempoRestante->setFont("data/fuentes/OpenSans-Bold.ttf",15);
     mpTxtTiempoRestante->setTextColor(color);
@@ -72,7 +72,7 @@ void Juego::createUI(SDL_Renderer *gRenderer) {
 
     // Componente para las vidas restantes del player 1
     for(int i = 0; i < _PLAYERS ; i++){
-        mpVidasRestantesPlayer[i] = new TextLabelComponent();
+        mpVidasRestantesPlayer[i] = new LabelComponent();
         mpVidasRestantesPlayer[i]->setText("0");
         mpVidasRestantesPlayer[i]->setFont("data/fuentes/OpenSans-Bold.ttf",15);
         mpVidasRestantesPlayer[i]->setTextColor(color);
@@ -398,7 +398,6 @@ void Juego::drawBarra(SDL_Renderer * gRenderer){
 
         sprintf(tiempo,"%s:%s",min_,seg);
         mpTxtTiempoRestante->setText(tiempo);
-
     }
 
 }
@@ -730,6 +729,9 @@ Juego::~Juego(){
         delete mPlayerSprite[i];
         delete mpVidasRestantesPlayer[i];
     }
+
+    delete mpTxtTiempoRestante;
+    delete mLayoutParent;
 }
 
 void Juego::updateWhenPopUp() {

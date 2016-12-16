@@ -20,8 +20,8 @@
 #define MAX_NIVEL 16
 
 //#define W_H_BLOQUE 16
-#define W_SCREEN  320
-#define H_SCREEN  240
+//#define W_SCREEN  320
+//#define H_SCREEN  240
 
 #define _PLAYERS 5
 

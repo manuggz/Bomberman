@@ -10,53 +10,71 @@
  *  Carga los sonidos
  * @return
  */
-GameManager::GameManager(){
-    srand((unsigned int) time(0));
-    interfaz_actual   = nullptr;
+GameManager::GameManager(std::string caption,std::string ruta_icono, unsigned int witdth,unsigned int height,bool pantallaCompleta){
 
-    snd_disponible=false; // snd_disponible se actualiza en iniciarSDL()
-    iniciarSDL();
-    setModeVideo();
+    srand((unsigned int) time(0));
+
+    mCaption   = caption;
+    mRutaIcono = ruta_icono;
+
+    mWidth = witdth;
+    mHeight = height;
+
+    mPantallaCompleta = pantallaCompleta;
+    iniciarLibreriaSDL();
+
+    establecerModoDeVideo(pantallaCompleta);
 
     /* Notar que solo se activan al inicio, si un joystick se conecta a la PC después, éste no se reconocerá*/
     activarJoysticks();
-
-    salir_juego=false; // Nos dice cuando debemos cerrar el juego
-
-    galeria=new Galeria(); // Almacenamiento de Imagenes/Sonidos en Memoria
-    galeria->cargarTexturas(gRenderer);
-    // snd_disponible se actualiza en GameManager::iniciarSDL()
-    // Este indica si se logró activar el sonido
-    if(snd_disponible)galeria->cargarSonidos();
 }
+
+bool GameManager::cargarTexturas(std::string rutaTexturas){
+
+    if(!mpGaleria){
+        mpGaleria = new Galeria();
+    }
+    return mpGaleria->cargarTexturas(gRenderer, rutaTexturas);
+
+}
+
+bool GameManager::cargarSonidos(std::string rutaSonidos){
+
+    if(!mpGaleria){
+        mpGaleria = new Galeria();
+    }
+    if(mIniciadoModuloSonido)return mpGaleria->cargarSonidos(rutaSonidos);
+    return false;
+
+}
+
+
 
 /**
  * Inicia la libreria SDL
  *  Inicia el Subsistema de Audio,Video y Joistick
  *  Inicia la libreria Mixer
  */
-void GameManager::iniciarSDL(){
-    if(!SDL_WasInit(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK)){ 
-       if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK)<0){
-           mostrar_error_salir("No se pudo inciar SDL");
-       }
+void GameManager::iniciarLibreriaSDL(){
 
-        atexit(SDL_Quit); // Programamos que se cierre SDL al salir
+   if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK)<0){
+       cerr << "[ERROR] No se pudo inciar SDL" << SDL_GetError();
+       exit(EXIT_FAILURE);
+   }
 
-        if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT,MIX_DEFAULT_CHANNELS, 4096) < 0) {
-            cerr << "[WARNING]%s" << SDL_GetError();
-        }else{
-            snd_disponible=true;
-            Mix_AllocateChannels(_PLAYERS + 1);
-        }
+    atexit(SDL_Quit); // Programamos que se cierre SDL al salir
 
-        //Initialize SDL_ttf
-        if( TTF_Init() == -1 )
-        {
-            mostrar_error_salir( "SDL_ttf could not initialize!");
-        }
+    if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT,MIX_DEFAULT_CHANNELS, 4096) < 0) {
+        cerr << "[WARNING]%s" << SDL_GetError();
+    }else{
+        mIniciadoModuloSonido = true;
+        Mix_AllocateChannels(mChannels + 1);
+    }
 
-        
+    //Initialize SDL_ttf
+    if( TTF_Init() == -1 ){
+        cerr << "[ERROR] SDL_ttf could not initialize!" << SDL_GetError();
+        exit(EXIT_FAILURE);
     }
 
 }
@@ -65,38 +83,40 @@ void GameManager::iniciarSDL(){
  * Establece el modo de video en el juego
  * @param pantalla_completa Dice si se quiere que se ocupe toda la pantalla
  */
-void GameManager::setModeVideo(bool pantalla_completa){
-    Uint32 banderas=SDL_WINDOW_INPUT_FOCUS|SDL_WINDOW_ALLOW_HIGHDPI|SDL_WINDOW_MOUSE_CAPTURE;
+void GameManager::establecerModoDeVideo(bool pantalla_completa){
+    Uint32 banderas = SDL_WINDOW_INPUT_FOCUS|SDL_WINDOW_MOUSE_CAPTURE;
 
     if(pantalla_completa) banderas|= SDL_WINDOW_FULLSCREEN;
 
-    screen = SDL_CreateWindow(
-            "DestructionBombs v0.8",                  // window title
+    mMainWindow = SDL_CreateWindow(
+            (mCaption.empty()? "Game":mCaption.c_str()),                  // window title
             SDL_WINDOWPOS_CENTERED,           // initial x position
             SDL_WINDOWPOS_CENTERED,           // initial y position
-            W_SCREEN,                               // mWidth, in pixels
-            H_SCREEN,                               // height, in pixels
+            mWidth,                               // mWidth, in pixels
+            mHeight,                               // height, in pixels
             banderas                  // flags - see below
     );
 
-    if(!screen){
-        mostrar_error_salir("No se pudo crear Frame-buffer");
+    if(mMainWindow == nullptr){
+        cerr << "[ERROR] No se pudo crear Frame-buffer" << SDL_GetError();
+        exit(EXIT_FAILURE);
     }
 
-    SDL_Surface *icono;
-    icono =SDL_LoadBMP("data/imagenes/objetos/icono.bmp");
-    // Establecemos el icono
-    SDL_SetWindowIcon(screen,icono);
-    SDL_FreeSurface(icono);
+    if(!mRutaIcono.empty()){
+        SDL_Surface *icono;
+        icono =SDL_LoadBMP(mRutaIcono.c_str());
+        // Establecemos el icono
+        SDL_SetWindowIcon(mMainWindow,icono);
+        SDL_FreeSurface(icono);
+    }
 
-    gRenderer = SDL_CreateRenderer(screen, -1, SDL_RENDERER_ACCELERATED);
+    gRenderer = SDL_CreateRenderer(mMainWindow, -1, SDL_RENDERER_ACCELERATED);
     if (gRenderer == nullptr){
-        mostrar_error_salir("DL_CreateRenderer Error");
+        cerr << "[ERROR] SDL_CreateRenderer" << SDL_GetError();
+        exit(EXIT_FAILURE);
     }
 
     SDL_SetRenderDrawColor(gRenderer, 104, 104, 104, 255);
-    mWidth = W_SCREEN;
-    mHeight = H_SCREEN;
 }
 
 /**
@@ -110,7 +130,7 @@ void GameManager::activarJoysticks(){
      for(int i=0;i<joys_act;i++){
           joysticks[i]=SDL_JoystickOpen(i);//abrimos el joystick
      }
-     for(int i=joys_act;i<_PLAYERS;i++)
+     for(int i=joys_act;i<mJoysticksActivos;i++)
           joysticks[i]= nullptr;//los espacios que sobran los ponemos a NULL
 }
 
@@ -157,7 +177,7 @@ bool GameManager::procesarEventos(){
             case SDL_KEYDOWN:
                 if((evento.key.keysym.sym==SDLK_RETURN && evento.key.keysym.mod & SDLK_LSHIFT)||
                 (evento.key.keysym.sym==SDLK_f && evento.key.keysym.mod & SDLK_LSHIFT)){
-                    setModeVideo(full);
+                    establecerModoDeVideo(full);
                     full=!full;
                     return false;
                 }
@@ -292,31 +312,56 @@ void GameManager::run(){
 
 void GameManager::play(Galeria::CodeMusicEfecto code){
     /*Reproduce un Chunk*/
-    if(snd_disponible)Mix_PlayChannel(-1,galeria->getMusicEfecto(code), 0);
+    if(mIniciadoModuloSonido)Mix_PlayChannel(-1,mpGaleria->getMusicEfecto(code), 0);
+}
+void GameManager::play(Mix_Chunk *pSfxChunk) {
+    if(mIniciadoModuloSonido)Mix_PlayChannel(-1,pSfxChunk, 0);
 }
 void GameManager::playSound(Galeria::CodeMusicSonido code){
     /*Reproduce una musica de fondo*/
     static int t_ini=0;
     //static int t_pas=0;
-    
-    if(snd_disponible){
+
+    if(mIniciadoModuloSonido){
         if(SDL_GetTicks()-t_ini<1000){/*Si se reproduce este sonido seguidamente del anterior (1 s)*/
             cerr << "WARNING:Reproducci�n apresurada del sonido:"<<code<<endl;
         }
-        Mix_PlayMusic(galeria->getMusicSonido(code), -1);
+        Mix_PlayMusic(mpGaleria->getMusicSonido(code), -1);
         t_ini=SDL_GetTicks();
     }
 }
 
+void GameManager::playSound(Mix_Music * music,Uint8 volumen){
+    /*Reproduce una musica de fondo*/
+    //static int t_ini=0;
+    //static int t_pas=0;
+
+    if(mIniciadoModuloSonido){
+        Mix_VolumeMusic(volumen);
+        Mix_PlayMusic(music, -1);
+    }
+}
+
+void GameManager::playFadeInSound(Mix_Music * music,Uint8 volumen){
+    /*Reproduce una musica de fondo*/
+    //static int t_ini=0;
+    //static int t_pas=0;
+
+    if(mIniciadoModuloSonido){
+        Mix_VolumeMusic(volumen);
+        Mix_FadeInMusic(music, -1,2000);
+    }
+}
+
 LTexture * GameManager::getTexture(Galeria::CodeImagen code){
-    return galeria->getImagen(code);
+    return mpGaleria->getImagen(code);
 }
 
 GameManager::~GameManager(){
 
     SDL_DestroyRenderer(gRenderer);
     // Close and destroy the window
-    SDL_DestroyWindow(screen);
+    SDL_DestroyWindow(mMainWindow);
 
     while(interfaces.size() > 0){
         delete interfaces.top();
@@ -324,7 +369,7 @@ GameManager::~GameManager(){
     }
 
 
-    delete galeria;
+    delete mpGaleria;
 
     for(int i=0;i<joys_act;i++){
         if(joysticks[i]) {
@@ -332,10 +377,11 @@ GameManager::~GameManager(){
         }
     }
 
-    if(snd_disponible)
+    if(mIniciadoModuloSonido)
         Mix_CloseAudio();
     TTF_Quit();
 }
+
 
 int GameManager::getWidth() {
     return mWidth;
@@ -401,42 +447,3 @@ void GameManager::showPopUp(PopUpInterfaz *pPopUp,int CodePopUp) {
     mpPopUp      = pPopUp;
     mIDCodePopUp = CodePopUp;
 }
-/*
-void GameManager::cargarDatos(){  
-    ifstream fs(RUTA_CONFIG);
-    if(!fs){
-        cerr << "Error abriendo:--"<<RUTA_CONFIG<<endl;
-        maxTerrenosBatalla=0;
-        puntaje_mayor=0;
-    }
-    fs >>maxTerrenosBatalla;
-    fs >>puntaje_mayor;
-    fs.close();
-}
-
-
-
-void GameManager::guardarDatos(){
-    ofstream fs(RUTA_CONFIG);
-    fs <<maxTerrenosBatalla << endl;
-    fs <<puntaje_mayor<<endl;
-    fs.close();
-}
-
-int GameManager::getMaxTerrenoBatalla(){
-    return maxTerrenosBatalla;
-}
-*/
-
-
-/*SDL_Surface GameManager::getPreviewTerreno(int id,int id_tile){
-     return Nivel::getPreviewTerreno(id,id_tile,galeria);
-}
-
-void GameManager::cargarFileNivel(char * buffer,char ruta[]){
-     Nivel::cargarFileNivel(buffer,ruta);
-}
-
-void GameManager::dibujarNivel(char * mapa,int id_tile,SDL_Surface * super){
-     Nivel::draw(mapa,galeria->tiles[id_tile],super);
-*/

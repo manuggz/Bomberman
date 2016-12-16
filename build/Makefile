@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named Tetris
+
+# Build rule for target.
+Tetris: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Tetris
+.PHONY : Tetris
+
+# fast build rule for target.
+Tetris/fast:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/build
+.PHONY : Tetris/fast
+
+#=============================================================================
 # Target rules for targets named Bomberman
 
 # Build rule for target.
@@ -149,6 +162,33 @@ src/Interfaces/editor/editor.s: src/Interfaces/editor/editor.cpp.s
 src/Interfaces/editor/editor.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/editor/editor.cpp.s
 .PHONY : src/Interfaces/editor/editor.cpp.s
+
+src/Interfaces/juego/PopUpJuegoMostrarRondasGan.o: src/Interfaces/juego/PopUpJuegoMostrarRondasGan.cpp.o
+
+.PHONY : src/Interfaces/juego/PopUpJuegoMostrarRondasGan.o
+
+# target to build an object file
+src/Interfaces/juego/PopUpJuegoMostrarRondasGan.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/PopUpJuegoMostrarRondasGan.cpp.o
+.PHONY : src/Interfaces/juego/PopUpJuegoMostrarRondasGan.cpp.o
+
+src/Interfaces/juego/PopUpJuegoMostrarRondasGan.i: src/Interfaces/juego/PopUpJuegoMostrarRondasGan.cpp.i
+
+.PHONY : src/Interfaces/juego/PopUpJuegoMostrarRondasGan.i
+
+# target to preprocess a source file
+src/Interfaces/juego/PopUpJuegoMostrarRondasGan.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/PopUpJuegoMostrarRondasGan.cpp.i
+.PHONY : src/Interfaces/juego/PopUpJuegoMostrarRondasGan.cpp.i
+
+src/Interfaces/juego/PopUpJuegoMostrarRondasGan.s: src/Interfaces/juego/PopUpJuegoMostrarRondasGan.cpp.s
+
+.PHONY : src/Interfaces/juego/PopUpJuegoMostrarRondasGan.s
+
+# target to generate assembly for a file
+src/Interfaces/juego/PopUpJuegoMostrarRondasGan.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/PopUpJuegoMostrarRondasGan.cpp.s
+.PHONY : src/Interfaces/juego/PopUpJuegoMostrarRondasGan.cpp.s
 
 src/Interfaces/juego/juego.o: src/Interfaces/juego/juego.cpp.o
 
@@ -231,33 +271,6 @@ src/Interfaces/juego/juego_historia.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego_historia.cpp.s
 .PHONY : src/Interfaces/juego/juego_historia.cpp.s
 
-src/Interfaces/juego/juego_mostrar_gan.o: src/Interfaces/juego/juego_mostrar_gan.cpp.o
-
-.PHONY : src/Interfaces/juego/juego_mostrar_gan.o
-
-# target to build an object file
-src/Interfaces/juego/juego_mostrar_gan.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego_mostrar_gan.cpp.o
-.PHONY : src/Interfaces/juego/juego_mostrar_gan.cpp.o
-
-src/Interfaces/juego/juego_mostrar_gan.i: src/Interfaces/juego/juego_mostrar_gan.cpp.i
-
-.PHONY : src/Interfaces/juego/juego_mostrar_gan.i
-
-# target to preprocess a source file
-src/Interfaces/juego/juego_mostrar_gan.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego_mostrar_gan.cpp.i
-.PHONY : src/Interfaces/juego/juego_mostrar_gan.cpp.i
-
-src/Interfaces/juego/juego_mostrar_gan.s: src/Interfaces/juego/juego_mostrar_gan.cpp.s
-
-.PHONY : src/Interfaces/juego/juego_mostrar_gan.s
-
-# target to generate assembly for a file
-src/Interfaces/juego/juego_mostrar_gan.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/juego/juego_mostrar_gan.cpp.s
-.PHONY : src/Interfaces/juego/juego_mostrar_gan.cpp.s
-
 src/Interfaces/menu/menu.o: src/Interfaces/menu/menu.cpp.o
 
 .PHONY : src/Interfaces/menu/menu.o
@@ -285,32 +298,65 @@ src/Interfaces/menu/menu.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/Interfaces/menu/menu.cpp.s
 .PHONY : src/Interfaces/menu/menu.cpp.s
 
-src/control_player.o: src/control_player.cpp.o
+src/engine/GameManager/game_manager.o: src/engine/GameManager/game_manager.cpp.o
 
-.PHONY : src/control_player.o
+.PHONY : src/engine/GameManager/game_manager.o
 
 # target to build an object file
-src/control_player.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/control_player.cpp.o
-.PHONY : src/control_player.cpp.o
+src/engine/GameManager/game_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/GameManager/game_manager.cpp.o
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/GameManager/game_manager.cpp.o
+.PHONY : src/engine/GameManager/game_manager.cpp.o
 
-src/control_player.i: src/control_player.cpp.i
+src/engine/GameManager/game_manager.i: src/engine/GameManager/game_manager.cpp.i
 
-.PHONY : src/control_player.i
+.PHONY : src/engine/GameManager/game_manager.i
 
 # target to preprocess a source file
-src/control_player.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/control_player.cpp.i
-.PHONY : src/control_player.cpp.i
+src/engine/GameManager/game_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/GameManager/game_manager.cpp.i
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/GameManager/game_manager.cpp.i
+.PHONY : src/engine/GameManager/game_manager.cpp.i
 
-src/control_player.s: src/control_player.cpp.s
+src/engine/GameManager/game_manager.s: src/engine/GameManager/game_manager.cpp.s
 
-.PHONY : src/control_player.s
+.PHONY : src/engine/GameManager/game_manager.s
 
 # target to generate assembly for a file
-src/control_player.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/control_player.cpp.s
-.PHONY : src/control_player.cpp.s
+src/engine/GameManager/game_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/GameManager/game_manager.cpp.s
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/GameManager/game_manager.cpp.s
+.PHONY : src/engine/GameManager/game_manager.cpp.s
+
+src/engine/mapa/TileEnLlamas.o: src/engine/mapa/TileEnLlamas.cpp.o
+
+.PHONY : src/engine/mapa/TileEnLlamas.o
+
+# target to build an object file
+src/engine/mapa/TileEnLlamas.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/mapa/TileEnLlamas.cpp.o
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mapa/TileEnLlamas.cpp.o
+.PHONY : src/engine/mapa/TileEnLlamas.cpp.o
+
+src/engine/mapa/TileEnLlamas.i: src/engine/mapa/TileEnLlamas.cpp.i
+
+.PHONY : src/engine/mapa/TileEnLlamas.i
+
+# target to preprocess a source file
+src/engine/mapa/TileEnLlamas.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/mapa/TileEnLlamas.cpp.i
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mapa/TileEnLlamas.cpp.i
+.PHONY : src/engine/mapa/TileEnLlamas.cpp.i
+
+src/engine/mapa/TileEnLlamas.s: src/engine/mapa/TileEnLlamas.cpp.s
+
+.PHONY : src/engine/mapa/TileEnLlamas.s
+
+# target to generate assembly for a file
+src/engine/mapa/TileEnLlamas.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/mapa/TileEnLlamas.cpp.s
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mapa/TileEnLlamas.cpp.s
+.PHONY : src/engine/mapa/TileEnLlamas.cpp.s
 
 src/engine/mapa/include/TMXParser.o: src/engine/mapa/include/TMXParser.cpp.o
 
@@ -318,6 +364,7 @@ src/engine/mapa/include/TMXParser.o: src/engine/mapa/include/TMXParser.cpp.o
 
 # target to build an object file
 src/engine/mapa/include/TMXParser.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/mapa/include/TMXParser.cpp.o
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mapa/include/TMXParser.cpp.o
 .PHONY : src/engine/mapa/include/TMXParser.cpp.o
 
@@ -327,6 +374,7 @@ src/engine/mapa/include/TMXParser.i: src/engine/mapa/include/TMXParser.cpp.i
 
 # target to preprocess a source file
 src/engine/mapa/include/TMXParser.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/mapa/include/TMXParser.cpp.i
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mapa/include/TMXParser.cpp.i
 .PHONY : src/engine/mapa/include/TMXParser.cpp.i
 
@@ -336,6 +384,7 @@ src/engine/mapa/include/TMXParser.s: src/engine/mapa/include/TMXParser.cpp.s
 
 # target to generate assembly for a file
 src/engine/mapa/include/TMXParser.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/mapa/include/TMXParser.cpp.s
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/mapa/include/TMXParser.cpp.s
 .PHONY : src/engine/mapa/include/TMXParser.cpp.s
 
@@ -345,6 +394,7 @@ src/engine/sprites/CGroup.o: src/engine/sprites/CGroup.cpp.o
 
 # target to build an object file
 src/engine/sprites/CGroup.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/sprites/CGroup.cpp.o
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.o
 .PHONY : src/engine/sprites/CGroup.cpp.o
 
@@ -354,6 +404,7 @@ src/engine/sprites/CGroup.i: src/engine/sprites/CGroup.cpp.i
 
 # target to preprocess a source file
 src/engine/sprites/CGroup.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/sprites/CGroup.cpp.i
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.i
 .PHONY : src/engine/sprites/CGroup.cpp.i
 
@@ -363,6 +414,7 @@ src/engine/sprites/CGroup.s: src/engine/sprites/CGroup.cpp.s
 
 # target to generate assembly for a file
 src/engine/sprites/CGroup.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/sprites/CGroup.cpp.s
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/CGroup.cpp.s
 .PHONY : src/engine/sprites/CGroup.cpp.s
 
@@ -372,6 +424,7 @@ src/engine/sprites/CSprite.o: src/engine/sprites/CSprite.cpp.o
 
 # target to build an object file
 src/engine/sprites/CSprite.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/sprites/CSprite.cpp.o
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.o
 .PHONY : src/engine/sprites/CSprite.cpp.o
 
@@ -381,6 +434,7 @@ src/engine/sprites/CSprite.i: src/engine/sprites/CSprite.cpp.i
 
 # target to preprocess a source file
 src/engine/sprites/CSprite.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/sprites/CSprite.cpp.i
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.i
 .PHONY : src/engine/sprites/CSprite.cpp.i
 
@@ -390,6 +444,7 @@ src/engine/sprites/CSprite.s: src/engine/sprites/CSprite.cpp.s
 
 # target to generate assembly for a file
 src/engine/sprites/CSprite.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/sprites/CSprite.cpp.s
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/CSprite.cpp.s
 .PHONY : src/engine/sprites/CSprite.cpp.s
 
@@ -399,6 +454,7 @@ src/engine/sprites/animacion/Control_Animacion.o: src/engine/sprites/animacion/C
 
 # target to build an object file
 src/engine/sprites/animacion/Control_Animacion.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/sprites/animacion/Control_Animacion.cpp.o
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/animacion/Control_Animacion.cpp.o
 .PHONY : src/engine/sprites/animacion/Control_Animacion.cpp.o
 
@@ -408,6 +464,7 @@ src/engine/sprites/animacion/Control_Animacion.i: src/engine/sprites/animacion/C
 
 # target to preprocess a source file
 src/engine/sprites/animacion/Control_Animacion.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/sprites/animacion/Control_Animacion.cpp.i
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/animacion/Control_Animacion.cpp.i
 .PHONY : src/engine/sprites/animacion/Control_Animacion.cpp.i
 
@@ -417,6 +474,7 @@ src/engine/sprites/animacion/Control_Animacion.s: src/engine/sprites/animacion/C
 
 # target to generate assembly for a file
 src/engine/sprites/animacion/Control_Animacion.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/sprites/animacion/Control_Animacion.cpp.s
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/animacion/Control_Animacion.cpp.s
 .PHONY : src/engine/sprites/animacion/Control_Animacion.cpp.s
 
@@ -426,6 +484,7 @@ src/engine/sprites/animacion/animacion.o: src/engine/sprites/animacion/animacion
 
 # target to build an object file
 src/engine/sprites/animacion/animacion.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/sprites/animacion/animacion.cpp.o
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/animacion/animacion.cpp.o
 .PHONY : src/engine/sprites/animacion/animacion.cpp.o
 
@@ -435,6 +494,7 @@ src/engine/sprites/animacion/animacion.i: src/engine/sprites/animacion/animacion
 
 # target to preprocess a source file
 src/engine/sprites/animacion/animacion.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/sprites/animacion/animacion.cpp.i
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/animacion/animacion.cpp.i
 .PHONY : src/engine/sprites/animacion/animacion.cpp.i
 
@@ -444,6 +504,7 @@ src/engine/sprites/animacion/animacion.s: src/engine/sprites/animacion/animacion
 
 # target to generate assembly for a file
 src/engine/sprites/animacion/animacion.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/sprites/animacion/animacion.cpp.s
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/sprites/animacion/animacion.cpp.s
 .PHONY : src/engine/sprites/animacion/animacion.cpp.s
 
@@ -453,6 +514,7 @@ src/engine/util/CFont.o: src/engine/util/CFont.cpp.o
 
 # target to build an object file
 src/engine/util/CFont.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/CFont.cpp.o
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/CFont.cpp.o
 .PHONY : src/engine/util/CFont.cpp.o
 
@@ -462,6 +524,7 @@ src/engine/util/CFont.i: src/engine/util/CFont.cpp.i
 
 # target to preprocess a source file
 src/engine/util/CFont.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/CFont.cpp.i
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/CFont.cpp.i
 .PHONY : src/engine/util/CFont.cpp.i
 
@@ -471,6 +534,7 @@ src/engine/util/CFont.s: src/engine/util/CFont.cpp.s
 
 # target to generate assembly for a file
 src/engine/util/CFont.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/CFont.cpp.s
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/CFont.cpp.s
 .PHONY : src/engine/util/CFont.cpp.s
 
@@ -480,6 +544,7 @@ src/engine/util/CMetaData.o: src/engine/util/CMetaData.cpp.o
 
 # target to build an object file
 src/engine/util/CMetaData.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/CMetaData.cpp.o
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/CMetaData.cpp.o
 .PHONY : src/engine/util/CMetaData.cpp.o
 
@@ -489,6 +554,7 @@ src/engine/util/CMetaData.i: src/engine/util/CMetaData.cpp.i
 
 # target to preprocess a source file
 src/engine/util/CMetaData.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/CMetaData.cpp.i
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/CMetaData.cpp.i
 .PHONY : src/engine/util/CMetaData.cpp.i
 
@@ -498,6 +564,7 @@ src/engine/util/CMetaData.s: src/engine/util/CMetaData.cpp.s
 
 # target to generate assembly for a file
 src/engine/util/CMetaData.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/CMetaData.cpp.s
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/CMetaData.cpp.s
 .PHONY : src/engine/util/CMetaData.cpp.s
 
@@ -507,6 +574,7 @@ src/engine/util/LTexture.o: src/engine/util/LTexture.cpp.o
 
 # target to build an object file
 src/engine/util/LTexture.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/LTexture.cpp.o
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/LTexture.cpp.o
 .PHONY : src/engine/util/LTexture.cpp.o
 
@@ -516,6 +584,7 @@ src/engine/util/LTexture.i: src/engine/util/LTexture.cpp.i
 
 # target to preprocess a source file
 src/engine/util/LTexture.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/LTexture.cpp.i
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/LTexture.cpp.i
 .PHONY : src/engine/util/LTexture.cpp.i
 
@@ -525,6 +594,7 @@ src/engine/util/LTexture.s: src/engine/util/LTexture.cpp.s
 
 # target to generate assembly for a file
 src/engine/util/LTexture.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/LTexture.cpp.s
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/LTexture.cpp.s
 .PHONY : src/engine/util/LTexture.cpp.s
 
@@ -534,6 +604,7 @@ src/engine/util/LTimer.o: src/engine/util/LTimer.cpp.o
 
 # target to build an object file
 src/engine/util/LTimer.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/LTimer.cpp.o
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/LTimer.cpp.o
 .PHONY : src/engine/util/LTimer.cpp.o
 
@@ -543,6 +614,7 @@ src/engine/util/LTimer.i: src/engine/util/LTimer.cpp.i
 
 # target to preprocess a source file
 src/engine/util/LTimer.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/LTimer.cpp.i
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/LTimer.cpp.i
 .PHONY : src/engine/util/LTimer.cpp.i
 
@@ -552,62 +624,69 @@ src/engine/util/LTimer.s: src/engine/util/LTimer.cpp.s
 
 # target to generate assembly for a file
 src/engine/util/LTimer.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/LTimer.cpp.s
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/LTimer.cpp.s
 .PHONY : src/engine/util/LTimer.cpp.s
 
-src/engine/util/game_manager.o: src/engine/util/game_manager.cpp.o
+src/engine/util/galeria.o: src/engine/util/galeria.cpp.o
 
-.PHONY : src/engine/util/game_manager.o
-
-# target to build an object file
-src/engine/util/game_manager.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.o
-.PHONY : src/engine/util/game_manager.cpp.o
-
-src/engine/util/game_manager.i: src/engine/util/game_manager.cpp.i
-
-.PHONY : src/engine/util/game_manager.i
-
-# target to preprocess a source file
-src/engine/util/game_manager.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.i
-.PHONY : src/engine/util/game_manager.cpp.i
-
-src/engine/util/game_manager.s: src/engine/util/game_manager.cpp.s
-
-.PHONY : src/engine/util/game_manager.s
-
-# target to generate assembly for a file
-src/engine/util/game_manager.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/game_manager.cpp.s
-.PHONY : src/engine/util/game_manager.cpp.s
-
-src/galeria.o: src/galeria.cpp.o
-
-.PHONY : src/galeria.o
+.PHONY : src/engine/util/galeria.o
 
 # target to build an object file
-src/galeria.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/galeria.cpp.o
-.PHONY : src/galeria.cpp.o
+src/engine/util/galeria.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/galeria.cpp.o
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/galeria.cpp.o
+.PHONY : src/engine/util/galeria.cpp.o
 
-src/galeria.i: src/galeria.cpp.i
+src/engine/util/galeria.i: src/engine/util/galeria.cpp.i
 
-.PHONY : src/galeria.i
+.PHONY : src/engine/util/galeria.i
 
 # target to preprocess a source file
-src/galeria.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/galeria.cpp.i
-.PHONY : src/galeria.cpp.i
+src/engine/util/galeria.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/galeria.cpp.i
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/galeria.cpp.i
+.PHONY : src/engine/util/galeria.cpp.i
 
-src/galeria.s: src/galeria.cpp.s
+src/engine/util/galeria.s: src/engine/util/galeria.cpp.s
 
-.PHONY : src/galeria.s
+.PHONY : src/engine/util/galeria.s
 
 # target to generate assembly for a file
-src/galeria.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/galeria.cpp.s
-.PHONY : src/galeria.cpp.s
+src/engine/util/galeria.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/galeria.cpp.s
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/galeria.cpp.s
+.PHONY : src/engine/util/galeria.cpp.s
+
+src/engine/util/util.o: src/engine/util/util.cpp.o
+
+.PHONY : src/engine/util/util.o
+
+# target to build an object file
+src/engine/util/util.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/util.cpp.o
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/util.cpp.o
+.PHONY : src/engine/util/util.cpp.o
+
+src/engine/util/util.i: src/engine/util/util.cpp.i
+
+.PHONY : src/engine/util/util.i
+
+# target to preprocess a source file
+src/engine/util/util.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/util.cpp.i
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/util.cpp.i
+.PHONY : src/engine/util/util.cpp.i
+
+src/engine/util/util.s: src/engine/util/util.cpp.s
+
+.PHONY : src/engine/util/util.s
+
+# target to generate assembly for a file
+src/engine/util/util.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/engine/util/util.cpp.s
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/engine/util/util.cpp.s
+.PHONY : src/engine/util/util.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -717,33 +796,6 @@ src/objetos/item.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/objetos/item.cpp.s
 .PHONY : src/objetos/item.cpp.s
 
-src/personajes/bloque.o: src/personajes/bloque.cpp.o
-
-.PHONY : src/personajes/bloque.o
-
-# target to build an object file
-src/personajes/bloque.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/personajes/bloque.cpp.o
-.PHONY : src/personajes/bloque.cpp.o
-
-src/personajes/bloque.i: src/personajes/bloque.cpp.i
-
-.PHONY : src/personajes/bloque.i
-
-# target to preprocess a source file
-src/personajes/bloque.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/personajes/bloque.cpp.i
-.PHONY : src/personajes/bloque.cpp.i
-
-src/personajes/bloque.s: src/personajes/bloque.cpp.s
-
-.PHONY : src/personajes/bloque.s
-
-# target to generate assembly for a file
-src/personajes/bloque.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/personajes/bloque.cpp.s
-.PHONY : src/personajes/bloque.cpp.s
-
 src/personajes/globo.o: src/personajes/globo.cpp.o
 
 .PHONY : src/personajes/globo.o
@@ -798,32 +850,59 @@ src/personajes/player.cpp.s:
 	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/personajes/player.cpp.s
 .PHONY : src/personajes/player.cpp.s
 
-src/util.o: src/util.cpp.o
+src/testsotrosjuegos/Tetris/main.o: src/testsotrosjuegos/Tetris/main.cpp.o
 
-.PHONY : src/util.o
+.PHONY : src/testsotrosjuegos/Tetris/main.o
 
 # target to build an object file
-src/util.cpp.o:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/util.cpp.o
-.PHONY : src/util.cpp.o
+src/testsotrosjuegos/Tetris/main.cpp.o:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/testsotrosjuegos/Tetris/main.cpp.o
+.PHONY : src/testsotrosjuegos/Tetris/main.cpp.o
 
-src/util.i: src/util.cpp.i
+src/testsotrosjuegos/Tetris/main.i: src/testsotrosjuegos/Tetris/main.cpp.i
 
-.PHONY : src/util.i
+.PHONY : src/testsotrosjuegos/Tetris/main.i
 
 # target to preprocess a source file
-src/util.cpp.i:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/util.cpp.i
-.PHONY : src/util.cpp.i
+src/testsotrosjuegos/Tetris/main.cpp.i:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/testsotrosjuegos/Tetris/main.cpp.i
+.PHONY : src/testsotrosjuegos/Tetris/main.cpp.i
 
-src/util.s: src/util.cpp.s
+src/testsotrosjuegos/Tetris/main.s: src/testsotrosjuegos/Tetris/main.cpp.s
 
-.PHONY : src/util.s
+.PHONY : src/testsotrosjuegos/Tetris/main.s
 
 # target to generate assembly for a file
-src/util.cpp.s:
-	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/util.cpp.s
-.PHONY : src/util.cpp.s
+src/testsotrosjuegos/Tetris/main.cpp.s:
+	$(MAKE) -f CMakeFiles/Tetris.dir/build.make CMakeFiles/Tetris.dir/src/testsotrosjuegos/Tetris/main.cpp.s
+.PHONY : src/testsotrosjuegos/Tetris/main.cpp.s
+
+src/util/control_player.o: src/util/control_player.cpp.o
+
+.PHONY : src/util/control_player.o
+
+# target to build an object file
+src/util/control_player.cpp.o:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/util/control_player.cpp.o
+.PHONY : src/util/control_player.cpp.o
+
+src/util/control_player.i: src/util/control_player.cpp.i
+
+.PHONY : src/util/control_player.i
+
+# target to preprocess a source file
+src/util/control_player.cpp.i:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/util/control_player.cpp.i
+.PHONY : src/util/control_player.cpp.i
+
+src/util/control_player.s: src/util/control_player.cpp.s
+
+.PHONY : src/util/control_player.s
+
+# target to generate assembly for a file
+src/util/control_player.cpp.s:
+	$(MAKE) -f CMakeFiles/Bomberman.dir/build.make CMakeFiles/Bomberman.dir/src/util/control_player.cpp.s
+.PHONY : src/util/control_player.cpp.s
 
 # Help Target
 help:
@@ -833,10 +912,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... Tetris"
 	@echo "... Bomberman"
 	@echo "... src/Interfaces/editor/editor.o"
 	@echo "... src/Interfaces/editor/editor.i"
 	@echo "... src/Interfaces/editor/editor.s"
+	@echo "... src/Interfaces/juego/PopUpJuegoMostrarRondasGan.o"
+	@echo "... src/Interfaces/juego/PopUpJuegoMostrarRondasGan.i"
+	@echo "... src/Interfaces/juego/PopUpJuegoMostrarRondasGan.s"
 	@echo "... src/Interfaces/juego/juego.o"
 	@echo "... src/Interfaces/juego/juego.i"
 	@echo "... src/Interfaces/juego/juego.s"
@@ -846,15 +929,15 @@ help:
 	@echo "... src/Interfaces/juego/juego_historia.o"
 	@echo "... src/Interfaces/juego/juego_historia.i"
 	@echo "... src/Interfaces/juego/juego_historia.s"
-	@echo "... src/Interfaces/juego/juego_mostrar_gan.o"
-	@echo "... src/Interfaces/juego/juego_mostrar_gan.i"
-	@echo "... src/Interfaces/juego/juego_mostrar_gan.s"
 	@echo "... src/Interfaces/menu/menu.o"
 	@echo "... src/Interfaces/menu/menu.i"
 	@echo "... src/Interfaces/menu/menu.s"
-	@echo "... src/control_player.o"
-	@echo "... src/control_player.i"
-	@echo "... src/control_player.s"
+	@echo "... src/engine/GameManager/game_manager.o"
+	@echo "... src/engine/GameManager/game_manager.i"
+	@echo "... src/engine/GameManager/game_manager.s"
+	@echo "... src/engine/mapa/TileEnLlamas.o"
+	@echo "... src/engine/mapa/TileEnLlamas.i"
+	@echo "... src/engine/mapa/TileEnLlamas.s"
 	@echo "... src/engine/mapa/include/TMXParser.o"
 	@echo "... src/engine/mapa/include/TMXParser.i"
 	@echo "... src/engine/mapa/include/TMXParser.s"
@@ -882,12 +965,12 @@ help:
 	@echo "... src/engine/util/LTimer.o"
 	@echo "... src/engine/util/LTimer.i"
 	@echo "... src/engine/util/LTimer.s"
-	@echo "... src/engine/util/game_manager.o"
-	@echo "... src/engine/util/game_manager.i"
-	@echo "... src/engine/util/game_manager.s"
-	@echo "... src/galeria.o"
-	@echo "... src/galeria.i"
-	@echo "... src/galeria.s"
+	@echo "... src/engine/util/galeria.o"
+	@echo "... src/engine/util/galeria.i"
+	@echo "... src/engine/util/galeria.s"
+	@echo "... src/engine/util/util.o"
+	@echo "... src/engine/util/util.i"
+	@echo "... src/engine/util/util.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
@@ -900,18 +983,18 @@ help:
 	@echo "... src/objetos/item.o"
 	@echo "... src/objetos/item.i"
 	@echo "... src/objetos/item.s"
-	@echo "... src/personajes/bloque.o"
-	@echo "... src/personajes/bloque.i"
-	@echo "... src/personajes/bloque.s"
 	@echo "... src/personajes/globo.o"
 	@echo "... src/personajes/globo.i"
 	@echo "... src/personajes/globo.s"
 	@echo "... src/personajes/player.o"
 	@echo "... src/personajes/player.i"
 	@echo "... src/personajes/player.s"
-	@echo "... src/util.o"
-	@echo "... src/util.i"
-	@echo "... src/util.s"
+	@echo "... src/testsotrosjuegos/Tetris/main.o"
+	@echo "... src/testsotrosjuegos/Tetris/main.i"
+	@echo "... src/testsotrosjuegos/Tetris/main.s"
+	@echo "... src/util/control_player.o"
+	@echo "... src/util/control_player.i"
+	@echo "... src/util/control_player.s"
 .PHONY : help
 
 

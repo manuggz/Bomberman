@@ -32,6 +32,8 @@ public:
     bool isStarted();
     bool isPaused();
 
+    bool isRunning();
+
 private:
     //The clock time when the timer started
     Uint32 mStartTicks;

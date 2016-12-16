@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-down" width="20" height="13" tilewidth="16" tileheight="16" nextobjectid="25">
+ <properties>
+  <property name="id_tile_on_fire" type="int" value="35"/>
+  <property name="id_tile_piso_sin_sombra" type="int" value="17"/>
+  <property name="id_tile_piso_sombra_no_rompible" type="int" value="11"/>
+  <property name="id_tile_piso_sombra_rompible" type="int" value="10"/>
+  <property name="player_alcance_bombas" type="int" value="2"/>
+  <property name="player_n_bombas" type="int" value="2"/>
+  <property name="player_n_vidas" type="int" value="1"/>
+ </properties>
+ <tileset firstgid="1" name="peace_town" tilewidth="16" tileheight="16" tilecount="42" columns="7">
+  <image source="data/imagenes/objetos/peace_town.png" width="112" height="96"/>
+  <tile id="0">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="21">
+   <properties>
+    <property name="rompible" type="int" value="1"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+   <animation>
+    <frame tileid="21" duration="100"/>
+    <frame tileid="21" duration="100"/>
+    <frame tileid="21" duration="100"/>
+    <frame tileid="21" duration="100"/>
+    <frame tileid="22" duration="100"/>
+    <frame tileid="22" duration="100"/>
+    <frame tileid="22" duration="100"/>
+    <frame tileid="22" duration="100"/>
+    <frame tileid="23" duration="100"/>
+    <frame tileid="23" duration="100"/>
+    <frame tileid="23" duration="100"/>
+    <frame tileid="23" duration="100"/>
+    <frame tileid="24" duration="100"/>
+    <frame tileid="24" duration="100"/>
+    <frame tileid="24" duration="100"/>
+    <frame tileid="24" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="rompible" type="int" value="1"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="rompible" type="int" value="1"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="rompible" type="int" value="1"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="rompible" type="int" value="1"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+   <animation>
+    <frame tileid="28" duration="100"/>
+    <frame tileid="28" duration="100"/>
+    <frame tileid="28" duration="100"/>
+    <frame tileid="28" duration="100"/>
+    <frame tileid="29" duration="100"/>
+    <frame tileid="29" duration="100"/>
+    <frame tileid="29" duration="100"/>
+    <frame tileid="29" duration="100"/>
+    <frame tileid="30" duration="100"/>
+    <frame tileid="30" duration="100"/>
+    <frame tileid="30" duration="100"/>
+    <frame tileid="30" duration="100"/>
+    <frame tileid="31" duration="100"/>
+    <frame tileid="31" duration="100"/>
+    <frame tileid="31" duration="100"/>
+    <frame tileid="31" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="rompible" type="int" value="1"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="rompible" type="int" value="1"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="rompible" type="int" value="1"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+   <animation>
+    <frame tileid="35" duration="100"/>
+    <frame tileid="35" duration="100"/>
+    <frame tileid="35" duration="100"/>
+    <frame tileid="35" duration="100"/>
+    <frame tileid="35" duration="100"/>
+    <frame tileid="36" duration="100"/>
+    <frame tileid="36" duration="100"/>
+    <frame tileid="36" duration="100"/>
+    <frame tileid="36" duration="100"/>
+    <frame tileid="37" duration="100"/>
+    <frame tileid="37" duration="100"/>
+    <frame tileid="37" duration="100"/>
+    <frame tileid="37" duration="100"/>
+    <frame tileid="38" duration="100"/>
+    <frame tileid="38" duration="100"/>
+    <frame tileid="38" duration="100"/>
+    <frame tileid="39" duration="100"/>
+    <frame tileid="39" duration="100"/>
+    <frame tileid="40" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="38">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="40">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+  <tile id="41">
+   <properties>
+    <property name="rompible" type="int" value="0"/>
+    <property name="solido" type="int" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="43" name="bomba" tilewidth="16" tileheight="16" tilecount="3" columns="3">
+  <image source="data/imagenes/objetos/bomba.bmp" width="48" height="16"/>
+ </tileset>
+ <layer name="data" width="20" height="13" opacity="0.9">
+  <data encoding="csv">
+8,2,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5,6,14,
+8,9,12,12,12,10,12,22,12,22,22,22,22,12,22,10,12,12,13,14,
+8,9,18,18,18,22,18,29,10,11,29,29,10,18,29,12,18,18,13,14,
+8,9,29,10,18,11,10,29,22,29,10,11,22,18,10,18,18,10,13,14,
+8,9,29,22,29,18,12,29,29,11,12,29,29,18,22,18,18,12,13,14,
+8,9,29,29,29,10,29,29,10,18,18,29,10,18,29,29,10,18,13,14,
+8,9,29,11,29,12,29,29,12,18,18,11,12,29,10,29,22,29,13,14,
+8,9,29,10,11,18,29,10,18,29,10,29,29,29,18,29,29,29,13,14,
+8,9,29,12,18,29,11,12,29,29,22,11,11,29,18,10,29,11,13,14,
+8,9,18,29,29,29,10,18,10,29,11,18,10,11,29,22,11,18,13,14,
+8,9,18,10,11,29,22,18,22,29,18,29,22,29,29,11,18,18,13,14,
+8,9,18,12,18,11,18,29,11,11,10,11,29,11,10,18,18,10,13,14,
+15,16,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,20,21
+</data>
+ </layer>
+ <objectgroup name="players">
+  <object id="20" name="Player1" type="Player" gid="43" x="44" y="42" width="16" height="16"/>
+  <object id="21" name="Player3" type="Player" gid="43" x="49" y="183" width="16" height="16"/>
+  <object id="22" name="Player2" type="Player" gid="43" x="264.5" y="37" width="16" height="16"/>
+  <object id="23" name="Player5" type="Player" gid="43" x="151.5" y="98.5" width="16" height="16"/>
+  <object id="24" name="Player4" type="Player" gid="43" x="261" y="167" width="16" height="16"/>
+ </objectgroup>
+</map>

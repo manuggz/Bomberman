@@ -120,7 +120,9 @@ MetaData::MetaData(std::string ruta,std::string delim){
  * en el constructor
  * @return
  */
-bool MetaData::guardar(std::string rutaDestino){
+bool MetaData::guardar(std::string rutaDestino,std::string delimitador){
+
+    std::string delimitadorAUsar = (mDelimitador.empty())?delimitador:mDelimitador;
 
     if(rutaDestino.empty()){
         rutaDestino = mRuta;
@@ -140,7 +142,7 @@ bool MetaData::guardar(std::string rutaDestino){
     std::unordered_map<std::string,std::string>::iterator pDato = mData.begin();
 
     while(pDato != mData.end()){
-        fnivel << (*pDato).first << mDelimitador <<(*pDato).second<< std::endl;
+        fnivel << (*pDato).first << delimitadorAUsar <<(*pDato).second<< std::endl;
         pDato++;
 
     }

@@ -8,7 +8,7 @@
 #include <iostream>
 #include "../../engine/interfaces/PopUpInterfaz.hpp"
 #include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
-#include "../../engine/layout/Componentes/TextLabelComponent.hpp"
+#include "../../engine/layout/Componentes/LabelComponent.hpp"
 #include "../../engine/util/LTimer.hpp"
 #include "../../engine/GameManager/game_manager.hpp"
 
@@ -55,7 +55,7 @@ public:
 
         mLayoutParent   = new LayoutAbsolute();
 
-        mpMensajeTexto = new TextLabelComponent();
+        mpMensajeTexto = new LabelComponent();
 
         mpMensajeTexto->setText(mMensajeMostrar);
         mpMensajeTexto->setFont("data/fuentes/OpenSans-Bold.ttf",mSizeText);
@@ -102,7 +102,7 @@ protected:
     LayoutAbsolute *mLayoutParent;
     LTimer mControlTimer;
     Uint8 mTiempoDeMuestraSegundos = 0;
-    TextLabelComponent *mpMensajeTexto = nullptr;
+    LabelComponent *mpMensajeTexto = nullptr;
 
     SDL_Color mColorTexto {255,255,0,255};
     int mSizeText = 15;

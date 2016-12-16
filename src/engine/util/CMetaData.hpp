@@ -62,18 +62,18 @@ public:
  * los datos(en caso que exista)
  * @return
  */
-    bool guardar(std::string rutaDestino = "");
+    bool guardar(std::string rutaDestino = "",std::string delimitador = ":");
 /**
  * Obtiene el valor de un metadato
  * @param clave
  * @return
  */
     std::string getMetaData(std::string clave);
+    bool cargarMetaData(std::string ruta, std::string delim);
 private:
     std::unordered_map<std::string,std::string> mData; //Datos
     std::string mRuta; // Ruta en caso que se haya cargado los metadatos de un archivo
     std::string mDelimitador; // Delimitador de los datos
 
-    bool cargarMetaData(std::string ruta, std::string delim);
 };
 #endif

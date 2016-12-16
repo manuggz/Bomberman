@@ -107,3 +107,7 @@ bool LTimer::isPaused()
     return mPaused && mStarted;
 }
 
+bool LTimer::isRunning() {
+    return mStarted && !mPaused;
+}
+

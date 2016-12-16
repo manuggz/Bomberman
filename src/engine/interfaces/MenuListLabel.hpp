@@ -8,18 +8,53 @@
 #include <SDL2/SDL.h>
 #include "InterfazUI.hpp"
 #include "../layout/LayoutManager/LayoutVertical.hpp"
-#include "../layout/Componentes/TextLabelComponent.hpp"
+#include "../layout/Componentes/LabelComponent.hpp"
 
 
 const char * rutaFont = "data/fuentes/OpenSans-BoldItalic.ttf";
 const Uint8 sizeFont = 20;
-
 /**
  * Representa un menu de opciones simple en el que el usuario se puede desplazar usando las teclas UP y DOWN
+ *
+ * Heredar esta clase y en el constructor agregar las opciones del menu en orden.
+ * menuTextOptions.push_back("opcion i")
+ *
+ * Luego se ejecutara ejecutarAccionOpcionResaltada() cuando el usuario presione [ENTER].
+ *
+ * chequear la variable mOpcionMenuResaltadaActual para saber cual es la opcion resaltada actual.
+ *
+ * @example
+ *
+ * class MenuNuevoJuego : public MenuListLabel{
+ * public:
+ *    MenuNuevoJuego(GameManagerInterfazUI *game) : MenuListLabel(game) {
+ *        mMenuOpcionesText.push_back("Historia");
+ *        mMenuOpcionesText.push_back("Multiplayer");
+ *        mMenuOpcionesText.push_back("Conexion");
+ *    }
+ *    void ejecutarAccionOpcionResaltada() {
+ *        switch(mOpcionMenuResaltadaActual){
+ *            case MENU_OPCION_HISTORIA:
+ *                break;
+ *            case MENU_OPCION_MULTIPLAYER:
+ *                break;
+ *            case MENU_OPCION_CONEXION:
+ *                break;
+ *            default:break;
+ *        }
+ *    }
+ * private:
+ *    typedef enum{
+ *        MENU_OPCION_HISTORIA,
+ *        MENU_OPCION_MULTIPLAYER,
+ *        MENU_OPCION_CONEXION,
+ *    }MenuOption;
+ *
+ *};
+ *
+ *
  */
 class MenuListLabel : public InterfazUI{
-public:
-
 public:
 
     MenuListLabel(GameManagerInterfazUI *gameManagerInterfaz)
@@ -40,12 +75,13 @@ public:
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_FILL_PARENT_WIDTH,LAYOUT_PARAM_TRUE);
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_WRAP_WIDTH,LAYOUT_PARAM_FALSE);
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_WRAP_HEIGHT,LAYOUT_PARAM_FALSE);
+        mLayoutBackGround->setBackgroundColor(SDL_Color {0,0,0,255});
 
-        mLayoutBackGround->setBackgroundTexture(renderer,"data/imagenes/fondos/fondo_menu.bmp",false);
+        //mLayoutBackGround->setBackgroundTexture(renderer,"data/imagenes/fondos/fondo_menu.bmp",false);
 
-        TextLabelComponent * nuevoTextLabel;
+        LabelComponent * nuevoTextLabel;
         for(int i = 0 ; i < mMenuOpcionesText.size() ; i++){
-            nuevoTextLabel = new TextLabelComponent();
+            nuevoTextLabel = new LabelComponent();
             nuevoTextLabel->setFont(rutaFont,sizeFont);
             nuevoTextLabel->setTextColor(mColorLabelNormal);
             nuevoTextLabel->setText(mMenuOpcionesText[i]);
@@ -153,7 +189,7 @@ public:
 
 protected:
 
-    deque<TextLabelComponent  *> menuTextOptions;
+    deque<LabelComponent  *> menuTextOptions;
     LayoutVertical * mLayout    = nullptr;
     LayoutVertical *mLayoutBackGround = nullptr;
 

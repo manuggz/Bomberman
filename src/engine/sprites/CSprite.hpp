@@ -3,7 +3,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <vector>
-#include "../../util/util.hpp"
+#include "../util/util.hpp"
 #include "SpriteContainer.hpp"
 //#define DEBUG
 using namespace std;
@@ -31,7 +31,18 @@ class Sprite{
     void kill();
 
    /* void setRect(const Rect &  rect2){rect=rect2;};*/
-
+    virtual  void move_ip(int aum_x,int aum_y){
+       move(x + aum_x,y + aum_y);
+   }
+    virtual int getWidth(){
+        return rect.w;
+    }
+    virtual int getHeight(){
+        return rect.h;
+    }
+    virtual SDL_Rect getRect(){
+        return rect;
+    }
     virtual void update(const Uint8 *keys=nullptr)=0;
     virtual void draw(SDL_Renderer * )=0;
     //virtual int getTipo(){return type;};

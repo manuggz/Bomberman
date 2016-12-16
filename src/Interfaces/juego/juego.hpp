@@ -18,7 +18,7 @@ using namespace std;
 #include "InterfazJuego.hpp"
 #include "../../personajes/player.hpp"
 #include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
-#include "../../engine/layout/Componentes/TextLabelComponent.hpp"
+#include "../../engine/layout/Componentes/LabelComponent.hpp"
 
 
 
@@ -110,7 +110,8 @@ protected:
     SDL_Renderer * mGameRenderer;
 
     LayoutAbsolute *     mLayoutParent;
-    TextLabelComponent * mpTxtTiempoRestante;
+    LabelComponent * mpTxtTiempoRestante;
+    LabelComponent * mpVidasRestantesPlayer[_PLAYERS];
 
     bool mIsPlayingWarningSound = false;
 
@@ -124,7 +125,6 @@ protected:
     void reiniciarEstado();
     int getSegundosInicioNivel();
 
-    TextLabelComponent * mpVidasRestantesPlayer[_PLAYERS];
 };
 
 #endif

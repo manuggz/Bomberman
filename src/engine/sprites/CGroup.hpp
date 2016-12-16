@@ -18,6 +18,9 @@ public :
         return v_personajes.size();
     }
 
+    deque<Sprite *>::iterator begin(){ return v_personajes.begin();}
+    deque<Sprite *>::iterator end(){ return v_personajes.end();}
+
     //void update(const Uint8 *keys= nullptr); //llama a los metodos "update" de los Sprites
     //void draw(SDL_Renderer *); // llama a los metodos "draw" con la superficie pasada
     ~Group();

@@ -44,7 +44,17 @@ void Group::eraseSprite(Sprite * pSprite){
 
 }
 Group::~Group(){
-    clear();
+    ///std::deque<Sprite *> copia = v_personajes;
+    v_personajes.clear();
+
+    //auto pSprite = copia.begin();
+    //while(pSprite != copia.end()){
+        // Remover Este grupo de los grupos que guarda (*pSprite)
+        // Antes de llamar a kill, porque en kill el sprite hace un bucle por todos los grupos que lo incluyen
+        // incluyendonos
+    //    (*pSprite)->removeFromGroup(this);
+    //    pSprite++;
+   // }
 }
 
 std::deque<Sprite *> Group::collide(SDL_Rect  rect) {

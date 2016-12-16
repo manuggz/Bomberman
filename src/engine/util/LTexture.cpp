@@ -26,18 +26,18 @@ bool LTexture::loadFromFile( std::string path ,SDL_Renderer * gRenderer, bool ti
     SDL_Texture* newTexture = NULL;
 
     //Load image at specified path
-    SDL_Surface* loadedSurface = IMG_Load( path.c_str() );
-    if( loadedSurface == NULL ){
+    mSurface = IMG_Load( path.c_str() );
+    if( mSurface == NULL ){
         printf( "Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError() );
     }else{
 
         if(tiene_color_clave){
             //Color key image
-            SDL_SetColorKey( loadedSurface, SDL_TRUE, SDL_MapRGB( loadedSurface->format, 0, 0xFF, 0 ) );
+            SDL_SetColorKey( mSurface, SDL_TRUE, SDL_MapRGB( mSurface->format,0xFF , 0xFF, 0 ) );
         }
 
         //Create texture from surface pixels
-        newTexture = SDL_CreateTextureFromSurface( gRenderer, loadedSurface );
+        newTexture = SDL_CreateTextureFromSurface( gRenderer, mSurface );
         if( newTexture == NULL )
         {
             printf( "Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
@@ -45,12 +45,10 @@ bool LTexture::loadFromFile( std::string path ,SDL_Renderer * gRenderer, bool ti
         else
         {
             //Get image dimensions
-            mWidth = loadedSurface->w;
-            mHeight = loadedSurface->h;
+            mWidth = mSurface->w;
+            mHeight = mSurface->h;
         }
 
-        //Get rid of old loaded surface
-        SDL_FreeSurface( loadedSurface );
     }
 
     //Return success
@@ -91,16 +89,19 @@ bool LTexture::loadFromRenderedText(SDL_Renderer * gRenderer, TTF_Font * gFont, 
 
 	//Return success
     mPath = "";
-	return mTexture != NULL;
+	return mTexture != nullptr;
 }
 
 void LTexture::free()
 {
     //Free texture if it exists
-    if( mTexture != NULL )
+    if( mTexture != nullptr )
     {
         SDL_DestroyTexture( mTexture );
-        mTexture = NULL;
+        //Get rid of old loaded surface
+        SDL_FreeSurface( mSurface );
+        mTexture = nullptr;
+        mSurface = nullptr;
         mWidth = 0;
         mHeight = 0;
     }

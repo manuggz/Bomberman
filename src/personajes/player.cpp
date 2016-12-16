@@ -422,6 +422,7 @@ void Player::move(int x,int y){
 
 Player::~Player(){
     //cout << "Destructor de Player:"<<this<<endl;
+
 }
 
 void Player::setNBombas(int nBombas) {

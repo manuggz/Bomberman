@@ -12,7 +12,7 @@
 #include "../../engine/layout/LayoutManager/LayoutVertical.hpp"
 #include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
 #include "../../engine/layout/Componentes/ImageComponent.hpp"
-#include "../../engine/layout/Componentes/TextLabelComponent.hpp"
+#include "../../engine/layout/Componentes/LabelComponent.hpp"
 #include "../../engine/interfaces/InterfazSpriteGroup.hpp"
 #include "../../niveles/NivelMapa.hpp"
 #include "../../engine/layout/Componentes/BotonComponent.hpp"
@@ -125,7 +125,7 @@ public:
         }
 
         SDL_Color color = {255,0,0,255};
-        mTextLabelMinutos = new TextLabelComponent();
+        mTextLabelMinutos = new LabelComponent();
         mTextLabelMinutos->setText(std::to_string(minutosEscogidos));
         mTextLabelMinutos->setFont("data/fuentes/OpenSans-Bold.ttf",15);
         mTextLabelMinutos->setTextColor(color);
@@ -133,7 +133,7 @@ public:
         mTextLabelMinutos->setLayoutParam(LAYOUT_PARAM_Y,"0");
         mLayoutParent->addComponent(mTextLabelMinutos);
 
-        mTextLabelVictorias = new TextLabelComponent();
+        mTextLabelVictorias = new LabelComponent();
         mTextLabelVictorias->setText(std::to_string(victoriasEscogidas));
         mTextLabelVictorias->setFont("data/fuentes/OpenSans-Bold.ttf",15);
         mTextLabelVictorias->setTextColor(color);
@@ -412,8 +412,8 @@ private:
     LayoutAbsolute *mLayoutParent = nullptr;
 
     // Muestra en la UI el numero de minutos escogidos
-    TextLabelComponent *mTextLabelMinutos = nullptr;
+    LabelComponent *mTextLabelMinutos = nullptr;
     // Muestra en la UI el numero de victorias escogidas
-    TextLabelComponent *mTextLabelVictorias = nullptr;
+    LabelComponent *mTextLabelVictorias = nullptr;
 };
 #endif //BOMBERMAN_MENUMODOMULTIJUGADOR_HPP

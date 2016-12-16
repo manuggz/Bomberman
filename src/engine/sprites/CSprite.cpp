@@ -24,7 +24,10 @@ void Sprite::kill(){
     v_grupos.clear();
 }
 bool Sprite::colision(SDL_Rect & rect_coli){       
-    return rects_colisionan(rect,rect_coli);
+    return (((rect.x+rect.w)>rect_coli.x) && \
+    ((rect.y+rect.h)>rect_coli.y) &&\
+    ((rect_coli.x+rect_coli.w)>rect.x) && \
+    ((rect_coli.y+rect_coli.h)>rect.y));
 }
 
 void Sprite::addGroup(SpriteContainer *pGroup) {

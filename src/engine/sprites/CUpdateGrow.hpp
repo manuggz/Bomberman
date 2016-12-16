@@ -62,8 +62,7 @@ public :
                 if((*p_Sprite)->isKilled())
                     parent->eliminarSprite((*p_Sprite));
             }
-            p_Sprite
-                    ++;
+            p_Sprite++;
 
         }
 

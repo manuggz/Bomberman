@@ -40,11 +40,11 @@ namespace TMX {
     mapInfo.orientation = root_node->first_attribute( "orientation" )->value();
     //std::cout << "Orientation: " << mapInfo.orientation << std::endl;
     mapInfo.width = std::atoi( root_node->first_attribute( "width" )->value() );
-    //std::cout << "Width: " << mapInfo.width << std::endl;
+    //std::cout << "stWidth: " << mapInfo.width << std::endl;
     mapInfo.height = std::atoi( root_node->first_attribute( "height" )->value() );
     //std::cout << "Height: " << mapInfo.height << std::endl;
     mapInfo.tileWidth = std::atoi( root_node->first_attribute( "tilewidth" )->value() );
-    //std::cout << "Tile Width: " << mapInfo.mTileWidth << std::endl;
+    //std::cout << "Tile stWidth: " << mapInfo.mTileWidth << std::endl;
     mapInfo.tileHeight = std::atoi( root_node->first_attribute( "tileheight" )->value() );
     //std::cout << "Tile Height: " << mapInfo.mTileHeight << std::endl;
 
