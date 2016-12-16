@@ -4,7 +4,6 @@
 
 #ifndef BOMBERMAN_CMAPA_HPP
 #define BOMBERMAN_CMAPA_HPP
-
 #include <SDL2/SDL.h>
 #include "include/TMXParser.h"
 #include "../util/SpriteSheet.hpp"

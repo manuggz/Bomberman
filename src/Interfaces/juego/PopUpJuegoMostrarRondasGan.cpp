@@ -19,7 +19,7 @@ void PopUpJuegoMostrarGanadas::createUI(SDL_Renderer *gRenderer) {
 
     SpriteSheet  * spriteSheet = new SpriteSheet();
     spriteSheet->cargarDesdeArchivo(gRenderer,"data/imagenes/objetos/cuadro_scoreboard.png",3,1);
-    animaCuadro= new Animacion(spriteSheet,"0,0,1,1,2,2",80,H_SCREEN);
+    animaCuadro= new Animacion(spriteSheet,"0,0,1,1,2,2",80, mGameManager->getRectScreen().h);
 
     spriteSheet = new SpriteSheet();
     spriteSheet->cargarDesdeArchivo(gRenderer,"data/imagenes/textos/txt_scoreboard.png",4,1);
@@ -43,19 +43,19 @@ void PopUpJuegoMostrarGanadas::createUI(SDL_Renderer *gRenderer) {
             spriteSheet->cargarDesdeArchivo(gRenderer,"data/imagenes/objetos/trofeo.bmp",1,13);
 
             if(tmp+1!=totalTrofeosCreados){
-                animaTrofeos[tmp]=new Animacion(spriteSheet,"7,7,7,7,7,7,7,7,7,7,8,8,9,9,9,10,10,10,11,11,12,12,12",86+22*j,H_SCREEN+33*i+8,i);
+                animaTrofeos[tmp]=new Animacion(spriteSheet,"7,7,7,7,7,7,7,7,7,7,8,8,9,9,9,10,10,10,11,11,12,12,12",86+22*j, mGameManager->getRectScreen().h +33*i+8,i);
             }else{
-                animaTrofeos[tmp]=new Animacion(spriteSheet,"0,0,1,1,2,2,2,3,3,4,4,5,5,6,6,7,7,7,7,7,7,7,7,7,7,8,8,9,9,9,10,10,10,11,11,12,12,12",86+22*j,H_SCREEN+35*PLAYER_3+1,i);
+                animaTrofeos[tmp]=new Animacion(spriteSheet,"0,0,1,1,2,2,2,3,3,4,4,5,5,6,6,7,7,7,7,7,7,7,7,7,7,8,8,9,9,9,10,10,10,11,11,12,12,12",86+22*j, mGameManager->getRectScreen().h +35*PLAYER_3+1,i);
                 animaTrofeos[tmp]->setCuadroDespues(17);
             }
             if(i==PLAYER_3)
-                animaTrofeos[tmp]->setY(H_SCREEN+35*i+1);
+                animaTrofeos[tmp]->setY(mGameManager->getRectScreen().h +35*i+1);
             else if(i==PLAYER_4)
-                animaTrofeos[tmp]->setY(H_SCREEN+35*i-4);
+                animaTrofeos[tmp]->setY(mGameManager->getRectScreen().h +35*i-4);
             else if(i==PLAYER_5)
-                animaTrofeos[tmp]->setY(H_SCREEN+35*i-7);
+                animaTrofeos[tmp]->setY(mGameManager->getRectScreen().h +35*i-7);
             else
-                animaTrofeos[tmp]->setY(H_SCREEN+35*i+6);
+                animaTrofeos[tmp]->setY(mGameManager->getRectScreen().h +35*i+6);
             animaTrofeos[tmp]->setRepeticiones(-1);
             tmp++;
         }

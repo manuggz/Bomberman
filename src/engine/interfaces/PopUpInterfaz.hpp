@@ -6,8 +6,6 @@
 #define BOMBERMAN_POPUPMESSAGE_HPP
 
 #include <SDL2/SDL.h>
-#include <SDL_system.h>
-#include <SDL_events.h>
 #include "InterfazUI.hpp"
 #include "GameManagerPopUpInterfaz.hpp"
 

@@ -212,7 +212,7 @@ public:
     }
 
     void setTextWithDigits(BitmapFontRenderer * bitmapFontRenderer,int valor,int nDigitos){
-        char textoDigitalizado[nDigitos + 1];
+        char textoDigitalizado[N_DIGITOS_ENTEROS + 1];
 
         sprintf(textoDigitalizado,"%*d",nDigitos,valor);
 

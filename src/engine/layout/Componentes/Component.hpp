@@ -5,7 +5,7 @@
 #ifndef BOMBERMAN_COMPONENT_HPP
 #define BOMBERMAN_COMPONENT_HPP
 
-#include <SDL_render.h>
+#include <SDL2/SDL.h>
 #include <iostream>
 #include <unordered_map>
 #include "../../util/LTexture.hpp"

@@ -1,5 +1,3 @@
-#include <zconf.h>
-#include <sys/param.h>
 #include "game_manager.hpp"
 #include "../util/LTimer.hpp"
 

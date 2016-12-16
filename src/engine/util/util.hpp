@@ -3,9 +3,11 @@
 #include <cstdarg>
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
+
 #include "../../util/constantes.hpp"
 #include "LTexture.hpp"
 

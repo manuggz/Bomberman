@@ -4,8 +4,8 @@
 
 #ifndef TETRIS_TETRISCUADROSFORMA_HPP
 #define TETRIS_TETRISCUADROSFORMA_HPP
-
 #include <cmath>
+#include <algorithm>
 #include "../../engine/sprites/CSprite.hpp"
 #include "../../engine/sprites/CDrawGroup.hpp"
 #include "../../engine/sprites/CSpriteCuadro.hpp"

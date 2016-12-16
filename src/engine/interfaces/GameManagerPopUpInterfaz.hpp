@@ -5,7 +5,7 @@
 #ifndef BOMBERMAN_GAMEMANAGERDEFINICION_HPP
 #define BOMBERMAN_GAMEMANAGERDEFINICION_HPP
 
-#include <SDL_rect.h>
+#include <SDL2/SDL.h>
 
 class GameManagerPopUpInterfaz{
 public:

@@ -2,6 +2,7 @@
 #define DAT_NIVEL_HPP
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <unordered_map>
 
 class MetaData{

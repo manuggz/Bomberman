@@ -1,8 +1,9 @@
 #ifndef WORLD_HPP
 #define WORLD_HPP
-//#define DEBUG
+
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 #include "../util/galeria.hpp"
 #include "../interfaces/InterfazUI.hpp"
 #include "../../util/constantes.hpp"

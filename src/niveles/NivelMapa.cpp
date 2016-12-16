@@ -218,7 +218,7 @@ bool NivelMapa::romperBloque(int x, int y) {
     int id_tile_piso_sin_sombra = std::stoi(getMapProperty(MAPA_PROPERTY_TILE_PISO_SIN_SOMBRA));
 
     //Buscamos el tile animado que representaba el tile en esa posición
-    auto setTileAnimado = mGrpTilesAnimados.collide(SDL_Rect {x + getX(),y + getY(),mTileWidth,mTileHeight});
+    auto setTileAnimado = mGrpTilesAnimados.collide(SDL_Rect {x + getX(),y + getY(),(int)mTileWidth,(int)mTileHeight});
 
     //Eliminamos las animaciones en esa posicion
     auto pitTileAnimado = setTileAnimado.begin();
