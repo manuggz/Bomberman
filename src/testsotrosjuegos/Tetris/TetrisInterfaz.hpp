@@ -5,28 +5,22 @@
 #ifndef TETRIS_TETRIS_HPP
 #define TETRIS_TETRIS_HPP
 
-static const int TETRIS_PLAYER_1 = 1;
-
-static const int N_DIGITOS_ENTEROS = 10;
-
-static const char *const META_DATA_HIGHSCORE = "HighScore";
-
-static const int SINGLE_LINE = 1;
-
-static const int DOUBLE_LINE = 2;
-
-static const int TRIPLE_LINE = 3;
-
-static const int TETRIS = 4;
-
 #include "../../engine/interfaces/InterfazUI.hpp"
 #include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
-
-
 #include "../../engine/layout/LayoutManager/LayoutVertical.hpp"
 #include "TetrisJuego.hpp"
 #include "BitmapFont.hpp"
 #include "../../engine/util/CMetaData.hpp"
+
+static const int TETRIS_PLAYER_1 = 1;
+
+static const int N_DIGITOS_ENTEROS = 10;
+static const char *const META_DATA_HIGHSCORE = "HighScore";
+static const int SINGLE_LINE = 1;
+static const int DOUBLE_LINE = 2;
+static const int TRIPLE_LINE = 3;
+static const int TETRIS = 4;
+
 
 class TetrisInterfaz : public InterfazUI, public InterfazJuegoTetris {
 public:
@@ -41,7 +35,7 @@ public:
         std::cout << "TetrisInterfaz::prepare" << std::endl;
         InterfazUI::prepare();
         mLayoutBackGround          = new LayoutAbsolute();
-        mTetrisJuego = new TetrisJuego(this, TETRIS_PLAYER_1, 32, 0);
+        mTetrisJuego = new TetrisJuego(this, TETRIS_PLAYER_1, 288 + 32, 0);
 
         mMetaData = new MetaData();
         if(mMetaData->cargarMetaData("resources/settings.db",":")){
@@ -162,42 +156,26 @@ public:
         lTexture->loadFromFile("resources/backgroundSinglePlayer.png",renderer,false);
         mLayoutBackGround->setBackgroundTexture(lTexture);
 
-        mBitmapFont = new BitmapFont(renderer,"resources/fuentes/fuente_1.png");
+        mBitmapFont = new BitmapFont(renderer,"resources/fuentes/fuente_1_no_fondo.png");
 
-        mBitmapHighScore = new BitmapFontRenderer(mBitmapFont,721,313);
-        mBitmapHighScore->setText("HIGHSCORE");
-
-        mBitmapHighScorePlayer1Valor = new BitmapFontRenderer(mBitmapFont,0,355);
-        mBitmapHighScorePlayer1Valor->setRight(907);
+        mBitmapHighScorePlayer1Valor = new BitmapFontRenderer(mBitmapFont,50,217);
         setTextWithDigits(mBitmapHighScorePlayer1Valor,mHighScore,N_DIGITOS_ENTEROS);
 
-        mBitmapScore = new BitmapFontRenderer(mBitmapFont,763,430);
-        mBitmapScore->setText("SCORE");
-
-        mBitmapScorePlayer1Valor = new BitmapFontRenderer(mBitmapFont,0,481);
-        mBitmapScorePlayer1Valor->setRight(918);
+        mBitmapScorePlayer1Valor = new BitmapFontRenderer(mBitmapFont,50,485);
         mBitmapScorePlayer1Valor->setText("0000000000");
 
-        mBitmapTime = new BitmapFontRenderer(mBitmapFont,622,576);
-        mBitmapTime->setText("TIME");
-
-        mBitmapTimePlayer1Valor = new BitmapFontRenderer(mBitmapFont,0,576);
-        mBitmapTimePlayer1Valor->setRight(970);
+		mBitmapTimePlayer1Valor = new BitmapFontRenderer(mBitmapFont,0,578);
+        mBitmapTimePlayer1Valor->setRight(270);
         mBitmapTimePlayer1Valor->setText("00:00:00");
 
-        mBitmapLevel = new BitmapFontRenderer(mBitmapFont,628,639);
-        mBitmapLevel->setText("LEVEL");
+        
+        mBitmapLevelPlayer1Valor = new BitmapFontRenderer(mBitmapFont,0,642);
+        mBitmapLevelPlayer1Valor->setRight(270);
+        mBitmapLevelPlayer1Valor->setText("001");
 
-        mBitmapLevelPlayer1Valor = new BitmapFontRenderer(mBitmapFont,628,639);
-        mBitmapLevelPlayer1Valor->setRight(970);
-        mBitmapLevelPlayer1Valor->setText("0000000001");
-
-        mBitmapLines = new BitmapFontRenderer(mBitmapFont,627,703);
-        mBitmapLines->setText("LINES");
-
-        mBitmapLinesPlayer1Valor = new BitmapFontRenderer(mBitmapFont,627,703);
-        mBitmapLinesPlayer1Valor->setRight(970);
-        mBitmapLinesPlayer1Valor->setText("0000000000");
+        mBitmapLinesPlayer1Valor = new BitmapFontRenderer(mBitmapFont,627,706);
+        mBitmapLinesPlayer1Valor->setRight(270);
+        mBitmapLinesPlayer1Valor->setText("00000");
 
         mTetrisJuego->crearUI(renderer);
         SDL_ShowCursor(SDL_DISABLE);//ocultamos el cursor
@@ -229,8 +207,8 @@ public:
         mLineasCompletasAnteriores = 0;
         mLevelTetrisPlayer = 1;
 
-        mBitmapLinesPlayer1Valor->setText("0000000000");
-        mBitmapLevelPlayer1Valor->setText("0000000001");
+        mBitmapLinesPlayer1Valor->setText("00000");
+        mBitmapLevelPlayer1Valor->setText("001");
         mBitmapScorePlayer1Valor->setText("0000000000");
 
         //mControlTimer.stop();
@@ -256,7 +234,7 @@ public:
     }
     void nuevoTetrominoSiguiente(Tetromino *nuevoTetrominoSiguiente) override {
         mTetrominoSiguiente = nuevoTetrominoSiguiente;
-        mTetrominoSiguiente->move(775,43);
+        mTetrominoSiguiente->move(803,118);
     }
 
     virtual void resume() override {
@@ -306,11 +284,6 @@ public:
             mLayoutBackGround->setRectDibujo(rect);
         }
         mLayoutBackGround->draw(renderer);
-        mBitmapScore->draw(renderer);
-        mBitmapHighScore->draw(renderer);
-        mBitmapTime->draw(renderer);
-        mBitmapLevel->draw(renderer);
-        mBitmapLines->draw(renderer);
         mBitmapHighScorePlayer1Valor->draw(renderer);
         mBitmapScorePlayer1Valor->draw(renderer);
 
@@ -347,11 +320,6 @@ public:
         delete mLayoutBackGround; // Al liberar el layout parent se liberan todos sus mComponentes
         delete mTetrisJuego;
         //delete mLabelComponentScoreActual;
-        delete mBitmapScore;
-        delete mBitmapHighScore;
-        delete mBitmapTime;
-        delete mBitmapLevel;
-        delete mBitmapLines;
         delete mBitmapHighScorePlayer1Valor;
         delete mBitmapScorePlayer1Valor;
         delete mBitmapTimePlayer1Valor;
@@ -373,12 +341,6 @@ private:
     LayoutAbsolute *mLayoutBackGround = nullptr;
 
     TetrisJuego * mTetrisJuego = nullptr;
-    //LabelComponent * mLabelComponentScoreActual;
-    BitmapFontRenderer *mBitmapScore;
-    BitmapFontRenderer *mBitmapHighScore;
-    BitmapFontRenderer *mBitmapTime;
-    BitmapFontRenderer *mBitmapLevel;
-    BitmapFontRenderer *mBitmapLines;
     BitmapFontRenderer *mBitmapHighScorePlayer1Valor;
     BitmapFontRenderer *mBitmapScorePlayer1Valor;
     BitmapFontRenderer *mBitmapTimePlayer1Valor;

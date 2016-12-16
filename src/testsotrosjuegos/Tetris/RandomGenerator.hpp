@@ -14,7 +14,7 @@ class RandomGenerator{
 
 public:
 
-    Tetromino::FormaTetromino getNextFormaTetromino(){
+    int getNextFormaTetromino(){
         if(mFormaRegresadaIndice >= Tetromino::N_FORMAS){
             randomBolsa();
             mFormaRegresadaIndice = -1;
@@ -24,14 +24,14 @@ public:
     }
 
 private:
-    std::vector<Tetromino::FormaTetromino>  mVectorFormasBolsa {
-            Tetromino::FormaTetromino::I,
-            Tetromino::FormaTetromino::J,
-            Tetromino::FormaTetromino::L,
-            Tetromino::FormaTetromino::O,
-            Tetromino::FormaTetromino::S,
-            Tetromino::FormaTetromino::T,
-            Tetromino::FormaTetromino::Z,
+    std::vector<int>  mVectorFormasBolsa {
+            Tetromino::I,
+            Tetromino::J,
+            Tetromino::L,
+            Tetromino::O,
+            Tetromino::S,
+            Tetromino::T,
+            Tetromino::Z,
     };
     int mFormaRegresadaIndice = Tetromino::N_FORMAS;
     void randomBolsa(){

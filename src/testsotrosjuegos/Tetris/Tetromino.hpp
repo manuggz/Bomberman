@@ -6,39 +6,18 @@
 #define TETRIS_TETRISCUADROSFORMA_HPP
 #include <cmath>
 #include <algorithm>
-#include "../../engine/sprites/CSprite.hpp"
-#include "../../engine/sprites/CDrawGroup.hpp"
-#include "../../engine/sprites/CSpriteCuadro.hpp"
+#include <SDL2/SDL.h>
 #include "../../engine/util/SpriteSheet.hpp"
 
-class Tetromino :public InterfazSpriteGroup {
+class Tetromino {
 
 public:
 
     enum TetrisForma{L,J,S,Z,O,I,T};
 
     static const int N_FORMAS = 7;
-    static const int N_GIROS_MAX = 4;
-    static const int N_FILAS_ARRAY = 4;
-    static const int N_COLUMNAS_ARRAY = 4;
 
-    SDL_Rect obtenerRectCuadrosVisibles(const Uint8 arrayCuadro[N_FILAS_ARRAY][N_COLUMNAS_ARRAY]) {
-        
-        SDL_Rect rect {N_COLUMNAS_ARRAY*mSizeCuadro,N_FILAS_ARRAY*mSizeCuadro,0,0};
-        for(int i = 0; i < N_FILAS_ARRAY ; i++){
-            for(int j = 0; j < N_COLUMNAS_ARRAY ; j++){
-                if(arrayCuadro[i][j] != 0){
-                    rect.x = std::min(j*mSizeCuadro,rect.x);
-                    rect.y = std::min(i*mSizeCuadro,rect.y);
-                    rect.w = std::max(j*mSizeCuadro + mSizeCuadro - rect.x,rect.w);
-                    rect.h = std::max(i*mSizeCuadro + mSizeCuadro - rect.y,rect.h);
-                }
-            }
-        }
-        return rect;
-    }
-
-    Tetromino(int nFilas, int nColumnas, int left, int top, int size, SpriteSheet *pSheet) {
+    Tetromino(int nFilas, int nColumnas, int left, int top, int size, SpriteSheet *pSheet, bool esGrillaCompartida = true) {
 
         mRect.x = left;
         mRect.y = top;
@@ -47,32 +26,55 @@ public:
 
         mSizeCuadro       = size;
 
-        mTextuBloques = pSheet;
+        mSpriteSheetTiposBloques = pSheet;
 
         mFilas = nFilas;
         mColumnas = nColumnas;
 
         mpBloquesArray = new int[mFilas*mColumnas] {0};
+		mEsGrillaCompartida = esGrillaCompartida;
 
     }
-    Tetromino(TetrisForma forma, int left, int top, int sizeTile, SpriteSheet *texturaGrilla) {
+	Tetromino(TetrisForma forma, int left, int top, int sizeTile, SpriteSheet *texturaGrilla, bool esSpriteSheetCompartida = true) {
 
+		mRect.w = N_COLUMNAS_ARRAY*sizeTile;
+		mRect.h = N_FILAS_ARRAY*sizeTile;
+		mSizeCuadro = sizeTile;
+		mForma = forma;
 
-        mRect.w = N_COLUMNAS_ARRAY*sizeTile;
-        mRect.h = N_FILAS_ARRAY*sizeTile;
-        mSizeCuadro       = sizeTile;
-        mForma          = forma;
+		mRectCuadroVisible = obtenerRectCuadrosVisibles(stArrayFormas[mForma][mRotacionActual]);
+		mRect.x = left - mRectCuadroVisible.x;
+		mRect.y = top - mRectCuadroVisible.x;
 
-        mRectCuadroVisible = obtenerRectCuadrosVisibles(stArrayFormas[mForma][mRotacionActual]);
-        mRect.x = left - mRectCuadroVisible.x;
-        mRect.y = top  - mRectCuadroVisible.x;
+		mSpriteSheetTiposBloques = texturaGrilla;
 
-        mTextuBloques = texturaGrilla;
+		mFilas = N_FILAS_ARRAY;
+		mColumnas = N_COLUMNAS_ARRAY;
+		mEsGrillaCompartida = esSpriteSheetCompartida;
+	}
+	
+	void cambiarForma(TetrisForma nuevaforma) {
+		mForma = nuevaforma;
+		mRect.x += mRectCuadroVisible.x;
+		mRect.y += mRectCuadroVisible.x;
+		
+		mRotacionActual = 0;
+		mRectCuadroVisible = obtenerRectCuadrosVisibles(stArrayFormas[mForma][mRotacionActual]);
+		mRect.x -= mRectCuadroVisible.x;
+		mRect.y -= mRectCuadroVisible.x;
 
-        mFilas = N_FILAS_ARRAY;
-        mColumnas = N_COLUMNAS_ARRAY;
-    }
+	}
 
+	TetrisForma getForma() {
+		return mForma;
+	}
+	
+	void setIndiceCuadroBloque(int nuevo) {
+		mIndiceSobrecargarArray = nuevo;
+	}
+	void setAlpha(int nuevoValor) {
+		mSpriteSheetTiposBloques->setAlpha(nuevoValor);
+	}
 /**
          * Rota la pieza 90 grados, si direccion = 1 clock-wise, si direccion = -1, inverso
          * @param direccion
@@ -91,13 +93,6 @@ public:
         mRectCuadroVisible = obtenerRectCuadrosVisibles(stArrayFormas[mForma][mRotacionActual]);
     }
 
-    void eliminarSprite(Sprite *sprite) override {
-
-    }
-
-    void update(const Uint8 *keys){
-    }
-
     Uint8 valorIndiceAC(int i, int j){
         if(mpBloquesArray){
             return (Uint8) mpBloquesArray[i * mColumnas + j];
@@ -108,14 +103,17 @@ public:
         int indice;
         for(int i = 0; i < mFilas ; i++){
             for(int j = 0; j < mColumnas ; j++){
-                if(mpBloquesArray){
+
+				if(mpBloquesArray){
                     indice = mpBloquesArray[i*mColumnas +j];
                 }else{
                     indice = stArrayFormas[mForma][mRotacionActual][i][j];
                 }
-                if( indice != 0){
-                    mTextuBloques->setCurrentCuadro(indice - 1);
-                    mTextuBloques->draw(gRenderer,j*mSizeCuadro + mRect.x,i*mSizeCuadro + mRect.y);
+
+				if( indice != 0){
+					indice = (mIndiceSobrecargarArray == -1) ? indice : mIndiceSobrecargarArray;
+                    mSpriteSheetTiposBloques->setCurrentCuadro(indice - 1);
+                    mSpriteSheetTiposBloques->draw(gRenderer,j*mSizeCuadro + mRect.x,i*mSizeCuadro + mRect.y);
                 }
             }
         }
@@ -172,9 +170,18 @@ private:
     int mSizeCuadro;
     int mRotacionActual = 0;
     int mMaxRotaciones  = 4;
-
+	
+	int mIndiceSobrecargarArray = -1;
     int * mpBloquesArray = nullptr;
     int mFilas,mColumnas;
+	bool mEsGrillaCompartida = true;
+	SDL_Rect mRectCuadroVisible{ 0,0,0,0 };
+	SDL_Color mColor;
+	SpriteSheet *mSpriteSheetTiposBloques = nullptr;
+	static const int N_GIROS_MAX = 4;
+	static const int N_FILAS_ARRAY = 4;
+	static const int N_COLUMNAS_ARRAY = 4;
+
 
     const Uint8 stArrayFormas[N_FORMAS][N_GIROS_MAX][N_FILAS_ARRAY][N_COLUMNAS_ARRAY] = {
             {
@@ -335,8 +342,21 @@ private:
             }
 
     };
-    SDL_Rect mRectCuadroVisible {0,0,0,0};
-    SDL_Color mColor;
-    SpriteSheet *mTextuBloques = nullptr;
+	SDL_Rect obtenerRectCuadrosVisibles(const Uint8 arrayCuadro[N_FILAS_ARRAY][N_COLUMNAS_ARRAY]) {
+
+		SDL_Rect rect{ N_COLUMNAS_ARRAY*mSizeCuadro,N_FILAS_ARRAY*mSizeCuadro,0,0 };
+		for (int i = 0; i < N_FILAS_ARRAY; i++) {
+			for (int j = 0; j < N_COLUMNAS_ARRAY; j++) {
+				if (arrayCuadro[i][j] != 0) {
+					rect.x = std::min(j*mSizeCuadro, rect.x);
+					rect.y = std::min(i*mSizeCuadro, rect.y);
+					rect.w = std::max(j*mSizeCuadro + mSizeCuadro - rect.x, rect.w);
+					rect.h = std::max(i*mSizeCuadro + mSizeCuadro - rect.y, rect.h);
+				}
+			}
+		}
+		return rect;
+	}
+
 };
 #endif //TETRIS_TETRISCUADROSFORMA_HPP

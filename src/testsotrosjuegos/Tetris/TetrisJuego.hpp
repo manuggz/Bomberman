@@ -20,6 +20,7 @@ static const int POS_NO_VISITADA_RECURSION = 0;
 #include "BitmapFont.hpp"
 #include "../../engine/util/LTimer.hpp"
 #include "RandomGenerator.hpp"
+#include "Tetromino.hpp"
 
 
 class InterfazJuegoTetris{
@@ -131,14 +132,16 @@ public:
         mMaxDelayBajarTetrominoActual = 40;
         mEstadoJuego = EstadoJuego ::RUNNING;
         mMantieneTeclaPausaPresionada = true;
-        mTetrominoGhost     = new Tetromino(Tetromino::FormaTetromino ::Z,0,0,
+        mTetrominoGhost     = new Tetromino(Tetromino::Z,0,0,
                                             mSizeCuadro,
                                             new SpriteSheet(mGRenderer,"resources/blocks.png",5,8,false),false);
-        crearTetrominos();
+		mTetrominoGhost->setAlpha(150);
+		mTetrominoGhost->setIndiceCuadroBloque(12);
+		crearTetrominos();
     }
 
     Tetromino * generarTetrominoAleatorio(){
-        return new Tetromino(mRandomGenerator.getNextFormaTetromino(),0,0,mSizeCuadro,mSpriteSheetBloques);
+        return new Tetromino((Tetromino::TetrisForma)mRandomGenerator.getNextFormaTetromino(),0,0,mSizeCuadro,mSpriteSheetBloques);
     }
 
     void crearTetrominos(){
@@ -160,8 +163,6 @@ public:
         }
 
         mTetrominoGhost->cambiarForma(mTetrominoActual->getForma());
-        mTetrominoGhost->setAlpha(150);
-        mTetrominoGhost->setIndiceCuadroBloque(12);
     }
 
     void estadoRunningDraw(SDL_Renderer * gRenderer){
