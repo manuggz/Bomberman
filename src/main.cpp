@@ -9,7 +9,7 @@
   Description: Remake del famoso bomberman
 */
 
-int main2(int argc, char *argv[]){
+int main(int argc, char *argv[]){
     GameManager juego;
     juego.cambiarInterfaz(new MenuPrincipal(&juego));
     juego.run();
