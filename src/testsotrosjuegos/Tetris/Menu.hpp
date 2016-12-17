@@ -32,21 +32,23 @@ public:
             mpBitmapFont[i - 1] = new BitmapFont(gRenderer,"resources/fuentes/fuente_" + std::to_string(i) + ".png");
         }
 
+        xIni = 400;
+        yIni = 364;
         mpBitFntRendOpsMenuPausa[OpcionesMenu::CONTINUE] = new BitmapFontRenderer(
-                mpBitmapFont[EstadoOpcionMenu::NORMAL],445,319);
+                mpBitmapFont[EstadoOpcionMenu::NORMAL],0,0);
         mpBitFntRendOpsMenuPausa[OpcionesMenu::CONTINUE]->setText("CONTINUE");
 
         mpBitFntRendOpsMenuPausa[OpcionesMenu::NEW_GAME] = new BitmapFontRenderer(
-                mpBitmapFont[EstadoOpcionMenu::RESALTADO],438,369);
+                mpBitmapFont[EstadoOpcionMenu::RESALTADO],0,0);
         mpBitFntRendOpsMenuPausa[OpcionesMenu::NEW_GAME]->setText("NEW GAME");
         mEsOpcionVisible[OpcionesMenu::NEW_GAME] = true;
 
         mpBitFntRendOpsMenuPausa[OpcionesMenu::SCORES] = new BitmapFontRenderer(
-                mpBitmapFont[EstadoOpcionMenu::NORMAL],453,424);
+                mpBitmapFont[EstadoOpcionMenu::NORMAL],0,0);
         mpBitFntRendOpsMenuPausa[OpcionesMenu::SCORES]->setText("SCORES");
 
         mpBitFntRendOpsMenuPausa[OpcionesMenu::EXIT] = new BitmapFontRenderer(
-                mpBitmapFont[EstadoOpcionMenu::NORMAL],481,481);
+                mpBitmapFont[EstadoOpcionMenu::NORMAL],0,0);
         mpBitFntRendOpsMenuPausa[OpcionesMenu::EXIT]->setText("EXIT");
         mEsOpcionVisible[OpcionesMenu::EXIT] = true;
 
@@ -54,6 +56,10 @@ public:
 
         mpTextureFlechaOpcionSeleccionada= new LTexture();
         mpTextureFlechaOpcionSeleccionada->loadFromFile("resources/flecha_opcion_seleccionada.png",gRenderer,false);
+
+        mpTextureCuadroAzulFondo = new LTexture();
+        mpTextureCuadroAzulFondo->loadFromFile("resources/cuadro_opcion_seleccionada.png",gRenderer,false);
+
         mMusicaFondo = cargar_musica("resources/music/8_bit_electro_house_remix.wav");
         mSfxChangeSelect = cargar_sonido((char *) "resources/music/SFX_PieceLockdown.ogg");
     }
@@ -143,15 +149,22 @@ public:
 
         mTextureFondo->render(gRenderer,0,0);
 
-
+        int yDibujo = yIni;
         for(int i = 0 ; i < OpcionesMenu::N_OPCIONES;i++){
-            if(mEsOpcionVisible[i])mpBitFntRendOpsMenuPausa[i]->draw(gRenderer);
+            if(mEsOpcionVisible[i]){
+
+                if(mOpcionSeleccionadaMenuPausa == i){
+                    mpTextureFlechaOpcionSeleccionada->render(gRenderer,xIni - mpTextureFlechaOpcionSeleccionada->getWidth() - 5,yDibujo);
+                    mpTextureCuadroAzulFondo->render(gRenderer,xIni - 3,yDibujo);
+                }
+
+                mpBitFntRendOpsMenuPausa[i]->draw(gRenderer,xIni,yDibujo);
+
+                yDibujo +=  mpBitFntRendOpsMenuPausa[i]->getHeight() + 10;
+
+            }
         }
 
-        mpTextureFlechaOpcionSeleccionada->render(
-                gRenderer,
-                mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->getLeft() - mpTextureFlechaOpcionSeleccionada->getWidth() - 3,
-                mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->getTop());
 
     }
 
@@ -161,12 +174,16 @@ public:
             delete mpBitFntRendOpsMenuPausa[i];
         }
         delete mpTextureFlechaOpcionSeleccionada;
+        delete mpTextureCuadroAzulFondo;
         Mix_FreeMusic(mMusicaFondo);
         Mix_FreeChunk(mSfxChangeSelect);
     }
 private:
 
+    int xIni,yIni;
+
     LTexture * mTextureFondo = nullptr;
+
     enum EstadoOpcionMenu{
         NORMAL,
         RESALTADO
@@ -193,6 +210,7 @@ private:
     Mix_Music * mMusicaFondo;
 
     Mix_Chunk * mSfxChangeSelect;
+    LTexture * mpTextureCuadroAzulFondo;
 };
 
 #endif //TETRIS_MENU_HPP

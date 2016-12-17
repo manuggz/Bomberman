@@ -35,30 +35,34 @@ public:
         int bpp = mSurface->format->BytesPerPixel;
         /* Here p is the address to the pixel we want to retrieve */
         Uint8 *p = (Uint8 *)mSurface->pixels + y * mSurface->pitch + x * bpp;
+        Uint32 pixelColor;
 
         switch(bpp) {
-            case 1:
-                return *p;
+            case(1):
+                pixelColor = *p;
                 break;
-
-            case 2:
-                return *(Uint16 *)p;
+            case(2):
+                pixelColor = *(Uint16*)p;
                 break;
-
-            case 3:
+            case(3):
                 if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
-                    return p[0] << 16 | p[1] << 8 | p[2];
+                    pixelColor = p[0] << 16 | p[1] << 8 | p[2];
                 else
-                    return p[0] | p[1] << 8 | p[2] << 16;
+                    pixelColor = p[0] | p[1] << 8 | p[2] << 16;
                 break;
-
-            case 4:
-                return *(Uint32 *)p;
+            case(4):
+                pixelColor = *(Uint32*)p;
                 break;
 
             default:
                 return 0;       /* shouldn't happen, but avoids warnings */
+
         }
+
+        Uint8 red, green, blue, alpha;
+        SDL_GetRGBA(pixelColor, mSurface->format, &red, &green, &blue, &alpha);
+        return pixelColor;
+
     }
 
     //Set color modulation

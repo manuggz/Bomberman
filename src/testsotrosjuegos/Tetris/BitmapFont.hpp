@@ -36,8 +36,9 @@ private:
 
         /* busca un pixel opaco */
         for (int fila = 0; fila < mTexture->getHeight(); fila ++){
-            if (pixel_transparente != mTexture->getpixel (columna, fila))
+            if (pixel_transparente != mTexture->getpixel (columna, fila)) {
                 return false;
+            }
         }
 
         return true;
@@ -221,6 +222,19 @@ public:
     }
     int getTop() {
         return mRect.y;
+    }
+    int getHeight() {
+        return mRect.h;
+    }
+
+    void draw(SDL_Renderer *pRenderer, int x, int y) {
+        int i;
+        int dx = x;
+
+        for (i = 0; i < mTextoMostrar.size(); i ++){
+            dx += mBitmapFont->imprimir_letra(pRenderer, dx, y, mTextoMostrar [i]);
+        }
+
     }
 
 private:

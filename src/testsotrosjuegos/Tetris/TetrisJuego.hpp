@@ -21,6 +21,7 @@ static const int POS_NO_VISITADA_RECURSION = 0;
 #include "../../engine/util/LTimer.hpp"
 #include "RandomGenerator.hpp"
 #include "Tetromino.hpp"
+#include "../../engine/util/util.hpp"
 
 
 class InterfazJuegoTetris{
@@ -86,15 +87,15 @@ public:
         }
 
         mpBitFntRendOpsMenuPausa[OpcionesPausa::CONTINUE] = new BitmapFontRenderer(
-                mpBitmapFont[EstadoOpcionMenu::NORMAL],238,244);
+                mpBitmapFont[EstadoOpcionMenu::NORMAL],418,271);
         mpBitFntRendOpsMenuPausa[OpcionesPausa::CONTINUE]->setText("CONTINUE");
 
         mpBitFntRendOpsMenuPausa[OpcionesPausa::RETRY] = new BitmapFontRenderer(
-                mpBitmapFont[EstadoOpcionMenu::NORMAL],238,286);
+                mpBitmapFont[EstadoOpcionMenu::NORMAL],418,313);
         mpBitFntRendOpsMenuPausa[OpcionesPausa::RETRY]->setText("RETRY");
 
         mpBitFntRendOpsMenuPausa[OpcionesPausa::END] = new BitmapFontRenderer(
-                mpBitmapFont[EstadoOpcionMenu::NORMAL],238,327);
+                mpBitmapFont[EstadoOpcionMenu::NORMAL],418,354);
         mpBitFntRendOpsMenuPausa[OpcionesPausa::END]->setText("END");
 
         mOpcionSeleccionadaMenuPausa = 0;
@@ -102,8 +103,8 @@ public:
         plTextureFlechaOpcionSeleccionada = new LTexture();
         plTextureFlechaOpcionSeleccionada->loadFromFile("resources/flecha_opcion_seleccionada.png",gRenderer,false);
 
-        pBFGameOver = new BitmapFontRenderer(mpBitmapFont[NORMAL],214,349);
-        pBFGameOver->setText("GAME OVER!");
+        plTextureGameOver = new LTexture();
+        plTextureGameOver->loadFromFile("resources/game_over_text.png",gRenderer,false);
 
     }
 
@@ -207,7 +208,7 @@ public:
     void estadoGameOverDraw(SDL_Renderer * gRenderer){
 
         dibujarArrayFondoJuego(gRenderer);
-        pBFGameOver->draw(gRenderer);
+        plTextureGameOver->render(gRenderer,335,346);
     }
 
     void draw(SDL_Renderer *  gRenderer){
@@ -774,7 +775,7 @@ public:
             delete mpBitFntRendOpsMenuPausa[i];
         }
         delete plTextureFlechaOpcionSeleccionada;
-        delete pBFGameOver;
+        delete plTextureGameOver;
         //delete mTetrominoGhost;
         Mix_FreeChunk(mSfxPieceRotate);
         Mix_FreeChunk(mSfxPieceRotateFail);
@@ -782,7 +783,6 @@ public:
         Mix_FreeChunk(mSfxPieceLockDown);
         Mix_FreeChunk(mSfxPieceFall);
         Mix_FreeChunk(mSfxPieceMove);
-
 
         Mix_FreeChunk(mSfxSoftDrop);
         Mix_FreeChunk(mSfxHardDrop);
@@ -869,7 +869,7 @@ private:
 
     LTexture * plTextureFlechaOpcionSeleccionada = nullptr;
 
-    BitmapFontRenderer * pBFGameOver = nullptr;
+    LTexture * plTextureGameOver = nullptr;
 
     int mOpcionSeleccionadaMenuPausa = 0;
 

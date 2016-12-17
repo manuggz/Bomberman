@@ -52,6 +52,19 @@ public:
         mSfxClearLines[1] = cargar_sonido((char *) "resources/music/SFX_SpecialLineClearDouble.ogg");
         mSfxClearLines[2] = cargar_sonido((char *) "resources/music/SFX_SpecialLineClearTriple.ogg");
         mSfxClearLines[3] = cargar_sonido((char *) "resources/music/SFX_SpecialTetris.ogg");
+
+
+        mSfxBTBTetris = cargar_sonido((char *) "resources/music/VO_B2BTETRS.ogg");
+
+        mSfxCongratulate[0] = cargar_sonido((char *) "resources/music/VO_WOW.ogg");;
+        mSfxCongratulate[1] = cargar_sonido((char *) "resources/music/VO_WONDRFL.ogg");;
+        mSfxCongratulate[2] = cargar_sonido((char *) "resources/music/VO_VRYGOOD.ogg");;
+        mSfxCongratulate[3] = cargar_sonido((char *) "resources/music/VO_THTGREAT.ogg");;
+        mSfxCongratulate[4] = cargar_sonido((char *) "resources/music/VO_FANTSTC.ogg");;
+        mSfxCongratulate[5] = cargar_sonido((char *) "resources/music/VO_EXLNT.ogg");;
+        mSfxCongratulate[6] = cargar_sonido((char *) "resources/music/VO_BRILLIANT.ogg");;
+        mSfxCongratulate[7] = cargar_sonido((char *) "resources/music/VO_AMAZING.ogg");;
+
     }
 
     void playSfx(Mix_Chunk *pSfxChunk) override {
@@ -86,6 +99,7 @@ public:
             case TETRIS:
                 if(mLineasCompletasAnteriores == TETRIS){
                     mPuntajePlayer += 1200 * mLevelTetrisPlayer;
+                    mGameManagerInterfaz->play(mSfxBTBTetris);
                 }else{
                     mPuntajePlayer += 800*mLevelTetrisPlayer;
                 }
@@ -95,13 +109,23 @@ public:
 
         if(mLineasCompletasAnteriores){
             mPuntajePlayer += 50*mLineasCompletasAnteriores*mLevelTetrisPlayer;
+
+            if(mLineasCompletas >= DOUBLE_LINE && mLineasCompletasAnteriores >= DOUBLE_LINE){
+                if(rand()%3 == 1){
+                    mGameManagerInterfaz->play(mSfxCongratulate[rand()%8]);
+                }
+            }
         }
         mLineasCompletasAnteriores = nLineasCompletadas;
 
-        sprintf(textoDigitalizado,"%10d",mPuntajePlayer);
-        int i = 0;
-        while(textoDigitalizado[i] == ' ')textoDigitalizado[i++]='0';
-        mBitmapScorePlayer1Valor->setText(textoDigitalizado);
+
+        if(mPuntajePlayer > mHighScore && mHighScore > 0&&!mCongratuledScoreGreaterThanHighScore){
+            mCongratuledScoreGreaterThanHighScore = true;
+            mGameManagerInterfaz->play(mSfxCongratulate[rand()%8]);
+            mBitmapScorePlayer1Valor->setBitmapFont(mBitmapFont[RESALTADO]);
+        }
+
+        setTextWithDigits(mBitmapScorePlayer1Valor,mPuntajePlayer,10);
 
         std::fill_n(textoDigitalizado,11,0);
 
@@ -114,14 +138,11 @@ public:
             }
             mTetrisJuego->setTickDelayBajarTetromino(nuevoTick);
             mLevelTetrisPlayer += 1;
-            setTextWithDigits(mBitmapLevelPlayer1Valor,mLevelTetrisPlayer,N_DIGITOS_ENTEROS);
+            setTextWithDigits(mBitmapLevelPlayer1Valor,mLevelTetrisPlayer,3);
             mGameManagerInterfaz->play(mSfxLevelUp);
         }
 
-        sprintf(textoDigitalizado,"%10d",mLineasCompletas);
-        i = 0;
-        while(textoDigitalizado[i] == ' ')textoDigitalizado[i++]='0';
-        mBitmapLinesPlayer1Valor->setText(textoDigitalizado);
+        setTextWithDigits(mBitmapLevelPlayer1Valor,mLineasCompletas,5);
 
         mGameManagerInterfaz->play(mSfxClearLines[nLineasCompletadas - 1]);
     }
@@ -156,24 +177,25 @@ public:
         lTexture->loadFromFile("resources/backgroundSinglePlayer.png",renderer,false);
         mLayoutBackGround->setBackgroundTexture(lTexture);
 
-        mBitmapFont = new BitmapFont(renderer,"resources/fuentes/fuente_1_no_fondo.png");
+        mBitmapFont[NORMAL] = new BitmapFont(renderer,"resources/fuentes/fuente_1.png");
+        mBitmapFont[RESALTADO] = new BitmapFont(renderer,"resources/fuentes/fuente_2.png");
 
-        mBitmapHighScorePlayer1Valor = new BitmapFontRenderer(mBitmapFont,50,217);
+        mBitmapHighScorePlayer1Valor = new BitmapFontRenderer(mBitmapFont[NORMAL],30,217);
         setTextWithDigits(mBitmapHighScorePlayer1Valor,mHighScore,N_DIGITOS_ENTEROS);
 
-        mBitmapScorePlayer1Valor = new BitmapFontRenderer(mBitmapFont,50,485);
+        mBitmapScorePlayer1Valor = new BitmapFontRenderer(mBitmapFont[NORMAL],30,485);
         mBitmapScorePlayer1Valor->setText("0000000000");
 
-		mBitmapTimePlayer1Valor = new BitmapFontRenderer(mBitmapFont,0,578);
+		mBitmapTimePlayer1Valor = new BitmapFontRenderer(mBitmapFont[NORMAL],0,578);
         mBitmapTimePlayer1Valor->setRight(270);
         mBitmapTimePlayer1Valor->setText("00:00:00");
 
         
-        mBitmapLevelPlayer1Valor = new BitmapFontRenderer(mBitmapFont,0,642);
+        mBitmapLevelPlayer1Valor = new BitmapFontRenderer(mBitmapFont[NORMAL],0,642);
         mBitmapLevelPlayer1Valor->setRight(270);
         mBitmapLevelPlayer1Valor->setText("001");
 
-        mBitmapLinesPlayer1Valor = new BitmapFontRenderer(mBitmapFont,627,706);
+        mBitmapLinesPlayer1Valor = new BitmapFontRenderer(mBitmapFont[NORMAL],627,706);
         mBitmapLinesPlayer1Valor->setRight(270);
         mBitmapLinesPlayer1Valor->setText("00000");
 
@@ -206,7 +228,8 @@ public:
         mLineasCompletas = 0;
         mLineasCompletasAnteriores = 0;
         mLevelTetrisPlayer = 1;
-
+        mCongratuledScoreGreaterThanHighScore = false;
+        mBitmapScorePlayer1Valor->setBitmapFont(mBitmapFont[NORMAL]);
         mBitmapLinesPlayer1Valor->setText("00000");
         mBitmapLevelPlayer1Valor->setText("001");
         mBitmapScorePlayer1Valor->setText("0000000000");
@@ -325,14 +348,22 @@ public:
         delete mBitmapTimePlayer1Valor;
         delete mBitmapLevelPlayer1Valor;
         delete mBitmapLinesPlayer1Valor;
-        delete mBitmapFont;
         Mix_FreeMusic(mMusicaFondo);
         Mix_FreeChunk(mSfxChunkGameOver);
         Mix_FreeChunk(mSfxChunkGameStart);
         Mix_FreeChunk(mSfxLevelUp);
+        Mix_FreeChunk(mSfxBTBTetris);
+
+        for(int i = 0 ; i < 8 ; i++) {
+            Mix_FreeChunk(mSfxCongratulate[i]);
+        }
 
         for(int i = 0; i < 4;i++){
             Mix_FreeChunk(mSfxClearLines[i]);
+        }
+
+        for(int i = 0;i < 2;i++){
+            delete mBitmapFont[i];
         }
     }
 
@@ -346,7 +377,12 @@ private:
     BitmapFontRenderer *mBitmapTimePlayer1Valor;
     BitmapFontRenderer *mBitmapLevelPlayer1Valor;
     BitmapFontRenderer *mBitmapLinesPlayer1Valor;
-    BitmapFont *mBitmapFont;
+
+    enum EstadoTexto{
+        NORMAL,
+        RESALTADO
+    };
+    BitmapFont *mBitmapFont[2];
     Tetromino * mTetrominoSiguiente = nullptr;
     LTimer mControlTimer;
 
@@ -360,9 +396,14 @@ private:
     Mix_Chunk * mSfxChunkGameOver;
     Mix_Chunk * mSfxLevelUp;
 
+    Mix_Chunk * mSfxBTBTetris;
+
+    Mix_Chunk * mSfxCongratulate[8];
+
     Mix_Chunk * mSfxClearLines[4];
     int mLevelTetrisPlayer = 1;
     int mLineasCompletasAnteriores = 0;
+    bool mCongratuledScoreGreaterThanHighScore = false;
 };
 
 #endif //TETRIS_TETRIS_HPP
