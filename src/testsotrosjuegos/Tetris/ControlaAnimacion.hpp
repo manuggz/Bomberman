@@ -5,7 +5,7 @@
 #ifndef TETRIS_CONTROLAANIMACION_HPP
 #define TETRIS_CONTROLAANIMACION_HPP
 
-#include <deque>
+#include <list>
 #include <SDL.h>
 #include "ControlaAnimacionInterfaz.hpp"
 #include "SimpleAnimacion.hpp"
@@ -22,18 +22,18 @@ public:
         dequeGrupoAnimaciones[groupId].push_back(nuevaAnimacion);
     }
 
-    bool erase(int grupoId,SimpleAnimacion * pSprite){
-        auto pSpriteBusqueda = dequeGrupoAnimaciones[grupoId].begin();
-        while(pSpriteBusqueda != dequeGrupoAnimaciones[grupoId].end()){
-            if((*pSpriteBusqueda) == pSprite){
-                dequeGrupoAnimaciones[grupoId].erase(pSpriteBusqueda);
-                return true;
-            }
-            pSpriteBusqueda++;
-        }
+    void erase(int grupoId,SimpleAnimacion * pSprite){
 
-        return false;
+		auto itGrupo = dequeGrupoAnimaciones.find(grupoId);
 
+		// Si no existe el grupo
+		if (itGrupo == dequeGrupoAnimaciones.end()) return;
+		
+		(*itGrupo).second.remove(pSprite);
+
+		if ((*itGrupo).second.empty()) {
+			dequeGrupoAnimaciones.erase(itGrupo);
+		}
     }
 
     int numeroAnimacionesActivas(const int grupoId) {
@@ -41,36 +41,46 @@ public:
     }
 
     void update(){
+        
+		auto dequeCopia = dequeGrupoAnimaciones;
+		
+		for (auto & grupoAnimacion : dequeCopia) {
+			for (auto & animacion : grupoAnimacion.second) {
+				animacion->update();
 
-        auto dequeCopia = dequeGrupoAnimaciones;
-        for(auto itGrupoAnimacion = dequeCopia.begin();itGrupoAnimacion != dequeCopia.end();++itGrupoAnimacion){
-            for(auto itAnimacion = (*itGrupoAnimacion).second.begin();itAnimacion != (*itGrupoAnimacion).second.end();itAnimacion++){
-                (*itAnimacion)->update();
-                if((*itAnimacion)->isStopped()){
-                    erase((*itGrupoAnimacion).first,*itAnimacion);
-                    delete *itAnimacion;
-                    if(numeroAnimacionesActivas((*itGrupoAnimacion).first) ==0){
-                        mParent->stopped((*itGrupoAnimacion).first);
-                    }
-                }
-            }
-        }
+				if (animacion->isStopped()) {				
+					erase(grupoAnimacion.first, animacion);
+					delete animacion;
+					if (numeroAnimacionesActivas(grupoAnimacion.first) == 0) {
+						mParent->stopped(grupoAnimacion.first);
+					}
+				}
+
+			}
+		}
     }
 
     void draw(SDL_Renderer * gRenderer){
-        for(auto itGrupoAnimacion = dequeGrupoAnimaciones.begin();itGrupoAnimacion != dequeGrupoAnimaciones.end();++itGrupoAnimacion){
-            for(auto itAnimacion = (*itGrupoAnimacion).second.begin();itAnimacion != (*itGrupoAnimacion).second.end();itAnimacion++){
-                (*itAnimacion)->draw(gRenderer);
-            }
-        }
+		for (auto & grupoAnimacion : dequeGrupoAnimaciones) {
+			for (auto & animacion : grupoAnimacion.second) {
+				animacion->draw(gRenderer);
+			}
+		}
+		
     }
-    ~ControlaAnimacion(){
 
+	~ControlaAnimacion(){
+
+		for (auto & grupoAnimacion : dequeGrupoAnimaciones) {
+			for (auto & animacion : grupoAnimacion.second) {
+				delete animacion;
+			}
+		}
     }
 
 private:
 
-    std::unordered_map<int,std::deque<SimpleAnimacion *>> dequeGrupoAnimaciones;
+    std::unordered_map<int,std::list<SimpleAnimacion *>> dequeGrupoAnimaciones;
     ControlaAnimacionInterfaz *mParent;
 };
 #endif //TETRIS_CONTROLAANIMACION_HPP

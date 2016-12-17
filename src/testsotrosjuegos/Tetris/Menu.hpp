@@ -170,10 +170,13 @@ public:
 
     ~Menu(){
         delete mTextureFondo;
-        for(int i = 0; i < N_OPCIONES;i++){
-            delete mpBitFntRendOpsMenuPausa[i];
-        }
-        delete mpTextureFlechaOpcionSeleccionada;
+		for (int i = 0; i < N_OPCIONES; i++) {
+			delete mpBitFntRendOpsMenuPausa[i];
+		}
+		for (int i = 0; i < 2; i++) {
+			delete mpBitmapFont[i];
+		}
+		delete mpTextureFlechaOpcionSeleccionada;
         delete mpTextureCuadroAzulFondo;
         Mix_FreeMusic(mMusicaFondo);
         Mix_FreeChunk(mSfxChangeSelect);

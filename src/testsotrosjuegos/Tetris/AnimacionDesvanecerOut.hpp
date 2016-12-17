@@ -49,11 +49,11 @@ public:
     }
 
 private:
-    SDL_Rect rect;
+	SDL_Texture *mTexture;
+	SDL_Rect rect{ 0,0,0,0 };
     int mAlphaValue = 255;
     int mDelay = 0;
     int mMaxDelay = 20;
-    SDL_Texture *mTexture;
     int mAvance = 35;
 };
 #endif //TETRIS_ANIMACIONELIMINARLINEA_HPP

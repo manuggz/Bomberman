@@ -58,16 +58,11 @@ public:
         mRectAreaJuego.w = mColumnas * mSizeCuadro;
         mRectAreaJuego.h = mFilas    * mSizeCuadro;
 
+		// Esta parte se puede quitar, es solo que antes las filas y las columnas no eran fijas
+        mArrayEstadoJuegoTetrominosCaidos = new Uint8[mFilas * mColumnas];
+        mArrayEstadoJuegoRecursion		  = new Uint8[mFilas * mColumnas];
 
-        mArrayEstadoJuegoTetrominosCaidos = (Uint8 *) std::malloc(sizeof(Uint8)* (size_t) (mFilas * mColumnas));
-        mArrayEstadoJuegoRecursion =  (Uint8 *) std::malloc(sizeof(Uint8) *(size_t) (mFilas * mColumnas));
-
-        //mSprites = new DrawGroup(this);
-
-        mSpriteSheetBloques = new SpriteSheet();
-        //mTextureBackground = new LTexture();
-        mControlAnimaciones = new ControlaAnimacion(this);
-        mSfxPieceRotate = cargar_sonido((char *) "resources/music/SFX_PieceRotateLR.ogg");
+		mSfxPieceRotate = cargar_sonido((char *) "resources/music/SFX_PieceRotateLR.ogg");
         mSfxPieceRotateFail = cargar_sonido((char *) "resources/music/SFX_PieceRotateFail.ogg");
         mSfxPieceTouch = cargar_sonido((char *) "resources/music/SFX_PieceTouchLR.ogg");
         mSfxPieceLockDown = cargar_sonido((char *) "resources/music/SFX_PieceLockdown.ogg");
@@ -78,9 +73,11 @@ public:
         mSfxHoldPiece = cargar_sonido((char *) "resources/music/SFX_PieceHold.ogg");
     }
     void crearUI(SDL_Renderer * gRenderer){
-        mSpriteSheetBloques->cargarDesdeArchivo(gRenderer,"resources/blocks.png",5,8,false);
-        //mTextureBackground->loadFromFile("resources/background1.jpg",gRenderer,false);
-        mGRenderer = gRenderer;
+
+		mGRenderer = gRenderer;
+		
+		mSpriteSheetBloques = new SpriteSheet();
+		mSpriteSheetBloques->cargarDesdeArchivo(gRenderer,"resources/blocks.png",5,8,false);
 
         for(int i = 1;i <= 2;i++){
             mpBitmapFont[i - 1] = new BitmapFont(gRenderer,"resources/fuentes/fuente_" + std::to_string(i) + ".png");
@@ -113,35 +110,52 @@ public:
         reset();
     }
 
-    void reset() {
-        std::cout << "TetrisJuego::reset" << std::endl;
-        std::fill_n(mArrayEstadoJuegoTetrominosCaidos,mColumnas*mFilas,0);
+    void reset() {        
+		std::cout << "TetrisJuego::reset" << std::endl;
+
+		std::fill_n(mArrayEstadoJuegoTetrominosCaidos,mColumnas*mFilas,0);
+
         if(mTetrominoActual){
-            delete mTetrominoActual;
-            mTetrominoActual = nullptr;
-            delete mTetrominoSiguiente;
-            mTetrominoSiguiente = nullptr;
-        }
+			eliminarTetrominos();
+		}
+
         if(mControlAnimaciones){
             delete mControlAnimaciones;
             mControlAnimaciones = nullptr;
         }
 
         mControlAnimaciones = new ControlaAnimacion(this);
-        //mPlayerPuntaje = 0;
-        mDelayActualBajarTetrominoActual = 0;
-        mMaxDelayBajarTetrominoActual = 40;
-        mEstadoJuego = EstadoJuego ::RUNNING;
-        mMantieneTeclaPausaPresionada = true;
-        mTetrominoGhost     = new Tetromino(Tetromino::Z,0,0,
-                                            mSizeCuadro,
-                                            new SpriteSheet(mGRenderer,"resources/blocks.png",5,8,false),false);
-		mTetrominoGhost->setAlpha(150);
-		mTetrominoGhost->setIndiceCuadroBloque(12);
+
+		mDelayActualBajarTetrominoActual = 0;
+        mMaxDelayBajarTetrominoActual	 = 40;
+
+		mEstadoJuego = EstadoJuego ::RUNNING;
+        
+		//mMantieneTeclaPausaPresionada = true;
+		mTetrominoGhost = generarTetrominoAleatorio();
 		crearTetrominos();
     }
+	
+	void eliminarTetrominos() {
+		delete mTetrominoActual;
+		mTetrominoActual = nullptr;
 
-    Tetromino * generarTetrominoAleatorio(){
+		delete mTetrominoSiguiente;
+		mTetrominoSiguiente = nullptr;
+
+		delete mTetrominoGhost;
+		mTetrominoGhost = nullptr;
+	}
+	Tetromino * generarTetrominoGhost() {
+		Tetromino * tetrominoGhost = new Tetromino(Tetromino::Z, 0, 0, mSizeCuadro,
+			new SpriteSheet(mGRenderer, "resources/blocks.png", 5, 8, false), false);
+
+		tetrominoGhost->setAlpha(150);
+		tetrominoGhost->setIndiceCuadroBloque(12);
+		return tetrominoGhost;
+	}
+
+	Tetromino * generarTetrominoAleatorio(){
         return new Tetromino((Tetromino::TetrisForma)mRandomGenerator.getNextFormaTetromino(),0,0,mSizeCuadro,mSpriteSheetBloques);
     }
 
@@ -156,7 +170,9 @@ public:
         mTetrominoSiguiente = generarTetrominoAleatorio();
         mParent->nuevoTetrominoSiguiente(mTetrominoSiguiente);
 
-        mTetrominoActual->move(mRectAreaJuego.x + (mColumnas/2)*mSizeCuadro,mRectAreaJuego.y);
+
+        mTetrominoActual->centerX(mRectAreaJuego.x + (mColumnas/2)*mSizeCuadro + mSizeCuadro/2);
+		mTetrominoActual->setY(mRectAreaJuego.y);
 
         if(estaTetraminoEnPosicionInvalida(mTetrominoActual)){
             mEstadoJuego = EstadoJuego ::GAME_OVER;
@@ -274,8 +290,6 @@ public:
     void procesarEventoRunning(SDL_Event * evento){
         if(evento->type==SDL_KEYDOWN) {
             switch (evento->key.keysym.sym) {
-                case SDLK_ESCAPE:
-                    break;
                 case SDLK_RIGHT:
                     if(mTetrominoActual != nullptr) {
                         if (moverIpTetromino(mTetrominoActual, mSizeCuadro, 0)) {
@@ -761,11 +775,15 @@ public:
     ~TetrisJuego(){
         //delete mSprites;
         //delete mTextureBackground;
-        delete mControlAnimaciones;
+
+		delete mArrayEstadoJuegoTetrominosCaidos;
+		delete mArrayEstadoJuegoRecursion;
+
+		delete mControlAnimaciones;
         delete mSpriteSheetBloques;
         delete mTetrominoActual;
         delete mTetrominoSiguiente;
-        delete mArrayEstadoJuegoRecursion;
+		delete mTetrominoGhost;
 
         for(int i = 0; i < 2 ;i++){
             delete mpBitmapFont[i];
@@ -776,18 +794,20 @@ public:
         }
         delete plTextureFlechaOpcionSeleccionada;
         delete plTextureGameOver;
-        //delete mTetrominoGhost;
+
         Mix_FreeChunk(mSfxPieceRotate);
         Mix_FreeChunk(mSfxPieceRotateFail);
         Mix_FreeChunk(mSfxPieceTouch);
         Mix_FreeChunk(mSfxPieceLockDown);
         Mix_FreeChunk(mSfxPieceFall);
         Mix_FreeChunk(mSfxPieceMove);
-
         Mix_FreeChunk(mSfxSoftDrop);
         Mix_FreeChunk(mSfxHardDrop);
-
         Mix_FreeChunk(mSfxHoldPiece);
+
+		for (auto & tetrominoCayendo : mDequeTetraminosCayendo) {
+			delete tetrominoCayendo;
+		}
     }
 
 
@@ -802,21 +822,32 @@ public:
 
 private:
 
-    enum EstadoJuego{
-        STOPPED,
-        RUNNING,
-        PAUSADO,
-        GAME_OVER
-    };
+	enum EstadoJuego {
+		STOPPED,
+		RUNNING,
+		PAUSADO,
+		GAME_OVER
+	};
+	enum EstadoOpcionMenu {
+		NORMAL,
+		RESALTADO
+	};
+	enum OpcionesPausa {
+		CONTINUE,
+		RETRY,
+		END,
+		N_OPCIONES_PAUSA
+	};
+	
+	InterfazJuegoTetris * mParent;
+	SDL_Renderer *mGRenderer;
+	
+	int mId;
+	EstadoJuego mEstadoJuego = EstadoJuego::STOPPED;
 
-    EstadoJuego mEstadoJuego = EstadoJuego::STOPPED;
-    SDL_Rect  mRectAreaJuego    {0,0,0,0};
-    //SDL_Color mColorFondo {0,100,100,255};
-
-    //DrawGroup * mSprites = nullptr;
+	SDL_Rect  mRectAreaJuego    {0,0,0,0};
 
     Uint8 * mArrayEstadoJuegoTetrominosCaidos = nullptr;
-
     Uint8 * mArrayEstadoJuegoRecursion = nullptr;
 
     int mFilas      = 0;
@@ -824,52 +855,33 @@ private:
     int mSizeCuadro = 0;
 
     Tetromino * mTetrominoActual = nullptr;
-    int mDelayActualBajarTetrominoActual = 0;
+	Tetromino * mTetrominoSiguiente = nullptr;
+	Tetromino * mTetrominoGhost;
+
+	int mDelayActualBajarTetrominoActual = 0;
     int mMaxDelayBajarTetrominoActual = 0;
 
     int mActualDelayBajarTetraminosFlotantes = 0;
     int mMaxDelayBajarTetraminosFlotantes = 0;
 
-    bool mMantieneTeclaLeftPresionada = false;
-    bool mMantieneTeclaRightPresionada = false;
-    bool mMantieneTeclaGiroCounterClockPresionada = false;
-    bool mMantieneTeclaHardDropPresionada = false;
-    bool mMantieneTeclaSoftDropPresionada = false;
-    bool mMantieneTeclaPausaPresionada = false;
+    //bool mMantieneTeclaLeftPresionada = false;
+    //bool mMantieneTeclaRightPresionada = false;
+    //bool mMantieneTeclaGiroCounterClockPresionada = false;
+    //bool mMantieneTeclaHardDropPresionada = false;
+    //bool mMantieneTeclaSoftDropPresionada = false;
+    //bool mMantieneTeclaPausaPresionada = false;
 
     SpriteSheet * mSpriteSheetBloques;
-    SDL_Renderer *mGRenderer;
     //LTexture *mTextureBackground;
     ControlaAnimacion * mControlAnimaciones;
-    std::deque<Tetromino *> mDequeTetraminosCayendo;
-    //Tetromino *mTetrominoGhost;
-    InterfazJuegoTetris * mParent;
-    int mId;
 
-    //int mPlayerPuntaje = 0;
-
-    Tetromino *mTetrominoSiguiente = nullptr;
-
-    enum EstadoOpcionMenu{
-        NORMAL,
-        RESALTADO
-    };
-
-    static const int N_OPCIONES_PAUSA = 3;
-
-    enum OpcionesPausa{
-        CONTINUE,
-        RETRY,
-        END
-    };
+	std::deque<Tetromino *>  mDequeTetraminosCayendo;
 
     BitmapFont * mpBitmapFont[2]  {nullptr};
-
     BitmapFontRenderer * mpBitFntRendOpsMenuPausa[N_OPCIONES_PAUSA] {nullptr};
 
     LTexture * plTextureFlechaOpcionSeleccionada = nullptr;
-
-    LTexture * plTextureGameOver = nullptr;
+	LTexture * plTextureGameOver = nullptr;
 
     int mOpcionSeleccionadaMenuPausa = 0;
 
@@ -885,11 +897,10 @@ private:
     Mix_Chunk * mSfxHardDrop;
     Mix_Chunk * mSfxHoldPiece;
 
-
     int mCeldasAvanzadasSoftDrop = 0;
     bool mEstaUtilizandoSoftDrop = false;
-    RandomGenerator mRandomGenerator;
-    Tetromino *mTetrominoGhost;
+
+	RandomGenerator mRandomGenerator;
 };
 #endif //TETRIS_TETRISJUEGO_HPP
 //

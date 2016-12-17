@@ -83,8 +83,6 @@ public:
     }
 
     void tetrisLineasCompletadas(int TetrisID, int nLineasCompletadas) override {
-        //mLabelComponentScoreActual->setText(std::to_string(nuevoPuntaje));
-        char textoDigitalizado[N_DIGITOS_ENTEROS + 1];
 
         switch(nLineasCompletadas){
             case SINGLE_LINE:
@@ -127,10 +125,7 @@ public:
 
         setTextWithDigits(mBitmapScorePlayer1Valor,mPuntajePlayer,10);
 
-        std::fill_n(textoDigitalizado,11,0);
-
         mLineasCompletas += nLineasCompletadas;
-
         if((mLineasCompletas / 10 + 1) > mLevelTetrisPlayer){
             int nuevoTick = mTetrisJuego->getTickDelayBajarTetromino() - 2;
             if(nuevoTick <= 2){
@@ -348,6 +343,8 @@ public:
         delete mBitmapTimePlayer1Valor;
         delete mBitmapLevelPlayer1Valor;
         delete mBitmapLinesPlayer1Valor;
+		delete mMetaData;
+
         Mix_FreeMusic(mMusicaFondo);
         Mix_FreeChunk(mSfxChunkGameOver);
         Mix_FreeChunk(mSfxChunkGameStart);

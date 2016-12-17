@@ -44,7 +44,7 @@ public:
 
 		mRectCuadroVisible = obtenerRectCuadrosVisibles(stArrayFormas[mForma][mRotacionActual]);
 		mRect.x = left - mRectCuadroVisible.x;
-		mRect.y = top - mRectCuadroVisible.x;
+		mRect.y = top - mRectCuadroVisible.y;
 
 		mSpriteSheetTiposBloques = texturaGrilla;
 
@@ -53,6 +53,14 @@ public:
 		mEsGrillaCompartida = esSpriteSheetCompartida;
 	}
 	
+	void centerX(int posX) {
+		mRect.x = posX - mRectCuadroVisible.x - mRectCuadroVisible.w / 2;
+	}
+
+	void setY(int posY) {
+		mRect.y = posY - mRectCuadroVisible.y;
+	}
+
 	void cambiarForma(TetrisForma nuevaforma) {
 		mForma = nuevaforma;
 		mRect.x += mRectCuadroVisible.x;
