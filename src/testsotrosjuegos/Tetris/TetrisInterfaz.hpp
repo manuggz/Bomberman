@@ -167,6 +167,10 @@ public:
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_FILL_PARENT_WIDTH,LAYOUT_PARAM_TRUE);
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_WRAP_WIDTH,LAYOUT_PARAM_FALSE);
         mLayoutBackGround->setLayoutParam(LAYOUT_PARAM_WRAP_HEIGHT,LAYOUT_PARAM_FALSE);
+
+
+        mNombreJugador = "Iranid<3";
+
         //mLayoutBackGround->setBackgroundColor(SDL_Color {27,63,177,255});
         LTexture * lTexture = new LTexture();
         lTexture->loadFromFile("resources/backgroundSinglePlayer.png",renderer,false);
@@ -177,6 +181,9 @@ public:
 
         mBitmapHighScorePlayer1Valor = new BitmapFontRenderer(mBitmapFont[NORMAL],30,217);
         setTextWithDigits(mBitmapHighScorePlayer1Valor,mHighScore,N_DIGITOS_ENTEROS);
+
+        mNombreJugadorPlayer1Valor = new BitmapFontRenderer(mBitmapFont[NORMAL],42,105);
+        mNombreJugadorPlayer1Valor->setText(mNombreJugador);
 
         mBitmapScorePlayer1Valor = new BitmapFontRenderer(mBitmapFont[NORMAL],30,485);
         mBitmapScorePlayer1Valor->setText("0000000000");
@@ -304,6 +311,7 @@ public:
         mLayoutBackGround->draw(renderer);
         mBitmapHighScorePlayer1Valor->draw(renderer);
         mBitmapScorePlayer1Valor->draw(renderer);
+        mNombreJugadorPlayer1Valor->draw(renderer);
 
         if(mControlTimer.isRunning()){
             static char hrs[3],min_[3],seg[3],tiempo[6];
@@ -343,6 +351,7 @@ public:
         delete mBitmapTimePlayer1Valor;
         delete mBitmapLevelPlayer1Valor;
         delete mBitmapLinesPlayer1Valor;
+        delete mNombreJugadorPlayer1Valor;
 		delete mMetaData;
 
         Mix_FreeMusic(mMusicaFondo);
@@ -374,6 +383,7 @@ private:
     BitmapFontRenderer *mBitmapTimePlayer1Valor;
     BitmapFontRenderer *mBitmapLevelPlayer1Valor;
     BitmapFontRenderer *mBitmapLinesPlayer1Valor;
+    BitmapFontRenderer *mNombreJugadorPlayer1Valor = nullptr;
 
     enum EstadoTexto{
         NORMAL,
@@ -401,6 +411,7 @@ private:
     int mLevelTetrisPlayer = 1;
     int mLineasCompletasAnteriores = 0;
     bool mCongratuledScoreGreaterThanHighScore = false;
+    std::string mNombreJugador;
 };
 
 #endif //TETRIS_TETRIS_HPP

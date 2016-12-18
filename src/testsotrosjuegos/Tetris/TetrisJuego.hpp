@@ -132,7 +132,7 @@ public:
 		mEstadoJuego = EstadoJuego ::RUNNING;
         
 		//mMantieneTeclaPausaPresionada = true;
-		mTetrominoGhost = generarTetrominoAleatorio();
+		mTetrominoGhost = generarTetrominoGhost();
 		crearTetrominos();
     }
 	
@@ -171,8 +171,7 @@ public:
         mParent->nuevoTetrominoSiguiente(mTetrominoSiguiente);
 
 
-        mTetrominoActual->centerX(mRectAreaJuego.x + (mColumnas/2)*mSizeCuadro + mSizeCuadro/2);
-		mTetrominoActual->setY(mRectAreaJuego.y);
+        mTetrominoActual->move(mRectAreaJuego.x + (mColumnas/2)*mSizeCuadro,mRectAreaJuego.y);
 
         if(estaTetraminoEnPosicionInvalida(mTetrominoActual)){
             mEstadoJuego = EstadoJuego ::GAME_OVER;
@@ -873,7 +872,7 @@ private:
 
     SpriteSheet * mSpriteSheetBloques;
     //LTexture *mTextureBackground;
-    ControlaAnimacion * mControlAnimaciones;
+    ControlaAnimacion * mControlAnimaciones = nullptr;
 
 	std::deque<Tetromino *>  mDequeTetraminosCayendo;
 
