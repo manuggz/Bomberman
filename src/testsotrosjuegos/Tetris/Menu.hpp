@@ -61,6 +61,7 @@ public:
         mpTextureCuadroAzulFondo->loadFromFile("resources/cuadro_opcion_seleccionada.png",gRenderer,false);
 
         mMusicaFondo = cargar_musica("resources/music/8_bit_electro_house_remix.wav");
+
         mSfxChangeSelect = cargar_sonido((char *) "resources/music/SFX_PieceLockdown.ogg");
     }
 
@@ -149,41 +150,43 @@ public:
 
         mTextureFondo->render(gRenderer,0,0);
 
-        int yDibujo = yIni;
+        int yDibujoOpcion = yIni;
         for(int i = 0 ; i < OpcionesMenu::N_OPCIONES;i++){
             if(mEsOpcionVisible[i]){
 
                 if(mOpcionSeleccionadaMenuPausa == i){
-                    mpTextureFlechaOpcionSeleccionada->render(gRenderer,xIni - mpTextureFlechaOpcionSeleccionada->getWidth() - 5,yDibujo);
-                    mpTextureCuadroAzulFondo->render(gRenderer,xIni - 3,yDibujo);
+                    mpTextureFlechaOpcionSeleccionada->render(gRenderer,xIni - mpTextureFlechaOpcionSeleccionada->getWidth() - 5,yDibujoOpcion);
+                    mpTextureCuadroAzulFondo->render(gRenderer,xIni - 3,yDibujoOpcion);
                 }
 
-                mpBitFntRendOpsMenuPausa[i]->draw(gRenderer,xIni,yDibujo);
+                mpBitFntRendOpsMenuPausa[i]->draw(gRenderer,xIni,yDibujoOpcion);
 
-                yDibujo +=  mpBitFntRendOpsMenuPausa[i]->getHeight() + 10;
+                yDibujoOpcion +=  mpBitFntRendOpsMenuPausa[i]->getHeight() + 10;
 
             }
         }
-
-
     }
 
     ~Menu(){
         delete mTextureFondo;
+
 		for (int i = 0; i < N_OPCIONES; i++) {
 			delete mpBitFntRendOpsMenuPausa[i];
 		}
+
 		for (int i = 0; i < 2; i++) {
 			delete mpBitmapFont[i];
 		}
+
 		delete mpTextureFlechaOpcionSeleccionada;
         delete mpTextureCuadroAzulFondo;
+
         Mix_FreeMusic(mMusicaFondo);
         Mix_FreeChunk(mSfxChangeSelect);
     }
 private:
 
-    int xIni,yIni;
+    int xIni = 0,yIni = 0;
 
     LTexture * mTextureFondo = nullptr;
 
@@ -200,20 +203,18 @@ private:
         N_OPCIONES
     };
 
-    bool mEsOpcionVisible[4] {false};
-
     BitmapFont * mpBitmapFont[2]  {nullptr};
 
+    bool mEsOpcionVisible[N_OPCIONES] {false};
     BitmapFontRenderer * mpBitFntRendOpsMenuPausa[N_OPCIONES] {nullptr};
 
     LTexture * mpTextureFlechaOpcionSeleccionada = nullptr;
 
-
     OpcionesMenu mOpcionSeleccionadaMenuPausa;
-    Mix_Music * mMusicaFondo;
+    Mix_Music * mMusicaFondo = nullptr;
 
-    Mix_Chunk * mSfxChangeSelect;
-    LTexture * mpTextureCuadroAzulFondo;
+    Mix_Chunk * mSfxChangeSelect = nullptr;
+    LTexture * mpTextureCuadroAzulFondo = nullptr;
 };
 
 #endif //TETRIS_MENU_HPP

@@ -28,7 +28,7 @@ void mostrar_error_salir(std::string msg);
  */
 bool rect_contain(SDL_Rect  rectA, SDL_Rect rectB);
 
-inline bool punto_en_rect(Sint16 x,Sint16 y,SDL_Rect * rect_coli){return (x>rect_coli->x&&x<rect_coli->x+rect_coli->w&&y>rect_coli->y&&y<rect_coli->y+rect_coli->h);}
+inline bool punto_en_rect(Sint32 x, Sint32 y, SDL_Rect * rect_coli){return (x > rect_coli->x && x < rect_coli->x + rect_coli->w && y > rect_coli->y && y < rect_coli->y + rect_coli->h);}
 /**
  * Abre un archivo de texto y busca el valor de "nombreVariable" en él
  *

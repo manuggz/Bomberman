@@ -22,15 +22,32 @@ public:
 		std::cout << "OthelloInterfaz::OthelloInterfaz" << std::endl;
 
 	}
+
 	void prepare() override {
 		std::cout << "TetrisInterfaz::prepare" << std::endl;
 		InterfazUI::prepare();
 		mLayoutBackGround = new LayoutAbsolute();
-		mOthelloJuego = new OthelloJuego(this,0, 0);
+		mOthelloJuego = new OthelloJuego(this,64*4, 64*1);
 		mMusicaFondo = cargar_musica("resources/music/music.mp3");
-		mSfxColocarPieza = cargar_sonido((char *) "resources/music/SFX_GameOver.ogg");
+		mSfxCambiadoTurno = cargar_sonido((char *) "resources/music/SFX_PieceTouchLR.ogg");
+		mSfxPosicionInvalida = cargar_sonido((char *) "resources/music/SFX_PieceHold.ogg");
 	}
 
+
+	void seleccionadaPosicionInvalida(int turnoActual) override {
+		playSfx(mSfxPosicionInvalida);
+
+	}
+
+	void cambiadoTurno(int turnoActual, int nVolteadasTurnoAnterior) override {
+		playSfx(mSfxCambiadoTurno);
+        if(turnoActual == OthelloJuego::BLANCAS){
+            mBitmapTurnoValor->setText("Turno de las Blancas.");
+        }else{
+            mBitmapTurnoValor->setText("Turno de las Negras.");
+        }
+
+	}
 
 	void playSfx(Mix_Chunk *pSfxChunk) override {
 		mGameManagerInterfaz->play(pSfxChunk);
@@ -60,8 +77,45 @@ public:
 		mBitmapFont[NORMAL] = new BitmapFont(renderer, "resources/fuentes/fuente_1.png");
 		mBitmapFont[RESALTADO] = new BitmapFont(renderer, "resources/fuentes/fuente_2.png");
 
+        mBitmapTurnoValor = new BitmapFontRenderer(mBitmapFont[NORMAL],260,650);
+        mBitmapTurnoValor->setText("Turno de las Negras.");
+
+        mBitmapNNegrasValor = new BitmapFontRenderer(mBitmapFont[NORMAL],390,708);
+        setTextWithDigits(mBitmapNNegrasValor,2,2);
+
+        mBitmapNBlancasValor = new BitmapFontRenderer(mBitmapFont[NORMAL],580,708);
+        setTextWithDigits(mBitmapNBlancasValor,2,2);
+
 		mOthelloJuego->crearUI(renderer);
 		SDL_ShowCursor(SDL_ENABLE);//ocultamos el cursor
+
+	}
+
+    void seAcaboElJuego(int nBlancas, int nNegras) override {
+        if(nBlancas + nNegras >= 8*8){
+            if(nBlancas > nNegras){
+                mBitmapTurnoValor->setText("Ganan las Blancas");
+            }else if(nNegras < nBlancas){
+                mBitmapTurnoValor->setText("Ganan las Negras");
+            }else{
+                mBitmapTurnoValor->setText("Empate");
+            }
+        }
+    }
+
+    void cambioEstadoTablero(int nBlancas, int nNegras) override {
+        setTextWithDigits(mBitmapNNegrasValor,nNegras,2);
+        setTextWithDigits(mBitmapNBlancasValor,nBlancas,2);
+    }
+
+    void setTextWithDigits(BitmapFontRenderer * bitmapFontRenderer,int valor,int nDigitos){
+		char textoDigitalizado[2 + 1];
+
+		sprintf(textoDigitalizado,"%*d",nDigitos,valor);
+
+		int i = 0;
+		while(textoDigitalizado[i] == ' ')textoDigitalizado[i++]='0';
+		bitmapFontRenderer->setText(textoDigitalizado);
 
 	}
 
@@ -127,16 +181,23 @@ public:
 		}
 
 		mOthelloJuego->draw(renderer);
+        mBitmapTurnoValor->draw(renderer);
+        mBitmapNBlancasValor->draw(renderer);
+        mBitmapNNegrasValor->draw(renderer);
 
 	}
 
 	virtual ~OthelloInterfaz() override {
 		delete mLayoutBackGround; // Al liberar el layout parent se liberan todos sus mComponentes
 		delete mOthelloJuego;
+        delete mBitmapTurnoValor;
+        delete mBitmapNBlancasValor;
+        delete mBitmapNNegrasValor;
 		//delete mLabelComponentScoreActual;
 
 		Mix_FreeMusic(mMusicaFondo);
-		Mix_FreeChunk(mSfxColocarPieza);
+		Mix_FreeChunk(mSfxCambiadoTurno);
+		Mix_FreeChunk(mSfxPosicionInvalida);
 
 		for (int i = 0; i < 2; i++) {
 			delete mBitmapFont[i];
@@ -154,8 +215,12 @@ private:
 	BitmapFont *mBitmapFont[2];
 	LTimer mControlTimer;
 	Mix_Music * mMusicaFondo;
-	Mix_Chunk * mSfxColocarPieza;
+	Mix_Chunk * mSfxCambiadoTurno;
+	BitmapFontRenderer *mBitmapTurnoValor = nullptr;
 
+	Mix_Chunk *mSfxPosicionInvalida;
+    BitmapFontRenderer *mBitmapNBlancasValor = nullptr;
+    BitmapFontRenderer *mBitmapNNegrasValor = nullptr;
 };
 
 #endif

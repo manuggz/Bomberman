@@ -356,6 +356,7 @@ LTexture * GameManager::getTexture(Galeria::CodeImagen code){
 }
 
 GameManager::~GameManager(){
+    std::cout << "GameManager::~GameManager()" << std::endl;
 
     SDL_DestroyRenderer(gRenderer);
     // Close and destroy the window

@@ -112,7 +112,7 @@
 //
 //        /*SI ALGUN PLAYER PRESIONO START Y ESTABA MUERTO*/
 //        for(int i=0;i<=PLAYER_2;i++)
-//            if(!isActivo(PLAYER,i)&&static_cast<Player *>(refeSprites[PLAYER][i])->isPressed(TECLA_START,teclas)){
+//            if(!isActivo(PLAYER,i)&&static_cast<Player *>(refeSprites[PLAYER][i])->estaTeclaAceptada(TECLA_START,teclas)){
 //                if(static_cast<Player *>(refeSprites[PLAYER][!i])->getVidas()>0){
 //                    static_cast<Player *>(refeSprites[PLAYER][!i])->setVidas(static_cast<Player *>(refeSprites[PLAYER][!i])->getVidas()-1);
 //                    static_cast<Player *>(refeSprites[PLAYER][i])->reiniciar();

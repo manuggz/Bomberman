@@ -342,7 +342,8 @@ public:
         if(mTetrominoSiguiente != nullptr) mTetrominoSiguiente->draw(renderer);
     }
 
-    virtual ~TetrisInterfaz() override {
+    ~TetrisInterfaz(){
+        std::cout << "~TetrisInterfaz()" << std::endl;
         delete mLayoutBackGround; // Al liberar el layout parent se liberan todos sus mComponentes
         delete mTetrisJuego;
         //delete mLabelComponentScoreActual;
@@ -378,11 +379,11 @@ private:
     LayoutAbsolute *mLayoutBackGround = nullptr;
 
     TetrisJuego * mTetrisJuego = nullptr;
-    BitmapFontRenderer *mBitmapHighScorePlayer1Valor;
-    BitmapFontRenderer *mBitmapScorePlayer1Valor;
-    BitmapFontRenderer *mBitmapTimePlayer1Valor;
-    BitmapFontRenderer *mBitmapLevelPlayer1Valor;
-    BitmapFontRenderer *mBitmapLinesPlayer1Valor;
+    BitmapFontRenderer *mBitmapHighScorePlayer1Valor = nullptr;
+    BitmapFontRenderer *mBitmapScorePlayer1Valor = nullptr;
+    BitmapFontRenderer *mBitmapTimePlayer1Valor = nullptr;
+    BitmapFontRenderer *mBitmapLevelPlayer1Valor = nullptr;
+    BitmapFontRenderer *mBitmapLinesPlayer1Valor = nullptr;
     BitmapFontRenderer *mNombreJugadorPlayer1Valor = nullptr;
 
     enum EstadoTexto{
@@ -398,16 +399,16 @@ private:
     MetaData *mMetaData;
     int mHighScore;
 
-    Mix_Music * mMusicaFondo;
-    Mix_Chunk * mSfxChunkGameStart;
-    Mix_Chunk * mSfxChunkGameOver;
-    Mix_Chunk * mSfxLevelUp;
+    Mix_Music * mMusicaFondo = nullptr;
+    Mix_Chunk * mSfxChunkGameStart = nullptr;
+    Mix_Chunk * mSfxChunkGameOver = nullptr;
+    Mix_Chunk * mSfxLevelUp = nullptr;
 
-    Mix_Chunk * mSfxBTBTetris;
+    Mix_Chunk * mSfxBTBTetris = nullptr;
 
-    Mix_Chunk * mSfxCongratulate[8];
+    Mix_Chunk * mSfxCongratulate[8] {nullptr};
 
-    Mix_Chunk * mSfxClearLines[4];
+    Mix_Chunk * mSfxClearLines[4] {nullptr};
     int mLevelTetrisPlayer = 1;
     int mLineasCompletasAnteriores = 0;
     bool mCongratuledScoreGreaterThanHighScore = false;

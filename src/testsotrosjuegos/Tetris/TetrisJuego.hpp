@@ -5,24 +5,22 @@
 #ifndef TETRIS_TETRISJUEGO_HPP
 #define TETRIS_TETRISJUEGO_HPP
 
-static const int GRUPO_ANIMACION_ELIMINAR_LINEAS = 0;
-
-static const int POS_VISITADA_RECURSION = 1;
-
-static const int POS_NO_VISITADA_RECURSION = 0;
 
 #include <SDL2/SDL.h>
-//#include "../../engine/sprites/CDrawGroup.hpp"
-#include "Tetromino.hpp"
 #include "../../engine/util/SpriteSheet.hpp"
+#include "../../engine/util/LTimer.hpp"
+#include "../../engine/util/util.hpp"
+#include "Tetromino.hpp"
 #include "ControlaAnimacion.hpp"
 #include "AnimacionDesvanecerOut.hpp"
 #include "BitmapFont.hpp"
-#include "../../engine/util/LTimer.hpp"
 #include "RandomGenerator.hpp"
-#include "Tetromino.hpp"
-#include "../../engine/util/util.hpp"
+#include "ControlTeclasPlayer.hpp"
 
+static const int GRUPO_ANIMACION_ELIMINAR_LINEAS = 0;
+
+static const int POS_NO_VISITADA_RECURSION = 0;
+static const int POS_VISITADA_RECURSION = 1;
 
 class InterfazJuegoTetris{
 public:
@@ -45,6 +43,7 @@ public:
 class TetrisJuego : public ControlaAnimacionInterfaz {
 
 public:
+
     TetrisJuego(InterfazJuegoTetris * parent,int id,int x,int y){
 
         mParent = parent;
@@ -71,7 +70,10 @@ public:
         mSfxSoftDrop = cargar_sonido((char *) "resources/music/SFX_PieceSoftDrop.ogg");
         mSfxHardDrop = cargar_sonido((char *) "resources/music/SFX_PieceHardDrop.ogg");
         mSfxHoldPiece = cargar_sonido((char *) "resources/music/SFX_PieceHold.ogg");
+
+        mControlPlayerTeclas = new ControlTeclasPlayer("resources/teclas_player1");
     }
+
     void crearUI(SDL_Renderer * gRenderer){
 
 		mGRenderer = gRenderer;
@@ -287,93 +289,6 @@ public:
     }
 
     void procesarEventoRunning(SDL_Event * evento){
-        if(evento->type==SDL_KEYDOWN) {
-            switch (evento->key.keysym.sym) {
-                case SDLK_RIGHT:
-                    if(mTetrominoActual != nullptr) {
-                        if (moverIpTetromino(mTetrominoActual, mSizeCuadro, 0)) {
-                            mParent->playSfx(mSfxPieceMove);
-                            mDelayActualBajarTetrominoActual = 0;
-                        } else {
-                            mParent->playSfx(mSfxPieceTouch);
-                        }
-                    }
-                    break;
-                case SDLK_LEFT:
-                    if(mTetrominoActual != nullptr) {
-                        if (moverIpTetromino(mTetrominoActual, -mSizeCuadro, 0)) {
-                            mParent->playSfx(mSfxPieceMove);
-                            mDelayActualBajarTetrominoActual = 0;
-                        } else {
-                            mParent->playSfx(mSfxPieceTouch);
-                        }
-                    }
-                    break;
-                case SDLK_UP:
-                    if(mTetrominoActual != nullptr) {
-                        int nCeldasDropeadas = hardDropTetramino(mTetrominoActual);
-                        if(nCeldasDropeadas > 0){
-                            mParent->tetrisHardDrop(mId,nCeldasDropeadas);
-                        }
-
-                        mDelayActualBajarTetrominoActual = mMaxDelayBajarTetrominoActual + 1;
-                        mParent->playSfx(mSfxHoldPiece);
-                    }
-                    break;
-                case SDLK_DOWN:
-                    if(mTetrominoActual != nullptr) {
-                        if (!mEstaUtilizandoSoftDrop) {
-                            mDelayActualBajarTetrominoActual = mMaxDelayBajarTetrominoActual + 1;
-                            mMaxDelayBajarTetrominoActual /= 4;
-                            mParent->playSfx(mSfxSoftDrop);
-                            mCeldasAvanzadasSoftDrop = 0;
-                            mEstaUtilizandoSoftDrop = true;
-                        }
-                    }
-                    break;
-                case SDLK_z:
-                    if(mTetrominoActual != nullptr) {
-                        if (girarFormaActualDesc(1)) {
-                            mDelayActualBajarTetrominoActual = 0;
-                            mTetrominoGhost->rotate(1);
-                        }
-                    }
-                    break;
-                case SDLK_x:
-                    if(mTetrominoActual != nullptr) {
-                        if (girarFormaActualDesc(-1)) {
-                            mTetrominoGhost->rotate(-1);
-                            mDelayActualBajarTetrominoActual = 0;
-                        }
-                    }
-                    break;
-                case SDLK_RETURN:
-                    mParent->tetrisPaused(mId);
-                    mEstadoJuego = EstadoJuego ::PAUSADO;
-                    mOpcionSeleccionadaMenuPausa = 0;
-                    mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[EstadoOpcionMenu::RESALTADO]);
-                    break;
-                default:
-                    break;
-            }
-        }else if (evento->type == SDL_KEYUP){
-            switch (evento->key.keysym.sym) {
-                case SDLK_DOWN:
-                    if(mEstaUtilizandoSoftDrop) {
-                        mMaxDelayBajarTetrominoActual *= 4;
-                        mParent->playSfx(mSfxHardDrop);
-                        if (mCeldasAvanzadasSoftDrop) {
-                            mParent->tetrisSoftDrop(mId, mCeldasAvanzadasSoftDrop);
-                            mCeldasAvanzadasSoftDrop = 0;
-                        }
-                        mEstaUtilizandoSoftDrop = false;
-                    }
-                    break;
-                default:
-                    break;
-            }
-
-        }
     }
     void procesarEvento(SDL_Event * evento){
 
@@ -568,9 +483,67 @@ public:
 
         if(mTetrominoActual != nullptr){
 
+            const Uint8 *teclas= SDL_GetKeyboardState(NULL);//se obtiene el estado_actual actual del teclado
+            mControlPlayerTeclas->update(teclas);
             //mTetrominoActual->update(nullptr);
 
             mDelayActualBajarTetrominoActual++;
+
+            if(mControlPlayerTeclas->estaTeclaAceptada(ControlTeclasPlayer::TECLA_MOVER_LEFT)){
+                if (moverIpTetromino(mTetrominoActual, -mSizeCuadro, 0)) {
+                    mParent->playSfx(mSfxPieceMove);
+                    mDelayActualBajarTetrominoActual = 0;
+                } else {
+                    mParent->playSfx(mSfxPieceTouch);
+                }
+            }else if(mControlPlayerTeclas->estaTeclaAceptada(ControlTeclasPlayer::TECLA_MOVER_RIGHT)){
+                if (moverIpTetromino(mTetrominoActual, mSizeCuadro, 0)) {
+                    mParent->playSfx(mSfxPieceMove);
+                    mDelayActualBajarTetrominoActual = 0;
+                } else {
+                    mParent->playSfx(mSfxPieceTouch);
+                }
+            }else if(mControlPlayerTeclas->estaTeclaAceptada(ControlTeclasPlayer::TECLA_HARD_DROP)) {
+                int nCeldasDropeadas = hardDropTetramino(mTetrominoActual);
+                if(nCeldasDropeadas > 0){
+                    mParent->tetrisHardDrop(mId,nCeldasDropeadas);
+                }
+
+                mDelayActualBajarTetrominoActual = mMaxDelayBajarTetrominoActual + 1;
+                mParent->playSfx(mSfxHoldPiece);
+            }else if(mControlPlayerTeclas->estaTeclaPresionada(ControlTeclasPlayer::TECLA_SOFT_DROP) &&
+                    !mEstaUtilizandoSoftDrop) {
+                    mDelayActualBajarTetrominoActual = mMaxDelayBajarTetrominoActual + 1;
+                    mMaxDelayBajarTetrominoActual /= 4;
+                    mParent->playSfx(mSfxSoftDrop);
+                    mCeldasAvanzadasSoftDrop = 0;
+                    mEstaUtilizandoSoftDrop = true;
+
+            }else if(!mControlPlayerTeclas->estaTeclaPresionada(ControlTeclasPlayer::TECLA_SOFT_DROP) &&
+                    mEstaUtilizandoSoftDrop) {
+                mMaxDelayBajarTetrominoActual *= 4;
+                mParent->playSfx(mSfxHardDrop);
+                if (mCeldasAvanzadasSoftDrop) {
+                    mParent->tetrisSoftDrop(mId, mCeldasAvanzadasSoftDrop);
+                    mCeldasAvanzadasSoftDrop = 0;
+                }
+                mEstaUtilizandoSoftDrop = false;
+            }else if(mControlPlayerTeclas->estaTeclaAceptada(ControlTeclasPlayer::TECLA_GIRAR_LEFT)) {
+                if (girarFormaActualDesc(1)) {
+                    mDelayActualBajarTetrominoActual = 0;
+                    mTetrominoGhost->rotate(1);
+                }
+            }else if(mControlPlayerTeclas->estaTeclaAceptada(ControlTeclasPlayer::TECLA_GIRAR_RIGHT)) {
+                if (girarFormaActualDesc(-1)) {
+                    mTetrominoGhost->rotate(-1);
+                    mDelayActualBajarTetrominoActual = 0;
+                }
+            }else if(mControlPlayerTeclas->estaTeclaAceptada(ControlTeclasPlayer::TECLA_PAUSA)) {
+                mParent->tetrisPaused(mId);
+                mEstadoJuego = EstadoJuego ::PAUSADO;
+                mOpcionSeleccionadaMenuPausa = 0;
+                mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[EstadoOpcionMenu::RESALTADO]);
+            }
 
             mTetrominoGhost->move(mTetrominoActual->getX(),mTetrominoActual->getY());
             hardDropTetramino(mTetrominoGhost);
@@ -777,7 +750,7 @@ public:
 
 		delete mArrayEstadoJuegoTetrominosCaidos;
 		delete mArrayEstadoJuegoRecursion;
-
+        delete mControlPlayerTeclas;
 		delete mControlAnimaciones;
         delete mSpriteSheetBloques;
         delete mTetrominoActual;
@@ -900,6 +873,7 @@ private:
     bool mEstaUtilizandoSoftDrop = false;
 
 	RandomGenerator mRandomGenerator;
+    ControlTeclasPlayer * mControlPlayerTeclas = nullptr;
 };
 #endif //TETRIS_TETRISJUEGO_HPP
 //
