@@ -1,15 +1,15 @@
 #ifndef EXPLOSION_HPP
 #define EXPLOSION_HPP
 #include <SDL2/SDL.h>
-#include "../util/constantes.hpp"
-#include "../Interfaces/juego/juego.hpp"
 #include "../engine/sprites/animacion/animacion.hpp"
+#include "../util/constantes.hpp"
+#include "../Interfaces/juego/ModoJuegoMultiPlayer.hpp"
 
-class Juego;
+class ModoJuegoMultiPlayer;
 class Explosion:public Animacion{
 public:
 
-    Explosion(InterfazJuego * juego,SDL_Renderer * gRenderer, Player * playerLanzador);
+    Explosion(ModoJuegoMultiPlayer * juego,SDL_Renderer * gRenderer, Player * playerLanzador);
     void draw(SDL_Renderer * gRenderer);
     bool colision(SDL_Rect & rect_coli);
 
@@ -34,7 +34,7 @@ private:
     void detectarAlcance(int dir,int aum_x,int aum_y);
 
     Player *        mPlayerCreador = nullptr;
-    InterfazJuego * mJuego = nullptr;
+    ModoJuegoMultiPlayer * mJuego = nullptr;
     int mAlcanceLlamas = 0;
 
 };

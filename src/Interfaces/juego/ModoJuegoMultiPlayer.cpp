@@ -1,10 +1,5 @@
-#include "juego.hpp"
-#include "../../engine/util/LTimer.hpp"
-#include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
-#include "../../engine/layout/Componentes/LabelComponent.hpp"
-#include "PopUpJuegoMostrarRondasGan.hpp"
-#include "PopUpMostrarMensajeTexto.hpp"
-#include "PopUpCountDown.hpp"
+#include "ModoJuegoMultiPlayer.hpp"
+#include "../../engine/util/MusicaFondo.hpp"
 
 /**
  * Inicializa la clase Juego
@@ -15,8 +10,8 @@
  * @param isPlayerActivo Array con los players que jugaran
  *
  */
-Juego::Juego (GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[_PLAYERS])
-:InterfazUI(gameManager),mGrpSprites(this),mMapa(0,32){
+ModoJuegoMultiPlayer::ModoJuegoMultiPlayer (GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[_PLAYERS])
+:InterfazGrafica(gameManager),mGrpSprites(this),mMapa(0,32){
 
 
     // Establecemos como activos los players seleccionados a que jueguen
@@ -28,7 +23,10 @@ Juego::Juego (GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVic
     //
     for(int i = 0; i < _PLAYERS;i++) {
         mIsPlayerActivado[i] = isPlayerActivo[i];
-        if(mIsPlayerActivado[i])mPlayerSprite[i] = new Player(this, (IdPlayer) i);
+        if(mIsPlayerActivado[i]){
+            mPlayerSprite[i] = new Player(this, (IdPlayer) i);
+
+        }
     }
 
     mRutaTerrenoMapa = rutaMapa;
@@ -39,8 +37,8 @@ Juego::Juego (GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVic
 /**
  * Crea el Mapa los players y el timer
  */
-void Juego::prepare() {
-    InterfazUI::prepare();
+void ModoJuegoMultiPlayer::prepare() {
+    InterfazGrafica::prepare();
 
     //mMapa = new NivelMapa();
     //crearPlayersActivos();
@@ -53,7 +51,7 @@ void Juego::prepare() {
  * Tales son los componentes que dibujan el texto en pantalla
  * @param gRenderer
  */
-void Juego::createUI(SDL_Renderer *gRenderer) {
+void ModoJuegoMultiPlayer::createUI(SDL_Renderer *gRenderer) {
 
 
     mLayoutParent = new LayoutAbsolute();
@@ -78,6 +76,10 @@ void Juego::createUI(SDL_Renderer *gRenderer) {
         mpVidasRestantesPlayer[i]->setTextColor(color);
         mLayoutParent->addComponent(mpVidasRestantesPlayer[i]);
 
+        if(mIsPlayerActivado[i]){
+            mPlayerSprite[i]->cargarRecursos(gRenderer);
+
+        }
     }
     mpVidasRestantesPlayer[PLAYER_1]->setLayoutParam(LAYOUT_PARAM_X,"18");
     mpVidasRestantesPlayer[PLAYER_1]->setLayoutParam(LAYOUT_PARAM_Y,"1");
@@ -95,6 +97,26 @@ void Juego::createUI(SDL_Renderer *gRenderer) {
     mpVidasRestantesPlayer[PLAYER_5]->setLayoutParam(LAYOUT_PARAM_X,"307");
     mpVidasRestantesPlayer[PLAYER_5]->setLayoutParam(LAYOUT_PARAM_Y,"1");
 
+    mpTextureTablero = new LTexture();
+    mpTextureTablero->cargarDesdeArchivo("data/imagenes/objetos/tablero.bmp",gRenderer,true);
+
+    mpSpriteSheetCarasBomberman = new SpriteSheet(gRenderer,"data/imagenes/objetos/caras_bomberman.bmp",1,10,true);
+
+    mpTextureCuadroPeque  = new LTexture();
+    mpTextureCuadroPeque->cargarDesdeArchivo("data/imagenes/objetos/cuadro_1.png",gRenderer,false);
+
+    mpTextureCuadroGrande = new LTexture();
+    mpTextureCuadroGrande->cargarDesdeArchivo("data/imagenes/objetos/cuadro_3.png",gRenderer,false);
+
+
+    mpSfxCreadaExplosion = new EfectoSonido("data/sonidos/ping_5.wav",100);
+    mpSfxPlayerRecogioItem = new EfectoSonido("data/sonidos/ping_1.wav",100);
+    mpSfxPlayerPerdioVida = new EfectoSonido("data/sonidos/ping_7.wav",100);
+
+    mpMusicasFondo[0] = new MusicaFondo("data/sonidos/musica_5.mid");
+    mpMusicasFondo[1] = new MusicaFondo("data/sonidos/musica_6.mid");
+    mpMusicaAdvertenciaTiempo = new MusicaFondo("data/sonidos/musica_4.mid");
+
     mGameRenderer = gRenderer;
 
 
@@ -103,28 +125,28 @@ void Juego::createUI(SDL_Renderer *gRenderer) {
 /**
  * Inicia el estado del juego
  */
-void Juego::start() {
-    InterfazUI::start();
+void ModoJuegoMultiPlayer::start() {
+    InterfazGrafica::start();
     reiniciarEstado();
     PopUpCountDown *  mostrarMensajeTexto = new PopUpCountDown(mGameManagerInterfaz,"El juego comienza en ",3);
     mostrarMensajeTexto->setSizeText(20);
     mGameManagerInterfaz->showPopUp(mostrarMensajeTexto,ID_POPUP_JUEGO_COMIENZA);
-    mGameManagerInterfaz->playSound((Galeria::CodeMusicSonido)(4 + rand() % 1));
+    mpMusicasFondo[rand()%1]->play();
 }
 
 
-void Juego::pause() {
-    InterfazUI::pause();
+void ModoJuegoMultiPlayer::pause() {
+    InterfazGrafica::pause();
     mGameTimer.pause();
 }
 
-void Juego::resume() {
-    InterfazUI::resume();
+void ModoJuegoMultiPlayer::resume() {
+    InterfazGrafica::resume();
     mGameTimer.resume();
 }
 
-void Juego::resultPopUp(void *result, int popUpCode) {
-    InterfazUI::resultPopUp(result, popUpCode);
+void ModoJuegoMultiPlayer::resultPopUp(void *result, int popUpCode) {
+    InterfazGrafica::resultPopUp(result, popUpCode);
 
     switch(popUpCode){
         case ID_POPUP_JUEGO_NADIE_GANA_RONDA:
@@ -166,7 +188,7 @@ void Juego::resultPopUp(void *result, int popUpCode) {
  * Una vez cargado el mapa se deben iniciar los players con los valores iniciales que se establecieron que
  * el mapa especifica
  */
-void Juego::establecerValoresDeMapaPlayers() {
+void ModoJuegoMultiPlayer::establecerValoresDeMapaPlayers() {
     for(int i = 0; i < _PLAYERS;i++) {
         establecerValoresDeMapaPlayer((IdPlayer)(PLAYER_1 + i));
     }
@@ -176,7 +198,7 @@ void Juego::establecerValoresDeMapaPlayers() {
  * Establece los valores iniciales de un player establecidos por el Mapa
  * @param idPlayer
  */
-void Juego::establecerValoresDeMapaPlayer(IdPlayer idPlayer){
+void ModoJuegoMultiPlayer::establecerValoresDeMapaPlayer(IdPlayer idPlayer){
     if(mIsPlayerActivado[idPlayer] && mPlayerSprite[idPlayer]) {
         mPlayerSprite[idPlayer]->move(mMapa.getPosXPlayer(idPlayer),mMapa.getPosYPlayer(idPlayer));
         mPlayerSprite[idPlayer]->setVidas(std::stoi(mMapa.getMapProperty(MAPA_PROPERTY_N_VIDAS_PLAYER)));
@@ -195,7 +217,7 @@ void Juego::establecerValoresDeMapaPlayer(IdPlayer idPlayer){
  * Agrega los players que fueron activados a los grupos del juego
  * Lo cual hace que se actualizen y dibujen
  */
-void Juego::agregarPlayersActivos() {
+void ModoJuegoMultiPlayer::agregarPlayersActivos() {
     for (int i = 0; i < _PLAYERS; i++) {
         if(mIsPlayerActivado[i]){
 
@@ -212,7 +234,7 @@ void Juego::agregarPlayersActivos() {
     }
 }
 
-void Juego::procesarEvento(SDL_Event * evento){
+void ModoJuegoMultiPlayer::procesarEvento(SDL_Event * evento){
     switch(evento->type){
         case SDL_KEYDOWN:
              switch(evento->key.keysym.sym){
@@ -233,7 +255,7 @@ void Juego::procesarEvento(SDL_Event * evento){
     
 }
 
-int Juego::getSegundosInicioNivel(){
+int ModoJuegoMultiPlayer::getSegundosInicioNivel(){
     return mGameTimer.getTicks()/1000;
 }
 
@@ -241,7 +263,7 @@ int Juego::getSegundosInicioNivel(){
 /**
  * Actualiza la lógica del juego
  */
-void Juego::update(){
+void ModoJuegoMultiPlayer::update(){
     const Uint8 *teclas= SDL_GetKeyboardState(NULL);//se obtiene el estado_actual actual del teclado
 
     mGrpSprites.update(teclas);
@@ -264,7 +286,7 @@ void Juego::update(){
 
     // Si solo quedan 20 segundos o menos
     if((mMinutos*60 - getSegundosInicioNivel()) <= 20 && !mIsPlayingWarningSound){
-        mGameManagerInterfaz->playSound(Galeria::CodeMusicSonido::SND_WARNING_TIME);
+        mpMusicaAdvertenciaTiempo->playFadeIn();
         mIsPlayingWarningSound = true;
     }
 
@@ -331,7 +353,7 @@ if(H_SCREEN-desplazamiento<=mMapa.getEjeY()){
 }*/
 }
 
-bool Juego::estaPlayerActivo(IdPlayer playerId){
+bool ModoJuegoMultiPlayer::estaPlayerActivo(IdPlayer playerId){
     return mIsPlayerActivado[playerId]&&mPlayerSprite[playerId]->isActivo();
 }
 
@@ -339,52 +361,52 @@ bool Juego::estaPlayerActivo(IdPlayer playerId){
  * Dibuja los datos que se muestran arriba del Mapa
  * @param gRenderer
  */
-void Juego::drawBarra(SDL_Renderer * gRenderer){
+void ModoJuegoMultiPlayer::drawBarra(SDL_Renderer * gRenderer){
 
-    // Dibuja un cuadro anaranjado donde van a estar los datos
-    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_TABLERO)->render(gRenderer,0,0);
+//    // Dibuja un cuadro anaranjado donde van a estar los datos
+    mpTextureTablero->render(gRenderer,0,0);
 
     //PLAYER_1
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CARAS_BOMBERMAN),
-                          !(estaPlayerActivo(PLAYER_1)) + PLAYER_1*2 ,gRenderer,1,6,1,10,0);
+    mpSpriteSheetCarasBomberman->setCurrentCuadro(!(estaPlayerActivo(PLAYER_1)) + PLAYER_1*2);
+    mpSpriteSheetCarasBomberman->draw(gRenderer,1,6);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CUADRO_PEQUENIO)->render(gRenderer,15,3);
+    mpTextureCuadroPeque->render(gRenderer,15,3);
 
     //PLAYER_2
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CARAS_BOMBERMAN),
-                          !(estaPlayerActivo(PLAYER_2)) + PLAYER_2*2 ,gRenderer,32,6,1,10,0);
+    mpSpriteSheetCarasBomberman->setCurrentCuadro(!(estaPlayerActivo(PLAYER_2)) + PLAYER_2*2);
+    mpSpriteSheetCarasBomberman->draw(gRenderer,32,6);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CUADRO_PEQUENIO)->render(gRenderer,48,3);
+    mpTextureCuadroPeque->render(gRenderer,48,3);
 
     //PLAYER_3
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CARAS_BOMBERMAN),
-                          !(estaPlayerActivo(PLAYER_3)) + PLAYER_3*2 ,gRenderer,65,6,1,10,0);
+    mpSpriteSheetCarasBomberman->setCurrentCuadro(!(estaPlayerActivo(PLAYER_3)) + PLAYER_3*2);
+    mpSpriteSheetCarasBomberman->draw(gRenderer,65,6);
 
-    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CUADRO_PEQUENIO)->render(gRenderer,80,3);
+    mpTextureCuadroPeque->render(gRenderer,80,3);
 
 //    //PLAYER_4
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CARAS_BOMBERMAN),
-                          !(estaPlayerActivo(PLAYER_4)) + PLAYER_4*2 ,gRenderer,253,6,1,10,0);
+    mpSpriteSheetCarasBomberman->setCurrentCuadro(!(estaPlayerActivo(PLAYER_4)) + PLAYER_4*2);
+    mpSpriteSheetCarasBomberman->draw(gRenderer,253,6);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CUADRO_PEQUENIO)->render(gRenderer,270,3);
+    mpTextureCuadroPeque->render(gRenderer,270,3);
 
     //PLAYER_5
     // Dibuja la cara del player
-    imprimir_desde_grilla(mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CARAS_BOMBERMAN),
-                          !(estaPlayerActivo(PLAYER_5)) + PLAYER_5*2 ,gRenderer,288,6,1,10,0);
+    mpSpriteSheetCarasBomberman->setCurrentCuadro(!(estaPlayerActivo(PLAYER_5)) + PLAYER_5*2);
+    mpSpriteSheetCarasBomberman->draw(gRenderer,288,6);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CUADRO_PEQUENIO)->render(gRenderer,304,3);
+    mpTextureCuadroPeque->render(gRenderer,304,3);
 
     // Dibujamos el cuadro donde se dibujara el tiempo restante
-    mGameManagerInterfaz->getTexture(Galeria::CodeImagen ::IMG_CUADRO_GRANDE)->render(gRenderer,137,3);
+    mpTextureCuadroGrande->render(gRenderer,137,3);
 
     // Calculamos y dibujamos el tiempo restante
     if(mGameTimer.isStarted()){
@@ -401,14 +423,14 @@ void Juego::drawBarra(SDL_Renderer * gRenderer){
     }
 
 }
-int Juego::getJoysActivos(){
+int ModoJuegoMultiPlayer::getJoysActivos(){
     return mGameManagerInterfaz->getActiveJoys();
 }
-SDL_Joystick * Juego::getJoy(int id){
+SDL_Joystick * ModoJuegoMultiPlayer::getJoy(int id){
     return mGameManagerInterfaz->getJoy(id);
 }
 
-void Juego::draw(SDL_Renderer * gRenderer){
+void ModoJuegoMultiPlayer::draw(SDL_Renderer * gRenderer){
 
     drawBarra(gRenderer);//imprimimos la barra mensage
     mMapa.draw(gRenderer);//imprimimos el nivel
@@ -433,7 +455,7 @@ void Juego::draw(SDL_Renderer * gRenderer){
  * Dependiendo del tipo de sprite a eliminar se hace una accion correspondiente
  * @param sprite
  */
-void Juego::eliminarSprite(Sprite *sprite) {
+void ModoJuegoMultiPlayer::eliminarSprite(Sprite *sprite) {
 
 
     // En caso de que el sprite a eliminar sea una bomba
@@ -459,7 +481,7 @@ void Juego::eliminarSprite(Sprite *sprite) {
         mGrpSprites.add(explosion);
 
         //reproducimos un sonido
-        mGameManagerInterfaz->play(Galeria::CodeMusicEfecto::SFX_EXPLOSION);
+        mpSfxCreadaExplosion->play();
 
         delete sprite;
         return;
@@ -522,7 +544,7 @@ void Juego::eliminarSprite(Sprite *sprite) {
         }else{
             Item::TipoItem tipo_item= pItemEliminado->getTipo();
             pPlayerActivadorItem->activarPoderItem(tipo_item);
-            mGameManagerInterfaz->play(Galeria::CodeMusicEfecto::SFX_COGER_ITEM);
+            mpSfxPlayerRecogioItem->play();
 
         }
         delete sprite;
@@ -537,7 +559,7 @@ void Juego::eliminarSprite(Sprite *sprite) {
  * @param pPlayer
  * @param pPlayerCausante
  */
-void Juego::playerMuerto(Player * pPlayer,Sprite * pPlayerCausante){
+void ModoJuegoMultiPlayer::playerMuerto(Player * pPlayer,Sprite * pPlayerCausante){
 
     if(pPlayer->getEstado() != EstadoSprite::MURIENDO){
         if(!pPlayer->getNCorazones()){
@@ -567,7 +589,7 @@ void Juego::playerMuerto(Player * pPlayer,Sprite * pPlayerCausante){
             pPlayer->setProteccion(5);
             pPlayer->setVidas(pPlayer->getVidas() - 1);
             mpVidasRestantesPlayer[pPlayer->getId()]->setText(std::to_string(pPlayer->getVidas()));
-            mGameManagerInterfaz->play(Galeria::CodeMusicEfecto::SFX_PIERDE_VIDA);
+            mpSfxPlayerPerdioVida->play();
         } else {
             pPlayer->setEnPantalla(false);
             pPlayer->kill();
@@ -575,7 +597,7 @@ void Juego::playerMuerto(Player * pPlayer,Sprite * pPlayerCausante){
         }
     }
 }
-Item::TipoItem Juego::getTipoNuevoItem(){
+Item::TipoItem ModoJuegoMultiPlayer::getTipoNuevoItem(){
 
 
     std::vector<Item::TipoItem > disponibles = {
@@ -599,15 +621,15 @@ Item::TipoItem Juego::getTipoNuevoItem(){
     }
 }
 
-deque<Sprite *> Juego::colisionBloqueEnLlamas(SDL_Rect rect) {
+deque<Sprite *> ModoJuegoMultiPlayer::colisionBloqueEnLlamas(SDL_Rect rect) {
     return mGrpBloques.collide(rect);
 }
 
-deque<Sprite *> Juego::colisionConItems(SDL_Rect rect) {
+deque<Sprite *> ModoJuegoMultiPlayer::colisionConItems(SDL_Rect rect) {
     return mGrpItems.collide(rect);
 }
 
-TileEnLlamas *Juego::agregarBloqueEnLlamas(int x, int y) {
+TileEnLlamas *ModoJuegoMultiPlayer::agregarBloqueEnLlamas(int x, int y) {
 
     // Buscamos la animacion del mapa para los bloques en llamas
     vector<string> *aniBloqueLlamas = mMapa.getAnimacionFrames(
@@ -639,41 +661,41 @@ TileEnLlamas *Juego::agregarBloqueEnLlamas(int x, int y) {
     return nuevoBloque;
 }
 
-bool Juego::esBloqueSolido(int x, int y) {
+bool ModoJuegoMultiPlayer::esBloqueSolido(int x, int y) {
     x -= mMapa.getX();
     y -= mMapa.getY();
     return mMapa.esBloqueSolido(x,y);
 }
 
-bool Juego::esBloqueRompible(int x, int y) {
+bool ModoJuegoMultiPlayer::esBloqueRompible(int x, int y) {
     x -= mMapa.getX();
     y -= mMapa.getY();
     return mMapa.esBloqueRompible(x,y);
 }
 
 
-deque<Sprite *> Juego::colisionConExplosiones(SDL_Rect rect) {
+deque<Sprite *> ModoJuegoMultiPlayer::colisionConExplosiones(SDL_Rect rect) {
     return mGrpExplosiones.collide(rect);
 }
 
-std::deque<Sprite *> Juego::colisionConBombas(SDL_Rect  rect) {
+std::deque<Sprite *> ModoJuegoMultiPlayer::colisionConBombas(SDL_Rect  rect) {
     return mGrpBombas.collide(rect);
 }
 
-NivelMapa::ExtremoColision Juego::colisionConMapa(SDL_Rect rect_coli, int *lado_colision, bool soloBloquesNoTraspasables){
+NivelMapa::ExtremoColision ModoJuegoMultiPlayer::colisionConMapa(SDL_Rect rect_coli, int *lado_colision, bool soloBloquesNoTraspasables){
     /*Comprueba si un rect colisiona con el nivel*/
     rect_coli.x -= mMapa.getX();
     rect_coli.y -= mMapa.getY();
     return mMapa.colision(rect_coli,lado_colision,soloBloquesNoTraspasables);
 }
 
-bool Juego::isOutOfMapBounds(SDL_Rect rect) {
+bool ModoJuegoMultiPlayer::isOutOfMapBounds(SDL_Rect rect) {
     rect.x -= mMapa.getX();
     rect.y -= mMapa.getY();
     return !mMapa.contain(rect);
 }
 
-Bomba *Juego::agregarBomba(Player * player) {
+Bomba *ModoJuegoMultiPlayer::agregarBomba(Player * player) {
 
     // Pasamos la posicion X a la coordenada del Mapa
     int nuevaPosicionX = player->getX() + 7 - mMapa.getX();
@@ -699,7 +721,8 @@ Bomba *Juego::agregarBomba(Player * player) {
 
     if(   mGrpEnemigos.collide(nuevaBomba).size() == 0
        && mGrpItems.collide(nuevaBomba).size()    == 0
-       && mGrpPlayers.collide(nuevaBomba).size()  == 1){
+       && mGrpPlayers.collide(nuevaBomba).size()  == 1
+        && mGrpBombas.collide(nuevaBomba).size() == 0){
         mGrpBombas.add(nuevaBomba);
         mGrpSprites.add(nuevaBomba);
         return nuevaBomba;
@@ -711,20 +734,20 @@ Bomba *Juego::agregarBomba(Player * player) {
 }
 
 
-void Juego::packLayout(SDL_Renderer *pRenderer) {
+void ModoJuegoMultiPlayer::packLayout(SDL_Renderer *pRenderer) {
     SDL_Rect rect = mGameManagerInterfaz->getRectScreen();
     mLayoutParent->pack(pRenderer);
     mLayoutParent->setRectDibujo(rect);
 }
 
-void Juego::reiniciarEstado() {
+void ModoJuegoMultiPlayer::reiniciarEstado() {
     mMapa.cargar(mGameRenderer,mRutaTerrenoMapa);
     establecerValoresDeMapaPlayers();
     agregarPlayersActivos();
     mGameTimer.start();
 }
 
-Juego::~Juego(){
+ModoJuegoMultiPlayer::~ModoJuegoMultiPlayer(){
     for(int i= 0;i<_PLAYERS;i++){
         delete mPlayerSprite[i];
         delete mpVidasRestantesPlayer[i];
@@ -732,9 +755,22 @@ Juego::~Juego(){
 
     delete mpTxtTiempoRestante;
     delete mLayoutParent;
+    delete mpTextureTablero;
+    delete mpSpriteSheetCarasBomberman;
+    delete mpTextureCuadroPeque;
+    delete mpTextureCuadroGrande;
+
+    delete mpSfxCreadaExplosion;
+    delete mpSfxPlayerRecogioItem;
+    delete mpSfxPlayerPerdioVida;
+
+    delete mpMusicasFondo[0];
+    delete mpMusicasFondo[1];
+    delete mpMusicaAdvertenciaTiempo;
+
 }
 
-void Juego::updateWhenPopUp() {
+void ModoJuegoMultiPlayer::updateWhenPopUp() {
     mGrpSprites.update(nullptr);
     mMapa.update();
 }

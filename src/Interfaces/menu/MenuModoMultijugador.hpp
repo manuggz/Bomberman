@@ -5,26 +5,25 @@
 #ifndef BOMBERMAN_MENUMODOMULTIJUGADOR_HPP
 #define BOMBERMAN_MENUMODOMULTIJUGADOR_HPP
 
-#include <SDL_render.h>
-#include <SDL_events.h>
-#include "../../engine/interfaces/InterfazUI.hpp"
-#include "../../engine/sprites/CGroup.hpp"
+#include <SDL2/SDL.h>
+#include "../../engine/interfaces/InterfazGrafica.hpp"
 #include "../../engine/layout/LayoutManager/LayoutVertical.hpp"
 #include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
 #include "../../engine/layout/Componentes/ImageComponent.hpp"
 #include "../../engine/layout/Componentes/LabelComponent.hpp"
-#include "../../engine/interfaces/InterfazSpriteGroup.hpp"
-#include "../../niveles/NivelMapa.hpp"
 #include "../../engine/layout/Componentes/BotonComponent.hpp"
 #include "../../engine/sprites/animacion/animacion.hpp"
+#include "../../engine/sprites/CGroup.hpp"
 #include "../../engine/sprites/CDrawGroup.hpp"
-#include "../juego/juego.hpp"
 
-class MenuModoMultijugador: public InterfazUI, public InterfazSpriteGroup {
+#include "../../niveles/NivelMapa.hpp"
+#include "../juego/ModoJuegoMultiPlayer.hpp"
+
+class MenuModoMultijugador: public InterfazGrafica,public UpdateGroupContainerInterfaz{
 
 public:
     MenuModoMultijugador(GameManagerInterfazUI * gameManagerInterfazUI):
-            InterfazUI(gameManagerInterfazUI),mMapaTerrenoSeleccionado(0,32){
+            InterfazGrafica(gameManagerInterfazUI),mMapaTerrenoSeleccionado(0,32){
     }
 
     void prepare() override {
@@ -43,36 +42,44 @@ public:
         mLayoutParent = new LayoutAbsolute();
 
         // BotonComponent para controlar cuanto tiempo para acabar una ronda
-        mBtnSubirTiempo=new BotonComponent<MenuModoMultijugador>(
-                mGameManagerInterfaz->getTexture(Galeria::CodeImagen::IMG_BOTON_FLECHA_PEQUE_DERECHA),this);
+//        mBtnSubirTiempo=new BotonComponent<MenuModoMultijugador>(
+  //              mGameManager->getTexture(Galeria::CodeImagen::IMG_BOTON_FLECHA_PEQUE_DERECHA),this);
+        LTexture * textureBotonSubirTiempo = new LTexture();
+        textureBotonSubirTiempo->cargarDesdeArchivo("data/imagenes/botones/boton_flecha.png", gRenderer, false);
+        mBtnSubirTiempo=new BotonComponent<MenuModoMultijugador>(textureBotonSubirTiempo,this);
+
         mBtnSubirTiempo->setId(MENU_BOTON_SUBIR_TIEMPO);
-        mBtnSubirTiempo->bindAccion(&MenuModoMultijugador::clickControl);
+        mBtnSubirTiempo->bindSubmitCallBack(&MenuModoMultijugador::submitCallbackMethod);
         mLayoutParent->addComponent(mBtnSubirTiempo);
         mBtnSubirTiempo->setLayoutParam(LAYOUT_PARAM_X,"197");
         mBtnSubirTiempo->setLayoutParam(LAYOUT_PARAM_Y,"2");
 
         // BotonComponent para controlar cuantas victorias son necesarias para terminar el juego
-        mBtnSubirVictorias=new BotonComponent<MenuModoMultijugador>(
-                mGameManagerInterfaz->getTexture(Galeria::CodeImagen::IMG_BOTON_FLECHA_PEQUE_DERECHA),this);
+        LTexture * textureBotonSubirVictorias = new LTexture();
+        textureBotonSubirVictorias->cargarDesdeArchivo("data/imagenes/botones/boton_flecha.png", gRenderer, false);
+        mBtnSubirVictorias=new BotonComponent<MenuModoMultijugador>(textureBotonSubirVictorias,this);
         mBtnSubirVictorias->setId(MENU_BOTON_SUBIR_VICTORIAS);
-        mBtnSubirVictorias->bindAccion(&MenuModoMultijugador::clickControl);
+        mBtnSubirVictorias->bindSubmitCallBack(&MenuModoMultijugador::submitCallbackMethod);
         mLayoutParent->addComponent(mBtnSubirVictorias);
         mBtnSubirVictorias->setLayoutParam(LAYOUT_PARAM_X,"297");
         mBtnSubirVictorias->setLayoutParam(LAYOUT_PARAM_Y,"2");
 
         // BotonComponent para cambiar el mapa a usar
-        mBtnCambiarMapa=new BotonComponent<MenuModoMultijugador>(
-                mGameManagerInterfaz->getTexture(Galeria::CodeImagen::IMG_BOTON_CAMBIAR_MAPA),this);
+        LTexture * textureBotonCambiarMapa = new LTexture();
+        textureBotonCambiarMapa->cargarDesdeArchivo("data/imagenes/botones/boton_cambiar_mapa.png", gRenderer, false);
+        mBtnCambiarMapa=new BotonComponent<MenuModoMultijugador>(textureBotonCambiarMapa,this);
         mBtnCambiarMapa->setId(MENU_BOTON_CAMBIAR_MAPA);
-        mBtnCambiarMapa->bindAccion(&MenuModoMultijugador::clickControl);
+        mBtnCambiarMapa->bindSubmitCallBack(&MenuModoMultijugador::submitCallbackMethod);
         mLayoutParent->addComponent(mBtnCambiarMapa);
         mBtnCambiarMapa->setLayoutParam(LAYOUT_PARAM_X,"10");
         mBtnCambiarMapa->setLayoutParam(LAYOUT_PARAM_Y,"225");
 
         // BotonComponent para comenzar a jugar
-        mBtnJugar=new BotonComponent<MenuModoMultijugador>(mGameManagerInterfaz->getTexture(Galeria::CodeImagen::IMG_BOTON_JUGAR_2),this);
+        LTexture * textureBotonJugar = new LTexture();
+        textureBotonJugar->cargarDesdeArchivo("data/imagenes/botones/boton_jugar_2.png", gRenderer, false);
+        mBtnJugar=new BotonComponent<MenuModoMultijugador>(textureBotonJugar,this);
         mBtnJugar->setId(MENU_BOTON_JUGAR);
-        mBtnJugar->bindAccion(&MenuModoMultijugador::clickControl);
+        mBtnJugar->bindSubmitCallBack(&MenuModoMultijugador::submitCallbackMethod);
         mBtnJugar->setVisible(false); // Lo ocultamos hasta que se seleccionen dos jugadores
         mLayoutParent->addComponent(mBtnJugar);
         mBtnJugar->setLayoutParam(LAYOUT_PARAM_X,"240");
@@ -112,7 +119,7 @@ public:
             mAnimaPresiona[i]=new Animacion(spriteSheetTmp,"0,0,1,1");
             // Animacion para cuando se selecciono el personaje(Hace que parpadee "activado")
             spriteSheetTmp = new SpriteSheet();
-            spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/personajes/txt_activado.bmp",2,1);
+            spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/textos/txt_activado.png",2,1);
             mAnimaActivado[i]=new Animacion(spriteSheetTmp,"0,0,0,1,1,1");
 
             // Hace que las animaciones se repitan indefinidamente(Hasta que se eliminen desde el codigo)
@@ -143,10 +150,37 @@ public:
 
         //static char tmp[50];
         //sprintf(tmp,"%d",i+1);
-        //imprimir_palabra(gRenderer,mGameManagerInterfaz->getTexture(IMG_FUENTE_6),mAnimacionPlayer[i]->getX()-9+41,mAnimacionPlayer[i]->getY()+19,tmp,STR_MAX_ESTENDIDA);
+        //imprimir_palabra(gRenderer,mGameManager->getTexture(IMG_FUENTE_6),mAnimacionPlayer[i]->getX()-9+41,mAnimacionPlayer[i]->getY()+19,tmp,STR_MAX_ESTENDIDA);
 
-        //mGameManagerInterfaz->playSound(SND_MENU);
+        //mGameManager->playSound(SND_MENU);
 
+        mpSfxCambiarMapa = new EfectoSonido("data/sonidos/ping_2.wav",100);
+        mpSfxPressJugar  = new EfectoSonido("data/sonidos/ping_5.wav",100);
+        mpSfxTogglePlayerEstado = new EfectoSonido("data/sonidos/ping_3.wav",100);
+
+
+        mpTextureTablero = new LTexture();
+        mpTextureTablero->cargarDesdeArchivo("data/imagenes/objetos/tablero.bmp",gRenderer,true);
+
+        mpTextureCuadroPeque = new LTexture();
+        mpTextureCuadroPeque->cargarDesdeArchivo("data/imagenes/objetos/cuadro_1.png",gRenderer,false);
+
+        mpTextureMensPlayersEnBatalla = new LTexture();
+        mpTextureMensPlayersEnBatalla->cargarDesdeArchivo("data/imagenes/textos/txt_players_en_batalla.png",gRenderer,false);
+
+        mpTextureMensTiempoPorRonda = new LTexture();
+        mpTextureMensTiempoPorRonda->cargarDesdeArchivo("data/imagenes/textos/txt_tiempo_por_ronda.png",gRenderer,false);
+
+        mpTextureMensVictorias = new LTexture();
+        mpTextureMensVictorias->cargarDesdeArchivo("data/imagenes/textos/txt_victorias.png",gRenderer,false);
+
+        for(int i = 0; i < _PLAYERS; i++) {
+            mpSpriteSheetPlayer[i] = new SpriteSheet(gRenderer, "data/imagenes/personajes/player_" + std::to_string(i + 1) + ".bmp", 1, 12,true);
+            mpSpriteSheetPlayer[i]->setAlpha(150);
+            mpSpriteSheetPlayer[i]->setCurrentCuadro(6);
+        }
+
+        mpSpriteSheetCarasBomberman = new SpriteSheet(gRenderer,"data/imagenes/objetos/caras_bomberman.bmp",1,10,true);
         establecerTerrenoBatalla(gRenderer,0);
 
         SDL_ShowCursor(SDL_ENABLE);
@@ -205,8 +239,8 @@ public:
      * Funcion llamada por los botones de la interfaz cuando son presionados
      * @param control_click
      */
-    void clickControl(BotonComponent<MenuModoMultijugador> * control_click) {
-        cout << "MenuModoMultijugador::clickControl"<<endl;
+    void submitCallbackMethod(BotonComponent<MenuModoMultijugador> *control_click) {
+        cout << "MenuModoMultijugador::submitCallbackMethod"<<endl;
         mBotonClicked = control_click->getId();
         ejecutarAccionBotonClicked();
     }
@@ -227,13 +261,13 @@ public:
                 break;
             case MENU_BOTON_CAMBIAR_MAPA:
                 if(establecerTerrenoBatalla(mGRenderer,(terrenoActual + 1 == mMaxTerrenoBatalla)?0:terrenoActual + 1)){
-                    mGameManagerInterfaz->play(Galeria::CodeMusicEfecto::SFX_TONO_ACUATICO);
+                    mpSfxCambiarMapa->play();
                 }
                 break;
             case MENU_BOTON_JUGAR:
                 int total_players=mIsPlayerActivado[PLAYER_1]+ mIsPlayerActivado[PLAYER_2]+ mIsPlayerActivado[PLAYER_3] + mIsPlayerActivado[PLAYER_4] + mIsPlayerActivado[PLAYER_5];
                 if(total_players>=2){
-                    Juego * nuevoJuego = new Juego(
+                    ModoJuegoMultiPlayer * nuevoJuego = new ModoJuegoMultiPlayer(
                             mGameManagerInterfaz,
                             "data/niveles/batalla/mapa_batalla_" + std::to_string(terrenoActual + 1) + ".tmx",
                             victoriasEscogidas,
@@ -241,7 +275,7 @@ public:
                             mIsPlayerActivado
                     );
                     mGameManagerInterfaz->cambiarInterfaz(nuevoJuego); //iniciamos en modo batalla, le pasamos el array con los players seleccionados por el usuario
-                    mGameManagerInterfaz->play(Galeria::CodeMusicEfecto::SFX_EXPLOSION);
+                    mpSfxPressJugar->play();
                 }
                 break;
         }
@@ -269,7 +303,7 @@ public:
 
         // Si hay mas de dos botones players activados se muestra el boton de jugar
         mBtnJugar->setVisible(mIsPlayerActivado[PLAYER_1]+ mIsPlayerActivado[PLAYER_2]+ mIsPlayerActivado[PLAYER_3] + mIsPlayerActivado[PLAYER_4] + mIsPlayerActivado[PLAYER_5]>1);
-        mGameManagerInterfaz->play(Galeria::CodeMusicEfecto::SFX_TONO_SECO);
+        mpSfxTogglePlayerEstado->play();
     }
 
     virtual void resume() override {
@@ -319,23 +353,24 @@ public:
     virtual void draw(SDL_Renderer *gRenderer) override {
         //cout << "MenuModoMultijugador::draw"<<endl;
 
-        //mGameManagerInterfaz->getTexture((CodeImagen)std::stoi(mMapaTerrenoSeleccionado.getPropertyMap(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer,0,0);*/
-        mGameManagerInterfaz->getTexture(Galeria::CodeImagen::IMG_TABLERO)->render(gRenderer,0,0);//imprimimos la barra mensage
-        mGameManagerInterfaz->getTexture(Galeria::CodeImagen::IMG_CUADRO_PEQUENIO)->render(gRenderer,177,0);//imprimimos la barra mensage
-        mGameManagerInterfaz->getTexture(Galeria::CodeImagen::IMG_CUADRO_PEQUENIO)->render(gRenderer,280,0);//imprimimos la barra mensage
-        mGameManagerInterfaz->getTexture(Galeria::CodeImagen::IMG_TXT_PLAYERS_EN_BATALLA)->render(gRenderer,15,0);//imprimimos la barra mensage
-        mGameManagerInterfaz->getTexture(Galeria::CodeImagen::IMG_TXT_TIEMPO_POR_RONDA)->render(gRenderer,140,18);//imprimimos la barra mensage
-        mGameManagerInterfaz->getTexture(Galeria::CodeImagen::IMG_TXT_VICTORIAS)->render(gRenderer,261,18);//imprimimos la barra mensage
+        //mGameManager->getTexture((CodeImagen)std::stoi(mMapaTerrenoSeleccionado.getPropertyMap(MAPA_PROPERTY_ID_FONDO)))->render(gRenderer,0,0);*/
+
+        mpTextureTablero->render(gRenderer,0,0);//imprimimos la barra mensage
+        mpTextureCuadroPeque->render(gRenderer,177,0);//imprimimos la barra mensage
+        mpTextureCuadroPeque->render(gRenderer,280,0);//imprimimos la barra mensage
+        mpTextureMensPlayersEnBatalla->render(gRenderer,15,0);//imprimimos la barra mensage
+        mpTextureMensTiempoPorRonda->render(gRenderer,140,18);//imprimimos la barra mensage
+        mpTextureMensVictorias->render(gRenderer,261,18);//imprimimos la barra mensage
 
         mMapaTerrenoSeleccionado.draw(gRenderer);//imprimimos el nivel
 
         mSprites->draw(gRenderer);
         for(int i=0;i<_PLAYERS;i++){
             if(!mIsPlayerActivado[i]){
-                imprimir_desde_grilla(mGameManagerInterfaz->getTexture((Galeria::CodeImagen)(Galeria::CodeImagen::IMG_PLAYER_1 + i)), 6,gRenderer, mAnimacionPlayer[i]->getX(),mAnimacionPlayer[i]->getY(),1, 12,true);
+                mpSpriteSheetPlayer[i]->draw(gRenderer,mAnimacionPlayer[i]->getX(),mAnimacionPlayer[i]->getY());
             }else{
-                imprimir_desde_grilla(mGameManagerInterfaz->getTexture(Galeria::CodeImagen::IMG_CARAS_BOMBERMAN),i*2,gRenderer,i*16+20,
-                                      15 + 0,1,10,0);
+                mpSpriteSheetCarasBomberman->setCurrentCuadro(i*2);
+                mpSpriteSheetCarasBomberman->draw(gRenderer,i*16+20,15);
             }
         }
 
@@ -352,7 +387,20 @@ public:
             delete mAnimacionPlayer[i];
             delete mAnimaPresiona[i];
             delete mAnimaActivado[i];
+            delete mpSpriteSheetPlayer[i];
         }
+        delete mpSfxCambiarMapa;
+        delete mpSfxPressJugar;
+        delete mpSfxTogglePlayerEstado;
+
+        delete mpTextureTablero;
+        delete mpTextureCuadroPeque;
+        delete mpTextureMensPlayersEnBatalla;
+        delete mpTextureMensTiempoPorRonda;
+        delete mpTextureMensVictorias;
+
+        delete mpSpriteSheetCarasBomberman;
+
         //SDL_FreeSurface(previewTerreno);
         //delete dataNivel;
         delete mLayoutParent;
@@ -415,5 +463,19 @@ private:
     LabelComponent *mTextLabelMinutos = nullptr;
     // Muestra en la UI el numero de victorias escogidas
     LabelComponent *mTextLabelVictorias = nullptr;
+
+    EfectoSonido * mpSfxCambiarMapa;
+    EfectoSonido * mpSfxPressJugar;
+    EfectoSonido * mpSfxTogglePlayerEstado;
+
+    LTexture * mpTextureTablero;
+    LTexture * mpTextureCuadroPeque;
+    LTexture * mpTextureMensPlayersEnBatalla;
+    LTexture * mpTextureMensTiempoPorRonda;
+    LTexture * mpTextureMensVictorias;
+
+    SpriteSheet * mpSpriteSheetPlayer[_PLAYERS];
+    SpriteSheet * mpSpriteSheetCarasBomberman;
+
 };
 #endif //BOMBERMAN_MENUMODOMULTIJUGADOR_HPP

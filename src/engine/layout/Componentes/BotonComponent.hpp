@@ -29,7 +29,6 @@ class BotonComponent : public LayoutComponent{
             visible=true;
             enable=true;
             padre=parent;
-            desdeFile=false;
         }
         /*bool setGrillaImagen(SDL_Renderer * gRenderer,string ruta){
             imgGrillaBoton=cargar_textura(gRenderer,ruta,false);
@@ -79,7 +78,7 @@ class BotonComponent : public LayoutComponent{
         }
         
         void bindAccion(void (T::*pAccion)(void)){accionClickClase=pAccion;};
-        void bindAccion(void (T::*pAccion)(BotonComponent<T> *)){accionClickArgBoton=pAccion;};
+        void bindSubmitCallBack(void (T::*pAccion)(BotonComponent<T> *)){accionClickArgBoton=pAccion;};
         void draw(SDL_Renderer * gRenderer) override {
             LayoutComponent::draw(gRenderer);
             if(visible){
@@ -103,10 +102,7 @@ class BotonComponent : public LayoutComponent{
         int getId(){return idControl;};
         
         ~BotonComponent(){
-            if(desdeFile){ // Si la grilla se cargo desde esta clase
-                imgGrillaBoton->free();
-                delete imgGrillaBoton;
-            }
+            delete imgGrillaBoton;
         }
     private:
         Estado estado;
@@ -118,7 +114,7 @@ class BotonComponent : public LayoutComponent{
         void (T::*accionClickClase)(void);
         void (T::*accionClickArgBoton)(BotonComponent<T> *);
 
-        bool visible,enable,desdeFile;
+        bool visible,enable;
 
         bool estaPuntoEnRect(int x,int y,SDL_Rect * rect_coli){
             return (x>rect_coli->x&&x<rect_coli->x+rect_coli->w&&y>rect_coli->y&&y<rect_coli->y+rect_coli->h);

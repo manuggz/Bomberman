@@ -6,7 +6,7 @@
 #include "../util/constantes.hpp"
 //#include "../personajes/player.hpp"
 
-class Juego;
+class ModoJuegoMultiPlayer;
 class Player;
 class Item:public Animacion{
 public:

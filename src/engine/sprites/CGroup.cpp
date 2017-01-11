@@ -75,7 +75,7 @@ std::deque<Sprite *> Group::collide(Sprite * sprite) {
 }
 
 void Group::clear() {
-    deque<Sprite *> copia = v_personajes;
+    std::deque<Sprite *> copia = v_personajes;
     v_personajes.clear();
 
     auto pSprite = copia.begin();
@@ -87,7 +87,7 @@ void Group::clear() {
 }
 
 void Group::kill() {
-    deque<Sprite *> copia = v_personajes;
+    std::deque<Sprite *> copia = v_personajes;
     v_personajes.clear();
 
     auto pSprite = copia.begin();

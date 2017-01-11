@@ -1,31 +1,35 @@
 #ifndef JUEGO_HPP
 #define JUEGO_HPP
+
 #include <iostream>
-using namespace std;
 #include <SDL2/SDL.h>
-#include "../../niveles/NivelMapa.hpp"
-#include "../../util/constantes.hpp"
-#include "../../engine/interfaces/InterfazUI.hpp"
+#include "../../engine/interfaces/InterfazGrafica.hpp"
+#include "../../engine/interfaces/PopUpMostrarMensajeTexto.hpp"
+#include "../../engine/interfaces/PopUpCountDown.hpp"
 #include "../../engine/sprites/CGroup.hpp"
-/*Personajes*/
-#include "../../personajes/bomba.hpp"
-#include "../../objetos/item.hpp"
-#include "../../objetos/explosion.hpp"
-#include "../../engine/mapa/TileEnLlamas.hpp"
-#include "../../engine/util/LTimer.hpp"
 #include "../../engine/sprites/CDrawGroup.hpp"
-//#include "juego_historia.hpp"
-#include "InterfazJuego.hpp"
-#include "../../personajes/player.hpp"
 #include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
 #include "../../engine/layout/Componentes/LabelComponent.hpp"
+#include "../../engine/mapa/TileEnLlamas.hpp"
+#include "../../engine/util/LTimer.hpp"
+
+#include "../../niveles/NivelMapa.hpp"
+#include "../../util/constantes.hpp"
+#include "PopUpJuegoMostrarRondasGan.hpp"
+
+/*Personajes*/
+#include "../../personajes/bomba.hpp"
+#include "../../personajes/player.hpp"
+#include "../../objetos/item.hpp"
+#include "../../objetos/explosion.hpp"
+#include "../../engine/util/EfectoSonido.hpp"
+#include "../../engine/util/MusicaFondo.hpp"
 
 
-
-class Juego:public InterfazUI ,public InterfazJuego,public InterfazSpriteGroup{
+class ModoJuegoMultiPlayer:public InterfazGrafica,public UpdateGroupContainerInterfaz{
 public:
 
-    Juego(GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[_PLAYERS]);
+    ModoJuegoMultiPlayer(GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[_PLAYERS]);
     void prepare() override;
     void createUI(SDL_Renderer *gRenderer) override;
     void start() override;
@@ -33,34 +37,33 @@ public:
     void update() override ;
     void updateWhenPopUp() override;
     void draw(SDL_Renderer * ) override ;
-    virtual ~Juego();
+    virtual ~ModoJuegoMultiPlayer();
 
     void eliminarSprite(Sprite *sprite) override;
 
+    bool isOutOfMapBounds(SDL_Rect rect) ;
 
-    bool isOutOfMapBounds(SDL_Rect rect) override;
+    Bomba *agregarBomba(Player *playerPropietario) ;
 
-    Bomba *agregarBomba(Player *playerPropietario) override;
-
-    deque<Sprite *> colisionConBombas(SDL_Rect  rect) override;
-    deque<Sprite *> colisionConExplosiones(SDL_Rect rect) override;;
-    deque<Sprite *> colisionBloqueEnLlamas(SDL_Rect rect) override;
-    deque<Sprite *> colisionConItems(SDL_Rect rect) override;
+    deque<Sprite *> colisionConBombas(SDL_Rect  rect) ;
+    deque<Sprite *> colisionConExplosiones(SDL_Rect rect) ;;
+    deque<Sprite *> colisionBloqueEnLlamas(SDL_Rect rect) ;
+    deque<Sprite *> colisionConItems(SDL_Rect rect) ;
     NivelMapa::ExtremoColision colisionConMapa(SDL_Rect rect_coli,
                                                int *lado_colision = nullptr,
-                                               bool soloBloquesNoTraspasables=false) override;
+                                               bool soloBloquesNoTraspasables=false) ;
 
-    int getJoysActivos() override ;
-    SDL_Joystick * getJoy(int id) override ;
+    int getJoysActivos()  ;
+    SDL_Joystick * getJoy(int id)  ;
 
-    LTexture * getImagen(Galeria::CodeImagen code) override { return mGameManagerInterfaz->getTexture(code);}
+    //LTexture * getImagen(Galeria::CodeImagen code)  { return mGameManager->getTexture(code);}
 
-    TileEnLlamas *agregarBloqueEnLlamas(int x, int y) override;
+    TileEnLlamas *agregarBloqueEnLlamas(int x, int y) ;
 
-    bool esBloqueSolido(int x, int y) override;
-    bool esBloqueRompible(int x, int y) override;
+    bool esBloqueSolido(int x, int y) ;
+    bool esBloqueRompible(int x, int y) ;
 
-    void playerMuerto(Player *pPlayer, Sprite *pPlayerCausante) override;
+    void playerMuerto(Player *pPlayer, Sprite *pPlayerCausante) ;
 
     void pause() override;
 
@@ -114,6 +117,18 @@ protected:
     LabelComponent * mpVidasRestantesPlayer[_PLAYERS];
 
     bool mIsPlayingWarningSound = false;
+
+    SpriteSheet *mpSpriteSheetCarasBomberman;
+
+    LTexture * mpTextureTablero;
+    LTexture * mpTextureCuadroPeque;
+    LTexture * mpTextureCuadroGrande;
+
+    EfectoSonido * mpSfxCreadaExplosion;
+    EfectoSonido * mpSfxPlayerRecogioItem;
+    EfectoSonido * mpSfxPlayerPerdioVida;
+    MusicaFondo * mpMusicasFondo[2];
+    MusicaFondo * mpMusicaAdvertenciaTiempo;
 
     Item::TipoItem getTipoNuevoItem();
     void establecerValoresDeMapaPlayer(IdPlayer idPlayer);

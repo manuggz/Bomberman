@@ -5,7 +5,7 @@
 #ifndef OTHELLO_OTHELLO_INTERFAZ_HPP
 #define OTHELLO_OTHELLO_INTERFAZ_HPP
 
-#include "../../engine/interfaces/InterfazUI.hpp"
+#include "../../engine/interfaces/InterfazGrafica.hpp"
 #include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
 #include "../../engine/layout/LayoutManager/LayoutVertical.hpp"
 #include "../../engine/util/CMetaData.hpp"
@@ -50,7 +50,7 @@ public:
 	}
 
 	void playSfx(Mix_Chunk *pSfxChunk) override {
-		mGameManagerInterfaz->play(pSfxChunk);
+		mGameManager->play(pSfxChunk);
 	}
 
 	void start() override {
@@ -58,7 +58,7 @@ public:
 		InterfazUI::start();
 		mOthelloJuego->start();
 		mControlTimer.start();
-		mGameManagerInterfaz->playFadeInSound(mMusicaFondo, MIX_MAX_VOLUME / 2);
+		mGameManager->playFadeInSound(mMusicaFondo, MIX_MAX_VOLUME / 2);
 	}
 	virtual void createUI(SDL_Renderer *renderer)  override {
 
@@ -135,8 +135,8 @@ public:
 		if (evento->type == SDL_KEYDOWN) {
 			switch (evento->key.keysym.sym) {
 			case SDLK_ESCAPE:
-				mGameManagerInterfaz->goBack();
-				//mGameManagerInterfaz->showPopUp()
+				mGameManager->goBack();
+				//mGameManager->showPopUp()
 				break;
 			default:
 				break;
@@ -152,7 +152,7 @@ public:
 	}
 	void draw(SDL_Renderer *renderer) override {
 		if (mLayoutBackGround->isDisabled()) {
-			SDL_Rect rect = mGameManagerInterfaz->getRectScreen();
+			SDL_Rect rect = mGameManager->getRectScreen();
 			mLayoutBackGround->pack(renderer);
 			mLayoutBackGround->setRectDibujo(rect);
 		}

@@ -1,9 +1,9 @@
 //
-// Created by manuggz on 22/11/16.
+// Created by manuggz on 10/01/17.
 //
 
-#ifndef BOMBERMAN_CONTAINER_HPP
-#define BOMBERMAN_CONTAINER_HPP
+#ifndef BOMBERMAN_SPRITECONTAINER_HPP
+#define BOMBERMAN_SPRITECONTAINER_HPP
 
 class Sprite;
 class SpriteContainer{

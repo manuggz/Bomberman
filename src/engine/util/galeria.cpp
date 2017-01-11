@@ -25,7 +25,7 @@ bool Galeria::cargarTexturas(SDL_Renderer *gRenderer, string rutaTexturas) {
         filePar >>ruta;
         filePar >>keyColor;
         baulimgs[j] = new LTexture();
-        baulimgs[j]->loadFromFile(ruta,gRenderer,keyColor);
+        baulimgs[j]->cargarDesdeArchivo(ruta, gRenderer, keyColor);
         cout << "+Texture(Path = " << baulimgs[j]->getPath()
                 << " Height: "<<baulimgs[j]->getHeight()
                 << ", stWidth:" << baulimgs[j]->getWidth() <<endl;

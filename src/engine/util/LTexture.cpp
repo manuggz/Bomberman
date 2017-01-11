@@ -18,7 +18,7 @@ LTexture::~LTexture()
     free();
 }
 
-bool LTexture::loadFromFile( std::string path ,SDL_Renderer * gRenderer, bool tiene_color_clave) {
+bool LTexture::cargarDesdeArchivo(std::string path, SDL_Renderer *gRenderer, bool tiene_color_clave) {
     //Get rid of preexisting texture
     free();
 
@@ -33,7 +33,7 @@ bool LTexture::loadFromFile( std::string path ,SDL_Renderer * gRenderer, bool ti
 
         if(tiene_color_clave){
             //Color key image
-            SDL_SetColorKey( mSurface, SDL_TRUE, SDL_MapRGB( mSurface->format,0xFF , 0xFF, 0 ) );
+            SDL_SetColorKey( mSurface, SDL_TRUE,get_pixel(mSurface,0,0 ) );
         }
 
         //Create texture from surface pixels

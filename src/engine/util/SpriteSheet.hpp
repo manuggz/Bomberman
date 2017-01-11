@@ -30,7 +30,7 @@ public:
             delete mTexture;
         }
         mTexture = new LTexture();
-        mTexture->loadFromFile(ruta,gRenderer,colorClave);
+        mTexture->cargarDesdeArchivo(ruta, gRenderer, colorClave);
         mRectSource.x = 0;
         mRectSource.y = 0;
         mRectSource.w = mTexture->getWidth()/nColumnas;

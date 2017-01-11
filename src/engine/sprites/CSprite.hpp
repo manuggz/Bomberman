@@ -6,7 +6,6 @@
 #include "../util/util.hpp"
 #include "SpriteContainer.hpp"
 //#define DEBUG
-using namespace std;
 /**
  * Clase Base para Todos los elementos que integran un juego
  * Inspirada de la clase Sprite de pygame.

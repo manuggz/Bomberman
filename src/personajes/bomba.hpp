@@ -3,7 +3,8 @@
 #include <SDL2/SDL.h>
 #include "../engine/sprites/animacion/animacion.hpp"
 #include "../util/constantes.hpp"
-#include "player.hpp"
+//#include "player.hpp"
+class Player;
 
 class Bomba:public Animacion{
 public:

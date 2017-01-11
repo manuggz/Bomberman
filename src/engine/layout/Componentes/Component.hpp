@@ -136,7 +136,7 @@ public:
         if(!mTextureBackground){
             mTextureBackground = new LTexture();
         }
-        mTextureBackground->loadFromFile("data/imagenes/fondos/fondo_menu.bmp",pRenderer,false);
+        mTextureBackground->cargarDesdeArchivo("data/imagenes/fondos/fondo_menu.bmp", pRenderer, false);
     }
 
 protected:

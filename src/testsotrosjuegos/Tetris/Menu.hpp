@@ -67,12 +67,12 @@ public:
 
     void start() override {
         InterfazUI::start();
-        mGameManagerInterfaz->playSound(mMusicaFondo,MIX_MAX_VOLUME);
+        mGameManager->playSound(mMusicaFondo,MIX_MAX_VOLUME);
     }
 
     void resume() override {
         InterfazUI::resume();
-        mGameManagerInterfaz->playSound(mMusicaFondo,MIX_MAX_VOLUME);
+        mGameManager->playSound(mMusicaFondo,MIX_MAX_VOLUME);
     }
 
     void procesarEvento(SDL_Event *event) override {
@@ -80,8 +80,8 @@ public:
         if(event->type==SDL_KEYDOWN) {
             switch (event->key.keysym.sym) {
                 case SDLK_ESCAPE:
-                    mGameManagerInterfaz->goBack();
-                    //mGameManagerInterfaz->showPopUp()
+                    mGameManager->goBack();
+                    //mGameManager->showPopUp()
                     break;
                 case SDLK_DOWN:
                 {
@@ -90,7 +90,7 @@ public:
                         if(mEsOpcionVisible[mOpcionSeleccionadaMenuPausa + avance]){
                             mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[NORMAL]);
                             mOpcionSeleccionadaMenuPausa = (Menu::OpcionesMenu)(mOpcionSeleccionadaMenuPausa + avance);
-                            mGameManagerInterfaz->play(mSfxChangeSelect);
+                            mGameManager->play(mSfxChangeSelect);
                             mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[RESALTADO]);
                             break;
                         }else{
@@ -109,14 +109,14 @@ public:
                             mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[NORMAL]);
                             mOpcionSeleccionadaMenuPausa = (Menu::OpcionesMenu)(mOpcionSeleccionadaMenuPausa - avance);
                             mpBitFntRendOpsMenuPausa[mOpcionSeleccionadaMenuPausa]->setBitmapFont(mpBitmapFont[RESALTADO]);
-                            mGameManagerInterfaz->play(mSfxChangeSelect);
+                            mGameManager->play(mSfxChangeSelect);
                             break;
                         }else{
                             avance++;
                         }
                     }
-                    //mGameManagerInterfaz->goBack();
-                    //mGameManagerInterfaz->showPopUp(new PopUpMostrarMensajeText())
+                    //mGameManager->goBack();
+                    //mGameManager->showPopUp(new PopUpMostrarMensajeText())
 
                 }
 
@@ -125,16 +125,16 @@ public:
                     switch(mOpcionSeleccionadaMenuPausa){
                         case CONTINUE:break;
                         case NEW_GAME:
-                            mGameManagerInterfaz->cambiarInterfaz(new TetrisInterfaz(mGameManagerInterfaz));
+                            mGameManager->cambiarInterfaz(new TetrisInterfaz(mGameManager));
                             break;
                         case SCORES:break;
                         case EXIT:
-                            mGameManagerInterfaz->goBack();
+                            mGameManager->goBack();
                             break;
                         case N_OPCIONES:break;
                     }
-                    //mGameManagerInterfaz->goBack();
-                    //mGameManagerInterfaz->showPopUp(new PopUpMostrarMensajeText())
+                    //mGameManager->goBack();
+                    //mGameManager->showPopUp(new PopUpMostrarMensajeText())
                     break;
                 default:
                     break;

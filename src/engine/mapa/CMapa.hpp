@@ -10,7 +10,7 @@
 #include "../sprites/CDrawGroup.hpp"
 #include "TileBloqueRompibleAnimado.hpp"
 
-class Mapa: public InterfazSpriteGroup{
+class Mapa: public UpdateGroupContainerInterfaz{
 
 public:
 

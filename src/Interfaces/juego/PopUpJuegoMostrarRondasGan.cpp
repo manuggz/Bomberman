@@ -142,4 +142,5 @@ PopUpJuegoMostrarGanadas::~PopUpJuegoMostrarGanadas(){
     for(int i=0;i<totalTrofeosCreados;i++){
         delete animaTrofeos[i];
     }
+    delete mSpriteSheetCarasBomberman;
 }

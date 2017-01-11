@@ -11,10 +11,10 @@
  * @param interfazGaleria
  * @param id
  */
-Player::Player(InterfazJuego * interfazGaleria,IdPlayer id){
+Player::Player(ModoJuegoMultiPlayer * juego,IdPlayer id){
     //cout << "Constructor de Player:"<<this<<endl;
 
-    mpJuego  = interfazGaleria;
+    mpJuego  = juego;
 
     this->mPlayerId = id;
 
@@ -25,6 +25,11 @@ Player::Player(InterfazJuego * interfazGaleria,IdPlayer id){
     cargarTeclas();
 }
 
+void Player::cargarRecursos(SDL_Renderer *gRenderer){
+    mpSpriteSheetPlayer = new SpriteSheet(gRenderer, "data/imagenes/personajes/player_" + std::to_string(mPlayerId + 1) + ".bmp", 1, 12,true);
+    mpSpriteSheetPlayerEstadoMuriendo = new SpriteSheet(gRenderer, "data/imagenes/personajes/player_" + std::to_string(mPlayerId + 1) + "_muriendo.bmp", 1, 4,true);
+
+}
 /**
  * Carga la configuracion del teclado del player
  */
@@ -185,13 +190,20 @@ void Player::activarPoderItem(Item::TipoItem tipo){
 }
 
 void Player::draw(SDL_Renderer * gRenderer){
-    if(estado_actual!=MURIENDO)
-    	imprimir_desde_grilla (mpJuego->getImagen((Galeria::CodeImagen)(Galeria::CodeImagen::IMG_PLAYER_1 + mPlayerId)), cuadro,gRenderer, x,y,1, 12,mEstaProtegido);
-    else
-    	imprimir_desde_grilla(mpJuego->getImagen((Galeria::CodeImagen)(Galeria::CodeImagen::IMG_PLAYER_1_MURIENDO + mPlayerId)), cuadro,gRenderer,x,y,1, 4,0);
-//    if(mEstaProtegido)render_texture(juego->getTexture(IMG_FONDO_BLANCO),x,y,screen);
-	/*DIBUJA EL CUADRO QUE REPRESENTA LA COLISION DEL PERSONAJE*/
+    if(estado_actual!=MURIENDO) {
+        if(mEstaProtegido){
+            mpSpriteSheetPlayer->setAlpha(120);
+        }else{
+            mpSpriteSheetPlayer->setAlpha(255);
+        }
+        mpSpriteSheetPlayer->setCurrentCuadro(cuadro);
+        mpSpriteSheetPlayer->draw(gRenderer,x,y);
+    }else {
+        mpSpriteSheetPlayerEstadoMuriendo->setCurrentCuadro(cuadro);
+        mpSpriteSheetPlayerEstadoMuriendo->draw(gRenderer,x,y);
+    }
 #ifdef DEBUG
+    /*DIBUJA EL CUADRO QUE REPRESENTA LA COLISION DEL PERSONAJE*/
             updateRectColision();
             SDL_FillRect(screen,&rect,SDL_MapRGB (screen->format, 0, 0, 255));
 #endif
@@ -205,9 +217,10 @@ void Player::ponerBomba(const Uint8 * teclas){
 	if(!mMantieneAccionPresionado&&isPressed(TECLA_ACCION,teclas)
        &&mNBombasColocadas < mNBombasDisponibles){
 
-           mpUltimaBomba = mpJuego->agregarBomba(this);
+        Bomba *pBombaColocada = mpJuego->agregarBomba(this);
            /*si se logro agregar*/
-           if(mpUltimaBomba != nullptr){
+           if(pBombaColocada != nullptr){
+               mpUltimaBomba = pBombaColocada;
                mNBombasColocadas++;
             }
         }
@@ -422,7 +435,8 @@ void Player::move(int x,int y){
 
 Player::~Player(){
     //cout << "Destructor de Player:"<<this<<endl;
-
+    delete mpSpriteSheetPlayer;
+    delete mpSpriteSheetPlayerEstadoMuriendo;
 }
 
 void Player::setNBombas(int nBombas) {

@@ -5,7 +5,7 @@
 #ifndef TETRIS_TETRIS_HPP
 #define TETRIS_TETRIS_HPP
 
-#include "../../engine/interfaces/InterfazUI.hpp"
+#include "../../engine/interfaces/InterfazGrafica.hpp"
 #include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
 #include "../../engine/layout/LayoutManager/LayoutVertical.hpp"
 #include "TetrisJuego.hpp"
@@ -68,7 +68,7 @@ public:
     }
 
     void playSfx(Mix_Chunk *pSfxChunk) override {
-        mGameManagerInterfaz->play(pSfxChunk);
+        mGameManager->play(pSfxChunk);
     }
     void tetrisHardDrop(int tetrisID, int nCells)override {
         if(nCells > 40) nCells = 40;
@@ -97,7 +97,7 @@ public:
             case TETRIS:
                 if(mLineasCompletasAnteriores == TETRIS){
                     mPuntajePlayer += 1200 * mLevelTetrisPlayer;
-                    mGameManagerInterfaz->play(mSfxBTBTetris);
+                    mGameManager->play(mSfxBTBTetris);
                 }else{
                     mPuntajePlayer += 800*mLevelTetrisPlayer;
                 }
@@ -110,7 +110,7 @@ public:
 
             if(mLineasCompletas >= DOUBLE_LINE && mLineasCompletasAnteriores >= DOUBLE_LINE){
                 if(rand()%3 == 1){
-                    mGameManagerInterfaz->play(mSfxCongratulate[rand()%8]);
+                    mGameManager->play(mSfxCongratulate[rand()%8]);
                 }
             }
         }
@@ -119,7 +119,7 @@ public:
 
         if(mPuntajePlayer > mHighScore && mHighScore > 0&&!mCongratuledScoreGreaterThanHighScore){
             mCongratuledScoreGreaterThanHighScore = true;
-            mGameManagerInterfaz->play(mSfxCongratulate[rand()%8]);
+            mGameManager->play(mSfxCongratulate[rand()%8]);
             mBitmapScorePlayer1Valor->setBitmapFont(mBitmapFont[RESALTADO]);
         }
 
@@ -134,12 +134,12 @@ public:
             mTetrisJuego->setTickDelayBajarTetromino(nuevoTick);
             mLevelTetrisPlayer += 1;
             setTextWithDigits(mBitmapLevelPlayer1Valor,mLevelTetrisPlayer,3);
-            mGameManagerInterfaz->play(mSfxLevelUp);
+            mGameManager->play(mSfxLevelUp);
         }
 
         setTextWithDigits(mBitmapLevelPlayer1Valor,mLineasCompletas,5);
 
-        mGameManagerInterfaz->play(mSfxClearLines[nLineasCompletadas - 1]);
+        mGameManager->play(mSfxClearLines[nLineasCompletadas - 1]);
     }
 
     void start() override {
@@ -147,8 +147,8 @@ public:
         InterfazUI::start();
         mTetrisJuego->start();
         mControlTimer.start();
-        mGameManagerInterfaz->playFadeInSound(mMusicaFondo,MIX_MAX_VOLUME/2);
-        mGameManagerInterfaz->play(mSfxChunkGameStart);
+        mGameManager->playFadeInSound(mMusicaFondo,MIX_MAX_VOLUME/2);
+        mGameManager->play(mSfxChunkGameStart);
     }
 
     void tetrisPaused(int tetrisID) override {
@@ -218,7 +218,7 @@ public:
     }
 
     void tetrisGameOver(int tetrisID) override {
-        mGameManagerInterfaz->play(mSfxChunkGameOver);
+        mGameManager->play(mSfxChunkGameOver);
     }
     void tetrisRetry(int tetrisID) override {
         std::cout << "TetrisInterfaz::tetrisRetry(" << tetrisID << ")" << std::endl;
@@ -238,12 +238,12 @@ public:
 
         //mControlTimer.stop();
         mControlTimer.start();
-        mGameManagerInterfaz->play(mSfxChunkGameStart);
+        mGameManager->play(mSfxChunkGameStart);
     }
 
     void tetrisEnd(int tetrisID) override {
         actualizarHighScore();
-        mGameManagerInterfaz->goBack();
+        mGameManager->goBack();
     }
 
     bool actualizarHighScore(){
@@ -281,8 +281,8 @@ public:
             switch (evento->key.keysym.sym) {
                 case SDLK_ESCAPE:
                     actualizarHighScore();
-                    mGameManagerInterfaz->goBack();
-                    //mGameManagerInterfaz->showPopUp()
+                    mGameManager->goBack();
+                    //mGameManager->showPopUp()
                     break;
                 default:
                     break;
@@ -304,7 +304,7 @@ public:
 
     void draw(SDL_Renderer *renderer) override {
         if(mLayoutBackGround->isDisabled()){
-            SDL_Rect rect = mGameManagerInterfaz->getRectScreen();
+            SDL_Rect rect = mGameManager->getRectScreen();
             mLayoutBackGround->pack(renderer);
             mLayoutBackGround->setRectDibujo(rect);
         }

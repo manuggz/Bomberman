@@ -79,7 +79,7 @@ public:
             switch (event->key.keysym.sym) {
                 case SDLK_ESCAPE:
                     mGameManagerInterfaz->goBack();
-                    //mGameManagerInterfaz->showPopUp()
+                    //mGameManager->showPopUp()
                     break;
                 case SDLK_DOWN:
                 {
@@ -113,8 +113,8 @@ public:
                             avance++;
                         }
                     }
-                    //mGameManagerInterfaz->goBack();
-                    //mGameManagerInterfaz->showPopUp(new PopUpMostrarMensajeText())
+                    //mGameManager->goBack();
+                    //mGameManager->showPopUp(new PopUpMostrarMensajeText())
 
                 }
 
@@ -131,8 +131,8 @@ public:
                             break;
                         case N_OPCIONES:break;
                     }
-                    //mGameManagerInterfaz->goBack();
-                    //mGameManagerInterfaz->showPopUp(new PopUpMostrarMensajeText())
+                    //mGameManager->goBack();
+                    //mGameManager->showPopUp(new PopUpMostrarMensajeText())
                     break;
                 default:
                     break;

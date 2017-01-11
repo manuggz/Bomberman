@@ -5,7 +5,7 @@
 //#include "../constantes.hpp"
 #include "../engine/util/util.hpp"
 #include "../engine/util/CMetaData.hpp"
-#include "../engine/interfaces/InterfazUI.hpp"
+#include "../engine/interfaces/InterfazGrafica.hpp"
 #include "../engine/util/SpriteSheet.hpp"
 #include "../engine/mapa/include/TMXParser.h"
 #include "../engine/mapa/CMapa.hpp"

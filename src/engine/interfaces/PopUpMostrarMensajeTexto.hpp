@@ -6,11 +6,11 @@
 #define BOMBERMAN_MOSTRARMENSAJETEXTO_HPP
 
 #include <iostream>
-#include "../../engine/interfaces/PopUpInterfaz.hpp"
-#include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
-#include "../../engine/layout/Componentes/LabelComponent.hpp"
-#include "../../engine/util/LTimer.hpp"
-#include "../../engine/GameManager/game_manager.hpp"
+#include "PopUpInterfaz.hpp"
+#include "../layout/LayoutManager/LayoutAbsolute.hpp"
+#include "../layout/Componentes/LabelComponent.hpp"
+#include "../util/LTimer.hpp"
+#include "../GameManager/game_manager.hpp"
 
 /**
  * PopUp que Muestra un Texto Centrado en la pantalla al usuario por cierto tiempo

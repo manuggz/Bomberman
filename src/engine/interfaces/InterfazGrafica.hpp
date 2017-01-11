@@ -19,13 +19,14 @@
  *
  * Cuando se establece un root en el GM o se hace back en el GM se llama a stop.
  */
-class InterfazUI {
- public:
+
+class InterfazGrafica {
+public:
     /**
      * Establece una referencia a un GameManager.
      * @param gameManagerInterfaz Instancia de un GameManager que implemente la interfaz requerida
      */
-    InterfazUI(GameManagerInterfazUI * gameManagerInterfaz){
+    InterfazGrafica(GameManagerInterfazUI * gameManagerInterfaz){
         mGameManagerInterfaz = gameManagerInterfaz;
     }
     /**
@@ -80,7 +81,7 @@ class InterfazUI {
     virtual void resultPopUp(void *result, int i) {};
     virtual void draw(SDL_Renderer * gRenderer) = 0;
 
-    virtual ~InterfazUI(){};
+    virtual ~InterfazGrafica(){};
 
 protected:
 

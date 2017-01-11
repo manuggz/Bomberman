@@ -4,13 +4,15 @@
 
 #ifndef BOMBERMAN_LTEXTURE_HPP
 #define BOMBERMAN_LTEXTURE_HPP
+#include <stdio.h>
+#include <string>
+#include <sstream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
-#include <stdio.h>
-#include <string>
-#include <sstream>
+
+Uint32 get_pixel (SDL_Surface * ima, int x, int y);
 //Texture wrapper class
 class LTexture
 {
@@ -22,7 +24,7 @@ public:
     ~LTexture();
 
     //Loads image at specified path
-    bool loadFromFile( std::string path ,SDL_Renderer * gRendered,bool tieneColorClave);
+    bool cargarDesdeArchivo(std::string path, SDL_Renderer *gRendered, bool tieneColorClave);
 
     //Creates image from font string
     bool loadFromRenderedText(SDL_Renderer * gRenderer, TTF_Font * gFont, std::string textureText, SDL_Color textColor);

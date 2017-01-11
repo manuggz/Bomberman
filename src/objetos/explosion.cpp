@@ -1,6 +1,6 @@
 #include "explosion.hpp"
 
-Explosion::Explosion(InterfazJuego * juego,SDL_Renderer * gRenderer, Player * playerLanzador):
+Explosion::Explosion(ModoJuegoMultiPlayer * juego,SDL_Renderer * gRenderer, Player * playerLanzador):
     Animacion(new SpriteSheet(gRenderer,"data/imagenes/objetos/explosion.bmp",5,8,true),"0,1,2,3,4,4,3,2,1,1,0"){
 
     this->mJuego=juego;

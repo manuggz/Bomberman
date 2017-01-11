@@ -1,57 +1,58 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 #include "../engine/sprites/CSprite.hpp"
+#include "../engine/util/LTimer.hpp"
+
 #include "../util/constantes.hpp"
 #include "../util/control_player.hpp"
 #include "../objetos/item.hpp"
-#include "../Interfaces/juego/InterfazJuego.hpp"
-#include "bomba.hpp"
-#include "../engine/util/LTimer.hpp"
+//#include "bomba.hpp"
 //#define DEBUG
+class Bomba;
 
 class Player:public Sprite{
-    public:
+public:
 
-        enum AreaColision {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
+    enum AreaColision {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
 
-        Player(InterfazJuego * interfazGaleria,IdPlayer id);
-        void update(const Uint8 * teclas);
-        void draw(SDL_Renderer * );
-        void cargarTeclas();
-        void updateRectColision();
-        void activarPoderItem(Item::TipoItem tipo);
-        void ponerBomba(const Uint8 * teclas);
-        bool colision(SDL_Rect & rect_coli);
-        void parado(const Uint8 * teclas);
-        void izquierda(const Uint8 * teclas);
-        void derecha (const Uint8 * teclas);
-        bool isPressed(TeclaPlayer tecla,const Uint8 * teclas);
-        void arriba (const Uint8 * teclas);
-        void abajo(const Uint8 * teclas);
-        void avanzarAnimacion ();
-        void cambiarEstado(EstadoSprite nuevo);
-        void mover_ip(int incremento_x, int incremento_y);
-        void move(int x,int y);
-        bool isActivo(){return mEnPantalla;};
+    Player(ModoJuegoMultiPlayer *  juego,IdPlayer id);
+    void update(const Uint8 * teclas);
+    void draw(SDL_Renderer * );
+    void cargarTeclas();
+    void updateRectColision();
+    void activarPoderItem(Item::TipoItem tipo);
+    void ponerBomba(const Uint8 * teclas);
+    bool colision(SDL_Rect & rect_coli);
+    void parado(const Uint8 * teclas);
+    void izquierda(const Uint8 * teclas);
+    void derecha (const Uint8 * teclas);
+    bool isPressed(TeclaPlayer tecla,const Uint8 * teclas);
+    void arriba (const Uint8 * teclas);
+    void abajo(const Uint8 * teclas);
+    void avanzarAnimacion ();
+    void cambiarEstado(EstadoSprite nuevo);
+    void mover_ip(int incremento_x, int incremento_y);
+    void move(int x,int y);
+    bool isActivo(){return mEnPantalla;};
 
-        void setVidas(int nuevo){mVidas=nuevo;};
-        void setProteccion(int segundos);
-        void setEnPantalla(bool nuevo){
-			mEnPantalla=nuevo;
-			if(mEnPantalla){
-				mTimer.start();
-				mSelfKill = false;
-			}else{
-				mTimer.stop();
-			}
-		};
-        
-        int getVidas(){return mVidas;};
-        IdPlayer getId(){return mPlayerId;};
-        int getAlcanceBombas(){return mAlcanBombas;};
-        int getBombasDisponibles(){return mNBombasDisponibles;};
-        
-        ~Player();
+    void setVidas(int nuevo){mVidas=nuevo;};
+    void setProteccion(int segundos);
+    void setEnPantalla(bool nuevo){
+        mEnPantalla=nuevo;
+        if(mEnPantalla){
+            mTimer.start();
+            mSelfKill = false;
+        }else{
+            mTimer.stop();
+        }
+    };
+
+    int getVidas(){return mVidas;};
+    IdPlayer getId(){return mPlayerId;};
+    int getAlcanceBombas(){return mAlcanBombas;};
+    int getBombasDisponibles(){return mNBombasDisponibles;};
+
+    ~Player();
 
 	void setNBombas(int nBombas);
 
@@ -66,11 +67,31 @@ class Player:public Sprite{
     EstadoSprite getEstado();
 
     void setNCorazones(int nuevosNCorazones);
+	bool isMPuedeAtravesarBloques() const;
+
+	void setMPuedeAtravesarBloques(bool mPuedeAtravesarBloques);
+
+	bool isMPuedeAtravesarBombas() const;
+
+	void setMPuedeAtravesarBombas(bool mPuedeAtravesarBombas);
+
+	bool isMPuedePatearBombas() const;
+
+	void setMPuedePatearBombas(bool mPuedePatearBombas);
+
+	bool isMPuedeGolpearBombas() const;
+
+	void setMPuedeGolpearBombas(bool mPuedeGolpearBombas);
+
+	bool isMEstaEnfermo() const;
+
+	void setMEstaEnfermo(bool mEstaEnfermo);
+    void cargarRecursos(SDL_Renderer *gRenderer);
 
 private:
 
 	IdPlayer mPlayerId = PLAYER_NONE;
-	InterfazJuego * mpJuego = nullptr;//referencia al juego que lo cre�
+	ModoJuegoMultiPlayer * mpJuego = nullptr;//referencia al juego que lo cre�
 
 	ControlPlayer  control;//controla el teclado del player
 	EstadoSprite estado_actual   = NINGUNO;//estado_actual actual del player
@@ -94,28 +115,9 @@ private:
 	int mNBombasDisponibles = 1;//numero de bombas que puede soltar el jugador
 
 	bool mPuedeAtravesarBloques = false;
-public:
-	bool isMPuedeAtravesarBloques() const;
+	SpriteSheet * mpSpriteSheetPlayer;
+	SpriteSheet * mpSpriteSheetPlayerEstadoMuriendo;
 
-	void setMPuedeAtravesarBloques(bool mPuedeAtravesarBloques);
-
-	bool isMPuedeAtravesarBombas() const;
-
-	void setMPuedeAtravesarBombas(bool mPuedeAtravesarBombas);
-
-	bool isMPuedePatearBombas() const;
-
-	void setMPuedePatearBombas(bool mPuedePatearBombas);
-
-	bool isMPuedeGolpearBombas() const;
-
-	void setMPuedeGolpearBombas(bool mPuedeGolpearBombas);
-
-	bool isMEstaEnfermo() const;
-
-	void setMEstaEnfermo(bool mEstaEnfermo);
-
-private:
 	//True si el player puede atravesar los bloques blandos
 	bool mPuedeAtravesarBombas  = false;//True si el player puede atravesar las bombas
 	bool mPuedePatearBombas     = false;

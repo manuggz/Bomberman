@@ -6,6 +6,7 @@
 #define BOMBERMAN_MENUPRINCIPAL_HPP
 
 
+#include "../../engine/util/EfectoSonido.hpp"
 #include "../../engine/interfaces/MenuListLabel.hpp"
 #include "MenuNuevoJuego.hpp"
 
@@ -19,11 +20,17 @@ public:
         mMenuOpcionesText.push_back("Editor");
         mMenuOpcionesText.push_back("Configurar");
         mMenuOpcionesText.push_back("Creditos");
+
+    }
+
+    void createUI(SDL_Renderer *renderer) override {
+        MenuListLabel::createUI(renderer);
+        mpSfxCambiarOpcionResaltada = new EfectoSonido("data/sonidos/ping_2.wav",100);
     }
 
     virtual bool setOpcionResaltada(int nuevaOpcion) override {
         if(MenuListLabel::setOpcionResaltada(nuevaOpcion)){
-            mGameManagerInterfaz->play(Galeria::CodeMusicEfecto::SFX_TONO_ACUATICO);
+            mpSfxCambiarOpcionResaltada->play();
             return true;
         }
         return false;
@@ -50,6 +57,9 @@ public:
 
     }
 
+    ~MenuPrincipal() override {
+        delete mpSfxCambiarOpcionResaltada;
+    }
 
 private:
     typedef enum{
@@ -58,5 +68,7 @@ private:
         MENU_OPCION_CONFIGURACION,
         MENU_OPCION_CREDITOS,
     }MenuOption;
+
+    EfectoSonido * mpSfxCambiarOpcionResaltada;
 };
 #endif //BOMBERMAN_MENUPRINCIPAL_HPP

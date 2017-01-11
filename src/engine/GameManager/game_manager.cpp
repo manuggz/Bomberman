@@ -1,5 +1,4 @@
 #include "game_manager.hpp"
-#include "../util/LTimer.hpp"
 
 /**
  * Inicia el juego
@@ -15,7 +14,7 @@ GameManager::GameManager(std::string caption,std::string ruta_icono, unsigned in
     mCaption   = caption;
     mRutaIcono = ruta_icono;
 
-    mWidth = witdth;
+    mWidth  = witdth;
     mHeight = height;
 
     mPantallaCompleta = pantallaCompleta;
@@ -25,25 +24,6 @@ GameManager::GameManager(std::string caption,std::string ruta_icono, unsigned in
 
     /* Notar que solo se activan al inicio, si un joystick se conecta a la PC después, éste no se reconocerá*/
     activarJoysticks();
-}
-
-bool GameManager::cargarTexturas(std::string rutaTexturas){
-
-    if(!mpGaleria){
-        mpGaleria = new Galeria();
-    }
-    return mpGaleria->cargarTexturas(gRenderer, rutaTexturas);
-
-}
-
-bool GameManager::cargarSonidos(std::string rutaSonidos){
-
-    if(!mpGaleria){
-        mpGaleria = new Galeria();
-    }
-    if(mIniciadoModuloSonido)return mpGaleria->cargarSonidos(rutaSonidos);
-    return false;
-
 }
 
 
@@ -56,14 +36,14 @@ bool GameManager::cargarSonidos(std::string rutaSonidos){
 void GameManager::iniciarLibreriaSDL(){
 
    if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK)<0){
-       cerr << "[ERROR] No se pudo inciar SDL" << SDL_GetError();
+       std::cerr << "[ERROR] No se pudo inciar SDL" << SDL_GetError();
        exit(EXIT_FAILURE);
    }
 
     atexit(SDL_Quit); // Programamos que se cierre SDL al salir
 
     if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT,MIX_DEFAULT_CHANNELS, 4096) < 0) {
-        cerr << "[WARNING]%s" << SDL_GetError();
+        std::cerr << "[WARNING]%s" << SDL_GetError();
     }else{
         mIniciadoModuloSonido = true;
         Mix_AllocateChannels(mChannels + 1);
@@ -71,7 +51,7 @@ void GameManager::iniciarLibreriaSDL(){
 
     //Initialize SDL_ttf
     if( TTF_Init() == -1 ){
-        cerr << "[ERROR] SDL_ttf could not initialize!" << SDL_GetError();
+        std::cerr << "[ERROR] SDL_ttf could not initialize!" << SDL_GetError();
         exit(EXIT_FAILURE);
     }
 
@@ -96,7 +76,7 @@ void GameManager::establecerModoDeVideo(bool pantalla_completa){
     );
 
     if(mMainWindow == nullptr){
-        cerr << "[ERROR] No se pudo crear Frame-buffer" << SDL_GetError();
+        std::cerr << "[ERROR] No se pudo crear Frame-buffer" << SDL_GetError();
         exit(EXIT_FAILURE);
     }
 
@@ -110,7 +90,7 @@ void GameManager::establecerModoDeVideo(bool pantalla_completa){
 
     gRenderer = SDL_CreateRenderer(mMainWindow, -1, SDL_RENDERER_ACCELERATED);
     if (gRenderer == nullptr){
-        cerr << "[ERROR] SDL_CreateRenderer" << SDL_GetError();
+        std::cerr << "[ERROR] SDL_CreateRenderer" << SDL_GetError();
         exit(EXIT_FAILURE);
     }
 
@@ -153,8 +133,8 @@ int GameManager::getActiveJoys(){
  * Cambia la interfaz presentada al usuario actualmente
  * @param nueva Nueva interfaz a mostrar
  */
-void GameManager::cambiarInterfaz(InterfazUI *  nueva){
-    cout << "GameManager::cambiarInterfaz"<<endl;
+void GameManager::cambiarInterfaz(InterfazGrafica *  nueva){
+    std::cout << "GameManager::cambiarInterfaz"<<std::endl;
     if(nueva!=interfaz_actual){
         interfaces.push(nueva);
     }
@@ -203,15 +183,16 @@ bool GameManager::procesarEventos(){
  */
 void GameManager::run(){
 
+    if(interfaces.empty()) return;
 
     //The frames per second timer
-    LTimer fpsTimer;
+    //LTimer fpsTimer;
 
     //The frames per second cap timer
     LTimer capTimer;
 
     //Start counting frames per second
-    fpsTimer.start();
+    //fpsTimer.start();
 
     while(!salir_juego){
 
@@ -300,34 +281,19 @@ void GameManager::run(){
             quit();
         }
         int frameTicks = capTimer.getTicks();
-        if( frameTicks < SCREEN_TICKS_PER_FRAME ){
+        if( frameTicks < mScreenTicksPerFrame ){
             //Wait remaining time
-            SDL_Delay((Uint32) (SCREEN_TICKS_PER_FRAME - frameTicks));
+            SDL_Delay((Uint32) (mScreenTicksPerFrame - frameTicks));
         }
     }
 
 }
 
-void GameManager::play(Galeria::CodeMusicEfecto code){
-    /*Reproduce un Chunk*/
-    if(mIniciadoModuloSonido)Mix_PlayChannel(-1,mpGaleria->getMusicEfecto(code), 0);
-}
+
 void GameManager::play(Mix_Chunk *pSfxChunk) {
     if(mIniciadoModuloSonido)Mix_PlayChannel(-1,pSfxChunk, 0);
 }
-void GameManager::playSound(Galeria::CodeMusicSonido code){
-    /*Reproduce una musica de fondo*/
-    static int t_ini=0;
-    //static int t_pas=0;
 
-    if(mIniciadoModuloSonido){
-        if(SDL_GetTicks()-t_ini<1000){/*Si se reproduce este sonido seguidamente del anterior (1 s)*/
-            cerr << "WARNING:Reproducci�n apresurada del sonido:"<<code<<endl;
-        }
-        Mix_PlayMusic(mpGaleria->getMusicSonido(code), -1);
-        t_ini=SDL_GetTicks();
-    }
-}
 
 void GameManager::playSound(Mix_Music * music,Uint8 volumen){
     /*Reproduce una musica de fondo*/
@@ -351,9 +317,6 @@ void GameManager::playFadeInSound(Mix_Music * music,Uint8 volumen){
     }
 }
 
-LTexture * GameManager::getTexture(Galeria::CodeImagen code){
-    return mpGaleria->getImagen(code);
-}
 
 GameManager::~GameManager(){
     std::cout << "GameManager::~GameManager()" << std::endl;
@@ -368,7 +331,7 @@ GameManager::~GameManager(){
     }
 
 
-    delete mpGaleria;
+    //delete mpGaleria;
 
     for(int i=0;i<joys_act;i++){
         if(joysticks[i]) {
@@ -391,7 +354,7 @@ int GameManager::getHeight() {
 }
 
 void GameManager::goBack() {
-    cout << "GameManager::popInterface"<<endl;
+    std::cout << "GameManager::popInterface"<< std::endl;
     interfaces.pop();
     interfaz_actual->stop();
     if(mpPopUp){
@@ -399,9 +362,9 @@ void GameManager::goBack() {
     }
 }
 
-void GameManager::setRoot(InterfazUI *nuevaInterfazRoot) {
+void GameManager::setRoot(InterfazGrafica *nuevaInterfazRoot) {
 
-    InterfazUI * interfazUI;
+    InterfazGrafica * interfazUI;
 
     while(interfaces.size() > 0){
         interfazUI = interfaces.top();
@@ -446,3 +409,4 @@ void GameManager::showPopUp(PopUpInterfaz *pPopUp,int CodePopUp) {
     mpPopUp      = pPopUp;
     mIDCodePopUp = CodePopUp;
 }
+

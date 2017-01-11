@@ -6,9 +6,9 @@
 #define BOMBERMAN_POPUPMESSAGE_HPP
 
 #include <SDL2/SDL.h>
-#include "InterfazUI.hpp"
 #include "GameManagerPopUpInterfaz.hpp"
 
+//class  GameManagerPopUpInterfaz;
 /**
  * Esta clase define un Layout que se va a mostrar en pantalla.
  * Esta clase no es un manejador principal de la pantalla
@@ -17,40 +17,23 @@
 class PopUpInterfaz{
 public:
 
-    PopUpInterfaz(GameManagerPopUpInterfaz * gameManager){
-        mGameManager = gameManager;
-        mIsPaused = false;
-        mIsStarted = false;
-    }
+    PopUpInterfaz(GameManagerPopUpInterfaz * gameManager);
 
-    virtual void start(){mIsStarted=true;};
-    virtual bool isPaused(){return mIsPaused&&mIsStarted&&!mIsStopped;};
-    virtual bool isStarted(){return mIsStarted;};
-    virtual bool isStopped(){return mIsStopped;};
-    virtual void stop(){mIsStopped = true;}; // La detiene marcandola  para eliminacion
+    virtual void start();
+    virtual bool isPaused();
+    virtual bool isStarted();
+    virtual bool isStopped();
+    virtual void stop(); // La detiene marcandola  para eliminacion
     virtual void prepare(){};
     virtual void update(){};
     virtual void createUI(SDL_Renderer * gRenderer){};
-    virtual void procesarEvento(SDL_Event *event) {
-        switch(event->type) {
-            case SDL_KEYDOWN:
-                switch (event->key.keysym.sym) {
-                    case SDLK_ESCAPE:
-                        mGameManager->closePopUp(nullptr);
-                        break;
-                }
-        }
-    }
+    virtual void procesarEvento(SDL_Event *event);
 
     /**
      * Oscurece el fondo del PopUp
      * @param gRenderer
      */
-    virtual void draw(SDL_Renderer *gRenderer) {
-        SDL_SetRenderDrawBlendMode(gRenderer,SDL_BLENDMODE_BLEND);
-        SDL_SetRenderDrawColor(gRenderer,mpColorOscurecer.r,mpColorOscurecer.g,mpColorOscurecer.b,mpColorOscurecer.a);
-        SDL_RenderFillRect(gRenderer, nullptr);
-    }
+    virtual void draw(SDL_Renderer *gRenderer);
 
 protected:
     SDL_Color mpColorOscurecer {0, 0, 0, 150};

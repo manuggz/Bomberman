@@ -12,12 +12,9 @@ public :
 
     //DrawGroup(InterfazSpriteGroup *parent) : UpdateGroup(parent) {}
 
-    DrawGroup(InterfazSpriteGroup *parent) : UpdateGroup(parent) {}
+    DrawGroup(UpdateGroupContainerInterfaz *parent) : UpdateGroup(parent) {}
 
-    void draw(SDL_Renderer * gr){
-        for (size_t i=0; i<v_personajes.size(); i++)
-            v_personajes[i]->draw(gr);
-    }
+    void draw(SDL_Renderer * gr);
 
 };
 

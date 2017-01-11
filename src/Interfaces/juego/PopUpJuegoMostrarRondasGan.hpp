@@ -2,9 +2,10 @@
 #define JUEGOMOSTRARGANADAS_HPP
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "../../util/constantes.hpp"
-#include "../../engine/GameManager/game_manager.hpp"
 #include "../../engine/sprites/animacion/animacion.hpp"
+#include "../../engine/interfaces/GameManagerPopUpInterfaz.hpp"
+#include "../../engine/interfaces/PopUpInterfaz.hpp"
+#include "../../util/constantes.hpp"
 
 
 /**

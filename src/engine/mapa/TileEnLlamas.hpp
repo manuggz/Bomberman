@@ -2,10 +2,7 @@
 #define BLOQUE_HPP
 #include <SDL2/SDL.h>
 #include "../sprites/animacion/animacion.hpp"
-#include "../../util/constantes.hpp"
-#include "../../Interfaces/juego/juego.hpp"
 
-class Juego;
 
 class TileEnLlamas:public Animacion{
 public:
