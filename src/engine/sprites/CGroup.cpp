@@ -32,16 +32,16 @@ bool Group::erase(Sprite * pSpriteBorrar){
  * Función llamada por Sprite, para que solo se elimine él del grupo.
  * @param pSprite
  */
-void Group::eraseSprite(Sprite * pSprite){
+bool Group::eraseSprite(Sprite * pSprite){
     auto pIteSprite = v_personajes.begin();
     while(pIteSprite != v_personajes.end()){
         if((*pIteSprite) == pSprite){
             v_personajes.erase(pIteSprite);
-            return;
+            return true;
         }
         pIteSprite++;
     }
-
+    return false;
 }
 Group::~Group(){
     ///std::deque<Sprite *> copia = v_personajes;

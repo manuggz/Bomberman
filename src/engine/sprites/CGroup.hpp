@@ -33,7 +33,7 @@ public :
 protected:
     std::deque <Sprite * > v_personajes;
 
-    void eraseSprite(Sprite *pSprite) override;
+    bool eraseSprite(Sprite *pSprite) override;
 };
 
 #endif

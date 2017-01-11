@@ -1,7 +1,7 @@
 //
 // Created by manuggz on 10/01/17.
 //
-#include "CUpdateGrow.hpp"
+#include "CUpdateGroup.hpp"
 
 UpdateGroup::UpdateGroup(UpdateGroupContainerInterfaz * parent){
     this->parent = parent;
@@ -41,6 +41,7 @@ void UpdateGroup::update(const Uint8 *keys){
         while(iteSprEliminado != mEliminadosEnUpdate.end()){
             if(*iteSprEliminado == *p_Sprite){
                 estaEliminado = true;
+                mEliminadosEnUpdate.erase(iteSprEliminado);
                 break;
             }
             iteSprEliminado++;
@@ -52,13 +53,33 @@ void UpdateGroup::update(const Uint8 *keys){
             // En este punto, el Sprite pudo llamar a una funcion que hace que se elimine él o otro del grupo
             // por lo que ahora p_Sprite puede apuntar a otro elemento
 
-            if((*p_Sprite)->isKilled())
-                parent->eliminarSprite((*p_Sprite));
+            //if((*p_Sprite)->isKilled()) {
+            //    parent->eliminarSprite((*p_Sprite));
+            //}
         }
         p_Sprite++;
 
     }
 
+    auto iteSprEliminado = mEliminadosEnUpdate.begin();
+    while(iteSprEliminado != mEliminadosEnUpdate.end()){
+        if((*iteSprEliminado)->isKilled()){
+            parent->eliminarSprite((*iteSprEliminado));
+            iteSprEliminado = mEliminadosEnUpdate.erase(iteSprEliminado);
+        }else{
+            iteSprEliminado++;
+        }
+    }
+
     isUpdating = false;
     mEliminadosEnUpdate.clear();
+}
+
+bool UpdateGroup::eraseSprite(Sprite *pSprite) {
+    if(Group::eraseSprite(pSprite)){
+        if(isUpdating)
+            mEliminadosEnUpdate.push_back(pSprite);
+        return true;
+    }
+    return false;
 }

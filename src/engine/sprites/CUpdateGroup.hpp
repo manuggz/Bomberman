@@ -17,7 +17,6 @@ public :
     UpdateGroup(UpdateGroupContainerInterfaz * parent);
 
     bool erase(Sprite *sprite) override ;
-
     /**
      * Actualiza todos los sprites
      * Itera y llama a Sprite->update
@@ -26,6 +25,8 @@ public :
     void update(const Uint8 *keys);
 
 protected:
+    bool eraseSprite(Sprite *pSprite) override;
+
     UpdateGroupContainerInterfaz * parent;
     bool isUpdating = false;
     std::deque <Sprite * > mEliminadosEnUpdate;

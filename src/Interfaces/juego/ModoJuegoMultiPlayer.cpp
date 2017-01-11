@@ -453,6 +453,10 @@ void ModoJuegoMultiPlayer::draw(SDL_Renderer * gRenderer){
 /**
  * Elimina un Sprite del juego
  * Dependiendo del tipo de sprite a eliminar se hace una accion correspondiente
+ * Esta funcion es llamada cuando un Sprite Del juego es eliminado.
+ * Tal como cuando una bomba termina su animación y esta llama a su funcion "kill" que hace que sea eliminada de todos
+ * los grupos asociados y que uno de ellos el UpdateGroup(Solo debería haber un UpdateGroup que lo contenga) llame a
+ * este metodo pasandole la referencia a la bomba.
  * @param sprite
  */
 void ModoJuegoMultiPlayer::eliminarSprite(Sprite *sprite) {
@@ -551,6 +555,7 @@ void ModoJuegoMultiPlayer::eliminarSprite(Sprite *sprite) {
         return;
     }
 
+    delete sprite;
     return;
 }
 /**

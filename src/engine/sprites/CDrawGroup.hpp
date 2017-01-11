@@ -5,7 +5,7 @@
 #ifndef BOMBERMAN_CDRAWGROUP_HPP
 #define BOMBERMAN_CDRAWGROUP_HPP
 
-#include "CUpdateGrow.hpp"
+#include "CUpdateGroup.hpp"
 
 class DrawGroup : public UpdateGroup{
 public :
