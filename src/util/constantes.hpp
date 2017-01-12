@@ -130,7 +130,7 @@ typedef enum Estados_boton{
     BOTON_NORMAL,
     BOTON_RESALTADO,
     BOTON_PRESIONADO
-}Estados_boton;
+}EstadoBoton;
 
 /*
 typedef enum Escenas{

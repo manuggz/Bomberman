@@ -71,6 +71,7 @@ public:
 
     void resultPopUp(void *result, int popUpCode) override;
 
+
 protected:
 
     static const int ID_POPUP_JUEGO_MOSTRAR_GAN_TERMINAR      = 100;

@@ -784,3 +784,4 @@ void ModoJuegoMultiPlayer::updateWhenPopUp() {
     mGrpSprites.update(nullptr);
     mMapa.update();
 }
+

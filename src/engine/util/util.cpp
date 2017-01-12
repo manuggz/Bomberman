@@ -200,7 +200,7 @@ std::string buscar_dato(std::string ruta,std::string nombreVariable,std::string 
     return nullptr;
 }
 
-bool estado_tecla_joy(SDL_Keycode tecla,SDL_Joystick * joy){
+bool estado_direccion_joy(SDL_Keycode tecla, SDL_Joystick *joy){
 	switch(tecla){
 		case SDLK_LEFT:
 				return SDL_JoystickGetAxis(joy, 0) < -10;
@@ -214,8 +214,8 @@ bool estado_tecla_joy(SDL_Keycode tecla,SDL_Joystick * joy){
 		case SDLK_DOWN:
 				return SDL_JoystickGetAxis(joy, 1) > 10;
 			break;
-		default:
-			return SDL_JoystickGetButton(joy, tecla);
+		default: return false;
+
 	}
 }
 

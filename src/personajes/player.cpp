@@ -37,9 +37,9 @@ void Player::cargarTeclas(){
     char tmp_ruta[40];
     sprintf(tmp_ruta,"data/configuracion/teclado_%d.dat",mPlayerId+1);
 
-    if(!control.cargar(tmp_ruta,false)){//si no se puede cargar de un archivo
+    if(!control.cargar(tmp_ruta)){//si no se puede cargar de un archivo
         //se asignan teclas por default
-        control.setDefaultKeys(mPlayerId);
+        //control.setDefaultKeys(mPlayerId);
     }
 }
 
@@ -269,13 +269,27 @@ void Player::derecha (const Uint8 * teclas) {
 bool Player::isPressed(TeclaPlayer tecla, const Uint8 * _teclas){
     if(!_teclas)return false;
     if(!control.isBotonJoystick(tecla) && !control.isDireccionJoystick(tecla)){
-        return _teclas [control.getKey(tecla)];
+        return _teclas[SDL_GetScancodeFromKey(control.getKey(tecla))];
 
     }else{
+
+        static char temp[33];
+        SDL_Joystick * pjoy;
         for(int i=0;i<mpJuego->getJoysActivos();i++){
-            if(!strcmp(SDL_JoystickName(mpJuego->getJoy(i)),control.getName(tecla))){//si coincide con el joistick con el que se configuro
-				return estado_tecla_joy(control.getKey(tecla),mpJuego->getJoy(i));
-             }
+
+            pjoy = mpJuego->getJoy(i);
+            if(SDL_JoystickGetAttached(pjoy)){
+                SDL_JoystickGUID guidj = SDL_JoystickGetGUID(pjoy);
+                SDL_JoystickGetGUIDString(guidj,temp,33);
+
+                if(!strcmp(temp,control.getJoystickGUID(tecla))){//si coincide con el joistick con el que se configuro
+                    if(control.isDireccionJoystick(tecla))
+                        return estado_direccion_joy(control.getKey(tecla),pjoy);
+                    else{
+                        return SDL_JoystickGetButton(pjoy, control.getJoybuttonMapping(tecla));
+                    }
+                }
+            }
          }
          return false;
      }

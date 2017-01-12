@@ -141,18 +141,30 @@ void GameManager::establecerModoDeVideo(bool pantalla_completa){
 }
 
 /**
- * Busca _PLAYERS numero de joisticks conectados al sistema, abre una conexion con ellos
+ * Busca el numero de joisticks conectados al sistema, abre una conexion con ellos
  * y los guarda en un array para cada player
  */
 void GameManager::activarJoysticks(){
      /*contamos y abrimos los Joysticks que usara nuestro juego, Maximos 5 que pueden ser distintos*/
-    joys_act=SDL_NumJoysticks();
-     joys_act=(joys_act>5)?5:joys_act;//esto es porque solo podemos manejar 5...mas seria un error en este programa
-     for(int i=0;i<joys_act;i++){
-          joysticks[i]=SDL_JoystickOpen(i);//abrimos el joystick
-     }
-     for(int i=joys_act;i<mJoysticksActivos;i++)
-          joysticks[i]= nullptr;//los espacios que sobran los ponemos a NULL
+    mJoysticksActivos=SDL_NumJoysticks();
+    //SDL_Log("Encontrados %d joystick(s) activos.",mJoysticksActivos);
+
+    if(mJoysticksActivos > 0){
+        pJoystick = new SDL_Joystick*[mJoysticksActivos];
+        for(int i=0;i<mJoysticksActivos;i++){
+            pJoystick[i]=SDL_JoystickOpen(i);//abrimos el joystick
+            if(pJoystick[i]){
+                SDL_JoystickGUID guidj = SDL_JoystickGetGUID(pJoystick[i]);
+                char temp[33];
+                SDL_JoystickGetGUIDString(guidj,temp,33);
+                SDL_Log("Joystick %d opened.Name:%s.GUID:%s.Instance ID:%d.",i,
+                        SDL_JoystickName(pJoystick[i]),temp,SDL_JoystickInstanceID(pJoystick[i]));
+                // My Joy: 030000008305000000a0000010010000
+            }else{
+                SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,"No se pudo abrir Joystick Device Index %d",i);
+            }
+        }
+    }
 }
 
 /**
@@ -160,8 +172,8 @@ void GameManager::activarJoysticks(){
  * @param id posicion en el array
  * @return Puntero al SDL_Joystick en el array o NULL en caso que no exista
  */
-SDL_Joystick * GameManager::getJoy(int id){
-    return joysticks[id];
+SDL_Joystick * GameManager::getJoy(int device_index){
+    return pJoystick[device_index];
 }
 
 /**
@@ -169,7 +181,7 @@ SDL_Joystick * GameManager::getJoy(int id){
  * @return
  */
 int GameManager::getActiveJoys(){
-    return joys_act;
+    return mJoysticksActivos;
 }
 
 /**
@@ -321,6 +333,7 @@ void GameManager::run(){
                 // y por consiguiente se ha incluso eliminado de él
                 if(interfaz_actual->isStopped()){
                     delete interfaz_actual; // Se elimina de memoria ya que no tendrá uso
+                    interfaz_actual = nullptr;
                 }else{
                     // Si la actual no esta detenida significa que ésta seguirá viva
                     // y que el usuario puede volver a élla una vez haya acabado de interactuar con la nueva actual
@@ -440,8 +453,13 @@ GameManager::~GameManager(){
     // Close and destroy the window
     SDL_DestroyWindow(mMainWindow);
 
+    InterfazGrafica * interfazGraficaDel;
     while(interfaces.size() > 0){
-        delete interfaces.top();
+        interfazGraficaDel = interfaces.top();
+        if(interfazGraficaDel == interfaz_actual){
+            interfaz_actual = nullptr;
+        }
+        delete interfazGraficaDel;
         interfaces.pop();
     }
 
@@ -449,10 +467,8 @@ GameManager::~GameManager(){
 
     //delete mpGaleria;
 
-    for(int i=0;i<joys_act;i++){
-        if(joysticks[i]) {
-            SDL_JoystickClose(joysticks[i]);
-        }
+    for(int i=0;i<mJoysticksActivos;i++){
+        SDL_JoystickClose(pJoystick[i]);
     }
 
     if(mIniciadoModuloSonido)

@@ -2,25 +2,28 @@
 
 using namespace std;
 
-ControlPlayer::ControlPlayer(bool ini){
-    if(ini)iniciar();
-    
+ControlPlayer::ControlPlayer(){
+    reset();
 };
 
-void ControlPlayer::iniciar(){
+void ControlPlayer::reset() {
     for(int i=0;i<_TECLAS;i++){
-        es_boton_joystick[i]=false;
-        es_direccion_joystick[i]=false;
-        keys_players[i]=static_cast<SDL_Keycode >(0);
-        strcpy(nombres_joysticks[i],"sin asig.");
+
+        es_boton_joystick[i]     = false;
+        es_direccion_joystick[i] = false;
+
+        keyboardMapping[i]= SDLK_UNKNOWN;
+        joybuttonMapping[i] = 0;
+        strcpy(guidJoystick[i],"sin asig.");
     }
+
 }
 
-bool ControlPlayer::cargar(char ruta[],bool ini){
+bool ControlPlayer::cargar(char ruta[]){
     ifstream fs2(ruta,ios::in|ios::binary);
     if(!fs2){
-        cerr<<"Error leyendo control en:"<<ruta<<endl;
-        if(ini)iniciar();
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"Error leyendo control en: %s",ruta);
+        reset();
         return false;
     }else{
         fs2.read(reinterpret_cast<char *> (this),sizeof(ControlPlayer));
@@ -28,14 +31,15 @@ bool ControlPlayer::cargar(char ruta[],bool ini){
     }
     return true;
 };
+
 void ControlPlayer::guardar(char ruta[]){
     ofstream fs2(ruta,ios::out|ios::binary);    
     fs2.write(reinterpret_cast<char *> (this),sizeof(ControlPlayer));
     fs2.close();
 };
 
-char * ControlPlayer::getName(TeclaPlayer tecla){
-    return nombres_joysticks[tecla];
+char * ControlPlayer::getJoystickGUID(TeclaPlayer tecla){
+    return guidJoystick[tecla];
 };
 bool ControlPlayer::isBotonJoystick(TeclaPlayer tecla){
     return es_boton_joystick[tecla];
@@ -44,11 +48,11 @@ bool ControlPlayer::isDireccionJoystick(int tecla){
     return es_direccion_joystick[tecla];
 };
 SDL_Keycode ControlPlayer::getKey(TeclaPlayer tecla){
-    return keys_players[tecla];
+    return keyboardMapping[tecla];
 };
 
-void ControlPlayer::setName(TeclaPlayer tecla,const char name[]){
-    strcpy(nombres_joysticks[tecla],name);
+void ControlPlayer::setJoystickGUID(TeclaPlayer tecla, const char *name){
+    strcpy(guidJoystick[tecla],name);
 };
 void ControlPlayer::setIsBotonJoystick(TeclaPlayer tecla,bool nuevo){
     es_boton_joystick[tecla]=nuevo;
@@ -56,13 +60,12 @@ void ControlPlayer::setIsBotonJoystick(TeclaPlayer tecla,bool nuevo){
 void ControlPlayer::setIsDireccionJoystick(int tecla,bool nuevo){
     es_direccion_joystick[tecla]=nuevo;
 };
-void ControlPlayer::setKey(TeclaPlayer tecla,SDL_Keycode nuevo){
-    keys_players[tecla]=nuevo;
+void ControlPlayer::setKeyboardMapping(TeclaPlayer tecla, SDL_Keycode nuevo){
+    keyboardMapping[tecla]=nuevo;
 };
 
 void ControlPlayer::setDefaultKeys(IdPlayer id){
-    iniciar();
-    if(id==PLAYER_1){
+    /*if(id==PLAYER_1){
     	keys_players[TECLA_IZQUIERDA] = SDL_SCANCODE_A;
     	keys_players[TECLA_DERECHA] = SDL_SCANCODE_D;
     	keys_players[TECLA_ARRIBA] = SDL_SCANCODE_W;
@@ -106,5 +109,13 @@ void ControlPlayer::setDefaultKeys(IdPlayer id){
                 SDL_SCANCODE_6;
 //        keys_players[TECLA_ACCION_2]=SDLK_8;
 
-    }
+    }*/
+}
+
+Uint8 ControlPlayer::getJoybuttonMapping(TeclaPlayer tecla) {
+    return joybuttonMapping[tecla];
+}
+
+void ControlPlayer::setJoybuttonMapping(TeclaPlayer tecla, Uint8 nuevaTecla) {
+    joybuttonMapping[tecla] = nuevaTecla;
 }

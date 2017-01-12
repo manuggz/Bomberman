@@ -52,7 +52,7 @@ public:
      * @param i
      * @return
      */
-    virtual SDL_Joystick * getJoy(int i) = 0;
+    virtual SDL_Joystick * getJoy(int device_index) = 0;
     /**
      * Cambia la interfaz Actual, por la nueva referenciada.
      * Pausa la Actual y la deja en la pila, si se llama a goBack() se resumirá.
@@ -67,6 +67,5 @@ public:
 
     virtual void playSound(Mix_Music * pMusic,Uint8 volumen) = 0;
     virtual void playFadeInSound(Mix_Music *music, Uint8 volumen) = 0;
-
 };
 #endif //BOMBERMAN_GAMEMANAGERINTERFAZ_HPP

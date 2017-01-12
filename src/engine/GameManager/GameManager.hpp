@@ -47,7 +47,7 @@ public:
 
     GameManager(std::string caption,std::string ruta_icono, unsigned int width,unsigned int height,bool pantallaCompleta);
 
-    SDL_Joystick * getJoy(int id) ;
+    SDL_Joystick * getJoy(int device_index) override ;
     int getActiveJoys() ;
     void cambiarInterfaz(InterfazGrafica * nueva) ;
 
@@ -92,10 +92,9 @@ private:
     SDL_Window *mMainWindow = nullptr;
     SDL_Renderer *gRenderer = nullptr;
 
-    SDL_Joystick *joysticks[5] {nullptr};
+    SDL_Joystick ** pJoystick;
 
     bool mIniciadoModuloSonido=false;
-    int joys_act = 0;
     bool salir_juego = false;
 
     int mWidth = 0;

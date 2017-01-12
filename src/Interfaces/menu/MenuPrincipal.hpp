@@ -9,6 +9,7 @@
 #include "../../engine/util/EfectoSonido.hpp"
 #include "../../engine/interfaces/MenuListLabel.hpp"
 #include "MenuNuevoJuego.hpp"
+#include "../InterfazConfiguracion.hpp"
 
 class MenuPrincipal : public MenuListLabel{
 
@@ -48,6 +49,7 @@ public:
                 break;
             case MENU_OPCION_CONFIGURACION:
                 //cout << "MENU_OPCION_CONFIGURACION"<< endl;
+                mGameManagerInterfaz->cambiarInterfaz(new InterfazConfiguracion(mGameManagerInterfaz));
                 break;
             case MENU_OPCION_CREDITOS:
                 //cout << "MENU_OPCION_CREDITOS"<< endl;
