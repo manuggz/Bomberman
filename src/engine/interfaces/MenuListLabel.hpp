@@ -65,6 +65,9 @@ public:
     void procesarEvento(SDL_Event *evento) override;
     void draw(SDL_Renderer *renderer) override;
     virtual ~MenuListLabel() override;
+
+    void forceDraw() override;
+
 protected:
 
     deque<LabelComponent  *> menuTextOptions;

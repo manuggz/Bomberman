@@ -7,17 +7,34 @@
  *  Carga los sonidos
  * @return
  */
-GameManager::GameManager(std::string caption,std::string ruta_icono, unsigned int witdth,unsigned int height,bool pantallaCompleta){
+GameManager::GameManager(std::string caption,std::string ruta_icono, unsigned int width,unsigned int height,bool pantallaCompleta){
 
     srand((unsigned int) time(0));
 
     mCaption   = caption;
     mRutaIcono = ruta_icono;
 
-    mWidth  = witdth;
+    mWidth  = width;
     mHeight = height;
 
-    mPantallaCompleta = pantallaCompleta;
+    nativeSize.x = 0;
+    nativeSize.y = 0;
+    nativeSize.w = width;
+    nativeSize.h = height;
+
+    newWindowSize.x = 0;
+    newWindowSize.y = 0;
+    newWindowSize.w = nativeSize.w;
+    newWindowSize.h = nativeSize.h;
+
+    scaleRatioW = 1.0f;
+    scaleRatioH = 1.0f;
+
+    mpTextureBufferTarget = nullptr;
+
+    resize = false;
+
+    mIsPantallaCompleta = pantallaCompleta;
     iniciarLibreriaSDL();
 
     establecerModoDeVideo(pantallaCompleta);
@@ -39,7 +56,10 @@ void GameManager::iniciarLibreriaSDL(){
        std::cerr << "[ERROR] No se pudo inciar SDL" << SDL_GetError() <<std::endl;
        exit(EXIT_FAILURE);
    }
-
+    //Set the scaling quality to nearest-pixel
+    if(SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0") < 0){
+        std::cerr << "Failed to set Render Scale Quality" << std::endl;
+    }
 
     if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT,MIX_DEFAULT_CHANNELS, 4096) < 0) {
         std::cerr << "[WARNING]%s" << SDL_GetError();
@@ -74,6 +94,17 @@ void GameManager::establecerModoDeVideo(bool pantalla_completa){
             banderas                  // flags - see below
     );
 
+    int w, h;
+    SDL_GetWindowSize(mMainWindow, &w, &h);
+
+    //newWindowSize.w = w;
+    //newWindowSize.h = h;
+
+    //scaleRatioW = w / nativeSize.w;
+    //scaleRatioH = h / nativeSize.h;  //The ratio from the native size to the new size
+
+    std::cout << "Window < Width : " << w << " , height: " << h << ">" << std::endl;
+
     if(mMainWindow == nullptr){
         std::cerr << "[ERROR] No se pudo crear Frame-buffer" << SDL_GetError();
         exit(EXIT_FAILURE);
@@ -87,11 +118,21 @@ void GameManager::establecerModoDeVideo(bool pantalla_completa){
         SDL_FreeSurface(icono);
     }
 
-    gRenderer = SDL_CreateRenderer(mMainWindow, -1, SDL_RENDERER_ACCELERATED);
+    gRenderer = SDL_CreateRenderer(mMainWindow, -1, SDL_RENDERER_ACCELERATED|
+                                                    SDL_RENDERER_TARGETTEXTURE);
     if (gRenderer == nullptr){
         std::cerr << "[ERROR] SDL_CreateRenderer" << SDL_GetError();
         exit(EXIT_FAILURE);
     }
+    //Similarly, you must use SDL_TEXTUREACCESS_TARGET when you create the texture
+    mpTextureBufferTarget = SDL_CreateTexture(gRenderer,
+                                   SDL_GetWindowPixelFormat(mMainWindow),
+                                   SDL_TEXTUREACCESS_TARGET,
+                                   nativeSize.w,
+                                   nativeSize.h);
+
+    //IMPORTANT Set the back buffer as the target
+    SDL_SetRenderTarget(gRenderer, mpTextureBufferTarget);
 
     SDL_SetRenderDrawColor(gRenderer, 104, 104, 104, 255);
 }
@@ -144,7 +185,6 @@ void GameManager::cambiarInterfaz(InterfazGrafica *  nueva){
  * @return Booleano indicando si se debe o no llamar a las funciones de la interfaz actual en el frame actual
  */
 bool GameManager::procesarEventos(){
-    static bool full=1;//pantalla completa
     SDL_Event evento;
     while(SDL_PollEvent(&evento)){
         switch(evento.type){
@@ -152,14 +192,24 @@ bool GameManager::procesarEventos(){
                 salir_juego=true;
                 return false;
             case SDL_KEYDOWN:
-                if(evento.key.keysym.sym==SDLK_RETURN && evento.key.keysym.mod & SDLK_LSHIFT){
-                    if(full){
-                        SDL_SetWindowFullscreen(mMainWindow,0);
+
+                if(!mISFullScreenPressed && evento.key.keysym.sym==SDLK_RETURN && evento.key.keysym.mod & SDLK_LSHIFT){
+                    std::cout << "Toggle Fullscreen Mode" << std::endl;
+                    if(mIsPantallaCompleta){
+                        if(!SDL_SetWindowFullscreen(mMainWindow,0)){
+                            mIsPantallaCompleta = false;
+                        }else{
+                            std::cerr << "[Error] No se pudo cambiar a modo windowed.";
+                        }
                     }else{
-                        SDL_SetWindowFullscreen(mMainWindow,SDL_WINDOW_FULLSCREEN);
+                        if(!SDL_SetWindowFullscreen(mMainWindow,SDL_WINDOW_FULLSCREEN)){
+                            mIsPantallaCompleta = true;
+                        }else{
+                            std::cerr << "[Error] No se pudo cambiar a pantalla completa.";
+                        }
                     }
-                    //establecerModoDeVideo(full);
-                    full=!full;
+                    mISFullScreenPressed = true;
+                    interfaz_actual->forceDraw();
                     return false;
                 }
                 if(evento.key.keysym.sym==SDLK_F4 && evento.key.keysym.mod & SDLK_LALT){
@@ -168,6 +218,14 @@ bool GameManager::procesarEventos(){
                 }
 
             break;
+            case SDL_KEYUP:
+                mISFullScreenPressed = false;
+                break;
+            case SDL_WINDOWEVENT:
+                if(evento.window.event == SDL_WINDOWEVENT_SIZE_CHANGED)
+                {
+                    resize = true;
+                }
             default:break;
         }
 
@@ -179,7 +237,39 @@ bool GameManager::procesarEventos(){
     }
     return true;//se puede continuar
 }
+void GameManager::Resize()
+{
+    int w, h;
 
+    SDL_GetWindowSize(mMainWindow, &w, &h);
+
+    scaleRatioW = w / nativeSize.w;
+    scaleRatioH = h / nativeSize.h;  //The ratio from the native size to the new size
+
+    newWindowSize.w = w;
+    newWindowSize.h = h;
+
+    //In order to do a resize, you must destroy the back buffer. Try without it, it doesn't work
+    SDL_DestroyTexture(mpTextureBufferTarget);
+    mpTextureBufferTarget = SDL_CreateTexture(gRenderer,
+                                   SDL_GetWindowPixelFormat(mMainWindow),
+                                   SDL_TEXTUREACCESS_TARGET, //Again, must be created using this
+                                   nativeSize.w,
+                                   nativeSize.h);
+
+    SDL_Rect viewPort;
+    SDL_RenderGetViewport(gRenderer, &viewPort);
+
+    if(viewPort.w != newWindowSize.w || viewPort.h != newWindowSize.h)
+    {
+        //VERY IMPORTANT - Change the viewport over to the new size. It doesn't do this for you.
+        SDL_RenderSetViewport(gRenderer, &newWindowSize);
+    }
+
+    if(interfaz_actual != nullptr){
+        interfaz_actual->forceDraw();
+    }
+}
 
 /**
  * Controla el bucle principal del juego
@@ -278,11 +368,28 @@ void GameManager::run(){
             }
         }
 
+
         SDL_RenderPresent(gRenderer); // Muestra la vista
+        SDL_SetRenderTarget(gRenderer, NULL); //Set the target back to the window
+
+        if(resize) //If a resize is neccessary, do so.
+        {
+            this->Resize();
+            resize = false;
+        }
+
+        SDL_RenderCopy(gRenderer, mpTextureBufferTarget, &nativeSize, &newWindowSize); //Render the backBuffer onto the
+        //screen at (0,0)
+        SDL_RenderPresent(gRenderer);
+        //SDL_RenderClear(gRenderer); //Clear the window buffer
+
+        SDL_SetRenderTarget(gRenderer, mpTextureBufferTarget); //Set the target back to the back buffer
+        //SDL_RenderClear(gRenderer); //Clear the back buffer
 
         if(interfaces.empty()){
             quit();
         }
+
         int frameTicks = capTimer.getTicks();
         if( frameTicks < mScreenTicksPerFrame ){
             //Wait remaining time

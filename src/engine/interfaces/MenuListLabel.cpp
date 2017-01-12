@@ -125,6 +125,10 @@ void MenuListLabel::draw(SDL_Renderer *renderer) {
     }
 }
 
+void MenuListLabel::forceDraw() {
+    mLayoutBackGround->setDisabled(true);
+}
+
 MenuListLabel::~MenuListLabel() {
     delete mLayoutBackGround; // Al liberar el layout parent se liberan todos sus mComponentes
 

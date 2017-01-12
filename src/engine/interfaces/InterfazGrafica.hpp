@@ -83,6 +83,9 @@ public:
 
     virtual ~InterfazGrafica(){};
 
+    // Esta funcion dibuja todos los elementos sin importar si fueron o no modificados anteriormente
+    virtual void forceDraw() {}
+
 protected:
 
     GameManagerInterfazUI * mGameManagerInterfaz;

@@ -45,7 +45,7 @@ class GameManager : public GameManagerInterfazUI{
 public:
 
 
-    GameManager(std::string caption,std::string ruta_icono, unsigned int witdth,unsigned int height,bool pantallaCompleta);
+    GameManager(std::string caption,std::string ruta_icono, unsigned int width,unsigned int height,bool pantallaCompleta);
 
     SDL_Joystick * getJoy(int id) ;
     int getActiveJoys() ;
@@ -105,12 +105,25 @@ private:
     int mJoysticksActivos = 5;
 
 
-    bool mPantallaCompleta = false;
+    bool mIsPantallaCompleta = false;
 
+
+    SDL_Rect nativeSize;
+    SDL_Rect newWindowSize;
+    float scaleRatioW;
+    float scaleRatioH;
+
+    SDL_Texture * mpTextureBufferTarget;
+
+    bool resize;
 
     void iniciarLibreriaSDL();
     void establecerModoDeVideo(bool pantalla_completa = false);
     void activarJoysticks();
     bool procesarEventos();
+
+    void Resize();
+
+    bool mISFullScreenPressed = false;
 };
 #endif
