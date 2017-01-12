@@ -10,7 +10,7 @@
 #include "../layout/LayoutManager/LayoutAbsolute.hpp"
 #include "../layout/Componentes/LabelComponent.hpp"
 #include "../util/LTimer.hpp"
-#include "../GameManager/game_manager.hpp"
+#include "../GameManager/GameManager.hpp"
 
 /**
  * PopUp que Muestra un Texto Centrado en la pantalla al usuario por cierto tiempo

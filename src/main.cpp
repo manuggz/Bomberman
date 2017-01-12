@@ -1,4 +1,4 @@
-#include "engine/GameManager/game_manager.hpp"
+#include "engine/GameManager/GameManager.hpp"
 #include "Interfaces/menu/MenuPrincipal.hpp"
 
 /*

@@ -1,2 +1,0 @@
-id_tile:3
-mGrpItems:10
