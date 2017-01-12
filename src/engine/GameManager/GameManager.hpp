@@ -74,6 +74,14 @@ public:
     void play(Mix_Chunk *pSfxChunk) ;
     void playFadeInSound(Mix_Music *music, Uint8 volumen) ;
 
+    float getScaleRatioW() const;
+
+    void setScaleRatioW(float scaleRatioW);
+
+    float getScaleRatioH() const;
+
+    void setScaleRatioH(float scaleRatioH);
+
 private:
 
     int mFPS = 60;

@@ -15,6 +15,13 @@ class PopUpInterfaz;
 class GameManagerInterfazUI: public GameManagerPopUpInterfaz{
 public:
 
+    virtual float getScaleRatioW() const = 0;
+
+    virtual void setScaleRatioW(float scaleRatioW) = 0;
+
+    virtual float getScaleRatioH() const = 0;
+
+    virtual void setScaleRatioH(float scaleRatioH) = 0;
     /**
      * Reproduce un efecto de sonido
      * @param codeMusic

@@ -81,8 +81,7 @@ void Player::update(const Uint8 * teclas){
 			abajo(teclas);
 			break;
 		case EstadoSprite::MURIENDO:break;
-        default:
-            cerr << "Error, player en estado inconsistente." << endl;
+        default:break;
     }
 
     if(estado_actual != EstadoSprite::MURIENDO){

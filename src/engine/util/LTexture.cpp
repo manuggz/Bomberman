@@ -28,7 +28,10 @@ bool LTexture::cargarDesdeArchivo(std::string path, SDL_Renderer *gRenderer, boo
     //Load image at specified path
     mSurface = IMG_Load( path.c_str() );
     if( mSurface == NULL ){
-        printf( "Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError() );
+        SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,"Unable to load image %s! SDL_image Error: %s",
+                    path.c_str(),
+                    IMG_GetError() );
+        return false;
     }else{
 
         if(tiene_color_clave){
@@ -40,10 +43,14 @@ bool LTexture::cargarDesdeArchivo(std::string path, SDL_Renderer *gRenderer, boo
         newTexture = SDL_CreateTextureFromSurface( gRenderer, mSurface );
         if( newTexture == NULL )
         {
-            printf( "Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
+            SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,"Unable to create texture from %s! SDL Error: %s",
+                        path.c_str(),
+                        SDL_GetError() );
+            return false;
         }
         else
         {
+            SDL_Log("Cargada Textura : %s.",path.c_str());
             //Get image dimensions
             mWidth = mSurface->w;
             mHeight = mSurface->h;
@@ -69,7 +76,13 @@ bool LTexture::loadFromRenderedText(SDL_Renderer * gRenderer, TTF_Font * gFont, 
         mTexture = SDL_CreateTextureFromSurface( gRenderer, textSurface );
 		if( mTexture == NULL )
 		{
-			printf( "Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError() );
+            SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,
+                        "Unable to create texture from text: %s! SDL Error: %s",
+                        textureText.c_str(),
+                        SDL_GetError() );
+            //Get rid of old surface
+            SDL_FreeSurface( textSurface );
+            return false;
 		}
 		else
 		{
@@ -78,12 +91,11 @@ bool LTexture::loadFromRenderedText(SDL_Renderer * gRenderer, TTF_Font * gFont, 
 			mHeight = textSurface->h;
 		}
 
-		//Get rid of old surface
-		SDL_FreeSurface( textSurface );
 	}
 	else
 	{
-		printf( "Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError() );
+        SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,"Unable to render text surface! SDL_ttf Error: %s.", TTF_GetError() );
+        return false;
 	}
 
 

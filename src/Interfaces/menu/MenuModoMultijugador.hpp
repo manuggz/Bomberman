@@ -5,6 +5,8 @@
 #ifndef BOMBERMAN_MENUMODOMULTIJUGADOR_HPP
 #define BOMBERMAN_MENUMODOMULTIJUGADOR_HPP
 
+static const int BOTON_SUBIR_TIEMPO_ID = 1;
+
 #include <SDL2/SDL.h>
 #include "../../engine/interfaces/InterfazGrafica.hpp"
 #include "../../engine/layout/LayoutManager/LayoutVertical.hpp"
@@ -19,11 +21,12 @@
 #include "../../niveles/NivelMapa.hpp"
 #include "../juego/ModoJuegoMultiPlayer.hpp"
 
-class MenuModoMultijugador: public InterfazGrafica,public UpdateGroupContainerInterfaz{
+class MenuModoMultijugador: public InterfazGrafica, public UpdateGroupContainerInterfaz, public BotonInterfaz {
 
 public:
     MenuModoMultijugador(GameManagerInterfazUI * gameManagerInterfazUI):
             InterfazGrafica(gameManagerInterfazUI),mMapaTerrenoSeleccionado(0,32){
+        SDL_Log("MenuModoMultijugador::MenuModoMultijugador");
     }
 
     void prepare() override {
@@ -42,14 +45,11 @@ public:
         mLayoutParent = new LayoutAbsolute();
 
         // BotonComponent para controlar cuanto tiempo para acabar una ronda
-//        mBtnSubirTiempo=new BotonComponent<MenuModoMultijugador>(
+//        mBtnSubirTiempo=new BotonComponent(
   //              mGameManager->getTexture(Galeria::CodeImagen::IMG_BOTON_FLECHA_PEQUE_DERECHA),this);
         LTexture * textureBotonSubirTiempo = new LTexture();
         textureBotonSubirTiempo->cargarDesdeArchivo("data/imagenes/botones/boton_flecha.png", gRenderer, false);
-        mBtnSubirTiempo=new BotonComponent<MenuModoMultijugador>(textureBotonSubirTiempo,this);
-
-        mBtnSubirTiempo->setId(MENU_BOTON_SUBIR_TIEMPO);
-        mBtnSubirTiempo->bindSubmitCallBack(&MenuModoMultijugador::submitCallbackMethod);
+        mBtnSubirTiempo=new BotonComponent(textureBotonSubirTiempo, this, MENU_BOTON_SUBIR_TIEMPO);
         mLayoutParent->addComponent(mBtnSubirTiempo);
         mBtnSubirTiempo->setLayoutParam(LAYOUT_PARAM_X,"197");
         mBtnSubirTiempo->setLayoutParam(LAYOUT_PARAM_Y,"2");
@@ -57,9 +57,7 @@ public:
         // BotonComponent para controlar cuantas victorias son necesarias para terminar el juego
         LTexture * textureBotonSubirVictorias = new LTexture();
         textureBotonSubirVictorias->cargarDesdeArchivo("data/imagenes/botones/boton_flecha.png", gRenderer, false);
-        mBtnSubirVictorias=new BotonComponent<MenuModoMultijugador>(textureBotonSubirVictorias,this);
-        mBtnSubirVictorias->setId(MENU_BOTON_SUBIR_VICTORIAS);
-        mBtnSubirVictorias->bindSubmitCallBack(&MenuModoMultijugador::submitCallbackMethod);
+        mBtnSubirVictorias=new BotonComponent(textureBotonSubirVictorias,this,MENU_BOTON_SUBIR_VICTORIAS);
         mLayoutParent->addComponent(mBtnSubirVictorias);
         mBtnSubirVictorias->setLayoutParam(LAYOUT_PARAM_X,"297");
         mBtnSubirVictorias->setLayoutParam(LAYOUT_PARAM_Y,"2");
@@ -67,9 +65,7 @@ public:
         // BotonComponent para cambiar el mapa a usar
         LTexture * textureBotonCambiarMapa = new LTexture();
         textureBotonCambiarMapa->cargarDesdeArchivo("data/imagenes/botones/boton_cambiar_mapa.png", gRenderer, false);
-        mBtnCambiarMapa=new BotonComponent<MenuModoMultijugador>(textureBotonCambiarMapa,this);
-        mBtnCambiarMapa->setId(MENU_BOTON_CAMBIAR_MAPA);
-        mBtnCambiarMapa->bindSubmitCallBack(&MenuModoMultijugador::submitCallbackMethod);
+        mBtnCambiarMapa=new BotonComponent(textureBotonCambiarMapa,this,MENU_BOTON_CAMBIAR_MAPA);
         mLayoutParent->addComponent(mBtnCambiarMapa);
         mBtnCambiarMapa->setLayoutParam(LAYOUT_PARAM_X,"10");
         mBtnCambiarMapa->setLayoutParam(LAYOUT_PARAM_Y,"225");
@@ -77,9 +73,7 @@ public:
         // BotonComponent para comenzar a jugar
         LTexture * textureBotonJugar = new LTexture();
         textureBotonJugar->cargarDesdeArchivo("data/imagenes/botones/boton_jugar_2.png", gRenderer, false);
-        mBtnJugar=new BotonComponent<MenuModoMultijugador>(textureBotonJugar,this);
-        mBtnJugar->setId(MENU_BOTON_JUGAR);
-        mBtnJugar->bindSubmitCallBack(&MenuModoMultijugador::submitCallbackMethod);
+        mBtnJugar=new BotonComponent(textureBotonJugar,this,MENU_BOTON_JUGAR);
         mBtnJugar->setVisible(false); // Lo ocultamos hasta que se seleccionen dos jugadores
         mLayoutParent->addComponent(mBtnJugar);
         mBtnJugar->setLayoutParam(LAYOUT_PARAM_X,"240");
@@ -87,7 +81,6 @@ public:
 
         // Controla las animaciones de los personajes cuando se seleccionan para jugar
         mSprites=new DrawGroup(this);
-        cout << "mGrpSprites : " << mSprites << endl;
 
         //Animaciones para los personajes (Hace que parezcan que caminan) cuando se seleccionan
         SpriteSheet * spriteSheetTmp = new SpriteSheet();
@@ -192,7 +185,6 @@ public:
     }
 
     void packLayout(SDL_Renderer * gRenderer){
-        cout << "MenuModoMultijugador::packLayout"<<endl;
         SDL_Rect rect = mGameManagerInterfaz->getRectScreen();
         mLayoutParent->pack(gRenderer);
         mLayoutParent->setRectDibujo(rect);
@@ -203,13 +195,12 @@ public:
      * @return
      */
     bool establecerTerrenoBatalla(SDL_Renderer * gRenderer,int nuevoTerreno) {
-        cout << "MenuModoMultijugador::establecerTerrenoBatalla"<<endl;
 
         if(nuevoTerreno>=0 && nuevoTerreno < mMaxTerrenoBatalla){
             static char ruta1[50],ruta2[50];
             sprintf(ruta1,"data/niveles/batalla/mapa_batalla_%d.tmx",nuevoTerreno+1);
             if(!mMapaTerrenoSeleccionado.cargar(gRenderer,ruta1)){
-                std::cerr << "Error cambiando el mapa" << std::endl;
+                SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"Error cambiando al mapa %s.",ruta1);
                 return false;
             }
 
@@ -239,17 +230,23 @@ public:
      * Funcion llamada por los botones de la interfaz cuando son presionados
      * @param control_click
      */
-    void submitCallbackMethod(BotonComponent<MenuModoMultijugador> *control_click) {
-        cout << "MenuModoMultijugador::submitCallbackMethod"<<endl;
-        mBotonClicked = control_click->getId();
+    void onClickButton(int id) override {
+        mBotonClicked = id;
         ejecutarAccionBotonClicked();
+    }
+
+    float getScaleRatioW() override {
+        return mGameManagerInterfaz->getScaleRatioW();
+    }
+
+    float getScaleRatioH() override {
+        return mGameManagerInterfaz->getScaleRatioH();
     }
 
     /**
      * Ejecuta la opcion enlazada a un boton
      */
     void ejecutarAccionBotonClicked(){
-        cout << "MenuModoMultijugador::ejecutarAccionBotonClicked"<<endl;
         switch(mBotonClicked){
             case MENU_BOTON_SUBIR_TIEMPO:
                 if(++minutosEscogidos>5)minutosEscogidos=1;
@@ -286,7 +283,6 @@ public:
      * @param idPlayer
      */
     void cambiarEstadoPlayer(int idPlayer){
-        cout << "MenuModoMultijugador::cambiarEstadoPlayer"<<endl;
         mIsPlayerActivado[idPlayer]=!mIsPlayerActivado[idPlayer];
 
         if(mIsPlayerActivado[idPlayer]){ // Si debe agregarse al juego
@@ -313,7 +309,6 @@ public:
     }
 
     virtual void procesarEvento(SDL_Event *event) override {
-        cout << "MenuModoMultijugador::procesarEvento"<<endl;
         if(event->type==SDL_KEYDOWN){
             switch(event->key.keysym.sym){
                 case SDLK_ESCAPE:
@@ -382,7 +377,7 @@ public:
     }
 
     ~MenuModoMultijugador(){
-        cout << "MenuModoMultijugador::~MenuModoMultijugador"<<endl;
+        SDL_Log("MenuModoMultijugador::~MenuModoMultijugador");
         for(int i=0;i<_PLAYERS;i++){
             delete mAnimacionPlayer[i];
             delete mAnimaPresiona[i];
@@ -418,7 +413,7 @@ private:
     //SDL_Surface *  previewTerreno;
 
     // Botones de la interfaz
-    BotonComponent<MenuModoMultijugador> *mBtnSubirTiempo,*mBtnSubirVictorias,*mBtnCambiarMapa,*mBtnJugar;
+    BotonComponent *mBtnSubirTiempo,*mBtnSubirVictorias,*mBtnCambiarMapa,*mBtnJugar;
 
     /**
      * Ids asignados a los botones de la interfaz, son usados en un swith cuando se llama a la funcion

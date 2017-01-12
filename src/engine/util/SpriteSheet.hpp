@@ -31,7 +31,12 @@ public:
             mTexture = nullptr;
         }
         mTexture = new LTexture();
-        mTexture->cargarDesdeArchivo(ruta, gRenderer, colorClave);
+        if(mTexture->cargarDesdeArchivo(ruta, gRenderer, colorClave)){
+            SDL_Log("Cargada SpriteSheet : %s.",ruta.c_str());
+        }else{
+            SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,"No se logro cargar SpriteSheet: %s.",ruta.c_str());
+            return false;
+        }
         mRectSource.x = 0;
         mRectSource.y = 0;
         mRectSource.w = mTexture->getWidth()/nColumnas;

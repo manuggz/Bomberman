@@ -16,10 +16,11 @@ public:
         mPath      = path;
         mpRawChunk = Mix_LoadWAV(path.c_str());
         if(mpRawChunk != nullptr){
-            std::cout << "+ Efecto de Sonido Cargado: "<<path<<std::endl;
+            SDL_Log("Efecto de Sonido Cargado: %s.",path.c_str());
             Mix_VolumeChunk(mpRawChunk, volumen);
         }else{
-            std::cerr<<" - [ERROR] Cargando Efecto de Sonido:"<<path<<Mix_GetError()<<std::endl;
+            SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,"No se logro cargar Efecto de Sonido: %s . %s",
+                        path.c_str(),Mix_GetError());
         }
     }
     ~EfectoSonido(){

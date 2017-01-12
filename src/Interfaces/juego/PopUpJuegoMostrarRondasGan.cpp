@@ -3,6 +3,7 @@
 PopUpJuegoMostrarGanadas::PopUpJuegoMostrarGanadas(GameManagerPopUpInterfaz *gameManager,
                                          int rondasGanadas[5]) : PopUpInterfaz(gameManager) {
 
+    SDL_Log("PopUpJuegoMostrarGanadas::PopUpJuegoMostrarGanadas");
     for(int i=0;i<_PLAYERS;i++)
         mRondasGanadas[i] = rondasGanadas[i];
 
@@ -137,6 +138,7 @@ void PopUpJuegoMostrarGanadas::draw(SDL_Renderer * gr){
 }
 
 PopUpJuegoMostrarGanadas::~PopUpJuegoMostrarGanadas(){
+    SDL_Log("PopUpJuegoMostrarGanadas::PopUpJuegoMostrarGanadas");
     delete animaCuadro;
     delete animaTexto;
     for(int i=0;i<totalTrofeosCreados;i++){

@@ -20,9 +20,6 @@ class Sprite{
 
   public:
      Sprite(){
-        #ifdef DEBUG
-            cout << "Constructor de Sprite:"<<this<<endl;
-        #endif
     };
 
     /*Funciones para administrar los grupos*/
@@ -61,9 +58,6 @@ class Sprite{
 //        virtual void moveIp(int,int){};
 
     virtual ~Sprite(){
-        #ifdef DEBUG
-            cout << "Destructor de Sprite:"<<this<<endl;
-        #endif
         return;
     };
 

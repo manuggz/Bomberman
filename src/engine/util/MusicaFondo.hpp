@@ -18,10 +18,10 @@ public:
     MusicaFondo(std::string path) {
         mpRawMixMusic = Mix_LoadMUS(path.c_str());
         if (mpRawMixMusic != nullptr) {
-            std::cout << "+ [INFO]  Cargado Sonido: " << path << std::endl;
+            SDL_Log("Cargado Sonido: %s.",path.c_str());
         } else {
-            std::cerr << "- [ERROR] Cargando Sonido:" << path << Mix_GetError() << std::endl;
-
+            SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,"No se logro cargar Sonido: %s . %s",
+                        path.c_str(),Mix_GetError());
         }
     }
 

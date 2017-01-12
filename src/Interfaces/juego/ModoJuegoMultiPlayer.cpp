@@ -13,6 +13,7 @@
 ModoJuegoMultiPlayer::ModoJuegoMultiPlayer (GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[_PLAYERS])
 :InterfazGrafica(gameManager),mGrpSprites(this),mMapa(0,32){
 
+    SDL_Log("ModoJuegoMultiPlayer::ModoJuegoMultiPlayer");
 
     // Establecemos como activos los players seleccionados a que jueguen
     // Notar que el uso de esta variable recae en que tenemos un array de punteros a clases Players
@@ -756,6 +757,7 @@ void ModoJuegoMultiPlayer::reiniciarEstado() {
 }
 
 ModoJuegoMultiPlayer::~ModoJuegoMultiPlayer(){
+    SDL_Log("ModoJuegoMultiPlayer::~ModoJuegoMultiPlayer");
     for(int i= 0;i<_PLAYERS;i++){
         delete mPlayerSprite[i];
         delete mpVidasRestantesPlayer[i];

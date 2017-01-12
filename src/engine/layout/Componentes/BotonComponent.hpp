@@ -6,8 +6,15 @@
 #include <SDL2/SDL_image.h>
 #include "../LayoutManager/LayoutComponent.hpp"
 
+class BotonInterfaz{
+public:
+    virtual void onClickButton(int id){
 
-template <typename T>  //T es la clase madre del BotonComponent
+    }
+    virtual float getScaleRatioW() = 0;
+    virtual float getScaleRatioH() = 0;
+};
+
 class BotonComponent : public LayoutComponent{
     public:
         enum Estado{
@@ -17,19 +24,19 @@ class BotonComponent : public LayoutComponent{
             _ESTADOS
         };
         
-        BotonComponent(LTexture * grilla,T * parent=NULL){
+        BotonComponent(LTexture * grilla,BotonInterfaz * parent,int id){
 
             imgGrillaBoton=grilla; // Grilla/ Columna con las tres filas representando los estados del boton
 
             // Rectangulo en la pantalla que ocupa el boton
 
             estado=NORMAL;
-            accionClickClase=NULL;
-            accionClickArgBoton=NULL;
             visible=true;
             enable=true;
-            padre=parent;
+            padre = parent;
+            BotonComponent::id = id;
         }
+
         /*bool setGrillaImagen(SDL_Renderer * gRenderer,string ruta){
             imgGrillaBoton=cargar_textura(gRenderer,ruta,false);
             if(!imgGrillaBoton){
@@ -68,17 +75,13 @@ class BotonComponent : public LayoutComponent{
                     }
                 }else if(evento->type==SDL_MOUSEBUTTONUP&&evento->button.button==SDL_BUTTON_LEFT){
                     if(estado==PRESIONADO&&estaPuntoEnRect(evento->motion.x,evento->motion.y,&mDrawRect)){
-                        if(accionClickClase)(padre->*accionClickClase)(); 
-                        if(accionClickArgBoton)(padre->*accionClickArgBoton)(this);
-                        if(enable)
-                        estado=NORMAL;      
+                        padre->onClickButton(id);
+                        if(enable)estado=NORMAL;
                       }
                 }
             }
         }
         
-        void bindAccion(void (T::*pAccion)(void)){accionClickClase=pAccion;};
-        void bindSubmitCallBack(void (T::*pAccion)(BotonComponent<T> *)){accionClickArgBoton=pAccion;};
         void draw(SDL_Renderer * gRenderer) override {
             LayoutComponent::draw(gRenderer);
             if(visible){
@@ -98,25 +101,20 @@ class BotonComponent : public LayoutComponent{
         void setVisible(bool nuevo){visible=nuevo;};
         void setEnable(bool nuevo){enable=nuevo;};
         void setEstado(Estado nuevo){estado=nuevo;};
-        void setId(int nuevo){idControl=nuevo;};
-        int getId(){return idControl;};
-        
+
         ~BotonComponent(){
             delete imgGrillaBoton;
         }
     private:
         Estado estado;
         LTexture  * imgGrillaBoton;
-        
-        int idControl;
-        
-        T * padre;
-        void (T::*accionClickClase)(void);
-        void (T::*accionClickArgBoton)(BotonComponent<T> *);
-
+        BotonInterfaz *padre;
+        int id;
         bool visible,enable;
 
         bool estaPuntoEnRect(int x,int y,SDL_Rect * rect_coli){
+            x /= padre->getScaleRatioW();
+            y /= padre->getScaleRatioH();
             return (x>rect_coli->x&&x<rect_coli->x+rect_coli->w&&y>rect_coli->y&&y<rect_coli->y+rect_coli->h);
         }
 };

@@ -8,6 +8,7 @@
  * @return
  */
 GameManager::GameManager(std::string caption,std::string ruta_icono, unsigned int width,unsigned int height,bool pantallaCompleta){
+    SDL_Log("GameManager::~GameManager");
 
     srand((unsigned int) time(0));
 
@@ -51,26 +52,27 @@ GameManager::GameManager(std::string caption,std::string ruta_icono, unsigned in
  *  Inicia la libreria Mixer
  */
 void GameManager::iniciarLibreriaSDL(){
-
    if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK)<0){
-       std::cerr << "[ERROR] No se pudo inciar SDL" << SDL_GetError() <<std::endl;
+       SDL_LogCritical(SDL_LOG_CATEGORY_ERROR,"No se pudo inciar SDL. %s",SDL_GetError());
        exit(EXIT_FAILURE);
    }
+    SDL_Log("Iniciada Libreria SDL.");
     //Set the scaling quality to nearest-pixel
     if(SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0") < 0){
-        std::cerr << "Failed to set Render Scale Quality" << std::endl;
+        SDL_LogWarn(SDL_LOG_CATEGORY_VIDEO,"Failed to set Render Scale Quality.%s",SDL_GetError());
     }
 
-    if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT,MIX_DEFAULT_CHANNELS, 4096) < 0) {
-        std::cerr << "[WARNING]%s" << SDL_GetError();
+    if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT,mChannels + 1, 4096) < 0) {
+        SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,"Failed to Open Audio.%s",SDL_GetError());
     }else{
+        SDL_Log("Audio Iniciado.");
         mIniciadoModuloSonido = true;
-        Mix_AllocateChannels(mChannels + 1);
     }
 
     //Initialize SDL_ttf
     if( TTF_Init() == -1 ){
-        std::cerr << "[ERROR] SDL_ttf could not initialize!" << SDL_GetError();
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"No se pudo inicializar SDL TTF.%s",SDL_GetError());
+        SDL_Quit();
         exit(EXIT_FAILURE);
     }
 
@@ -94,21 +96,17 @@ void GameManager::establecerModoDeVideo(bool pantalla_completa){
             banderas                  // flags - see below
     );
 
+    if(mMainWindow == nullptr){
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"No se pudo crear Frame-buffer. %s",SDL_GetError());
+        TTF_Quit();
+        SDL_Quit();
+        exit(EXIT_FAILURE);
+    }
+
     int w, h;
     SDL_GetWindowSize(mMainWindow, &w, &h);
 
-    //newWindowSize.w = w;
-    //newWindowSize.h = h;
-
-    //scaleRatioW = w / nativeSize.w;
-    //scaleRatioH = h / nativeSize.h;  //The ratio from the native size to the new size
-
-    std::cout << "Window < Width : " << w << " , height: " << h << ">" << std::endl;
-
-    if(mMainWindow == nullptr){
-        std::cerr << "[ERROR] No se pudo crear Frame-buffer" << SDL_GetError();
-        exit(EXIT_FAILURE);
-    }
+    SDL_Log("Window Creada Width : %d , Height: %d",w,h);
 
     if(!mRutaIcono.empty()){
         SDL_Surface *icono;
@@ -118,12 +116,17 @@ void GameManager::establecerModoDeVideo(bool pantalla_completa){
         SDL_FreeSurface(icono);
     }
 
-    gRenderer = SDL_CreateRenderer(mMainWindow, -1, SDL_RENDERER_ACCELERATED|
-                                                    SDL_RENDERER_TARGETTEXTURE);
+    gRenderer = SDL_CreateRenderer(mMainWindow, -1, SDL_RENDERER_ACCELERATED|SDL_RENDERER_TARGETTEXTURE);
+
     if (gRenderer == nullptr){
-        std::cerr << "[ERROR] SDL_CreateRenderer" << SDL_GetError();
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"No se pudo crear el Renderer. %s",SDL_GetError());
+        SDL_DestroyWindow(mMainWindow);
+        TTF_Quit();
+        SDL_Quit();
         exit(EXIT_FAILURE);
     }
+
+    SDL_Log("Renderer Creado.");
     //Similarly, you must use SDL_TEXTUREACCESS_TARGET when you create the texture
     mpTextureBufferTarget = SDL_CreateTexture(gRenderer,
                                    SDL_GetWindowPixelFormat(mMainWindow),
@@ -174,7 +177,6 @@ int GameManager::getActiveJoys(){
  * @param nueva Nueva interfaz a mostrar
  */
 void GameManager::cambiarInterfaz(InterfazGrafica *  nueva){
-    std::cout << "GameManager::cambiarInterfaz"<<std::endl;
     if(nueva!=interfaz_actual){
         interfaces.push(nueva);
     }
@@ -194,18 +196,22 @@ bool GameManager::procesarEventos(){
             case SDL_KEYDOWN:
 
                 if(!mISFullScreenPressed && evento.key.keysym.sym==SDLK_RETURN && evento.key.keysym.mod & SDLK_LSHIFT){
-                    std::cout << "Toggle Fullscreen Mode" << std::endl;
+                    SDL_Log("Toggle Fullscreen Mode");
                     if(mIsPantallaCompleta){
                         if(!SDL_SetWindowFullscreen(mMainWindow,0)){
                             mIsPantallaCompleta = false;
                         }else{
-                            std::cerr << "[Error] No se pudo cambiar a modo windowed.";
+                            SDL_LogCritical(SDL_LOG_CATEGORY_APPLICATION,
+                                            "No se pudo cambiar a modo windowed.%s",
+                                    SDL_GetError());
                         }
                     }else{
                         if(!SDL_SetWindowFullscreen(mMainWindow,SDL_WINDOW_FULLSCREEN)){
                             mIsPantallaCompleta = true;
                         }else{
-                            std::cerr << "[Error] No se pudo cambiar a pantalla completa.";
+                            SDL_LogCritical(SDL_LOG_CATEGORY_APPLICATION,
+                                            "No se pudo cambiar a modo pantalla completa.%s",
+                                            SDL_GetError());
                         }
                     }
                     mISFullScreenPressed = true;
@@ -429,8 +435,7 @@ void GameManager::playFadeInSound(Mix_Music * music,Uint8 volumen){
 
 
 GameManager::~GameManager(){
-    std::cout << "GameManager::~GameManager()" << std::endl;
-
+    SDL_Log("GameManager::~GameManager");
     SDL_DestroyRenderer(gRenderer);
     // Close and destroy the window
     SDL_DestroyWindow(mMainWindow);
@@ -440,6 +445,7 @@ GameManager::~GameManager(){
         interfaces.pop();
     }
 
+    delete interfaz_actual;
 
     //delete mpGaleria;
 
@@ -465,7 +471,6 @@ int GameManager::getHeight() {
 }
 
 void GameManager::goBack() {
-    std::cout << "GameManager::popInterface"<< std::endl;
     interfaces.pop();
     interfaz_actual->stop();
     if(mpPopUp){
@@ -519,5 +524,21 @@ void GameManager::showPopUp(PopUpInterfaz *pPopUp,int CodePopUp) {
 
     mpPopUp      = pPopUp;
     mIDCodePopUp = CodePopUp;
+}
+
+float GameManager::getScaleRatioW() const {
+    return scaleRatioW;
+}
+
+void GameManager::setScaleRatioW(float scaleRatioW) {
+    GameManager::scaleRatioW = scaleRatioW;
+}
+
+float GameManager::getScaleRatioH() const {
+    return scaleRatioH;
+}
+
+void GameManager::setScaleRatioH(float scaleRatioH) {
+    GameManager::scaleRatioH = scaleRatioH;
 }
 

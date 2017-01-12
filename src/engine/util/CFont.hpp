@@ -22,8 +22,8 @@ class CFont {
         CFont();
         bool loadFont(string pathFont,int size);
         LTexture *  createTextureFromText(SDL_Renderer * gRenderer,string texto);
-    void setTextColor(SDL_Color color);
-    std::string getPathFont(){
+        void setTextColor(SDL_Color color);
+        std::string getPathFont(){
         return mPathFont;
     };
         ~CFont();

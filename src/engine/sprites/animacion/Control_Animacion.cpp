@@ -32,9 +32,6 @@ void ControlAnimacion::setCuadros(string frames){
     this->paso = 0;
     inicio=0;
 	
-#ifdef DEBUG    
-    cout << "Control_Animacion::Control_Animacion()" << endl;
-#endif
 }
 
 int ControlAnimacion::cuadro(void) {
@@ -68,8 +65,4 @@ bool ControlAnimacion::es_primer_cuadro(void) {
 }
 
 ControlAnimacion::~ControlAnimacion() {
-
-#ifdef DEBUG
-    cout << "Control_Animacion::~Control_Animacion()" << endl;
-#endif
 }

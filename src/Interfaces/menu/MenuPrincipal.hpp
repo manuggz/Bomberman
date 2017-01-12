@@ -15,7 +15,7 @@ class MenuPrincipal : public MenuListLabel{
 public:
 
     MenuPrincipal(GameManagerInterfazUI *gameManager) : MenuListLabel(gameManager) {
-
+        SDL_Log("MenuPrincipal::MenuPrincipal");
         mMenuOpcionesText.push_back("Nuevo Juego");
         mMenuOpcionesText.push_back("Editor");
         mMenuOpcionesText.push_back("Configurar");
@@ -58,6 +58,7 @@ public:
     }
 
     ~MenuPrincipal() override {
+        SDL_Log("MenuPrincipal::~MenuPrincipal");
         delete mpSfxCambiarOpcionResaltada;
     }
 
