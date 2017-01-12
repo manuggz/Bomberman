@@ -1,0 +1,4 @@
+<map id="Component::setBackgroundTexture" name="Component::setBackgroundTexture">
+<area shape="rect" id="node2" href="$class_menu_list_label.html#aa4622ae2bc0bf7d31aa8fe8483103e27" title="MenuListLabel::createUI" alt="" coords="249,5,413,32"/>
+<area shape="rect" id="node3" href="$class_image_component.html#aab7a7fe8608766fa1d6414ce5b4b8281" title="ImageComponent::setImage\lTexture" alt="" coords="237,57,424,98"/>
+</map>

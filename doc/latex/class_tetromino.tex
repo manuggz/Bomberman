@@ -1,0 +1,102 @@
+\hypertarget{class_tetromino}{}\section{Tetromino Class Reference}
+\label{class_tetromino}\index{Tetromino@{Tetromino}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Tetris\+Forma} \{ \\*
+{\bfseries L}, 
+{\bfseries J}, 
+{\bfseries S}, 
+{\bfseries Z}, 
+\\*
+{\bfseries O}, 
+{\bfseries I}, 
+{\bfseries T}
+ \}\hypertarget{class_tetromino_afb771d0a27c45adeb53186aa7cafd66a}{}\label{class_tetromino_afb771d0a27c45adeb53186aa7cafd66a}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Tetromino} (int n\+Filas, int n\+Columnas, int left, int top, int size, \hyperlink{class_sprite_sheet}{Sprite\+Sheet} $\ast$p\+Sheet, bool es\+Grilla\+Compartida=true)\hypertarget{class_tetromino_af161e43f11726fc240373d50ad86b2dc}{}\label{class_tetromino_af161e43f11726fc240373d50ad86b2dc}
+
+\item 
+{\bfseries Tetromino} (Tetris\+Forma forma, int left, int top, int size\+Tile, \hyperlink{class_sprite_sheet}{Sprite\+Sheet} $\ast$textura\+Grilla, bool es\+Sprite\+Sheet\+Compartida=true)\hypertarget{class_tetromino_a3d7bc422469193262cf979ae5d9bc348}{}\label{class_tetromino_a3d7bc422469193262cf979ae5d9bc348}
+
+\item 
+void {\bfseries centerX} (int posX)\hypertarget{class_tetromino_ad1513c80dce49628a7cee2042a1d4f8d}{}\label{class_tetromino_ad1513c80dce49628a7cee2042a1d4f8d}
+
+\item 
+void {\bfseries setY} (int posY)\hypertarget{class_tetromino_a7f7f8182708ff785ddecfbd346f17e5c}{}\label{class_tetromino_a7f7f8182708ff785ddecfbd346f17e5c}
+
+\item 
+void {\bfseries cambiar\+Forma} (Tetris\+Forma nuevaforma)\hypertarget{class_tetromino_af9e0ff787e1ebe5c27231a917506176b}{}\label{class_tetromino_af9e0ff787e1ebe5c27231a917506176b}
+
+\item 
+Tetris\+Forma {\bfseries get\+Forma} ()\hypertarget{class_tetromino_ad4a6d94a1b63470162d2be8a01c04ef6}{}\label{class_tetromino_ad4a6d94a1b63470162d2be8a01c04ef6}
+
+\item 
+void {\bfseries set\+Indice\+Cuadro\+Bloque} (int nuevo)\hypertarget{class_tetromino_a8cb5bf307831c20b6367ff235913eab4}{}\label{class_tetromino_a8cb5bf307831c20b6367ff235913eab4}
+
+\item 
+void {\bfseries set\+Alpha} (int nuevo\+Valor)\hypertarget{class_tetromino_a9beb85ee4ac7367d7218a632cebd9801}{}\label{class_tetromino_a9beb85ee4ac7367d7218a632cebd9801}
+
+\item 
+void \hyperlink{class_tetromino_a6d73ffe7b90de5b74c335f381f9e2436}{rotate} (int direccion=1)
+\item 
+Uint8 {\bfseries valor\+Indice\+AC} (int i, int j)\hypertarget{class_tetromino_a5542113a55ce4f5517a75b73695dd17c}{}\label{class_tetromino_a5542113a55ce4f5517a75b73695dd17c}
+
+\item 
+void {\bfseries draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)\hypertarget{class_tetromino_a0dc11b22260f1c4ead3ab779d809c2df}{}\label{class_tetromino_a0dc11b22260f1c4ead3ab779d809c2df}
+
+\item 
+void {\bfseries move} (int x, int y)\hypertarget{class_tetromino_a27b5075a10a352c156baba9a88d604fe}{}\label{class_tetromino_a27b5075a10a352c156baba9a88d604fe}
+
+\item 
+void {\bfseries move\+Ip} (int aum\+\_\+x, int aum\+\_\+y)\hypertarget{class_tetromino_a565cc0db8325cf618c8cc43f852bde6c}{}\label{class_tetromino_a565cc0db8325cf618c8cc43f852bde6c}
+
+\item 
+int {\bfseries getX} ()\hypertarget{class_tetromino_a2e1c98b4562885335aa587ba44f5a37d}{}\label{class_tetromino_a2e1c98b4562885335aa587ba44f5a37d}
+
+\item 
+int {\bfseries getY} ()\hypertarget{class_tetromino_a4d7ba9bc643fa201a0ab3d5927ab551e}{}\label{class_tetromino_a4d7ba9bc643fa201a0ab3d5927ab551e}
+
+\item 
+bool {\bfseries existe\+Indice\+AC} (int i, int j)\hypertarget{class_tetromino_a838ed35cdf4c976dda0ae06d44c2e38c}{}\label{class_tetromino_a838ed35cdf4c976dda0ae06d44c2e38c}
+
+\item 
+int {\bfseries get\+N\+Filas} ()\hypertarget{class_tetromino_aeeb734e4e416331864b39e23fed136ac}{}\label{class_tetromino_aeeb734e4e416331864b39e23fed136ac}
+
+\item 
+int {\bfseries get\+N\+Columnas} ()\hypertarget{class_tetromino_ae7de3bdb5aaf49d32ce60d6d11f5cdf9}{}\label{class_tetromino_ae7de3bdb5aaf49d32ce60d6d11f5cdf9}
+
+\item 
+void {\bfseries set\+Valor\+Indice} (int i, int j, int valor)\hypertarget{class_tetromino_ae9830084eb1fb4d70fdf495630e83d6b}{}\label{class_tetromino_ae9830084eb1fb4d70fdf495630e83d6b}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int {\bfseries N\+\_\+\+F\+O\+R\+M\+AS} = 7\hypertarget{class_tetromino_a3e809f79bde227a77e2280abc7ae0069}{}\label{class_tetromino_a3e809f79bde227a77e2280abc7ae0069}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{Tetromino@{Tetromino}!rotate@{rotate}}
+\index{rotate@{rotate}!Tetromino@{Tetromino}}
+\subsubsection[{\texorpdfstring{rotate(int direccion=1)}{rotate(int direccion=1)}}]{\setlength{\rightskip}{0pt plus 5cm}void Tetromino\+::rotate (
+\begin{DoxyParamCaption}
+\item[{int}]{direccion = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_tetromino_a6d73ffe7b90de5b74c335f381f9e2436}{}\label{class_tetromino_a6d73ffe7b90de5b74c335f381f9e2436}
+Rota la pieza 90 grados, si direccion = 1 clock-\/wise, si direccion = -\/1, inverso 
+\begin{DoxyParams}{Parameters}
+{\em direccion} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/testsotrosjuegos/\+Tetris/Tetromino.\+hpp\end{DoxyCompactItemize}

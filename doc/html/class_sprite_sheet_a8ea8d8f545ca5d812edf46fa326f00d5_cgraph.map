@@ -1,0 +1,4 @@
+<map id="SpriteSheet::SpriteSheet" name="SpriteSheet::SpriteSheet">
+<area shape="rect" id="node2" href="$class_l_texture.html#ad9e83e3ba49b7ef6a0719ddbbdf7b3fa" title="LTexture::getWidth" alt="" coords="222,5,355,32"/>
+<area shape="rect" id="node3" href="$class_l_texture.html#a88f3901941f4a71f929845ee1311b68b" title="LTexture::getHeight" alt="" coords="220,56,357,83"/>
+</map>

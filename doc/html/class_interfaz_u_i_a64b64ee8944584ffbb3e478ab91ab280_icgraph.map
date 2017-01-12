@@ -1,0 +1,4 @@
+<map id="InterfazUI::stop" name="InterfazUI::stop">
+<area shape="rect" id="node2" href="$class_game_manager.html#aaa4c8097c4e4288282a261e09ceebcb8" title="GameManager::goBack" alt="" coords="168,5,327,32"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#a6528d38df521ce4915cd9a4aa11ed274" title="GameManager::setRoot" alt="" coords="167,56,328,83"/>
+</map>

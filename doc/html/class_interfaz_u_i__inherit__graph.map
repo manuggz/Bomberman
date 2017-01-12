@@ -1,0 +1,11 @@
+<map id="InterfazUI" name="InterfazUI">
+<area shape="rect" id="node2" href="$class_editor.html" title="Editor" alt="" coords="5,80,61,107"/>
+<area shape="rect" id="node3" href="$class_juego.html" title="Juego" alt="" coords="86,80,143,107"/>
+<area shape="rect" id="node4" href="$class_menu.html" title="Menu" alt="" coords="167,80,222,107"/>
+<area shape="rect" id="node5" href="$class_menu_list_label.html" title="MenuListLabel" alt="" coords="247,80,353,107"/>
+<area shape="rect" id="node8" href="$class_menu_modo_multijugador.html" title="MenuModoMultijugador" alt="" coords="378,80,534,107"/>
+<area shape="rect" id="node9" href="$class_othello_interfaz.html" title="OthelloInterfaz" alt="" coords="559,80,665,107"/>
+<area shape="rect" id="node10" href="$class_tetris_interfaz.html" title="TetrisInterfaz" alt="" coords="689,80,788,107"/>
+<area shape="rect" id="node6" href="$class_menu_nuevo_juego.html" title="MenuNuevoJuego" alt="" coords="166,155,293,181"/>
+<area shape="rect" id="node7" href="$class_menu_principal.html" title="MenuPrincipal" alt="" coords="317,155,421,181"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="PopUpJuegoMostrarGanadas::procesarEvento" name="PopUpJuegoMostrarGanadas::procesarEvento">
+<area shape="rect" id="node2" href="$class_pop_up_interfaz.html#acd7418d2edadaf261076f0839bfc4e5c" title="PopUpInterfaz::procesarEvento" alt="" coords="207,5,412,32"/>
+<area shape="rect" id="node3" href="$class_game_manager_pop_up_interfaz.html#a2eae4cfc151ef0fbf0a799fd0902fe95" title="GameManagerPopUpInterfaz\l::closePopUp" alt="" coords="460,23,651,65"/>
+</map>

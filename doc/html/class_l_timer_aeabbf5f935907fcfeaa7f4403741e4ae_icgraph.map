@@ -1,0 +1,9 @@
+<map id="LTimer::stop" name="LTimer::stop">
+<area shape="rect" id="node2" href="$class_juego.html#a74a8689a0513f13a8dfa6729bae77ada" title="Juego::update" alt="" coords="170,5,274,32"/>
+<area shape="rect" id="node3" href="$class_player.html#a98a4100f1290b3e0ab6c5d93f1d764b7" title="Player::setEnPantalla" alt="" coords="148,56,296,83"/>
+<area shape="rect" id="node4" href="$class_juego.html#ac4832a99f849b8180667cfda4a2493e3" title="Juego::agregarPlayersActivos" alt="" coords="344,31,540,57"/>
+<area shape="rect" id="node8" href="$class_juego.html#a336e20deb3bfb1e0717c1bf967ff7a75" title="Juego::playerMuerto" alt="" coords="372,81,512,108"/>
+<area shape="rect" id="node5" href="$class_juego.html#a0f2054b23552adc7898f67ea4547a980" title="Juego::reiniciarEstado" alt="" coords="588,31,739,57"/>
+<area shape="rect" id="node6" href="$class_juego.html#a83e5a1132a5355c34c31d219b4d035dc" title="Juego::start" alt="" coords="810,5,901,32"/>
+<area shape="rect" id="node7" href="$class_juego.html#ac141311099a222492201a52842c207b7" title="Juego::resultPopUp" alt="" coords="787,56,924,83"/>
+</map>

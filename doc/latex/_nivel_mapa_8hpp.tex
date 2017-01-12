@@ -1,0 +1,135 @@
+\hypertarget{_nivel_mapa_8hpp}{}\section{src/niveles/\+Nivel\+Mapa.hpp File Reference}
+\label{_nivel_mapa_8hpp}\index{src/niveles/\+Nivel\+Mapa.\+hpp@{src/niveles/\+Nivel\+Mapa.\+hpp}}
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../util.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../engine/util/\+C\+Meta\+Data.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../engine/interfaces/\+Interfaz\+U\+I.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../engine/util/\+Sprite\+Sheet.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../engine/mapa/include/\+T\+M\+X\+Parser.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../engine/mapa/\+C\+Mapa.\+hpp\char`\"{}}\\*
+Include dependency graph for Nivel\+Mapa.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_nivel_mapa_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_nivel_mapa_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_nivel_mapa}{Nivel\+Mapa}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_nivel_mapa_8hpp_ab7911f9d34ae502b9d0a161fa008f200}{O\+B\+J\+E\+C\+T\+S\+G\+R\+O\+U\+P\+\_\+\+P\+L\+A\+Y\+E\+R\+S\+\_\+\+N\+A\+ME}~\char`\"{}players\char`\"{}
+\item 
+\#define \hyperlink{_nivel_mapa_8hpp_afcfa5420f5f1fbe314e7c48f07423b60}{O\+B\+J\+E\+C\+T\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+N\+A\+ME}~\char`\"{}Player\char`\"{}
+\item 
+\#define \hyperlink{_nivel_mapa_8hpp_a604b51764f90b0c4b76637891dc0adb5}{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+X\+\_\+\+N\+\_\+\+V\+I\+D\+A\+S\+\_\+\+P\+L\+A\+Y\+ER}~\char`\"{}n\+\_\+vidas\char`\"{}
+\item 
+\#define \hyperlink{_nivel_mapa_8hpp_aec0ab654f6f61695b56ea817f0e483ff}{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+N\+\_\+\+B\+O\+M\+B\+AS}~\char`\"{}n\+\_\+bombas\char`\"{}
+\item 
+\#define \hyperlink{_nivel_mapa_8hpp_a982385c137527d508cbd22ad3dd74204}{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+A\+L\+C\+A\+N\+C\+E\+\_\+\+B\+O\+M\+B\+AS}~\char`\"{}alcance\+\_\+bombas\char`\"{}
+\item 
+\#define \hyperlink{_nivel_mapa_8hpp_a3e81190f1a8f6d6fb4fca6b2673ac0c6}{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+T\+E\+MS}~\char`\"{}n\+\_\+items\char`\"{}
+\item 
+\#define \hyperlink{_nivel_mapa_8hpp_aca7c3efcb89beb68ae69ce47d9e6fc68}{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+D\+\_\+\+T\+I\+L\+E\+\_\+\+L\+L\+A\+M\+AS}~\char`\"{}tile\+\_\+on\+\_\+fire\char`\"{}
+\item 
+\#define \hyperlink{_nivel_mapa_8hpp_a71e010458a931d7dc4e09ae3a4d8748d}{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+SO}~\char`\"{}id\+\_\+tile\+\_\+piso\char`\"{}
+\item 
+\#define \hyperlink{_nivel_mapa_8hpp_a7cf7482a17b6b0e55c00baea8de8eb97}{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+S\+O\+\_\+\+S\+O\+M\+B\+RA}~\char`\"{}id\+\_\+tile\+\_\+piso\+\_\+con\+\_\+sombra\char`\"{}
+\item 
+\#define \hyperlink{_nivel_mapa_8hpp_ad47cfc75c52655a2cec734554c979be2}{T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+S\+O\+L\+I\+DO}~\char`\"{}solido\char`\"{}
+\item 
+\#define \hyperlink{_nivel_mapa_8hpp_a8dca2dc87d9528e094d186aa3fcbf193}{T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+R\+O\+M\+P\+I\+B\+LE}~\char`\"{}rompible\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}!M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+A\+L\+C\+A\+N\+C\+E\+\_\+\+B\+O\+M\+B\+AS@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+A\+L\+C\+A\+N\+C\+E\+\_\+\+B\+O\+M\+B\+AS}}
+\index{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+A\+L\+C\+A\+N\+C\+E\+\_\+\+B\+O\+M\+B\+AS@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+A\+L\+C\+A\+N\+C\+E\+\_\+\+B\+O\+M\+B\+AS}!Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}}
+\subsubsection[{\texorpdfstring{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+A\+L\+C\+A\+N\+C\+E\+\_\+\+B\+O\+M\+B\+AS}{MAPA_PROPERTY_ALCANCE_BOMBAS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+A\+L\+C\+A\+N\+C\+E\+\_\+\+B\+O\+M\+B\+AS~\char`\"{}alcance\+\_\+bombas\char`\"{}}\hypertarget{_nivel_mapa_8hpp_a982385c137527d508cbd22ad3dd74204}{}\label{_nivel_mapa_8hpp_a982385c137527d508cbd22ad3dd74204}
+
+
+Definition at line 18 of file Nivel\+Mapa.\+hpp.
+
+\index{Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}!M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+D\+\_\+\+T\+I\+L\+E\+\_\+\+L\+L\+A\+M\+AS@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+D\+\_\+\+T\+I\+L\+E\+\_\+\+L\+L\+A\+M\+AS}}
+\index{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+D\+\_\+\+T\+I\+L\+E\+\_\+\+L\+L\+A\+M\+AS@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+D\+\_\+\+T\+I\+L\+E\+\_\+\+L\+L\+A\+M\+AS}!Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}}
+\subsubsection[{\texorpdfstring{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+D\+\_\+\+T\+I\+L\+E\+\_\+\+L\+L\+A\+M\+AS}{MAPA_PROPERTY_ID_TILE_LLAMAS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+D\+\_\+\+T\+I\+L\+E\+\_\+\+L\+L\+A\+M\+AS~\char`\"{}tile\+\_\+on\+\_\+fire\char`\"{}}\hypertarget{_nivel_mapa_8hpp_aca7c3efcb89beb68ae69ce47d9e6fc68}{}\label{_nivel_mapa_8hpp_aca7c3efcb89beb68ae69ce47d9e6fc68}
+
+
+Definition at line 20 of file Nivel\+Mapa.\+hpp.
+
+\index{Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}!M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+T\+E\+MS@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+T\+E\+MS}}
+\index{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+T\+E\+MS@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+T\+E\+MS}!Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}}
+\subsubsection[{\texorpdfstring{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+T\+E\+MS}{MAPA_PROPERTY_ITEMS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+I\+T\+E\+MS~\char`\"{}n\+\_\+items\char`\"{}}\hypertarget{_nivel_mapa_8hpp_a3e81190f1a8f6d6fb4fca6b2673ac0c6}{}\label{_nivel_mapa_8hpp_a3e81190f1a8f6d6fb4fca6b2673ac0c6}
+
+
+Definition at line 19 of file Nivel\+Mapa.\+hpp.
+
+\index{Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}!M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+N\+\_\+\+B\+O\+M\+B\+AS@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+N\+\_\+\+B\+O\+M\+B\+AS}}
+\index{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+N\+\_\+\+B\+O\+M\+B\+AS@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+N\+\_\+\+B\+O\+M\+B\+AS}!Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}}
+\subsubsection[{\texorpdfstring{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+N\+\_\+\+B\+O\+M\+B\+AS}{MAPA_PROPERTY_N_BOMBAS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+N\+\_\+\+B\+O\+M\+B\+AS~\char`\"{}n\+\_\+bombas\char`\"{}}\hypertarget{_nivel_mapa_8hpp_aec0ab654f6f61695b56ea817f0e483ff}{}\label{_nivel_mapa_8hpp_aec0ab654f6f61695b56ea817f0e483ff}
+
+
+Definition at line 17 of file Nivel\+Mapa.\+hpp.
+
+\index{Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}!M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+SO@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+SO}}
+\index{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+SO@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+SO}!Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}}
+\subsubsection[{\texorpdfstring{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+SO}{MAPA_PROPERTY_TILE_PISO_SIN_SOMBRA}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+SO~\char`\"{}id\+\_\+tile\+\_\+piso\char`\"{}}\hypertarget{_nivel_mapa_8hpp_a71e010458a931d7dc4e09ae3a4d8748d}{}\label{_nivel_mapa_8hpp_a71e010458a931d7dc4e09ae3a4d8748d}
+
+
+Definition at line 21 of file Nivel\+Mapa.\+hpp.
+
+\index{Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}!M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+S\+O\+\_\+\+S\+O\+M\+B\+RA@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+S\+O\+\_\+\+S\+O\+M\+B\+RA}}
+\index{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+S\+O\+\_\+\+S\+O\+M\+B\+RA@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+S\+O\+\_\+\+S\+O\+M\+B\+RA}!Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}}
+\subsubsection[{\texorpdfstring{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+S\+O\+\_\+\+S\+O\+M\+B\+RA}{MAPA_PROPERTY_TILE_PISO_SOMBRA}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+T\+I\+L\+E\+\_\+\+P\+I\+S\+O\+\_\+\+S\+O\+M\+B\+RA~\char`\"{}id\+\_\+tile\+\_\+piso\+\_\+con\+\_\+sombra\char`\"{}}\hypertarget{_nivel_mapa_8hpp_a7cf7482a17b6b0e55c00baea8de8eb97}{}\label{_nivel_mapa_8hpp_a7cf7482a17b6b0e55c00baea8de8eb97}
+
+
+Definition at line 22 of file Nivel\+Mapa.\+hpp.
+
+\index{Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}!M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+X\+\_\+\+N\+\_\+\+V\+I\+D\+A\+S\+\_\+\+P\+L\+A\+Y\+ER@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+X\+\_\+\+N\+\_\+\+V\+I\+D\+A\+S\+\_\+\+P\+L\+A\+Y\+ER}}
+\index{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+X\+\_\+\+N\+\_\+\+V\+I\+D\+A\+S\+\_\+\+P\+L\+A\+Y\+ER@{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+X\+\_\+\+N\+\_\+\+V\+I\+D\+A\+S\+\_\+\+P\+L\+A\+Y\+ER}!Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}}
+\subsubsection[{\texorpdfstring{M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+X\+\_\+\+N\+\_\+\+V\+I\+D\+A\+S\+\_\+\+P\+L\+A\+Y\+ER}{MAPA_PROPERTY_N_VIDAS_PLAYER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+P\+A\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+X\+\_\+\+N\+\_\+\+V\+I\+D\+A\+S\+\_\+\+P\+L\+A\+Y\+ER~\char`\"{}n\+\_\+vidas\char`\"{}}\hypertarget{_nivel_mapa_8hpp_a604b51764f90b0c4b76637891dc0adb5}{}\label{_nivel_mapa_8hpp_a604b51764f90b0c4b76637891dc0adb5}
+
+
+Definition at line 16 of file Nivel\+Mapa.\+hpp.
+
+\index{Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}!O\+B\+J\+E\+C\+T\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+N\+A\+ME@{O\+B\+J\+E\+C\+T\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+N\+A\+ME}}
+\index{O\+B\+J\+E\+C\+T\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+N\+A\+ME@{O\+B\+J\+E\+C\+T\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+N\+A\+ME}!Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}}
+\subsubsection[{\texorpdfstring{O\+B\+J\+E\+C\+T\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+N\+A\+ME}{OBJECT_PLAYER_NAME}}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+B\+J\+E\+C\+T\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+N\+A\+ME~\char`\"{}Player\char`\"{}}\hypertarget{_nivel_mapa_8hpp_afcfa5420f5f1fbe314e7c48f07423b60}{}\label{_nivel_mapa_8hpp_afcfa5420f5f1fbe314e7c48f07423b60}
+
+
+Definition at line 15 of file Nivel\+Mapa.\+hpp.
+
+\index{Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}!O\+B\+J\+E\+C\+T\+S\+G\+R\+O\+U\+P\+\_\+\+P\+L\+A\+Y\+E\+R\+S\+\_\+\+N\+A\+ME@{O\+B\+J\+E\+C\+T\+S\+G\+R\+O\+U\+P\+\_\+\+P\+L\+A\+Y\+E\+R\+S\+\_\+\+N\+A\+ME}}
+\index{O\+B\+J\+E\+C\+T\+S\+G\+R\+O\+U\+P\+\_\+\+P\+L\+A\+Y\+E\+R\+S\+\_\+\+N\+A\+ME@{O\+B\+J\+E\+C\+T\+S\+G\+R\+O\+U\+P\+\_\+\+P\+L\+A\+Y\+E\+R\+S\+\_\+\+N\+A\+ME}!Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}}
+\subsubsection[{\texorpdfstring{O\+B\+J\+E\+C\+T\+S\+G\+R\+O\+U\+P\+\_\+\+P\+L\+A\+Y\+E\+R\+S\+\_\+\+N\+A\+ME}{OBJECTSGROUP_PLAYERS_NAME}}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+B\+J\+E\+C\+T\+S\+G\+R\+O\+U\+P\+\_\+\+P\+L\+A\+Y\+E\+R\+S\+\_\+\+N\+A\+ME~\char`\"{}players\char`\"{}}\hypertarget{_nivel_mapa_8hpp_ab7911f9d34ae502b9d0a161fa008f200}{}\label{_nivel_mapa_8hpp_ab7911f9d34ae502b9d0a161fa008f200}
+
+
+Definition at line 14 of file Nivel\+Mapa.\+hpp.
+
+\index{Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}!T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+R\+O\+M\+P\+I\+B\+LE@{T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+R\+O\+M\+P\+I\+B\+LE}}
+\index{T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+R\+O\+M\+P\+I\+B\+LE@{T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+R\+O\+M\+P\+I\+B\+LE}!Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}}
+\subsubsection[{\texorpdfstring{T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+R\+O\+M\+P\+I\+B\+LE}{TILE_PROPERTY_ROMPIBLE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+R\+O\+M\+P\+I\+B\+LE~\char`\"{}rompible\char`\"{}}\hypertarget{_nivel_mapa_8hpp_a8dca2dc87d9528e094d186aa3fcbf193}{}\label{_nivel_mapa_8hpp_a8dca2dc87d9528e094d186aa3fcbf193}
+
+
+Definition at line 29 of file Nivel\+Mapa.\+hpp.
+
+\index{Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}!T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+S\+O\+L\+I\+DO@{T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+S\+O\+L\+I\+DO}}
+\index{T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+S\+O\+L\+I\+DO@{T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+S\+O\+L\+I\+DO}!Nivel\+Mapa.\+hpp@{Nivel\+Mapa.\+hpp}}
+\subsubsection[{\texorpdfstring{T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+S\+O\+L\+I\+DO}{TILE_PROPERTY_SOLIDO}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+I\+L\+E\+\_\+\+P\+R\+O\+P\+E\+R\+T\+Y\+\_\+\+S\+O\+L\+I\+DO~\char`\"{}solido\char`\"{}}\hypertarget{_nivel_mapa_8hpp_ad47cfc75c52655a2cec734554c979be2}{}\label{_nivel_mapa_8hpp_ad47cfc75c52655a2cec734554c979be2}
+
+
+Definition at line 28 of file Nivel\+Mapa.\+hpp.
+

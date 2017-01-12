@@ -1,0 +1,6 @@
+<map id="UpdateGroup::update" name="UpdateGroup::update">
+<area shape="rect" id="node2" href="$class_group.html#a524f96ad97766e7f6bab5e3e8f7b0dce" title="Group::update" alt="" coords="215,5,319,32"/>
+<area shape="rect" id="node3" href="$class_sprite.html#a0a8ca1624419d06d732ea904a2bad80d" title="Sprite::update" alt="" coords="216,56,319,83"/>
+<area shape="rect" id="node4" href="$class_sprite.html#ad66de3c70e4199c16c771e39402ff5ee" title="Sprite::isKilled" alt="" coords="214,107,321,133"/>
+<area shape="rect" id="node5" href="$class_interfaz_sprite_group.html#acad50741e8bab94e3ce1f8c4c0cbad52" title="InterfazSpriteGroup\l::eliminarSprite" alt="" coords="200,158,335,199"/>
+</map>

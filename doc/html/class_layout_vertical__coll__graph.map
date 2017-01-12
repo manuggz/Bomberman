@@ -1,0 +1,5 @@
+<map id="LayoutVertical" name="LayoutVertical">
+<area shape="rect" id="node2" href="$class_layout_component.html" title="LayoutComponent" alt="" coords="5,171,133,197"/>
+<area shape="rect" id="node3" href="$class_component.html" title="Component" alt="" coords="25,95,114,121"/>
+<area shape="rect" id="node4" href="$class_l_texture.html" title="LTexture" alt="" coords="33,5,106,32"/>
+</map>

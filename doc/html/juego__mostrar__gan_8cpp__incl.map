@@ -1,0 +1,17 @@
+<map id="src/Interfaces/juego/juego_mostrar_gan.cpp" name="src/Interfaces/juego/juego_mostrar_gan.cpp">
+<area shape="rect" id="node2" href="$juego__mostrar__gan_8hpp.html" title="juego_mostrar_gan.hpp" alt="" coords="561,95,719,121"/>
+<area shape="rect" id="node5" href="$constantes_8hpp.html" title="../../constantes.hpp" alt="" coords="1565,647,1699,673"/>
+<area shape="rect" id="node6" href="$game__manager_8hpp.html" title="../../engine/util/game\l_manager.hpp" alt="" coords="1035,169,1176,211"/>
+<area shape="rect" id="node30" href="$animacion_8hpp.html" title="../../engine/sprites\l/animacion/animacion.hpp" alt="" coords="332,408,505,449"/>
+<area shape="rect" id="node7" href="$galeria_8hpp.html" title="../../galeria.hpp" alt="" coords="1347,497,1456,524"/>
+<area shape="rect" id="node11" href="$util_8hpp.html" title="util.hpp" alt="" coords="1277,572,1341,599"/>
+<area shape="rect" id="node20" href="$_interfaz_u_i_8hpp.html" title="../interfaces/InterfazUI.hpp" alt="" coords="1101,333,1280,360"/>
+<area shape="rect" id="node24" href="$_pop_up_interfaz_8hpp.html" title="../interfaces/PopUpInterfaz.hpp" alt="" coords="798,259,1002,285"/>
+<area shape="rect" id="node13" href="$_l_texture_8hpp.html" title="engine/util/LTexture.hpp" alt="" coords="861,647,1022,673"/>
+<area shape="rect" id="node21" href="$_game_manager_interfaz_u_i_8hpp.html" title="GameManagerInterfazUI.hpp" alt="" coords="1102,415,1293,442"/>
+<area shape="rect" id="node22" href="$_game_manager_pop_up_interfaz_8hpp.html" title="GameManagerPopUpInterfaz.hpp" alt="" coords="1013,497,1229,524"/>
+<area shape="rect" id="node31" href="$_c_sprite_8hpp.html" title="../CSprite.hpp" alt="" coords="203,497,306,524"/>
+<area shape="rect" id="node34" href="$_control___animacion_8hpp.html" title="Control_Animacion.hpp" alt="" coords="340,497,497,524"/>
+<area shape="rect" id="node36" href="$_sprite_sheet_8hpp.html" title="../../util/SpriteSheet.hpp" alt="" coords="728,497,888,524"/>
+<area shape="rect" id="node33" href="$_sprite_container_8hpp.html" title="SpriteContainer.hpp" alt="" coords="177,572,314,599"/>
+</map>

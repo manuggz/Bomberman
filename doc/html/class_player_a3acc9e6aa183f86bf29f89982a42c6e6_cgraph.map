@@ -1,0 +1,6 @@
+<map id="Player::mover_ip" name="Player::mover_ip">
+<area shape="rect" id="node2" href="$class_interfaz_juego.html#a78f25518403ce658e93e528dc99ac5b9" title="InterfazJuego::colisionCon\lBombas" alt="" coords="189,5,367,47"/>
+<area shape="rect" id="node3" href="$class_interfaz_juego.html#a4a7543a340f74cff355aa900329f5c89" title="InterfazJuego::isOutOfMap\lBounds" alt="" coords="189,71,367,112"/>
+<area shape="rect" id="node4" href="$class_interfaz_juego.html#ab744f7c22be984491e63dcbd5b05c556" title="InterfazJuego::colisionConMapa" alt="" coords="173,137,383,163"/>
+<area shape="rect" id="node5" href="$class_player.html#aebb43c51a7da9e652f5574e8ded62f87" title="Player::move" alt="" coords="229,187,327,214"/>
+</map>

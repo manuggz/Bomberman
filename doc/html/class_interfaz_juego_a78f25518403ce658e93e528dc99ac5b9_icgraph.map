@@ -1,0 +1,10 @@
+<map id="InterfazJuego::colisionConBombas" name="InterfazJuego::colisionConBombas">
+<area shape="rect" id="node2" href="$class_explosion.html#aa381f273160b625c9a37e40e1ae0cda3" title="Explosion::detectarAlcances" alt="" coords="231,31,419,57"/>
+<area shape="rect" id="node4" href="$class_player.html#a3acc9e6aa183f86bf29f89982a42c6e6" title="Player::mover_ip" alt="" coords="265,107,385,133"/>
+<area shape="rect" id="node3" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="467,5,611,32"/>
+<area shape="rect" id="node5" href="$class_player.html#a82ff3440c08bd0c116b53b90c29efa92" title="Player::izquierda" alt="" coords="479,56,598,83"/>
+<area shape="rect" id="node7" href="$class_player.html#a0345065f26494d5312365b406b5c0acd" title="Player::derecha" alt="" coords="482,107,595,133"/>
+<area shape="rect" id="node8" href="$class_player.html#af8b5efff3494a47772ead1e026f337cd" title="Player::arriba" alt="" coords="489,157,588,184"/>
+<area shape="rect" id="node9" href="$class_player.html#ad98a56271096fa93b68991038de58caf" title="Player::abajo" alt="" coords="489,208,588,235"/>
+<area shape="rect" id="node6" href="$class_player.html#a5cb527f12c3423e1bbb1b6595a85acfc" title="Player::update" alt="" coords="659,132,765,159"/>
+</map>

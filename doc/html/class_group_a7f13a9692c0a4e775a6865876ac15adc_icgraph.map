@@ -1,0 +1,8 @@
+<map id="Group::collide" name="Group::collide">
+<area shape="rect" id="node2" href="$class_group.html#a13d70b578edcf2d2b93707e84d79c1af" title="Group::collide" alt="" coords="208,5,311,32"/>
+<area shape="rect" id="node3" href="$class_juego.html#a7226f7dd36ef3519b170035afd8ce943" title="Juego::colisionBloqueEnLlamas" alt="" coords="156,56,363,83"/>
+<area shape="rect" id="node4" href="$class_juego.html#a0d676fd93f16aff9c9e53fe062b4cbe3" title="Juego::colisionConItems" alt="" coords="176,107,343,133"/>
+<area shape="rect" id="node5" href="$class_juego.html#a220161dcde1e991619ac218de9354c5b" title="Juego::colisionConExplosiones" alt="" coords="157,157,361,184"/>
+<area shape="rect" id="node6" href="$class_juego.html#a4af8340331254c695a0258f22284efe6" title="Juego::colisionConBombas" alt="" coords="169,208,350,235"/>
+<area shape="rect" id="node7" href="$class_juego.html#a7b85a67ebed60f1e80e314f2298951a8" title="Juego::agregarBomba" alt="" coords="185,259,334,285"/>
+</map>

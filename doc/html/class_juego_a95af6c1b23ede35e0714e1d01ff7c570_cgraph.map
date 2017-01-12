@@ -1,0 +1,11 @@
+<map id="Juego::establecerValoresDeMapaPlayer" name="Juego::establecerValoresDeMapaPlayer">
+<area shape="rect" id="node2" href="$class_player.html#aebb43c51a7da9e652f5574e8ded62f87" title="Player::move" alt="" coords="263,5,362,32"/>
+<area shape="rect" id="node3" href="$class_nivel_mapa.html#a5973180597daa732fdbdbf39f4edb21c" title="NivelMapa::getPosXPlayer" alt="" coords="223,56,402,83"/>
+<area shape="rect" id="node4" href="$class_nivel_mapa.html#a1e6a410c29cdcbb6fc867453e08b1bd5" title="NivelMapa::getPosYPlayer" alt="" coords="223,107,402,133"/>
+<area shape="rect" id="node5" href="$class_player.html#ac7a3107b816d747203be750a9b68771e" title="Player::setVidas" alt="" coords="253,157,372,184"/>
+<area shape="rect" id="node8" href="$class_mapa.html#a169f2cb4198d7933d88099fb16042b9f" title="Mapa::getMapProperty" alt="" coords="235,208,390,235"/>
+<area shape="rect" id="node9" href="$class_player.html#aefb09c11910bdd64a1030f3f2576d4b2" title="Player::setNBombas" alt="" coords="241,259,384,285"/>
+<area shape="rect" id="node10" href="$class_player.html#ae24d729abd2b7ccc9f358ac72498fcde" title="Player::setAlcanceBombas" alt="" coords="223,309,403,336"/>
+<area shape="rect" id="node6" href="$class_player.html#a23bedb65ce970474120640ae36cba19f" title="Player::setProteccion" alt="" coords="451,157,597,184"/>
+<area shape="rect" id="node7" href="$class_l_timer.html#a7dc11f05cf5098a6d06ebd6ebec96ed6" title="LTimer::start" alt="" coords="645,157,741,184"/>
+</map>

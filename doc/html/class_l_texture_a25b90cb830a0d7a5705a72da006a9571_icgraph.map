@@ -1,0 +1,18 @@
+<map id="LTexture::loadFromFile" name="LTexture::loadFromFile">
+<area shape="rect" id="node2" href="$class_menu_list_label.html#aa4622ae2bc0bf7d31aa8fe8483103e27" title="MenuListLabel::createUI" alt="" coords="213,281,377,308"/>
+<area shape="rect" id="node3" href="$class_sprite_sheet.html#a86ee75d55b69a7b5aff33c0207fcfdd0" title="SpriteSheet::cargarDesde\lArchivo" alt="" coords="209,333,381,374"/>
+<area shape="rect" id="node16" href="$class_galeria.html#af5f8526638f6c5d6f64af4594cca5dc4" title="Galeria::cargarTexturas" alt="" coords="216,428,375,455"/>
+<area shape="rect" id="node4" href="$class_mapa.html#a25d45fc6b9c1622f8261a0c849a78294" title="Mapa::cargar" alt="" coords="480,176,579,203"/>
+<area shape="rect" id="node10" href="$class_menu_modo_multijugador.html#aa87c06427be64fd73e17d9ea37d8744e" title="MenuModoMultijugador\l::createUI" alt="" coords="1523,158,1679,199"/>
+<area shape="rect" id="node14" href="$class_sprite_sheet.html#ad6b04a5b43dd7ad57895a9f28cb5ac49" title="SpriteSheet::SpriteSheet" alt="" coords="446,340,613,367"/>
+<area shape="rect" id="node15" href="$class_juego_mostrar_ganadas.html#a8952d565827d92657069f51a4c5abb6b" title="PopUpJuegoMostrarGanadas\l::createUI" alt="" coords="453,391,606,433"/>
+<area shape="rect" id="node5" href="$class_nivel_mapa.html#a3defe38a56c81305d916c96ec2e6b695" title="NivelMapa::cargar" alt="" coords="677,140,805,167"/>
+<area shape="rect" id="node6" href="$class_juego.html#a0f2054b23552adc7898f67ea4547a980" title="Juego::reiniciarEstado" alt="" coords="865,56,1016,83"/>
+<area shape="rect" id="node9" href="$class_menu_modo_multijugador.html#a77f0be9bcdc3fbdf3130a024ef25bef5" title="MenuModoMultijugador\l::establecerTerrenoBatalla" alt="" coords="853,133,1028,174"/>
+<area shape="rect" id="node7" href="$class_juego.html#a83e5a1132a5355c34c31d219b4d035dc" title="Juego::start" alt="" coords="1128,5,1219,32"/>
+<area shape="rect" id="node8" href="$class_juego.html#ac141311099a222492201a52842c207b7" title="Juego::resultPopUp" alt="" coords="1105,56,1242,83"/>
+<area shape="rect" id="node11" href="$class_menu_modo_multijugador.html#a589a0611b7f3cf2978ff1ab72ce3b35c" title="MenuModoMultijugador\l::ejecutarAccionBotonClicked" alt="" coords="1076,158,1271,199"/>
+<area shape="rect" id="node12" href="$class_menu_modo_multijugador.html#a3aee7e0e5ab94f1e866f9306aabed208" title="MenuModoMultijugador\l::clickControl" alt="" coords="1319,158,1475,199"/>
+<area shape="rect" id="node13" href="$class_menu_modo_multijugador.html#a6520fcac1cc0bff79f00c509e34afbd0" title="MenuModoMultijugador\l::procesarEvento" alt="" coords="1319,223,1475,265"/>
+<area shape="rect" id="node17" href="$class_game_manager.html#aa0e2424dc1a39d380e5b6605b179bf05" title="GameManager::GameManager" alt="" coords="429,457,629,484"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_pop_up_interfaz.html" title="PopUpInterfaz" alt="" coords="5,31,112,57"/>
+<area shape="rect" id="node2" href="$class_pop_up_juego_mostrar_ganadas.html" title="PopUpJuegoMostrarGanadas" alt="" coords="160,5,353,32"/>
+<area shape="rect" id="node3" href="$class_pop_up_mostrar_mensaje_texto.html" title="PopUpMostrarMensajeTexto" alt="" coords="163,56,351,83"/>
+<area shape="rect" id="node4" href="$class_pop_up_count_down.html" title="PopUpCountDown" alt="" coords="401,56,532,83"/>
+</map>

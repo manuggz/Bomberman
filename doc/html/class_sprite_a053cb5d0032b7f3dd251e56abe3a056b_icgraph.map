@@ -1,0 +1,9 @@
+<map id="Sprite::setY" name="Sprite::setY">
+<area shape="rect" id="node2" href="$class_juego_mostrar_ganadas.html#a8952d565827d92657069f51a4c5abb6b" title="PopUpJuegoMostrarGanadas\l::createUI" alt="" coords="155,5,308,47"/>
+<area shape="rect" id="node3" href="$class_juego_mostrar_ganadas.html#a049acb4e679c3c4357729badda704fab" title="PopUpJuegoMostrarGanadas\l::update" alt="" coords="155,71,308,112"/>
+<area shape="rect" id="node4" href="$class_menu_modo_multijugador.html#a77f0be9bcdc3fbdf3130a024ef25bef5" title="MenuModoMultijugador\l::establecerTerrenoBatalla" alt="" coords="144,136,319,177"/>
+<area shape="rect" id="node5" href="$class_menu_modo_multijugador.html#aa87c06427be64fd73e17d9ea37d8744e" title="MenuModoMultijugador\l::createUI" alt="" coords="813,136,969,177"/>
+<area shape="rect" id="node6" href="$class_menu_modo_multijugador.html#a589a0611b7f3cf2978ff1ab72ce3b35c" title="MenuModoMultijugador\l::ejecutarAccionBotonClicked" alt="" coords="367,165,561,207"/>
+<area shape="rect" id="node7" href="$class_menu_modo_multijugador.html#a3aee7e0e5ab94f1e866f9306aabed208" title="MenuModoMultijugador\l::clickControl" alt="" coords="609,165,765,207"/>
+<area shape="rect" id="node8" href="$class_menu_modo_multijugador.html#a6520fcac1cc0bff79f00c509e34afbd0" title="MenuModoMultijugador\l::procesarEvento" alt="" coords="609,231,765,272"/>
+</map>

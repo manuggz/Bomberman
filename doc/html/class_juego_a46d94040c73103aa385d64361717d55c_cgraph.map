@@ -1,0 +1,14 @@
+<map id="Juego::drawBarra" name="Juego::drawBarra">
+<area shape="rect" id="node2" href="$class_game_manager_interfaz_u_i.html#a88506f02eecae0225cc31fdc09a86e49" title="GameManagerInterfazUI\l::getTexture" alt="" coords="181,5,346,47"/>
+<area shape="rect" id="node3" href="$class_l_texture.html#a7edbf22bd4e3f5efd60e20b913d1dcc4" title="LTexture::render" alt="" coords="407,25,525,51"/>
+<area shape="rect" id="node4" href="$util_8cpp.html#a23a415366edc2e101aa255c681fa5390" title="imprimir_desde_grilla" alt="" coords="191,122,335,149"/>
+<area shape="rect" id="node8" href="$class_juego.html#a9511541ec77f0dcb380df6f2f49f52e2" title="Juego::estaPlayerActivo" alt="" coords="181,173,345,199"/>
+<area shape="rect" id="node10" href="$class_l_timer.html#a102ca688eaa4109dd733b4b60a29d27c" title="LTimer::isStarted" alt="" coords="202,223,325,250"/>
+<area shape="rect" id="node11" href="$class_juego.html#a55223ce1f280cbeff8443196b3334069" title="Juego::getSegundosInicio\lNivel" alt="" coords="177,275,349,316"/>
+<area shape="rect" id="node13" href="$class_text_label_component.html#a18b7058e401b67aef1a4a231a2fa4c2a" title="LabelComponent\l::setText" alt="" coords="190,340,337,381"/>
+<area shape="rect" id="node5" href="$class_l_texture.html#ad9e83e3ba49b7ef6a0719ddbbdf7b3fa" title="LTexture::getWidth" alt="" coords="399,75,533,102"/>
+<area shape="rect" id="node6" href="$class_l_texture.html#a88f3901941f4a71f929845ee1311b68b" title="LTexture::getHeight" alt="" coords="397,126,535,153"/>
+<area shape="rect" id="node7" href="$class_l_texture.html#ab4e51b54752ae7b54614078f9128a9c0" title="LTexture::setAlpha" alt="" coords="400,177,532,203"/>
+<area shape="rect" id="node9" href="$class_player.html#a5a0f7e56c03a112fcee982cc840f661b" title="Player::isActivo" alt="" coords="409,227,523,254"/>
+<area shape="rect" id="node12" href="$class_l_timer.html#a57c4bdca0f7bdd75c65b6ab1499de1e7" title="LTimer::getTicks" alt="" coords="406,282,526,309"/>
+</map>

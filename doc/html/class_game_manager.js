@@ -1,0 +1,26 @@
+var class_game_manager =
+[
+    [ "GameManager", "class_game_manager.html#aa0e2424dc1a39d380e5b6605b179bf05", null ],
+    [ "~GameManager", "class_game_manager.html#aaae63e38e358379c1fe507c5197a8435", null ],
+    [ "activarJoysticks", "class_game_manager.html#ac40f7fb97ee52c4a4a9361aca98dfac5", null ],
+    [ "cambiarInterfaz", "class_game_manager.html#a1a7ef9efef7dffba5887409b2008f833", null ],
+    [ "closePopUp", "class_game_manager.html#a7704714219244cdce6e3886636600fa6", null ],
+    [ "getHeight", "class_game_manager.html#ac4640c4a2aa0af055a3956fb64e367fb", null ],
+    [ "getImagen", "class_game_manager.html#ad58c2e6771e9d0dcfd18a056bff14660", null ],
+    [ "getJoy", "class_game_manager.html#a9bb21d9af524ae6c72bdd8dc109ce957", null ],
+    [ "getJoysActivos", "class_game_manager.html#a0a4d3d383375d48582385793abfe1ffc", null ],
+    [ "getRectScreen", "class_game_manager.html#aea73783b9f80f19cf152c315c57ef556", null ],
+    [ "getWidth", "class_game_manager.html#ab07784212df355b8820b3b8409540fc9", null ],
+    [ "goBack", "class_game_manager.html#aaa4c8097c4e4288282a261e09ceebcb8", null ],
+    [ "iniciarSDL", "class_game_manager.html#ab73d98e697ddbb373f0aec690e97a583", null ],
+    [ "play", "class_game_manager.html#a05a37c772271184de300c6ebbb25f668", null ],
+    [ "playSonido", "class_game_manager.html#a68e221c0baf04c06413d2dd7ef3851fb", null ],
+    [ "procesarEventos", "class_game_manager.html#aeb38bf2a7f818f76f79f30bce0a72f57", null ],
+    [ "quit", "class_game_manager.html#ac63aa477ce3707e03b42968d364a6ce6", null ],
+    [ "run", "class_game_manager.html#abbde8090c24ca199815ba1e85059c96f", null ],
+    [ "setModeVideo", "class_game_manager.html#a9b2a21ddf1737246b8b650578ccba299", null ],
+    [ "setRoot", "class_game_manager.html#a6528d38df521ce4915cd9a4aa11ed274", null ],
+    [ "showPopUp", "class_game_manager.html#a79ed8c7a5bdef1baf9290dcab9b55db2", null ],
+    [ "SCREEN_FPS", "class_game_manager.html#a91163b4a426dbd28df033202b9a333d9", null ],
+    [ "SCREEN_TICKS_PER_FRAME", "class_game_manager.html#ab9207abff2a6da2815a218b7f31c4676", null ]
+];

@@ -1,0 +1,8 @@
+<map id="GameManager::procesarEventos" name="GameManager::procesarEventos">
+<area shape="rect" id="node2" href="$class_game_manager.html#a9b2a21ddf1737246b8b650578ccba299" title="GameManager::setModeVideo" alt="" coords="270,5,469,32"/>
+<area shape="rect" id="node4" href="$class_pop_up_interfaz.html#a66280a78feebd2443f140b3df8647616" title="PopUpInterfaz::isStarted" alt="" coords="286,56,453,83"/>
+<area shape="rect" id="node5" href="$class_interfaz_u_i.html#adda39beb91f3089dd32d66ff2a5cea23" title="InterfazUI::procesarEvento" alt="" coords="280,107,459,133"/>
+<area shape="rect" id="node6" href="$class_pop_up_interfaz.html#acd7418d2edadaf261076f0839bfc4e5c" title="PopUpInterfaz::procesarEvento" alt="" coords="267,157,472,184"/>
+<area shape="rect" id="node3" href="$util_8cpp.html#a63213b38ac4f9531fb3125c251ee1de7" title="mostrar_error_salir" alt="" coords="550,5,681,32"/>
+<area shape="rect" id="node7" href="$class_game_manager_pop_up_interfaz.html#a2eae4cfc151ef0fbf0a799fd0902fe95" title="GameManagerPopUpInterfaz\l::closePopUp" alt="" coords="520,150,711,191"/>
+</map>

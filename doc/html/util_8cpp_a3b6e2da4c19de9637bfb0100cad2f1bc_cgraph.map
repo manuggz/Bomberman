@@ -1,0 +1,5 @@
+<map id="imprimir_letra" name="imprimir_letra">
+<area shape="rect" id="node2" href="$class_l_texture.html#a88f3901941f4a71f929845ee1311b68b" title="LTexture::getHeight" alt="" coords="153,5,291,32"/>
+<area shape="rect" id="node3" href="$class_l_texture.html#ad9e83e3ba49b7ef6a0719ddbbdf7b3fa" title="LTexture::getWidth" alt="" coords="155,56,289,83"/>
+<area shape="rect" id="node4" href="$class_l_texture.html#a7edbf22bd4e3f5efd60e20b913d1dcc4" title="LTexture::render" alt="" coords="163,107,281,133"/>
+</map>

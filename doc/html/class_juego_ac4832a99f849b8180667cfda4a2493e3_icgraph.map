@@ -1,0 +1,5 @@
+<map id="Juego::agregarPlayersActivos" name="Juego::agregarPlayersActivos">
+<area shape="rect" id="node2" href="$class_juego.html#a0f2054b23552adc7898f67ea4547a980" title="Juego::reiniciarEstado" alt="" coords="249,31,400,57"/>
+<area shape="rect" id="node3" href="$class_juego.html#a83e5a1132a5355c34c31d219b4d035dc" title="Juego::start" alt="" coords="471,5,562,32"/>
+<area shape="rect" id="node4" href="$class_juego.html#ac141311099a222492201a52842c207b7" title="Juego::resultPopUp" alt="" coords="448,56,585,83"/>
+</map>

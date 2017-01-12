@@ -1,0 +1,6 @@
+<map id="InterfazSpriteGroup" name="InterfazSpriteGroup">
+<area shape="rect" id="node2" href="$class_juego.html" title="Juego" alt="" coords="5,80,63,107"/>
+<area shape="rect" id="node3" href="$class_mapa.html" title="Mapa" alt="" coords="87,80,141,107"/>
+<area shape="rect" id="node5" href="$class_menu_modo_multijugador.html" title="MenuModoMultijugador" alt="" coords="165,80,321,107"/>
+<area shape="rect" id="node4" href="$class_nivel_mapa.html" title="NivelMapa" alt="" coords="72,155,156,181"/>
+</map>

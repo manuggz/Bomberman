@@ -1,0 +1,5 @@
+<map id="Juego" name="Juego">
+<area shape="rect" id="node2" href="$class_interfaz_u_i.html" title="InterfazUI" alt="" coords="5,5,85,32"/>
+<area shape="rect" id="node3" href="$class_interfaz_juego.html" title="InterfazJuego" alt="" coords="109,5,211,32"/>
+<area shape="rect" id="node4" href="$class_interfaz_sprite_group.html" title="InterfazSpriteGroup" alt="" coords="235,5,370,32"/>
+</map>

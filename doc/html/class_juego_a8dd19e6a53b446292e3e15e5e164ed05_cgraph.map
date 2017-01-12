@@ -1,0 +1,8 @@
+<map id="Juego::createUI" name="Juego::createUI">
+<area shape="rect" id="node2" href="$class_text_label_component.html#a18b7058e401b67aef1a4a231a2fa4c2a" title="LabelComponent\l::setText" alt="" coords="199,5,345,47"/>
+<area shape="rect" id="node3" href="$class_text_label_component.html#a454bc90325a888a07bd1d5622d883eb9" title="LabelComponent\l::setFont" alt="" coords="199,71,345,112"/>
+<area shape="rect" id="node4" href="$class_text_label_component.html#a6f01e610b6f92e2535e6caf2ece93647" title="LabelComponent\l::setTextColor" alt="" coords="199,136,345,177"/>
+<area shape="rect" id="node5" href="$class_component.html#ae36d03537d53b88e2b4776250787f842" title="Component::setLayoutParam" alt="" coords="425,202,617,229"/>
+<area shape="rect" id="node6" href="$class_layout_absolute.html#adc08dc77ab5168e496f3edc3a41c4326" title="LayoutAbsolute::addComponent" alt="" coords="168,253,376,279"/>
+<area shape="rect" id="node7" href="$class_component.html#ae79cb654e6be297577f35c599d34254c" title="Component::addLayoutParam" alt="" coords="424,253,619,279"/>
+</map>

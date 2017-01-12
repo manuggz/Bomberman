@@ -1,0 +1,4 @@
+<map id="InterfazJuego::playerMuerto" name="InterfazJuego::playerMuerto">
+<area shape="rect" id="node2" href="$class_player.html#a5cb527f12c3423e1bbb1b6595a85acfc" title="Player::update" alt="" coords="460,5,567,32"/>
+<area shape="rect" id="node3" href="$class_player.html#a21d02dd621070ac4f41e33e2627776bd" title="Player::avanzarAnimacion" alt="" coords="237,31,412,57"/>
+</map>

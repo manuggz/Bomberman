@@ -1,0 +1,6 @@
+<map id="PopUpInterfaz::isStopped" name="PopUpInterfaz::isStopped">
+<area shape="rect" id="node2" href="$class_game_manager.html#abbde8090c24ca199815ba1e85059c96f" title="GameManager::run" alt="" coords="252,5,385,32"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#a7704714219244cdce6e3886636600fa6" title="GameManager::closePopUp" alt="" coords="225,56,412,83"/>
+<area shape="rect" id="node5" href="$class_game_manager.html#a79ed8c7a5bdef1baf9290dcab9b55db2" title="GameManager::showPopUp" alt="" coords="225,107,412,133"/>
+<area shape="rect" id="node3" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="460,5,511,32"/>
+</map>

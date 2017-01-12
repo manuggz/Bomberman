@@ -1,0 +1,8 @@
+<map id="InterfazJuego::colisionConMapa" name="InterfazJuego::colisionConMapa">
+<area shape="rect" id="node2" href="$class_player.html#a3acc9e6aa183f86bf29f89982a42c6e6" title="Player::mover_ip" alt="" coords="263,81,383,108"/>
+<area shape="rect" id="node3" href="$class_player.html#a82ff3440c08bd0c116b53b90c29efa92" title="Player::izquierda" alt="" coords="431,5,549,32"/>
+<area shape="rect" id="node5" href="$class_player.html#a0345065f26494d5312365b406b5c0acd" title="Player::derecha" alt="" coords="433,56,547,83"/>
+<area shape="rect" id="node6" href="$class_player.html#af8b5efff3494a47772ead1e026f337cd" title="Player::arriba" alt="" coords="441,107,539,133"/>
+<area shape="rect" id="node7" href="$class_player.html#ad98a56271096fa93b68991038de58caf" title="Player::abajo" alt="" coords="441,157,539,184"/>
+<area shape="rect" id="node4" href="$class_player.html#a5cb527f12c3423e1bbb1b6595a85acfc" title="Player::update" alt="" coords="597,81,704,108"/>
+</map>

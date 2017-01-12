@@ -1,0 +1,190 @@
+\hypertarget{class_component}{}\section{Component Class Reference}
+\label{class_component}\index{Component@{Component}}
+
+
+Inheritance diagram for Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_component__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Component\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{class_component__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_component_a8775db6d1a2c1afc2e77cd3c8f39da6f}{Component} ()
+\item 
+void {\bfseries set\+Layout\+Param} (std\+::string name\+Param, std\+::string value\+Param)\hypertarget{class_component_ae36d03537d53b88e2b4776250787f842}{}\label{class_component_ae36d03537d53b88e2b4776250787f842}
+
+\item 
+void {\bfseries add\+Layout\+Param} (std\+::string name\+Param, std\+::string value\+Param)\hypertarget{class_component_ae79cb654e6be297577f35c599d34254c}{}\label{class_component_ae79cb654e6be297577f35c599d34254c}
+
+\item 
+std\+::string {\bfseries get\+Layout\+Param} (std\+::string name\+Param)\hypertarget{class_component_a2c1f1bf9132f6784d46150b90fe89500}{}\label{class_component_a2c1f1bf9132f6784d46150b90fe89500}
+
+\item 
+void \hyperlink{class_component_a354add2c6de9a08357fbfece7fe50ac5}{set\+Background\+Texture} (\hyperlink{class_l_texture}{L\+Texture} $\ast$l\+Texture, bool delete\+Anterior=true)
+\item 
+void \hyperlink{class_component_a1440d7c2b2c4bfd8310931b54e8f4e61}{set\+Disabled} (bool nuevo)
+\item 
+virtual bool \hyperlink{class_component_aedd9acaa31b5c50a8cf233014b85c0cc}{is\+Disabled} ()
+\item 
+int {\bfseries get\+Internal\+Width} ()\hypertarget{class_component_a27900513de0e1cd920ffb0788f144bc9}{}\label{class_component_a27900513de0e1cd920ffb0788f144bc9}
+
+\item 
+int {\bfseries get\+Internal\+Height} ()\hypertarget{class_component_a74576e7c5591fe7adc74a18c9fa752e4}{}\label{class_component_a74576e7c5591fe7adc74a18c9fa752e4}
+
+\item 
+virtual void \hyperlink{class_component_aa471f2c3a24525f584ed19cf25222e70}{pack} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)=0
+\item 
+virtual void {\bfseries set\+Rect\+Dibujo} (S\+D\+L\+\_\+\+Rect \&rect)\hypertarget{class_component_a06933061417ef2fec8588e731802c76b}{}\label{class_component_a06933061417ef2fec8588e731802c76b}
+
+\item 
+void \hyperlink{class_component_a0df4f4d3aaac6083dc6fe7c9ec1e9435}{set\+Background\+Color} (S\+D\+L\+\_\+\+Color color)
+\item 
+virtual void \hyperlink{class_component_ab1ea202c9ef8933d15956b96cfe281a1}{draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)
+\item 
+void {\bfseries set\+Background\+Texture} (S\+D\+L\+\_\+\+Renderer $\ast$p\+Renderer, std\+::string ruta, bool tiene\+Color\+Clave)\hypertarget{class_component_af5266ecac7180548cf2282377ca70752}{}\label{class_component_af5266ecac7180548cf2282377ca70752}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ {\bfseries m\+Layout\+Params}\hypertarget{class_component_aa57d48b13ce8d6d0cbad5d2df25855e9}{}\label{class_component_aa57d48b13ce8d6d0cbad5d2df25855e9}
+
+\item 
+\hyperlink{class_l_texture}{L\+Texture} $\ast$ {\bfseries m\+Texture\+Background}\hypertarget{class_component_a1146357f9295249aa37d441a1055cfcb}{}\label{class_component_a1146357f9295249aa37d441a1055cfcb}
+
+\item 
+bool {\bfseries m\+Disabled}\hypertarget{class_component_a31f905a630a60deb299a3c598de040eb}{}\label{class_component_a31f905a630a60deb299a3c598de040eb}
+
+\item 
+S\+D\+L\+\_\+\+Rect {\bfseries m\+Internal\+Rect}\hypertarget{class_component_ab29a46348bb17e085bc2d204b5e9809f}{}\label{class_component_ab29a46348bb17e085bc2d204b5e9809f}
+
+\item 
+S\+D\+L\+\_\+\+Color {\bfseries m\+Background\+Color}\hypertarget{class_component_a0eeef3ba6bce588f0908cbaa34113c42}{}\label{class_component_a0eeef3ba6bce588f0908cbaa34113c42}
+
+\item 
+bool {\bfseries m\+Establecido\+Color\+Fondo}\hypertarget{class_component_a17b8acdefc67020f12ade56dedb070ce}{}\label{class_component_a17b8acdefc67020f12ade56dedb070ce}
+
+\item 
+S\+D\+L\+\_\+\+Rect {\bfseries m\+Draw\+Rect}\hypertarget{class_component_a6182ec25ba26a0d1616662e547ed4afe}{}\label{class_component_a6182ec25ba26a0d1616662e547ed4afe}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Component@{Component}!Component@{Component}}
+\index{Component@{Component}!Component@{Component}}
+\subsubsection[{\texorpdfstring{Component()}{Component()}}]{\setlength{\rightskip}{0pt plus 5cm}Component\+::\+Component (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_component_a8775db6d1a2c1afc2e77cd3c8f39da6f}{}\label{class_component_a8775db6d1a2c1afc2e77cd3c8f39da6f}
+Inicializa el componente \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\index{Component@{Component}!draw@{draw}}
+\index{draw@{draw}!Component@{Component}}
+\subsubsection[{\texorpdfstring{draw(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)}{draw(SDL_Renderer *gRenderer)}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Component\+::draw (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_component_ab1ea202c9ef8933d15956b96cfe281a1}{}\label{class_component_ab1ea202c9ef8933d15956b96cfe281a1}
+Dibuja el componente 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_boton_component_a73c8c3014be82c952cd8d0e08beffcc5}{Boton\+Component$<$ T $>$}, \hyperlink{class_boton_component_a73c8c3014be82c952cd8d0e08beffcc5}{Boton\+Component$<$ Menu\+Modo\+Multijugador $>$}, \hyperlink{class_label_component_a9637b7af88eb351108ef490f175b39a9}{Label\+Component}, and \hyperlink{class_layout_component_a0ee8a3146a3258a9886472b86cf34a16}{Layout\+Component}.
+
+\index{Component@{Component}!is\+Disabled@{is\+Disabled}}
+\index{is\+Disabled@{is\+Disabled}!Component@{Component}}
+\subsubsection[{\texorpdfstring{is\+Disabled()}{isDisabled()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Component\+::is\+Disabled (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_component_aedd9acaa31b5c50a8cf233014b85c0cc}{}\label{class_component_aedd9acaa31b5c50a8cf233014b85c0cc}
+Retorna el estado de la variable m\+Disabled. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{class_layout_absolute_aba1ab3840e566a65bdecb4ba8a249eac}{Layout\+Absolute}, and \hyperlink{class_layout_vertical_a90f1b16b40a8765bb59d536b667e13e4}{Layout\+Vertical}.
+
+\index{Component@{Component}!pack@{pack}}
+\index{pack@{pack}!Component@{Component}}
+\subsubsection[{\texorpdfstring{pack(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)=0}{pack(SDL_Renderer *gRenderer)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Component\+::pack (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_component_aa471f2c3a24525f584ed19cf25222e70}{}\label{class_component_aa471f2c3a24525f584ed19cf25222e70}
+Se encarga de crear las texturas del componente asi como otras acciones asociadas con el renderer Notar que despues de esta funcion se debe llamar a calculate\+Rect, es decir, realizar una nueva calculacion del rectangulo de dibujo del componente 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & Render de la pantalla \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_layout_absolute_a9807517212f0015c0a67399a35f1ff36}{Layout\+Absolute}, \hyperlink{class_layout_vertical_a02eea5b9dd8197100d964d0e6f33e208}{Layout\+Vertical}, \hyperlink{class_boton_component_adacc77cd1e8f7d40a2f30b4b7b61899c}{Boton\+Component$<$ T $>$}, \hyperlink{class_boton_component_adacc77cd1e8f7d40a2f30b4b7b61899c}{Boton\+Component$<$ Menu\+Modo\+Multijugador $>$}, \hyperlink{class_label_component_a9979a17ac60f351d9850e0d670d8ab0e}{Label\+Component}, and \hyperlink{class_image_component_a538cae4b9b1f723fa6cb21038387a0f6}{Image\+Component}.
+
+\index{Component@{Component}!set\+Background\+Color@{set\+Background\+Color}}
+\index{set\+Background\+Color@{set\+Background\+Color}!Component@{Component}}
+\subsubsection[{\texorpdfstring{set\+Background\+Color(\+S\+D\+L\+\_\+\+Color color)}{setBackgroundColor(SDL_Color color)}}]{\setlength{\rightskip}{0pt plus 5cm}void Component\+::set\+Background\+Color (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Color}]{color}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_component_a0df4f4d3aaac6083dc6fe7c9ec1e9435}{}\label{class_component_a0df4f4d3aaac6083dc6fe7c9ec1e9435}
+Establece un color de fondo para el componente 
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_2home_2manuggz_2_documents_2_projects_2_bomberman_2src_2engine_2interfaces_2_menu_list_label_8hpp-example}{/home/manuggz/\+Documents/\+Projects/\+Bomberman/src/engine/interfaces/\+Menu\+List\+Label.\+hpp}.\end{Desc}
+\index{Component@{Component}!set\+Background\+Texture@{set\+Background\+Texture}}
+\index{set\+Background\+Texture@{set\+Background\+Texture}!Component@{Component}}
+\subsubsection[{\texorpdfstring{set\+Background\+Texture(\+L\+Texture $\ast$l\+Texture, bool delete\+Anterior=true)}{setBackgroundTexture(LTexture *lTexture, bool deleteAnterior=true)}}]{\setlength{\rightskip}{0pt plus 5cm}void Component\+::set\+Background\+Texture (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+Texture} $\ast$}]{l\+Texture, }
+\item[{bool}]{delete\+Anterior = {\ttfamily true}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_component_a354add2c6de9a08357fbfece7fe50ac5}{}\label{class_component_a354add2c6de9a08357fbfece7fe50ac5}
+Establece la textura a dibujar en el fondo del componente 
+\begin{DoxyParams}{Parameters}
+{\em l\+Texture} & \\
+\hline
+\end{DoxyParams}
+\index{Component@{Component}!set\+Disabled@{set\+Disabled}}
+\index{set\+Disabled@{set\+Disabled}!Component@{Component}}
+\subsubsection[{\texorpdfstring{set\+Disabled(bool nuevo)}{setDisabled(bool nuevo)}}]{\setlength{\rightskip}{0pt plus 5cm}void Component\+::set\+Disabled (
+\begin{DoxyParamCaption}
+\item[{bool}]{nuevo}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_component_a1440d7c2b2c4bfd8310931b54e8f4e61}{}\label{class_component_a1440d7c2b2c4bfd8310931b54e8f4e61}
+Establece un estado que hace que redibuje este componente al mismo tiempo que se recalculen los estados del layout que contiene este componente.
+
+Después de modificar un/varios estado de este componente se debe llamar a esta funcion para que se puedan ver en la pantalla. \begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_2home_2manuggz_2_documents_2_projects_2_bomberman_2src_2engine_2interfaces_2_menu_list_label_8hpp-example}{/home/manuggz/\+Documents/\+Projects/\+Bomberman/src/engine/interfaces/\+Menu\+List\+Label.\+hpp}.\end{Desc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/layout/\+Componentes/Component.\+hpp\end{DoxyCompactItemize}

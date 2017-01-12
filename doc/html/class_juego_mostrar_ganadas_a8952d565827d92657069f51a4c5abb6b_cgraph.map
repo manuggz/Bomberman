@@ -1,0 +1,11 @@
+<map id="PopUpJuegoMostrarGanadas::createUI" name="PopUpJuegoMostrarGanadas::createUI">
+<area shape="rect" id="node2" href="$class_pop_up_interfaz.html#aecc52811ccad5f20e85be0d6991d399f" title="PopUpInterfaz::createUI" alt="" coords="226,5,390,32"/>
+<area shape="rect" id="node3" href="$class_sprite_sheet.html#a86ee75d55b69a7b5aff33c0207fcfdd0" title="SpriteSheet::cargarDesde\lArchivo" alt="" coords="222,57,394,98"/>
+<area shape="rect" id="node8" href="$class_animacion.html#aba6827dd1b9aa6ed1b8d92dd791d9195" title="Animacion::setCuadroDespues" alt="" coords="207,123,409,149"/>
+<area shape="rect" id="node9" href="$class_sprite.html#a053cb5d0032b7f3dd251e56abe3a056b" title="Sprite::setY" alt="" coords="263,173,353,200"/>
+<area shape="rect" id="node10" href="$class_animacion.html#aa06923448345136fbd5d9d3b186168e9" title="Animacion::setRepeticiones" alt="" coords="215,224,401,251"/>
+<area shape="rect" id="node4" href="$class_l_texture.html#a25b90cb830a0d7a5705a72da006a9571" title="LTexture::loadFromFile" alt="" coords="457,13,613,40"/>
+<area shape="rect" id="node6" href="$class_l_texture.html#ad9e83e3ba49b7ef6a0719ddbbdf7b3fa" title="LTexture::getWidth" alt="" coords="469,64,602,91"/>
+<area shape="rect" id="node7" href="$class_l_texture.html#a88f3901941f4a71f929845ee1311b68b" title="LTexture::getHeight" alt="" coords="467,115,604,141"/>
+<area shape="rect" id="node5" href="$class_l_texture.html#abef558f0b920270079925548a3976a06" title="LTexture::free" alt="" coords="661,13,764,40"/>
+</map>

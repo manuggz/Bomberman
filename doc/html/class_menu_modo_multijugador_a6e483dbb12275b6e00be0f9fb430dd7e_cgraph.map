@@ -1,0 +1,7 @@
+<map id="MenuModoMultijugador::cambiarEstadoPlayer" name="MenuModoMultijugador::cambiarEstadoPlayer">
+<area shape="rect" id="node2" href="$class_group.html#a808a26e42fb31af18f1c37584bf3d972" title="Group::add" alt="" coords="260,5,347,32"/>
+<area shape="rect" id="node4" href="$class_group.html#a1e319373a19e8577ce70634d29a16349" title="Group::erase" alt="" coords="255,56,352,83"/>
+<area shape="rect" id="node5" href="$class_boton_component.html#aa8fcb117c496db9d68168aaf5149d036" title="BotonComponent::setVisible" alt="" coords="209,107,397,133"/>
+<area shape="rect" id="node6" href="$class_game_manager_interfaz_u_i.html#abc1e55cd9dc327d26ef6fdbfcac05b42" title="GameManagerInterfazUI\l::play" alt="" coords="221,158,386,199"/>
+<area shape="rect" id="node3" href="$class_sprite.html#a87f4d657c8cff89978c20d8e8e38f011" title="Sprite::addGroup" alt="" coords="445,5,565,32"/>
+</map>

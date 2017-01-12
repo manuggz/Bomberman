@@ -1,0 +1,5 @@
+<map id="Animacion::getCuadro" name="Animacion::getCuadro">
+<area shape="rect" id="node2" href="$class_explosion.html#aa381f273160b625c9a37e40e1ae0cda3" title="Explosion::detectarAlcances" alt="" coords="204,5,392,32"/>
+<area shape="rect" id="node4" href="$class_explosion.html#ad93f3cca36426268c06a1c832c4ad7f8" title="Explosion::draw" alt="" coords="241,56,355,83"/>
+<area shape="rect" id="node3" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="440,5,584,32"/>
+</map>

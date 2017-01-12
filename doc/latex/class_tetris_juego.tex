@@ -1,0 +1,147 @@
+\hypertarget{class_tetris_juego}{}\section{Tetris\+Juego Class Reference}
+\label{class_tetris_juego}\index{Tetris\+Juego@{Tetris\+Juego}}
+
+
+Inheritance diagram for Tetris\+Juego\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{class_tetris_juego__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Tetris\+Juego\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{class_tetris_juego__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Tetris\+Juego} (\hyperlink{class_interfaz_juego_tetris}{Interfaz\+Juego\+Tetris} $\ast$parent, int id, int x, int y)\hypertarget{class_tetris_juego_a08223b09d1ae9b5eb57f05636301a6eb}{}\label{class_tetris_juego_a08223b09d1ae9b5eb57f05636301a6eb}
+
+\item 
+void {\bfseries crear\+UI} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)\hypertarget{class_tetris_juego_a514937dc30a9f7bc888336a5e7052b48}{}\label{class_tetris_juego_a514937dc30a9f7bc888336a5e7052b48}
+
+\item 
+void {\bfseries start} ()\hypertarget{class_tetris_juego_a9d590db61a7cbf46eaced88e89887534}{}\label{class_tetris_juego_a9d590db61a7cbf46eaced88e89887534}
+
+\item 
+void {\bfseries reset} ()\hypertarget{class_tetris_juego_a17712a6e9e899552bb1ddc7ca2e305cc}{}\label{class_tetris_juego_a17712a6e9e899552bb1ddc7ca2e305cc}
+
+\item 
+void {\bfseries eliminar\+Tetrominos} ()\hypertarget{class_tetris_juego_a54964870a6d92ebed8ab839d0d893bd7}{}\label{class_tetris_juego_a54964870a6d92ebed8ab839d0d893bd7}
+
+\item 
+\hyperlink{class_tetromino}{Tetromino} $\ast$ {\bfseries generar\+Tetromino\+Ghost} ()\hypertarget{class_tetris_juego_a922b9d4649c4558d18227fe16337364d}{}\label{class_tetris_juego_a922b9d4649c4558d18227fe16337364d}
+
+\item 
+\hyperlink{class_tetromino}{Tetromino} $\ast$ {\bfseries generar\+Tetromino\+Aleatorio} ()\hypertarget{class_tetris_juego_ace1b43b10663450a4cba22175b65b4d1}{}\label{class_tetris_juego_ace1b43b10663450a4cba22175b65b4d1}
+
+\item 
+void {\bfseries crear\+Tetrominos} ()\hypertarget{class_tetris_juego_a1d76176a5d71faed2fb71ccdf834e909}{}\label{class_tetris_juego_a1d76176a5d71faed2fb71ccdf834e909}
+
+\item 
+void {\bfseries estado\+Running\+Draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)\hypertarget{class_tetris_juego_aae784fd18e6326c8e5b99308a45d47b9}{}\label{class_tetris_juego_aae784fd18e6326c8e5b99308a45d47b9}
+
+\item 
+void {\bfseries estado\+Pausado\+Draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)\hypertarget{class_tetris_juego_af297d5c8cd519d573e7dfac417142998}{}\label{class_tetris_juego_af297d5c8cd519d573e7dfac417142998}
+
+\item 
+void {\bfseries dibujar\+Array\+Fondo\+Juego} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)\hypertarget{class_tetris_juego_af061d000c7ab4e29adfda86cdecbe475}{}\label{class_tetris_juego_af061d000c7ab4e29adfda86cdecbe475}
+
+\item 
+void {\bfseries estado\+Game\+Over\+Draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)\hypertarget{class_tetris_juego_aeacf6dd012795333a742decabce249c2}{}\label{class_tetris_juego_aeacf6dd012795333a742decabce249c2}
+
+\item 
+void {\bfseries draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)\hypertarget{class_tetris_juego_ab4b0666883b9fde99319cf320357c784}{}\label{class_tetris_juego_ab4b0666883b9fde99319cf320357c784}
+
+\item 
+bool {\bfseries mover\+Ip\+Tetromino} (\hyperlink{class_tetromino}{Tetromino} $\ast$p\+Forma, int aum\+\_\+x, int aum\+\_\+y)\hypertarget{class_tetris_juego_a35bdb56d4a31143fc656345c4a3e006a}{}\label{class_tetris_juego_a35bdb56d4a31143fc656345c4a3e006a}
+
+\item 
+int {\bfseries get\+Fila\+From\+WorldY} (int y)\hypertarget{class_tetris_juego_ad07328fec7ad800547fec8197b61e7a4}{}\label{class_tetris_juego_ad07328fec7ad800547fec8197b61e7a4}
+
+\item 
+int {\bfseries get\+Columna\+From\+WorldX} (int x)\hypertarget{class_tetris_juego_a82da039b63b4a053e036ef5d0ee3ecaa}{}\label{class_tetris_juego_a82da039b63b4a053e036ef5d0ee3ecaa}
+
+\item 
+bool {\bfseries esta\+Tetramino\+En\+Posicion\+Invalida} (\hyperlink{class_tetromino}{Tetromino} $\ast$p\+Forma)\hypertarget{class_tetris_juego_adb79eebdcea86c8b52cc3e35dbc6c96f}{}\label{class_tetris_juego_adb79eebdcea86c8b52cc3e35dbc6c96f}
+
+\item 
+void {\bfseries procesar\+Evento\+Running} (S\+D\+L\+\_\+\+Event $\ast$evento)\hypertarget{class_tetris_juego_a0a0d2eab2797f180e3afd6ce03ebee43}{}\label{class_tetris_juego_a0a0d2eab2797f180e3afd6ce03ebee43}
+
+\item 
+void {\bfseries procesar\+Evento} (S\+D\+L\+\_\+\+Event $\ast$evento)\hypertarget{class_tetris_juego_a8858efbfc48aa2ad2a997fda38931537}{}\label{class_tetris_juego_a8858efbfc48aa2ad2a997fda38931537}
+
+\item 
+void {\bfseries procesar\+Evento\+Pausado} (S\+D\+L\+\_\+\+Event $\ast$evento)\hypertarget{class_tetris_juego_a3eaa02c248a85e9ce45d3f9b905c640f}{}\label{class_tetris_juego_a3eaa02c248a85e9ce45d3f9b905c640f}
+
+\item 
+void {\bfseries procesar\+Evento\+Game\+Over} (S\+D\+L\+\_\+\+Event $\ast$evento)\hypertarget{class_tetris_juego_a864c67b2815edf2f9cb0a0d4a086c3a0}{}\label{class_tetris_juego_a864c67b2815edf2f9cb0a0d4a086c3a0}
+
+\item 
+bool {\bfseries girar\+Forma\+Actual\+Desc} (int direccion)\hypertarget{class_tetris_juego_a6fa81d87f7ac024fc38427e48a78521f}{}\label{class_tetris_juego_a6fa81d87f7ac024fc38427e48a78521f}
+
+\item 
+int {\bfseries hard\+Drop\+Tetramino} (\hyperlink{class_tetromino}{Tetromino} $\ast$p\+Forma)\hypertarget{class_tetris_juego_a202f50e6a0b964c1f254b67c9da2d3c8}{}\label{class_tetris_juego_a202f50e6a0b964c1f254b67c9da2d3c8}
+
+\item 
+int {\bfseries limpiar\+Lineas\+Completas} ()\hypertarget{class_tetris_juego_a9addc531dabf47f16038ccaf89fcc573}{}\label{class_tetris_juego_a9addc531dabf47f16038ccaf89fcc573}
+
+\item 
+void {\bfseries estado\+Running\+Update} ()\hypertarget{class_tetris_juego_a7932a0b42bf193746243ec4a1b3c480f}{}\label{class_tetris_juego_a7932a0b42bf193746243ec4a1b3c480f}
+
+\item 
+void {\bfseries estado\+Game\+Over\+Update} ()\hypertarget{class_tetris_juego_a03a673614edae7c5bd19990abe280ee7}{}\label{class_tetris_juego_a03a673614edae7c5bd19990abe280ee7}
+
+\item 
+void {\bfseries estado\+Pausado\+Update} ()\hypertarget{class_tetris_juego_ae36884d298b8d1725b646f2727aa5560}{}\label{class_tetris_juego_ae36884d298b8d1725b646f2727aa5560}
+
+\item 
+void {\bfseries update} ()\hypertarget{class_tetris_juego_aff6ae06668265e804b765d024e0c07fb}{}\label{class_tetris_juego_aff6ae06668265e804b765d024e0c07fb}
+
+\item 
+bool {\bfseries existe\+Indice} (int i, int j)\hypertarget{class_tetris_juego_aa8ee8bc48fbef8331a88bb3c8d26f64e}{}\label{class_tetris_juego_aa8ee8bc48fbef8331a88bb3c8d26f64e}
+
+\item 
+int {\bfseries get\+Valor\+Juego\+Array} (int i, int j)\hypertarget{class_tetris_juego_a4421b3f0e7acb18053022c08eeab56d7}{}\label{class_tetris_juego_a4421b3f0e7acb18053022c08eeab56d7}
+
+\item 
+void {\bfseries extraer\+Tetromino\+Recursion\+Aux} (int i\+\_\+fondo, int j\+\_\+fondo, \hyperlink{class_tetromino}{Tetromino} $\ast$forma)\hypertarget{class_tetris_juego_a78e144080ad1951a7660b1a48864397f}{}\label{class_tetris_juego_a78e144080ad1951a7660b1a48864397f}
+
+\item 
+\hyperlink{class_tetromino}{Tetromino} $\ast$ {\bfseries extraer\+Tetromino\+Del\+Fondo} (int i\+Inicio, int j\+Inicio)\hypertarget{class_tetris_juego_afe912d0938be0df16ef73b265924e110}{}\label{class_tetris_juego_afe912d0938be0df16ef73b265924e110}
+
+\item 
+void {\bfseries guardar\+Tetromino\+En\+Fondo} (\hyperlink{class_tetromino}{Tetromino} $\ast$p\+Pieza)\hypertarget{class_tetris_juego_aae0c1e596d5a512a326f37ce9b1b628e}{}\label{class_tetris_juego_aae0c1e596d5a512a326f37ce9b1b628e}
+
+\item 
+bool {\bfseries esta\+Tetromino\+Flotando} (\hyperlink{class_tetromino}{Tetromino} $\ast$forma)\hypertarget{class_tetris_juego_a6d4c93c87e6d5745db881832342d0931}{}\label{class_tetris_juego_a6d4c93c87e6d5745db881832342d0931}
+
+\item 
+void {\bfseries establecer\+Posiciones\+Visitadas\+Recursion} (\hyperlink{class_tetromino}{Tetromino} $\ast$p\+Posiciones\+Visitadas, Uint8 nuevo\+Valor)\hypertarget{class_tetris_juego_afbb2405fc5ea8e4fc907d7cd978f05cd}{}\label{class_tetris_juego_afbb2405fc5ea8e4fc907d7cd978f05cd}
+
+\item 
+void {\bfseries bajar\+Lineas\+Flotantes} ()\hypertarget{class_tetris_juego_a252b73086f8a71530f98b13de2b58ecd}{}\label{class_tetris_juego_a252b73086f8a71530f98b13de2b58ecd}
+
+\item 
+void {\bfseries stopped} (const int Grupo\+Id) override\hypertarget{class_tetris_juego_a1b703d62e28f6885428dae36a515cacf}{}\label{class_tetris_juego_a1b703d62e28f6885428dae36a515cacf}
+
+\item 
+int {\bfseries get\+Tick\+Delay\+Bajar\+Tetromino} ()\hypertarget{class_tetris_juego_a755d134a7631dd8c7c0e1bb2216447b7}{}\label{class_tetris_juego_a755d134a7631dd8c7c0e1bb2216447b7}
+
+\item 
+void {\bfseries set\+Tick\+Delay\+Bajar\+Tetromino} (int nuevo\+Tick\+Espera)\hypertarget{class_tetris_juego_aa48724daf9ee14de5a49097706700a75}{}\label{class_tetris_juego_aa48724daf9ee14de5a49097706700a75}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/testsotrosjuegos/\+Tetris/Tetris\+Juego.\+hpp\end{DoxyCompactItemize}

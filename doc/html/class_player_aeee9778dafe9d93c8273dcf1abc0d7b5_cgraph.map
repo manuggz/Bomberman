@@ -1,0 +1,4 @@
+<map id="Player::colision" name="Player::colision">
+<area shape="rect" id="node2" href="$class_player.html#a4537081baf81b12cc98c98c904e15909" title="Player::updateRectColision" alt="" coords="164,5,345,32"/>
+<area shape="rect" id="node3" href="$util_8cpp.html#a60c12883feaa27e0712aa30edc11afc8" title="rects_colisionan" alt="" coords="197,56,313,83"/>
+</map>

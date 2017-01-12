@@ -1,0 +1,86 @@
+\hypertarget{class_othello_juego}{}\section{Othello\+Juego Class Reference}
+\label{class_othello_juego}\index{Othello\+Juego@{Othello\+Juego}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Turno\+Juego} \{ {\bfseries B\+L\+A\+N\+C\+AS}, 
+{\bfseries N\+E\+G\+R\+AS}
+ \}\hypertarget{class_othello_juego_a9ba6a653a4b503ecc4dce5f06ffc42a2}{}\label{class_othello_juego_a9ba6a653a4b503ecc4dce5f06ffc42a2}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Othello\+Juego} (\hyperlink{class_interfaz_juego_othello}{Interfaz\+Juego\+Othello} $\ast$parent, int x, int y)\hypertarget{class_othello_juego_ad2e03afd54f02fda63eb7d11452ac2db}{}\label{class_othello_juego_ad2e03afd54f02fda63eb7d11452ac2db}
+
+\item 
+void {\bfseries start} ()\hypertarget{class_othello_juego_a08758b59df118a4cb372b91ffb0a375e}{}\label{class_othello_juego_a08758b59df118a4cb372b91ffb0a375e}
+
+\item 
+void {\bfseries crear\+UI} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)\hypertarget{class_othello_juego_a87f0de7ee9c8e630f6dd33a55bb89a7b}{}\label{class_othello_juego_a87f0de7ee9c8e630f6dd33a55bb89a7b}
+
+\item 
+void {\bfseries procesar\+Evento} (S\+D\+L\+\_\+\+Event $\ast$evento)\hypertarget{class_othello_juego_a5f22f33d7b92f67fe3b2a840202137d8}{}\label{class_othello_juego_a5f22f33d7b92f67fe3b2a840202137d8}
+
+\item 
+bool {\bfseries puede\+Voltear\+Alguna} (int color\+Pieza\+A\+Colocar, int color\+Pieza\+A\+Voltear)\hypertarget{class_othello_juego_aebef4a995b0ac04e7ba589b45986791f}{}\label{class_othello_juego_aebef4a995b0ac04e7ba589b45986791f}
+
+\item 
+int {\bfseries voltear\+Piezas} (int i, int j, int color\+Pieza\+A\+Voltear, int color\+Pieza\+A\+Establecer)\hypertarget{class_othello_juego_a60ff2a675a6144cef2668ffd61bcf08a}{}\label{class_othello_juego_a60ff2a675a6144cef2668ffd61bcf08a}
+
+\item 
+int \hyperlink{class_othello_juego_ae3055b6b0e2a8d85b5f939ecda06f6ea}{voltear\+Pieza\+Auxiliar} (int i, int j, int i\+\_\+aum, int j\+\_\+aum, int color\+Pieza\+A\+Voltear, int color\+Pieza\+A\+Establecer, int acum)
+\item 
+bool {\bfseries puede\+Voltear\+Alguna} (int i, int j, int color\+Pieza\+A\+Colocar, int color\+Pieza\+A\+Voltear)\hypertarget{class_othello_juego_a3ec285af566a5442bedc8fe2d89b38df}{}\label{class_othello_juego_a3ec285af566a5442bedc8fe2d89b38df}
+
+\item 
+bool {\bfseries puede\+Voltear\+Alguna\+Aux} (int i, int j, int i\+\_\+aum, int j\+\_\+aum, int color\+Pieza\+A\+Voltear, int color\+Pieza\+A\+Colocar, bool alguna\+Pieza\+Volteable)\hypertarget{class_othello_juego_a8d7c4bb7e0bdace764dc2f9ce214861e}{}\label{class_othello_juego_a8d7c4bb7e0bdace764dc2f9ce214861e}
+
+\item 
+void {\bfseries update} ()\hypertarget{class_othello_juego_a6eacb8f0c59a7c08968927bc63e6374d}{}\label{class_othello_juego_a6eacb8f0c59a7c08968927bc63e6374d}
+
+\item 
+void {\bfseries draw} (S\+D\+L\+\_\+\+Renderer $\ast$renderer)\hypertarget{class_othello_juego_a575ed14d4b12111c33470e7988314c1d}{}\label{class_othello_juego_a575ed14d4b12111c33470e7988314c1d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{Othello\+Juego@{Othello\+Juego}!voltear\+Pieza\+Auxiliar@{voltear\+Pieza\+Auxiliar}}
+\index{voltear\+Pieza\+Auxiliar@{voltear\+Pieza\+Auxiliar}!Othello\+Juego@{Othello\+Juego}}
+\subsubsection[{\texorpdfstring{voltear\+Pieza\+Auxiliar(int i, int j, int i\+\_\+aum, int j\+\_\+aum, int color\+Pieza\+A\+Voltear, int color\+Pieza\+A\+Establecer, int acum)}{voltearPiezaAuxiliar(int i, int j, int i_aum, int j_aum, int colorPiezaAVoltear, int colorPiezaAEstablecer, int acum)}}]{\setlength{\rightskip}{0pt plus 5cm}int Othello\+Juego\+::voltear\+Pieza\+Auxiliar (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{j, }
+\item[{int}]{i\+\_\+aum, }
+\item[{int}]{j\+\_\+aum, }
+\item[{int}]{color\+Pieza\+A\+Voltear, }
+\item[{int}]{color\+Pieza\+A\+Establecer, }
+\item[{int}]{acum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_othello_juego_ae3055b6b0e2a8d85b5f939ecda06f6ea}{}\label{class_othello_juego_ae3055b6b0e2a8d85b5f939ecda06f6ea}
+Va volteando las piezas que se vaya encontrando en una direccinó comprobando si se puede o no voltear 
+\begin{DoxyParams}{Parameters}
+{\em i} & Posicion actual i en el tablero \\
+\hline
+{\em j} & Posicion actual j en el tablero \\
+\hline
+{\em i\+\_\+aum} & Direccion i(\+Eje Y) en el cual moverse en el tablero \\
+\hline
+{\em j\+\_\+aum} & Direccion j(\+Eje X) en el cual moverse en el tablero \\
+\hline
+{\em color\+Pieza\+A\+Voltear} & Color de las piezas a las cuales se les volteará el color \\
+\hline
+{\em color\+Pieza\+A\+Establecer} & Color el cual establecerle a las piezas que se puedan voltear \\
+\hline
+{\em acum} & Acumulado actual de piezas que se han volteado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Regresa el acumulado total de piezas volteadas acum 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/testsotrosjuegos/\+Othello/Othello\+Juego.\+hpp\end{DoxyCompactItemize}

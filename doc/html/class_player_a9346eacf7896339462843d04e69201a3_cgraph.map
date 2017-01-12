@@ -1,0 +1,10 @@
+<map id="Player::getBombasDisponibles" name="Player::getBombasDisponibles">
+<area shape="rect" id="node2" href="$class_player.html#a749d2c00e1fe0f5c2746f7505a58c062" title="Player::~Player" alt="" coords="296,5,408,32"/>
+<area shape="rect" id="node3" href="$class_player.html#aefb09c11910bdd64a1030f3f2576d4b2" title="Player::setNBombas" alt="" coords="281,56,423,83"/>
+<area shape="rect" id="node4" href="$class_player.html#ae24d729abd2b7ccc9f358ac72498fcde" title="Player::setAlcanceBombas" alt="" coords="262,107,442,133"/>
+<area shape="rect" id="node5" href="$class_player.html#a311bbbb89e728b69a7ba82b283f9b180" title="Player::getBombasColocadas" alt="" coords="255,157,449,184"/>
+<area shape="rect" id="node6" href="$class_player.html#a4b76cf4f128409d53516d083d4b7584f" title="Player::setBombasColocadas" alt="" coords="255,208,449,235"/>
+<area shape="rect" id="node7" href="$class_player.html#a3dfb69349c809eb38546a804a40e741b" title="Player::getNCorazones" alt="" coords="273,259,431,285"/>
+<area shape="rect" id="node8" href="$class_player.html#a1b5475ae5256e13e31c2579ea42dde99" title="Player::getEstado" alt="" coords="289,309,415,336"/>
+<area shape="rect" id="node9" href="$class_player.html#a39b88679bf5da3090ba70e5d1bb1a8e2" title="Player::setNCorazones" alt="" coords="273,360,431,387"/>
+</map>

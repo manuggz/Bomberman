@@ -1,0 +1,7 @@
+<map id="PopUpMostrarMensajeTexto::packLayout" name="PopUpMostrarMensajeTexto::packLayout">
+<area shape="rect" id="node2" href="$class_game_manager_pop_up_interfaz.html#a02a36f94f6986f434d33bae658581b32" title="GameManagerPopUpInterfaz\l::getRectScreen" alt="" coords="247,5,438,47"/>
+<area shape="rect" id="node3" href="$class_layout_absolute.html#a9807517212f0015c0a67399a35f1ff36" title="LayoutAbsolute::pack" alt="" coords="269,71,417,98"/>
+<area shape="rect" id="node5" href="$class_layout_absolute.html#a09327626b1406cdfad158c13353f0c86" title="LayoutAbsolute::setRectDibujo" alt="" coords="241,122,444,149"/>
+<area shape="rect" id="node4" href="$util_8cpp.html#a0ace920286687a9b537e58100552cd25" title="unir_rects" alt="" coords="543,71,621,98"/>
+<area shape="rect" id="node6" href="$class_component.html#a06933061417ef2fec8588e731802c76b" title="Component::setRectDibujo" alt="" coords="492,122,672,149"/>
+</map>

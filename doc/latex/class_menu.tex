@@ -1,0 +1,156 @@
+\hypertarget{class_menu}{}\section{Menu Class Reference}
+\label{class_menu}\index{Menu@{Menu}}
+
+
+Inheritance diagram for Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{class_menu__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{class_menu__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Menu} (\hyperlink{class_game_manager_interfaz_u_i}{Game\+Manager\+Interfaz\+UI} $\ast$game\+Manager\+Interfaz)\hypertarget{class_menu_a965ae68f255ca10ec4ed52c3aa0d9188}{}\label{class_menu_a965ae68f255ca10ec4ed52c3aa0d9188}
+
+\item 
+void \hyperlink{class_menu_a12119ab1b9abbc5215f6b80be4e3f94b}{prepare} () override
+\item 
+void \hyperlink{class_menu_a71c36f40cdf039d07172222f4e1c4566}{create\+UI} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override
+\item 
+void \hyperlink{class_menu_ae3d38e9e9b2bfc6a99810fbd178a9f04}{start} () override
+\item 
+void {\bfseries resume} () override\hypertarget{class_menu_a59f8f24061a98dab9e3a7068bd89180d}{}\label{class_menu_a59f8f24061a98dab9e3a7068bd89180d}
+
+\item 
+void {\bfseries procesar\+Evento} (S\+D\+L\+\_\+\+Event $\ast$event) override\hypertarget{class_menu_a4d582e3e75d272369a97d38dd30b2423}{}\label{class_menu_a4d582e3e75d272369a97d38dd30b2423}
+
+\item 
+void {\bfseries update} () override\hypertarget{class_menu_a0878f621aa4501fe0e8f388c2222ead6}{}\label{class_menu_a0878f621aa4501fe0e8f388c2222ead6}
+
+\item 
+void {\bfseries draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override\hypertarget{class_menu_a514595f1b580a1787aa20f37f499e68d}{}\label{class_menu_a514595f1b580a1787aa20f37f499e68d}
+
+\item 
+{\bfseries Menu} (\hyperlink{class_game_manager_interfaz_u_i}{Game\+Manager\+Interfaz\+UI} $\ast$game\+Manager\+Interfaz)\hypertarget{class_menu_a965ae68f255ca10ec4ed52c3aa0d9188}{}\label{class_menu_a965ae68f255ca10ec4ed52c3aa0d9188}
+
+\item 
+void \hyperlink{class_menu_a12119ab1b9abbc5215f6b80be4e3f94b}{prepare} () override
+\item 
+void \hyperlink{class_menu_a71c36f40cdf039d07172222f4e1c4566}{create\+UI} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override
+\item 
+void \hyperlink{class_menu_ae3d38e9e9b2bfc6a99810fbd178a9f04}{start} () override
+\item 
+void {\bfseries resume} () override\hypertarget{class_menu_a59f8f24061a98dab9e3a7068bd89180d}{}\label{class_menu_a59f8f24061a98dab9e3a7068bd89180d}
+
+\item 
+void {\bfseries procesar\+Evento} (S\+D\+L\+\_\+\+Event $\ast$event) override\hypertarget{class_menu_a4d582e3e75d272369a97d38dd30b2423}{}\label{class_menu_a4d582e3e75d272369a97d38dd30b2423}
+
+\item 
+void {\bfseries update} () override\hypertarget{class_menu_a0878f621aa4501fe0e8f388c2222ead6}{}\label{class_menu_a0878f621aa4501fe0e8f388c2222ead6}
+
+\item 
+void {\bfseries draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override\hypertarget{class_menu_a514595f1b580a1787aa20f37f499e68d}{}\label{class_menu_a514595f1b580a1787aa20f37f499e68d}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\index{Menu@{Menu}!create\+UI@{create\+UI}}
+\index{create\+UI@{create\+UI}!Menu@{Menu}}
+\subsubsection[{\texorpdfstring{create\+U\+I(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override}{createUI(SDL_Renderer *gRenderer) override}}]{\setlength{\rightskip}{0pt plus 5cm}void Menu\+::create\+UI (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_menu_a71c36f40cdf039d07172222f4e1c4566}{}\label{class_menu_a71c36f40cdf039d07172222f4e1c4566}
+Este metodo se encarga de crear la UI necesaria/inicial de la interfaz. En algunos juegos no es necesario establecer UI en este metodo, sino dibujarlo tod cuando se llama a Interfaz\+U\+I\+::draw
+
+Sin embargo, crear los elementos de la UI por adelantado ayuda en la utilización de dirty rects y parecidos. 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_interfaz_u_i_a9dd59265e0790f06862fdfb12494767e}{Interfaz\+UI}.
+
+\index{Menu@{Menu}!create\+UI@{create\+UI}}
+\index{create\+UI@{create\+UI}!Menu@{Menu}}
+\subsubsection[{\texorpdfstring{create\+U\+I(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override}{createUI(SDL_Renderer *gRenderer) override}}]{\setlength{\rightskip}{0pt plus 5cm}void Menu\+::create\+UI (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_menu_a71c36f40cdf039d07172222f4e1c4566}{}\label{class_menu_a71c36f40cdf039d07172222f4e1c4566}
+Este metodo se encarga de crear la UI necesaria/inicial de la interfaz. En algunos juegos no es necesario establecer UI en este metodo, sino dibujarlo tod cuando se llama a Interfaz\+U\+I\+::draw
+
+Sin embargo, crear los elementos de la UI por adelantado ayuda en la utilización de dirty rects y parecidos. 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_interfaz_u_i_a9dd59265e0790f06862fdfb12494767e}{Interfaz\+UI}.
+
+\index{Menu@{Menu}!prepare@{prepare}}
+\index{prepare@{prepare}!Menu@{Menu}}
+\subsubsection[{\texorpdfstring{prepare() override}{prepare() override}}]{\setlength{\rightskip}{0pt plus 5cm}void Menu\+::prepare (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_menu_a12119ab1b9abbc5215f6b80be4e3f94b}{}\label{class_menu_a12119ab1b9abbc5215f6b80be4e3f94b}
+Se encarga de establecer valores de variables iniciales de la Interfaz Este metodo se ejecuta antes de create\+UI, por lo que puede usarse para obtener datos necesarios para la creacion de la UI 
+
+Reimplemented from \hyperlink{class_interfaz_u_i_a312ba3176f7778589cd67f1828682012}{Interfaz\+UI}.
+
+\index{Menu@{Menu}!prepare@{prepare}}
+\index{prepare@{prepare}!Menu@{Menu}}
+\subsubsection[{\texorpdfstring{prepare() override}{prepare() override}}]{\setlength{\rightskip}{0pt plus 5cm}void Menu\+::prepare (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_menu_a12119ab1b9abbc5215f6b80be4e3f94b}{}\label{class_menu_a12119ab1b9abbc5215f6b80be4e3f94b}
+Se encarga de establecer valores de variables iniciales de la Interfaz Este metodo se ejecuta antes de create\+UI, por lo que puede usarse para obtener datos necesarios para la creacion de la UI 
+
+Reimplemented from \hyperlink{class_interfaz_u_i_a312ba3176f7778589cd67f1828682012}{Interfaz\+UI}.
+
+\index{Menu@{Menu}!start@{start}}
+\index{start@{start}!Menu@{Menu}}
+\subsubsection[{\texorpdfstring{start() override}{start() override}}]{\setlength{\rightskip}{0pt plus 5cm}void Menu\+::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_menu_ae3d38e9e9b2bfc6a99810fbd178a9f04}{}\label{class_menu_ae3d38e9e9b2bfc6a99810fbd178a9f04}
+Este metodo se encarga de Iniciar la Interfaz, al igual que los anteriores métodos. Este metodo debe usarse para dividir el inicio de variables y elementos del juego. 
+
+Reimplemented from \hyperlink{class_interfaz_u_i_a2a80214a4387c21c34a617a8a96996ca}{Interfaz\+UI}.
+
+\index{Menu@{Menu}!start@{start}}
+\index{start@{start}!Menu@{Menu}}
+\subsubsection[{\texorpdfstring{start() override}{start() override}}]{\setlength{\rightskip}{0pt plus 5cm}void Menu\+::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_menu_ae3d38e9e9b2bfc6a99810fbd178a9f04}{}\label{class_menu_ae3d38e9e9b2bfc6a99810fbd178a9f04}
+Este metodo se encarga de Iniciar la Interfaz, al igual que los anteriores métodos. Este metodo debe usarse para dividir el inicio de variables y elementos del juego. 
+
+Reimplemented from \hyperlink{class_interfaz_u_i_a2a80214a4387c21c34a617a8a96996ca}{Interfaz\+UI}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/testsotrosjuegos/\+Othello/Menu.\+hpp\end{DoxyCompactItemize}

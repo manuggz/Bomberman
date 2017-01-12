@@ -1,0 +1,10 @@
+<map id="PopUpMostrarMensajeTexto" name="PopUpMostrarMensajeTexto">
+<area shape="rect" id="node2" href="$class_pop_up_interfaz.html" title="PopUpInterfaz" alt="" coords="47,260,154,287"/>
+<area shape="rect" id="node3" href="$class_game_manager_pop_up_interfaz.html" title="GameManagerPopUpInterfaz" alt="" coords="5,171,196,197"/>
+<area shape="rect" id="node4" href="$class_layout_absolute.html" title="LayoutAbsolute" alt="" coords="178,260,290,287"/>
+<area shape="rect" id="node5" href="$class_layout_component.html" title="LayoutComponent" alt="" coords="243,171,371,197"/>
+<area shape="rect" id="node9" href="$class_label_component.html" title="LabelComponent" alt="" coords="314,260,434,287"/>
+<area shape="rect" id="node6" href="$class_component.html" title="Component" alt="" coords="263,95,352,121"/>
+<area shape="rect" id="node7" href="$class_l_texture.html" title="LTexture" alt="" coords="271,5,344,32"/>
+<area shape="rect" id="node8" href="$class_l_timer.html" title="LTimer" alt="" coords="463,260,525,287"/>
+</map>

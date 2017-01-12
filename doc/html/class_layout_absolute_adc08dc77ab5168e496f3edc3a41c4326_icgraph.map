@@ -1,0 +1,5 @@
+<map id="LayoutAbsolute::addComponent" name="LayoutAbsolute::addComponent">
+<area shape="rect" id="node2" href="$class_juego.html#a8dd19e6a53b446292e3e15e5e164ed05" title="Juego::createUI" alt="" coords="298,5,413,32"/>
+<area shape="rect" id="node3" href="$class_pop_up_mostrar_mensaje_texto.html#a2879964b8559ecfcae7248fbde33e8e3" title="PopUpMostrarMensajeTexto\l::createUI" alt="" coords="261,57,449,98"/>
+<area shape="rect" id="node4" href="$class_menu_modo_multijugador.html#aa87c06427be64fd73e17d9ea37d8744e" title="MenuModoMultijugador\l::createUI" alt="" coords="277,122,433,163"/>
+</map>

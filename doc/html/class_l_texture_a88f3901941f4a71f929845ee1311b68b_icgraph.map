@@ -1,0 +1,28 @@
+<map id="LTexture::getHeight" name="LTexture::getHeight">
+<area shape="rect" id="node2" href="$class_boton_component.html#adacc77cd1e8f7d40a2f30b4b7b61899c" title="BotonComponent\&lt; MenuModo\lMultijugador \&gt;::pack" alt="" coords="191,223,389,265"/>
+<area shape="rect" id="node3" href="$class_image_component.html#a538cae4b9b1f723fa6cb21038387a0f6" title="ImageComponent::pack" alt="" coords="209,289,371,316"/>
+<area shape="rect" id="node4" href="$class_sprite_sheet.html#a8ea8d8f545ca5d812edf46fa326f00d5" title="SpriteSheet::SpriteSheet" alt="" coords="207,340,373,367"/>
+<area shape="rect" id="node5" href="$class_sprite_sheet.html#a86ee75d55b69a7b5aff33c0207fcfdd0" title="SpriteSheet::cargarDesde\lArchivo" alt="" coords="204,391,376,433"/>
+<area shape="rect" id="node18" href="$class_galeria.html#af5f8526638f6c5d6f64af4594cca5dc4" title="Galeria::cargarTexturas" alt="" coords="211,457,369,484"/>
+<area shape="rect" id="node20" href="$util_8hpp.html#a5c1e3755758d01a0ed3ccbceeba9541b" title="imprimir_desde_grilla" alt="" coords="218,537,362,564"/>
+<area shape="rect" id="node25" href="$util_8cpp.html#a3b6e2da4c19de9637bfb0100cad2f1bc" title="imprimir_letra" alt="" coords="240,647,340,673"/>
+<area shape="rect" id="node6" href="$class_mapa.html#a25d45fc6b9c1622f8261a0c849a78294" title="Mapa::cargar" alt="" coords="488,176,587,203"/>
+<area shape="rect" id="node12" href="$class_menu_modo_multijugador.html#aa87c06427be64fd73e17d9ea37d8744e" title="MenuModoMultijugador\l::createUI" alt="" coords="1531,158,1687,199"/>
+<area shape="rect" id="node16" href="$class_sprite_sheet.html#ad6b04a5b43dd7ad57895a9f28cb5ac49" title="SpriteSheet::SpriteSheet" alt="" coords="454,340,621,367"/>
+<area shape="rect" id="node17" href="$class_juego_mostrar_ganadas.html#a8952d565827d92657069f51a4c5abb6b" title="PopUpJuegoMostrarGanadas\l::createUI" alt="" coords="461,391,614,433"/>
+<area shape="rect" id="node7" href="$class_nivel_mapa.html#a3defe38a56c81305d916c96ec2e6b695" title="NivelMapa::cargar" alt="" coords="685,140,813,167"/>
+<area shape="rect" id="node8" href="$class_juego.html#a0f2054b23552adc7898f67ea4547a980" title="Juego::reiniciarEstado" alt="" coords="873,56,1024,83"/>
+<area shape="rect" id="node11" href="$class_menu_modo_multijugador.html#a77f0be9bcdc3fbdf3130a024ef25bef5" title="MenuModoMultijugador\l::establecerTerrenoBatalla" alt="" coords="861,133,1036,174"/>
+<area shape="rect" id="node9" href="$class_juego.html#a83e5a1132a5355c34c31d219b4d035dc" title="Juego::start" alt="" coords="1136,5,1227,32"/>
+<area shape="rect" id="node10" href="$class_juego.html#ac141311099a222492201a52842c207b7" title="Juego::resultPopUp" alt="" coords="1113,56,1250,83"/>
+<area shape="rect" id="node13" href="$class_menu_modo_multijugador.html#a589a0611b7f3cf2978ff1ab72ce3b35c" title="MenuModoMultijugador\l::ejecutarAccionBotonClicked" alt="" coords="1084,158,1279,199"/>
+<area shape="rect" id="node14" href="$class_menu_modo_multijugador.html#a3aee7e0e5ab94f1e866f9306aabed208" title="MenuModoMultijugador\l::clickControl" alt="" coords="1327,158,1483,199"/>
+<area shape="rect" id="node15" href="$class_menu_modo_multijugador.html#a6520fcac1cc0bff79f00c509e34afbd0" title="MenuModoMultijugador\l::procesarEvento" alt="" coords="1327,223,1483,265"/>
+<area shape="rect" id="node19" href="$class_game_manager.html#aa0e2424dc1a39d380e5b6605b179bf05" title="GameManager::GameManager" alt="" coords="437,457,637,484"/>
+<area shape="rect" id="node21" href="$class_juego.html#a46d94040c73103aa385d64361717d55c" title="Juego::drawBarra" alt="" coords="475,508,599,535"/>
+<area shape="rect" id="node23" href="$class_menu_modo_multijugador.html#a1c4c4196780896d241ceaa6f696bc179" title="MenuModoMultijugador\l::draw" alt="" coords="459,559,615,601"/>
+<area shape="rect" id="node24" href="$class_player.html#a69c5d0b03b75874507ad7eeed7ef4703" title="Player::draw" alt="" coords="490,625,585,652"/>
+<area shape="rect" id="node22" href="$class_juego.html#afd62461e81bfd0dcbeecf082f2c023ec" title="Juego::draw" alt="" coords="703,508,796,535"/>
+<area shape="rect" id="node26" href="$util_8cpp.html#a158c90996992814dba0758d143deaa5a" title="imprimir_palabra" alt="" coords="479,676,596,703"/>
+<area shape="rect" id="node27" href="$util_8cpp.html#a03925d68238f4222fabbc0b8c61d2466" title="mostrar_msg" alt="" coords="700,676,799,703"/>
+</map>

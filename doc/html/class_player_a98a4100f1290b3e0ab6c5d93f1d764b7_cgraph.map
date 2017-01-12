@@ -1,0 +1,4 @@
+<map id="Player::setEnPantalla" name="Player::setEnPantalla">
+<area shape="rect" id="node2" href="$class_l_timer.html#a7dc11f05cf5098a6d06ebd6ebec96ed6" title="LTimer::start" alt="" coords="201,5,297,32"/>
+<area shape="rect" id="node3" href="$class_l_timer.html#aeabbf5f935907fcfeaa7f4403741e4ae" title="LTimer::stop" alt="" coords="202,56,297,83"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="MenuNuevoJuego" name="MenuNuevoJuego">
+<area shape="rect" id="node2" href="$class_menu_list_label.html" title="MenuListLabel" alt="" coords="15,80,122,107"/>
+<area shape="rect" id="node3" href="$class_interfaz_u_i.html" title="InterfazUI" alt="" coords="29,5,109,32"/>
+</map>

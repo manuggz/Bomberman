@@ -1,0 +1,91 @@
+\hypertarget{class_label_component}{}\section{Label\+Component Class Reference}
+\label{class_label_component}\index{Label\+Component@{Label\+Component}}
+
+
+Inheritance diagram for Label\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{class_label_component__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Label\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{class_label_component__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries set\+Text} (string nuevo\+Texto)\hypertarget{class_label_component_a0ed2e841847a3fcd745097a6daee50ba}{}\label{class_label_component_a0ed2e841847a3fcd745097a6daee50ba}
+
+\item 
+void {\bfseries set\+Font} (\hyperlink{class_c_font}{C\+Font} $\ast$nueva\+Fuente)\hypertarget{class_label_component_a1fc48a3b8c8807d73688c57442c8d2c1}{}\label{class_label_component_a1fc48a3b8c8807d73688c57442c8d2c1}
+
+\item 
+void \hyperlink{class_label_component_a9979a17ac60f351d9850e0d670d8ab0e}{pack} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)
+\item 
+void \hyperlink{class_label_component_a9637b7af88eb351108ef490f175b39a9}{draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override
+\item 
+void {\bfseries set\+Text\+Color} (S\+D\+L\+\_\+\+Color nuevo)\hypertarget{class_label_component_aecb3f36a01c1c4f5bc924d8f4041bfc9}{}\label{class_label_component_aecb3f36a01c1c4f5bc924d8f4041bfc9}
+
+\item 
+void {\bfseries set\+Text\+Size} (int nueva\+Size)\hypertarget{class_label_component_a74dca5480528e2748a20368e909ebdf8}{}\label{class_label_component_a74dca5480528e2748a20368e909ebdf8}
+
+\item 
+void {\bfseries set\+Font} (string ruta\+Fuente, int size)\hypertarget{class_label_component_a436f611099bc24618624fca6b4a6de3a}{}\label{class_label_component_a436f611099bc24618624fca6b4a6de3a}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_2home_2manuggz_2_documents_2_projects_2_bomberman_2src_2engine_2interfaces_2_menu_list_label_8hpp-example}{/home/manuggz/\+Documents/\+Projects/\+Bomberman/src/engine/interfaces/\+Menu\+List\+Label.\+hpp}.\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\index{Label\+Component@{Label\+Component}!draw@{draw}}
+\index{draw@{draw}!Label\+Component@{Label\+Component}}
+\subsubsection[{\texorpdfstring{draw(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override}{draw(SDL_Renderer *gRenderer) override}}]{\setlength{\rightskip}{0pt plus 5cm}void Label\+Component\+::draw (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_label_component_a9637b7af88eb351108ef490f175b39a9}{}\label{class_label_component_a9637b7af88eb351108ef490f175b39a9}
+Dibuja el componente 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_component_ab1ea202c9ef8933d15956b96cfe281a1}{Component}.
+
+\index{Label\+Component@{Label\+Component}!pack@{pack}}
+\index{pack@{pack}!Label\+Component@{Label\+Component}}
+\subsubsection[{\texorpdfstring{pack(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)}{pack(SDL_Renderer *gRenderer)}}]{\setlength{\rightskip}{0pt plus 5cm}void Label\+Component\+::pack (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_label_component_a9979a17ac60f351d9850e0d670d8ab0e}{}\label{class_label_component_a9979a17ac60f351d9850e0d670d8ab0e}
+Se encarga de crear las texturas del componente asi como otras acciones asociadas con el renderer Notar que despues de esta funcion se debe llamar a calculate\+Rect, es decir, realizar una nueva calculacion del rectangulo de dibujo del componente 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & Render de la pantalla \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_component_aa471f2c3a24525f584ed19cf25222e70}{Component}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/layout/\+Componentes/Label\+Component.\+hpp\end{DoxyCompactItemize}

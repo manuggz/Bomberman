@@ -1,0 +1,5 @@
+<map id="Juego::getSegundosInicioNivel" name="Juego::getSegundosInicioNivel">
+<area shape="rect" id="node2" href="$class_juego.html#a74a8689a0513f13a8dfa6729bae77ada" title="Juego::update" alt="" coords="235,5,339,32"/>
+<area shape="rect" id="node3" href="$class_juego.html#a46d94040c73103aa385d64361717d55c" title="Juego::drawBarra" alt="" coords="225,56,349,83"/>
+<area shape="rect" id="node4" href="$class_juego.html#afd62461e81bfd0dcbeecf082f2c023ec" title="Juego::draw" alt="" coords="397,56,491,83"/>
+</map>

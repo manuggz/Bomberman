@@ -1,0 +1,6 @@
+<map id="Sprite::kill" name="Sprite::kill">
+<area shape="rect" id="node2" href="$class_animacion.html#a02481ecab981d05dd0c50b46abb3f341" title="Animacion::disable" alt="" coords="137,13,269,39"/>
+<area shape="rect" id="node5" href="$class_juego.html#a336e20deb3bfb1e0717c1bf967ff7a75" title="Juego::playerMuerto" alt="" coords="133,63,273,90"/>
+<area shape="rect" id="node3" href="$class_animacion.html#a9b52991c0710843e085326053b2ee568" title="Animacion::update" alt="" coords="321,13,452,39"/>
+<area shape="rect" id="node4" href="$class_juego_mostrar_ganadas.html#a049acb4e679c3c4357729badda704fab" title="PopUpJuegoMostrarGanadas\l::update" alt="" coords="500,5,653,47"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="NivelMapa::romperBloque" name="NivelMapa::romperBloque">
+<area shape="rect" id="node2" href="$class_nivel_mapa.html#a32d0d369415ccae82fcacee60a0fdf41" title="NivelMapa::esBloqueRompible" alt="" coords="225,81,427,108"/>
+<area shape="rect" id="node3" href="$class_nivel_mapa.html#a25f7e94605919f131b50746eba3b0f49" title="NivelMapa::getTileAt" alt="" coords="493,30,637,57"/>
+<area shape="rect" id="node4" href="$class_nivel_mapa.html#ae95b7b0f8d4c7521b13a63b001213740" title="NivelMapa::getIndiceMapaAt" alt="" coords="703,81,893,108"/>
+<area shape="rect" id="node8" href="$class_mapa.html#a169f2cb4198d7933d88099fb16042b9f" title="Mapa::getMapProperty" alt="" coords="249,182,403,209"/>
+<area shape="rect" id="node9" href="$class_nivel_mapa.html#a2af0b654e04be495e657eb8d59c89840" title="NivelMapa::esBloqueSolido" alt="" coords="235,30,417,57"/>
+<area shape="rect" id="node7" href="$class_nivel_mapa.html#a62da61549a499de02cf3a4bd8d756911" title="NivelMapa::getPropertyTile" alt="" coords="475,81,655,108"/>
+<area shape="rect" id="node5" href="$class_nivel_mapa.html#afe955ab11816234cf050ab576a1ac0b6" title="NivelMapa::getIndiceFila\lMapaAt" alt="" coords="957,40,1123,82"/>
+<area shape="rect" id="node6" href="$class_nivel_mapa.html#a080b8df56d1f9598c60ada0b215ccd97" title="NivelMapa::getIndiceColumna\lMapaAt" alt="" coords="941,106,1139,147"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="Juego::esBloqueRompible" name="Juego::esBloqueRompible">
+<area shape="rect" id="node2" href="$class_nivel_mapa.html#a32d0d369415ccae82fcacee60a0fdf41" title="NivelMapa::esBloqueRompible" alt="" coords="228,71,429,98"/>
+<area shape="rect" id="node3" href="$class_nivel_mapa.html#a25f7e94605919f131b50746eba3b0f49" title="NivelMapa::getTileAt" alt="" coords="495,46,639,73"/>
+<area shape="rect" id="node7" href="$class_nivel_mapa.html#a62da61549a499de02cf3a4bd8d756911" title="NivelMapa::getPropertyTile" alt="" coords="477,97,657,123"/>
+<area shape="rect" id="node4" href="$class_nivel_mapa.html#ae95b7b0f8d4c7521b13a63b001213740" title="NivelMapa::getIndiceMapaAt" alt="" coords="705,46,896,73"/>
+<area shape="rect" id="node5" href="$class_nivel_mapa.html#afe955ab11816234cf050ab576a1ac0b6" title="NivelMapa::getIndiceFila\lMapaAt" alt="" coords="959,5,1126,47"/>
+<area shape="rect" id="node6" href="$class_nivel_mapa.html#a080b8df56d1f9598c60ada0b215ccd97" title="NivelMapa::getIndiceColumna\lMapaAt" alt="" coords="944,71,1141,112"/>
+</map>

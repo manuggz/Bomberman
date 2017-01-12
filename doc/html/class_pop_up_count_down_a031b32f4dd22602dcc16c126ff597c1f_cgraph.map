@@ -1,0 +1,7 @@
+<map id="PopUpCountDown::update" name="PopUpCountDown::update">
+<area shape="rect" id="node2" href="$class_pop_up_mostrar_mensaje_texto.html#ab3cad38fc330ca8ec83ac1dcbdde0fbd" title="PopUpMostrarMensajeTexto\l::update" alt="" coords="232,57,420,98"/>
+<area shape="rect" id="node4" href="$class_l_timer.html#a57c4bdca0f7bdd75c65b6ab1499de1e7" title="LTimer::getTicks" alt="" coords="503,123,623,149"/>
+<area shape="rect" id="node6" href="$class_text_label_component.html#a18b7058e401b67aef1a4a231a2fa4c2a" title="LabelComponent\l::setText" alt="" coords="253,174,399,215"/>
+<area shape="rect" id="node3" href="$class_pop_up_interfaz.html#a4c2d2acd5f27868289423c07835c95cd" title="PopUpInterfaz::update" alt="" coords="487,5,640,32"/>
+<area shape="rect" id="node5" href="$class_game_manager_pop_up_interfaz.html#a2eae4cfc151ef0fbf0a799fd0902fe95" title="GameManagerPopUpInterfaz\l::closePopUp" alt="" coords="468,57,659,98"/>
+</map>

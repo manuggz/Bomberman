@@ -1,0 +1,11 @@
+<map id="SpriteSheet::setCurrentCuadro" name="SpriteSheet::setCurrentCuadro">
+<area shape="rect" id="node2" href="$class_mapa.html#afd12771360833474711b9600997c9550" title="Mapa::draw" alt="" coords="303,64,394,91"/>
+<area shape="rect" id="node5" href="$class_animacion.html#a9b52991c0710843e085326053b2ee568" title="Animacion::update" alt="" coords="283,121,414,148"/>
+<area shape="rect" id="node7" href="$class_juego_mostrar_ganadas.html#a78f2844459e28a19e7451fc583dc4701" title="PopUpJuegoMostrarGanadas\l::draw" alt="" coords="272,173,425,214"/>
+<area shape="rect" id="node8" href="$class_explosion.html#aa381f273160b625c9a37e40e1ae0cda3" title="Explosion::detectarAlcances" alt="" coords="255,239,443,265"/>
+<area shape="rect" id="node10" href="$class_explosion.html#ad93f3cca36426268c06a1c832c4ad7f8" title="Explosion::draw" alt="" coords="291,289,406,316"/>
+<area shape="rect" id="node3" href="$class_juego.html#afd62461e81bfd0dcbeecf082f2c023ec" title="Juego::draw" alt="" coords="522,5,615,32"/>
+<area shape="rect" id="node4" href="$class_menu_modo_multijugador.html#a1c4c4196780896d241ceaa6f696bc179" title="MenuModoMultijugador\l::draw" alt="" coords="491,57,647,98"/>
+<area shape="rect" id="node6" href="$class_juego_mostrar_ganadas.html#a049acb4e679c3c4357729badda704fab" title="PopUpJuegoMostrarGanadas\l::update" alt="" coords="492,122,645,163"/>
+<area shape="rect" id="node9" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="497,239,641,265"/>
+</map>

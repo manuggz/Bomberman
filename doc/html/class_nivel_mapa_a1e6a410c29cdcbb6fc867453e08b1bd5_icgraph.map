@@ -1,0 +1,13 @@
+<map id="NivelMapa::getPosYPlayer" name="NivelMapa::getPosYPlayer">
+<area shape="rect" id="node2" href="$class_juego.html#a95af6c1b23ede35e0714e1d01ff7c570" title="Juego::establecerValores\lDeMapaPlayer" alt="" coords="235,78,404,119"/>
+<area shape="rect" id="node8" href="$class_menu_modo_multijugador.html#a77f0be9bcdc3fbdf3130a024ef25bef5" title="MenuModoMultijugador\l::establecerTerrenoBatalla" alt="" coords="232,143,407,185"/>
+<area shape="rect" id="node3" href="$class_juego.html#ac40dabed8ef689479cede0b7aa346ce8" title="Juego::establecerValores\lDeMapaPlayers" alt="" coords="467,23,637,65"/>
+<area shape="rect" id="node7" href="$class_juego.html#a336e20deb3bfb1e0717c1bf967ff7a75" title="Juego::playerMuerto" alt="" coords="482,89,622,116"/>
+<area shape="rect" id="node4" href="$class_juego.html#a0f2054b23552adc7898f67ea4547a980" title="Juego::reiniciarEstado" alt="" coords="700,31,851,57"/>
+<area shape="rect" id="node5" href="$class_juego.html#a83e5a1132a5355c34c31d219b4d035dc" title="Juego::start" alt="" coords="934,5,1025,32"/>
+<area shape="rect" id="node6" href="$class_juego.html#ac141311099a222492201a52842c207b7" title="Juego::resultPopUp" alt="" coords="911,56,1048,83"/>
+<area shape="rect" id="node9" href="$class_menu_modo_multijugador.html#aa87c06427be64fd73e17d9ea37d8744e" title="MenuModoMultijugador\l::createUI" alt="" coords="901,169,1057,210"/>
+<area shape="rect" id="node10" href="$class_menu_modo_multijugador.html#a589a0611b7f3cf2978ff1ab72ce3b35c" title="MenuModoMultijugador\l::ejecutarAccionBotonClicked" alt="" coords="455,198,649,239"/>
+<area shape="rect" id="node11" href="$class_menu_modo_multijugador.html#a3aee7e0e5ab94f1e866f9306aabed208" title="MenuModoMultijugador\l::clickControl" alt="" coords="697,198,853,239"/>
+<area shape="rect" id="node12" href="$class_menu_modo_multijugador.html#a6520fcac1cc0bff79f00c509e34afbd0" title="MenuModoMultijugador\l::procesarEvento" alt="" coords="697,263,853,305"/>
+</map>

@@ -1,0 +1,18 @@
+<map id="src/engine/util/CFont.hpp" name="src/engine/util/CFont.hpp">
+<area shape="rect" id="node2" href="$_text_label_component_8hpp.html" title="src/engine/layout/Componentes\l/LabelComponent.hpp" alt="" coords="499,80,706,121"/>
+<area shape="rect" id="node17" href="$_c_font_8cpp.html" title="src/engine/util/CFont.cpp" alt="" coords="731,87,899,114"/>
+<area shape="rect" id="node3" href="$_menu_list_label_8hpp.html" title="src/engine/interfaces\l/MenuListLabel.hpp" alt="" coords="42,259,185,300"/>
+<area shape="rect" id="node7" href="$juego_8hpp.html" title="src/Interfaces/juego\l/juego.hpp" alt="" coords="534,169,671,211"/>
+<area shape="rect" id="node8" href="$juego_8cpp.html" title="src/Interfaces/juego\l/juego.cpp" alt="" coords="837,348,974,389"/>
+<area shape="rect" id="node14" href="$_menu_modo_multijugador_8hpp.html" title="src/Interfaces/menu\l/MenuModoMultijugador.hpp" alt="" coords="209,259,394,300"/>
+<area shape="rect" id="node15" href="$_pop_up_mostrar_mensaje_texto_8hpp.html" title="src/Interfaces/juego\l/PopUpMostrarMensajeTexto.hpp" alt="" coords="915,169,1133,211"/>
+<area shape="rect" id="node4" href="$_menu_nuevo_juego_8hpp.html" title="src/Interfaces/menu\l/MenuNuevoJuego.hpp" alt="" coords="55,348,211,389"/>
+<area shape="rect" id="node5" href="$_menu_principal_8hpp.html" title="src/Interfaces/menu\l/MenuPrincipal.hpp" alt="" coords="5,437,144,479"/>
+<area shape="rect" id="node6" href="$main_8cpp.html" title="src/main.cpp" alt="" coords="26,527,123,553"/>
+<area shape="rect" id="node9" href="$explosion_8hpp.html" title="src/objetos/explosion.hpp" alt="" coords="419,266,589,293"/>
+<area shape="rect" id="node12" href="$bloque_8hpp.html" title="src/personajes/bloque.hpp" alt="" coords="614,266,789,293"/>
+<area shape="rect" id="node10" href="$explosion_8cpp.html" title="src/objetos/explosion.cpp" alt="" coords="236,355,407,382"/>
+<area shape="rect" id="node11" href="$player_8cpp.html" title="src/personajes/player.cpp" alt="" coords="431,355,601,382"/>
+<area shape="rect" id="node13" href="$bloque_8cpp.html" title="src/personajes/bloque.cpp" alt="" coords="626,355,801,382"/>
+<area shape="rect" id="node16" href="$_pop_up_count_down_8hpp.html" title="src/Interfaces/juego\l/PopUpCountDown.hpp" alt="" coords="965,259,1125,300"/>
+</map>

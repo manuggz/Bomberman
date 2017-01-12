@@ -1,0 +1,4 @@
+<map id="cargar_sonido" name="cargar_sonido">
+<area shape="rect" id="node2" href="$class_galeria.html#a48293b18fbcd67ea6202b1a1f62fa67e" title="Galeria::cargarSonidos" alt="" coords="156,5,311,32"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#aa0e2424dc1a39d380e5b6605b179bf05" title="GameManager::GameManager" alt="" coords="359,5,559,32"/>
+</map>

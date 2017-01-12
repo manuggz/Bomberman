@@ -1,0 +1,372 @@
+\hypertarget{class_juego}{}\section{Juego Class Reference}
+\label{class_juego}\index{Juego@{Juego}}
+
+
+Inheritance diagram for Juego\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_juego__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Juego\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_juego__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_juego_aa3d9f9a9d5aa784f583d5f65b304d9e2}{Juego} (\hyperlink{class_game_manager_interfaz_u_i}{Game\+Manager\+Interfaz\+UI} $\ast$game\+Manager, std\+::string ruta\+Mapa, int n\+Victorias, int n\+Minutos, bool is\+Player\+Activo\mbox{[}\+\_\+\+P\+L\+A\+Y\+E\+RS\mbox{]})
+\item 
+void \hyperlink{class_juego_a5db4a2c61a5853c6a02341d0b9e77cbb}{prepare} () override
+\item 
+void \hyperlink{class_juego_a8dd19e6a53b446292e3e15e5e164ed05}{create\+UI} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override
+\item 
+void \hyperlink{class_juego_a83e5a1132a5355c34c31d219b4d035dc}{start} () override
+\item 
+void {\bfseries procesar\+Evento} (S\+D\+L\+\_\+\+Event $\ast$evento) override\hypertarget{class_juego_a67ecc26b162fcdad6471884a0e55f0a0}{}\label{class_juego_a67ecc26b162fcdad6471884a0e55f0a0}
+
+\item 
+void \hyperlink{class_juego_a74a8689a0513f13a8dfa6729bae77ada}{update} () override
+\item 
+void {\bfseries update\+When\+Pop\+Up} () override\hypertarget{class_juego_a6bb98ea5de6c8b4843afd5cd6a811e07}{}\label{class_juego_a6bb98ea5de6c8b4843afd5cd6a811e07}
+
+\item 
+void {\bfseries draw} (S\+D\+L\+\_\+\+Renderer $\ast$) override\hypertarget{class_juego_afd62461e81bfd0dcbeecf082f2c023ec}{}\label{class_juego_afd62461e81bfd0dcbeecf082f2c023ec}
+
+\item 
+void \hyperlink{class_juego_acaae61b971f3c2b767925db38da41d5c}{eliminar\+Sprite} (\hyperlink{class_sprite}{Sprite} $\ast$sprite) override
+\item 
+bool {\bfseries is\+Out\+Of\+Map\+Bounds} (S\+D\+L\+\_\+\+Rect rect) override\hypertarget{class_juego_a6d78e56d14ec9985037d213da9c134ff}{}\label{class_juego_a6d78e56d14ec9985037d213da9c134ff}
+
+\item 
+\hyperlink{class_bomba}{Bomba} $\ast$ {\bfseries agregar\+Bomba} (\hyperlink{class_player}{Player} $\ast$player\+Propietario) override\hypertarget{class_juego_a7b85a67ebed60f1e80e314f2298951a8}{}\label{class_juego_a7b85a67ebed60f1e80e314f2298951a8}
+
+\item 
+deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries colision\+Con\+Bombas} (S\+D\+L\+\_\+\+Rect rect) override\hypertarget{class_juego_a4af8340331254c695a0258f22284efe6}{}\label{class_juego_a4af8340331254c695a0258f22284efe6}
+
+\item 
+deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries colision\+Con\+Explosiones} (S\+D\+L\+\_\+\+Rect rect) override\hypertarget{class_juego_a220161dcde1e991619ac218de9354c5b}{}\label{class_juego_a220161dcde1e991619ac218de9354c5b}
+
+\item 
+deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries colision\+Bloque\+En\+Llamas} (S\+D\+L\+\_\+\+Rect rect) override\hypertarget{class_juego_a7226f7dd36ef3519b170035afd8ce943}{}\label{class_juego_a7226f7dd36ef3519b170035afd8ce943}
+
+\item 
+deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries colision\+Con\+Items} (S\+D\+L\+\_\+\+Rect rect) override\hypertarget{class_juego_a0d676fd93f16aff9c9e53fe062b4cbe3}{}\label{class_juego_a0d676fd93f16aff9c9e53fe062b4cbe3}
+
+\item 
+Nivel\+Mapa\+::\+Extremo\+Colision {\bfseries colision\+Con\+Mapa} (S\+D\+L\+\_\+\+Rect rect\+\_\+coli, int $\ast$lado\+\_\+colision=nullptr, bool solo\+Bloques\+No\+Traspasables=false) override\hypertarget{class_juego_afc0afb5a5d8dbdc01e15e37c75c77a66}{}\label{class_juego_afc0afb5a5d8dbdc01e15e37c75c77a66}
+
+\item 
+int {\bfseries get\+Joys\+Activos} () override\hypertarget{class_juego_a05efa90df1ec93452c715a5da3a88533}{}\label{class_juego_a05efa90df1ec93452c715a5da3a88533}
+
+\item 
+S\+D\+L\+\_\+\+Joystick $\ast$ {\bfseries get\+Joy} (int id) override\hypertarget{class_juego_a5bc4a7e470c19d414db169694d0c7775}{}\label{class_juego_a5bc4a7e470c19d414db169694d0c7775}
+
+\item 
+\hyperlink{class_l_texture}{L\+Texture} $\ast$ {\bfseries get\+Imagen} (Galeria\+::\+Code\+Imagen code) override\hypertarget{class_juego_a930b36da4b43ff9c9679450fc90b9b8d}{}\label{class_juego_a930b36da4b43ff9c9679450fc90b9b8d}
+
+\item 
+\hyperlink{class_tile_en_llamas}{Tile\+En\+Llamas} $\ast$ {\bfseries agregar\+Bloque\+En\+Llamas} (int x, int y) override\hypertarget{class_juego_ab2fc0a295438ebf00813fa36496d0259}{}\label{class_juego_ab2fc0a295438ebf00813fa36496d0259}
+
+\item 
+bool {\bfseries es\+Bloque\+Solido} (int x, int y) override\hypertarget{class_juego_a9c9b2f882007b2a43285a3be6d9e0bf2}{}\label{class_juego_a9c9b2f882007b2a43285a3be6d9e0bf2}
+
+\item 
+bool {\bfseries es\+Bloque\+Rompible} (int x, int y) override\hypertarget{class_juego_ace6043603d44b94889830d54c1dad8a8}{}\label{class_juego_ace6043603d44b94889830d54c1dad8a8}
+
+\item 
+void \hyperlink{class_juego_a336e20deb3bfb1e0717c1bf967ff7a75}{player\+Muerto} (\hyperlink{class_player}{Player} $\ast$p\+Player, \hyperlink{class_sprite}{Sprite} $\ast$p\+Player\+Causante) override
+\item 
+void {\bfseries pause} () override\hypertarget{class_juego_aaf1cd7159334d07023c78d6b8a35e63f}{}\label{class_juego_aaf1cd7159334d07023c78d6b8a35e63f}
+
+\item 
+void {\bfseries resume} () override\hypertarget{class_juego_a3ad516348499c35140e5c61f3e55a6ec}{}\label{class_juego_a3ad516348499c35140e5c61f3e55a6ec}
+
+\item 
+void {\bfseries result\+Pop\+Up} (void $\ast$result, int pop\+Up\+Code) override\hypertarget{class_juego_ac141311099a222492201a52842c207b7}{}\label{class_juego_ac141311099a222492201a52842c207b7}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Item\+::\+Tipo\+Item {\bfseries get\+Tipo\+Nuevo\+Item} ()\hypertarget{class_juego_af4734fcef83b06c0a8cfa0ba2a2bc0a7}{}\label{class_juego_af4734fcef83b06c0a8cfa0ba2a2bc0a7}
+
+\item 
+void \hyperlink{class_juego_a95af6c1b23ede35e0714e1d01ff7c570}{establecer\+Valores\+De\+Mapa\+Player} (Id\+Player id\+Player)
+\item 
+void {\bfseries pack\+Layout} (S\+D\+L\+\_\+\+Renderer $\ast$p\+Renderer)\hypertarget{class_juego_a51f2b9d3c31036521eff299b29d98685}{}\label{class_juego_a51f2b9d3c31036521eff299b29d98685}
+
+\item 
+void \hyperlink{class_juego_a46d94040c73103aa385d64361717d55c}{draw\+Barra} (S\+D\+L\+\_\+\+Renderer $\ast$)
+\item 
+void \hyperlink{class_juego_ac40dabed8ef689479cede0b7aa346ce8}{establecer\+Valores\+De\+Mapa\+Players} ()
+\item 
+void \hyperlink{class_juego_ac4832a99f849b8180667cfda4a2493e3}{agregar\+Players\+Activos} ()
+\item 
+bool {\bfseries esta\+Player\+Activo} (Id\+Player)\hypertarget{class_juego_a9511541ec77f0dcb380df6f2f49f52e2}{}\label{class_juego_a9511541ec77f0dcb380df6f2f49f52e2}
+
+\item 
+void {\bfseries reiniciar\+Estado} ()\hypertarget{class_juego_a0f2054b23552adc7898f67ea4547a980}{}\label{class_juego_a0f2054b23552adc7898f67ea4547a980}
+
+\item 
+int {\bfseries get\+Segundos\+Inicio\+Nivel} ()\hypertarget{class_juego_a55223ce1f280cbeff8443196b3334069}{}\label{class_juego_a55223ce1f280cbeff8443196b3334069}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_draw_group}{Draw\+Group} {\bfseries m\+Grp\+Sprites}\hypertarget{class_juego_a16954a5304977010c10d4a2947904a37}{}\label{class_juego_a16954a5304977010c10d4a2947904a37}
+
+\item 
+\hyperlink{class_group}{Group} \hyperlink{class_juego_a21212e537ac309102310b5d6eec8b05d}{m\+Grp\+Enemigos}
+\item 
+\hyperlink{class_group}{Group} {\bfseries m\+Grp\+Explosiones}\hypertarget{class_juego_afec10123c9056d6dc1094afaf63f9669}{}\label{class_juego_afec10123c9056d6dc1094afaf63f9669}
+
+\item 
+\hyperlink{class_group}{Group} {\bfseries m\+Grp\+Items}\hypertarget{class_juego_ad89bd5035fc5f83405888aa142e9507b}{}\label{class_juego_ad89bd5035fc5f83405888aa142e9507b}
+
+\item 
+\hyperlink{class_group}{Group} {\bfseries m\+Grp\+Bombas}\hypertarget{class_juego_ad70d8722d5672bfb50a188a81498ad0e}{}\label{class_juego_ad70d8722d5672bfb50a188a81498ad0e}
+
+\item 
+\hyperlink{class_group}{Group} {\bfseries m\+Grp\+Players}\hypertarget{class_juego_aefb7102b721b960b92541885939d7340}{}\label{class_juego_aefb7102b721b960b92541885939d7340}
+
+\item 
+\hyperlink{class_group}{Group} {\bfseries m\+Grp\+Bloques}\hypertarget{class_juego_a0da19321eebedd555c12fa8097c10945}{}\label{class_juego_a0da19321eebedd555c12fa8097c10945}
+
+\item 
+\hyperlink{class_nivel_mapa}{Nivel\+Mapa} {\bfseries m\+Mapa}\hypertarget{class_juego_a1288a8df975edac44f406f5fb3b057f7}{}\label{class_juego_a1288a8df975edac44f406f5fb3b057f7}
+
+\item 
+\hyperlink{class_l_timer}{L\+Timer} {\bfseries m\+Game\+Timer}\hypertarget{class_juego_afd3ce8f8b6c1e021c81a09a28a95485d}{}\label{class_juego_afd3ce8f8b6c1e021c81a09a28a95485d}
+
+\item 
+int {\bfseries m\+Rondas\+Ganadas} \mbox{[}\+\_\+\+P\+L\+A\+Y\+E\+RS\mbox{]} \{0\}\hypertarget{class_juego_a4ccf29a52fb8b5512521f8e0473b442c}{}\label{class_juego_a4ccf29a52fb8b5512521f8e0473b442c}
+
+\item 
+bool {\bfseries m\+Is\+Player\+Activado} \mbox{[}\+\_\+\+P\+L\+A\+Y\+E\+RS\mbox{]} \{false\}\hypertarget{class_juego_a2b5fd9e927e73d550e56ae52b3b5f137}{}\label{class_juego_a2b5fd9e927e73d550e56ae52b3b5f137}
+
+\item 
+\hyperlink{class_player}{Player} $\ast$ {\bfseries m\+Player\+Sprite} \mbox{[}\+\_\+\+P\+L\+A\+Y\+E\+RS\mbox{]} \{nullptr\}\hypertarget{class_juego_a6cc0ada2c2041381f84d20843d3e48c7}{}\label{class_juego_a6cc0ada2c2041381f84d20843d3e48c7}
+
+\item 
+std\+::string {\bfseries m\+Ruta\+Terreno\+Mapa}\hypertarget{class_juego_ad3a003e0b425815cf01f62277322c6da}{}\label{class_juego_ad3a003e0b425815cf01f62277322c6da}
+
+\item 
+int {\bfseries m\+N\+Victorias} = 0\hypertarget{class_juego_ab46d0960968802293c69df8a67309a2f}{}\label{class_juego_ab46d0960968802293c69df8a67309a2f}
+
+\item 
+int {\bfseries m\+Minutos} = 0\hypertarget{class_juego_ae8c84e5470394b4908659a53e16679c2}{}\label{class_juego_ae8c84e5470394b4908659a53e16679c2}
+
+\item 
+Id\+Player {\bfseries m\+Id\+Lider\+Rondas\+Ganadas} = P\+L\+A\+Y\+E\+R\+\_\+\+N\+O\+NE\hypertarget{class_juego_a8d39c10569fa9c1aa8b0cd66989b3d43}{}\label{class_juego_a8d39c10569fa9c1aa8b0cd66989b3d43}
+
+\item 
+S\+D\+L\+\_\+\+Renderer $\ast$ {\bfseries m\+Game\+Renderer}\hypertarget{class_juego_a2dfe5021b437c332a7f5d553502fc9d0}{}\label{class_juego_a2dfe5021b437c332a7f5d553502fc9d0}
+
+\item 
+\hyperlink{class_layout_absolute}{Layout\+Absolute} $\ast$ {\bfseries m\+Layout\+Parent}\hypertarget{class_juego_aeac2fc35554cf89683dac4193fc972f9}{}\label{class_juego_aeac2fc35554cf89683dac4193fc972f9}
+
+\item 
+\hyperlink{class_label_component}{Label\+Component} $\ast$ {\bfseries mp\+Txt\+Tiempo\+Restante}\hypertarget{class_juego_adda3a8d16fa4706e29da1aee43e92679}{}\label{class_juego_adda3a8d16fa4706e29da1aee43e92679}
+
+\item 
+\hyperlink{class_label_component}{Label\+Component} $\ast$ {\bfseries mp\+Vidas\+Restantes\+Player} \mbox{[}\+\_\+\+P\+L\+A\+Y\+E\+RS\mbox{]}\hypertarget{class_juego_a0f8cf53b8d5c8415a8b0c41d9c056c90}{}\label{class_juego_a0f8cf53b8d5c8415a8b0c41d9c056c90}
+
+\item 
+bool {\bfseries m\+Is\+Playing\+Warning\+Sound} = false\hypertarget{class_juego_ae07f25bd4865e8892951171f582dc707}{}\label{class_juego_ae07f25bd4865e8892951171f582dc707}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int {\bfseries I\+D\+\_\+\+P\+O\+P\+U\+P\+\_\+\+J\+U\+E\+G\+O\+\_\+\+M\+O\+S\+T\+R\+A\+R\+\_\+\+G\+A\+N\+\_\+\+T\+E\+R\+M\+I\+N\+AR} = 100\hypertarget{class_juego_a5f4d5d2c7acd60f179810e6bfb191cf8}{}\label{class_juego_a5f4d5d2c7acd60f179810e6bfb191cf8}
+
+\item 
+static const int {\bfseries I\+D\+\_\+\+P\+O\+P\+U\+P\+\_\+\+J\+U\+E\+G\+O\+\_\+\+M\+O\+S\+T\+R\+A\+R\+\_\+\+G\+A\+N\+\_\+\+C\+O\+N\+T\+I\+N\+U\+AR} = 101\hypertarget{class_juego_a172da2cda4fea948201744d46d281a6c}{}\label{class_juego_a172da2cda4fea948201744d46d281a6c}
+
+\item 
+static const int {\bfseries I\+D\+\_\+\+P\+O\+P\+U\+P\+\_\+\+J\+U\+E\+G\+O\+\_\+\+N\+A\+D\+I\+E\+\_\+\+G\+A\+N\+A\+\_\+\+R\+O\+N\+DA} = 102\hypertarget{class_juego_a70048dac849babf67e634558ab45ad83}{}\label{class_juego_a70048dac849babf67e634558ab45ad83}
+
+\item 
+static const int {\bfseries I\+D\+\_\+\+P\+O\+P\+U\+P\+\_\+\+J\+U\+E\+G\+O\+\_\+\+C\+O\+M\+I\+E\+N\+ZA} = 103\hypertarget{class_juego_a3c5d91df9c859b59da6087b196d1e8a2}{}\label{class_juego_a3c5d91df9c859b59da6087b196d1e8a2}
+
+\item 
+static const int {\bfseries I\+D\+\_\+\+P\+O\+P\+U\+P\+\_\+\+J\+U\+E\+G\+O\+\_\+\+G\+A\+N\+A\+D\+OR} = 104\hypertarget{class_juego_ace2ce255fa30d22737d00caa91962b47}{}\label{class_juego_ace2ce255fa30d22737d00caa91962b47}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Juego@{Juego}!Juego@{Juego}}
+\index{Juego@{Juego}!Juego@{Juego}}
+\subsubsection[{\texorpdfstring{Juego(\+Game\+Manager\+Interfaz\+U\+I $\ast$game\+Manager, std\+::string ruta\+Mapa, int n\+Victorias, int n\+Minutos, bool is\+Player\+Activo[\+\_\+\+P\+L\+A\+Y\+E\+RS])}{Juego(GameManagerInterfazUI *gameManager, std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[_PLAYERS])}}]{\setlength{\rightskip}{0pt plus 5cm}Juego\+::\+Juego (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Manager\+Interfaz\+UI} $\ast$}]{game\+Manager, }
+\item[{std\+::string}]{ruta\+Mapa, }
+\item[{int}]{n\+Victorias, }
+\item[{int}]{n\+Minutos, }
+\item[{bool}]{is\+Player\+Activo\mbox{[}\+\_\+\+P\+L\+A\+Y\+E\+R\+S\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_juego_aa3d9f9a9d5aa784f583d5f65b304d9e2}{}\label{class_juego_aa3d9f9a9d5aa784f583d5f65b304d9e2}
+Inicializa la clase \hyperlink{class_juego}{Juego} 
+\begin{DoxyParams}{Parameters}
+{\em game\+Manager} & \\
+\hline
+{\em ruta\+Mapa} & Ruta al mapa .tmx \\
+\hline
+{\em n\+Victorias} & Numero de victorias totales que debe tener un jugador para acabar el juego \\
+\hline
+{\em n\+Minutos} & Numero de minutos que debe durar como máximo el juego \\
+\hline
+{\em is\+Player\+Activo} & Array con los players que jugaran \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Juego@{Juego}!agregar\+Players\+Activos@{agregar\+Players\+Activos}}
+\index{agregar\+Players\+Activos@{agregar\+Players\+Activos}!Juego@{Juego}}
+\subsubsection[{\texorpdfstring{agregar\+Players\+Activos()}{agregarPlayersActivos()}}]{\setlength{\rightskip}{0pt plus 5cm}void Juego\+::agregar\+Players\+Activos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_juego_ac4832a99f849b8180667cfda4a2493e3}{}\label{class_juego_ac4832a99f849b8180667cfda4a2493e3}
+Agrega los players que fueron activados a los grupos del juego Lo cual hace que se actualizen y dibujen \index{Juego@{Juego}!create\+UI@{create\+UI}}
+\index{create\+UI@{create\+UI}!Juego@{Juego}}
+\subsubsection[{\texorpdfstring{create\+U\+I(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override}{createUI(SDL_Renderer *gRenderer) override}}]{\setlength{\rightskip}{0pt plus 5cm}void Juego\+::create\+UI (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_juego_a8dd19e6a53b446292e3e15e5e164ed05}{}\label{class_juego_a8dd19e6a53b446292e3e15e5e164ed05}
+Crea El layout que se encargara de dibujar los componentes necesarios para la interfaz Tales son los componentes que dibujan el texto en pantalla 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_interfaz_u_i_a9dd59265e0790f06862fdfb12494767e}{Interfaz\+UI}.
+
+\index{Juego@{Juego}!draw\+Barra@{draw\+Barra}}
+\index{draw\+Barra@{draw\+Barra}!Juego@{Juego}}
+\subsubsection[{\texorpdfstring{draw\+Barra(\+S\+D\+L\+\_\+\+Renderer $\ast$)}{drawBarra(SDL_Renderer *)}}]{\setlength{\rightskip}{0pt plus 5cm}void Juego\+::draw\+Barra (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_juego_a46d94040c73103aa385d64361717d55c}{}\label{class_juego_a46d94040c73103aa385d64361717d55c}
+Dibuja los datos que se muestran arriba del \hyperlink{class_mapa}{Mapa} 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & \\
+\hline
+\end{DoxyParams}
+\index{Juego@{Juego}!eliminar\+Sprite@{eliminar\+Sprite}}
+\index{eliminar\+Sprite@{eliminar\+Sprite}!Juego@{Juego}}
+\subsubsection[{\texorpdfstring{eliminar\+Sprite(\+Sprite $\ast$sprite) override}{eliminarSprite(Sprite *sprite) override}}]{\setlength{\rightskip}{0pt plus 5cm}void Juego\+::eliminar\+Sprite (
+\begin{DoxyParamCaption}
+\item[{{\bf Sprite} $\ast$}]{sprite}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_juego_acaae61b971f3c2b767925db38da41d5c}{}\label{class_juego_acaae61b971f3c2b767925db38da41d5c}
+Elimina un \hyperlink{class_sprite}{Sprite} del juego Dependiendo del tipo de sprite a eliminar se hace una accion correspondiente 
+\begin{DoxyParams}{Parameters}
+{\em sprite} & \\
+\hline
+\end{DoxyParams}
+Si un item es eliminado puede ser \+: Que una explosion lo ha alcanzado y la explosion le aplico kill lo cual lo mando aquí indirectamente Que un player ha colisionado con él y le ha dicho \char`\"{}hey yo te he activado!\char`\"{} y le ha hecho kill() lo cual tambien lo ha mandado aqui. Por lo que al inicio solo obtenemos el player que ha activado el item el cual si ha ocurrido el primer caso debería ser null y por consiguiente se agrega un item en llamas ahí sino entonces se le dice al player \char`\"{}bien hecho toma tu recompensa!\char`\"{}
+
+Implements \hyperlink{class_interfaz_sprite_group_acad50741e8bab94e3ce1f8c4c0cbad52}{Interfaz\+Sprite\+Group}.
+
+\index{Juego@{Juego}!establecer\+Valores\+De\+Mapa\+Player@{establecer\+Valores\+De\+Mapa\+Player}}
+\index{establecer\+Valores\+De\+Mapa\+Player@{establecer\+Valores\+De\+Mapa\+Player}!Juego@{Juego}}
+\subsubsection[{\texorpdfstring{establecer\+Valores\+De\+Mapa\+Player(\+Id\+Player id\+Player)}{establecerValoresDeMapaPlayer(IdPlayer idPlayer)}}]{\setlength{\rightskip}{0pt plus 5cm}void Juego\+::establecer\+Valores\+De\+Mapa\+Player (
+\begin{DoxyParamCaption}
+\item[{Id\+Player}]{id\+Player}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_juego_a95af6c1b23ede35e0714e1d01ff7c570}{}\label{class_juego_a95af6c1b23ede35e0714e1d01ff7c570}
+Establece los valores iniciales de un player establecidos por el \hyperlink{class_mapa}{Mapa} 
+\begin{DoxyParams}{Parameters}
+{\em id\+Player} & \\
+\hline
+\end{DoxyParams}
+\index{Juego@{Juego}!establecer\+Valores\+De\+Mapa\+Players@{establecer\+Valores\+De\+Mapa\+Players}}
+\index{establecer\+Valores\+De\+Mapa\+Players@{establecer\+Valores\+De\+Mapa\+Players}!Juego@{Juego}}
+\subsubsection[{\texorpdfstring{establecer\+Valores\+De\+Mapa\+Players()}{establecerValoresDeMapaPlayers()}}]{\setlength{\rightskip}{0pt plus 5cm}void Juego\+::establecer\+Valores\+De\+Mapa\+Players (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_juego_ac40dabed8ef689479cede0b7aa346ce8}{}\label{class_juego_ac40dabed8ef689479cede0b7aa346ce8}
+Una vez cargado el mapa se deben iniciar los players con los valores iniciales que se establecieron que el mapa especifica \index{Juego@{Juego}!player\+Muerto@{player\+Muerto}}
+\index{player\+Muerto@{player\+Muerto}!Juego@{Juego}}
+\subsubsection[{\texorpdfstring{player\+Muerto(\+Player $\ast$p\+Player, Sprite $\ast$p\+Player\+Causante) override}{playerMuerto(Player *pPlayer, Sprite *pPlayerCausante) override}}]{\setlength{\rightskip}{0pt plus 5cm}void Juego\+::player\+Muerto (
+\begin{DoxyParamCaption}
+\item[{{\bf Player} $\ast$}]{p\+Player, }
+\item[{{\bf Sprite} $\ast$}]{p\+Player\+Causante}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_juego_a336e20deb3bfb1e0717c1bf967ff7a75}{}\label{class_juego_a336e20deb3bfb1e0717c1bf967ff7a75}
+Este metodo es llamado por los players para decir \char`\"{}hey estoy muerto! y este tipo me ha matado! dime que hago\char`\"{} o simplemente \char`\"{}hey estoy muerto dime que hago\char`\"{} 
+\begin{DoxyParams}{Parameters}
+{\em p\+Player} & \\
+\hline
+{\em p\+Player\+Causante} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_interfaz_juego}{Interfaz\+Juego}.
+
+\index{Juego@{Juego}!prepare@{prepare}}
+\index{prepare@{prepare}!Juego@{Juego}}
+\subsubsection[{\texorpdfstring{prepare() override}{prepare() override}}]{\setlength{\rightskip}{0pt plus 5cm}void Juego\+::prepare (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_juego_a5db4a2c61a5853c6a02341d0b9e77cbb}{}\label{class_juego_a5db4a2c61a5853c6a02341d0b9e77cbb}
+Crea el \hyperlink{class_mapa}{Mapa} los players y el timer 
+
+Reimplemented from \hyperlink{class_interfaz_u_i_a312ba3176f7778589cd67f1828682012}{Interfaz\+UI}.
+
+\index{Juego@{Juego}!start@{start}}
+\index{start@{start}!Juego@{Juego}}
+\subsubsection[{\texorpdfstring{start() override}{start() override}}]{\setlength{\rightskip}{0pt plus 5cm}void Juego\+::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_juego_a83e5a1132a5355c34c31d219b4d035dc}{}\label{class_juego_a83e5a1132a5355c34c31d219b4d035dc}
+Inicia el estado del juego 
+
+Reimplemented from \hyperlink{class_interfaz_u_i_a2a80214a4387c21c34a617a8a96996ca}{Interfaz\+UI}.
+
+\index{Juego@{Juego}!update@{update}}
+\index{update@{update}!Juego@{Juego}}
+\subsubsection[{\texorpdfstring{update() override}{update() override}}]{\setlength{\rightskip}{0pt plus 5cm}void Juego\+::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_juego_a74a8689a0513f13a8dfa6729bae77ada}{}\label{class_juego_a74a8689a0513f13a8dfa6729bae77ada}
+Actualiza la lógica del juego \}//fin if(!pausado)
+
+controla\+Pausa(teclas);
+
+/$\ast$ switch(estado\+\_\+actual)\{ case P\+L\+AY\+: if(!animando\+Entrada\+Mapa\+Vertical)estado\+Play(); break; case D\+I\+S\+P\+L\+A\+Y\+\_\+\+M\+SG\+: estado\+Display\+Mensage(); break; \} if(animando\+Entrada\+Mapa\+Vertical)\{ desplazamiento+=2; m\+Mapa.\+set\+Eje\+Visualizacion(m\+Mapa.\+get\+Eje\+X(),H\+\_\+\+S\+C\+R\+E\+E\+N-\/desplazamiento); if(H\+\_\+\+S\+C\+R\+E\+E\+N-\/desplazamiento$<$=m\+Mapa.\+get\+Eje\+Y())\{ animando\+Entrada\+Mapa\+Vertical=false; \} \} 
+
+Reimplemented from \hyperlink{class_interfaz_u_i}{Interfaz\+UI}.
+
+
+
+\subsection{Member Data Documentation}
+\index{Juego@{Juego}!m\+Grp\+Enemigos@{m\+Grp\+Enemigos}}
+\index{m\+Grp\+Enemigos@{m\+Grp\+Enemigos}!Juego@{Juego}}
+\subsubsection[{\texorpdfstring{m\+Grp\+Enemigos}{mGrpEnemigos}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Group} Juego\+::m\+Grp\+Enemigos\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_juego_a21212e537ac309102310b5d6eec8b05d}{}\label{class_juego_a21212e537ac309102310b5d6eec8b05d}
+Grupo para cada ente que es colisionable, para manejarlo por separado Si bien se puede manejar con solo m\+Grp\+Sprites, cuando se detecta una colision entonces habria que estar viendo si lo que se regreso es un sprite del tipo que se quiere. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Interfaces/juego/juego.\+hpp\item 
+src/\+Interfaces/juego/juego.\+cpp\end{DoxyCompactItemize}

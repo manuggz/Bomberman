@@ -1,0 +1,126 @@
+\hypertarget{class_pop_up_mostrar_mensaje_texto}{}\section{Pop\+Up\+Mostrar\+Mensaje\+Texto Class Reference}
+\label{class_pop_up_mostrar_mensaje_texto}\index{Pop\+Up\+Mostrar\+Mensaje\+Texto@{Pop\+Up\+Mostrar\+Mensaje\+Texto}}
+
+
+{\ttfamily \#include $<$Pop\+Up\+Mostrar\+Mensaje\+Texto.\+hpp$>$}
+
+
+
+Inheritance diagram for Pop\+Up\+Mostrar\+Mensaje\+Texto\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{class_pop_up_mostrar_mensaje_texto__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pop\+Up\+Mostrar\+Mensaje\+Texto\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pop_up_mostrar_mensaje_texto__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_pop_up_mostrar_mensaje_texto_aa6b0ff59f5d49aa7500b1a0416b0b854}{Pop\+Up\+Mostrar\+Mensaje\+Texto} (\hyperlink{class_game_manager_pop_up_interfaz}{Game\+Manager\+Pop\+Up\+Interfaz} $\ast$game\+Manager1, std\+::string mensaje, Uint8 tiempo\+De\+Muestra\+Segundos)
+\item 
+void {\bfseries set\+Text} (std\+::string nuevo\+Texto)\hypertarget{class_pop_up_mostrar_mensaje_texto_a53524c40d74ef454646d24bb1695f0aa}{}\label{class_pop_up_mostrar_mensaje_texto_a53524c40d74ef454646d24bb1695f0aa}
+
+\item 
+void {\bfseries set\+Color\+Text} (S\+D\+L\+\_\+\+Color nuevo\+Color)\hypertarget{class_pop_up_mostrar_mensaje_texto_a4b51dbcde0964297c4c334bdd10b8817}{}\label{class_pop_up_mostrar_mensaje_texto_a4b51dbcde0964297c4c334bdd10b8817}
+
+\item 
+void {\bfseries set\+Size\+Text} (int nueva\+Size)\hypertarget{class_pop_up_mostrar_mensaje_texto_ac17d66a42d42689f5ddbb447a643c88c}{}\label{class_pop_up_mostrar_mensaje_texto_ac17d66a42d42689f5ddbb447a643c88c}
+
+\item 
+void {\bfseries create\+UI} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override\hypertarget{class_pop_up_mostrar_mensaje_texto_a2879964b8559ecfcae7248fbde33e8e3}{}\label{class_pop_up_mostrar_mensaje_texto_a2879964b8559ecfcae7248fbde33e8e3}
+
+\item 
+void {\bfseries pack\+Layout} ()\hypertarget{class_pop_up_mostrar_mensaje_texto_a1bb00f3c31e204ed8d34982cd94378ac}{}\label{class_pop_up_mostrar_mensaje_texto_a1bb00f3c31e204ed8d34982cd94378ac}
+
+\item 
+void {\bfseries start} () override\hypertarget{class_pop_up_mostrar_mensaje_texto_a6f4894566c466929798c017db715712a}{}\label{class_pop_up_mostrar_mensaje_texto_a6f4894566c466929798c017db715712a}
+
+\item 
+void {\bfseries update} () override\hypertarget{class_pop_up_mostrar_mensaje_texto_ab3cad38fc330ca8ec83ac1dcbdde0fbd}{}\label{class_pop_up_mostrar_mensaje_texto_ab3cad38fc330ca8ec83ac1dcbdde0fbd}
+
+\item 
+void \hyperlink{class_pop_up_mostrar_mensaje_texto_a17f96444323a9694447b2cf279562414}{draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries m\+Mensaje\+Mostrar}\hypertarget{class_pop_up_mostrar_mensaje_texto_a01ce5ef7e4dcefc51f9ce14c97974df0}{}\label{class_pop_up_mostrar_mensaje_texto_a01ce5ef7e4dcefc51f9ce14c97974df0}
+
+\item 
+\hyperlink{class_layout_absolute}{Layout\+Absolute} $\ast$ {\bfseries m\+Layout\+Parent}\hypertarget{class_pop_up_mostrar_mensaje_texto_a0d68b5c744c3e7e9ab0d29c634bbf4df}{}\label{class_pop_up_mostrar_mensaje_texto_a0d68b5c744c3e7e9ab0d29c634bbf4df}
+
+\item 
+\hyperlink{class_l_timer}{L\+Timer} {\bfseries m\+Control\+Timer}\hypertarget{class_pop_up_mostrar_mensaje_texto_acddb5761cdfa7a400a75f4084d8f50f4}{}\label{class_pop_up_mostrar_mensaje_texto_acddb5761cdfa7a400a75f4084d8f50f4}
+
+\item 
+Uint8 {\bfseries m\+Tiempo\+De\+Muestra\+Segundos} = 0\hypertarget{class_pop_up_mostrar_mensaje_texto_a13da16dc97c3a26e456dec9d8c8198ef}{}\label{class_pop_up_mostrar_mensaje_texto_a13da16dc97c3a26e456dec9d8c8198ef}
+
+\item 
+\hyperlink{class_label_component}{Label\+Component} $\ast$ {\bfseries mp\+Mensaje\+Texto} = nullptr\hypertarget{class_pop_up_mostrar_mensaje_texto_a86d8c685993c912cb218440704bec217}{}\label{class_pop_up_mostrar_mensaje_texto_a86d8c685993c912cb218440704bec217}
+
+\item 
+S\+D\+L\+\_\+\+Color {\bfseries m\+Color\+Texto} \{255,255,0,255\}\hypertarget{class_pop_up_mostrar_mensaje_texto_a2919b17b16bc3156a114f5c21a03a995}{}\label{class_pop_up_mostrar_mensaje_texto_a2919b17b16bc3156a114f5c21a03a995}
+
+\item 
+int {\bfseries m\+Size\+Text} = 15\hypertarget{class_pop_up_mostrar_mensaje_texto_a9c2fa9e21d94f4e7bda423da70316fda}{}\label{class_pop_up_mostrar_mensaje_texto_a9c2fa9e21d94f4e7bda423da70316fda}
+
+\item 
+S\+D\+L\+\_\+\+Renderer $\ast$ {\bfseries mp\+Game\+Renderer}\hypertarget{class_pop_up_mostrar_mensaje_texto_ab39eaa187f3534cdb039861f455dc920}{}\label{class_pop_up_mostrar_mensaje_texto_ab39eaa187f3534cdb039861f455dc920}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Pop\+Up que Muestra un Texto Centrado en la pantalla al usuario por cierto tiempo 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Pop\+Up\+Mostrar\+Mensaje\+Texto@{Pop\+Up\+Mostrar\+Mensaje\+Texto}!Pop\+Up\+Mostrar\+Mensaje\+Texto@{Pop\+Up\+Mostrar\+Mensaje\+Texto}}
+\index{Pop\+Up\+Mostrar\+Mensaje\+Texto@{Pop\+Up\+Mostrar\+Mensaje\+Texto}!Pop\+Up\+Mostrar\+Mensaje\+Texto@{Pop\+Up\+Mostrar\+Mensaje\+Texto}}
+\subsubsection[{\texorpdfstring{Pop\+Up\+Mostrar\+Mensaje\+Texto(\+Game\+Manager\+Pop\+Up\+Interfaz $\ast$game\+Manager1, std\+::string mensaje, Uint8 tiempo\+De\+Muestra\+Segundos)}{PopUpMostrarMensajeTexto(GameManagerPopUpInterfaz *gameManager1, std::string mensaje, Uint8 tiempoDeMuestraSegundos)}}]{\setlength{\rightskip}{0pt plus 5cm}Pop\+Up\+Mostrar\+Mensaje\+Texto\+::\+Pop\+Up\+Mostrar\+Mensaje\+Texto (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Manager\+Pop\+Up\+Interfaz} $\ast$}]{game\+Manager1, }
+\item[{std\+::string}]{mensaje, }
+\item[{Uint8}]{tiempo\+De\+Muestra\+Segundos}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_pop_up_mostrar_mensaje_texto_aa6b0ff59f5d49aa7500b1a0416b0b854}{}\label{class_pop_up_mostrar_mensaje_texto_aa6b0ff59f5d49aa7500b1a0416b0b854}
+Inicia la clase 
+\begin{DoxyParams}{Parameters}
+{\em mensaje} & M\+Ensaje a mostrar \\
+\hline
+{\em tiempo\+De\+Muestra\+Segundos} & segundos que durará el mensaje \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Pop\+Up\+Mostrar\+Mensaje\+Texto@{Pop\+Up\+Mostrar\+Mensaje\+Texto}!draw@{draw}}
+\index{draw@{draw}!Pop\+Up\+Mostrar\+Mensaje\+Texto@{Pop\+Up\+Mostrar\+Mensaje\+Texto}}
+\subsubsection[{\texorpdfstring{draw(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override}{draw(SDL_Renderer *gRenderer) override}}]{\setlength{\rightskip}{0pt plus 5cm}void Pop\+Up\+Mostrar\+Mensaje\+Texto\+::draw (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_pop_up_mostrar_mensaje_texto_a17f96444323a9694447b2cf279562414}{}\label{class_pop_up_mostrar_mensaje_texto_a17f96444323a9694447b2cf279562414}
+Oscurece el fondo del Pop\+Up 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_pop_up_interfaz_acd9384b541df0cb1d075cef6f6b88708}{Pop\+Up\+Interfaz}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Interfaces/juego/Pop\+Up\+Mostrar\+Mensaje\+Texto.\+hpp\end{DoxyCompactItemize}

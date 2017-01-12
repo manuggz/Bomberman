@@ -1,0 +1,5 @@
+<map id="MenuListLabel::ejecutarAccionOpcionResaltada" name="MenuListLabel::ejecutarAccionOpcionResaltada">
+<area shape="rect" id="node2" href="$class_menu_list_label.html#aa4b43b15d99168836a26ce8e9cf996a6" title="MenuListLabel::setOpcion\lResaltada" alt="" coords="253,57,427,98"/>
+<area shape="rect" id="node3" href="$class_menu_list_label.html#a7fb1ac75f91fe00f38706f74f6148cd6" title="MenuListLabel::procesarEvento" alt="" coords="475,5,680,32"/>
+<area shape="rect" id="node4" href="$class_menu_principal.html#a8870a656a23920c518bc2fbdf7c72a53" title="MenuPrincipal::setOpcion\lResaltada" alt="" coords="492,57,663,98"/>
+</map>

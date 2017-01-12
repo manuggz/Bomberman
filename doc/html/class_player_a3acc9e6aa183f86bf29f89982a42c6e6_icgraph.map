@@ -1,0 +1,7 @@
+<map id="Player::mover_ip" name="Player::mover_ip">
+<area shape="rect" id="node2" href="$class_player.html#a82ff3440c08bd0c116b53b90c29efa92" title="Player::izquierda" alt="" coords="173,5,292,32"/>
+<area shape="rect" id="node4" href="$class_player.html#a0345065f26494d5312365b406b5c0acd" title="Player::derecha" alt="" coords="176,56,289,83"/>
+<area shape="rect" id="node5" href="$class_player.html#af8b5efff3494a47772ead1e026f337cd" title="Player::arriba" alt="" coords="183,107,282,133"/>
+<area shape="rect" id="node6" href="$class_player.html#ad98a56271096fa93b68991038de58caf" title="Player::abajo" alt="" coords="183,157,282,184"/>
+<area shape="rect" id="node3" href="$class_player.html#a5cb527f12c3423e1bbb1b6595a85acfc" title="Player::update" alt="" coords="340,81,447,108"/>
+</map>

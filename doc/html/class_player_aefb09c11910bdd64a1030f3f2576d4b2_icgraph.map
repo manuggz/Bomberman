@@ -1,0 +1,9 @@
+<map id="Player::setNBombas" name="Player::setNBombas">
+<area shape="rect" id="node2" href="$class_juego.html#a95af6c1b23ede35e0714e1d01ff7c570" title="Juego::establecerValores\lDeMapaPlayer" alt="" coords="212,53,381,94"/>
+<area shape="rect" id="node8" href="$class_player.html#a9346eacf7896339462843d04e69201a3" title="Player::getBombasDisponibles" alt="" coords="196,119,397,145"/>
+<area shape="rect" id="node3" href="$class_juego.html#ac40dabed8ef689479cede0b7aa346ce8" title="Juego::establecerValores\lDeMapaPlayers" alt="" coords="445,23,615,65"/>
+<area shape="rect" id="node7" href="$class_juego.html#a336e20deb3bfb1e0717c1bf967ff7a75" title="Juego::playerMuerto" alt="" coords="460,89,600,116"/>
+<area shape="rect" id="node4" href="$class_juego.html#a0f2054b23552adc7898f67ea4547a980" title="Juego::reiniciarEstado" alt="" coords="663,31,813,57"/>
+<area shape="rect" id="node5" href="$class_juego.html#a83e5a1132a5355c34c31d219b4d035dc" title="Juego::start" alt="" coords="885,5,975,32"/>
+<area shape="rect" id="node6" href="$class_juego.html#ac141311099a222492201a52842c207b7" title="Juego::resultPopUp" alt="" coords="861,56,999,83"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="GameManagerPopUpInterfaz::getRectScreen" name="GameManagerPopUpInterfaz::getRectScreen">
+<area shape="rect" id="node2" href="$class_menu_list_label.html#a5fb48d986e1ea0f85428d3f52e98ef57" title="MenuListLabel::draw" alt="" coords="267,5,409,32"/>
+<area shape="rect" id="node3" href="$class_juego.html#a51f2b9d3c31036521eff299b29d98685" title="Juego::packLayout" alt="" coords="272,56,404,83"/>
+<area shape="rect" id="node5" href="$class_pop_up_mostrar_mensaje_texto.html#a1bb00f3c31e204ed8d34982cd94378ac" title="PopUpMostrarMensajeTexto\l::packLayout" alt="" coords="244,107,432,149"/>
+<area shape="rect" id="node7" href="$class_menu_modo_multijugador.html#a2a13518afeedfeab61b030c376ee35e2" title="MenuModoMultijugador\l::packLayout" alt="" coords="260,173,416,214"/>
+<area shape="rect" id="node4" href="$class_juego.html#afd62461e81bfd0dcbeecf082f2c023ec" title="Juego::draw" alt="" coords="527,56,621,83"/>
+<area shape="rect" id="node6" href="$class_pop_up_mostrar_mensaje_texto.html#a17f96444323a9694447b2cf279562414" title="PopUpMostrarMensajeTexto\l::draw" alt="" coords="480,107,668,149"/>
+<area shape="rect" id="node8" href="$class_menu_modo_multijugador.html#a1c4c4196780896d241ceaa6f696bc179" title="MenuModoMultijugador\l::draw" alt="" coords="496,173,652,214"/>
+</map>

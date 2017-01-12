@@ -1,0 +1,5 @@
+<map id="Sprite::getX" name="Sprite::getX">
+<area shape="rect" id="node2" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="150,5,294,32"/>
+<area shape="rect" id="node3" href="$class_juego.html#a7b85a67ebed60f1e80e314f2298951a8" title="Juego::agregarBomba" alt="" coords="147,56,297,83"/>
+<area shape="rect" id="node4" href="$class_menu_modo_multijugador.html#a1c4c4196780896d241ceaa6f696bc179" title="MenuModoMultijugador\l::draw" alt="" coords="144,107,300,149"/>
+</map>

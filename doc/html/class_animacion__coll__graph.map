@@ -1,0 +1,4 @@
+<map id="Animacion" name="Animacion">
+<area shape="rect" id="node2" href="$class_sprite.html" title="Sprite" alt="" coords="5,5,61,32"/>
+<area shape="rect" id="node3" href="$class_sprite_sheet.html" title="SpriteSheet" alt="" coords="85,5,176,32"/>
+</map>

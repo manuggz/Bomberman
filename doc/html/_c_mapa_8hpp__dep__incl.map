@@ -1,0 +1,19 @@
+<map id="src/engine/mapa/CMapa.hpp" name="src/engine/mapa/CMapa.hpp">
+<area shape="rect" id="node2" href="$_nivel_mapa_8hpp.html" title="src/niveles/NivelMapa.hpp" alt="" coords="443,80,619,107"/>
+<area shape="rect" id="node3" href="$editor_8hpp.html" title="src/Interfaces/editor\l/editor.hpp" alt="" coords="5,155,144,196"/>
+<area shape="rect" id="node4" href="$_interfaz_juego_8hpp.html" title="src/Interfaces/juego\l/InterfazJuego.hpp" alt="" coords="409,155,546,196"/>
+<area shape="rect" id="node7" href="$juego_8hpp.html" title="src/Interfaces/juego\l/juego.hpp" alt="" coords="465,393,602,435"/>
+<area shape="rect" id="node11" href="$player_8cpp.html" title="src/personajes/player.cpp" alt="" coords="147,579,317,606"/>
+<area shape="rect" id="node14" href="$_menu_modo_multijugador_8hpp.html" title="src/Interfaces/menu\l/MenuModoMultijugador.hpp" alt="" coords="875,483,1061,524"/>
+<area shape="rect" id="node18" href="$_nivel_mapa_8cpp.html" title="src/niveles/NivelMapa.cpp" alt="" coords="677,162,853,189"/>
+<area shape="rect" id="node5" href="$player_8hpp.html" title="src/personajes/player.hpp" alt="" coords="272,244,443,271"/>
+<area shape="rect" id="node6" href="$bomba_8hpp.html" title="src/personajes/bomba.hpp" alt="" coords="270,319,445,345"/>
+<area shape="rect" id="node8" href="$juego_8cpp.html" title="src/Interfaces/juego\l/juego.cpp" alt="" coords="515,483,653,524"/>
+<area shape="rect" id="node9" href="$explosion_8hpp.html" title="src/objetos/explosion.hpp" alt="" coords="320,490,491,517"/>
+<area shape="rect" id="node12" href="$bloque_8hpp.html" title="src/personajes/bloque.hpp" alt="" coords="677,490,851,517"/>
+<area shape="rect" id="node10" href="$explosion_8cpp.html" title="src/objetos/explosion.cpp" alt="" coords="341,579,512,606"/>
+<area shape="rect" id="node13" href="$bloque_8cpp.html" title="src/personajes/bloque.cpp" alt="" coords="677,579,851,606"/>
+<area shape="rect" id="node15" href="$_menu_nuevo_juego_8hpp.html" title="src/Interfaces/menu\l/MenuNuevoJuego.hpp" alt="" coords="890,572,1046,613"/>
+<area shape="rect" id="node16" href="$_menu_principal_8hpp.html" title="src/Interfaces/menu\l/MenuPrincipal.hpp" alt="" coords="899,661,1037,703"/>
+<area shape="rect" id="node17" href="$main_8cpp.html" title="src/main.cpp" alt="" coords="919,751,1017,777"/>
+</map>

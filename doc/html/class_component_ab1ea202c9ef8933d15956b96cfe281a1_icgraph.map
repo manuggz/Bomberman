@@ -1,0 +1,9 @@
+<map id="Component::draw" name="Component::draw">
+<area shape="rect" id="node2" href="$class_layout_component.html#a0ee8a3146a3258a9886472b86cf34a16" title="LayoutComponent::draw" alt="" coords="179,159,343,185"/>
+<area shape="rect" id="node3" href="$class_menu_list_label.html#a5fb48d986e1ea0f85428d3f52e98ef57" title="MenuListLabel::draw" alt="" coords="419,5,561,32"/>
+<area shape="rect" id="node4" href="$class_boton_component.html#a73c8c3014be82c952cd8d0e08beffcc5" title="BotonComponent\&lt; MenuModo\lMultijugador \&gt;::draw" alt="" coords="391,57,589,98"/>
+<area shape="rect" id="node5" href="$class_text_label_component.html#a6ca146eebb7ec244679223426a9d71da" title="LabelComponent\l::draw" alt="" coords="417,122,563,163"/>
+<area shape="rect" id="node6" href="$class_juego.html#afd62461e81bfd0dcbeecf082f2c023ec" title="Juego::draw" alt="" coords="443,188,537,215"/>
+<area shape="rect" id="node7" href="$class_pop_up_mostrar_mensaje_texto.html#a17f96444323a9694447b2cf279562414" title="PopUpMostrarMensajeTexto\l::draw" alt="" coords="396,239,584,281"/>
+<area shape="rect" id="node8" href="$class_menu_modo_multijugador.html#a1c4c4196780896d241ceaa6f696bc179" title="MenuModoMultijugador\l::draw" alt="" coords="412,305,568,346"/>
+</map>

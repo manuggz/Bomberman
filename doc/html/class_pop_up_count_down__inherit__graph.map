@@ -1,0 +1,4 @@
+<map id="PopUpCountDown" name="PopUpCountDown">
+<area shape="rect" id="node2" href="$class_pop_up_mostrar_mensaje_texto.html" title="PopUpMostrarMensajeTexto" alt="" coords="5,80,193,107"/>
+<area shape="rect" id="node3" href="$class_pop_up_interfaz.html" title="PopUpInterfaz" alt="" coords="46,5,153,32"/>
+</map>

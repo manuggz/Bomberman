@@ -1,0 +1,114 @@
+\hypertarget{class_boton_component}{}\section{Boton\+Component$<$ T $>$ Class Template Reference}
+\label{class_boton_component}\index{Boton\+Component$<$ T $>$@{Boton\+Component$<$ T $>$}}
+
+
+Inheritance diagram for Boton\+Component$<$ T $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_boton_component__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Boton\+Component$<$ T $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{class_boton_component__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Estado} \{ {\bfseries N\+O\+R\+M\+AL}, 
+{\bfseries R\+E\+S\+A\+L\+T\+A\+DO}, 
+{\bfseries P\+R\+E\+S\+I\+O\+N\+A\+DO}, 
+{\bfseries \+\_\+\+E\+S\+T\+A\+D\+OS}
+ \}\hypertarget{class_boton_component_a15cc75d9064e182d8acb9240831e873d}{}\label{class_boton_component_a15cc75d9064e182d8acb9240831e873d}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Boton\+Component} (\hyperlink{class_l_texture}{L\+Texture} $\ast$grilla, T $\ast$parent=N\+U\+LL)\hypertarget{class_boton_component_a1b246f7b92a8a69a9e6045cfde653e5a}{}\label{class_boton_component_a1b246f7b92a8a69a9e6045cfde653e5a}
+
+\item 
+void \hyperlink{class_boton_component_adacc77cd1e8f7d40a2f30b4b7b61899c}{pack} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override
+\item 
+void {\bfseries procesar\+Evento} (S\+D\+L\+\_\+\+Event $\ast$evento)\hypertarget{class_boton_component_adb8885d42fb91509b5d13a535b91948f}{}\label{class_boton_component_adb8885d42fb91509b5d13a535b91948f}
+
+\item 
+void {\bfseries bind\+Accion} (void(T\+::$\ast$p\+Accion)(void))\hypertarget{class_boton_component_af57c381f836ca99809f70df6e270ccc8}{}\label{class_boton_component_af57c381f836ca99809f70df6e270ccc8}
+
+\item 
+void {\bfseries bind\+Accion} (void(T\+::$\ast$p\+Accion)(\hyperlink{class_boton_component}{Boton\+Component}$<$ T $>$ $\ast$))\hypertarget{class_boton_component_ae98007d5eae6e6bfb180544dbc533236}{}\label{class_boton_component_ae98007d5eae6e6bfb180544dbc533236}
+
+\item 
+void \hyperlink{class_boton_component_a73c8c3014be82c952cd8d0e08beffcc5}{draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override
+\item 
+bool {\bfseries get\+Visible} ()\hypertarget{class_boton_component_a3204169da97382286dd8b96eaec9e7a5}{}\label{class_boton_component_a3204169da97382286dd8b96eaec9e7a5}
+
+\item 
+bool {\bfseries get\+Enable} ()\hypertarget{class_boton_component_a60bdb5f4b30fa92ca442cac257a05243}{}\label{class_boton_component_a60bdb5f4b30fa92ca442cac257a05243}
+
+\item 
+bool {\bfseries esta\+Presionado} ()\hypertarget{class_boton_component_a3b5ff7608fa03e2e0c56f46a08cb3e44}{}\label{class_boton_component_a3b5ff7608fa03e2e0c56f46a08cb3e44}
+
+\item 
+void {\bfseries set\+Visible} (bool nuevo)\hypertarget{class_boton_component_aa8fcb117c496db9d68168aaf5149d036}{}\label{class_boton_component_aa8fcb117c496db9d68168aaf5149d036}
+
+\item 
+void {\bfseries set\+Enable} (bool nuevo)\hypertarget{class_boton_component_a545222f3de978fa9d91e84df09d53bec}{}\label{class_boton_component_a545222f3de978fa9d91e84df09d53bec}
+
+\item 
+void {\bfseries set\+Estado} (Estado nuevo)\hypertarget{class_boton_component_a864923b6ab72aa69660c77ff8485156f}{}\label{class_boton_component_a864923b6ab72aa69660c77ff8485156f}
+
+\item 
+void {\bfseries set\+Id} (int nuevo)\hypertarget{class_boton_component_aac900d1f2371e566a7ce79f508fedd47}{}\label{class_boton_component_aac900d1f2371e566a7ce79f508fedd47}
+
+\item 
+int {\bfseries get\+Id} ()\hypertarget{class_boton_component_a2b712691635f375c508f1a000aba5927}{}\label{class_boton_component_a2b712691635f375c508f1a000aba5927}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\index{Boton\+Component@{Boton\+Component}!draw@{draw}}
+\index{draw@{draw}!Boton\+Component@{Boton\+Component}}
+\subsubsection[{\texorpdfstring{draw(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override}{draw(SDL_Renderer *gRenderer) override}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Boton\+Component}$<$ T $>$\+::draw (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_boton_component_a73c8c3014be82c952cd8d0e08beffcc5}{}\label{class_boton_component_a73c8c3014be82c952cd8d0e08beffcc5}
+Dibuja el componente 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_component_ab1ea202c9ef8933d15956b96cfe281a1}{Component}.
+
+\index{Boton\+Component@{Boton\+Component}!pack@{pack}}
+\index{pack@{pack}!Boton\+Component@{Boton\+Component}}
+\subsubsection[{\texorpdfstring{pack(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override}{pack(SDL_Renderer *gRenderer) override}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Boton\+Component}$<$ T $>$\+::pack (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_boton_component_adacc77cd1e8f7d40a2f30b4b7b61899c}{}\label{class_boton_component_adacc77cd1e8f7d40a2f30b4b7b61899c}
+Se encarga de crear las texturas del componente asi como otras acciones asociadas con el renderer Notar que despues de esta funcion se debe llamar a calculate\+Rect, es decir, realizar una nueva calculacion del rectangulo de dibujo del componente 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & Render de la pantalla \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_component_aa471f2c3a24525f584ed19cf25222e70}{Component}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/layout/\+Componentes/Boton\+Component.\+hpp\end{DoxyCompactItemize}

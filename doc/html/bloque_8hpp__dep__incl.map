@@ -1,0 +1,12 @@
+<map id="src/personajes/bloque.hpp" name="src/personajes/bloque.hpp">
+<area shape="rect" id="node2" href="$juego_8hpp.html" title="src/Interfaces/juego\l/juego.hpp" alt="" coords="209,80,346,121"/>
+<area shape="rect" id="node11" href="$bloque_8cpp.html" title="src/personajes/bloque.cpp" alt="" coords="370,87,545,114"/>
+<area shape="rect" id="node3" href="$juego_8cpp.html" title="src/Interfaces/juego\l/juego.cpp" alt="" coords="30,169,167,211"/>
+<area shape="rect" id="node4" href="$explosion_8hpp.html" title="src/objetos/explosion.hpp" alt="" coords="192,177,363,203"/>
+<area shape="rect" id="node7" href="$_menu_modo_multijugador_8hpp.html" title="src/Interfaces/menu\l/MenuModoMultijugador.hpp" alt="" coords="387,169,573,211"/>
+<area shape="rect" id="node5" href="$explosion_8cpp.html" title="src/objetos/explosion.cpp" alt="" coords="5,266,176,293"/>
+<area shape="rect" id="node6" href="$player_8cpp.html" title="src/personajes/player.cpp" alt="" coords="200,266,371,293"/>
+<area shape="rect" id="node8" href="$_menu_nuevo_juego_8hpp.html" title="src/Interfaces/menu\l/MenuNuevoJuego.hpp" alt="" coords="402,259,558,300"/>
+<area shape="rect" id="node9" href="$_menu_principal_8hpp.html" title="src/Interfaces/menu\l/MenuPrincipal.hpp" alt="" coords="411,348,549,389"/>
+<area shape="rect" id="node10" href="$main_8cpp.html" title="src/main.cpp" alt="" coords="431,437,529,464"/>
+</map>

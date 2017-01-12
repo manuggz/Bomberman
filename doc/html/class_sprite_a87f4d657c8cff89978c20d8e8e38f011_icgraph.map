@@ -1,0 +1,13 @@
+<map id="Sprite::addGroup" name="Sprite::addGroup">
+<area shape="rect" id="node2" href="$class_group.html#a808a26e42fb31af18f1c37584bf3d972" title="Group::add" alt="" coords="173,157,260,184"/>
+<area shape="rect" id="node3" href="$class_juego.html#ac4832a99f849b8180667cfda4a2493e3" title="Juego::agregarPlayersActivos" alt="" coords="313,31,509,57"/>
+<area shape="rect" id="node7" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="339,81,483,108"/>
+<area shape="rect" id="node8" href="$class_juego.html#aa26101b535a9de9e9c25f1579df66ca6" title="Juego::agregarBloqueEnLlamas" alt="" coords="308,132,515,159"/>
+<area shape="rect" id="node9" href="$class_juego.html#a7b85a67ebed60f1e80e314f2298951a8" title="Juego::agregarBomba" alt="" coords="337,183,486,209"/>
+<area shape="rect" id="node10" href="$class_menu_modo_multijugador.html#aa87c06427be64fd73e17d9ea37d8744e" title="MenuModoMultijugador\l::createUI" alt="" coords="333,234,489,275"/>
+<area shape="rect" id="node11" href="$class_menu_modo_multijugador.html#a6e483dbb12275b6e00be0f9fb430dd7e" title="MenuModoMultijugador\l::cambiarEstadoPlayer" alt="" coords="333,299,489,341"/>
+<area shape="rect" id="node4" href="$class_juego.html#a0f2054b23552adc7898f67ea4547a980" title="Juego::reiniciarEstado" alt="" coords="565,31,716,57"/>
+<area shape="rect" id="node5" href="$class_juego.html#a83e5a1132a5355c34c31d219b4d035dc" title="Juego::start" alt="" coords="790,5,881,32"/>
+<area shape="rect" id="node6" href="$class_juego.html#ac141311099a222492201a52842c207b7" title="Juego::resultPopUp" alt="" coords="767,56,904,83"/>
+<area shape="rect" id="node12" href="$class_menu_modo_multijugador.html#a6520fcac1cc0bff79f00c509e34afbd0" title="MenuModoMultijugador\l::procesarEvento" alt="" coords="563,299,719,341"/>
+</map>

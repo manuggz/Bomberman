@@ -1,0 +1,11 @@
+<map id="NivelMapa::getPropertyTile" name="NivelMapa::getPropertyTile">
+<area shape="rect" id="node2" href="$class_nivel_mapa.html#a0b1cd448c578ca8f05a8e63e1110f6a9" title="int getIndiceMapa(int xPantalla,int yPantalla){return getTileY(yPantalla)*COLUMNAS+getTileX(xPantalla..." alt="" coords="266,31,402,57"/>
+<area shape="rect" id="node4" href="$class_nivel_mapa.html#a2af0b654e04be495e657eb8d59c89840" title="NivelMapa::esBloqueSolido" alt="" coords="243,107,425,133"/>
+<area shape="rect" id="node9" href="$class_nivel_mapa.html#a32d0d369415ccae82fcacee60a0fdf41" title="NivelMapa::esBloqueRompible" alt="" coords="233,157,435,184"/>
+<area shape="rect" id="node3" href="$class_juego.html#afc0afb5a5d8dbdc01e15e37c75c77a66" title="Juego::colisionConMapa" alt="" coords="487,5,653,32"/>
+<area shape="rect" id="node5" href="$class_juego.html#a9c9b2f882007b2a43285a3be6d9e0bf2" title="Juego::esBloqueSolido" alt="" coords="493,56,647,83"/>
+<area shape="rect" id="node6" href="$class_juego.html#a7b85a67ebed60f1e80e314f2298951a8" title="Juego::agregarBomba" alt="" coords="495,107,645,133"/>
+<area shape="rect" id="node7" href="$class_nivel_mapa.html#a95a941ee7677da7d7997c2ad0bea53aa" title="NivelMapa::romperBloque" alt="" coords="484,157,656,184"/>
+<area shape="rect" id="node8" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="705,157,849,184"/>
+<area shape="rect" id="node10" href="$class_juego.html#ace6043603d44b94889830d54c1dad8a8" title="Juego::esBloqueRompible" alt="" coords="483,208,657,235"/>
+</map>

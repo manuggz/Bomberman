@@ -1,0 +1,11 @@
+<map id="Mapa::getMapProperty" name="Mapa::getMapProperty">
+<area shape="rect" id="node2" href="$class_juego.html#a95af6c1b23ede35e0714e1d01ff7c570" title="Juego::establecerValores\lDeMapaPlayer" alt="" coords="227,53,396,94"/>
+<area shape="rect" id="node8" href="$class_juego.html#aa26101b535a9de9e9c25f1579df66ca6" title="Juego::agregarBloqueEnLlamas" alt="" coords="208,119,415,145"/>
+<area shape="rect" id="node9" href="$class_nivel_mapa.html#a95a941ee7677da7d7997c2ad0bea53aa" title="NivelMapa::romperBloque" alt="" coords="225,169,397,196"/>
+<area shape="rect" id="node3" href="$class_juego.html#ac40dabed8ef689479cede0b7aa346ce8" title="Juego::establecerValores\lDeMapaPlayers" alt="" coords="463,23,632,65"/>
+<area shape="rect" id="node7" href="$class_juego.html#a336e20deb3bfb1e0717c1bf967ff7a75" title="Juego::playerMuerto" alt="" coords="477,89,617,116"/>
+<area shape="rect" id="node4" href="$class_juego.html#a0f2054b23552adc7898f67ea4547a980" title="Juego::reiniciarEstado" alt="" coords="680,31,831,57"/>
+<area shape="rect" id="node5" href="$class_juego.html#a83e5a1132a5355c34c31d219b4d035dc" title="Juego::start" alt="" coords="902,5,993,32"/>
+<area shape="rect" id="node6" href="$class_juego.html#ac141311099a222492201a52842c207b7" title="Juego::resultPopUp" alt="" coords="879,56,1016,83"/>
+<area shape="rect" id="node10" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="475,169,619,196"/>
+</map>

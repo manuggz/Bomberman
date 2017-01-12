@@ -1,0 +1,9 @@
+<map id="Juego::agregarBloqueEnLlamas" name="Juego::agregarBloqueEnLlamas">
+<area shape="rect" id="node2" href="$class_nivel_mapa.html#a5949b4887427c10991575b87975cccb3" title="NivelMapa::getAnimacionFrames" alt="" coords="263,5,477,32"/>
+<area shape="rect" id="node3" href="$class_mapa.html#a169f2cb4198d7933d88099fb16042b9f" title="Mapa::getMapProperty" alt="" coords="293,56,447,83"/>
+<area shape="rect" id="node4" href="$class_nivel_mapa.html#a491428dc0cd4684ceab50c1ab80d71da" title="NivelMapa::getRutaTileSet" alt="" coords="281,107,459,133"/>
+<area shape="rect" id="node5" href="$class_nivel_mapa.html#ad148759e4adb206067b8e6f06bf9d58b" title="NivelMapa::getNFilasTileSet" alt="" coords="275,157,465,184"/>
+<area shape="rect" id="node6" href="$class_nivel_mapa.html#a3137fa05ea5bf8956166fc524ce92cb6" title="NivelMapa::getNColumnasTileSet" alt="" coords="260,208,480,235"/>
+<area shape="rect" id="node7" href="$class_group.html#a808a26e42fb31af18f1c37584bf3d972" title="Group::add" alt="" coords="327,259,413,285"/>
+<area shape="rect" id="node8" href="$class_sprite.html#a87f4d657c8cff89978c20d8e8e38f011" title="Sprite::addGroup" alt="" coords="528,259,648,285"/>
+</map>

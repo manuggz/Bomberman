@@ -1,0 +1,87 @@
+\hypertarget{class_sprite}{}\section{Sprite Class Reference}
+\label{class_sprite}\index{Sprite@{Sprite}}
+
+
+Inheritance diagram for Sprite\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sprite__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries kill} ()\hypertarget{class_sprite_a04ff4eaaddc06f78fb3ee62a378b56f1}{}\label{class_sprite_a04ff4eaaddc06f78fb3ee62a378b56f1}
+
+\item 
+virtual void {\bfseries move\+\_\+ip} (int aum\+\_\+x, int aum\+\_\+y)\hypertarget{class_sprite_affa2f0a7a5ff70a8a76b1fcb508b3734}{}\label{class_sprite_affa2f0a7a5ff70a8a76b1fcb508b3734}
+
+\item 
+virtual int {\bfseries get\+Width} ()\hypertarget{class_sprite_ad5ff0e44d2b0e6078d89052fe1239412}{}\label{class_sprite_ad5ff0e44d2b0e6078d89052fe1239412}
+
+\item 
+virtual int {\bfseries get\+Height} ()\hypertarget{class_sprite_a2cb36aa757cb89ab3a9eaa58aac7b811}{}\label{class_sprite_a2cb36aa757cb89ab3a9eaa58aac7b811}
+
+\item 
+virtual S\+D\+L\+\_\+\+Rect {\bfseries get\+Rect} ()\hypertarget{class_sprite_a982021460bab2601c9b8fb17fb5e813c}{}\label{class_sprite_a982021460bab2601c9b8fb17fb5e813c}
+
+\item 
+virtual void {\bfseries update} (const Uint8 $\ast$keys=nullptr)=0\hypertarget{class_sprite_a0a8ca1624419d06d732ea904a2bad80d}{}\label{class_sprite_a0a8ca1624419d06d732ea904a2bad80d}
+
+\item 
+virtual void {\bfseries draw} (S\+D\+L\+\_\+\+Renderer $\ast$)=0\hypertarget{class_sprite_ac480de275d989f6940410ed2a2eb2b3a}{}\label{class_sprite_ac480de275d989f6940410ed2a2eb2b3a}
+
+\item 
+virtual bool {\bfseries colision} (S\+D\+L\+\_\+\+Rect \&rect\+\_\+coli)\hypertarget{class_sprite_a7bac50446fdd124602253b8fa2054f13}{}\label{class_sprite_a7bac50446fdd124602253b8fa2054f13}
+
+\item 
+virtual int {\bfseries getX} ()\hypertarget{class_sprite_a752b7bed3151c8a3e018dfc4f974889d}{}\label{class_sprite_a752b7bed3151c8a3e018dfc4f974889d}
+
+\item 
+virtual int {\bfseries getY} ()\hypertarget{class_sprite_a2e5e826bf61baab6545be6fcdae8fd47}{}\label{class_sprite_a2e5e826bf61baab6545be6fcdae8fd47}
+
+\item 
+virtual void {\bfseries setX} (int nuevo)\hypertarget{class_sprite_a4f16d2a3c3f8689cf336c31460c90e2f}{}\label{class_sprite_a4f16d2a3c3f8689cf336c31460c90e2f}
+
+\item 
+virtual void {\bfseries setY} (int nuevo)\hypertarget{class_sprite_a053cb5d0032b7f3dd251e56abe3a056b}{}\label{class_sprite_a053cb5d0032b7f3dd251e56abe3a056b}
+
+\item 
+virtual void {\bfseries move} (int nuevaX, int nuevaY)\hypertarget{class_sprite_aefec128e2c5336a15d46c79af7c0aa6f}{}\label{class_sprite_aefec128e2c5336a15d46c79af7c0aa6f}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{class_sprite_container}{Sprite\+Container} $\ast$ $>$ {\bfseries v\+\_\+grupos}\hypertarget{class_sprite_a3b3b780b1c90020ea9950183a126f6bf}{}\label{class_sprite_a3b3b780b1c90020ea9950183a126f6bf}
+
+\item 
+bool {\bfseries m\+Self\+Kill} = false\hypertarget{class_sprite_a1f4508807ef8dc680a220a34e0c4f408}{}\label{class_sprite_a1f4508807ef8dc680a220a34e0c4f408}
+
+\item 
+int {\bfseries x} = 0\hypertarget{class_sprite_ab36028dcefdd4bf024c52c8d9519a283}{}\label{class_sprite_ab36028dcefdd4bf024c52c8d9519a283}
+
+\item 
+int {\bfseries y} = 0\hypertarget{class_sprite_a363e26017ee2aaed8636f7dab92af2cd}{}\label{class_sprite_a363e26017ee2aaed8636f7dab92af2cd}
+
+\item 
+S\+D\+L\+\_\+\+Rect {\bfseries rect} \{0,0,0,0\}\hypertarget{class_sprite_ab8ae1fcc8b8fb328583438cf1f0b6e2f}{}\label{class_sprite_ab8ae1fcc8b8fb328583438cf1f0b6e2f}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Group}\hypertarget{class_sprite_a2697825715974a353728f0d4d5658112}{}\label{class_sprite_a2697825715974a353728f0d4d5658112}
+
+\item 
+class {\bfseries Update\+Group}\hypertarget{class_sprite_a9b601c6e2934624023e7d4a1b5c53cc1}{}\label{class_sprite_a9b601c6e2934624023e7d4a1b5c53cc1}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/sprites/C\+Sprite.\+hpp\item 
+src/engine/sprites/C\+Sprite.\+cpp\end{DoxyCompactItemize}

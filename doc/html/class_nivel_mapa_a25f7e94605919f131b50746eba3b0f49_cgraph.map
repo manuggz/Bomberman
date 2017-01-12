@@ -1,0 +1,5 @@
+<map id="NivelMapa::getTileAt" name="NivelMapa::getTileAt">
+<area shape="rect" id="node2" href="$class_nivel_mapa.html#ae95b7b0f8d4c7521b13a63b001213740" title="NivelMapa::getIndiceMapaAt" alt="" coords="197,46,388,73"/>
+<area shape="rect" id="node3" href="$class_nivel_mapa.html#afe955ab11816234cf050ab576a1ac0b6" title="NivelMapa::getIndiceFila\lMapaAt" alt="" coords="451,5,618,47"/>
+<area shape="rect" id="node4" href="$class_nivel_mapa.html#a080b8df56d1f9598c60ada0b215ccd97" title="NivelMapa::getIndiceColumna\lMapaAt" alt="" coords="436,71,633,112"/>
+</map>

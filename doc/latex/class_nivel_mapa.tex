@@ -1,0 +1,144 @@
+\hypertarget{class_nivel_mapa}{}\section{Nivel\+Mapa Class Reference}
+\label{class_nivel_mapa}\index{Nivel\+Mapa@{Nivel\+Mapa}}
+
+
+Inheritance diagram for Nivel\+Mapa\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_nivel_mapa__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Nivel\+Mapa\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_nivel_mapa__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Extremo\+Colision} \{ \\*
+{\bfseries N\+I\+N\+G\+U\+NO}, 
+{\bfseries T\+O\+P\+L\+E\+FT}, 
+{\bfseries T\+O\+P\+R\+I\+G\+HT}, 
+{\bfseries B\+O\+T\+T\+O\+M\+R\+I\+G\+HT}, 
+\\*
+{\bfseries B\+O\+T\+T\+O\+M\+L\+E\+FT}
+ \}\hypertarget{class_nivel_mapa_af0608f1554ebdf3de2ab2e8390ccd4e7}{}\label{class_nivel_mapa_af0608f1554ebdf3de2ab2e8390ccd4e7}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Nivel\+Mapa} (int x, int y)\hypertarget{class_nivel_mapa_ad890496fcfa8dcff7b511f24b1cfd39b}{}\label{class_nivel_mapa_ad890496fcfa8dcff7b511f24b1cfd39b}
+
+\item 
+bool {\bfseries contain} (S\+D\+L\+\_\+\+Rect rect)\hypertarget{class_nivel_mapa_ae94e6ce184a768fb34c1b119f9acb2ed}{}\label{class_nivel_mapa_ae94e6ce184a768fb34c1b119f9acb2ed}
+
+\item 
+int {\bfseries get\+Tile\+At} (int x, int y)\hypertarget{class_nivel_mapa_a25f7e94605919f131b50746eba3b0f49}{}\label{class_nivel_mapa_a25f7e94605919f131b50746eba3b0f49}
+
+\item 
+Extremo\+Colision \hyperlink{class_nivel_mapa_a0b1cd448c578ca8f05a8e63e1110f6a9}{colision} (S\+D\+L\+\_\+\+Rect rect, int $\ast$num\+\_\+colisiones, bool solo\+Bloques\+No\+Traspasables=false)
+\item 
+int {\bfseries get\+Tile\+Width} ()\hypertarget{class_nivel_mapa_affc2d4a666934e4bdf54c8816d12860c}{}\label{class_nivel_mapa_affc2d4a666934e4bdf54c8816d12860c}
+
+\item 
+int {\bfseries get\+Tile\+Height} ()\hypertarget{class_nivel_mapa_a7e67766d3c671e267d3d04eca4578085}{}\label{class_nivel_mapa_a7e67766d3c671e267d3d04eca4578085}
+
+\item 
+bool {\bfseries es\+Bloque\+Solido} (int x, int y)\hypertarget{class_nivel_mapa_a2af0b654e04be495e657eb8d59c89840}{}\label{class_nivel_mapa_a2af0b654e04be495e657eb8d59c89840}
+
+\item 
+bool {\bfseries es\+Bloque\+Rompible} (int x, int y)\hypertarget{class_nivel_mapa_a32d0d369415ccae82fcacee60a0fdf41}{}\label{class_nivel_mapa_a32d0d369415ccae82fcacee60a0fdf41}
+
+\item 
+std\+::string {\bfseries get\+Property\+Tile} (int id\+\_\+tile, std\+::string clave)\hypertarget{class_nivel_mapa_a62da61549a499de02cf3a4bd8d756911}{}\label{class_nivel_mapa_a62da61549a499de02cf3a4bd8d756911}
+
+\item 
+int {\bfseries get\+Pos\+X\+Player} (Id\+Player player)\hypertarget{class_nivel_mapa_a5973180597daa732fdbdbf39f4edb21c}{}\label{class_nivel_mapa_a5973180597daa732fdbdbf39f4edb21c}
+
+\item 
+int {\bfseries get\+Pos\+Y\+Player} (Id\+Player player)\hypertarget{class_nivel_mapa_a1e6a410c29cdcbb6fc867453e08b1bd5}{}\label{class_nivel_mapa_a1e6a410c29cdcbb6fc867453e08b1bd5}
+
+\item 
+std\+::vector$<$ std\+::string $>$ $\ast$ {\bfseries get\+Animacion\+Frames} (const std\+::string \&basic\+\_\+string)\hypertarget{class_nivel_mapa_a5949b4887427c10991575b87975cccb3}{}\label{class_nivel_mapa_a5949b4887427c10991575b87975cccb3}
+
+\item 
+\hyperlink{class_sprite_sheet}{Sprite\+Sheet} $\ast$ {\bfseries get\+Sprite\+Sheet\+Tiles} ()\hypertarget{class_nivel_mapa_aa160e272d2fcaeee2d9601ccfd44cd4a}{}\label{class_nivel_mapa_aa160e272d2fcaeee2d9601ccfd44cd4a}
+
+\item 
+std\+::string {\bfseries get\+Ruta\+Tile\+Set} ()\hypertarget{class_nivel_mapa_a491428dc0cd4684ceab50c1ab80d71da}{}\label{class_nivel_mapa_a491428dc0cd4684ceab50c1ab80d71da}
+
+\item 
+int {\bfseries get\+N\+Filas\+Tile\+Set} ()\hypertarget{class_nivel_mapa_ad148759e4adb206067b8e6f06bf9d58b}{}\label{class_nivel_mapa_ad148759e4adb206067b8e6f06bf9d58b}
+
+\item 
+int {\bfseries get\+N\+Columnas\+Tile\+Set} ()\hypertarget{class_nivel_mapa_a3137fa05ea5bf8956166fc524ce92cb6}{}\label{class_nivel_mapa_a3137fa05ea5bf8956166fc524ce92cb6}
+
+\item 
+bool {\bfseries romper\+Bloque} (int x, int y)\hypertarget{class_nivel_mapa_a95a941ee7677da7d7997c2ad0bea53aa}{}\label{class_nivel_mapa_a95a941ee7677da7d7997c2ad0bea53aa}
+
+\item 
+int {\bfseries get\+Indice\+Mapa\+At} (int x, int y)\hypertarget{class_nivel_mapa_ae95b7b0f8d4c7521b13a63b001213740}{}\label{class_nivel_mapa_ae95b7b0f8d4c7521b13a63b001213740}
+
+\item 
+int {\bfseries get\+Indice\+Fila\+Mapa\+At} (int y)\hypertarget{class_nivel_mapa_afe955ab11816234cf050ab576a1ac0b6}{}\label{class_nivel_mapa_afe955ab11816234cf050ab576a1ac0b6}
+
+\item 
+int {\bfseries get\+Indice\+Columna\+Mapa\+At} (int x)\hypertarget{class_nivel_mapa_a080b8df56d1f9598c60ada0b215ccd97}{}\label{class_nivel_mapa_a080b8df56d1f9598c60ada0b215ccd97}
+
+\item 
+int {\bfseries getX} ()\hypertarget{class_nivel_mapa_a4ed1e642123d0955148d8fd0a880e4f4}{}\label{class_nivel_mapa_a4ed1e642123d0955148d8fd0a880e4f4}
+
+\item 
+int {\bfseries getY} ()\hypertarget{class_nivel_mapa_abdb6fc04d0833e90085d865503f8fd18}{}\label{class_nivel_mapa_abdb6fc04d0833e90085d865503f8fd18}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static S\+D\+L\+\_\+\+Texture $\ast$ {\bfseries get\+Preview\+Terreno} (char ruta\+Mapa\mbox{[}$\,$\mbox{]}, \hyperlink{class_meta_data}{Meta\+Data} $\ast$params, \hyperlink{class_l_texture}{L\+Texture} $\ast$img\+\_\+tile, \hyperlink{class_l_texture}{L\+Texture} $\ast$imgs\+\_\+players\mbox{[}$\,$\mbox{]}, int x, int y)\hypertarget{class_nivel_mapa_abe79825262b5ed8096219747aecf94e2}{}\label{class_nivel_mapa_abe79825262b5ed8096219747aecf94e2}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\index{Nivel\+Mapa@{Nivel\+Mapa}!colision@{colision}}
+\index{colision@{colision}!Nivel\+Mapa@{Nivel\+Mapa}}
+\subsubsection[{\texorpdfstring{colision(\+S\+D\+L\+\_\+\+Rect rect, int $\ast$num\+\_\+colisiones, bool solo\+Bloques\+No\+Traspasables=false)}{colision(SDL_Rect rect, int *num_colisiones, bool soloBloquesNoTraspasables=false)}}]{\setlength{\rightskip}{0pt plus 5cm}Nivel\+Mapa\+::\+Extremo\+Colision Nivel\+Mapa\+::colision (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Rect}]{rect, }
+\item[{int $\ast$}]{num\+\_\+colisiones, }
+\item[{bool}]{solo\+Bloques\+No\+Traspasables = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_nivel_mapa_a0b1cd448c578ca8f05a8e63e1110f6a9}{}\label{class_nivel_mapa_a0b1cd448c578ca8f05a8e63e1110f6a9}
+Detecta si uno de los extremos del rectangulo colisiona con un bloque con la propiedad de solido 
+\begin{DoxyParams}{Parameters}
+{\em rect} & rectangulo \\
+\hline
+{\em num\+\_\+colisiones} & Numero de extremos en colision \\
+\hline
+{\em solo\+Bloques\+No\+Traspasables} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+El ultimo extremo detectado que colisiona
+\end{DoxyReturn}
+Nota, en el caso que sea un player el que quiera detectar la colision éste usa un cuadro de colision(size=10) menor que el de los tiles(size=16) por lo que num\+\_\+colisiones será 1 o 2.
+
+Se regresa i + 1 , para que el 0 represente NO C\+O\+L\+I\+S\+I\+ON, el i + 1 significa\+:
+
+1 --$>$ extremo T\+O\+P-\/\+L\+E\+FT 2 --$>$ extremo T\+O\+P-\/\+R\+I\+G\+HT 3 --$>$ extremo B\+O\+T\+T\+O\+M-\/\+R\+I\+G\+HT 4 --$>$ extremo B\+O\+T\+T\+O\+M-\/\+L\+E\+FT Si se quiere que solo sean los bloques que no se pueden traspasar 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/niveles/Nivel\+Mapa.\+hpp\item 
+src/niveles/Nivel\+Mapa.\+cpp\end{DoxyCompactItemize}

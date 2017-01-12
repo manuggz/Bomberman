@@ -1,0 +1,4 @@
+<map id="Juego::pause" name="Juego::pause">
+<area shape="rect" id="node2" href="$class_interfaz_u_i.html#a1f20c514d5b0fd3965d5a1beb737f14c" title="InterfazUI::pause" alt="" coords="153,5,276,32"/>
+<area shape="rect" id="node3" href="$class_l_timer.html#a8a6c6af5435bdaa825a30f84877dc059" title="LTimer::pause" alt="" coords="162,56,267,83"/>
+</map>

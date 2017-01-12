@@ -1,0 +1,64 @@
+\hypertarget{class_update_group}{}\section{Update\+Group Class Reference}
+\label{class_update_group}\index{Update\+Group@{Update\+Group}}
+
+
+Inheritance diagram for Update\+Group\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{class_update_group__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Update\+Group\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{class_update_group__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Update\+Group} (\hyperlink{class_interfaz_sprite_group}{Interfaz\+Sprite\+Group} $\ast$parent)\hypertarget{class_update_group_a49faf1743d86291fc62af018395db808}{}\label{class_update_group_a49faf1743d86291fc62af018395db808}
+
+\item 
+bool {\bfseries erase} (\hyperlink{class_sprite}{Sprite} $\ast$sprite) override\hypertarget{class_update_group_ac9f22f301968b34c662a90cd6072f1bf}{}\label{class_update_group_ac9f22f301968b34c662a90cd6072f1bf}
+
+\item 
+void \hyperlink{class_update_group_aaa43bd14b878a2caacd6be9baf5031ea}{update} (const Uint8 $\ast$keys)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_interfaz_sprite_group}{Interfaz\+Sprite\+Group} $\ast$ {\bfseries parent}\hypertarget{class_update_group_a37ce84487a403e7c7a4781a79fe36f85}{}\label{class_update_group_a37ce84487a403e7c7a4781a79fe36f85}
+
+\item 
+bool {\bfseries is\+Updating} = false\hypertarget{class_update_group_a5b2713caad73eff93b155d8e7ffb3a8a}{}\label{class_update_group_a5b2713caad73eff93b155d8e7ffb3a8a}
+
+\item 
+std\+::deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries m\+Eliminados\+En\+Update}\hypertarget{class_update_group_ab4434946aaa26d6ad6bed977af054ce6}{}\label{class_update_group_ab4434946aaa26d6ad6bed977af054ce6}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\index{Update\+Group@{Update\+Group}!update@{update}}
+\index{update@{update}!Update\+Group@{Update\+Group}}
+\subsubsection[{\texorpdfstring{update(const Uint8 $\ast$keys)}{update(const Uint8 *keys)}}]{\setlength{\rightskip}{0pt plus 5cm}void Update\+Group\+::update (
+\begin{DoxyParamCaption}
+\item[{const Uint8 $\ast$}]{keys}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_update_group_aaa43bd14b878a2caacd6be9baf5031ea}{}\label{class_update_group_aaa43bd14b878a2caacd6be9baf5031ea}
+Actualiza todos los sprites Itera y llama a Sprite-\/$>$update 
+\begin{DoxyParams}{Parameters}
+{\em keys} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/sprites/C\+Update\+Grow.\+hpp\end{DoxyCompactItemize}

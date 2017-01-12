@@ -1,0 +1,4 @@
+<map id="Player::setBombasColocadas" name="Player::setBombasColocadas">
+<area shape="rect" id="node2" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="277,5,421,32"/>
+<area shape="rect" id="node3" href="$class_player.html#a9346eacf7896339462843d04e69201a3" title="Player::getBombasDisponibles" alt="" coords="248,56,449,83"/>
+</map>

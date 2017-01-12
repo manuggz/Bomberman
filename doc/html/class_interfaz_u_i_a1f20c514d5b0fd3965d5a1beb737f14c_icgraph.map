@@ -1,0 +1,5 @@
+<map id="InterfazUI::pause" name="InterfazUI::pause">
+<area shape="rect" id="node2" href="$class_game_manager.html#abbde8090c24ca199815ba1e85059c96f" title="GameManager::run" alt="" coords="176,5,309,32"/>
+<area shape="rect" id="node4" href="$class_juego.html#aaf1cd7159334d07023c78d6b8a35e63f" title="Juego::pause" alt="" coords="193,56,293,83"/>
+<area shape="rect" id="node3" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="357,5,408,32"/>
+</map>

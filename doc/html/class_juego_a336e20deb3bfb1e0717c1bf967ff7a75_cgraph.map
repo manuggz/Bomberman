@@ -1,0 +1,22 @@
+<map id="Juego::playerMuerto" name="Juego::playerMuerto">
+<area shape="rect" id="node2" href="$class_player.html#a1b5475ae5256e13e31c2579ea42dde99" title="Player::getEstado" alt="" coords="215,5,341,32"/>
+<area shape="rect" id="node3" href="$class_player.html#a3dfb69349c809eb38546a804a40e741b" title="Player::getNCorazones" alt="" coords="199,56,357,83"/>
+<area shape="rect" id="node4" href="$class_player.html#a038f253da5e506e19a1e24a4e6a5f3f5" title="Player::cambiarEstado" alt="" coords="201,107,355,133"/>
+<area shape="rect" id="node5" href="$class_player.html#a23bedb65ce970474120640ae36cba19f" title="Player::setProteccion" alt="" coords="639,360,785,387"/>
+<area shape="rect" id="node7" href="$class_player.html#a39b88679bf5da3090ba70e5d1bb1a8e2" title="Player::setNCorazones" alt="" coords="199,208,357,235"/>
+<area shape="rect" id="node8" href="$class_player.html#a992cb9c9048c41b6c7d3640b65a54aca" title="Player::getVidas" alt="" coords="219,259,337,285"/>
+<area shape="rect" id="node9" href="$class_juego.html#a95af6c1b23ede35e0714e1d01ff7c570" title="Juego::establecerValores\lDeMapaPlayer" alt="" coords="193,310,363,351"/>
+<area shape="rect" id="node17" href="$class_player.html#a0fa3c8a7f45074e4734ed67a11c3eb2a" title="Player::getId" alt="" coords="230,376,326,403"/>
+<area shape="rect" id="node18" href="$class_game_manager_interfaz_u_i.html#abc1e55cd9dc327d26ef6fdbfcac05b42" title="GameManagerInterfazUI\l::play" alt="" coords="195,427,361,469"/>
+<area shape="rect" id="node19" href="$class_player.html#a98a4100f1290b3e0ab6c5d93f1d764b7" title="Player::setEnPantalla" alt="" coords="204,528,352,555"/>
+<area shape="rect" id="node21" href="$class_sprite.html#a04ff4eaaddc06f78fb3ee62a378b56f1" title="Sprite::kill" alt="" coords="238,579,318,605"/>
+<area shape="rect" id="node6" href="$class_l_timer.html#a7dc11f05cf5098a6d06ebd6ebec96ed6" title="LTimer::start" alt="" coords="833,461,929,488"/>
+<area shape="rect" id="node10" href="$class_player.html#aebb43c51a7da9e652f5574e8ded62f87" title="Player::move" alt="" coords="451,208,550,235"/>
+<area shape="rect" id="node11" href="$class_nivel_mapa.html#a5973180597daa732fdbdbf39f4edb21c" title="NivelMapa::getPosXPlayer" alt="" coords="411,259,590,285"/>
+<area shape="rect" id="node12" href="$class_nivel_mapa.html#a1e6a410c29cdcbb6fc867453e08b1bd5" title="NivelMapa::getPosYPlayer" alt="" coords="411,309,590,336"/>
+<area shape="rect" id="node13" href="$class_player.html#ac7a3107b816d747203be750a9b68771e" title="Player::setVidas" alt="" coords="441,360,560,387"/>
+<area shape="rect" id="node14" href="$class_mapa.html#a169f2cb4198d7933d88099fb16042b9f" title="Mapa::getMapProperty" alt="" coords="423,411,578,437"/>
+<area shape="rect" id="node15" href="$class_player.html#aefb09c11910bdd64a1030f3f2576d4b2" title="Player::setNBombas" alt="" coords="429,461,572,488"/>
+<area shape="rect" id="node16" href="$class_player.html#ae24d729abd2b7ccc9f358ac72498fcde" title="Player::setAlcanceBombas" alt="" coords="411,512,591,539"/>
+<area shape="rect" id="node20" href="$class_l_timer.html#aeabbf5f935907fcfeaa7f4403741e4ae" title="LTimer::stop" alt="" coords="453,613,548,640"/>
+</map>

@@ -1,0 +1,389 @@
+\hypertarget{util_8hpp}{}\section{src/util.hpp File Reference}
+\label{util_8hpp}\index{src/util.\+hpp@{src/util.\+hpp}}
+{\ttfamily \#include $<$cstdarg$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L.\+h$>$}\\*
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+image.\+h$>$}\\*
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+mixer.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}constantes.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}engine/util/\+L\+Texture.\+hpp\char`\"{}}\\*
+Include dependency graph for util.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Mix\+\_\+\+Chunk $\ast$ \hyperlink{util_8hpp_af784728848cea748d0299ebad21c9c26}{cargar\+\_\+sonido} (char ruta\mbox{[}$\,$\mbox{]})
+\item 
+Mix\+\_\+\+Music $\ast$ \hyperlink{util_8hpp_a391a4bf03d12d730a7d8878dbcf673c0}{cargar\+\_\+musica} (const char ruta\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{util_8hpp_a5c1e3755758d01a0ed3ccbceeba9541b}{imprimir\+\_\+desde\+\_\+grilla} (\hyperlink{class_l_texture}{L\+Texture} $\ast$src, int cuadro, S\+D\+L\+\_\+\+Renderer $\ast$, int x\+\_\+dest, int y\+\_\+dest, int fil, int col, int alpha)
+\item 
+bool \hyperlink{util_8hpp_a60c12883feaa27e0712aa30edc11afc8}{rects\+\_\+colisionan} (S\+D\+L\+\_\+\+Rect \&rect\+\_\+1, S\+D\+L\+\_\+\+Rect \&rect\+\_\+2)
+\item 
+void \hyperlink{util_8hpp_a63213b38ac4f9531fb3125c251ee1de7}{mostrar\+\_\+error\+\_\+salir} (std\+::string msg)
+\item 
+bool \hyperlink{util_8hpp_ab070c06c5391e20aa35dea723672d8c2}{punto\+\_\+en\+\_\+rect} (Sint16 x, Sint16 y, S\+D\+L\+\_\+\+Rect $\ast$rect\+\_\+coli)
+\item 
+std\+::string \hyperlink{util_8hpp_ab21ffc1de20fc9dbdc685df1c8205661}{buscar\+\_\+dato} (std\+::string ruta, std\+::string nombre\+Variable, std\+::string delim=\char`\"{}\+:\char`\"{})
+\item 
+bool \hyperlink{util_8hpp_ac6e10645fbbe6f73b7cda6edd52da094}{punto\+\_\+en\+\_\+rect\+\_\+coordenadas} (Sint16 x\+\_\+1, Sint16 y\+\_\+1, Sint16 x\+\_\+2, Sint16 y\+\_\+2, Sint16 w\+\_\+2, Sint16 h\+\_\+2)
+\item 
+bool \hyperlink{util_8hpp_ab6b0f6d6f3522757392a48dcdf68db00}{estado\+\_\+tecla\+\_\+joy} (S\+D\+L\+\_\+\+Keycode tecla, S\+D\+L\+\_\+\+Joystick $\ast$joy)
+\item 
+\hyperlink{constantes_8hpp_a49247e6435807cf646a41ef0f2bdf327}{Estado\+Sprite} \hyperlink{util_8hpp_ac06a7c2588120631b25a5d09e7e19c7f}{invertir\+\_\+estado} (\hyperlink{constantes_8hpp_a49247e6435807cf646a41ef0f2bdf327}{Estado\+Sprite} estado)
+\item 
+Uint32 \hyperlink{util_8hpp_af2e45096dcda05f48a50f7cde4bf0dbe}{get\+\_\+pixel} (S\+D\+L\+\_\+\+Surface $\ast$ima, int x, int y)
+\item 
+void \hyperlink{util_8hpp_a0ace920286687a9b537e58100552cd25}{unir\+\_\+rects} (S\+D\+L\+\_\+\+Rect \&rect1, S\+D\+L\+\_\+\+Rect \&rect2, S\+D\+L\+\_\+\+Rect \&rect\+Rest)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{util.\+hpp@{util.\+hpp}!buscar\+\_\+dato@{buscar\+\_\+dato}}
+\index{buscar\+\_\+dato@{buscar\+\_\+dato}!util.\+hpp@{util.\+hpp}}
+\subsubsection[{\texorpdfstring{buscar\+\_\+dato(std\+::string ruta, std\+::string nombre\+Variable, std\+::string delim=""\+:"")}{buscar_dato(std::string ruta, std::string nombreVariable, std::string delim=":")}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string buscar\+\_\+dato (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{ruta, }
+\item[{std\+::string}]{nombre\+Variable, }
+\item[{std\+::string}]{delim}
+\end{DoxyParamCaption}
+)}\hypertarget{util_8hpp_ab21ffc1de20fc9dbdc685df1c8205661}{}\label{util_8hpp_ab21ffc1de20fc9dbdc685df1c8205661}
+Abre un archivo de texto y busca el valor de \char`\"{}nombre\+Variable\char`\"{} en él
+
+El archivo de texto es de la forma\+:
+
+\mbox{[}$<$nombre nombrevariable$>$=\char`\"{}\char`\"{}$>$\+:$<$valor\+Variable$>$\mbox{]} 
+\begin{DoxyParams}{Parameters}
+{\em ruta} & \\
+\hline
+{\em nombre\+Variable} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 176 of file util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{util_8hpp_ab21ffc1de20fc9dbdc685df1c8205661_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{util.\+hpp@{util.\+hpp}!cargar\+\_\+musica@{cargar\+\_\+musica}}
+\index{cargar\+\_\+musica@{cargar\+\_\+musica}!util.\+hpp@{util.\+hpp}}
+\subsubsection[{\texorpdfstring{cargar\+\_\+musica(const char ruta[])}{cargar_musica(const char ruta[])}}]{\setlength{\rightskip}{0pt plus 5cm}Mix\+\_\+\+Music$\ast$ cargar\+\_\+musica (
+\begin{DoxyParamCaption}
+\item[{const char}]{ruta\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{util_8hpp_a391a4bf03d12d730a7d8878dbcf673c0}{}\label{util_8hpp_a391a4bf03d12d730a7d8878dbcf673c0}
+
+
+Definition at line 50 of file util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util_8hpp_a391a4bf03d12d730a7d8878dbcf673c0_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{util.\+hpp@{util.\+hpp}!cargar\+\_\+sonido@{cargar\+\_\+sonido}}
+\index{cargar\+\_\+sonido@{cargar\+\_\+sonido}!util.\+hpp@{util.\+hpp}}
+\subsubsection[{\texorpdfstring{cargar\+\_\+sonido(char ruta[])}{cargar_sonido(char ruta[])}}]{\setlength{\rightskip}{0pt plus 5cm}Mix\+\_\+\+Chunk$\ast$ cargar\+\_\+sonido (
+\begin{DoxyParamCaption}
+\item[{char}]{ruta\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{util_8hpp_af784728848cea748d0299ebad21c9c26}{}\label{util_8hpp_af784728848cea748d0299ebad21c9c26}
+
+
+Definition at line 40 of file util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util_8hpp_af784728848cea748d0299ebad21c9c26_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{util.\+hpp@{util.\+hpp}!estado\+\_\+tecla\+\_\+joy@{estado\+\_\+tecla\+\_\+joy}}
+\index{estado\+\_\+tecla\+\_\+joy@{estado\+\_\+tecla\+\_\+joy}!util.\+hpp@{util.\+hpp}}
+\subsubsection[{\texorpdfstring{estado\+\_\+tecla\+\_\+joy(\+S\+D\+L\+\_\+\+Keycode tecla, S\+D\+L\+\_\+\+Joystick $\ast$joy)}{estado_tecla_joy(SDL_Keycode tecla, SDL_Joystick *joy)}}]{\setlength{\rightskip}{0pt plus 5cm}bool estado\+\_\+tecla\+\_\+joy (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Keycode}]{tecla, }
+\item[{S\+D\+L\+\_\+\+Joystick $\ast$}]{joy}
+\end{DoxyParamCaption}
+)}\hypertarget{util_8hpp_ab6b0f6d6f3522757392a48dcdf68db00}{}\label{util_8hpp_ab6b0f6d6f3522757392a48dcdf68db00}
+
+
+Definition at line 202 of file util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util_8hpp_ab6b0f6d6f3522757392a48dcdf68db00_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{util.\+hpp@{util.\+hpp}!get\+\_\+pixel@{get\+\_\+pixel}}
+\index{get\+\_\+pixel@{get\+\_\+pixel}!util.\+hpp@{util.\+hpp}}
+\subsubsection[{\texorpdfstring{get\+\_\+pixel(\+S\+D\+L\+\_\+\+Surface $\ast$ima, int x, int y)}{get_pixel(SDL_Surface *ima, int x, int y)}}]{\setlength{\rightskip}{0pt plus 5cm}Uint32 get\+\_\+pixel (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{ima, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{util_8hpp_af2e45096dcda05f48a50f7cde4bf0dbe}{}\label{util_8hpp_af2e45096dcda05f48a50f7cde4bf0dbe}
+
+
+Definition at line 139 of file util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{util_8hpp_af2e45096dcda05f48a50f7cde4bf0dbe_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{util.\+hpp@{util.\+hpp}!imprimir\+\_\+desde\+\_\+grilla@{imprimir\+\_\+desde\+\_\+grilla}}
+\index{imprimir\+\_\+desde\+\_\+grilla@{imprimir\+\_\+desde\+\_\+grilla}!util.\+hpp@{util.\+hpp}}
+\subsubsection[{\texorpdfstring{imprimir\+\_\+desde\+\_\+grilla(\+L\+Texture $\ast$src, int cuadro, S\+D\+L\+\_\+\+Renderer $\ast$, int x\+\_\+dest, int y\+\_\+dest, int fil, int col, int alpha)}{imprimir_desde_grilla(LTexture *src, int cuadro, SDL_Renderer *, int x_dest, int y_dest, int fil, int col, int alpha)}}]{\setlength{\rightskip}{0pt plus 5cm}void imprimir\+\_\+desde\+\_\+grilla (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+Texture} $\ast$}]{src, }
+\item[{int}]{cuadro, }
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{, }
+\item[{int}]{x\+\_\+dest, }
+\item[{int}]{y\+\_\+dest, }
+\item[{int}]{fil, }
+\item[{int}]{col, }
+\item[{int}]{alpha}
+\end{DoxyParamCaption}
+)}\hypertarget{util_8hpp_a5c1e3755758d01a0ed3ccbceeba9541b}{}\label{util_8hpp_a5c1e3755758d01a0ed3ccbceeba9541b}
+
+
+Definition at line 70 of file util.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{util_8hpp_a5c1e3755758d01a0ed3ccbceeba9541b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util_8hpp_a5c1e3755758d01a0ed3ccbceeba9541b_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{util.\+hpp@{util.\+hpp}!invertir\+\_\+estado@{invertir\+\_\+estado}}
+\index{invertir\+\_\+estado@{invertir\+\_\+estado}!util.\+hpp@{util.\+hpp}}
+\subsubsection[{\texorpdfstring{invertir\+\_\+estado(\+Estado\+Sprite estado)}{invertir_estado(EstadoSprite estado)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Estado\+Sprite} invertir\+\_\+estado (
+\begin{DoxyParamCaption}
+\item[{{\bf Estado\+Sprite}}]{estado}
+\end{DoxyParamCaption}
+)}\hypertarget{util_8hpp_ac06a7c2588120631b25a5d09e7e19c7f}{}\label{util_8hpp_ac06a7c2588120631b25a5d09e7e19c7f}
+
+
+Definition at line 235 of file util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{util_8hpp_ac06a7c2588120631b25a5d09e7e19c7f_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{util.\+hpp@{util.\+hpp}!mostrar\+\_\+error\+\_\+salir@{mostrar\+\_\+error\+\_\+salir}}
+\index{mostrar\+\_\+error\+\_\+salir@{mostrar\+\_\+error\+\_\+salir}!util.\+hpp@{util.\+hpp}}
+\subsubsection[{\texorpdfstring{mostrar\+\_\+error\+\_\+salir(std\+::string msg)}{mostrar_error_salir(std::string msg)}}]{\setlength{\rightskip}{0pt plus 5cm}void mostrar\+\_\+error\+\_\+salir (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{msg}
+\end{DoxyParamCaption}
+)}\hypertarget{util_8hpp_a63213b38ac4f9531fb3125c251ee1de7}{}\label{util_8hpp_a63213b38ac4f9531fb3125c251ee1de7}
+
+
+Definition at line 35 of file util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util_8hpp_a63213b38ac4f9531fb3125c251ee1de7_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{util.\+hpp@{util.\+hpp}!punto\+\_\+en\+\_\+rect@{punto\+\_\+en\+\_\+rect}}
+\index{punto\+\_\+en\+\_\+rect@{punto\+\_\+en\+\_\+rect}!util.\+hpp@{util.\+hpp}}
+\subsubsection[{\texorpdfstring{punto\+\_\+en\+\_\+rect(\+Sint16 x, Sint16 y, S\+D\+L\+\_\+\+Rect $\ast$rect\+\_\+coli)}{punto_en_rect(Sint16 x, Sint16 y, SDL_Rect *rect_coli)}}]{\setlength{\rightskip}{0pt plus 5cm}bool punto\+\_\+en\+\_\+rect (
+\begin{DoxyParamCaption}
+\item[{Sint16}]{x, }
+\item[{Sint16}]{y, }
+\item[{S\+D\+L\+\_\+\+Rect $\ast$}]{rect\+\_\+coli}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{util_8hpp_ab070c06c5391e20aa35dea723672d8c2}{}\label{util_8hpp_ab070c06c5391e20aa35dea723672d8c2}
+
+
+Definition at line 20 of file util.\+hpp.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{util_8hpp_ab070c06c5391e20aa35dea723672d8c2_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{util.\+hpp@{util.\+hpp}!punto\+\_\+en\+\_\+rect\+\_\+coordenadas@{punto\+\_\+en\+\_\+rect\+\_\+coordenadas}}
+\index{punto\+\_\+en\+\_\+rect\+\_\+coordenadas@{punto\+\_\+en\+\_\+rect\+\_\+coordenadas}!util.\+hpp@{util.\+hpp}}
+\subsubsection[{\texorpdfstring{punto\+\_\+en\+\_\+rect\+\_\+coordenadas(\+Sint16 x\+\_\+1, Sint16 y\+\_\+1, Sint16 x\+\_\+2, Sint16 y\+\_\+2, Sint16 w\+\_\+2, Sint16 h\+\_\+2)}{punto_en_rect_coordenadas(Sint16 x_1, Sint16 y_1, Sint16 x_2, Sint16 y_2, Sint16 w_2, Sint16 h_2)}}]{\setlength{\rightskip}{0pt plus 5cm}bool punto\+\_\+en\+\_\+rect\+\_\+coordenadas (
+\begin{DoxyParamCaption}
+\item[{Sint16}]{x\+\_\+1, }
+\item[{Sint16}]{y\+\_\+1, }
+\item[{Sint16}]{x\+\_\+2, }
+\item[{Sint16}]{y\+\_\+2, }
+\item[{Sint16}]{w\+\_\+2, }
+\item[{Sint16}]{h\+\_\+2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{util_8hpp_ac6e10645fbbe6f73b7cda6edd52da094}{}\label{util_8hpp_ac6e10645fbbe6f73b7cda6edd52da094}
+
+
+Definition at line 32 of file util.\+hpp.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{util_8hpp_ac6e10645fbbe6f73b7cda6edd52da094_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{util.\+hpp@{util.\+hpp}!rects\+\_\+colisionan@{rects\+\_\+colisionan}}
+\index{rects\+\_\+colisionan@{rects\+\_\+colisionan}!util.\+hpp@{util.\+hpp}}
+\subsubsection[{\texorpdfstring{rects\+\_\+colisionan(\+S\+D\+L\+\_\+\+Rect \&rect\+\_\+1, S\+D\+L\+\_\+\+Rect \&rect\+\_\+2)}{rects_colisionan(SDL_Rect &rect_1, SDL_Rect &rect_2)}}]{\setlength{\rightskip}{0pt plus 5cm}bool rects\+\_\+colisionan (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Rect \&}]{rect\+\_\+1, }
+\item[{S\+D\+L\+\_\+\+Rect \&}]{rect\+\_\+2}
+\end{DoxyParamCaption}
+)}\hypertarget{util_8hpp_a60c12883feaa27e0712aa30edc11afc8}{}\label{util_8hpp_a60c12883feaa27e0712aa30edc11afc8}
+
+
+Definition at line 60 of file util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{util_8hpp_a60c12883feaa27e0712aa30edc11afc8_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{util.\+hpp@{util.\+hpp}!unir\+\_\+rects@{unir\+\_\+rects}}
+\index{unir\+\_\+rects@{unir\+\_\+rects}!util.\+hpp@{util.\+hpp}}
+\subsubsection[{\texorpdfstring{unir\+\_\+rects(\+S\+D\+L\+\_\+\+Rect \&rect1, S\+D\+L\+\_\+\+Rect \&rect2, S\+D\+L\+\_\+\+Rect \&rect\+Rest)}{unir_rects(SDL_Rect &rect1, SDL_Rect &rect2, SDL_Rect &rectRest)}}]{\setlength{\rightskip}{0pt plus 5cm}void unir\+\_\+rects (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Rect \&}]{rect1, }
+\item[{S\+D\+L\+\_\+\+Rect \&}]{rect2, }
+\item[{S\+D\+L\+\_\+\+Rect \&}]{rect\+Rest}
+\end{DoxyParamCaption}
+)}\hypertarget{util_8hpp_a0ace920286687a9b537e58100552cd25}{}\label{util_8hpp_a0ace920286687a9b537e58100552cd25}
+Crea un rectangulo que C\+O\+N\+T\+I\+E\+NE a los dos rectangulos rect1 y rect2 
+\begin{DoxyParams}{Parameters}
+{\em rect1} & \\
+\hline
+{\em rect2} & \\
+\hline
+{\em rect\+Rest} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 227 of file util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util_8hpp_a0ace920286687a9b537e58100552cd25_icgraph}
+\end{center}
+\end{figure}
+
+

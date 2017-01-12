@@ -1,0 +1,4 @@
+<map id="Player::activarPoderItem" name="Player::activarPoderItem">
+<area shape="rect" id="node2" href="$class_player.html#a23bedb65ce970474120640ae36cba19f" title="Player::setProteccion" alt="" coords="220,5,367,32"/>
+<area shape="rect" id="node3" href="$class_l_timer.html#a7dc11f05cf5098a6d06ebd6ebec96ed6" title="LTimer::start" alt="" coords="415,5,511,32"/>
+</map>

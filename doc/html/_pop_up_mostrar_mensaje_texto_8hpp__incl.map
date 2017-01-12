@@ -1,0 +1,17 @@
+<map id="src/Interfaces/juego/PopUpMostrarMensajeTexto.hpp" name="src/Interfaces/juego/PopUpMostrarMensajeTexto.hpp">
+<area shape="rect" id="node3" href="$_pop_up_interfaz_8hpp.html" title="../../engine/interfaces\l/PopUpInterfaz.hpp" alt="" coords="833,184,979,225"/>
+<area shape="rect" id="node25" href="$_layout_absolute_8hpp.html" title="../../engine/layout\l/LayoutManager/LayoutAbsolute.hpp" alt="" coords="587,348,822,389"/>
+<area shape="rect" id="node31" href="$_text_label_component_8hpp.html" title="../../engine/layout\l/Componentes/LabelComponent.hpp" alt="" coords="253,348,513,389"/>
+<area shape="rect" id="node33" href="$_l_timer_8hpp.html" title="../../engine/util/LTimer.hpp" alt="" coords="5,587,180,613"/>
+<area shape="rect" id="node34" href="$game__manager_8hpp.html" title="../../engine/util/game\l_manager.hpp" alt="" coords="1038,95,1179,136"/>
+<area shape="rect" id="node7" href="$_interfaz_u_i_8hpp.html" title="InterfazUI.hpp" alt="" coords="1033,273,1139,300"/>
+<area shape="rect" id="node9" href="$_game_manager_pop_up_interfaz_8hpp.html" title="GameManagerPopUpInterfaz.hpp" alt="" coords="817,437,1033,464"/>
+<area shape="rect" id="node8" href="$_game_manager_interfaz_u_i_8hpp.html" title="GameManagerInterfazUI.hpp" alt="" coords="948,355,1139,382"/>
+<area shape="rect" id="node11" href="$galeria_8hpp.html" title="../../galeria.hpp" alt="" coords="1107,437,1217,464"/>
+<area shape="rect" id="node15" href="$constantes_8hpp.html" title="constantes.hpp" alt="" coords="1372,587,1483,613"/>
+<area shape="rect" id="node16" href="$util_8hpp.html" title="util.hpp" alt="" coords="957,512,1021,539"/>
+<area shape="rect" id="node18" href="$_l_texture_8hpp.html" title="engine/util/LTexture.hpp" alt="" coords="563,587,724,613"/>
+<area shape="rect" id="node27" href="$_layout_component_8hpp.html" title="LayoutComponent.hpp" alt="" coords="307,437,460,464"/>
+<area shape="rect" id="node28" href="$_component_8hpp.html" title="../Componentes/Component.hpp" alt="" coords="183,512,394,539"/>
+<area shape="rect" id="node32" href="$_c_font_8hpp.html" title="../../util/CFont.hpp" alt="" coords="803,512,931,539"/>
+</map>

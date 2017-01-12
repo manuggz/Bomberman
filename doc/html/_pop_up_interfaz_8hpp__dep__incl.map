@@ -1,0 +1,11 @@
+<map id="src/engine/interfaces/PopUpInterfaz.hpp" name="src/engine/interfaces/PopUpInterfaz.hpp">
+<area shape="rect" id="node2" href="$game__manager_8hpp.html" title="src/engine/util/game\l_manager.hpp" alt="" coords="400,95,539,136"/>
+<area shape="rect" id="node8" href="$_pop_up_mostrar_mensaje_texto_8hpp.html" title="src/Interfaces/juego\l/PopUpMostrarMensajeTexto.hpp" alt="" coords="638,184,855,225"/>
+<area shape="rect" id="node3" href="$game__manager_8cpp.html" title="src/engine/util/game\l_manager.cpp" alt="" coords="5,184,144,225"/>
+<area shape="rect" id="node4" href="$editor_8hpp.html" title="src/Interfaces/editor\l/editor.hpp" alt="" coords="168,184,307,225"/>
+<area shape="rect" id="node5" href="$juego__mostrar__gan_8hpp.html" title="src/Interfaces/juego\l/juego_mostrar_gan.hpp" alt="" coords="331,184,493,225"/>
+<area shape="rect" id="node10" href="$main_8cpp.html" title="src/main.cpp" alt="" coords="517,191,614,218"/>
+<area shape="rect" id="node6" href="$juego_8cpp.html" title="src/Interfaces/juego\l/juego.cpp" alt="" coords="570,363,707,404"/>
+<area shape="rect" id="node7" href="$juego__mostrar__gan_8cpp.html" title="src/Interfaces/juego\l/juego_mostrar_gan.cpp" alt="" coords="439,273,601,315"/>
+<area shape="rect" id="node9" href="$_pop_up_count_down_8hpp.html" title="src/Interfaces/juego\l/PopUpCountDown.hpp" alt="" coords="676,273,836,315"/>
+</map>

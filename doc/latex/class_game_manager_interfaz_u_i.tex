@@ -1,0 +1,184 @@
+\hypertarget{class_game_manager_interfaz_u_i}{}\section{Game\+Manager\+Interfaz\+UI Class Reference}
+\label{class_game_manager_interfaz_u_i}\index{Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}}
+
+
+{\ttfamily \#include $<$Game\+Manager\+Interfaz\+U\+I.\+hpp$>$}
+
+
+
+Inheritance diagram for Game\+Manager\+Interfaz\+UI\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{class_game_manager_interfaz_u_i__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Game\+Manager\+Interfaz\+UI\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{class_game_manager_interfaz_u_i__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_game_manager_interfaz_u_i_abc1e55cd9dc327d26ef6fdbfcac05b42}{play} (Galeria\+::\+Code\+Music\+Efecto code\+Music)=0
+\item 
+virtual void {\bfseries play} (Mix\+\_\+\+Chunk $\ast$p\+Sfx\+Chunk)=0\hypertarget{class_game_manager_interfaz_u_i_aee33c5cc1a5031d8ebe5968b6de9940b}{}\label{class_game_manager_interfaz_u_i_aee33c5cc1a5031d8ebe5968b6de9940b}
+
+\item 
+virtual void \hyperlink{class_game_manager_interfaz_u_i_a8ab3930451a7a81829859eb56d72c676}{play\+Sound} (Galeria\+::\+Code\+Music\+Sonido codigo\+Sonido)=0
+\item 
+virtual void \hyperlink{class_game_manager_interfaz_u_i_a7adf014f12ad93b0a8f569d7d3108bf9}{show\+Pop\+Up} (\hyperlink{class_pop_up_interfaz}{Pop\+Up\+Interfaz} $\ast$pop\+Up\+Interfaz, const int code\+Pop\+Up)=0
+\item 
+virtual int \hyperlink{class_game_manager_interfaz_u_i_a98ad10caf36808dd0c626a69fa7ffd17}{get\+Active\+Joys} ()=0
+\item 
+virtual S\+D\+L\+\_\+\+Joystick $\ast$ \hyperlink{class_game_manager_interfaz_u_i_ae0126235dd0099fec45504dc70870032}{get\+Joy} (int i)=0
+\item 
+virtual \hyperlink{class_l_texture}{L\+Texture} $\ast$ {\bfseries get\+Texture} (Galeria\+::\+Code\+Imagen imagen)=0\hypertarget{class_game_manager_interfaz_u_i_af969f9a01c171fb5c61b1f63c5688003}{}\label{class_game_manager_interfaz_u_i_af969f9a01c171fb5c61b1f63c5688003}
+
+\item 
+virtual void \hyperlink{class_game_manager_interfaz_u_i_a9e20a361429abfcc57896fe01955c88e}{cambiar\+Interfaz} (\hyperlink{class_interfaz_u_i}{Interfaz\+UI} $\ast$p\+Interfaz)=0
+\item 
+virtual void \hyperlink{class_game_manager_interfaz_u_i_aa3ee961c35993d96325520a8176d51f6}{go\+Back} ()=0
+\item 
+virtual void {\bfseries play\+Sound} (Mix\+\_\+\+Music $\ast$p\+Music, Uint8 volumen)=0\hypertarget{class_game_manager_interfaz_u_i_a8f40ba0bbd33d5dbeee31cfc81aae7cd}{}\label{class_game_manager_interfaz_u_i_a8f40ba0bbd33d5dbeee31cfc81aae7cd}
+
+\item 
+virtual void {\bfseries play\+Fade\+In\+Sound} (Mix\+\_\+\+Music $\ast$music, Uint8 volumen)=0\hypertarget{class_game_manager_interfaz_u_i_a8ca83afc38b809b80e9eba8dd9f41ef3}{}\label{class_game_manager_interfaz_u_i_a8ca83afc38b809b80e9eba8dd9f41ef3}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Esta es la interfaz que debe implemetar un \hyperlink{class_game_manager}{Game\+Manager} si quiere utilizar interfaces. \begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_2home_2manuggz_2_documents_2_projects_2_bomberman_2src_2engine_2interfaces_2_menu_list_label_8hpp-example}{/home/manuggz/\+Documents/\+Projects/\+Bomberman/src/engine/interfaces/\+Menu\+List\+Label.\+hpp}.\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\index{Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}!cambiar\+Interfaz@{cambiar\+Interfaz}}
+\index{cambiar\+Interfaz@{cambiar\+Interfaz}!Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{cambiar\+Interfaz(\+Interfaz\+U\+I $\ast$p\+Interfaz)=0}{cambiarInterfaz(InterfazUI *pInterfaz)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Game\+Manager\+Interfaz\+U\+I\+::cambiar\+Interfaz (
+\begin{DoxyParamCaption}
+\item[{{\bf Interfaz\+UI} $\ast$}]{p\+Interfaz}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_game_manager_interfaz_u_i_a9e20a361429abfcc57896fe01955c88e}{}\label{class_game_manager_interfaz_u_i_a9e20a361429abfcc57896fe01955c88e}
+Cambia la interfaz Actual, por la nueva referenciada. Pausa la Actual y la deja en la pila, si se llama a \hyperlink{class_game_manager_interfaz_u_i_aa3ee961c35993d96325520a8176d51f6}{go\+Back()} se resumirá. 
+\begin{DoxyParams}{Parameters}
+{\em p\+Juego} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_game_manager_a1a7ef9efef7dffba5887409b2008f833}{Game\+Manager}.
+
+\index{Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}!get\+Active\+Joys@{get\+Active\+Joys}}
+\index{get\+Active\+Joys@{get\+Active\+Joys}!Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{get\+Active\+Joys()=0}{getActiveJoys()=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Game\+Manager\+Interfaz\+U\+I\+::get\+Active\+Joys (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_game_manager_interfaz_u_i_a98ad10caf36808dd0c626a69fa7ffd17}{}\label{class_game_manager_interfaz_u_i_a98ad10caf36808dd0c626a69fa7ffd17}
+Obtiene el numero de Joysticks activos \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_game_manager_ae47edae1e15eaf1d4624cc4e66a9f559}{Game\+Manager}.
+
+\index{Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}!get\+Joy@{get\+Joy}}
+\index{get\+Joy@{get\+Joy}!Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{get\+Joy(int i)=0}{getJoy(int i)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual S\+D\+L\+\_\+\+Joystick$\ast$ Game\+Manager\+Interfaz\+U\+I\+::get\+Joy (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_game_manager_interfaz_u_i_ae0126235dd0099fec45504dc70870032}{}\label{class_game_manager_interfaz_u_i_ae0126235dd0099fec45504dc70870032}
+Obtiene el Joystic en la posición I 
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_game_manager_a9bb21d9af524ae6c72bdd8dc109ce957}{Game\+Manager}.
+
+\index{Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}!go\+Back@{go\+Back}}
+\index{go\+Back@{go\+Back}!Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{go\+Back()=0}{goBack()=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Game\+Manager\+Interfaz\+U\+I\+::go\+Back (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_game_manager_interfaz_u_i_aa3ee961c35993d96325520a8176d51f6}{}\label{class_game_manager_interfaz_u_i_aa3ee961c35993d96325520a8176d51f6}
+Regresa en la pila de navegación, si no hay nada en la pila se sale del juego. 
+
+Implemented in \hyperlink{class_game_manager_aaa4c8097c4e4288282a261e09ceebcb8}{Game\+Manager}.
+
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_2home_2manuggz_2_documents_2_projects_2_bomberman_2src_2engine_2interfaces_2_menu_list_label_8hpp-example}{/home/manuggz/\+Documents/\+Projects/\+Bomberman/src/engine/interfaces/\+Menu\+List\+Label.\+hpp}.\end{Desc}
+\index{Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}!play@{play}}
+\index{play@{play}!Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{play(\+Galeria\+::\+Code\+Music\+Efecto code\+Music)=0}{play(Galeria::CodeMusicEfecto codeMusic)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Game\+Manager\+Interfaz\+U\+I\+::play (
+\begin{DoxyParamCaption}
+\item[{Galeria\+::\+Code\+Music\+Efecto}]{code\+Music}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_game_manager_interfaz_u_i_abc1e55cd9dc327d26ef6fdbfcac05b42}{}\label{class_game_manager_interfaz_u_i_abc1e55cd9dc327d26ef6fdbfcac05b42}
+Reproduce un efecto de sonido 
+\begin{DoxyParams}{Parameters}
+{\em code\+Music} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_game_manager_ae693cf42cfb96a0bb6d7de8fad55739d}{Game\+Manager}.
+
+\index{Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}!play\+Sound@{play\+Sound}}
+\index{play\+Sound@{play\+Sound}!Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{play\+Sound(\+Galeria\+::\+Code\+Music\+Sonido codigo\+Sonido)=0}{playSound(Galeria::CodeMusicSonido codigoSonido)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Game\+Manager\+Interfaz\+U\+I\+::play\+Sound (
+\begin{DoxyParamCaption}
+\item[{Galeria\+::\+Code\+Music\+Sonido}]{codigo\+Sonido}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_game_manager_interfaz_u_i_a8ab3930451a7a81829859eb56d72c676}{}\label{class_game_manager_interfaz_u_i_a8ab3930451a7a81829859eb56d72c676}
+Reproduce una musica de fondo 
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Sonido} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_game_manager_a55482db663320dd82b11bb221049bd98}{Game\+Manager}.
+
+\index{Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}!show\+Pop\+Up@{show\+Pop\+Up}}
+\index{show\+Pop\+Up@{show\+Pop\+Up}!Game\+Manager\+Interfaz\+UI@{Game\+Manager\+Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{show\+Pop\+Up(\+Pop\+Up\+Interfaz $\ast$pop\+Up\+Interfaz, const int code\+Pop\+Up)=0}{showPopUp(PopUpInterfaz *popUpInterfaz, const int codePopUp)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Game\+Manager\+Interfaz\+U\+I\+::show\+Pop\+Up (
+\begin{DoxyParamCaption}
+\item[{{\bf Pop\+Up\+Interfaz} $\ast$}]{pop\+Up\+Interfaz, }
+\item[{const int}]{code\+Pop\+Up}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_game_manager_interfaz_u_i_a7adf014f12ad93b0a8f569d7d3108bf9}{}\label{class_game_manager_interfaz_u_i_a7adf014f12ad93b0a8f569d7d3108bf9}
+Hace que se muestre un Pop\+Up en la pantalla 
+\begin{DoxyParams}{Parameters}
+{\em pop\+Up\+Interfaz} & Puntero al Pop\+Up \\
+\hline
+{\em code\+Pop\+Up} & Codigo que usa el Pop\+Up\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Cuando se cierra el Pop\+Up, se pasa el code\+Pop\+Up a la interfaz que esté corriendo 
+\end{DoxyNote}
+
+
+Implemented in \hyperlink{class_game_manager_a79ed8c7a5bdef1baf9290dcab9b55db2}{Game\+Manager}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/interfaces/Game\+Manager\+Interfaz\+U\+I.\+hpp\end{DoxyCompactItemize}

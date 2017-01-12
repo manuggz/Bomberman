@@ -1,0 +1,53 @@
+\hypertarget{class_image_component}{}\section{Image\+Component Class Reference}
+\label{class_image_component}\index{Image\+Component@{Image\+Component}}
+
+
+Inheritance diagram for Image\+Component\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{class_image_component__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Image\+Component\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{class_image_component__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_image_component_a538cae4b9b1f723fa6cb21038387a0f6}{pack} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override
+\item 
+void {\bfseries set\+Image\+Texture} (\hyperlink{class_l_texture}{L\+Texture} $\ast$texture, bool delete\+Anterior=true)\hypertarget{class_image_component_aab7a7fe8608766fa1d6414ce5b4b8281}{}\label{class_image_component_aab7a7fe8608766fa1d6414ce5b4b8281}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\index{Image\+Component@{Image\+Component}!pack@{pack}}
+\index{pack@{pack}!Image\+Component@{Image\+Component}}
+\subsubsection[{\texorpdfstring{pack(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override}{pack(SDL_Renderer *gRenderer) override}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Image\+Component\+::pack (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_image_component_a538cae4b9b1f723fa6cb21038387a0f6}{}\label{class_image_component_a538cae4b9b1f723fa6cb21038387a0f6}
+Se encarga de crear las texturas del componente asi como otras acciones asociadas con el renderer Notar que despues de esta funcion se debe llamar a calculate\+Rect, es decir, realizar una nueva calculacion del rectangulo de dibujo del componente 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & Render de la pantalla \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_component_aa471f2c3a24525f584ed19cf25222e70}{Component}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/layout/\+Componentes/Image\+Component.\+hpp\end{DoxyCompactItemize}

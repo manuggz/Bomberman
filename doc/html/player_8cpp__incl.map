@@ -1,0 +1,32 @@
+<map id="src/personajes/player.cpp" name="src/personajes/player.cpp">
+<area shape="rect" id="node3" href="$player_8hpp.html" title="player.hpp" alt="" coords="2239,251,2321,278"/>
+<area shape="rect" id="node30" href="$_nivel_mapa_8hpp.html" title="../../niveles/NivelMapa.hpp" alt="" coords="940,430,1119,457"/>
+<area shape="rect" id="node42" href="$bomba_8hpp.html" title="bomba.hpp" alt="" coords="2425,341,2511,367"/>
+<area shape="rect" id="node43" href="$_l_timer_8hpp.html" title="../engine/util/LTimer.hpp" alt="" coords="245,691,408,717"/>
+<area shape="rect" id="node44" href="$explosion_8hpp.html" title="../objetos/explosion.hpp" alt="" coords="1816,80,1976,107"/>
+<area shape="rect" id="node4" href="$_c_sprite_8hpp.html" title="../engine/sprites/CSprite.hpp" alt="" coords="1730,519,1918,546"/>
+<area shape="rect" id="node13" href="$constantes_8hpp.html" title="constantes.hpp" alt="" coords="2515,691,2626,717"/>
+<area shape="rect" id="node22" href="$control__player_8hpp.html" title="../control_player.hpp" alt="" coords="2659,609,2799,635"/>
+<area shape="rect" id="node24" href="$item_8hpp.html" title="../objetos/item.hpp" alt="" coords="2269,341,2400,367"/>
+<area shape="rect" id="node29" href="$_interfaz_juego_8hpp.html" title="../Interfaces/juego\l/InterfazJuego.hpp" alt="" coords="1092,333,1223,375"/>
+<area shape="rect" id="node8" href="$util_8hpp.html" title="../../util.hpp" alt="" coords="1387,609,1475,635"/>
+<area shape="rect" id="node21" href="$_sprite_container_8hpp.html" title="SpriteContainer.hpp" alt="" coords="1702,609,1839,635"/>
+<area shape="rect" id="node14" href="$_l_texture_8hpp.html" title="engine/util/LTexture.hpp" alt="" coords="631,691,793,717"/>
+<area shape="rect" id="node25" href="$animacion_8hpp.html" title="../engine/sprites/animacion\l/animacion.hpp" alt="" coords="2044,423,2223,464"/>
+<area shape="rect" id="node26" href="$_control___animacion_8hpp.html" title="Control_Animacion.hpp" alt="" coords="2044,519,2201,546"/>
+<area shape="rect" id="node28" href="$_sprite_sheet_8hpp.html" title="../../util/SpriteSheet.hpp" alt="" coords="888,609,1048,635"/>
+<area shape="rect" id="node31" href="$_c_meta_data_8hpp.html" title="../engine/util/CMetaData.hpp" alt="" coords="1173,609,1363,635"/>
+<area shape="rect" id="node33" href="$_interfaz_u_i_8hpp.html" title="../engine/interfaces\l/InterfazUI.hpp" alt="" coords="549,512,683,553"/>
+<area shape="rect" id="node36" href="$_t_m_x_parser_8h.html" title="../engine/mapa/include\l/TMXParser.h" alt="" coords="710,601,863,643"/>
+<area shape="rect" id="node41" href="$_c_mapa_8hpp.html" title="../engine/mapa/CMapa.hpp" alt="" coords="859,519,1037,546"/>
+<area shape="rect" id="node34" href="$_game_manager_interfaz_u_i_8hpp.html" title="GameManagerInterfazUI.hpp" alt="" coords="105,609,295,635"/>
+<area shape="rect" id="node35" href="$_game_manager_pop_up_interfaz_8hpp.html" title="GameManagerPopUpInterfaz.hpp" alt="" coords="5,691,221,717"/>
+<area shape="rect" id="node37" href="$rapidxml_8hpp.html" title="This file contains rapidxml parser and DOM implementation. " alt="" coords="875,765,1024,792"/>
+<area shape="rect" id="node38" href="$rapidxml__utils_8hpp.html" title="rapidxml/rapidxml_utils.hpp" alt="" coords="869,691,1049,717"/>
+<area shape="rect" id="node45" href="$juego_8hpp.html" title="../Interfaces/juego\l/juego.hpp" alt="" coords="1833,155,1959,196"/>
+<area shape="rect" id="node46" href="$_c_group_8hpp.html" title="../../engine/sprites\l/CGroup.hpp" alt="" coords="1761,423,1887,464"/>
+<area shape="rect" id="node47" href="$bloque_8hpp.html" title="../../personajes/bloque.hpp" alt="" coords="2069,341,2245,367"/>
+<area shape="rect" id="node48" href="$_c_draw_group_8hpp.html" title="../../engine/sprites\l/CDrawGroup.hpp" alt="" coords="1883,244,2010,285"/>
+<area shape="rect" id="node49" href="$_layout_absolute_8hpp.html" title="../../engine/layout\l/LayoutManager/LayoutAbsolute.hpp" alt="" coords="1143,423,1377,464"/>
+<area shape="rect" id="node50" href="$_text_label_component_8hpp.html" title="../../engine/layout\l/Componentes/LabelComponent.hpp" alt="" coords="1549,244,1809,285"/>
+</map>

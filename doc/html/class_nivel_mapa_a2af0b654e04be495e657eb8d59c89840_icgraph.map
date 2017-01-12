@@ -1,0 +1,6 @@
+<map id="NivelMapa::esBloqueSolido" name="NivelMapa::esBloqueSolido">
+<area shape="rect" id="node2" href="$class_juego.html#a9c9b2f882007b2a43285a3be6d9e0bf2" title="Juego::esBloqueSolido" alt="" coords="245,5,399,32"/>
+<area shape="rect" id="node3" href="$class_juego.html#a7b85a67ebed60f1e80e314f2298951a8" title="Juego::agregarBomba" alt="" coords="247,56,397,83"/>
+<area shape="rect" id="node4" href="$class_nivel_mapa.html#a95a941ee7677da7d7997c2ad0bea53aa" title="NivelMapa::romperBloque" alt="" coords="236,107,408,133"/>
+<area shape="rect" id="node5" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="456,107,600,133"/>
+</map>

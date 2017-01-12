@@ -1,0 +1,87 @@
+\hypertarget{class_layout_absolute}{}\section{Layout\+Absolute Class Reference}
+\label{class_layout_absolute}\index{Layout\+Absolute@{Layout\+Absolute}}
+
+
+Inheritance diagram for Layout\+Absolute\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{class_layout_absolute__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Layout\+Absolute\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{class_layout_absolute__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries add\+Component} (\hyperlink{class_component}{Component} $\ast$nuevo\+Componente)\hypertarget{class_layout_absolute_adc08dc77ab5168e496f3edc3a41c4326}{}\label{class_layout_absolute_adc08dc77ab5168e496f3edc3a41c4326}
+
+\item 
+bool \hyperlink{class_layout_absolute_aba1ab3840e566a65bdecb4ba8a249eac}{is\+Disabled} ()
+\item 
+void \hyperlink{class_layout_absolute_a9807517212f0015c0a67399a35f1ff36}{pack} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override
+\item 
+void \hyperlink{class_layout_absolute_a09327626b1406cdfad158c13353f0c86}{set\+Rect\+Dibujo} (S\+D\+L\+\_\+\+Rect \&rect) override
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\index{Layout\+Absolute@{Layout\+Absolute}!is\+Disabled@{is\+Disabled}}
+\index{is\+Disabled@{is\+Disabled}!Layout\+Absolute@{Layout\+Absolute}}
+\subsubsection[{\texorpdfstring{is\+Disabled()}{isDisabled()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Layout\+Absolute\+::is\+Disabled (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_layout_absolute_aba1ab3840e566a65bdecb4ba8a249eac}{}\label{class_layout_absolute_aba1ab3840e566a65bdecb4ba8a249eac}
+Chequea si hay algun componente con disable = true o si el layout en si esta en ese estado \begin{DoxyReturn}{Returns}
+True si hay alguno con ese estado 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_component_aedd9acaa31b5c50a8cf233014b85c0cc}{Component}.
+
+\index{Layout\+Absolute@{Layout\+Absolute}!pack@{pack}}
+\index{pack@{pack}!Layout\+Absolute@{Layout\+Absolute}}
+\subsubsection[{\texorpdfstring{pack(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer) override}{pack(SDL_Renderer *gRenderer) override}}]{\setlength{\rightskip}{0pt plus 5cm}void Layout\+Absolute\+::pack (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_layout_absolute_a9807517212f0015c0a67399a35f1ff36}{}\label{class_layout_absolute_a9807517212f0015c0a67399a35f1ff36}
+Llama a los compactadores de los componentes agregados 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_component_aa471f2c3a24525f584ed19cf25222e70}{Component}.
+
+\index{Layout\+Absolute@{Layout\+Absolute}!set\+Rect\+Dibujo@{set\+Rect\+Dibujo}}
+\index{set\+Rect\+Dibujo@{set\+Rect\+Dibujo}!Layout\+Absolute@{Layout\+Absolute}}
+\subsubsection[{\texorpdfstring{set\+Rect\+Dibujo(\+S\+D\+L\+\_\+\+Rect \&rect) override}{setRectDibujo(SDL_Rect &rect) override}}]{\setlength{\rightskip}{0pt plus 5cm}void Layout\+Absolute\+::set\+Rect\+Dibujo (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Rect \&}]{rect}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_layout_absolute_a09327626b1406cdfad158c13353f0c86}{}\label{class_layout_absolute_a09327626b1406cdfad158c13353f0c86}
+Dibuja el layout y sus componentes de arriba hacia abajo / verticalmente 
+\begin{DoxyParams}{Parameters}
+{\em renderer} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_component}{Component}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/layout/\+Layout\+Manager/Layout\+Absolute.\+hpp\end{DoxyCompactItemize}

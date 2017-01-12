@@ -1,0 +1,5 @@
+<map id="Mapa::draw" name="Mapa::draw">
+<area shape="rect" id="node2" href="$class_sprite_sheet.html#a03f5b0cd1337564ec59067766bca3e54" title="SpriteSheet::setCurrentCuadro" alt="" coords="144,5,345,32"/>
+<area shape="rect" id="node3" href="$class_sprite_sheet.html#a357c432d49aeabd7dfc0e6b15d01f6bc" title="SpriteSheet::draw" alt="" coords="181,56,308,83"/>
+<area shape="rect" id="node4" href="$class_l_texture.html#a7edbf22bd4e3f5efd60e20b913d1dcc4" title="LTexture::render" alt="" coords="393,56,511,83"/>
+</map>

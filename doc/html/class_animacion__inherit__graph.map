@@ -1,0 +1,8 @@
+<map id="Animacion" name="Animacion">
+<area shape="rect" id="node3" href="$class_bomba.html" title="Bomba" alt="" coords="5,155,68,181"/>
+<area shape="rect" id="node4" href="$class_explosion.html" title="Explosion" alt="" coords="92,155,171,181"/>
+<area shape="rect" id="node5" href="$class_item.html" title="Item" alt="" coords="195,155,243,181"/>
+<area shape="rect" id="node6" href="$class_tile_bloque_rompible_animado.html" title="TileBloqueRompibleAnimado" alt="" coords="267,155,457,181"/>
+<area shape="rect" id="node7" href="$class_tile_en_llamas.html" title="TileEnLlamas" alt="" coords="481,155,582,181"/>
+<area shape="rect" id="node2" href="$class_sprite.html" title="Sprite" alt="" coords="191,5,247,32"/>
+</map>

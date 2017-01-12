@@ -1,0 +1,8 @@
+<map id="LTexture::setAlpha" name="LTexture::setAlpha">
+<area shape="rect" id="node2" href="$class_sprite_sheet.html#af1faf26008f1dfda33bcf6211c6a9dfa" title="SpriteSheet::setAlpha" alt="" coords="185,13,335,40"/>
+<area shape="rect" id="node3" href="$util_8hpp.html#a5c1e3755758d01a0ed3ccbceeba9541b" title="imprimir_desde_grilla" alt="" coords="188,64,332,91"/>
+<area shape="rect" id="node4" href="$class_juego.html#a46d94040c73103aa385d64361717d55c" title="Juego::drawBarra" alt="" coords="399,5,523,32"/>
+<area shape="rect" id="node6" href="$class_menu_modo_multijugador.html#a1c4c4196780896d241ceaa6f696bc179" title="MenuModoMultijugador\l::draw" alt="" coords="383,57,539,98"/>
+<area shape="rect" id="node7" href="$class_player.html#a69c5d0b03b75874507ad7eeed7ef4703" title="Player::draw" alt="" coords="413,123,508,149"/>
+<area shape="rect" id="node5" href="$class_juego.html#afd62461e81bfd0dcbeecf082f2c023ec" title="Juego::draw" alt="" coords="587,5,680,32"/>
+</map>

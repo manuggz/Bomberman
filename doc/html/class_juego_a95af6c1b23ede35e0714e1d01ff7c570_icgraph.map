@@ -1,0 +1,7 @@
+<map id="Juego::establecerValoresDeMapaPlayer" name="Juego::establecerValoresDeMapaPlayer">
+<area shape="rect" id="node2" href="$class_juego.html#ac40dabed8ef689479cede0b7aa346ce8" title="Juego::establecerValores\lDeMapaPlayers" alt="" coords="223,23,392,65"/>
+<area shape="rect" id="node6" href="$class_juego.html#a336e20deb3bfb1e0717c1bf967ff7a75" title="Juego::playerMuerto" alt="" coords="237,89,377,116"/>
+<area shape="rect" id="node3" href="$class_juego.html#a0f2054b23552adc7898f67ea4547a980" title="Juego::reiniciarEstado" alt="" coords="440,31,591,57"/>
+<area shape="rect" id="node4" href="$class_juego.html#a83e5a1132a5355c34c31d219b4d035dc" title="Juego::start" alt="" coords="662,5,753,32"/>
+<area shape="rect" id="node5" href="$class_juego.html#ac141311099a222492201a52842c207b7" title="Juego::resultPopUp" alt="" coords="639,56,776,83"/>
+</map>

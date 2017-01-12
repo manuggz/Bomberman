@@ -1,0 +1,98 @@
+\hypertarget{class_group}{}\section{Group Class Reference}
+\label{class_group}\index{Group@{Group}}
+
+
+Inheritance diagram for Group\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{class_group__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Group\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{class_group__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries add} (\hyperlink{class_sprite}{Sprite} $\ast$)\hypertarget{class_group_a808a26e42fb31af18f1c37584bf3d972}{}\label{class_group_a808a26e42fb31af18f1c37584bf3d972}
+
+\item 
+virtual bool {\bfseries erase} (\hyperlink{class_sprite}{Sprite} $\ast$)\hypertarget{class_group_a155ede7c0abf697018b6853adb8ef41e}{}\label{class_group_a155ede7c0abf697018b6853adb8ef41e}
+
+\item 
+virtual void {\bfseries clear} ()\hypertarget{class_group_aae18ea1b059afe782eb054409d152d33}{}\label{class_group_aae18ea1b059afe782eb054409d152d33}
+
+\item 
+std\+::deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries collide} (S\+D\+L\+\_\+\+Rect)\hypertarget{class_group_af4bc12532edc7f9f0233913dec99579e}{}\label{class_group_af4bc12532edc7f9f0233913dec99579e}
+
+\item 
+std\+::deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries collide} (\hyperlink{class_sprite}{Sprite} $\ast$)\hypertarget{class_group_a13d70b578edcf2d2b93707e84d79c1af}{}\label{class_group_a13d70b578edcf2d2b93707e84d79c1af}
+
+\item 
+unsigned long {\bfseries size} ()\hypertarget{class_group_a9ccba97e193d38ab14f99d892860837e}{}\label{class_group_a9ccba97e193d38ab14f99d892860837e}
+
+\item 
+deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$\+::iterator {\bfseries begin} ()\hypertarget{class_group_a58241f01b6efd8e61f8d672595b07b6b}{}\label{class_group_a58241f01b6efd8e61f8d672595b07b6b}
+
+\item 
+deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$\+::iterator {\bfseries end} ()\hypertarget{class_group_a0f7e514ac1a2e8b85d9e25a589374665}{}\label{class_group_a0f7e514ac1a2e8b85d9e25a589374665}
+
+\item 
+\hyperlink{class_group_aed00a22ff227ee2657ae44a5cbcedf7c}{$\sim$\+Group} ()
+\item 
+void {\bfseries kill} ()\hypertarget{class_group_a0b26074a27ca9b4f404d8740743f0cb7}{}\label{class_group_a0b26074a27ca9b4f404d8740743f0cb7}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_group_a876689923759abc572c4b18035400f7c}{erase\+Sprite} (\hyperlink{class_sprite}{Sprite} $\ast$p\+Sprite) override
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries v\+\_\+personajes}\hypertarget{class_group_a22e02baf73646caf87df10bfb70791a7}{}\label{class_group_a22e02baf73646caf87df10bfb70791a7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Group@{Group}!````~Group@{$\sim$\+Group}}
+\index{````~Group@{$\sim$\+Group}!Group@{Group}}
+\subsubsection[{\texorpdfstring{$\sim$\+Group()}{~Group()}}]{\setlength{\rightskip}{0pt plus 5cm}Group\+::$\sim$\+Group (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_group_aed00a22ff227ee2657ae44a5cbcedf7c}{}\label{class_group_aed00a22ff227ee2657ae44a5cbcedf7c}
+std\+::deque$<$\+Sprite $\ast$$>$ copia = v\+\_\+personajes; 
+
+\subsection{Member Function Documentation}
+\index{Group@{Group}!erase\+Sprite@{erase\+Sprite}}
+\index{erase\+Sprite@{erase\+Sprite}!Group@{Group}}
+\subsubsection[{\texorpdfstring{erase\+Sprite(\+Sprite $\ast$p\+Sprite) override}{eraseSprite(Sprite *pSprite) override}}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+::erase\+Sprite (
+\begin{DoxyParamCaption}
+\item[{{\bf Sprite} $\ast$}]{p\+Sprite}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_group_a876689923759abc572c4b18035400f7c}{}\label{class_group_a876689923759abc572c4b18035400f7c}
+Función llamada por \hyperlink{class_sprite}{Sprite}, para que solo se elimine él del grupo. 
+\begin{DoxyParams}{Parameters}
+{\em p\+Sprite} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_sprite_container}{Sprite\+Container}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/sprites/C\+Group.\+hpp\item 
+src/engine/sprites/C\+Group.\+cpp\end{DoxyCompactItemize}

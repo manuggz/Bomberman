@@ -1,0 +1,8 @@
+<map id="PopUpJuegoMostrarGanadas::draw" name="PopUpJuegoMostrarGanadas::draw">
+<area shape="rect" id="node2" href="$class_pop_up_interfaz.html#acd9384b541df0cb1d075cef6f6b88708" title="PopUpInterfaz::draw" alt="" coords="236,5,379,32"/>
+<area shape="rect" id="node3" href="$class_animacion.html#aee1eedfd331fb9cd1dbfdaf7550a866a" title="Animacion::draw" alt="" coords="248,56,367,83"/>
+<area shape="rect" id="node4" href="$class_sprite_sheet.html#a357c432d49aeabd7dfc0e6b15d01f6bc" title="SpriteSheet::draw" alt="" coords="456,81,583,108"/>
+<area shape="rect" id="node6" href="$class_sprite_sheet.html#a03f5b0cd1337564ec59067766bca3e54" title="SpriteSheet::setCurrentCuadro" alt="" coords="207,157,408,184"/>
+<area shape="rect" id="node7" href="$class_sprite.html#a2e5e826bf61baab6545be6fcdae8fd47" title="Sprite::getY" alt="" coords="262,208,353,235"/>
+<area shape="rect" id="node5" href="$class_l_texture.html#a7edbf22bd4e3f5efd60e20b913d1dcc4" title="LTexture::render" alt="" coords="631,81,748,108"/>
+</map>

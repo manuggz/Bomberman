@@ -1,0 +1,6 @@
+<map id="LabelComponent::draw" name="LabelComponent::draw">
+<area shape="rect" id="node2" href="$class_layout_component.html#a0ee8a3146a3258a9886472b86cf34a16" title="LayoutComponent::draw" alt="" coords="200,31,364,57"/>
+<area shape="rect" id="node3" href="$class_component.html#ab1ea202c9ef8933d15956b96cfe281a1" title="Component::draw" alt="" coords="433,5,558,32"/>
+<area shape="rect" id="node5" href="$class_component.html#a1440d7c2b2c4bfd8310931b54e8f4e61" title="Component::setDisabled" alt="" coords="412,56,579,83"/>
+<area shape="rect" id="node4" href="$class_l_texture.html#a7edbf22bd4e3f5efd60e20b913d1dcc4" title="LTexture::render" alt="" coords="627,5,744,32"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Player::getEstado" name="Player::getEstado">
+<area shape="rect" id="node2" href="$class_juego.html#a336e20deb3bfb1e0717c1bf967ff7a75" title="Juego::playerMuerto" alt="" coords="211,5,351,32"/>
+<area shape="rect" id="node3" href="$class_player.html#a9346eacf7896339462843d04e69201a3" title="Player::getBombasDisponibles" alt="" coords="180,56,381,83"/>
+</map>

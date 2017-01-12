@@ -1,0 +1,8 @@
+<map id="Component::addLayoutParam" name="Component::addLayoutParam">
+<area shape="rect" id="node2" href="$class_layout_absolute.html#adc08dc77ab5168e496f3edc3a41c4326" title="LayoutAbsolute::addComponent" alt="" coords="248,97,456,124"/>
+<area shape="rect" id="node6" href="$class_layout_vertical.html#a3d675e4ba5f0e1c45b78a8191eaf3b15" title="LayoutVertical::addComponent" alt="" coords="251,152,453,179"/>
+<area shape="rect" id="node3" href="$class_juego.html#a8dd19e6a53b446292e3e15e5e164ed05" title="Juego::createUI" alt="" coords="541,5,655,32"/>
+<area shape="rect" id="node4" href="$class_pop_up_mostrar_mensaje_texto.html#a2879964b8559ecfcae7248fbde33e8e3" title="PopUpMostrarMensajeTexto\l::createUI" alt="" coords="504,57,692,98"/>
+<area shape="rect" id="node5" href="$class_menu_modo_multijugador.html#aa87c06427be64fd73e17d9ea37d8744e" title="MenuModoMultijugador\l::createUI" alt="" coords="520,122,676,163"/>
+<area shape="rect" id="node7" href="$class_menu_list_label.html#aa4622ae2bc0bf7d31aa8fe8483103e27" title="MenuListLabel::createUI" alt="" coords="516,188,680,215"/>
+</map>

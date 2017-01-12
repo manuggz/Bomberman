@@ -1,0 +1,15 @@
+<map id="src/niveles/NivelMapa.hpp" name="src/niveles/NivelMapa.hpp">
+<area shape="rect" id="node3" href="$util_8hpp.html" title="../util.hpp" alt="" coords="1259,333,1335,360"/>
+<area shape="rect" id="node17" href="$_c_meta_data_8hpp.html" title="../engine/util/CMetaData.hpp" alt="" coords="629,333,818,360"/>
+<area shape="rect" id="node19" href="$_interfaz_u_i_8hpp.html" title="../engine/interfaces\l/InterfazUI.hpp" alt="" coords="965,80,1098,121"/>
+<area shape="rect" id="node24" href="$_sprite_sheet_8hpp.html" title="../engine/util/SpriteSheet.hpp" alt="" coords="1317,251,1508,278"/>
+<area shape="rect" id="node25" href="$_t_m_x_parser_8h.html" title="../engine/mapa/include\l/TMXParser.h" alt="" coords="316,244,469,285"/>
+<area shape="rect" id="node36" href="$_c_mapa_8hpp.html" title="../engine/mapa/CMapa.hpp" alt="" coords="697,169,875,196"/>
+<area shape="rect" id="node9" href="$constantes_8hpp.html" title="constantes.hpp" alt="" coords="1320,408,1431,435"/>
+<area shape="rect" id="node10" href="$_l_texture_8hpp.html" title="engine/util/LTexture.hpp" alt="" coords="1619,408,1780,435"/>
+<area shape="rect" id="node20" href="$_game_manager_interfaz_u_i_8hpp.html" title="GameManagerInterfazUI.hpp" alt="" coords="956,169,1147,196"/>
+<area shape="rect" id="node21" href="$_game_manager_pop_up_interfaz_8hpp.html" title="GameManagerPopUpInterfaz.hpp" alt="" coords="943,251,1159,278"/>
+<area shape="rect" id="node23" href="$galeria_8hpp.html" title="../../galeria.hpp" alt="" coords="1183,251,1293,278"/>
+<area shape="rect" id="node26" href="$rapidxml_8hpp.html" title="This file contains rapidxml parser and DOM implementation. " alt="" coords="87,408,237,435"/>
+<area shape="rect" id="node31" href="$rapidxml__utils_8hpp.html" title="rapidxml/rapidxml_utils.hpp" alt="" coords="373,333,553,360"/>
+</map>

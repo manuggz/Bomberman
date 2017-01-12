@@ -1,0 +1,6 @@
+<map id="punto_en_rect_coordenadas" name="punto_en_rect_coordenadas">
+<area shape="rect" id="node2" href="$util_8hpp.html#ab6b0f6d6f3522757392a48dcdf68db00" title="estado_tecla_joy" alt="" coords="239,5,359,32"/>
+<area shape="rect" id="node3" href="$util_8hpp.html#ac06a7c2588120631b25a5d09e7e19c7f" title="invertir_estado" alt="" coords="245,56,352,83"/>
+<area shape="rect" id="node4" href="$util_8hpp.html#af2e45096dcda05f48a50f7cde4bf0dbe" title="get_pixel" alt="" coords="261,107,336,133"/>
+<area shape="rect" id="node5" href="$util_8hpp.html#a0ace920286687a9b537e58100552cd25" title="unir_rects" alt="" coords="259,157,338,184"/>
+</map>

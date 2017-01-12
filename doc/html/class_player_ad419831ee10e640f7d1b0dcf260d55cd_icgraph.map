@@ -1,0 +1,9 @@
+<map id="Player::isPressed" name="Player::isPressed">
+<area shape="rect" id="node2" href="$class_player.html#aae11ba7baef6858a3294fd86d3eac1ed" title="Player::ponerBomba" alt="" coords="179,81,319,108"/>
+<area shape="rect" id="node3" href="$class_player.html#ae1ee2ab40c56cb42f13224291a0f0ab7" title="Player::parado" alt="" coords="373,5,479,32"/>
+<area shape="rect" id="node5" href="$class_player.html#a82ff3440c08bd0c116b53b90c29efa92" title="Player::izquierda" alt="" coords="367,56,485,83"/>
+<area shape="rect" id="node6" href="$class_player.html#a0345065f26494d5312365b406b5c0acd" title="Player::derecha" alt="" coords="369,107,483,133"/>
+<area shape="rect" id="node7" href="$class_player.html#af8b5efff3494a47772ead1e026f337cd" title="Player::arriba" alt="" coords="377,157,475,184"/>
+<area shape="rect" id="node8" href="$class_player.html#ad98a56271096fa93b68991038de58caf" title="Player::abajo" alt="" coords="377,208,475,235"/>
+<area shape="rect" id="node4" href="$class_player.html#a5cb527f12c3423e1bbb1b6595a85acfc" title="Player::update" alt="" coords="533,107,640,133"/>
+</map>

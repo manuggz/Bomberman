@@ -1,0 +1,19 @@
+<map id="Player::arriba" name="Player::arriba">
+<area shape="rect" id="node2" href="$class_player.html#a3acc9e6aa183f86bf29f89982a42c6e6" title="Player::mover_ip" alt="" coords="169,137,289,163"/>
+<area shape="rect" id="node7" href="$class_player.html#ad419831ee10e640f7d1b0dcf260d55cd" title="Player::isPressed" alt="" coords="397,238,522,265"/>
+<area shape="rect" id="node15" href="$class_player.html#a038f253da5e506e19a1e24a4e6a5f3f5" title="Player::cambiarEstado" alt="" coords="152,238,307,265"/>
+<area shape="rect" id="node16" href="$class_player.html#aae11ba7baef6858a3294fd86d3eac1ed" title="Player::ponerBomba" alt="" coords="159,289,299,315"/>
+<area shape="rect" id="node3" href="$class_interfaz_juego.html#a78f25518403ce658e93e528dc99ac5b9" title="InterfazJuego::colisionCon\lBombas" alt="" coords="371,5,548,47"/>
+<area shape="rect" id="node4" href="$class_interfaz_juego.html#a4a7543a340f74cff355aa900329f5c89" title="InterfazJuego::isOutOfMap\lBounds" alt="" coords="370,71,549,112"/>
+<area shape="rect" id="node5" href="$class_interfaz_juego.html#ab744f7c22be984491e63dcbd5b05c556" title="InterfazJuego::colisionConMapa" alt="" coords="355,137,564,163"/>
+<area shape="rect" id="node6" href="$class_player.html#aebb43c51a7da9e652f5574e8ded62f87" title="Player::move" alt="" coords="410,187,509,214"/>
+<area shape="rect" id="node8" href="$class_control_player.html#a17f31058c30a2c352b1642dfed55c537" title="ControlPlayer::isBotonJoystick" alt="" coords="612,70,815,97"/>
+<area shape="rect" id="node9" href="$class_control_player.html#a78bffce443d2697df26c40a645aa024f" title="ControlPlayer::isDireccion\lJoystick" alt="" coords="626,121,801,163"/>
+<area shape="rect" id="node10" href="$class_control_player.html#a138c88280be358025ce7747d646b1513" title="ControlPlayer::getKey" alt="" coords="638,187,789,214"/>
+<area shape="rect" id="node11" href="$class_interfaz_juego.html#aafadb2ec09cf94823e48e884a609a054" title="InterfazJuego::getActiveJoys" alt="" coords="614,238,813,265"/>
+<area shape="rect" id="node12" href="$class_interfaz_juego.html#aed1ee6c2c0b68dfb5cdb9a0514bfc1f1" title="InterfazJuego::getJoy" alt="" coords="639,289,787,315"/>
+<area shape="rect" id="node13" href="$class_control_player.html#aa343efdce88d55cc0258f3a5e243a4a8" title="ControlPlayer::getName" alt="" coords="632,339,795,366"/>
+<area shape="rect" id="node14" href="$util_8cpp.html#ab6b0f6d6f3522757392a48dcdf68db00" title="estado_tecla_joy" alt="" coords="653,390,773,417"/>
+<area shape="rect" id="node17" href="$class_player.html#a4537081baf81b12cc98c98c904e15909" title="Player::updateRectColision" alt="" coords="369,289,550,315"/>
+<area shape="rect" id="node18" href="$class_interfaz_juego.html#a51f9c4d2cbb8d897bae5f201e5e800c1" title="InterfazJuego::agregarBomba" alt="" coords="363,339,556,366"/>
+</map>

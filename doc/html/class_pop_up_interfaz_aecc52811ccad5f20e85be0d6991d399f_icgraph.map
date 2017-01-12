@@ -1,0 +1,6 @@
+<map id="PopUpInterfaz::createUI" name="PopUpInterfaz::createUI">
+<area shape="rect" id="node2" href="$class_game_manager.html#abbde8090c24ca199815ba1e85059c96f" title="GameManager::run" alt="" coords="245,5,378,32"/>
+<area shape="rect" id="node4" href="$class_juego_mostrar_ganadas.html#a8952d565827d92657069f51a4c5abb6b" title="PopUpJuegoMostrarGanadas\l::createUI" alt="" coords="235,57,388,98"/>
+<area shape="rect" id="node5" href="$class_pop_up_mostrar_mensaje_texto.html#a2879964b8559ecfcae7248fbde33e8e3" title="PopUpMostrarMensajeTexto\l::createUI" alt="" coords="217,122,405,163"/>
+<area shape="rect" id="node3" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="453,5,504,32"/>
+</map>

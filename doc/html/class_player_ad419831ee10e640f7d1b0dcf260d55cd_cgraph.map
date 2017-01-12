@@ -1,0 +1,9 @@
+<map id="Player::isPressed" name="Player::isPressed">
+<area shape="rect" id="node2" href="$class_control_player.html#a17f31058c30a2c352b1642dfed55c537" title="ControlPlayer::isBotonJoystick" alt="" coords="179,5,381,32"/>
+<area shape="rect" id="node3" href="$class_control_player.html#a78bffce443d2697df26c40a645aa024f" title="ControlPlayer::isDireccion\lJoystick" alt="" coords="193,57,367,98"/>
+<area shape="rect" id="node4" href="$class_control_player.html#a138c88280be358025ce7747d646b1513" title="ControlPlayer::getKey" alt="" coords="205,123,355,149"/>
+<area shape="rect" id="node5" href="$class_interfaz_juego.html#aafadb2ec09cf94823e48e884a609a054" title="InterfazJuego::getActiveJoys" alt="" coords="181,173,379,200"/>
+<area shape="rect" id="node6" href="$class_interfaz_juego.html#aed1ee6c2c0b68dfb5cdb9a0514bfc1f1" title="InterfazJuego::getJoy" alt="" coords="206,224,354,251"/>
+<area shape="rect" id="node7" href="$class_control_player.html#aa343efdce88d55cc0258f3a5e243a4a8" title="ControlPlayer::getName" alt="" coords="199,275,361,301"/>
+<area shape="rect" id="node8" href="$util_8cpp.html#ab6b0f6d6f3522757392a48dcdf68db00" title="estado_tecla_joy" alt="" coords="220,325,340,352"/>
+</map>

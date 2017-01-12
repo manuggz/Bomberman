@@ -1,0 +1,30 @@
+<map id="src/galeria.hpp" name="src/galeria.hpp">
+<area shape="rect" id="node2" href="$_game_manager_interfaz_u_i_8hpp.html" title="src/engine/interfaces\l/GameManagerInterfazUI.hpp" alt="" coords="613,80,808,121"/>
+<area shape="rect" id="node9" href="$game__manager_8hpp.html" title="src/engine/util/game\l_manager.hpp" alt="" coords="408,348,547,389"/>
+<area shape="rect" id="node29" href="$galeria_8cpp.html" title="src/galeria.cpp" alt="" coords="832,87,939,114"/>
+<area shape="rect" id="node3" href="$_interfaz_u_i_8hpp.html" title="src/engine/interfaces\l/InterfazUI.hpp" alt="" coords="763,169,906,211"/>
+<area shape="rect" id="node4" href="$_menu_list_label_8hpp.html" title="src/engine/interfaces\l/MenuListLabel.hpp" alt="" coords="1565,705,1707,747"/>
+<area shape="rect" id="node8" href="$_pop_up_interfaz_8hpp.html" title="src/engine/interfaces\l/PopUpInterfaz.hpp" alt="" coords="541,259,683,300"/>
+<area shape="rect" id="node11" href="$editor_8hpp.html" title="src/Interfaces/editor\l/editor.hpp" alt="" coords="647,437,785,479"/>
+<area shape="rect" id="node17" href="$_nivel_mapa_8hpp.html" title="src/niveles/NivelMapa.hpp" alt="" coords="860,266,1036,293"/>
+<area shape="rect" id="node21" href="$juego_8hpp.html" title="src/Interfaces/juego\l/juego.hpp" alt="" coords="1109,616,1246,657"/>
+<area shape="rect" id="node27" href="$_menu_modo_multijugador_8hpp.html" title="src/Interfaces/menu\l/MenuModoMultijugador.hpp" alt="" coords="1355,705,1541,747"/>
+<area shape="rect" id="node5" href="$_menu_nuevo_juego_8hpp.html" title="src/Interfaces/menu\l/MenuNuevoJuego.hpp" alt="" coords="1387,795,1543,836"/>
+<area shape="rect" id="node6" href="$_menu_principal_8hpp.html" title="src/Interfaces/menu\l/MenuPrincipal.hpp" alt="" coords="1396,884,1535,925"/>
+<area shape="rect" id="node7" href="$main_8cpp.html" title="src/main.cpp" alt="" coords="766,973,863,1000"/>
+<area shape="rect" id="node15" href="$_pop_up_mostrar_mensaje_texto_8hpp.html" title="src/Interfaces/juego\l/PopUpMostrarMensajeTexto.hpp" alt="" coords="405,437,622,479"/>
+<area shape="rect" id="node10" href="$game__manager_8cpp.html" title="src/engine/util/game\l_manager.cpp" alt="" coords="5,437,144,479"/>
+<area shape="rect" id="node12" href="$juego__mostrar__gan_8hpp.html" title="src/Interfaces/juego\l/juego_mostrar_gan.hpp" alt="" coords="219,437,381,479"/>
+<area shape="rect" id="node13" href="$juego_8cpp.html" title="src/Interfaces/juego\l/juego.cpp" alt="" coords="493,705,630,747"/>
+<area shape="rect" id="node14" href="$juego__mostrar__gan_8cpp.html" title="src/Interfaces/juego\l/juego_mostrar_gan.cpp" alt="" coords="219,527,381,568"/>
+<area shape="rect" id="node16" href="$_pop_up_count_down_8hpp.html" title="src/Interfaces/juego\l/PopUpCountDown.hpp" alt="" coords="540,616,700,657"/>
+<area shape="rect" id="node18" href="$_interfaz_juego_8hpp.html" title="src/Interfaces/juego\l/InterfazJuego.hpp" alt="" coords="1061,348,1198,389"/>
+<area shape="rect" id="node24" href="$player_8cpp.html" title="src/personajes/player.cpp" alt="" coords="777,802,948,829"/>
+<area shape="rect" id="node28" href="$_nivel_mapa_8cpp.html" title="src/niveles/NivelMapa.cpp" alt="" coords="860,355,1036,382"/>
+<area shape="rect" id="node19" href="$player_8hpp.html" title="src/personajes/player.hpp" alt="" coords="916,445,1087,471"/>
+<area shape="rect" id="node20" href="$bomba_8hpp.html" title="src/personajes/bomba.hpp" alt="" coords="914,534,1089,561"/>
+<area shape="rect" id="node22" href="$explosion_8hpp.html" title="src/objetos/explosion.hpp" alt="" coords="961,713,1132,739"/>
+<area shape="rect" id="node25" href="$bloque_8hpp.html" title="src/personajes/bloque.hpp" alt="" coords="1157,713,1331,739"/>
+<area shape="rect" id="node23" href="$explosion_8cpp.html" title="src/objetos/explosion.cpp" alt="" coords="972,802,1143,829"/>
+<area shape="rect" id="node26" href="$bloque_8cpp.html" title="src/personajes/bloque.cpp" alt="" coords="1167,802,1342,829"/>
+</map>

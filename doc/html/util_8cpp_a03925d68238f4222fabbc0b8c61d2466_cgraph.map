@@ -1,0 +1,7 @@
+<map id="mostrar_msg" name="mostrar_msg">
+<area shape="rect" id="node2" href="$util_8cpp.html#a158c90996992814dba0758d143deaa5a" title="imprimir_palabra" alt="" coords="152,56,269,83"/>
+<area shape="rect" id="node3" href="$util_8cpp.html#a3b6e2da4c19de9637bfb0100cad2f1bc" title="imprimir_letra" alt="" coords="317,56,417,83"/>
+<area shape="rect" id="node4" href="$class_l_texture.html#a88f3901941f4a71f929845ee1311b68b" title="LTexture::getHeight" alt="" coords="465,5,603,32"/>
+<area shape="rect" id="node5" href="$class_l_texture.html#ad9e83e3ba49b7ef6a0719ddbbdf7b3fa" title="LTexture::getWidth" alt="" coords="467,56,601,83"/>
+<area shape="rect" id="node6" href="$class_l_texture.html#a7edbf22bd4e3f5efd60e20b913d1dcc4" title="LTexture::render" alt="" coords="475,107,593,133"/>
+</map>

@@ -1,0 +1,19 @@
+<map id="Juego::agregarBomba" name="Juego::agregarBomba">
+<area shape="rect" id="node2" href="$class_sprite.html#a752b7bed3151c8a3e018dfc4f974889d" title="Sprite::getX" alt="" coords="249,5,339,32"/>
+<area shape="rect" id="node3" href="$class_nivel_mapa.html#affc2d4a666934e4bdf54c8816d12860c" title="NivelMapa::getTileWidth" alt="" coords="211,56,377,83"/>
+<area shape="rect" id="node4" href="$class_sprite.html#a2e5e826bf61baab6545be6fcdae8fd47" title="Sprite::getY" alt="" coords="249,107,339,133"/>
+<area shape="rect" id="node5" href="$class_nivel_mapa.html#a7e67766d3c671e267d3d04eca4578085" title="NivelMapa::getTileHeight" alt="" coords="209,157,379,184"/>
+<area shape="rect" id="node6" href="$class_nivel_mapa.html#a2af0b654e04be495e657eb8d59c89840" title="NivelMapa::esBloqueSolido" alt="" coords="203,208,385,235"/>
+<area shape="rect" id="node12" href="$class_animacion.html#ae596bf2bc41b8a733fe5e2fae98b7850" title="Animacion::move" alt="" coords="233,259,355,285"/>
+<area shape="rect" id="node16" href="$class_group.html#a7f13a9692c0a4e775a6865876ac15adc" title="Group::collide" alt="" coords="243,309,345,336"/>
+<area shape="rect" id="node17" href="$class_group.html#a808a26e42fb31af18f1c37584bf3d972" title="Group::add" alt="" coords="251,372,337,399"/>
+<area shape="rect" id="node7" href="$class_nivel_mapa.html#a25f7e94605919f131b50746eba3b0f49" title="NivelMapa::getTileAt" alt="" coords="459,144,603,171"/>
+<area shape="rect" id="node11" href="$class_nivel_mapa.html#a62da61549a499de02cf3a4bd8d756911" title="NivelMapa::getPropertyTile" alt="" coords="441,195,621,221"/>
+<area shape="rect" id="node8" href="$class_nivel_mapa.html#ae95b7b0f8d4c7521b13a63b001213740" title="NivelMapa::getIndiceMapaAt" alt="" coords="677,144,868,171"/>
+<area shape="rect" id="node9" href="$class_nivel_mapa.html#afe955ab11816234cf050ab576a1ac0b6" title="NivelMapa::getIndiceFila\lMapaAt" alt="" coords="931,103,1098,145"/>
+<area shape="rect" id="node10" href="$class_nivel_mapa.html#a080b8df56d1f9598c60ada0b215ccd97" title="NivelMapa::getIndiceColumna\lMapaAt" alt="" coords="916,169,1113,210"/>
+<area shape="rect" id="node13" href="$class_sprite.html#aefec128e2c5336a15d46c79af7c0aa6f" title="Sprite::move" alt="" coords="483,245,579,272"/>
+<area shape="rect" id="node14" href="$class_sprite_sheet.html#a3701ff0240b1c46e8d56ecd6cd7ca301" title="SpriteSheet::getWidthCuadro" alt="" coords="435,296,627,323"/>
+<area shape="rect" id="node15" href="$class_sprite_sheet.html#a43a1e4b351be633c70a9515960b26678" title="SpriteSheet::getHeightCuadro" alt="" coords="433,347,629,373"/>
+<area shape="rect" id="node18" href="$class_sprite.html#a87f4d657c8cff89978c20d8e8e38f011" title="Sprite::addGroup" alt="" coords="471,397,591,424"/>
+</map>

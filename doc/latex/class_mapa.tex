@@ -1,0 +1,108 @@
+\hypertarget{class_mapa}{}\section{Mapa Class Reference}
+\label{class_mapa}\index{Mapa@{Mapa}}
+
+
+Inheritance diagram for Mapa\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_mapa__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mapa\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_mapa__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Mapa} (int x, int y)\hypertarget{class_mapa_a2a88268f7c620deb8d2561e18a57f0c3}{}\label{class_mapa_a2a88268f7c620deb8d2561e18a57f0c3}
+
+\item 
+void \hyperlink{class_mapa_a142d3bbb3a2166aa575b90e50c790a36}{eliminar\+Sprite} (\hyperlink{class_sprite}{Sprite} $\ast$sprite) override
+\item 
+virtual bool \hyperlink{class_mapa_a25d45fc6b9c1622f8261a0c849a78294}{cargar} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer, std\+::string ruta)
+\item 
+void {\bfseries update} ()\hypertarget{class_mapa_a5e592dd55f2fd9cf82aa453237260bce}{}\label{class_mapa_a5e592dd55f2fd9cf82aa453237260bce}
+
+\item 
+virtual void {\bfseries draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)\hypertarget{class_mapa_a978c5caf727e7f7ee739cd7eb9a690ce}{}\label{class_mapa_a978c5caf727e7f7ee739cd7eb9a690ce}
+
+\item 
+const std\+::string \& {\bfseries get\+Map\+Property} (std\+::basic\+\_\+string$<$ char, std\+::char\+\_\+traits$<$ char $>$, std\+::allocator$<$ char $>$$>$ property\+Name)\hypertarget{class_mapa_a169f2cb4198d7933d88099fb16042b9f}{}\label{class_mapa_a169f2cb4198d7933d88099fb16042b9f}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_t_m_x_1_1_parser}{T\+M\+X\+::\+Parser} $\ast$ {\bfseries m\+Tmx\+Parser} = nullptr\hypertarget{class_mapa_aa1930968e5c377c8c256f63c1e4d6301}{}\label{class_mapa_aa1930968e5c377c8c256f63c1e4d6301}
+
+\item 
+\hyperlink{class_sprite_sheet}{Sprite\+Sheet} $\ast$ {\bfseries m\+Sprt\+S\+Tiles} = nullptr\hypertarget{class_mapa_a8967581c875d0a6c070251d9b66345db}{}\label{class_mapa_a8967581c875d0a6c070251d9b66345db}
+
+\item 
+int $\ast$ {\bfseries m\+Layer\+Mapa}\hypertarget{class_mapa_a8ee1595b26f941cff5d8ff0474d202f2}{}\label{class_mapa_a8ee1595b26f941cff5d8ff0474d202f2}
+
+\item 
+S\+D\+L\+\_\+\+Rect {\bfseries m\+Rect\+Dest} \{0,0,0,0\}\hypertarget{class_mapa_a8d98267cf15cc550f25db96d441c6201}{}\label{class_mapa_a8d98267cf15cc550f25db96d441c6201}
+
+\item 
+unsigned int {\bfseries m\+Tile\+Height} = 0\hypertarget{class_mapa_a38c77f72272f53e38cf355c988e5eaa6}{}\label{class_mapa_a38c77f72272f53e38cf355c988e5eaa6}
+
+\item 
+unsigned int {\bfseries m\+Map\+Width} = 0\hypertarget{class_mapa_ac2c8daa280f568a6d78c4641eedec9d9}{}\label{class_mapa_ac2c8daa280f568a6d78c4641eedec9d9}
+
+\item 
+unsigned int {\bfseries m\+Map\+Height} = 0\hypertarget{class_mapa_a1a7fd0909905efb7f890e98baffde43c}{}\label{class_mapa_a1a7fd0909905efb7f890e98baffde43c}
+
+\item 
+unsigned int {\bfseries m\+Tile\+Width} = 0\hypertarget{class_mapa_a4db442f40a4972f78726b04dbb259e02}{}\label{class_mapa_a4db442f40a4972f78726b04dbb259e02}
+
+\item 
+\hyperlink{class_draw_group}{Draw\+Group} {\bfseries m\+Grp\+Tiles\+Animados}\hypertarget{class_mapa_af73f2d6413457cd0c82be76ce5050d85}{}\label{class_mapa_af73f2d6413457cd0c82be76ce5050d85}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{Mapa@{Mapa}!cargar@{cargar}}
+\index{cargar@{cargar}!Mapa@{Mapa}}
+\subsubsection[{\texorpdfstring{cargar(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer, std\+::string ruta)}{cargar(SDL_Renderer *gRenderer, std::string ruta)}}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Mapa\+::cargar (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer, }
+\item[{std\+::string}]{ruta}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_mapa_a25d45fc6b9c1622f8261a0c849a78294}{}\label{class_mapa_a25d45fc6b9c1622f8261a0c849a78294}
+Carga los datos de un mapa de un archivo T\+MX El archivo T\+MX esta creado en Tiled 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & \\
+\hline
+{\em ruta} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Creamos el mapa con los indices\index{Mapa@{Mapa}!eliminar\+Sprite@{eliminar\+Sprite}}
+\index{eliminar\+Sprite@{eliminar\+Sprite}!Mapa@{Mapa}}
+\subsubsection[{\texorpdfstring{eliminar\+Sprite(\+Sprite $\ast$sprite) override}{eliminarSprite(Sprite *sprite) override}}]{\setlength{\rightskip}{0pt plus 5cm}void Mapa\+::eliminar\+Sprite (
+\begin{DoxyParamCaption}
+\item[{{\bf Sprite} $\ast$}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{class_mapa_a142d3bbb3a2166aa575b90e50c790a36}{}\label{class_mapa_a142d3bbb3a2166aa575b90e50c790a36}
+Elimina un \hyperlink{class_sprite}{Sprite} de Memoria. Esta función es llamada desde un Update\+Group/\+Derivado cuando se elimina un \hyperlink{class_sprite}{Sprite} con kill(). 
+
+Implements \hyperlink{class_interfaz_sprite_group_acad50741e8bab94e3ce1f8c4c0cbad52}{Interfaz\+Sprite\+Group}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/mapa/C\+Mapa.\+hpp\end{DoxyCompactItemize}

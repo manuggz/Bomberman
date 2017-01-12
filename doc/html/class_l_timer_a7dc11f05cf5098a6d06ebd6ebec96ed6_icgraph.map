@@ -1,0 +1,18 @@
+<map id="LTimer::start" name="LTimer::start">
+<area shape="rect" id="node2" href="$class_game_manager.html#abbde8090c24ca199815ba1e85059c96f" title="GameManager::run" alt="" coords="177,5,310,32"/>
+<area shape="rect" id="node4" href="$class_juego.html#a0f2054b23552adc7898f67ea4547a980" title="Juego::reiniciarEstado" alt="" coords="1064,157,1215,184"/>
+<area shape="rect" id="node7" href="$class_pop_up_mostrar_mensaje_texto.html#a6f4894566c466929798c017db715712a" title="PopUpMostrarMensajeTexto\l::start" alt="" coords="149,234,337,275"/>
+<area shape="rect" id="node8" href="$class_player.html#a23bedb65ce970474120640ae36cba19f" title="Player::setProteccion" alt="" coords="170,183,317,209"/>
+<area shape="rect" id="node17" href="$class_player.html#a98a4100f1290b3e0ab6c5d93f1d764b7" title="Player::setEnPantalla" alt="" coords="169,120,317,147"/>
+<area shape="rect" id="node3" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="458,5,509,32"/>
+<area shape="rect" id="node5" href="$class_juego.html#a83e5a1132a5355c34c31d219b4d035dc" title="Juego::start" alt="" coords="1286,132,1377,159"/>
+<area shape="rect" id="node6" href="$class_juego.html#ac141311099a222492201a52842c207b7" title="Juego::resultPopUp" alt="" coords="1263,183,1400,209"/>
+<area shape="rect" id="node9" href="$class_juego.html#ac4832a99f849b8180667cfda4a2493e3" title="Juego::agregarPlayersActivos" alt="" coords="385,157,581,184"/>
+<area shape="rect" id="node10" href="$class_juego.html#a336e20deb3bfb1e0717c1bf967ff7a75" title="Juego::playerMuerto" alt="" coords="861,208,1001,235"/>
+<area shape="rect" id="node11" href="$class_player.html#a07afc2e2bfd131ceddd53c24be1fc3ec" title="Player::activarPoderItem" alt="" coords="400,343,567,369"/>
+<area shape="rect" id="node13" href="$class_player.html#ac7a3107b816d747203be750a9b68771e" title="Player::setVidas" alt="" coords="424,259,543,285"/>
+<area shape="rect" id="node12" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="642,376,786,403"/>
+<area shape="rect" id="node14" href="$class_juego.html#a95af6c1b23ede35e0714e1d01ff7c570" title="Juego::establecerValores\lDeMapaPlayer" alt="" coords="629,310,799,351"/>
+<area shape="rect" id="node16" href="$class_juego.html#a74a8689a0513f13a8dfa6729bae77ada" title="Juego::update" alt="" coords="662,259,766,285"/>
+<area shape="rect" id="node15" href="$class_juego.html#ac40dabed8ef689479cede0b7aa346ce8" title="Juego::establecerValores\lDeMapaPlayers" alt="" coords="847,285,1016,326"/>
+</map>

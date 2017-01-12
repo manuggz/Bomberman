@@ -1,0 +1,5 @@
+<map id="NivelMapa::esBloqueRompible" name="NivelMapa::esBloqueRompible">
+<area shape="rect" id="node2" href="$class_juego.html#ace6043603d44b94889830d54c1dad8a8" title="Juego::esBloqueRompible" alt="" coords="255,5,429,32"/>
+<area shape="rect" id="node3" href="$class_nivel_mapa.html#a95a941ee7677da7d7997c2ad0bea53aa" title="NivelMapa::romperBloque" alt="" coords="256,56,428,83"/>
+<area shape="rect" id="node4" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="477,56,621,83"/>
+</map>

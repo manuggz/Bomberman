@@ -1,0 +1,7 @@
+<map id="Group::update" name="Group::update">
+<area shape="rect" id="node2" href="$class_sprite.html#a12cba3ac1868418add3c4d95ce87e615" title="Sprite::Sprite" alt="" coords="181,5,280,32"/>
+<area shape="rect" id="node3" href="$class_update_group.html#aaa43bd14b878a2caacd6be9baf5031ea" title="UpdateGroup::update" alt="" coords="157,56,304,83"/>
+<area shape="rect" id="node4" href="$class_juego.html#a74a8689a0513f13a8dfa6729bae77ada" title="Juego::update" alt="" coords="389,5,493,32"/>
+<area shape="rect" id="node5" href="$class_juego.html#a6bb98ea5de6c8b4843afd5cd6a811e07" title="Juego::updateWhenPopUp" alt="" coords="352,56,531,83"/>
+<area shape="rect" id="node6" href="$class_menu_modo_multijugador.html#ac2ec2a9594a2637b15e43477d2e10f07" title="MenuModoMultijugador\l::update" alt="" coords="363,107,519,149"/>
+</map>

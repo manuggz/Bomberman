@@ -1,0 +1,9 @@
+<map id="mostrar_error_salir" name="mostrar_error_salir">
+<area shape="rect" id="node2" href="$class_game_manager.html#ab73d98e697ddbb373f0aec690e97a583" title="GameManager::iniciarSDL" alt="" coords="196,5,371,32"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#a9b2a21ddf1737246b8b650578ccba299" title="GameManager::setModeVideo" alt="" coords="184,107,383,133"/>
+<area shape="rect" id="node8" href="$class_galeria.html#af5f8526638f6c5d6f64af4594cca5dc4" title="Galeria::cargarTexturas" alt="" coords="204,56,363,83"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#aa0e2424dc1a39d380e5b6605b179bf05" title="GameManager::GameManager" alt="" coords="437,56,637,83"/>
+<area shape="rect" id="node5" href="$class_game_manager.html#aeb38bf2a7f818f76f79f30bce0a72f57" title="GameManager::procesarEventos" alt="" coords="431,107,644,133"/>
+<area shape="rect" id="node6" href="$class_game_manager.html#abbde8090c24ca199815ba1e85059c96f" title="GameManager::run" alt="" coords="692,107,825,133"/>
+<area shape="rect" id="node7" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="873,107,924,133"/>
+</map>

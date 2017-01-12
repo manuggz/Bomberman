@@ -1,0 +1,8 @@
+<map id="LayoutComponent" name="LayoutComponent">
+<area shape="rect" id="node3" href="$class_boton_component.html" title="BotonComponent\&lt; T \&gt;" alt="" coords="341,5,495,32"/>
+<area shape="rect" id="node4" href="$class_boton_component.html" title="BotonComponent\&lt; MenuModo\lMultijugador \&gt;" alt="" coords="319,57,517,98"/>
+<area shape="rect" id="node5" href="$class_label_component.html" title="LabelComponent" alt="" coords="358,123,478,149"/>
+<area shape="rect" id="node6" href="$class_layout_absolute.html" title="LayoutAbsolute" alt="" coords="362,173,474,200"/>
+<area shape="rect" id="node7" href="$class_layout_vertical.html" title="LayoutVertical" alt="" coords="365,224,471,251"/>
+<area shape="rect" id="node2" href="$class_component.html" title="Component" alt="" coords="5,123,95,149"/>
+</map>

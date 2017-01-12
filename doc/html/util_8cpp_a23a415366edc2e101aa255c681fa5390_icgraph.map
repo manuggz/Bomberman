@@ -1,0 +1,6 @@
+<map id="imprimir_desde_grilla" name="imprimir_desde_grilla">
+<area shape="rect" id="node2" href="$class_juego.html#a46d94040c73103aa385d64361717d55c" title="Juego::drawBarra" alt="" coords="213,5,337,32"/>
+<area shape="rect" id="node4" href="$class_menu_modo_multijugador.html#a1c4c4196780896d241ceaa6f696bc179" title="MenuModoMultijugador\l::draw" alt="" coords="197,57,353,98"/>
+<area shape="rect" id="node5" href="$class_player.html#a69c5d0b03b75874507ad7eeed7ef4703" title="Player::draw" alt="" coords="228,123,323,149"/>
+<area shape="rect" id="node3" href="$class_juego.html#afd62461e81bfd0dcbeecf082f2c023ec" title="Juego::draw" alt="" coords="401,5,495,32"/>
+</map>

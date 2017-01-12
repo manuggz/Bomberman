@@ -1,0 +1,4 @@
+<map id="GameManagerInterfazUI::playSound" name="GameManagerInterfazUI::playSound">
+<area shape="rect" id="node2" href="$class_juego.html#a83e5a1132a5355c34c31d219b4d035dc" title="Juego::start" alt="" coords="225,5,316,32"/>
+<area shape="rect" id="node3" href="$class_juego.html#a74a8689a0513f13a8dfa6729bae77ada" title="Juego::update" alt="" coords="219,56,323,83"/>
+</map>

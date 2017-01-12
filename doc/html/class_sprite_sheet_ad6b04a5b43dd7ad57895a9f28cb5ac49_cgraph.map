@@ -1,0 +1,7 @@
+<map id="SpriteSheet::SpriteSheet" name="SpriteSheet::SpriteSheet">
+<area shape="rect" id="node2" href="$class_sprite_sheet.html#a86ee75d55b69a7b5aff33c0207fcfdd0" title="SpriteSheet::cargarDesde\lArchivo" alt="" coords="220,49,392,90"/>
+<area shape="rect" id="node3" href="$class_l_texture.html#a25b90cb830a0d7a5705a72da006a9571" title="LTexture::loadFromFile" alt="" coords="440,5,596,32"/>
+<area shape="rect" id="node5" href="$class_l_texture.html#ad9e83e3ba49b7ef6a0719ddbbdf7b3fa" title="LTexture::getWidth" alt="" coords="451,56,585,83"/>
+<area shape="rect" id="node6" href="$class_l_texture.html#a88f3901941f4a71f929845ee1311b68b" title="LTexture::getHeight" alt="" coords="449,107,587,133"/>
+<area shape="rect" id="node4" href="$class_l_texture.html#abef558f0b920270079925548a3976a06" title="LTexture::free" alt="" coords="644,5,747,32"/>
+</map>

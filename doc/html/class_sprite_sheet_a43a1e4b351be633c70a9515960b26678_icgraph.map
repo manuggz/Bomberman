@@ -1,0 +1,9 @@
+<map id="SpriteSheet::getHeightCuadro" name="SpriteSheet::getHeightCuadro">
+<area shape="rect" id="node2" href="$class_animacion.html#a42e4ac80569912ad50fcf23bce937908" title="Animacion::Animacion" alt="" coords="267,5,419,32"/>
+<area shape="rect" id="node3" href="$class_animacion.html#ae596bf2bc41b8a733fe5e2fae98b7850" title="Animacion::move" alt="" coords="282,107,405,133"/>
+<area shape="rect" id="node6" href="$class_explosion.html#aa381f273160b625c9a37e40e1ae0cda3" title="Explosion::detectarAlcances" alt="" coords="249,56,437,83"/>
+<area shape="rect" id="node7" href="$class_explosion.html#ad93f3cca36426268c06a1c832c4ad7f8" title="Explosion::draw" alt="" coords="286,157,401,184"/>
+<area shape="rect" id="node8" href="$class_explosion.html#a91dcbc01a6178dbb5e66a6209214aa56" title="Explosion::colision" alt="" coords="278,208,409,235"/>
+<area shape="rect" id="node4" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="488,56,632,83"/>
+<area shape="rect" id="node5" href="$class_juego.html#a7b85a67ebed60f1e80e314f2298951a8" title="Juego::agregarBomba" alt="" coords="485,107,635,133"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="GameManager::GameManager" name="GameManager::GameManager">
+<area shape="rect" id="node2" href="$class_game_manager.html#ab73d98e697ddbb373f0aec690e97a583" title="GameManager::iniciarSDL" alt="" coords="271,5,446,32"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#a9b2a21ddf1737246b8b650578ccba299" title="GameManager::setModeVideo" alt="" coords="259,56,458,83"/>
+<area shape="rect" id="node5" href="$class_game_manager.html#ac40f7fb97ee52c4a4a9361aca98dfac5" title="GameManager::activarJoysticks" alt="" coords="253,107,464,133"/>
+<area shape="rect" id="node6" href="$class_galeria.html#af5f8526638f6c5d6f64af4594cca5dc4" title="Galeria::cargarTexturas" alt="" coords="279,157,438,184"/>
+<area shape="rect" id="node12" href="$class_galeria.html#a48293b18fbcd67ea6202b1a1f62fa67e" title="Galeria::cargarSonidos" alt="" coords="281,284,436,311"/>
+<area shape="rect" id="node3" href="$util_8cpp.html#a63213b38ac4f9531fb3125c251ee1de7" title="mostrar_error_salir" alt="" coords="525,31,655,57"/>
+<area shape="rect" id="node7" href="$class_l_texture.html#a25b90cb830a0d7a5705a72da006a9571" title="LTexture::loadFromFile" alt="" coords="512,81,668,108"/>
+<area shape="rect" id="node9" href="$class_l_texture.html#a70aa0ad5a0d095498b5e29a0575c8ff5" title="LTexture::getPath" alt="" coords="527,132,653,159"/>
+<area shape="rect" id="node10" href="$class_l_texture.html#a88f3901941f4a71f929845ee1311b68b" title="LTexture::getHeight" alt="" coords="521,183,659,209"/>
+<area shape="rect" id="node11" href="$class_l_texture.html#ad9e83e3ba49b7ef6a0719ddbbdf7b3fa" title="LTexture::getWidth" alt="" coords="523,233,657,260"/>
+<area shape="rect" id="node8" href="$class_l_texture.html#abef558f0b920270079925548a3976a06" title="LTexture::free" alt="" coords="716,81,819,108"/>
+<area shape="rect" id="node13" href="$util_8cpp.html#a391a4bf03d12d730a7d8878dbcf673c0" title="cargar_musica" alt="" coords="537,284,643,311"/>
+<area shape="rect" id="node14" href="$util_8cpp.html#af784728848cea748d0299ebad21c9c26" title="cargar_sonido" alt="" coords="539,335,641,361"/>
+</map>

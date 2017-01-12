@@ -1,0 +1,7 @@
+<map id="MenuModoMultijugador::update" name="MenuModoMultijugador::update">
+<area shape="rect" id="node2" href="$class_update_group.html#aaa43bd14b878a2caacd6be9baf5031ea" title="UpdateGroup::update" alt="" coords="209,81,356,108"/>
+<area shape="rect" id="node3" href="$class_group.html#a524f96ad97766e7f6bab5e3e8f7b0dce" title="Group::update" alt="" coords="419,5,523,32"/>
+<area shape="rect" id="node4" href="$class_sprite.html#a0a8ca1624419d06d732ea904a2bad80d" title="Sprite::update" alt="" coords="420,56,523,83"/>
+<area shape="rect" id="node5" href="$class_sprite.html#ad66de3c70e4199c16c771e39402ff5ee" title="Sprite::isKilled" alt="" coords="418,107,525,133"/>
+<area shape="rect" id="node6" href="$class_interfaz_sprite_group.html#acad50741e8bab94e3ce1f8c4c0cbad52" title="InterfazSpriteGroup\l::eliminarSprite" alt="" coords="404,158,539,199"/>
+</map>

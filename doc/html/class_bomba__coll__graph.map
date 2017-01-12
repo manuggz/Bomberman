@@ -1,0 +1,5 @@
+<map id="Bomba" name="Bomba">
+<area shape="rect" id="node2" href="$class_animacion.html" title="Animacion" alt="" coords="40,95,123,121"/>
+<area shape="rect" id="node3" href="$class_sprite.html" title="Sprite" alt="" coords="5,5,61,32"/>
+<area shape="rect" id="node4" href="$class_sprite_sheet.html" title="SpriteSheet" alt="" coords="85,5,176,32"/>
+</map>

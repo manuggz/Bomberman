@@ -1,0 +1,4 @@
+<map id="Animacion::Animacion" name="Animacion::Animacion">
+<area shape="rect" id="node2" href="$class_sprite_sheet.html#a3701ff0240b1c46e8d56ecd6cd7ca301" title="SpriteSheet::getWidthCuadro" alt="" coords="207,5,399,32"/>
+<area shape="rect" id="node3" href="$class_sprite_sheet.html#a43a1e4b351be633c70a9515960b26678" title="SpriteSheet::getHeightCuadro" alt="" coords="205,56,401,83"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="InterfazJuego::getJoysActivos" name="InterfazJuego::getActiveJoys">
+<area shape="rect" id="node2" href="$class_player.html#ad419831ee10e640f7d1b0dcf260d55cd" title="Player::isPressed" alt="" coords="252,107,377,133"/>
+<area shape="rect" id="node3" href="$class_player.html#aae11ba7baef6858a3294fd86d3eac1ed" title="Player::ponerBomba" alt="" coords="425,81,565,108"/>
+<area shape="rect" id="node4" href="$class_player.html#ae1ee2ab40c56cb42f13224291a0f0ab7" title="Player::parado" alt="" coords="619,5,726,32"/>
+<area shape="rect" id="node6" href="$class_player.html#a82ff3440c08bd0c116b53b90c29efa92" title="Player::izquierda" alt="" coords="613,56,732,83"/>
+<area shape="rect" id="node7" href="$class_player.html#a0345065f26494d5312365b406b5c0acd" title="Player::derecha" alt="" coords="616,107,729,133"/>
+<area shape="rect" id="node8" href="$class_player.html#af8b5efff3494a47772ead1e026f337cd" title="Player::arriba" alt="" coords="623,157,722,184"/>
+<area shape="rect" id="node9" href="$class_player.html#ad98a56271096fa93b68991038de58caf" title="Player::abajo" alt="" coords="623,208,722,235"/>
+<area shape="rect" id="node5" href="$class_player.html#a5cb527f12c3423e1bbb1b6595a85acfc" title="Player::update" alt="" coords="780,107,887,133"/>
+</map>

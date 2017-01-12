@@ -1,0 +1,10 @@
+<map id="rapidxml::memory_pool::clone_node" name="rapidxml::memory_pool::clone_node">
+<area shape="rect" id="node2" href="$classrapidxml_1_1xml__node.html#a2c6a4315b98bcfa2e04fed3fa1b22c36" title="rapidxml::xml_node\l::type" alt="" coords="211,5,345,47"/>
+<area shape="rect" id="node3" href="$classrapidxml_1_1xml__base.html#a9a09739310469995db078ebd0da3ed45" title="rapidxml::xml_base\l::name" alt="" coords="211,71,345,112"/>
+<area shape="rect" id="node4" href="$classrapidxml_1_1xml__base.html#a7e7f98b3d01e1eab8dc1ca69aad9af84" title="rapidxml::xml_base\l::name_size" alt="" coords="211,136,345,177"/>
+<area shape="rect" id="node5" href="$classrapidxml_1_1xml__base.html#adcdaccff61c665f039d9344e447b7445" title="rapidxml::xml_base\l::value" alt="" coords="211,201,345,243"/>
+<area shape="rect" id="node6" href="$classrapidxml_1_1xml__base.html#a9fcf201ed0915ac18dd43b0b5dcfaf32" title="rapidxml::xml_base\l::value_size" alt="" coords="211,267,345,308"/>
+<area shape="rect" id="node7" href="$classrapidxml_1_1xml__node.html#a2dedeb4e04bb35e06a9a7bddf6ba652d" title="rapidxml::xml_node\l::first_node" alt="" coords="211,332,345,373"/>
+<area shape="rect" id="node9" href="$classrapidxml_1_1xml__node.html#ae426802be58114ffc41bf30ac6b8c37d" title="rapidxml::xml_node\l::first_attribute" alt="" coords="211,397,345,439"/>
+<area shape="rect" id="node8" href="$classrapidxml_1_1xml__node.html#ac59af4dd5f0ec715753e42467dff6aed" title="rapidxml::xml_node\l::next_sibling" alt="" coords="393,332,528,373"/>
+</map>

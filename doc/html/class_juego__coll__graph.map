@@ -1,0 +1,24 @@
+<map id="Juego" name="Juego">
+<area shape="rect" id="node2" href="$class_interfaz_u_i.html" title="InterfazUI" alt="" coords="1437,7,1517,33"/>
+<area shape="rect" id="node3" href="$class_game_manager_interfaz_u_i.html" title="GameManagerInterfazUI" alt="" coords="1059,7,1224,33"/>
+<area shape="rect" id="node4" href="$class_game_manager_pop_up_interfaz.html" title="GameManagerPopUpInterfaz" alt="" coords="697,7,888,33"/>
+<area shape="rect" id="node5" href="$class_interfaz_juego.html" title="InterfazJuego" alt="" coords="1427,57,1528,84"/>
+<area shape="rect" id="node6" href="$class_interfaz_sprite_group.html" title="InterfazSpriteGroup" alt="" coords="167,159,301,185"/>
+<area shape="rect" id="node8" href="$class_mapa.html" title="Mapa" alt="" coords="1114,239,1169,265"/>
+<area shape="rect" id="node13" href="$class_update_group.html" title="UpdateGroup" alt="" coords="406,319,505,345"/>
+<area shape="rect" id="node7" href="$class_nivel_mapa.html" title="NivelMapa" alt="" coords="1435,267,1519,293"/>
+<area shape="rect" id="node9" href="$class_sprite_sheet.html" title="SpriteSheet" alt="" coords="747,209,838,236"/>
+<area shape="rect" id="node10" href="$class_t_m_x_1_1_parser.html" title="TMX::Parser" alt="" coords="745,260,841,287"/>
+<area shape="rect" id="node11" href="$struct_t_m_x_1_1_parser_1_1_map.html" title="TMX::Parser::Map" alt="" coords="391,260,520,287"/>
+<area shape="rect" id="node12" href="$class_draw_group.html" title="DrawGroup" alt="" coords="749,319,837,345"/>
+<area shape="rect" id="node14" href="$class_group.html" title="Group" alt="" coords="205,397,263,424"/>
+<area shape="rect" id="node15" href="$class_sprite_container.html" title="SpriteContainer" alt="" coords="5,397,117,424"/>
+<area shape="rect" id="node16" href="$class_layout_absolute.html" title="LayoutAbsolute" alt="" coords="1421,429,1533,456"/>
+<area shape="rect" id="node17" href="$class_layout_component.html" title="LayoutComponent" alt="" coords="1077,508,1205,535"/>
+<area shape="rect" id="node21" href="$class_label_component.html" title="LabelComponent" alt="" coords="1417,531,1537,557"/>
+<area shape="rect" id="node18" href="$class_component.html" title="Component" alt="" coords="748,508,837,535"/>
+<area shape="rect" id="node19" href="$class_l_texture.html" title="LTexture" alt="" coords="419,508,492,535"/>
+<area shape="rect" id="node20" href="$class_l_timer.html" title="LTimer" alt="" coords="1446,480,1509,507"/>
+<area shape="rect" id="node22" href="$class_player.html" title="Player" alt="" coords="1448,581,1507,608"/>
+<area shape="rect" id="node23" href="$class_sprite.html" title="Sprite" alt="" coords="1113,581,1169,608"/>
+</map>

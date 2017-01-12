@@ -1,0 +1,259 @@
+\hypertarget{class_player}{}\section{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+
+
+Inheritance diagram for Player\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=124pt]{class_player__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Player\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=124pt]{class_player__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Area\+Colision} \{ {\bfseries X\+\_\+\+C\+O\+L\+I\+S\+I\+ON} =3, 
+{\bfseries Y\+\_\+\+C\+O\+L\+I\+S\+I\+ON} =10, 
+{\bfseries W\+\_\+\+C\+O\+L\+I\+S\+I\+ON} =10, 
+{\bfseries H\+\_\+\+C\+O\+L\+I\+S\+I\+ON} =10
+ \}\hypertarget{class_player_a5adb8322334d4fe192ea48350919ed75}{}\label{class_player_a5adb8322334d4fe192ea48350919ed75}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_player_a3c4941d61e2f967ddb6ab2624cd1f1b3}{Player} (\hyperlink{class_interfaz_juego}{Interfaz\+Juego} $\ast$interfaz\+Galeria, Id\+Player id)
+\item 
+void \hyperlink{class_player_a5cb527f12c3423e1bbb1b6595a85acfc}{update} (const Uint8 $\ast$teclas)
+\item 
+void {\bfseries draw} (S\+D\+L\+\_\+\+Renderer $\ast$)\hypertarget{class_player_a69c5d0b03b75874507ad7eeed7ef4703}{}\label{class_player_a69c5d0b03b75874507ad7eeed7ef4703}
+
+\item 
+void \hyperlink{class_player_a0caf6c06d8076056c2537f493ee3794f}{cargar\+Teclas} ()
+\item 
+void \hyperlink{class_player_a4537081baf81b12cc98c98c904e15909}{update\+Rect\+Colision} ()
+\item 
+void {\bfseries activar\+Poder\+Item} (Item\+::\+Tipo\+Item tipo)\hypertarget{class_player_a07afc2e2bfd131ceddd53c24be1fc3ec}{}\label{class_player_a07afc2e2bfd131ceddd53c24be1fc3ec}
+
+\item 
+void {\bfseries poner\+Bomba} (const Uint8 $\ast$teclas)\hypertarget{class_player_aae11ba7baef6858a3294fd86d3eac1ed}{}\label{class_player_aae11ba7baef6858a3294fd86d3eac1ed}
+
+\item 
+bool {\bfseries colision} (S\+D\+L\+\_\+\+Rect \&rect\+\_\+coli)\hypertarget{class_player_aeee9778dafe9d93c8273dcf1abc0d7b5}{}\label{class_player_aeee9778dafe9d93c8273dcf1abc0d7b5}
+
+\item 
+void {\bfseries parado} (const Uint8 $\ast$teclas)\hypertarget{class_player_ae1ee2ab40c56cb42f13224291a0f0ab7}{}\label{class_player_ae1ee2ab40c56cb42f13224291a0f0ab7}
+
+\item 
+void {\bfseries izquierda} (const Uint8 $\ast$teclas)\hypertarget{class_player_a82ff3440c08bd0c116b53b90c29efa92}{}\label{class_player_a82ff3440c08bd0c116b53b90c29efa92}
+
+\item 
+void {\bfseries derecha} (const Uint8 $\ast$teclas)\hypertarget{class_player_a0345065f26494d5312365b406b5c0acd}{}\label{class_player_a0345065f26494d5312365b406b5c0acd}
+
+\item 
+bool {\bfseries is\+Pressed} (Tecla\+Player tecla, const Uint8 $\ast$teclas)\hypertarget{class_player_ad419831ee10e640f7d1b0dcf260d55cd}{}\label{class_player_ad419831ee10e640f7d1b0dcf260d55cd}
+
+\item 
+void {\bfseries arriba} (const Uint8 $\ast$teclas)\hypertarget{class_player_af8b5efff3494a47772ead1e026f337cd}{}\label{class_player_af8b5efff3494a47772ead1e026f337cd}
+
+\item 
+void {\bfseries abajo} (const Uint8 $\ast$teclas)\hypertarget{class_player_ad98a56271096fa93b68991038de58caf}{}\label{class_player_ad98a56271096fa93b68991038de58caf}
+
+\item 
+void {\bfseries avanzar\+Animacion} ()\hypertarget{class_player_a21d02dd621070ac4f41e33e2627776bd}{}\label{class_player_a21d02dd621070ac4f41e33e2627776bd}
+
+\item 
+void {\bfseries cambiar\+Estado} (Estado\+Sprite nuevo)\hypertarget{class_player_a038f253da5e506e19a1e24a4e6a5f3f5}{}\label{class_player_a038f253da5e506e19a1e24a4e6a5f3f5}
+
+\item 
+void \hyperlink{class_player_a3acc9e6aa183f86bf29f89982a42c6e6}{mover\+\_\+ip} (int incremento\+\_\+x, int incremento\+\_\+y)
+\item 
+void \hyperlink{class_player_aebb43c51a7da9e652f5574e8ded62f87}{move} (int x, int y)
+\item 
+bool {\bfseries is\+Activo} ()\hypertarget{class_player_a5a0f7e56c03a112fcee982cc840f661b}{}\label{class_player_a5a0f7e56c03a112fcee982cc840f661b}
+
+\item 
+void {\bfseries set\+Vidas} (int nuevo)\hypertarget{class_player_ac7a3107b816d747203be750a9b68771e}{}\label{class_player_ac7a3107b816d747203be750a9b68771e}
+
+\item 
+void \hyperlink{class_player_a23bedb65ce970474120640ae36cba19f}{set\+Proteccion} (int segundos)
+\item 
+void {\bfseries set\+En\+Pantalla} (bool nuevo)\hypertarget{class_player_a98a4100f1290b3e0ab6c5d93f1d764b7}{}\label{class_player_a98a4100f1290b3e0ab6c5d93f1d764b7}
+
+\item 
+int {\bfseries get\+Vidas} ()\hypertarget{class_player_a992cb9c9048c41b6c7d3640b65a54aca}{}\label{class_player_a992cb9c9048c41b6c7d3640b65a54aca}
+
+\item 
+Id\+Player {\bfseries get\+Id} ()\hypertarget{class_player_a0fa3c8a7f45074e4734ed67a11c3eb2a}{}\label{class_player_a0fa3c8a7f45074e4734ed67a11c3eb2a}
+
+\item 
+int {\bfseries get\+Alcance\+Bombas} ()\hypertarget{class_player_a5a8eed2db4c0702ff184c2e591b86eba}{}\label{class_player_a5a8eed2db4c0702ff184c2e591b86eba}
+
+\item 
+int {\bfseries get\+Bombas\+Disponibles} ()\hypertarget{class_player_a9346eacf7896339462843d04e69201a3}{}\label{class_player_a9346eacf7896339462843d04e69201a3}
+
+\item 
+void {\bfseries set\+N\+Bombas} (int n\+Bombas)\hypertarget{class_player_aefb09c11910bdd64a1030f3f2576d4b2}{}\label{class_player_aefb09c11910bdd64a1030f3f2576d4b2}
+
+\item 
+void {\bfseries set\+Alcance\+Bombas} (int alcance\+Bombas)\hypertarget{class_player_ae24d729abd2b7ccc9f358ac72498fcde}{}\label{class_player_ae24d729abd2b7ccc9f358ac72498fcde}
+
+\item 
+int {\bfseries get\+Bombas\+Colocadas} ()\hypertarget{class_player_a311bbbb89e728b69a7ba82b283f9b180}{}\label{class_player_a311bbbb89e728b69a7ba82b283f9b180}
+
+\item 
+void {\bfseries set\+Bombas\+Colocadas} (int n)\hypertarget{class_player_a4b76cf4f128409d53516d083d4b7584f}{}\label{class_player_a4b76cf4f128409d53516d083d4b7584f}
+
+\item 
+int {\bfseries get\+N\+Corazones} ()\hypertarget{class_player_a3dfb69349c809eb38546a804a40e741b}{}\label{class_player_a3dfb69349c809eb38546a804a40e741b}
+
+\item 
+Estado\+Sprite {\bfseries get\+Estado} ()\hypertarget{class_player_a1b5475ae5256e13e31c2579ea42dde99}{}\label{class_player_a1b5475ae5256e13e31c2579ea42dde99}
+
+\item 
+void {\bfseries set\+N\+Corazones} (int nuevos\+N\+Corazones)\hypertarget{class_player_a39b88679bf5da3090ba70e5d1bb1a8e2}{}\label{class_player_a39b88679bf5da3090ba70e5d1bb1a8e2}
+
+\item 
+bool {\bfseries is\+M\+Puede\+Atravesar\+Bloques} () const \hypertarget{class_player_af784628d68cf00d569964b9839031f5b}{}\label{class_player_af784628d68cf00d569964b9839031f5b}
+
+\item 
+void {\bfseries set\+M\+Puede\+Atravesar\+Bloques} (bool m\+Puede\+Atravesar\+Bloques)\hypertarget{class_player_aeb1342f96735a7f3a8118777f68c1c8b}{}\label{class_player_aeb1342f96735a7f3a8118777f68c1c8b}
+
+\item 
+bool {\bfseries is\+M\+Puede\+Atravesar\+Bombas} () const \hypertarget{class_player_a13dc134f40ff7913e9f3ba314078ea6e}{}\label{class_player_a13dc134f40ff7913e9f3ba314078ea6e}
+
+\item 
+void {\bfseries set\+M\+Puede\+Atravesar\+Bombas} (bool m\+Puede\+Atravesar\+Bombas)\hypertarget{class_player_ac5e105bb792064c626772bba738c3b9b}{}\label{class_player_ac5e105bb792064c626772bba738c3b9b}
+
+\item 
+bool {\bfseries is\+M\+Puede\+Patear\+Bombas} () const \hypertarget{class_player_ae4a44769da079a68dbd4da1d59226714}{}\label{class_player_ae4a44769da079a68dbd4da1d59226714}
+
+\item 
+void {\bfseries set\+M\+Puede\+Patear\+Bombas} (bool m\+Puede\+Patear\+Bombas)\hypertarget{class_player_af2d924526201eb6ed6a8bb2a678ca31d}{}\label{class_player_af2d924526201eb6ed6a8bb2a678ca31d}
+
+\item 
+bool {\bfseries is\+M\+Puede\+Golpear\+Bombas} () const \hypertarget{class_player_a6456c38b4c106501efed62dc813a97fe}{}\label{class_player_a6456c38b4c106501efed62dc813a97fe}
+
+\item 
+void {\bfseries set\+M\+Puede\+Golpear\+Bombas} (bool m\+Puede\+Golpear\+Bombas)\hypertarget{class_player_a48471b29d034672dfd91fc2e7cdf6c69}{}\label{class_player_a48471b29d034672dfd91fc2e7cdf6c69}
+
+\item 
+bool {\bfseries is\+M\+Esta\+Enfermo} () const \hypertarget{class_player_aa366faf3ecfb3d1b75b0264d0c7bd1da}{}\label{class_player_aa366faf3ecfb3d1b75b0264d0c7bd1da}
+
+\item 
+void {\bfseries set\+M\+Esta\+Enfermo} (bool m\+Esta\+Enfermo)\hypertarget{class_player_a2ae08dd55f74b24cb49082c28a2ca79f}{}\label{class_player_a2ae08dd55f74b24cb49082c28a2ca79f}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\subsubsection[{\texorpdfstring{Player(\+Interfaz\+Juego $\ast$interfaz\+Galeria, Id\+Player id)}{Player(InterfazJuego *interfazGaleria, IdPlayer id)}}]{\setlength{\rightskip}{0pt plus 5cm}Player\+::\+Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Interfaz\+Juego} $\ast$}]{interfaz\+Galeria, }
+\item[{Id\+Player}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a3c4941d61e2f967ddb6ab2624cd1f1b3}{}\label{class_player_a3c4941d61e2f967ddb6ab2624cd1f1b3}
+Inicializa lo minimo necesario de la clase 
+\begin{DoxyParams}{Parameters}
+{\em interfaz\+Galeria} & \\
+\hline
+{\em id} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Player@{Player}!cargar\+Teclas@{cargar\+Teclas}}
+\index{cargar\+Teclas@{cargar\+Teclas}!Player@{Player}}
+\subsubsection[{\texorpdfstring{cargar\+Teclas()}{cargarTeclas()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::cargar\+Teclas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a0caf6c06d8076056c2537f493ee3794f}{}\label{class_player_a0caf6c06d8076056c2537f493ee3794f}
+Carga la configuracion del teclado del player \index{Player@{Player}!move@{move}}
+\index{move@{move}!Player@{Player}}
+\subsubsection[{\texorpdfstring{move(int x, int y)}{move(int x, int y)}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::move (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_player_aebb43c51a7da9e652f5574e8ded62f87}{}\label{class_player_aebb43c51a7da9e652f5574e8ded62f87}
+Establece al personaje en la posicion indicada No actualiza su rectangulo de colision 
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_sprite}{Sprite}.
+
+\index{Player@{Player}!mover\+\_\+ip@{mover\+\_\+ip}}
+\index{mover\+\_\+ip@{mover\+\_\+ip}!Player@{Player}}
+\subsubsection[{\texorpdfstring{mover\+\_\+ip(int incremento\+\_\+x, int incremento\+\_\+y)}{mover_ip(int incremento_x, int incremento_y)}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::mover\+\_\+ip (
+\begin{DoxyParamCaption}
+\item[{int}]{incremento\+\_\+x, }
+\item[{int}]{incremento\+\_\+y}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a3acc9e6aa183f86bf29f89982a42c6e6}{}\label{class_player_a3acc9e6aa183f86bf29f89982a42c6e6}
+Mueve al personaje detectando alguna colision Las colisiones que se detectan son solo las que pueden detener el movimiento como colision con una bomba 
+\begin{DoxyParams}{Parameters}
+{\em incremento\+\_\+x} & \\
+\hline
+{\em incremento\+\_\+y} & \\
+\hline
+\end{DoxyParams}
+\index{Player@{Player}!set\+Proteccion@{set\+Proteccion}}
+\index{set\+Proteccion@{set\+Proteccion}!Player@{Player}}
+\subsubsection[{\texorpdfstring{set\+Proteccion(int segundos)}{setProteccion(int segundos)}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::set\+Proteccion (
+\begin{DoxyParamCaption}
+\item[{int}]{segundos}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a23bedb65ce970474120640ae36cba19f}{}\label{class_player_a23bedb65ce970474120640ae36cba19f}
+Establece un estado en el que el player es inmune a explosiones 
+\begin{DoxyParams}{Parameters}
+{\em segundos} & cantidad de segundos por la que el personaje es inmune \\
+\hline
+\end{DoxyParams}
+\index{Player@{Player}!update@{update}}
+\index{update@{update}!Player@{Player}}
+\subsubsection[{\texorpdfstring{update(const Uint8 $\ast$teclas)}{update(const Uint8 *teclas)}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::update (
+\begin{DoxyParamCaption}
+\item[{const Uint8 $\ast$}]{teclas}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_player_a5cb527f12c3423e1bbb1b6595a85acfc}{}\label{class_player_a5cb527f12c3423e1bbb1b6595a85acfc}
+Actualiza al player 
+\begin{DoxyParams}{Parameters}
+{\em teclas} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_sprite}{Sprite}.
+
+\index{Player@{Player}!update\+Rect\+Colision@{update\+Rect\+Colision}}
+\index{update\+Rect\+Colision@{update\+Rect\+Colision}!Player@{Player}}
+\subsubsection[{\texorpdfstring{update\+Rect\+Colision()}{updateRectColision()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::update\+Rect\+Colision (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_player_a4537081baf81b12cc98c98c904e15909}{}\label{class_player_a4537081baf81b12cc98c98c904e15909}
+Actualiza al posicion del rectangulo de colision de acuerdo a las coordenadas X Y del personaje 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/personajes/player.\+hpp\item 
+src/personajes/player.\+cpp\end{DoxyCompactItemize}

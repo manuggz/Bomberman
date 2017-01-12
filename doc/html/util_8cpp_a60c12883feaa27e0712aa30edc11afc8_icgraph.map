@@ -1,0 +1,5 @@
+<map id="rects_colisionan" name="rects_colisionan">
+<area shape="rect" id="node2" href="$class_sprite.html#a7bac50446fdd124602253b8fa2054f13" title="Sprite::colision" alt="" coords="181,5,289,32"/>
+<area shape="rect" id="node3" href="$class_explosion.html#a91dcbc01a6178dbb5e66a6209214aa56" title="Explosion::colision" alt="" coords="169,56,300,83"/>
+<area shape="rect" id="node4" href="$class_player.html#aeee9778dafe9d93c8273dcf1abc0d7b5" title="Player::colision" alt="" coords="179,107,290,133"/>
+</map>

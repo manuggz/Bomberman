@@ -1,0 +1,7 @@
+<map id="InterfazUI::draw" name="InterfazUI::draw">
+<area shape="rect" id="node2" href="$class_interfaz_u_i.html#a3ced38e69975a52d3754e9d162f36a2a" title="InterfazUI::resultPopUp" alt="" coords="169,56,329,83"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#abbde8090c24ca199815ba1e85059c96f" title="GameManager::run" alt="" coords="404,5,537,32"/>
+<area shape="rect" id="node5" href="$class_game_manager.html#a79ed8c7a5bdef1baf9290dcab9b55db2" title="GameManager::showPopUp" alt="" coords="377,56,564,83"/>
+<area shape="rect" id="node6" href="$class_juego.html#ac141311099a222492201a52842c207b7" title="Juego::resultPopUp" alt="" coords="402,107,539,133"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="612,5,663,32"/>
+</map>

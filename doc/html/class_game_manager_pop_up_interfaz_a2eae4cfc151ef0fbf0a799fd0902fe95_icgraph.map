@@ -1,0 +1,9 @@
+<map id="GameManagerPopUpInterfaz::closePopUp" name="GameManagerPopUpInterfaz::closePopUp">
+<area shape="rect" id="node2" href="$class_pop_up_interfaz.html#acd7418d2edadaf261076f0839bfc4e5c" title="PopUpInterfaz::procesarEvento" alt="" coords="244,13,449,40"/>
+<area shape="rect" id="node6" href="$class_juego_mostrar_ganadas.html#a4341d078a4b11450df46b7e2ace3fd86" title="PopUpJuegoMostrarGanadas\l::procesarEvento" alt="" coords="527,57,681,98"/>
+<area shape="rect" id="node7" href="$class_pop_up_mostrar_mensaje_texto.html#ab3cad38fc330ca8ec83ac1dcbdde0fbd" title="PopUpMostrarMensajeTexto\l::update" alt="" coords="253,115,441,157"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#aeb38bf2a7f818f76f79f30bce0a72f57" title="GameManager::procesarEventos" alt="" coords="497,5,711,32"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#abbde8090c24ca199815ba1e85059c96f" title="GameManager::run" alt="" coords="759,5,892,32"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="940,5,991,32"/>
+<area shape="rect" id="node8" href="$class_pop_up_count_down.html#a031b32f4dd22602dcc16c126ff597c1f" title="PopUpCountDown::update" alt="" coords="515,123,693,149"/>
+</map>

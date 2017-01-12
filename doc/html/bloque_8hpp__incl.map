@@ -1,0 +1,33 @@
+<map id="src/personajes/bloque.hpp" name="src/personajes/bloque.hpp">
+<area shape="rect" id="node3" href="$animacion_8hpp.html" title="../engine/sprites/animacion\l/animacion.hpp" alt="" coords="1234,423,1413,464"/>
+<area shape="rect" id="node12" href="$constantes_8hpp.html" title="constantes.hpp" alt="" coords="2273,691,2384,717"/>
+<area shape="rect" id="node24" href="$juego_8hpp.html" title="../Interfaces/juego\l/juego.hpp" alt="" coords="1489,80,1616,121"/>
+<area shape="rect" id="node4" href="$_c_sprite_8hpp.html" title="../CSprite.hpp" alt="" coords="904,519,1007,546"/>
+<area shape="rect" id="node13" href="$_l_texture_8hpp.html" title="engine/util/LTexture.hpp" alt="" coords="1676,691,1837,717"/>
+<area shape="rect" id="node21" href="$_control___animacion_8hpp.html" title="Control_Animacion.hpp" alt="" coords="1482,519,1639,546"/>
+<area shape="rect" id="node23" href="$_sprite_sheet_8hpp.html" title="../../util/SpriteSheet.hpp" alt="" coords="1282,609,1442,635"/>
+<area shape="rect" id="node7" href="$util_8hpp.html" title="../../util.hpp" alt="" coords="1754,609,1842,635"/>
+<area shape="rect" id="node20" href="$_sprite_container_8hpp.html" title="SpriteContainer.hpp" alt="" coords="701,609,839,635"/>
+<area shape="rect" id="node25" href="$_nivel_mapa_8hpp.html" title="../../niveles/NivelMapa.hpp" alt="" coords="549,430,727,457"/>
+<area shape="rect" id="node28" href="$_interfaz_u_i_8hpp.html" title="../engine/interfaces\l/InterfazUI.hpp" alt="" coords="1815,512,1949,553"/>
+<area shape="rect" id="node36" href="$_c_group_8hpp.html" title="../../engine/sprites\l/CGroup.hpp" alt="" coords="821,423,948,464"/>
+<area shape="rect" id="node38" href="$bomba_8hpp.html" title="../../personajes/bomba.hpp" alt="" coords="1337,177,1515,203"/>
+<area shape="rect" id="node39" href="$player_8hpp.html" title="player.hpp" alt="" coords="1282,259,1365,285"/>
+<area shape="rect" id="node41" href="$item_8hpp.html" title="../objetos/item.hpp" alt="" coords="1258,341,1389,367"/>
+<area shape="rect" id="node42" href="$_interfaz_juego_8hpp.html" title="../Interfaces/juego\l/InterfazJuego.hpp" alt="" coords="621,333,751,375"/>
+<area shape="rect" id="node43" href="$_l_timer_8hpp.html" title="../engine/util/LTimer.hpp" alt="" coords="2409,691,2571,717"/>
+<area shape="rect" id="node44" href="$explosion_8hpp.html" title="../../objetos/explosion.hpp" alt="" coords="1559,341,1731,367"/>
+<area shape="rect" id="node45" href="$_c_draw_group_8hpp.html" title="../../engine/sprites\l/CDrawGroup.hpp" alt="" coords="1032,169,1159,211"/>
+<area shape="rect" id="node47" href="$_layout_absolute_8hpp.html" title="../../engine/layout\l/LayoutManager/LayoutAbsolute.hpp" alt="" coords="2151,423,2386,464"/>
+<area shape="rect" id="node49" href="$_text_label_component_8hpp.html" title="../../engine/layout\l/Componentes/LabelComponent.hpp" alt="" coords="2207,512,2467,553"/>
+<area shape="rect" id="node26" href="$_c_meta_data_8hpp.html" title="../engine/util/CMetaData.hpp" alt="" coords="183,609,373,635"/>
+<area shape="rect" id="node30" href="$_t_m_x_parser_8h.html" title="../engine/mapa/include\l/TMXParser.h" alt="" coords="5,601,159,643"/>
+<area shape="rect" id="node35" href="$_c_mapa_8hpp.html" title="../engine/mapa/CMapa.hpp" alt="" coords="549,519,727,546"/>
+<area shape="rect" id="node29" href="$_game_manager_interfaz_u_i_8hpp.html" title="GameManagerInterfazUI.hpp" alt="" coords="1867,609,2057,635"/>
+<area shape="rect" id="node31" href="$rapidxml_8hpp.html" title="This file contains rapidxml parser and DOM implementation. " alt="" coords="57,765,206,792"/>
+<area shape="rect" id="node32" href="$rapidxml__utils_8hpp.html" title="rapidxml/rapidxml_utils.hpp" alt="" coords="268,691,448,717"/>
+<area shape="rect" id="node40" href="$control__player_8hpp.html" title="../control_player.hpp" alt="" coords="1117,609,1257,635"/>
+<area shape="rect" id="node46" href="$_c_update_grow_8hpp.html" title="CUpdateGrow.hpp" alt="" coords="877,341,1007,367"/>
+<area shape="rect" id="node48" href="$_layout_component_8hpp.html" title="LayoutComponent.hpp" alt="" coords="2387,609,2540,635"/>
+<area shape="rect" id="node50" href="$_c_font_8hpp.html" title="../../util/CFont.hpp" alt="" coords="2133,609,2261,635"/>
+</map>

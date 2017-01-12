@@ -1,0 +1,4 @@
+<map id="ControlAnimacion::avanzar" name="ControlAnimacion::avanzar">
+<area shape="rect" id="node2" href="$class_animacion.html#a9b52991c0710843e085326053b2ee568" title="Animacion::update" alt="" coords="232,13,363,39"/>
+<area shape="rect" id="node3" href="$class_juego_mostrar_ganadas.html#a049acb4e679c3c4357729badda704fab" title="PopUpJuegoMostrarGanadas\l::update" alt="" coords="411,5,564,47"/>
+</map>

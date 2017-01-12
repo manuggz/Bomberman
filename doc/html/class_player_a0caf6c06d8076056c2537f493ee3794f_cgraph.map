@@ -1,0 +1,4 @@
+<map id="Player::cargarTeclas" name="Player::cargarTeclas">
+<area shape="rect" id="node2" href="$class_control_player.html#aaf328fa930e99fc4b3c6b3130c08e0a3" title="ControlPlayer::cargar" alt="" coords="223,5,368,32"/>
+<area shape="rect" id="node3" href="$class_control_player.html#a0df9d15f3e0a45c6b37288c27fc0f7c5" title="ControlPlayer::setDefaultKeys" alt="" coords="196,56,395,83"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="InterfazJuego::colisionBloqueEnLlamas" name="InterfazJuego::colisionBloqueEnLlamas">
+<area shape="rect" id="node2" href="$class_explosion.html#aa381f273160b625c9a37e40e1ae0cda3" title="Explosion::detectarAlcances" alt="" coords="247,13,435,39"/>
+<area shape="rect" id="node3" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="483,13,627,39"/>
+</map>

@@ -1,0 +1,105 @@
+\hypertarget{class_pop_up_interfaz}{}\section{Pop\+Up\+Interfaz Class Reference}
+\label{class_pop_up_interfaz}\index{Pop\+Up\+Interfaz@{Pop\+Up\+Interfaz}}
+
+
+{\ttfamily \#include $<$Pop\+Up\+Interfaz.\+hpp$>$}
+
+
+
+Inheritance diagram for Pop\+Up\+Interfaz\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pop_up_interfaz__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pop\+Up\+Interfaz\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{class_pop_up_interfaz__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Pop\+Up\+Interfaz} (\hyperlink{class_game_manager_pop_up_interfaz}{Game\+Manager\+Pop\+Up\+Interfaz} $\ast$game\+Manager)\hypertarget{class_pop_up_interfaz_ae86fafc4a96b5ad4598f6b871ee0b80b}{}\label{class_pop_up_interfaz_ae86fafc4a96b5ad4598f6b871ee0b80b}
+
+\item 
+virtual void {\bfseries start} ()\hypertarget{class_pop_up_interfaz_ad0ea581e8df5b64fd9500cbcf28656c9}{}\label{class_pop_up_interfaz_ad0ea581e8df5b64fd9500cbcf28656c9}
+
+\item 
+virtual bool {\bfseries is\+Paused} ()\hypertarget{class_pop_up_interfaz_a359ff19ee2c3bd32d58d6893696c65fb}{}\label{class_pop_up_interfaz_a359ff19ee2c3bd32d58d6893696c65fb}
+
+\item 
+virtual bool {\bfseries is\+Started} ()\hypertarget{class_pop_up_interfaz_a66280a78feebd2443f140b3df8647616}{}\label{class_pop_up_interfaz_a66280a78feebd2443f140b3df8647616}
+
+\item 
+virtual bool {\bfseries is\+Stopped} ()\hypertarget{class_pop_up_interfaz_af1a1f054faea40813866f74513e65484}{}\label{class_pop_up_interfaz_af1a1f054faea40813866f74513e65484}
+
+\item 
+virtual void {\bfseries stop} ()\hypertarget{class_pop_up_interfaz_ab85113ec1af869a1d5d7ea45f52f313b}{}\label{class_pop_up_interfaz_ab85113ec1af869a1d5d7ea45f52f313b}
+
+\item 
+virtual void {\bfseries prepare} ()\hypertarget{class_pop_up_interfaz_a174c9a8f6e4dbf2adfb3a362345a0cad}{}\label{class_pop_up_interfaz_a174c9a8f6e4dbf2adfb3a362345a0cad}
+
+\item 
+virtual void {\bfseries update} ()\hypertarget{class_pop_up_interfaz_a4c2d2acd5f27868289423c07835c95cd}{}\label{class_pop_up_interfaz_a4c2d2acd5f27868289423c07835c95cd}
+
+\item 
+virtual void {\bfseries create\+UI} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)\hypertarget{class_pop_up_interfaz_aecc52811ccad5f20e85be0d6991d399f}{}\label{class_pop_up_interfaz_aecc52811ccad5f20e85be0d6991d399f}
+
+\item 
+virtual void {\bfseries procesar\+Evento} (S\+D\+L\+\_\+\+Event $\ast$event)\hypertarget{class_pop_up_interfaz_acd7418d2edadaf261076f0839bfc4e5c}{}\label{class_pop_up_interfaz_acd7418d2edadaf261076f0839bfc4e5c}
+
+\item 
+virtual void \hyperlink{class_pop_up_interfaz_acd9384b541df0cb1d075cef6f6b88708}{draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+S\+D\+L\+\_\+\+Color {\bfseries mp\+Color\+Oscurecer} \{0, 0, 0, 150\}\hypertarget{class_pop_up_interfaz_a8c2800bae691a19d2213ee77e721bc74}{}\label{class_pop_up_interfaz_a8c2800bae691a19d2213ee77e721bc74}
+
+\item 
+\hyperlink{class_game_manager_pop_up_interfaz}{Game\+Manager\+Pop\+Up\+Interfaz} $\ast$ {\bfseries m\+Game\+Manager}\hypertarget{class_pop_up_interfaz_aaad46ade411c4a53a03051e49bf85980}{}\label{class_pop_up_interfaz_aaad46ade411c4a53a03051e49bf85980}
+
+\item 
+bool {\bfseries m\+Is\+Paused} = false\hypertarget{class_pop_up_interfaz_a009eb3ad4abb23e43030100a1cddc7db}{}\label{class_pop_up_interfaz_a009eb3ad4abb23e43030100a1cddc7db}
+
+\item 
+bool {\bfseries m\+Is\+Started} = false\hypertarget{class_pop_up_interfaz_a349b279b49b191fa9860cd162b92f9a9}{}\label{class_pop_up_interfaz_a349b279b49b191fa9860cd162b92f9a9}
+
+\item 
+bool {\bfseries m\+Is\+Stopped} = false\hypertarget{class_pop_up_interfaz_af9a3b3f2ec61749c715bdcd3896785dc}{}\label{class_pop_up_interfaz_af9a3b3f2ec61749c715bdcd3896785dc}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Esta clase define un Layout que se va a mostrar en pantalla. Esta clase no es un manejador principal de la pantalla Funciona parecido a un Modal en una Web. 
+
+\subsection{Member Function Documentation}
+\index{Pop\+Up\+Interfaz@{Pop\+Up\+Interfaz}!draw@{draw}}
+\index{draw@{draw}!Pop\+Up\+Interfaz@{Pop\+Up\+Interfaz}}
+\subsubsection[{\texorpdfstring{draw(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)}{draw(SDL_Renderer *gRenderer)}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Pop\+Up\+Interfaz\+::draw (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_pop_up_interfaz_acd9384b541df0cb1d075cef6f6b88708}{}\label{class_pop_up_interfaz_acd9384b541df0cb1d075cef6f6b88708}
+Oscurece el fondo del Pop\+Up 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_pop_up_mostrar_mensaje_texto_a17f96444323a9694447b2cf279562414}{Pop\+Up\+Mostrar\+Mensaje\+Texto}, and \hyperlink{class_pop_up_juego_mostrar_ganadas_ab965ba319c903712dcbe94d3c08348ea}{Pop\+Up\+Juego\+Mostrar\+Ganadas}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/interfaces/Pop\+Up\+Interfaz.\+hpp\end{DoxyCompactItemize}

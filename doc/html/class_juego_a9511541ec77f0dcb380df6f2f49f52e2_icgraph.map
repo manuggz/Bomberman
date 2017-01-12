@@ -1,0 +1,6 @@
+<map id="Juego::estaPlayerActivo" name="Juego::estaPlayerActivo">
+<area shape="rect" id="node2" href="$class_juego.html#ac141311099a222492201a52842c207b7" title="Juego::resultPopUp" alt="" coords="217,5,355,32"/>
+<area shape="rect" id="node3" href="$class_juego.html#a74a8689a0513f13a8dfa6729bae77ada" title="Juego::update" alt="" coords="234,56,338,83"/>
+<area shape="rect" id="node4" href="$class_juego.html#a46d94040c73103aa385d64361717d55c" title="Juego::drawBarra" alt="" coords="224,107,348,133"/>
+<area shape="rect" id="node5" href="$class_juego.html#afd62461e81bfd0dcbeecf082f2c023ec" title="Juego::draw" alt="" coords="403,107,496,133"/>
+</map>

@@ -1,0 +1,183 @@
+\hypertarget{class_meta_data}{}\section{Meta\+Data Class Reference}
+\label{class_meta_data}\index{Meta\+Data@{Meta\+Data}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_meta_data_a248c7fa5fa7a913d74082bfff2b54605}{Meta\+Data} (std\+::string ruta, std\+::string delim)
+\item 
+void \hyperlink{class_meta_data_a316a360f75e55ab4b89afa21a41aad21}{set\+Meta\+Data} (std\+::string clave, std\+::string)
+\item 
+bool \hyperlink{class_meta_data_a82c33cc7ed0a99536dac97fee486790a}{guardar} (std\+::string ruta\+Destino=\char`\"{}\char`\"{}, std\+::string delimitador=\char`\"{}\+:\char`\"{})
+\item 
+std\+::string \hyperlink{class_meta_data_a51890f104186763e40e5fa9b98a40c93}{get\+Meta\+Data} (std\+::string clave)
+\item 
+bool \hyperlink{class_meta_data_a9a7ddd822ce2ccefe542a19b5a84e1e2}{cargar\+Meta\+Data} (std\+::string ruta, std\+::string delim)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Meta\+Data@{Meta\+Data}!Meta\+Data@{Meta\+Data}}
+\index{Meta\+Data@{Meta\+Data}!Meta\+Data@{Meta\+Data}}
+\subsubsection[{\texorpdfstring{Meta\+Data(std\+::string ruta, std\+::string delim)}{MetaData(std::string ruta, std::string delim)}}]{\setlength{\rightskip}{0pt plus 5cm}Meta\+Data\+::\+Meta\+Data (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{ruta, }
+\item[{std\+::string}]{delim}
+\end{DoxyParamCaption}
+)}\hypertarget{class_meta_data_a248c7fa5fa7a913d74082bfff2b54605}{}\label{class_meta_data_a248c7fa5fa7a913d74082bfff2b54605}
+Inicializa la clase parseando los datos en un archivo Los datos del archivo deben estar en el siguiente formato
+
+cada linea debe ser de la forma\+:
+
+\mbox{[}$<$key$>$$<$delimitador$>$
+
+\mbox{]} .... \mbox{[}$<$key$>$$<$delimitador$>$
+
+\mbox{]}
+
+Ejemplo\+:
+
+variable1\+:valor1 Variable2\+:valor2
+
+
+\begin{DoxyParams}{Parameters}
+{\em ruta} & \\
+\hline
+{\em delim} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Notar que no hay espacios en el formato esto es importante porque no se hace trim en la lectura y se toma tod lo que este antes del delimitador como la clave y lo que este despues como el valor incluyendo los espacios. Las lineas donde no se encuentren los delimitadores o n haya clave son ignoradas. Distingue entre mayusculas y minusculas. las claves deben ser unicas. 
+\end{DoxyWarning}
+
+
+\subsection{Member Function Documentation}
+\index{Meta\+Data@{Meta\+Data}!cargar\+Meta\+Data@{cargar\+Meta\+Data}}
+\index{cargar\+Meta\+Data@{cargar\+Meta\+Data}!Meta\+Data@{Meta\+Data}}
+\subsubsection[{\texorpdfstring{cargar\+Meta\+Data(std\+::string ruta, std\+::string delim)}{cargarMetaData(std::string ruta, std::string delim)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Meta\+Data\+::cargar\+Meta\+Data (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{ruta, }
+\item[{std\+::string}]{delim}
+\end{DoxyParamCaption}
+)}\hypertarget{class_meta_data_a9a7ddd822ce2ccefe542a19b5a84e1e2}{}\label{class_meta_data_a9a7ddd822ce2ccefe542a19b5a84e1e2}
+Inicializa la clase parseando los datos en un archivo Los datos del archivo deben estar en el siguiente formato
+
+cada linea debe ser de la forma\+:
+
+\mbox{[}$<$key$>$$<$delimitador$>$
+
+\mbox{]} .... \mbox{[}$<$key$>$$<$delimitador$>$
+
+\mbox{]}
+
+Ejemplo\+:
+
+variable1\+:valor1 Variable2\+:valor2
+
+
+\begin{DoxyParams}{Parameters}
+{\em ruta} & \\
+\hline
+{\em delim} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Notar que no hay espacios en el formato esto es importante porque no se hace trim en la lectura y se toma tod lo que este antes del delimitador como la clave y lo que este despues como el valor incluyendo los espacios. Las lineas donde no se encuentren los delimitadores o n haya clave son ignoradas. Distingue entre mayusculas y minusculas. las claves deben ser unicas. 
+\end{DoxyWarning}
+\index{Meta\+Data@{Meta\+Data}!get\+Meta\+Data@{get\+Meta\+Data}}
+\index{get\+Meta\+Data@{get\+Meta\+Data}!Meta\+Data@{Meta\+Data}}
+\subsubsection[{\texorpdfstring{get\+Meta\+Data(std\+::string clave)}{getMetaData(std::string clave)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Meta\+Data\+::get\+Meta\+Data (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{clave}
+\end{DoxyParamCaption}
+)}\hypertarget{class_meta_data_a51890f104186763e40e5fa9b98a40c93}{}\label{class_meta_data_a51890f104186763e40e5fa9b98a40c93}
+Obtiene el valor de un metadato 
+\begin{DoxyParams}{Parameters}
+{\em clave} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Meta\+Data@{Meta\+Data}!guardar@{guardar}}
+\index{guardar@{guardar}!Meta\+Data@{Meta\+Data}}
+\subsubsection[{\texorpdfstring{guardar(std\+::string ruta\+Destino="""", std\+::string delimitador=""\+:"")}{guardar(std::string rutaDestino="", std::string delimitador=":")}}]{\setlength{\rightskip}{0pt plus 5cm}bool Meta\+Data\+::guardar (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{ruta\+Destino = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{std\+::string}]{delimitador = {\ttfamily \char`\"{}\+:\char`\"{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_meta_data_a82c33cc7ed0a99536dac97fee486790a}{}\label{class_meta_data_a82c33cc7ed0a99536dac97fee486790a}
+Guarda los datos de la clase en un archivo Los datos del archivo se guardaran en el siguiente formato
+
+cada linea sera de la forma\+:
+
+\mbox{[}$<$key$>$$<$delimitador$>$
+
+\mbox{]} .... \mbox{[}$<$key$>$$<$delimitador$>$
+
+\mbox{]}
+
+Ejemplo\+:
+
+variable1\+:valor1 Variable2\+:valor2
+
+Donde $<$delimitador$>$ es el delimitador pasado como argumento en el constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em ruta\+Destino} & ruta en donde se guardaran los datos, si no se especifica se guardara en la ruta donde se cargo los datos(en caso que exista) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Guarda los datos de la clase en un archivo Los datos del archivo se guardaran en el siguiente formato
+
+cada linea sera de la forma\+:
+
+\mbox{[}$<$key$>$$<$delimitador$>$
+
+\mbox{]} .... \mbox{[}$<$key$>$$<$delimitador$>$
+
+\mbox{]}
+
+Ejemplo\+:
+
+variable1\+:valor1 Variable2\+:valor2
+
+Donde $<$delimitador$>$ es el delimitador pasado como argumento en el constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em ruta\+Destino} & ruta en donde se guardaran los datos, si no se especifica se guardara en la ruta especificada en el constructor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Meta\+Data@{Meta\+Data}!set\+Meta\+Data@{set\+Meta\+Data}}
+\index{set\+Meta\+Data@{set\+Meta\+Data}!Meta\+Data@{Meta\+Data}}
+\subsubsection[{\texorpdfstring{set\+Meta\+Data(std\+::string clave, std\+::string)}{setMetaData(std::string clave, std::string)}}]{\setlength{\rightskip}{0pt plus 5cm}void Meta\+Data\+::set\+Meta\+Data (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{clave, }
+\item[{std\+::string}]{valor}
+\end{DoxyParamCaption}
+)}\hypertarget{class_meta_data_a316a360f75e55ab4b89afa21a41aad21}{}\label{class_meta_data_a316a360f75e55ab4b89afa21a41aad21}
+Establece el valor de un metadato 
+\begin{DoxyParams}{Parameters}
+{\em clave} & \\
+\hline
+{\em valor} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/util/C\+Meta\+Data.\+hpp\item 
+src/engine/util/C\+Meta\+Data.\+cpp\end{DoxyCompactItemize}

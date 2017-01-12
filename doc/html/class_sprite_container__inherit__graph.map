@@ -1,0 +1,5 @@
+<map id="SpriteContainer" name="SpriteContainer">
+<area shape="rect" id="node2" href="$class_group.html" title="Group" alt="" coords="33,80,90,107"/>
+<area shape="rect" id="node3" href="$class_update_group.html" title="UpdateGroup" alt="" coords="12,155,111,181"/>
+<area shape="rect" id="node4" href="$class_draw_group.html" title="DrawGroup" alt="" coords="17,229,105,256"/>
+</map>

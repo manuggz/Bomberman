@@ -1,0 +1,9 @@
+<map id="Juego::agregarPlayersActivos" name="Juego::agregarPlayersActivos">
+<area shape="rect" id="node2" href="$class_player.html#a038f253da5e506e19a1e24a4e6a5f3f5" title="Player::cambiarEstado" alt="" coords="249,5,404,32"/>
+<area shape="rect" id="node3" href="$class_player.html#a23bedb65ce970474120640ae36cba19f" title="Player::setProteccion" alt="" coords="253,56,400,83"/>
+<area shape="rect" id="node5" href="$class_player.html#a98a4100f1290b3e0ab6c5d93f1d764b7" title="Player::setEnPantalla" alt="" coords="253,107,401,133"/>
+<area shape="rect" id="node7" href="$class_group.html#a808a26e42fb31af18f1c37584bf3d972" title="Group::add" alt="" coords="283,157,370,184"/>
+<area shape="rect" id="node4" href="$class_l_timer.html#a7dc11f05cf5098a6d06ebd6ebec96ed6" title="LTimer::start" alt="" coords="464,56,560,83"/>
+<area shape="rect" id="node6" href="$class_l_timer.html#aeabbf5f935907fcfeaa7f4403741e4ae" title="LTimer::stop" alt="" coords="465,107,559,133"/>
+<area shape="rect" id="node8" href="$class_sprite.html#a87f4d657c8cff89978c20d8e8e38f011" title="Sprite::addGroup" alt="" coords="452,157,572,184"/>
+</map>

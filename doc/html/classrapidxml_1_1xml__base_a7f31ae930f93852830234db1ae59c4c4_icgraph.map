@@ -1,0 +1,12 @@
+<map id="rapidxml::xml_base::parent" name="rapidxml::xml_base::parent">
+<area shape="rect" id="node2" href="$classrapidxml_1_1xml__node.html#adb6ad21a4590cf13d4a6a5036e3cdbbc" title="rapidxml::xml_node\l::document" alt="" coords="188,5,323,47"/>
+<area shape="rect" id="node3" href="$classrapidxml_1_1xml__node.html#ae86e92908c3eab40bbed8216e4f3f3cb" title="rapidxml::xml_node\l::prepend_node" alt="" coords="188,71,323,112"/>
+<area shape="rect" id="node4" href="$classrapidxml_1_1xml__node.html#a8696d098ecc9c4d2a646b43e91d58e31" title="rapidxml::xml_node\l::append_node" alt="" coords="188,136,323,177"/>
+<area shape="rect" id="node6" href="$classrapidxml_1_1xml__node.html#a666880f42a7e486d78cc45ed51c7c46d" title="rapidxml::xml_node\l::insert_node" alt="" coords="188,201,323,243"/>
+<area shape="rect" id="node7" href="$classrapidxml_1_1xml__node.html#a98289923eb9e8889418a9eb0207ea35c" title="Removes specified child from the node. " alt="" coords="188,267,323,308"/>
+<area shape="rect" id="node8" href="$classrapidxml_1_1xml__node.html#a8b62ee76489faf8e2d1210869d547684" title="rapidxml::xml_node\l::prepend_attribute" alt="" coords="188,332,323,373"/>
+<area shape="rect" id="node9" href="$classrapidxml_1_1xml__node.html#a33ce3386f8c42dd4db658b75cbb6e6c4" title="rapidxml::xml_node\l::append_attribute" alt="" coords="188,397,323,439"/>
+<area shape="rect" id="node10" href="$classrapidxml_1_1xml__node.html#a9fe659cdf4a5b3bbf5e8ffc98db5a84f" title="rapidxml::xml_node\l::insert_attribute" alt="" coords="188,463,323,504"/>
+<area shape="rect" id="node11" href="$classrapidxml_1_1xml__node.html#a6f97b1b4f46a94a4587915df3c0c6b57" title="rapidxml::xml_node\l::remove_attribute" alt="" coords="188,528,323,569"/>
+<area shape="rect" id="node5" href="$classrapidxml_1_1xml__document.html#a826929ff54242532198701f19ff5f83f" title="rapidxml::xml_document\l::clear" alt="" coords="371,267,535,308"/>
+</map>

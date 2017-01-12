@@ -1,0 +1,5 @@
+<map id="Sprite::move" name="Sprite::move">
+<area shape="rect" id="node2" href="$class_animacion.html#ae596bf2bc41b8a733fe5e2fae98b7850" title="Animacion::move" alt="" coords="149,31,272,57"/>
+<area shape="rect" id="node3" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="323,5,467,32"/>
+<area shape="rect" id="node4" href="$class_juego.html#a7b85a67ebed60f1e80e314f2298951a8" title="Juego::agregarBomba" alt="" coords="320,56,469,83"/>
+</map>

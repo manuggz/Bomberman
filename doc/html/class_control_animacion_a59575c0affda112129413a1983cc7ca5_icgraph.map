@@ -1,0 +1,5 @@
+<map id="ControlAnimacion::setCuadros" name="ControlAnimacion::setCuadros">
+<area shape="rect" id="node2" href="$class_animacion.html#adfa64326dc3e8897449874cd89c409eb" title="Animacion::setCuadrosFrames" alt="" coords="253,13,456,39"/>
+<area shape="rect" id="node4" href="$class_control_animacion.html#a6d077c733c0d637f5a27e925f750fac2" title="ControlAnimacion::Control\lAnimacion" alt="" coords="267,64,442,105"/>
+<area shape="rect" id="node3" href="$class_animacion.html#af9b3e2e5873daef7b1aa83d70d286596" title="Animacion::setDelayCambio\lFrame" alt="" coords="504,5,692,47"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="Player::draw" name="Player::draw">
+<area shape="rect" id="node2" href="$util_8cpp.html#a23a415366edc2e101aa255c681fa5390" title="imprimir_desde_grilla" alt="" coords="167,81,311,108"/>
+<area shape="rect" id="node7" href="$class_interfaz_juego.html#a38e52e57513fe1bc4eba3f8deb09022d" title="InterfazJuego::getTexture" alt="" coords="153,132,324,159"/>
+<area shape="rect" id="node8" href="$class_player.html#a4537081baf81b12cc98c98c904e15909" title="Player::updateRectColision" alt="" coords="148,183,329,209"/>
+<area shape="rect" id="node3" href="$class_l_texture.html#ad9e83e3ba49b7ef6a0719ddbbdf7b3fa" title="LTexture::getWidth" alt="" coords="379,5,513,32"/>
+<area shape="rect" id="node4" href="$class_l_texture.html#a88f3901941f4a71f929845ee1311b68b" title="LTexture::getHeight" alt="" coords="377,56,515,83"/>
+<area shape="rect" id="node5" href="$class_l_texture.html#ab4e51b54752ae7b54614078f9128a9c0" title="LTexture::setAlpha" alt="" coords="380,107,512,133"/>
+<area shape="rect" id="node6" href="$class_l_texture.html#a7edbf22bd4e3f5efd60e20b913d1dcc4" title="LTexture::render" alt="" coords="387,157,505,184"/>
+</map>

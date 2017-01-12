@@ -1,0 +1,80 @@
+\hypertarget{class_animacion}{}\section{Animacion Class Reference}
+\label{class_animacion}\index{Animacion@{Animacion}}
+
+
+{\ttfamily \#include $<$animacion.\+hpp$>$}
+
+
+
+Inheritance diagram for Animacion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_animacion__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Animacion\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{class_animacion__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Animacion} (\hyperlink{class_sprite_sheet}{Sprite\+Sheet} $\ast$sprite\+Sheet, string frames=N\+U\+LL, int x=0, int y=0, int delay\+Cambio\+Frame=2)\hypertarget{class_animacion_a42e4ac80569912ad50fcf23bce937908}{}\label{class_animacion_a42e4ac80569912ad50fcf23bce937908}
+
+\item 
+void {\bfseries update} (const Uint8 $\ast$keys=N\+U\+LL)\hypertarget{class_animacion_a9b52991c0710843e085326053b2ee568}{}\label{class_animacion_a9b52991c0710843e085326053b2ee568}
+
+\item 
+virtual void {\bfseries disable} ()\hypertarget{class_animacion_a02481ecab981d05dd0c50b46abb3f341}{}\label{class_animacion_a02481ecab981d05dd0c50b46abb3f341}
+
+\item 
+virtual void {\bfseries draw} (S\+D\+L\+\_\+\+Renderer $\ast$)\hypertarget{class_animacion_aee1eedfd331fb9cd1dbfdaf7550a866a}{}\label{class_animacion_aee1eedfd331fb9cd1dbfdaf7550a866a}
+
+\item 
+void {\bfseries move} (int nuevaX, int nuevaY) override\hypertarget{class_animacion_ae596bf2bc41b8a733fe5e2fae98b7850}{}\label{class_animacion_ae596bf2bc41b8a733fe5e2fae98b7850}
+
+\item 
+int {\bfseries get\+Cuadro} ()\hypertarget{class_animacion_aefb08950e8376addb0064df9fc39714a}{}\label{class_animacion_aefb08950e8376addb0064df9fc39714a}
+
+\item 
+void {\bfseries set\+Repeticiones} (int nuevo)\hypertarget{class_animacion_aa06923448345136fbd5d9d3b186168e9}{}\label{class_animacion_aa06923448345136fbd5d9d3b186168e9}
+
+\item 
+void {\bfseries set\+Cuadro\+Despues} (int nuevo)\hypertarget{class_animacion_aba6827dd1b9aa6ed1b8d92dd791d9195}{}\label{class_animacion_aba6827dd1b9aa6ed1b8d92dd791d9195}
+
+\item 
+void {\bfseries set\+Delay\+Cambio\+Frame} (int nuevo)\hypertarget{class_animacion_af9b3e2e5873daef7b1aa83d70d286596}{}\label{class_animacion_af9b3e2e5873daef7b1aa83d70d286596}
+
+\item 
+void {\bfseries set\+Cuadros\+Frames} (char $\ast$frames)\hypertarget{class_animacion_adfa64326dc3e8897449874cd89c409eb}{}\label{class_animacion_adfa64326dc3e8897449874cd89c409eb}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_sprite_sheet}{Sprite\+Sheet} $\ast$ {\bfseries m\+Spr\+S\+Cuadros} = nullptr\hypertarget{class_animacion_ad9a5ea56a2b3c88f8e5eec0d5c40653c}{}\label{class_animacion_ad9a5ea56a2b3c88f8e5eec0d5c40653c}
+
+\item 
+int {\bfseries m\+Repeticiones} = 0\hypertarget{class_animacion_adfac4172f4dea91d1c021744329c120a}{}\label{class_animacion_adfac4172f4dea91d1c021744329c120a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Representa un \hyperlink{class_sprite}{Sprite} \char`\"{}\+Animado\char`\"{}
+
+Es decir, que tiene una animacion.
+
+La clase recive una \hyperlink{class_sprite}{Sprite} Sheet 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/sprites/animacion/animacion.\+hpp\item 
+src/engine/sprites/animacion/animacion.\+cpp\end{DoxyCompactItemize}

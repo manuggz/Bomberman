@@ -1,0 +1,6 @@
+<map id="Animacion::setRepeticiones" name="Animacion::setRepeticiones">
+<area shape="rect" id="node2" href="$class_juego_mostrar_ganadas.html#a8952d565827d92657069f51a4c5abb6b" title="PopUpJuegoMostrarGanadas\l::createUI" alt="" coords="256,5,409,47"/>
+<area shape="rect" id="node3" href="$class_menu_modo_multijugador.html#aa87c06427be64fd73e17d9ea37d8744e" title="MenuModoMultijugador\l::createUI" alt="" coords="255,71,411,112"/>
+<area shape="rect" id="node4" href="$class_explosion.html#aa381f273160b625c9a37e40e1ae0cda3" title="Explosion::detectarAlcances" alt="" coords="239,137,427,163"/>
+<area shape="rect" id="node5" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="475,137,619,163"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="src/Interfaces/juego/InterfazJuego.hpp" name="src/Interfaces/juego/InterfazJuego.hpp">
+<area shape="rect" id="node2" href="$player_8hpp_source.html" title="src/personajes/player.hpp" alt="" coords="157,95,328,121"/>
+<area shape="rect" id="node4" href="$juego_8hpp_source.html" title="src/Interfaces/juego\l/juego.hpp" alt="" coords="273,244,410,285"/>
+<area shape="rect" id="node3" href="$bomba_8hpp_source.html" title="src/personajes/bomba.hpp" alt="" coords="129,169,303,196"/>
+<area shape="rect" id="node5" href="$_tile_en_llamas_8hpp_source.html" title="src/engine/mapa/TileEnLlamas.hpp" alt="" coords="5,341,232,367"/>
+<area shape="rect" id="node6" href="$explosion_8hpp_source.html" title="src/objetos/explosion.hpp" alt="" coords="256,341,427,367"/>
+<area shape="rect" id="node7" href="$_menu_modo_multijugador_8hpp_source.html" title="src/Interfaces/menu\l/MenuModoMultijugador.hpp" alt="" coords="451,333,637,375"/>
+<area shape="rect" id="node8" href="$_menu_nuevo_juego_8hpp_source.html" title="src/Interfaces/menu\l/MenuNuevoJuego.hpp" alt="" coords="466,423,622,464"/>
+<area shape="rect" id="node9" href="$_menu_principal_8hpp_source.html" title="src/Interfaces/menu\l/MenuPrincipal.hpp" alt="" coords="475,512,613,553"/>
+</map>

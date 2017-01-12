@@ -1,0 +1,13 @@
+<map id="LabelComponent::setText" name="LabelComponent::setText">
+<area shape="rect" id="node2" href="$class_menu_list_label.html#aa4622ae2bc0bf7d31aa8fe8483103e27" title="MenuListLabel::createUI" alt="" coords="215,5,379,32"/>
+<area shape="rect" id="node3" href="$class_juego.html#a8dd19e6a53b446292e3e15e5e164ed05" title="Juego::createUI" alt="" coords="240,56,355,83"/>
+<area shape="rect" id="node4" href="$class_juego.html#a46d94040c73103aa385d64361717d55c" title="Juego::drawBarra" alt="" coords="235,107,359,133"/>
+<area shape="rect" id="node6" href="$class_pop_up_count_down.html#a031b32f4dd22602dcc16c126ff597c1f" title="PopUpCountDown::update" alt="" coords="208,157,387,184"/>
+<area shape="rect" id="node7" href="$class_pop_up_mostrar_mensaje_texto.html#a53524c40d74ef454646d24bb1695f0aa" title="PopUpMostrarMensajeTexto\l::setText" alt="" coords="203,209,391,250"/>
+<area shape="rect" id="node8" href="$class_pop_up_mostrar_mensaje_texto.html#a2879964b8559ecfcae7248fbde33e8e3" title="PopUpMostrarMensajeTexto\l::createUI" alt="" coords="203,274,391,315"/>
+<area shape="rect" id="node9" href="$class_menu_modo_multijugador.html#aa87c06427be64fd73e17d9ea37d8744e" title="MenuModoMultijugador\l::createUI" alt="" coords="647,362,803,403"/>
+<area shape="rect" id="node10" href="$class_menu_modo_multijugador.html#a589a0611b7f3cf2978ff1ab72ce3b35c" title="MenuModoMultijugador\l::ejecutarAccionBotonClicked" alt="" coords="200,391,395,433"/>
+<area shape="rect" id="node5" href="$class_juego.html#afd62461e81bfd0dcbeecf082f2c023ec" title="Juego::draw" alt="" coords="474,107,567,133"/>
+<area shape="rect" id="node11" href="$class_menu_modo_multijugador.html#a3aee7e0e5ab94f1e866f9306aabed208" title="MenuModoMultijugador\l::clickControl" alt="" coords="443,391,599,433"/>
+<area shape="rect" id="node12" href="$class_menu_modo_multijugador.html#a6520fcac1cc0bff79f00c509e34afbd0" title="MenuModoMultijugador\l::procesarEvento" alt="" coords="443,457,599,498"/>
+</map>

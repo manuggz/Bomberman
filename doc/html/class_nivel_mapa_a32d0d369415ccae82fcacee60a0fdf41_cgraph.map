@@ -1,0 +1,7 @@
+<map id="NivelMapa::esBloqueRompible" name="NivelMapa::esBloqueRompible">
+<area shape="rect" id="node2" href="$class_nivel_mapa.html#a25f7e94605919f131b50746eba3b0f49" title="NivelMapa::getTileAt" alt="" coords="273,46,417,73"/>
+<area shape="rect" id="node6" href="$class_nivel_mapa.html#a62da61549a499de02cf3a4bd8d756911" title="NivelMapa::getPropertyTile" alt="" coords="255,97,435,123"/>
+<area shape="rect" id="node3" href="$class_nivel_mapa.html#ae95b7b0f8d4c7521b13a63b001213740" title="NivelMapa::getIndiceMapaAt" alt="" coords="483,46,673,73"/>
+<area shape="rect" id="node4" href="$class_nivel_mapa.html#afe955ab11816234cf050ab576a1ac0b6" title="NivelMapa::getIndiceFila\lMapaAt" alt="" coords="737,5,903,47"/>
+<area shape="rect" id="node5" href="$class_nivel_mapa.html#a080b8df56d1f9598c60ada0b215ccd97" title="NivelMapa::getIndiceColumna\lMapaAt" alt="" coords="721,71,919,112"/>
+</map>

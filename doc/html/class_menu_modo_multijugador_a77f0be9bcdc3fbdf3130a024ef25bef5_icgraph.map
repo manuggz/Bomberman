@@ -1,0 +1,6 @@
+<map id="MenuModoMultijugador::establecerTerrenoBatalla" name="MenuModoMultijugador::establecerTerrenoBatalla">
+<area shape="rect" id="node2" href="$class_menu_modo_multijugador.html#aa87c06427be64fd73e17d9ea37d8744e" title="MenuModoMultijugador\l::createUI" alt="" coords="675,5,831,47"/>
+<area shape="rect" id="node3" href="$class_menu_modo_multijugador.html#a589a0611b7f3cf2978ff1ab72ce3b35c" title="MenuModoMultijugador\l::ejecutarAccionBotonClicked" alt="" coords="228,35,423,76"/>
+<area shape="rect" id="node4" href="$class_menu_modo_multijugador.html#a3aee7e0e5ab94f1e866f9306aabed208" title="MenuModoMultijugador\l::clickControl" alt="" coords="471,35,627,76"/>
+<area shape="rect" id="node5" href="$class_menu_modo_multijugador.html#a6520fcac1cc0bff79f00c509e34afbd0" title="MenuModoMultijugador\l::procesarEvento" alt="" coords="471,100,627,141"/>
+</map>

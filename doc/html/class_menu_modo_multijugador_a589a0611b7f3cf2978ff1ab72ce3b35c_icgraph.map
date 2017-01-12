@@ -1,0 +1,5 @@
+<map id="MenuModoMultijugador::ejecutarAccionBotonClicked" name="MenuModoMultijugador::ejecutarAccionBotonClicked">
+<area shape="rect" id="node2" href="$class_menu_modo_multijugador.html#a3aee7e0e5ab94f1e866f9306aabed208" title="MenuModoMultijugador\l::clickControl" alt="" coords="248,5,404,47"/>
+<area shape="rect" id="node4" href="$class_menu_modo_multijugador.html#a6520fcac1cc0bff79f00c509e34afbd0" title="MenuModoMultijugador\l::procesarEvento" alt="" coords="248,71,404,112"/>
+<area shape="rect" id="node3" href="$class_menu_modo_multijugador.html#aa87c06427be64fd73e17d9ea37d8744e" title="MenuModoMultijugador\l::createUI" alt="" coords="452,5,608,47"/>
+</map>

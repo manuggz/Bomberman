@@ -1,0 +1,8 @@
+<map id="ControlAnimacion::cuadro" name="ControlAnimacion::cuadro">
+<area shape="rect" id="node2" href="$class_animacion.html#a9b52991c0710843e085326053b2ee568" title="Animacion::update" alt="" coords="235,17,366,43"/>
+<area shape="rect" id="node4" href="$class_animacion.html#aefb08950e8376addb0064df9fc39714a" title="Animacion::getCuadro" alt="" coords="225,71,376,98"/>
+<area shape="rect" id="node3" href="$class_juego_mostrar_ganadas.html#a049acb4e679c3c4357729badda704fab" title="PopUpJuegoMostrarGanadas\l::update" alt="" coords="441,5,595,47"/>
+<area shape="rect" id="node5" href="$class_explosion.html#aa381f273160b625c9a37e40e1ae0cda3" title="Explosion::detectarAlcances" alt="" coords="424,71,612,98"/>
+<area shape="rect" id="node7" href="$class_explosion.html#ad93f3cca36426268c06a1c832c4ad7f8" title="Explosion::draw" alt="" coords="461,122,575,149"/>
+<area shape="rect" id="node6" href="$class_juego.html#acaae61b971f3c2b767925db38da41d5c" title="Juego::eliminarSprite" alt="" coords="660,71,804,98"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="Component::setDisabled" name="Component::setDisabled">
+<area shape="rect" id="node2" href="$class_menu_list_label.html#adf653340269ada2e89b343ce37669d7d" title="MenuListLabel::resume" alt="" coords="228,5,385,32"/>
+<area shape="rect" id="node3" href="$class_menu_list_label.html#aa4b43b15d99168836a26ce8e9cf996a6" title="MenuListLabel::setOpcion\lResaltada" alt="" coords="220,57,393,98"/>
+<area shape="rect" id="node6" href="$class_layout_component.html#a0ee8a3146a3258a9886472b86cf34a16" title="LayoutComponent::draw" alt="" coords="225,247,389,273"/>
+<area shape="rect" id="node4" href="$class_menu_list_label.html#a7fb1ac75f91fe00f38706f74f6148cd6" title="MenuListLabel::procesarEvento" alt="" coords="441,5,647,32"/>
+<area shape="rect" id="node5" href="$class_menu_principal.html#a8870a656a23920c518bc2fbdf7c72a53" title="MenuPrincipal::setOpcion\lResaltada" alt="" coords="459,57,629,98"/>
+<area shape="rect" id="node7" href="$class_menu_list_label.html#a5fb48d986e1ea0f85428d3f52e98ef57" title="MenuListLabel::draw" alt="" coords="473,123,615,149"/>
+<area shape="rect" id="node8" href="$class_boton_component.html#a73c8c3014be82c952cd8d0e08beffcc5" title="BotonComponent\&lt; MenuModo\lMultijugador \&gt;::draw" alt="" coords="445,174,643,215"/>
+<area shape="rect" id="node9" href="$class_text_label_component.html#a6ca146eebb7ec244679223426a9d71da" title="LabelComponent\l::draw" alt="" coords="471,239,617,281"/>
+<area shape="rect" id="node10" href="$class_juego.html#afd62461e81bfd0dcbeecf082f2c023ec" title="Juego::draw" alt="" coords="497,305,591,332"/>
+<area shape="rect" id="node11" href="$class_pop_up_mostrar_mensaje_texto.html#a17f96444323a9694447b2cf279562414" title="PopUpMostrarMensajeTexto\l::draw" alt="" coords="450,357,638,398"/>
+<area shape="rect" id="node12" href="$class_menu_modo_multijugador.html#a1c4c4196780896d241ceaa6f696bc179" title="MenuModoMultijugador\l::draw" alt="" coords="466,422,622,463"/>
+</map>

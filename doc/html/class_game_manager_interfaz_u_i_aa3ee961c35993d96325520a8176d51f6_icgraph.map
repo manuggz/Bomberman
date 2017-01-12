@@ -1,0 +1,6 @@
+<map id="GameManagerInterfazUI::goBack" name="GameManagerInterfazUI::goBack">
+<area shape="rect" id="node2" href="$class_menu_list_label.html#a7fb1ac75f91fe00f38706f74f6148cd6" title="MenuListLabel::procesarEvento" alt="" coords="219,5,424,32"/>
+<area shape="rect" id="node3" href="$class_juego.html#ac141311099a222492201a52842c207b7" title="Juego::resultPopUp" alt="" coords="253,56,390,83"/>
+<area shape="rect" id="node4" href="$class_juego.html#a67ecc26b162fcdad6471884a0e55f0a0" title="Juego::procesarEvento" alt="" coords="243,107,399,133"/>
+<area shape="rect" id="node5" href="$class_menu_modo_multijugador.html#a6520fcac1cc0bff79f00c509e34afbd0" title="MenuModoMultijugador\l::procesarEvento" alt="" coords="243,158,399,199"/>
+</map>

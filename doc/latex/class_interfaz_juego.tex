@@ -1,0 +1,68 @@
+\hypertarget{class_interfaz_juego}{}\section{Interfaz\+Juego Class Reference}
+\label{class_interfaz_juego}\index{Interfaz\+Juego@{Interfaz\+Juego}}
+
+
+{\ttfamily \#include $<$Interfaz\+Juego.\+hpp$>$}
+
+
+
+Inheritance diagram for Interfaz\+Juego\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{class_interfaz_juego__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{class_l_texture}{L\+Texture} $\ast$ {\bfseries get\+Imagen} (Galeria\+::\+Code\+Imagen code)=0\hypertarget{class_interfaz_juego_ab222b3f39dea890b71acdc3150e66d6d}{}\label{class_interfaz_juego_ab222b3f39dea890b71acdc3150e66d6d}
+
+\item 
+virtual S\+D\+L\+\_\+\+Joystick $\ast$ {\bfseries get\+Joy} (int id)=0\hypertarget{class_interfaz_juego_aed1ee6c2c0b68dfb5cdb9a0514bfc1f1}{}\label{class_interfaz_juego_aed1ee6c2c0b68dfb5cdb9a0514bfc1f1}
+
+\item 
+virtual int {\bfseries get\+Joys\+Activos} ()=0\hypertarget{class_interfaz_juego_aafadb2ec09cf94823e48e884a609a054}{}\label{class_interfaz_juego_aafadb2ec09cf94823e48e884a609a054}
+
+\item 
+virtual Nivel\+Mapa\+::\+Extremo\+Colision {\bfseries colision\+Con\+Mapa} (S\+D\+L\+\_\+\+Rect rect\+\_\+coli, int $\ast$lado\+\_\+colision=nullptr, bool solo\+Bloques\+No\+Traspasables=false)=0\hypertarget{class_interfaz_juego_ab744f7c22be984491e63dcbd5b05c556}{}\label{class_interfaz_juego_ab744f7c22be984491e63dcbd5b05c556}
+
+\item 
+virtual deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries colision\+Con\+Bombas} (S\+D\+L\+\_\+\+Rect rect)=0\hypertarget{class_interfaz_juego_a78f25518403ce658e93e528dc99ac5b9}{}\label{class_interfaz_juego_a78f25518403ce658e93e528dc99ac5b9}
+
+\item 
+virtual deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries colision\+Bloque\+En\+Llamas} (S\+D\+L\+\_\+\+Rect rect)=0\hypertarget{class_interfaz_juego_a4d3aa11daa5f3e98d7f3cfe4cb00b636}{}\label{class_interfaz_juego_a4d3aa11daa5f3e98d7f3cfe4cb00b636}
+
+\item 
+virtual deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries colision\+Con\+Items} (S\+D\+L\+\_\+\+Rect rect)=0\hypertarget{class_interfaz_juego_abb32e88a7358328dc66bdcf1538976bc}{}\label{class_interfaz_juego_abb32e88a7358328dc66bdcf1538976bc}
+
+\item 
+virtual deque$<$ \hyperlink{class_sprite}{Sprite} $\ast$ $>$ {\bfseries colision\+Con\+Explosiones} (S\+D\+L\+\_\+\+Rect rect)=0\hypertarget{class_interfaz_juego_adf29f16f79645436c70efef98b522608}{}\label{class_interfaz_juego_adf29f16f79645436c70efef98b522608}
+
+\item 
+virtual bool {\bfseries is\+Out\+Of\+Map\+Bounds} (S\+D\+L\+\_\+\+Rect rect)=0\hypertarget{class_interfaz_juego_a4a7543a340f74cff355aa900329f5c89}{}\label{class_interfaz_juego_a4a7543a340f74cff355aa900329f5c89}
+
+\item 
+virtual \hyperlink{class_bomba}{Bomba} $\ast$ {\bfseries agregar\+Bomba} (\hyperlink{class_player}{Player} $\ast$player\+Propietario)=0\hypertarget{class_interfaz_juego_a51f9c4d2cbb8d897bae5f201e5e800c1}{}\label{class_interfaz_juego_a51f9c4d2cbb8d897bae5f201e5e800c1}
+
+\item 
+virtual \hyperlink{class_tile_en_llamas}{Tile\+En\+Llamas} $\ast$ {\bfseries agregar\+Bloque\+En\+Llamas} (int x, int y)=0\hypertarget{class_interfaz_juego_a9acf8fb9f782d448043535d553fb7535}{}\label{class_interfaz_juego_a9acf8fb9f782d448043535d553fb7535}
+
+\item 
+virtual bool {\bfseries es\+Bloque\+Solido} (int x, int y)=0\hypertarget{class_interfaz_juego_ac4c1573e92f587b81843e7cab25e2581}{}\label{class_interfaz_juego_ac4c1573e92f587b81843e7cab25e2581}
+
+\item 
+virtual bool {\bfseries es\+Bloque\+Rompible} (int x, int y)=0\hypertarget{class_interfaz_juego_a3fb994485276a791e67e7d4290c1ea34}{}\label{class_interfaz_juego_a3fb994485276a791e67e7d4290c1ea34}
+
+\item 
+virtual void {\bfseries player\+Muerto} (\hyperlink{class_player}{Player} $\ast$p\+Player, \hyperlink{class_sprite}{Sprite} $\ast$p\+Player\+Causante)=0\hypertarget{class_interfaz_juego_a8a696b1e5b7998e786e3537788f4c9a6}{}\label{class_interfaz_juego_a8a696b1e5b7998e786e3537788f4c9a6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Esta clase contiene las funciones que un 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Interfaces/juego/\hyperlink{_interfaz_juego_8hpp}{Interfaz\+Juego.\+hpp}\end{DoxyCompactItemize}

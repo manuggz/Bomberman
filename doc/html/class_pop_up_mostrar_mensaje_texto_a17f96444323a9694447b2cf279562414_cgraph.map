@@ -1,0 +1,14 @@
+<map id="PopUpMostrarMensajeTexto::draw" name="PopUpMostrarMensajeTexto::draw">
+<area shape="rect" id="node2" href="$class_pop_up_interfaz.html#acd9384b541df0cb1d075cef6f6b88708" title="PopUpInterfaz::draw" alt="" coords="264,5,407,32"/>
+<area shape="rect" id="node3" href="$class_layout_absolute.html#aba1ab3840e566a65bdecb4ba8a249eac" title="LayoutAbsolute::isDisabled" alt="" coords="245,56,426,83"/>
+<area shape="rect" id="node4" href="$class_pop_up_mostrar_mensaje_texto.html#a1bb00f3c31e204ed8d34982cd94378ac" title="PopUpMostrarMensajeTexto\l::packLayout" alt="" coords="241,107,429,149"/>
+<area shape="rect" id="node10" href="$class_layout_component.html#a0ee8a3146a3258a9886472b86cf34a16" title="LayoutComponent::draw" alt="" coords="253,195,417,221"/>
+<area shape="rect" id="node5" href="$class_game_manager_pop_up_interfaz.html#a02a36f94f6986f434d33bae658581b32" title="GameManagerPopUpInterfaz\l::getRectScreen" alt="" coords="483,27,674,69"/>
+<area shape="rect" id="node6" href="$class_layout_absolute.html#a9807517212f0015c0a67399a35f1ff36" title="LayoutAbsolute::pack" alt="" coords="505,93,653,120"/>
+<area shape="rect" id="node8" href="$class_layout_absolute.html#a09327626b1406cdfad158c13353f0c86" title="LayoutAbsolute::setRectDibujo" alt="" coords="477,144,680,171"/>
+<area shape="rect" id="node7" href="$util_8cpp.html#a0ace920286687a9b537e58100552cd25" title="unir_rects" alt="" coords="779,93,857,120"/>
+<area shape="rect" id="node9" href="$class_component.html#a06933061417ef2fec8588e731802c76b" title="Component::setRectDibujo" alt="" coords="728,144,908,171"/>
+<area shape="rect" id="node11" href="$class_component.html#ab1ea202c9ef8933d15956b96cfe281a1" title="Component::draw" alt="" coords="516,195,641,221"/>
+<area shape="rect" id="node13" href="$class_component.html#a1440d7c2b2c4bfd8310931b54e8f4e61" title="Component::setDisabled" alt="" coords="495,245,662,272"/>
+<area shape="rect" id="node12" href="$class_l_texture.html#a7edbf22bd4e3f5efd60e20b913d1dcc4" title="LTexture::render" alt="" coords="759,195,877,221"/>
+</map>

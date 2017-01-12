@@ -1,0 +1,4 @@
+<map id="TetrisInterfaz" name="TetrisInterfaz">
+<area shape="rect" id="node2" href="$class_interfaz_u_i.html" title="InterfazUI" alt="" coords="5,5,85,32"/>
+<area shape="rect" id="node3" href="$class_interfaz_juego_tetris.html" title="InterfazJuegoTetris" alt="" coords="110,5,245,32"/>
+</map>

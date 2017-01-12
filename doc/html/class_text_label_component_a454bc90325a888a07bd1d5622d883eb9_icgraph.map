@@ -1,0 +1,6 @@
+<map id="LabelComponent::setFont" name="LabelComponent::setFont">
+<area shape="rect" id="node2" href="$class_menu_list_label.html#aa4622ae2bc0bf7d31aa8fe8483103e27" title="MenuListLabel::createUI" alt="" coords="212,5,376,32"/>
+<area shape="rect" id="node3" href="$class_juego.html#a8dd19e6a53b446292e3e15e5e164ed05" title="Juego::createUI" alt="" coords="237,56,351,83"/>
+<area shape="rect" id="node4" href="$class_pop_up_mostrar_mensaje_texto.html#a2879964b8559ecfcae7248fbde33e8e3" title="PopUpMostrarMensajeTexto\l::createUI" alt="" coords="200,107,388,149"/>
+<area shape="rect" id="node5" href="$class_menu_modo_multijugador.html#aa87c06427be64fd73e17d9ea37d8744e" title="MenuModoMultijugador\l::createUI" alt="" coords="216,173,372,214"/>
+</map>

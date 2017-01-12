@@ -1,0 +1,4 @@
+<map id="GameManager::closePopUp" name="GameManager::closePopUp">
+<area shape="rect" id="node2" href="$class_pop_up_interfaz.html#af1a1f054faea40813866f74513e65484" title="PopUpInterfaz::isStopped" alt="" coords="240,5,412,32"/>
+<area shape="rect" id="node3" href="$class_pop_up_interfaz.html#ab85113ec1af869a1d5d7ea45f52f313b" title="PopUpInterfaz::stop" alt="" coords="257,56,395,83"/>
+</map>

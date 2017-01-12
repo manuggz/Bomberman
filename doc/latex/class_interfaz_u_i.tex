@@ -1,0 +1,196 @@
+\hypertarget{class_interfaz_u_i}{}\section{Interfaz\+UI Class Reference}
+\label{class_interfaz_u_i}\index{Interfaz\+UI@{Interfaz\+UI}}
+
+
+{\ttfamily \#include $<$Interfaz\+U\+I.\+hpp$>$}
+
+
+
+Inheritance diagram for Interfaz\+UI\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interfaz_u_i__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Interfaz\+UI\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{class_interfaz_u_i__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_interfaz_u_i_aa6578b54c6ff801c9757ea6b9fdfba18}{Interfaz\+UI} (\hyperlink{class_game_manager_interfaz_u_i}{Game\+Manager\+Interfaz\+UI} $\ast$game\+Manager\+Interfaz)
+\item 
+virtual void \hyperlink{class_interfaz_u_i_a312ba3176f7778589cd67f1828682012}{prepare} ()
+\item 
+virtual void \hyperlink{class_interfaz_u_i_a9dd59265e0790f06862fdfb12494767e}{create\+UI} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)
+\item 
+virtual void \hyperlink{class_interfaz_u_i_a2a80214a4387c21c34a617a8a96996ca}{start} ()
+\item 
+virtual bool \hyperlink{class_interfaz_u_i_aa733a6aaaafc47daabae6a3156b97e18}{is\+Paused} ()
+\item 
+virtual bool \hyperlink{class_interfaz_u_i_a46a55209d8216f9afcc52313aacd6083}{is\+Started} ()
+\item 
+virtual bool \hyperlink{class_interfaz_u_i_a6514cf3d3d8c8d3faf01ee917ab0d4c1}{is\+Stopped} ()
+\item 
+virtual void {\bfseries pause} ()\hypertarget{class_interfaz_u_i_a1f20c514d5b0fd3965d5a1beb737f14c}{}\label{class_interfaz_u_i_a1f20c514d5b0fd3965d5a1beb737f14c}
+
+\item 
+virtual void {\bfseries stop} ()\hypertarget{class_interfaz_u_i_a64b64ee8944584ffbb3e478ab91ab280}{}\label{class_interfaz_u_i_a64b64ee8944584ffbb3e478ab91ab280}
+
+\item 
+virtual void {\bfseries resume} ()\hypertarget{class_interfaz_u_i_a9aaf3c1c5e7b46e791db0939deaaf15c}{}\label{class_interfaz_u_i_a9aaf3c1c5e7b46e791db0939deaaf15c}
+
+\item 
+virtual void {\bfseries procesar\+Evento} (S\+D\+L\+\_\+\+Event $\ast$event)\hypertarget{class_interfaz_u_i_adda39beb91f3089dd32d66ff2a5cea23}{}\label{class_interfaz_u_i_adda39beb91f3089dd32d66ff2a5cea23}
+
+\item 
+virtual void {\bfseries update} ()\hypertarget{class_interfaz_u_i_aac531d5813cbf9d7595c8c908ab3fbbc}{}\label{class_interfaz_u_i_aac531d5813cbf9d7595c8c908ab3fbbc}
+
+\item 
+virtual void {\bfseries update\+When\+Pop\+Up} ()\hypertarget{class_interfaz_u_i_ac1bb29ecec25c6087fbbcf31f8b800b7}{}\label{class_interfaz_u_i_ac1bb29ecec25c6087fbbcf31f8b800b7}
+
+\item 
+virtual void {\bfseries result\+Pop\+Up} (void $\ast$result, int i)\hypertarget{class_interfaz_u_i_a3ced38e69975a52d3754e9d162f36a2a}{}\label{class_interfaz_u_i_a3ced38e69975a52d3754e9d162f36a2a}
+
+\item 
+virtual void {\bfseries draw} (S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)=0\hypertarget{class_interfaz_u_i_ae5be2033f8219024253243d38f570a64}{}\label{class_interfaz_u_i_ae5be2033f8219024253243d38f570a64}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_manager_interfaz_u_i}{Game\+Manager\+Interfaz\+UI} $\ast$ {\bfseries m\+Game\+Manager\+Interfaz}\hypertarget{class_interfaz_u_i_adf577e23c777efaf6e9323f8f3ac847a}{}\label{class_interfaz_u_i_adf577e23c777efaf6e9323f8f3ac847a}
+
+\item 
+bool {\bfseries m\+Is\+Paused} = false\hypertarget{class_interfaz_u_i_a060ab00c29297fc4e34395d731c5415e}{}\label{class_interfaz_u_i_a060ab00c29297fc4e34395d731c5415e}
+
+\item 
+bool {\bfseries m\+Is\+Started} = false\hypertarget{class_interfaz_u_i_aa5920e1cb002b0a09380841149ec6b84}{}\label{class_interfaz_u_i_aa5920e1cb002b0a09380841149ec6b84}
+
+\item 
+bool {\bfseries m\+Is\+Stopped} = false\hypertarget{class_interfaz_u_i_a067e003fadf4e356b9533d15138566f7}{}\label{class_interfaz_u_i_a067e003fadf4e356b9533d15138566f7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Clase base para todas las interfaces mostradas al usuario. Maneja estados como Pausado/\+Comenzado.
+
+Los metodos son llamados por el \hyperlink{class_game_manager}{Game\+Manager}, algunos siguen un Orden.
+
+El Orden de llamada desde el \hyperlink{class_game_manager}{Game\+Manager} es\+:
+
+\hyperlink{class_interfaz_u_i_a312ba3176f7778589cd67f1828682012}{prepare()} \hyperlink{class_interfaz_u_i_a9dd59265e0790f06862fdfb12494767e}{create\+U\+I()} \hyperlink{class_interfaz_u_i_a2a80214a4387c21c34a617a8a96996ca}{start()}
+
+Cuando un Pop\+Up se va a mostrar o se agrega una interfaz al stack se llama a pause().
+
+Cuando se establece un root en el GM o se hace back en el GM se llama a stop. \begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_2home_2manuggz_2_documents_2_projects_2_bomberman_2src_2engine_2interfaces_2_menu_list_label_8hpp-example}{/home/manuggz/\+Documents/\+Projects/\+Bomberman/src/engine/interfaces/\+Menu\+List\+Label.\+hpp}.\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Interfaz\+UI@{Interfaz\+UI}!Interfaz\+UI@{Interfaz\+UI}}
+\index{Interfaz\+UI@{Interfaz\+UI}!Interfaz\+UI@{Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{Interfaz\+U\+I(\+Game\+Manager\+Interfaz\+U\+I $\ast$game\+Manager\+Interfaz)}{InterfazUI(GameManagerInterfazUI *gameManagerInterfaz)}}]{\setlength{\rightskip}{0pt plus 5cm}Interfaz\+U\+I\+::\+Interfaz\+UI (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Manager\+Interfaz\+UI} $\ast$}]{game\+Manager\+Interfaz}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_interfaz_u_i_aa6578b54c6ff801c9757ea6b9fdfba18}{}\label{class_interfaz_u_i_aa6578b54c6ff801c9757ea6b9fdfba18}
+Establece una referencia a un \hyperlink{class_game_manager}{Game\+Manager}. 
+\begin{DoxyParams}{Parameters}
+{\em game\+Manager\+Interfaz} & Instancia de un \hyperlink{class_game_manager}{Game\+Manager} que implemente la interfaz requerida \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_2home_2manuggz_2_documents_2_projects_2_bomberman_2src_2engine_2interfaces_2_menu_list_label_8hpp-example}{/home/manuggz/\+Documents/\+Projects/\+Bomberman/src/engine/interfaces/\+Menu\+List\+Label.\+hpp}.\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\index{Interfaz\+UI@{Interfaz\+UI}!create\+UI@{create\+UI}}
+\index{create\+UI@{create\+UI}!Interfaz\+UI@{Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{create\+U\+I(\+S\+D\+L\+\_\+\+Renderer $\ast$g\+Renderer)}{createUI(SDL_Renderer *gRenderer)}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Interfaz\+U\+I\+::create\+UI (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{g\+Renderer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_interfaz_u_i_a9dd59265e0790f06862fdfb12494767e}{}\label{class_interfaz_u_i_a9dd59265e0790f06862fdfb12494767e}
+Este metodo se encarga de crear la UI necesaria/inicial de la interfaz. En algunos juegos no es necesario establecer UI en este metodo, sino dibujarlo tod cuando se llama a Interfaz\+U\+I\+::draw
+
+Sin embargo, crear los elementos de la UI por adelantado ayuda en la utilización de dirty rects y parecidos. 
+\begin{DoxyParams}{Parameters}
+{\em g\+Renderer} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_tetris_interfaz_a31071ba2d473bfc4cd600f9d4cac2e11}{Tetris\+Interfaz}, \hyperlink{class_menu_list_label_aa4622ae2bc0bf7d31aa8fe8483103e27}{Menu\+List\+Label}, \hyperlink{class_othello_interfaz_af54c0303476eca871b509d6b77151abe}{Othello\+Interfaz}, \hyperlink{class_menu_modo_multijugador_aa87c06427be64fd73e17d9ea37d8744e}{Menu\+Modo\+Multijugador}, \hyperlink{class_juego_a8dd19e6a53b446292e3e15e5e164ed05}{Juego}, \hyperlink{class_menu_a71c36f40cdf039d07172222f4e1c4566}{Menu}, and \hyperlink{class_menu_a71c36f40cdf039d07172222f4e1c4566}{Menu}.
+
+\index{Interfaz\+UI@{Interfaz\+UI}!is\+Paused@{is\+Paused}}
+\index{is\+Paused@{is\+Paused}!Interfaz\+UI@{Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{is\+Paused()}{isPaused()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Interfaz\+U\+I\+::is\+Paused (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_interfaz_u_i_aa733a6aaaafc47daabae6a3156b97e18}{}\label{class_interfaz_u_i_aa733a6aaaafc47daabae6a3156b97e18}
+Dice si la interfaz está pausada. Lo cual puede suceder debido a que se está mostrando un Pop\+Up al usuario, o que hay otra interfaz en el top de la pila. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Interfaz\+UI@{Interfaz\+UI}!is\+Started@{is\+Started}}
+\index{is\+Started@{is\+Started}!Interfaz\+UI@{Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{is\+Started()}{isStarted()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Interfaz\+U\+I\+::is\+Started (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_interfaz_u_i_a46a55209d8216f9afcc52313aacd6083}{}\label{class_interfaz_u_i_a46a55209d8216f9afcc52313aacd6083}
+Dice si se ha iniciado la interfaz. Una interfaz se considera iniciada si ejecuta \hyperlink{class_interfaz_u_i_a312ba3176f7778589cd67f1828682012}{prepare()}-\/$>$\hyperlink{class_interfaz_u_i_a9dd59265e0790f06862fdfb12494767e}{create\+U\+I()}-\/$>$\hyperlink{class_interfaz_u_i_a2a80214a4387c21c34a617a8a96996ca}{start()} \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Interfaz\+UI@{Interfaz\+UI}!is\+Stopped@{is\+Stopped}}
+\index{is\+Stopped@{is\+Stopped}!Interfaz\+UI@{Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{is\+Stopped()}{isStopped()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Interfaz\+U\+I\+::is\+Stopped (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_interfaz_u_i_a6514cf3d3d8c8d3faf01ee917ab0d4c1}{}\label{class_interfaz_u_i_a6514cf3d3d8c8d3faf01ee917ab0d4c1}
+Dice si la interfaz está detenida. Una vez que la interfaz está detenida no se vuelve a ejecutar. Cuando el GM detecta una interfaz detenida la elimina. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Interfaz\+UI@{Interfaz\+UI}!prepare@{prepare}}
+\index{prepare@{prepare}!Interfaz\+UI@{Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{prepare()}{prepare()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Interfaz\+U\+I\+::prepare (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_interfaz_u_i_a312ba3176f7778589cd67f1828682012}{}\label{class_interfaz_u_i_a312ba3176f7778589cd67f1828682012}
+Se encarga de establecer valores de variables iniciales de la Interfaz Este metodo se ejecuta antes de create\+UI, por lo que puede usarse para obtener datos necesarios para la creacion de la UI 
+
+Reimplemented in \hyperlink{class_menu_list_label_aaa91bf445c3db2fa2008a06b5e96df24}{Menu\+List\+Label}, \hyperlink{class_tetris_interfaz_abc98e6a4974e89f5dd40177439c07d54}{Tetris\+Interfaz}, \hyperlink{class_menu_modo_multijugador_a422baa9893784cacd414b13fbd34e7d2}{Menu\+Modo\+Multijugador}, \hyperlink{class_juego_a5db4a2c61a5853c6a02341d0b9e77cbb}{Juego}, \hyperlink{class_othello_interfaz_ab090b9f23617c40327b0ea0f0bd7cd6e}{Othello\+Interfaz}, \hyperlink{class_menu_a12119ab1b9abbc5215f6b80be4e3f94b}{Menu}, and \hyperlink{class_menu_a12119ab1b9abbc5215f6b80be4e3f94b}{Menu}.
+
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_2home_2manuggz_2_documents_2_projects_2_bomberman_2src_2engine_2interfaces_2_menu_list_label_8hpp-example}{/home/manuggz/\+Documents/\+Projects/\+Bomberman/src/engine/interfaces/\+Menu\+List\+Label.\+hpp}.\end{Desc}
+\index{Interfaz\+UI@{Interfaz\+UI}!start@{start}}
+\index{start@{start}!Interfaz\+UI@{Interfaz\+UI}}
+\subsubsection[{\texorpdfstring{start()}{start()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Interfaz\+U\+I\+::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_interfaz_u_i_a2a80214a4387c21c34a617a8a96996ca}{}\label{class_interfaz_u_i_a2a80214a4387c21c34a617a8a96996ca}
+Este metodo se encarga de Iniciar la Interfaz, al igual que los anteriores métodos. Este metodo debe usarse para dividir el inicio de variables y elementos del juego. 
+
+Reimplemented in \hyperlink{class_tetris_interfaz_a9a600a6aab6f3d92b1792e35d3ae4897}{Tetris\+Interfaz}, \hyperlink{class_menu_ae3d38e9e9b2bfc6a99810fbd178a9f04}{Menu}, \hyperlink{class_menu_ae3d38e9e9b2bfc6a99810fbd178a9f04}{Menu}, \hyperlink{class_othello_interfaz_aea74ce8b825eda869992d18268cdddb2}{Othello\+Interfaz}, and \hyperlink{class_juego_a83e5a1132a5355c34c31d219b4d035dc}{Juego}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/engine/interfaces/Interfaz\+U\+I.\+hpp\end{DoxyCompactItemize}
