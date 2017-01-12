@@ -355,6 +355,7 @@ void GameManager::run(){
                 interfaz_actual->prepare();
                 interfaz_actual->createUI(gRenderer);
                 interfaz_actual->start();
+                interfaz_actual->resume();
             }
         }
 

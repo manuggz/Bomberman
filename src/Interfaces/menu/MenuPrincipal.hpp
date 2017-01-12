@@ -26,7 +26,9 @@ public:
 
     void createUI(SDL_Renderer *renderer) override {
         MenuListLabel::createUI(renderer);
+        mLayoutBackGround->setBackgroundTexture(renderer,"data/imagenes/fondos/fondo_menu.bmp",false);
         mpSfxCambiarOpcionResaltada = new EfectoSonido("data/sonidos/ping_2.wav",100);
+        musicaFondoMenu = new MusicaFondo("data/sonidos/musica_1.mid");
     }
 
     virtual bool setOpcionResaltada(int nuevaOpcion) override {
@@ -35,6 +37,18 @@ public:
             return true;
         }
         return false;
+    }
+
+    void resume() override {
+        MenuListLabel::resume();
+        if(!Mix_PlayingMusic()){
+            musicaFondoMenu->play();
+        }
+    }
+
+    void start() override {
+        InterfazGrafica::start();
+
     }
 
     void ejecutarAccionOpcionResaltada() {
@@ -62,6 +76,7 @@ public:
     ~MenuPrincipal() override {
         SDL_Log("MenuPrincipal::~MenuPrincipal");
         delete mpSfxCambiarOpcionResaltada;
+        delete musicaFondoMenu;
     }
 
 private:
@@ -73,5 +88,6 @@ private:
     }MenuOption;
 
     EfectoSonido * mpSfxCambiarOpcionResaltada;
+    MusicaFondo *musicaFondoMenu;
 };
 #endif //BOMBERMAN_MENUPRINCIPAL_HPP

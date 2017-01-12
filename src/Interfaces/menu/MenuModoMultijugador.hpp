@@ -151,6 +151,7 @@ public:
         mpSfxPressJugar  = new EfectoSonido("data/sonidos/ping_5.wav",100);
         mpSfxTogglePlayerEstado = new EfectoSonido("data/sonidos/ping_3.wav",100);
 
+        musicaFondoMenu = new MusicaFondo("data/sonidos/musica_1.mid");
 
         mpTextureTablero = new LTexture();
         mpTextureTablero->cargarDesdeArchivo("data/imagenes/objetos/tablero.bmp",gRenderer,true);
@@ -306,6 +307,9 @@ public:
         //cout << "MenuModoMultijugador::resume"<<endl;
         mIsPaused = false;
         SDL_ShowCursor(SDL_ENABLE);
+        if(!Mix_PlayingMusic()){
+            musicaFondoMenu->play();
+        }
     }
 
     virtual void procesarEvento(SDL_Event *event) override {
@@ -399,6 +403,7 @@ public:
         //SDL_FreeSurface(previewTerreno);
         //delete dataNivel;
         delete mLayoutParent;
+        delete musicaFondoMenu;
     }
 private:
     
@@ -471,6 +476,7 @@ private:
 
     SpriteSheet * mpSpriteSheetPlayer[_PLAYERS];
     SpriteSheet * mpSpriteSheetCarasBomberman;
+    MusicaFondo *musicaFondoMenu;
 
 };
 #endif //BOMBERMAN_MENUMODOMULTIJUGADOR_HPP

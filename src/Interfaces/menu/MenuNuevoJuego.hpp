@@ -19,6 +19,24 @@ public:
         mMenuOpcionesText.push_back("Conexion");
     }
 
+    void createUI(SDL_Renderer *renderer) override {
+        MenuListLabel::createUI(renderer);
+        mLayoutBackGround->setBackgroundTexture(renderer,"data/imagenes/fondos/fondo_menu.bmp",false);
+        mpSfxCambiarOpcionResaltada = new EfectoSonido("data/sonidos/ping_2.wav",100);
+    }
+
+    void start() override {
+        InterfazGrafica::start();
+
+    }
+
+    virtual bool setOpcionResaltada(int nuevaOpcion) override {
+        if(MenuListLabel::setOpcionResaltada(nuevaOpcion)){
+            mpSfxCambiarOpcionResaltada->play();
+            return true;
+        }
+        return false;
+    }
     void ejecutarAccionOpcionResaltada() {
         switch(mOpcionMenuResaltadaActual){
             case MENU_OPCION_HISTORIA:
@@ -37,6 +55,7 @@ public:
 
     ~MenuNuevoJuego() override {
         SDL_Log("MenuNuevoJuego::~MenuNuevoJuego");
+        delete mpSfxCambiarOpcionResaltada;
     }
 
 private:
@@ -47,6 +66,7 @@ private:
         MENU_OPCION_MULTIPLAYER,
         MENU_OPCION_CONEXION,
     }MenuOption;
+    EfectoSonido * mpSfxCambiarOpcionResaltada;
 
 };
 #endif //BOMBERMAN_MENUPRINCIPAL_HPP
