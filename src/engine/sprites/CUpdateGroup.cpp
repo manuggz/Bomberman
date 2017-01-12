@@ -41,7 +41,7 @@ void UpdateGroup::update(const Uint8 *keys){
         while(iteSprEliminado != mEliminadosEnUpdate.end()){
             if(*iteSprEliminado == *p_Sprite){
                 estaEliminado = true;
-                mEliminadosEnUpdate.erase(iteSprEliminado);
+                //mEliminadosEnUpdate.erase(iteSprEliminado);
                 break;
             }
             iteSprEliminado++;

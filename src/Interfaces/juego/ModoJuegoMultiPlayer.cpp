@@ -82,6 +82,7 @@ void ModoJuegoMultiPlayer::createUI(SDL_Renderer *gRenderer) {
         }
     }
     mpVidasRestantesPlayer[PLAYER_1]->setLayoutParam(LAYOUT_PARAM_X,"18");
+    mpVidasRestantesPlayer[PLAYER_1]->setLayoutParam(LAYOUT_PARAM_X,"18");
     mpVidasRestantesPlayer[PLAYER_1]->setLayoutParam(LAYOUT_PARAM_Y,"1");
 
     // Componente para las vidas restantes del player 2
@@ -555,7 +556,9 @@ void ModoJuegoMultiPlayer::eliminarSprite(Sprite *sprite) {
         return;
     }
 
-    delete sprite;
+    if(dynamic_cast<Explosion *>(sprite)){
+        delete sprite;
+    }
     return;
 }
 /**

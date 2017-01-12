@@ -28,6 +28,7 @@ public:
 
         if(mTexture != nullptr){
             delete mTexture;
+            mTexture = nullptr;
         }
         mTexture = new LTexture();
         mTexture->cargarDesdeArchivo(ruta, gRenderer, colorClave);

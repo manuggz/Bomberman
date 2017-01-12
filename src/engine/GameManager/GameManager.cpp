@@ -36,11 +36,10 @@ GameManager::GameManager(std::string caption,std::string ruta_icono, unsigned in
 void GameManager::iniciarLibreriaSDL(){
 
    if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_JOYSTICK)<0){
-       std::cerr << "[ERROR] No se pudo inciar SDL" << SDL_GetError();
+       std::cerr << "[ERROR] No se pudo inciar SDL" << SDL_GetError() <<std::endl;
        exit(EXIT_FAILURE);
    }
 
-    atexit(SDL_Quit); // Programamos que se cierre SDL al salir
 
     if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT,MIX_DEFAULT_CHANNELS, 4096) < 0) {
         std::cerr << "[WARNING]%s" << SDL_GetError();
@@ -153,9 +152,13 @@ bool GameManager::procesarEventos(){
                 salir_juego=true;
                 return false;
             case SDL_KEYDOWN:
-                if((evento.key.keysym.sym==SDLK_RETURN && evento.key.keysym.mod & SDLK_LSHIFT)||
-                (evento.key.keysym.sym==SDLK_f && evento.key.keysym.mod & SDLK_LSHIFT)){
-                    establecerModoDeVideo(full);
+                if(evento.key.keysym.sym==SDLK_RETURN && evento.key.keysym.mod & SDLK_LSHIFT){
+                    if(full){
+                        SDL_SetWindowFullscreen(mMainWindow,0);
+                    }else{
+                        SDL_SetWindowFullscreen(mMainWindow,SDL_WINDOW_FULLSCREEN);
+                    }
+                    //establecerModoDeVideo(full);
                     full=!full;
                     return false;
                 }
@@ -342,6 +345,7 @@ GameManager::~GameManager(){
     if(mIniciadoModuloSonido)
         Mix_CloseAudio();
     TTF_Quit();
+    SDL_Quit();
 }
 
 
