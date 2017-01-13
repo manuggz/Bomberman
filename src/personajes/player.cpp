@@ -131,14 +131,14 @@ void Player::update(const Uint8 * teclas){
 void Player::activarPoderItem(Item::TipoItem tipo){
     switch(tipo){
         case Item::ITEM_ALCANCE:
-            if(mAlcanBombas < MAX_ALCANCE_EXPLOSION)
+            if(mAlcanBombas < N_MAX_ALCANCE_EXPLOSION)
                 mAlcanBombas++;
             break;
         case Item::ITEM_VIDA:
             mVidas++;
             break;
         case Item::ITEM_BOMBA:
-            if(mNBombasDisponibles < MAX_BOMBAS)
+            if(mNBombasDisponibles < N_MAX_BOMBAS)
                 mNBombasDisponibles++;
             break;
         case Item::ITEM_ATRAVIESA_PAREDES:
@@ -148,10 +148,10 @@ void Player::activarPoderItem(Item::TipoItem tipo){
             //activarPoderItem(juego->getTipoNuevoItem(false));
             break;
         case Item::ITEM_BOMBA_MAX:
-            mNBombasDisponibles = MAX_BOMBAS;
+            mNBombasDisponibles = N_MAX_BOMBAS;
             break;
         case Item::ITEM_ALCANCE_MAX:
-            mAlcanBombas        = MAX_ALCANCE_EXPLOSION;
+            mAlcanBombas        = N_MAX_ALCANCE_EXPLOSION;
             break;
         case Item::ITEM_PROTECCION:
             setProteccion(20);
@@ -213,7 +213,7 @@ void Player::ponerBomba(const Uint8 * teclas){
     TipoSprite conjun_coli[]={BOMBA,GLOBO,NIVEL,ITEM};
 
     updateRectColision();
-	if(!mMantieneAccionPresionado&&isPressed(TECLA_ACCION,teclas)
+	if(!mMantieneAccionPresionado&&isPressed(ControlPlayer::TECLA_ACCION,teclas)
        &&mNBombasColocadas < mNBombasDisponibles){
 
         Bomba *pBombaColocada = mpJuego->agregarBomba(this);
@@ -224,7 +224,7 @@ void Player::ponerBomba(const Uint8 * teclas){
             }
         }
 
-	mMantieneAccionPresionado = isPressed(TECLA_ACCION,teclas);
+	mMantieneAccionPresionado = isPressed(ControlPlayer::TECLA_ACCION,teclas);
 }
 
 bool Player::colision(SDL_Rect & rect){
@@ -233,16 +233,16 @@ bool Player::colision(SDL_Rect & rect){
 }
 
 void Player::parado(const Uint8 * teclas) {
-        if(isPressed(TECLA_ARRIBA,teclas))
+        if(isPressed(ControlPlayer::TECLA_ARRIBA,teclas))
             cambiarEstado(ARRIBA);
     
-        if(isPressed(TECLA_ABAJO,teclas))
+        if(isPressed(ControlPlayer::TECLA_ABAJO,teclas))
             cambiarEstado (ABAJO);
     
-        if(isPressed(TECLA_IZQUIERDA,teclas))
+        if(isPressed(ControlPlayer::TECLA_IZQUIERDA,teclas))
             cambiarEstado (IZQUIERDA);
     
-        if(isPressed(TECLA_DERECHA,teclas))
+        if(isPressed(ControlPlayer::TECLA_DERECHA,teclas))
             cambiarEstado(DERECHA);
 
         ponerBomba(teclas);
@@ -251,7 +251,7 @@ void Player::parado(const Uint8 * teclas) {
 
 void Player::izquierda(const Uint8 * teclas) {
 	mover_ip(-mVelocidad,0);
-	if(!isPressed(TECLA_IZQUIERDA,teclas))
+	if(!isPressed(ControlPlayer::TECLA_IZQUIERDA,teclas))
     	cambiarEstado(PARADO);
 
 	ponerBomba(teclas);
@@ -259,14 +259,14 @@ void Player::izquierda(const Uint8 * teclas) {
 
 void Player::derecha (const Uint8 * teclas) {
 	mover_ip(mVelocidad,0);
-	if(!isPressed(TECLA_DERECHA,teclas))
+	if(!isPressed(ControlPlayer::TECLA_DERECHA,teclas))
     	cambiarEstado ( PARADO);
 
 	ponerBomba(teclas);
 }
 
 
-bool Player::isPressed(TeclaPlayer tecla, const Uint8 * _teclas){
+bool Player::isPressed(ControlPlayer::TeclaPlayer tecla, const Uint8 * _teclas){
     if(!_teclas)return false;
     if(!control.isBotonJoystick(tecla) && !control.isDireccionJoystick(tecla)){
         return _teclas[SDL_GetScancodeFromKey(control.getKey(tecla))];
@@ -296,14 +296,14 @@ bool Player::isPressed(TeclaPlayer tecla, const Uint8 * _teclas){
 }
 void Player::arriba (const Uint8 * teclas) {
     mover_ip (0,-mVelocidad);
-	if(!isPressed(TECLA_ARRIBA,teclas))
+	if(!isPressed(ControlPlayer::TECLA_ARRIBA,teclas))
     	cambiarEstado(PARADO);
 	ponerBomba(teclas);
 }
 
 void Player::abajo(const Uint8 * teclas) {
 	mover_ip(0,mVelocidad);
-	if(!isPressed(TECLA_ABAJO,teclas))
+	if(!isPressed(ControlPlayer::TECLA_ABAJO,teclas))
     	cambiarEstado (PARADO);
 
 	ponerBomba(teclas);

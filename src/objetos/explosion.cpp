@@ -74,12 +74,9 @@ void Explosion::detectarAlcance(int dir,int aum_x,int aum_y){
                 dynamic_cast<Bomba * >((*pBomba))->setRepeticiones(0);
                 pBomba++;
             }
-
-            //juego->setRepeticionBomba(setColisionBombas,0);//se acelera el 'explote'
             return;
         }
 
-//        if(juego->isBloqueDuro(coli.x,coli.y)||esBloqueRompible||setColisionItems!=-1){
 
 
         // Si colision con un bloque solido detenemos el alcance por razones obvias
@@ -103,26 +100,10 @@ void Explosion::detectarAlcance(int dir,int aum_x,int aum_y){
             auto pItem = setColisionItems.begin();
             while (pItem != setColisionItems.end()) {
                 (*pItem)->kill();
-//                mJuego->eliminarSprite((*pItem));
-//                        new Animacion(new SpriteSheet("data/imagenes/")
-//                juego->getTexture(IMG_ITEM_FIRE), 1, 7, "0,0,0,1,1,2,2,2,3,3,4,4,5,5,6,6", coli.x, coli.y));
-//                juego->killSprite((*pItem));
-//                pBomba++;
                 pItem++;
             }
             return;
         }
-
-            /*if(juego->getTipoItem(setColisionItems)!=Item::ITEM_PUERTA){
-                juego->addSprite(new Animacion(juego->getTexture(IMG_ITEM_FIRE),1,7,"0,0,0,1,1,2,2,2,3,3,4,4,5,5,6,6",coli.x,coli.y));
-                juego->killSprite(ITEM,setColisionItems);
-            }else{*/
-//                 int x,y;
-//                 juego->getPosicion(ITEM,setColisionItems,x,y);
-//                     globo_anyadido=juego->addSprite(GLOBO,new Globox,y);
-//                     if(globo_anyadido!=-1)
-//                        juego->setProteccion(GLOBO,globo_anyadido,true);
-        //}
 
         alcances[dir] = i;
 
@@ -153,19 +134,16 @@ void Explosion::dibujarFlama(int dir,int aum_x,int aum_y,int cuadro_normal,int c
     for(i=1 ; i < alcances[dir];i++) {
         x = this->x + aum_x*i;
         y = this->y + aum_y*i;
-        //if(x+16>0&&x<W_SCREEN&&y<H_SCREEN&&y+16>0)
 
         // Notar el uso de getCuadro(), esto es para obtener el respectivo cuadro de la animacion
         mSprSCuadros->setCurrentCuadro(cuadro_normal + mSprSCuadros->getNColumnas()*getCuadro());
         mSprSCuadros->draw(gRenderer,x,y);
-        //imprimir_desde_grilla (mJuego->getTexture(IMG_EXPLOSION),cuadro_normal+COLUMNAS_EXPLO*getCuadro(),gRenderer, x,y,FILAS_EXPLO,COLUMNAS_EXPLO,0);
     }
 
     // Posicion de la flama final
     x = this->x+aum_x*i;
     y = this->y+aum_y*i;
 
-    //if(x+10>0&&x<W_SCREEN&&y<H_SCREEN&&y+16>0){
     if(alcances[dir] > 0){
         if(alcances[dir] == mAlcanceLlamas) { // Si nos hemos extendido el máximo
             // Dibujamos la punta de la flama porque nos hemos extendido tod lo que podiamos
@@ -182,7 +160,6 @@ void Explosion::dibujarFlama(int dir,int aum_x,int aum_y,int cuadro_normal,int c
 
 void Explosion::draw(SDL_Renderer * gRenderer){
 
-    //if(x+10>0&&x<W_SCREEN&&y<H_SCREEN&&y+16>0)
     //DIBUJAMOS EL CENTRO
     mSprSCuadros->setCurrentCuadro(2 + mSprSCuadros->getNColumnas()*getCuadro());
     mSprSCuadros->draw(gRenderer,x,y);

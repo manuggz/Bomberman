@@ -29,7 +29,7 @@
 class ModoJuegoMultiPlayer:public InterfazGrafica,public UpdateGroupContainerInterfaz{
 public:
 
-    ModoJuegoMultiPlayer(GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[_PLAYERS]);
+    ModoJuegoMultiPlayer(GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[Player::N_PLAYERS]);
     void prepare() override;
     void createUI(SDL_Renderer *gRenderer) override;
     void start() override;
@@ -100,11 +100,11 @@ protected:
     NivelMapa mMapa;
     LTimer mGameTimer ;
 
-    int      mRondasGanadas [_PLAYERS] {0};
-    //int      mPuntajePlayer [_PLAYERS] {0};
+    int      mRondasGanadas [Player::N_PLAYERS] {0};
+    //int      mPuntajePlayer [Player::N_PLAYERS] {0};
 
-    bool     mIsPlayerActivado[_PLAYERS] {false};
-    Player * mPlayerSprite  [_PLAYERS] {nullptr};
+    bool     mIsPlayerActivado[Player::N_PLAYERS] {false};
+    Player * mPlayerSprite  [Player::N_PLAYERS] {nullptr};
 
     std::string mRutaTerrenoMapa;
     int mNVictorias              = 0;
@@ -115,7 +115,7 @@ protected:
 
     LayoutAbsolute *     mLayoutParent;
     LabelComponent * mpTxtTiempoRestante;
-    LabelComponent * mpVidasRestantesPlayer[_PLAYERS];
+    LabelComponent * mpVidasRestantesPlayer[Player::N_PLAYERS];
 
     bool mIsPlayingWarningSound = false;
 

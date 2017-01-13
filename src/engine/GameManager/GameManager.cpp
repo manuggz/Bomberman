@@ -7,12 +7,13 @@
  *  Carga los sonidos
  * @return
  */
-GameManager::GameManager(std::string caption,std::string ruta_icono, unsigned int width,unsigned int height,bool pantallaCompleta){
+GameManager::GameManager(std::string nombreApp,std::string ruta_icono, unsigned int width,unsigned int height,bool pantallaCompleta){
     SDL_Log("GameManager::~GameManager");
 
     srand((unsigned int) time(0));
 
-    mCaption   = caption;
+    GameManager::nombreApp   = nombreApp;
+    nombreOrganization = "GonGames";
     mRutaIcono = ruta_icono;
 
     mWidth  = width;
@@ -88,7 +89,7 @@ void GameManager::establecerModoDeVideo(bool pantalla_completa){
     if(pantalla_completa) banderas|= SDL_WINDOW_FULLSCREEN;
 
     mMainWindow = SDL_CreateWindow(
-            (mCaption.empty()? "Game":mCaption.c_str()),                  // window title
+            (nombreApp.empty()? "Game":nombreApp.c_str()),                  // window title
             SDL_WINDOWPOS_CENTERED,           // initial x position
             SDL_WINDOWPOS_CENTERED,           // initial y position
             mWidth,                               // mWidth, in pixels
@@ -424,7 +425,16 @@ void GameManager::play(Mix_Chunk *pSfxChunk) {
     if(mIniciadoModuloSonido)Mix_PlayChannel(-1,pSfxChunk, 0);
 }
 
+std::string GameManager::obtenerPrefPath(){
+    //std::string rutaPathPrefPath;
+    if(rutaPathPrefPath.empty()){
+        rutaPathPrefPath = SDL_GetPrefPath(nombreOrganization.c_str(),nombreApp.c_str());
+        //rutaPathPrefPath = SDL_GetPrefPath("GonGames","Destructionbombs");
+    }
+    return rutaPathPrefPath;
+    //SDL_Log("Ruta: %s.",);
 
+}
 void GameManager::playSound(Mix_Music * music,Uint8 volumen){
     /*Reproduce una musica de fondo*/
     //static int t_ini=0;
@@ -557,5 +567,21 @@ float GameManager::getScaleRatioH() const {
 
 void GameManager::setScaleRatioH(float scaleRatioH) {
     GameManager::scaleRatioH = scaleRatioH;
+}
+
+const std::string &GameManager::getNombreOrganization() const {
+    return nombreOrganization;
+}
+
+void GameManager::setNombreOrganization(const std::string &nombreOrganization) {
+    GameManager::nombreOrganization = nombreOrganization;
+}
+
+const std::string &GameManager::getNombreApp() const {
+    return nombreApp;
+}
+
+void GameManager::setNombreApp(const std::string &nombreApp) {
+    GameManager::nombreApp = nombreApp;
 }
 

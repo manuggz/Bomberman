@@ -12,6 +12,9 @@ class Bomba;
 
 class Player:public Sprite{
 public:
+	static const int N_MAX_BOMBAS = 10;
+	static const int N_MAX_ALCANCE_EXPLOSION = 12;
+	static const int N_PLAYERS = 5;
 
     enum AreaColision {X_COLISION=3,Y_COLISION=10,W_COLISION=10,H_COLISION=10};
 
@@ -26,7 +29,7 @@ public:
     void parado(const Uint8 * teclas);
     void izquierda(const Uint8 * teclas);
     void derecha (const Uint8 * teclas);
-    bool isPressed(TeclaPlayer tecla,const Uint8 * teclas);
+    bool isPressed(ControlPlayer::TeclaPlayer tecla,const Uint8 * teclas);
     void arriba (const Uint8 * teclas);
     void abajo(const Uint8 * teclas);
     void avanzarAnimacion ();

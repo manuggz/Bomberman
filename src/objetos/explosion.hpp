@@ -25,9 +25,6 @@ private:
         ABAJO,
         ARRIBA,
     };
-    //Juego * juego;
-    //int alcance_llamas;//alcance que logran en los ejes
-    //int lanzador;
     Uint8 alcances[4] {0};//alcances en los ejes
 
     void dibujarFlama(int dir,int aum_x,int aum_y,int cuadro_normal,int cuadro_final,SDL_Renderer * gRenderer);

@@ -4,7 +4,7 @@ PopUpJuegoMostrarGanadas::PopUpJuegoMostrarGanadas(GameManagerPopUpInterfaz *gam
                                          int rondasGanadas[5]) : PopUpInterfaz(gameManager) {
 
     SDL_Log("PopUpJuegoMostrarGanadas::PopUpJuegoMostrarGanadas");
-    for(int i=0;i<_PLAYERS;i++)
+    for(int i=0;i<Player::N_PLAYERS;i++)
         mRondasGanadas[i] = rondasGanadas[i];
 
     conteo = 0;
@@ -27,7 +27,7 @@ void PopUpJuegoMostrarGanadas::createUI(SDL_Renderer *gRenderer) {
     animaTexto = new Animacion(spriteSheet,"0,0,1,1,2,2,3,3",90,38);
 
     int tmp=0;
-    for(int i=0;i<_PLAYERS;i++){
+    for(int i=0;i<Player::N_PLAYERS;i++){
         for(int j=0;j<mRondasGanadas[i];j++){
             tmp++;
         }
@@ -38,7 +38,7 @@ void PopUpJuegoMostrarGanadas::createUI(SDL_Renderer *gRenderer) {
 
     tmp=0;
 
-    for(int i=0;i<_PLAYERS;i++){
+    for(int i=0;i<Player::N_PLAYERS;i++){
         for(int j=0;j<mRondasGanadas[i];j++){
             spriteSheet = new SpriteSheet();
             spriteSheet->cargarDesdeArchivo(gRenderer,"data/imagenes/objetos/trofeo.bmp",1,13);

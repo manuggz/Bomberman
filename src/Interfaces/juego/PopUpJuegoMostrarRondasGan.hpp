@@ -6,6 +6,7 @@
 #include "../../engine/interfaces/GameManagerPopUpInterfaz.hpp"
 #include "../../engine/interfaces/PopUpInterfaz.hpp"
 #include "../../util/constantes.hpp"
+#include "../../personajes/player.hpp"
 
 
 /**
@@ -25,7 +26,7 @@ private:
     Animacion * animaCuadro;
     Animacion * animaTexto,**animaTrofeos;
 
-    int mRondasGanadas[_PLAYERS];
+    int mRondasGanadas[Player::N_PLAYERS];
     int conteo;
     int animacion;
     int totalTrofeosCreados;

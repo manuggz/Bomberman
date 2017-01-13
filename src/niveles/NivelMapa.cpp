@@ -127,7 +127,7 @@ SDL_Texture * NivelMapa::getPreviewTerreno(char rutaMapa[],MetaData * params,LTe
     if(params){
 //        sprintf(ruta,"data/niveles/batalla/%d.ini",id + 1);
 
-        for(i=0;i<_PLAYERS;i++){
+        for(i=0;i<Player::N_PLAYERS;i++){
             rect_destino.x=params->getX(i);
             rect_destino.y=params->getY(i);
             imprimir_desde_grilla(imgs_players[i],6,preview,rect_destino.x,rect_destino.y,1,12,0);

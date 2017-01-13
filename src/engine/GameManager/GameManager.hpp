@@ -45,7 +45,7 @@ class GameManager : public GameManagerInterfazUI{
 public:
 
 
-    GameManager(std::string caption,std::string ruta_icono, unsigned int width,unsigned int height,bool pantallaCompleta);
+    GameManager(std::string nombreApp,std::string ruta_icono, unsigned int width,unsigned int height,bool pantallaCompleta);
 
     SDL_Joystick * getJoy(int device_index) override ;
     int getActiveJoys() ;
@@ -82,6 +82,15 @@ public:
 
     void setScaleRatioH(float scaleRatioH);
 
+    const std::string &getNombreOrganization() const;
+
+    void setNombreOrganization(const std::string &nombreOrganization);
+
+    const std::string &getNombreApp() const;
+
+    void setNombreApp(const std::string &nombreApp);
+    std::string obtenerPrefPath();
+
 private:
 
     int mFPS = 60;
@@ -105,7 +114,6 @@ private:
     // IDentificador del Actual PopUp
     // USado para identificar en el codigo cual es el popup que se cerró
     int mIDCodePopUp;
-    std::string mCaption;
     std::string mRutaIcono;
 
     int mChannels = 5;
@@ -132,5 +140,10 @@ private:
     void Resize();
 
     bool mISFullScreenPressed = false;
+
+    std::string rutaPathPrefPath;
+    std::string nombreOrganization;
+    std::string nombreApp;
+
 };
 #endif

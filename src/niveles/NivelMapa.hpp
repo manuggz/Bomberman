@@ -9,6 +9,7 @@
 #include "../engine/util/SpriteSheet.hpp"
 #include "../engine/mapa/include/TMXParser.h"
 #include "../engine/mapa/CMapa.hpp"
+#include "../util/constantes.hpp"
 
 //#define MAPA_PROPERTY_X_INIT_PLAYER "x_init_player_"
 #define OBJECTSGROUP_PLAYERS_NAME "players"

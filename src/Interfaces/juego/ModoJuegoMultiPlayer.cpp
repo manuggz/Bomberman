@@ -10,7 +10,7 @@
  * @param isPlayerActivo Array con los players que jugaran
  *
  */
-ModoJuegoMultiPlayer::ModoJuegoMultiPlayer (GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[_PLAYERS])
+ModoJuegoMultiPlayer::ModoJuegoMultiPlayer (GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[Player::N_PLAYERS])
 :InterfazGrafica(gameManager),mGrpSprites(this),mMapa(0,32){
 
     SDL_Log("ModoJuegoMultiPlayer::ModoJuegoMultiPlayer");
@@ -22,7 +22,7 @@ ModoJuegoMultiPlayer::ModoJuegoMultiPlayer (GameManagerInterfazUI * gameManager,
     // si mIsPlayerActivado[i] entonces crear el puntero en la posicion i
     // si mIsPlayerActivado[i] entonces el puntero en la posicion i != NULL
     //
-    for(int i = 0; i < _PLAYERS;i++) {
+    for(int i = 0; i < Player::N_PLAYERS;i++) {
         mIsPlayerActivado[i] = isPlayerActivo[i];
         if(mIsPlayerActivado[i]){
             mPlayerSprite[i] = new Player(this, (IdPlayer) i);
@@ -70,7 +70,7 @@ void ModoJuegoMultiPlayer::createUI(SDL_Renderer *gRenderer) {
     mLayoutParent->addComponent(mpTxtTiempoRestante);
 
     // Componente para las vidas restantes del player 1
-    for(int i = 0; i < _PLAYERS ; i++){
+    for(int i = 0; i < Player::N_PLAYERS ; i++){
         mpVidasRestantesPlayer[i] = new LabelComponent();
         mpVidasRestantesPlayer[i]->setText("0");
         mpVidasRestantesPlayer[i]->setFont("data/fuentes/OpenSans-Bold.ttf",15);
@@ -162,7 +162,7 @@ void ModoJuegoMultiPlayer::resultPopUp(void *result, int popUpCode) {
         case ID_POPUP_JUEGO_MOSTRAR_GAN_TERMINAR:{
 
             IdPlayer idPlayerActivo = PLAYER_NONE;
-            for(int j = 0 ; j < _PLAYERS;j++){
+            for(int j = 0 ; j < Player::N_PLAYERS;j++){
                 if(estaPlayerActivo((IdPlayer) j)){
                     idPlayerActivo = (IdPlayer) j;
                 }
@@ -191,7 +191,7 @@ void ModoJuegoMultiPlayer::resultPopUp(void *result, int popUpCode) {
  * el mapa especifica
  */
 void ModoJuegoMultiPlayer::establecerValoresDeMapaPlayers() {
-    for(int i = 0; i < _PLAYERS;i++) {
+    for(int i = 0; i < Player::N_PLAYERS;i++) {
         establecerValoresDeMapaPlayer((IdPlayer)(PLAYER_1 + i));
     }
 }
@@ -221,7 +221,7 @@ void ModoJuegoMultiPlayer::establecerValoresDeMapaPlayer(IdPlayer idPlayer){
  * Lo cual hace que se actualizen y dibujen
  */
 void ModoJuegoMultiPlayer::agregarPlayersActivos() {
-    for (int i = 0; i < _PLAYERS; i++) {
+    for (int i = 0; i < Player::N_PLAYERS; i++) {
         if(mIsPlayerActivado[i]){
 
             mPlayerSprite[i]->cambiarEstado(EstadoSprite::ABAJO);
@@ -275,7 +275,7 @@ void ModoJuegoMultiPlayer::update(){
     /*SI SE ACABO EL TIEMPO*/
     if(getSegundosInicioNivel() > mMinutos*60){
 
-        for(int i = PLAYER_1 ; i < _PLAYERS;i++){
+        for(int i = PLAYER_1 ; i < Player::N_PLAYERS;i++){
             if(estaPlayerActivo((IdPlayer) i)){
                 //if(mPlayerSprite[i]->getVidas())
                 mPlayerSprite[i]->setVidas(0);
@@ -298,7 +298,7 @@ void ModoJuegoMultiPlayer::update(){
     if(totalPlayersActivos == 1){
 
         IdPlayer idPlayerActivo = PLAYER_NONE;
-        for(int j = 0 ; j < _PLAYERS,idPlayerActivo == PLAYER_NONE;j++){
+        for(int j = 0 ; j < Player::N_PLAYERS,idPlayerActivo == PLAYER_NONE;j++){
             if(estaPlayerActivo((IdPlayer) j)){
                 idPlayerActivo = (IdPlayer) j;
             }
@@ -764,7 +764,7 @@ void ModoJuegoMultiPlayer::reiniciarEstado() {
 
 ModoJuegoMultiPlayer::~ModoJuegoMultiPlayer(){
     SDL_Log("ModoJuegoMultiPlayer::~ModoJuegoMultiPlayer");
-    for(int i= 0;i<_PLAYERS;i++){
+    for(int i= 0;i<Player::N_PLAYERS;i++){
         delete mPlayerSprite[i];
         delete mpVidasRestantesPlayer[i];
     }

@@ -7,7 +7,7 @@ ControlPlayer::ControlPlayer(){
 };
 
 void ControlPlayer::reset() {
-    for(int i=0;i<_TECLAS;i++){
+    for(int i=0;i<N_TECLAS;i++){
 
         es_boton_joystick[i]     = false;
         es_direccion_joystick[i] = false;
@@ -80,7 +80,7 @@ void ControlPlayer::setDefaultKeys(IdPlayer id){
     	keys_players[TECLA_ABAJO] = SDL_SCANCODE_DOWN;
         keys_players[TECLA_ACCION]=SDL_SCANCODE_KP_ENTER;
         keys_players[TECLA_START]=SDL_SCANCODE_P;
-//        keys_players[TECLA_ACCION_2]=SDLK_KP1; 
+//        keys_players[TECLA_ACCION_2]=SDLK_KP1;
     }else if(id==PLAYER_3){
     	keys_players[TECLA_IZQUIERDA] = SDL_SCANCODE_F;
     	keys_players[TECLA_DERECHA] = SDL_SCANCODE_H;
@@ -88,8 +88,8 @@ void ControlPlayer::setDefaultKeys(IdPlayer id){
     	keys_players[TECLA_ABAJO] = SDL_SCANCODE_G;
         keys_players[TECLA_ACCION]=SDL_SCANCODE_R;
         keys_players[TECLA_START]=SDL_SCANCODE_Y;
-//        keys_players[TECLA_ACCION_2]=SDLK_5; 
-    
+//        keys_players[TECLA_ACCION_2]=SDLK_5;
+
     }else if(id==PLAYER_4){
     	keys_players[TECLA_IZQUIERDA] = SDL_SCANCODE_J;
     	keys_players[TECLA_DERECHA] = SDL_SCANCODE_J;
@@ -98,7 +98,7 @@ void ControlPlayer::setDefaultKeys(IdPlayer id){
         keys_players[TECLA_ACCION]=SDL_SCANCODE_U;
         keys_players[TECLA_START]=SDL_SCANCODE_O;
 //        keys_players[TECLA_ACCION_2]=SDLK_8;
-        
+
     }else if(id==PLAYER_5){
     	keys_players[TECLA_IZQUIERDA] = SDL_SCANCODE_1;
     	keys_players[TECLA_DERECHA] = SDL_SCANCODE_2;

@@ -33,7 +33,7 @@ public:
         //cout << "MenuModoMultijugador::prepare"<<endl;
 
         // Buscamos el Maximo numero de terrenos disponibles para usar en el juego
-        mMaxTerrenoBatalla = std::stoi(buscar_dato(RUTA_CONFIG_BASE, NAME_MAX_TERRENO_BATALLA));
+        mMaxTerrenoBatalla = std::stoi(buscar_dato("data/configuracion/inf", "MaxTerreno"));
 
         minutosEscogidos   = 1;
         victoriasEscogidas = 1;
@@ -104,7 +104,7 @@ public:
         mAnimacionPlayer[4]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8");
 
 
-        for(int i=0;i<_PLAYERS;i++){
+        for(int i=0;i<Player::N_PLAYERS;i++){
             // Animacion para cuando aun no se ha seleccionado el personaje(Hace que parpadee "presiona")
 
             spriteSheetTmp = new SpriteSheet();
@@ -168,7 +168,7 @@ public:
         mpTextureMensVictorias = new LTexture();
         mpTextureMensVictorias->cargarDesdeArchivo("data/imagenes/textos/txt_victorias.png",gRenderer,false);
 
-        for(int i = 0; i < _PLAYERS; i++) {
+        for(int i = 0; i < Player::N_PLAYERS; i++) {
             mpSpriteSheetPlayer[i] = new SpriteSheet(gRenderer, "data/imagenes/personajes/player_" + std::to_string(i + 1) + ".bmp", 1, 12,true);
             mpSpriteSheetPlayer[i]->setAlpha(150);
             mpSpriteSheetPlayer[i]->setCurrentCuadro(6);
@@ -205,7 +205,7 @@ public:
                 return false;
             }
 
-            for(int i=0;i<_PLAYERS;i++){
+            for(int i=0;i<Player::N_PLAYERS;i++){
 
                 mAnimacionPlayer[i]->setX(mMapaTerrenoSeleccionado.getPosXPlayer((IdPlayer)(PLAYER_1 + i)));
                 mAnimacionPlayer[i]->setY(mMapaTerrenoSeleccionado.getPosYPlayer((IdPlayer)(PLAYER_1 + i)));
@@ -364,7 +364,7 @@ public:
         mMapaTerrenoSeleccionado.draw(gRenderer);//imprimimos el nivel
 
         mSprites->draw(gRenderer);
-        for(int i=0;i<_PLAYERS;i++){
+        for(int i=0;i<Player::N_PLAYERS;i++){
             if(!mIsPlayerActivado[i]){
                 mpSpriteSheetPlayer[i]->draw(gRenderer,mAnimacionPlayer[i]->getX(),mAnimacionPlayer[i]->getY());
             }else{
@@ -382,7 +382,7 @@ public:
 
     ~MenuModoMultijugador(){
         SDL_Log("MenuModoMultijugador::~MenuModoMultijugador");
-        for(int i=0;i<_PLAYERS;i++){
+        for(int i=0;i<Player::N_PLAYERS;i++){
             delete mAnimacionPlayer[i];
             delete mAnimaPresiona[i];
             delete mAnimaActivado[i];
@@ -435,14 +435,14 @@ private:
     int mBotonClicked = -1;
 
     // Animacion del personaje
-    Animacion * mAnimacionPlayer[_PLAYERS] {nullptr};
+    Animacion * mAnimacionPlayer[Player::N_PLAYERS] {nullptr};
     // Animacion del texto "presiona"
-    Animacion * mAnimaPresiona[_PLAYERS] {nullptr};
+    Animacion * mAnimaPresiona[Player::N_PLAYERS] {nullptr};
     // Animacion del texto "activado"
-    Animacion * mAnimaActivado[_PLAYERS] {nullptr};
+    Animacion * mAnimaActivado[Player::N_PLAYERS] {nullptr};
 
     // Dice cuales estan activados
-    bool mIsPlayerActivado[_PLAYERS] {false};
+    bool mIsPlayerActivado[Player::N_PLAYERS] {false};
 
     // ID del terreno actual escogido por el usuario / EL ID del terreno dibujado en pantalla
     int terrenoActual = 0;
@@ -474,7 +474,7 @@ private:
     LTexture * mpTextureMensTiempoPorRonda;
     LTexture * mpTextureMensVictorias;
 
-    SpriteSheet * mpSpriteSheetPlayer[_PLAYERS];
+    SpriteSheet * mpSpriteSheetPlayer[Player::N_PLAYERS];
     SpriteSheet * mpSpriteSheetCarasBomberman;
     MusicaFondo *musicaFondoMenu;
 

@@ -233,22 +233,6 @@ void unir_rects(SDL_Rect & rect1,SDL_Rect & rect2,SDL_Rect & rectRest){
 }
 
 
-EstadoSprite invertir_estado(EstadoSprite estado){
-    switch(estado){
-        case DERECHA:
-            return IZQUIERDA;
-        case IZQUIERDA:
-            return DERECHA;
-        case ARRIBA:
-            return ABAJO;
-        case ABAJO:
-            return ARRIBA;
-        default:
-            printf("no implementado para ese estado_actual:%d\n",estado);
-            return ABAJO;
-        }
-}
-
 bool rect_contain(SDL_Rect rectA, SDL_Rect rectB) {
     return  rectB.x >= rectA.x &&
             rectB.y >= rectA.y &&

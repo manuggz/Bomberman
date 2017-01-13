@@ -8,7 +8,6 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 
-#include "../../util/constantes.hpp"
 #include "LTexture.hpp"
 
 //SDL_Texture *cargar_textura(SDL_Renderer *gRenderer, std::string ruta, bool tiene_color_clave);
@@ -42,7 +41,6 @@ inline bool punto_en_rect(Sint32 x, Sint32 y, SDL_Rect * rect_coli){return (x > 
 std::string buscar_dato(std::string ruta,std::string nombreVariable,std::string delim=":");
 inline bool punto_en_rect_coordenadas(Sint16 x_1,Sint16 y_1,Sint16 x_2,Sint16 y_2,Sint16 w_2,Sint16 h_2){    return (x_1>x_2&&x_1<x_2+w_2&&y_1>y_2&&y_1<y_2+h_2);};
 bool estado_direccion_joy(SDL_Keycode tecla, SDL_Joystick *joy);
-EstadoSprite invertir_estado(EstadoSprite estado);
 Uint32 get_pixel (SDL_Surface * ima, int x, int y);
 /**
  * Crea un rectangulo que CONTIENE a los dos rectangulos rect1 y rect2

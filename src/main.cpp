@@ -11,7 +11,7 @@
 
 int main(int argc, char *argv[]){
     GameManager juego ("DestructionBombs","",320,240,false);
-
+    SDL_Log("RUTA 2: %s",juego.obtenerPrefPath().c_str());
     juego.cambiarInterfaz(new MenuPrincipal(&juego));
     juego.run();
     return EXIT_SUCCESS;

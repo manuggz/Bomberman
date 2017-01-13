@@ -47,7 +47,7 @@ public:
             botonPlayer[idPlayerConfigurandoTeclas]->setEnable(true);
         }
         idPlayerConfigurandoTeclas=idPlayer;// guarda el id del nuevo player
-        idTeclaCambiando=TECLA_NULA; //variable que dice si se espera la pulsacion de una tecla[del joy] para un boton del juego
+        idTeclaCambiando=ControlPlayer::TECLA_NULA; //variable que dice si se espera la pulsacion de una tecla[del joy] para un boton del juego
         botonPlayer[idPlayerConfigurandoTeclas]->setEstado(BotonComponent::PRESIONADO);
         botonPlayer[idPlayerConfigurandoTeclas]->setEnable(false);
         cargarTeclas(idPlayerConfigurandoTeclas);//carga las teclas del File
@@ -66,10 +66,10 @@ public:
         pSpriteSheetMensajeIntroducirTecla = new SpriteSheet(gRenderer,"data/imagenes/objetos/entrada_texto.png",2,1,false);
         pSpriteSheetCarasBomberman = new SpriteSheet(gRenderer,"data/imagenes/objetos/caras_bomberman.bmp",1,10,true);
 
-        idTeclaCambiando = TECLA_NULA;
+        idTeclaCambiando = ControlPlayer::TECLA_NULA;
 
         //linea de tecla arriba
-        for(int i = 0; i < _TECLAS ; i++){
+        for(int i = 0; i < ControlPlayer::N_TECLAS ; i++){
             pSpriteSheetMensajeNombreTecla[i] = new SpriteSheet(gRenderer,
                                                                 "data/imagenes/textos/txt_" + std::to_string(i + 1) + ".png",2,1,false);
 
@@ -82,7 +82,7 @@ public:
             pLabelNombreTecla[i]->setLayoutParam(LAYOUT_PARAM_Y,std::to_string(68 + 20*i));
         }
 
-        for(int i = 0; i < _PLAYERS;i++){
+        for(int i = 0; i < Player::N_PLAYERS;i++){
             LTexture * lTexture = new LTexture();
             lTexture->cargarDesdeArchivo("data/imagenes/botones/boton_player_" + std::to_string(i + 1) + ".png",gRenderer,false);
             botonPlayer[i] = new BotonComponent(lTexture,this,i);
@@ -133,12 +133,12 @@ public:
 
     void procesarEvento(SDL_Event *evento) override {
 
-        for(int i = 0; i < _PLAYERS;i++){
+        for(int i = 0; i < Player::N_PLAYERS;i++){
             botonPlayer[i]->procesarEvento(evento);
         }
         botonGuardar->procesarEvento(evento);
 
-        if(evento->type == SDL_JOYBUTTONDOWN && idTeclaCambiando!= TECLA_NULA){
+        if(evento->type == SDL_JOYBUTTONDOWN && idTeclaCambiando!= ControlPlayer::TECLA_NULA){
             if(evento->jbutton.type == SDL_JOYBUTTONDOWN){
 
                 control_edit.setJoybuttonMapping(idTeclaCambiando,evento->jbutton.button);
@@ -151,7 +151,7 @@ public:
                 char temp[33];
                 SDL_JoystickGetGUIDString(guidj,temp,33);
                 control_edit.setJoystickGUID(idTeclaCambiando,temp);
-                idTeclaCambiando=TECLA_NULA;//dejamos de esperar a que el usuario presione una tecla
+                idTeclaCambiando=ControlPlayer::TECLA_NULA;//dejamos de esperar a que el usuario presione una tecla
             }
 
         }else if(evento->type == SDL_JOYAXISMOTION && idTeclaCambiando >= 0){
@@ -187,19 +187,19 @@ public:
                 SDL_JoystickGetGUIDString(guidj,temp,33);
                 control_edit.setJoystickGUID(idTeclaCambiando,temp);
 
-                idTeclaCambiando=TECLA_NULA;
+                idTeclaCambiando=ControlPlayer::TECLA_NULA;
             }
         }else if(evento->type==SDL_KEYDOWN){
             switch(evento->key.keysym.sym){
                 case SDLK_RIGHT:
-                    if(idTeclaCambiando == TECLA_NULA){
+                    if(idTeclaCambiando == ControlPlayer::TECLA_NULA){
                         if(idPlayerConfigurandoTeclas != PLAYER_5){
                             cambiarPlayerConfigurandoTeclas((IdPlayer)(idPlayerConfigurandoTeclas + 1));
                         }
                     }
                     break;
                 case SDLK_LEFT:
-                    if(idTeclaCambiando == TECLA_NULA){
+                    if(idTeclaCambiando == ControlPlayer::TECLA_NULA){
                         if(idPlayerConfigurandoTeclas != PLAYER_1){
                             cambiarPlayerConfigurandoTeclas((IdPlayer)(idPlayerConfigurandoTeclas - 1));
                         }
@@ -207,8 +207,8 @@ public:
                     break;
 
                 case SDLK_ESCAPE:
-                    if(idTeclaCambiando !=TECLA_NULA){//si se esperaba la pulsacion de una tecla
-                        idTeclaCambiando=TECLA_NULA;
+                    if(idTeclaCambiando !=ControlPlayer::TECLA_NULA){//si se esperaba la pulsacion de una tecla
+                        idTeclaCambiando=ControlPlayer::TECLA_NULA;
                     }else{
                         mGameManagerInterfaz->goBack();
                     }
@@ -217,16 +217,16 @@ public:
                     break;
             }
 
-            if(idTeclaCambiando !=TECLA_NULA){
+            if(idTeclaCambiando !=ControlPlayer::TECLA_NULA){
                 control_edit.setKeyboardMapping(idTeclaCambiando, evento->key.keysym.sym);
                 control_edit.setIsBotonJoystick(idTeclaCambiando,false);;
                 control_edit.setIsDireccionJoystick((int)idTeclaCambiando,false);
-                idTeclaCambiando=TECLA_NULA;
+                idTeclaCambiando=ControlPlayer::TECLA_NULA;
             }
         }
         else if(evento->type == SDL_MOUSEMOTION){
             static int i;
-            for(i=0 ; i<_TECLAS;i++){
+            for(i=0 ; i<ControlPlayer::N_TECLAS;i++){
                 if(punto_en_rect_coordenadas(evento->motion.x,evento->motion.y,190,72 + 20*i,81,18)){
                     if(estadoBotonTecla[i]!=BOTON_PRESIONADO)
                         estadoBotonTecla[i]=BOTON_RESALTADO;
@@ -249,7 +249,7 @@ public:
             for(int i=0;i<6;i++)
                 if((estadoBotonTecla[i]==BOTON_PRESIONADO)&&
                         punto_en_rect_coordenadas(evento->motion.x,evento->motion.y,190,72 + 20*i,81,18)){
-                    idTeclaCambiando=(TeclaPlayer)i;
+                    idTeclaCambiando=(ControlPlayer::TeclaPlayer)i;
                     estadoBotonTecla[i]=BOTON_NORMAL;
                     //game->play(SFX_TONO_ACUATICO);
                 }
@@ -264,7 +264,7 @@ public:
         static char nombre_tecla[20];
 
         pTextureFondo->render(gRenderer,0,0);
-        for( int i = 0 ; i < _TECLAS ; i++){
+        for( int i = 0 ; i < ControlPlayer::N_TECLAS ; i++){
 
             pSpriteSheetBotonCambiarTecla->setCurrentCuadro((idTeclaCambiando==i)?3:estadoBotonTecla[i]);
             pSpriteSheetBotonCambiarTecla->draw(gRenderer,190,72 + 20*i);
@@ -272,16 +272,16 @@ public:
             pSpriteSheetMensajeIntroducirTecla->setCurrentCuadro(idTeclaCambiando == i);
             pSpriteSheetMensajeIntroducirTecla->draw(gRenderer,93,72 + 20*i);
 
-            if(control_edit.isBotonJoystick((TeclaPlayer)i))
-                sprintf(nombre_tecla,"joy %d",control_edit.getJoybuttonMapping((TeclaPlayer)i) + 1);
+            if(control_edit.isBotonJoystick((ControlPlayer::TeclaPlayer)i))
+                sprintf(nombre_tecla,"joy %d",control_edit.getJoybuttonMapping((ControlPlayer::TeclaPlayer)i) + 1);
             else if(control_edit.isDireccionJoystick(i))
-                sprintf(nombre_tecla,"joy %s",SDL_GetKeyName(control_edit.getKey((TeclaPlayer)i)));
-            else if(!strcmp(SDL_GetKeyName(control_edit.getKey((TeclaPlayer)i)),"unknown key"))
+                sprintf(nombre_tecla,"joy %s",SDL_GetKeyName(control_edit.getKey((ControlPlayer::TeclaPlayer)i)));
+            else if(!strcmp(SDL_GetKeyName(control_edit.getKey((ControlPlayer::TeclaPlayer)i)),"unknown key"))
                 strcpy(nombre_tecla,"unknown");
-            else if(control_edit.getKey((TeclaPlayer)i) == SDLK_UNKNOWN){
+            else if(control_edit.getKey((ControlPlayer::TeclaPlayer)i) == SDLK_UNKNOWN){
                 strcpy(nombre_tecla,"Sin Asignar.");
             }else
-                strcpy(nombre_tecla,SDL_GetKeyName(control_edit.getKey((TeclaPlayer)i)));
+                strcpy(nombre_tecla,SDL_GetKeyName(control_edit.getKey((ControlPlayer::TeclaPlayer)i)));
 
             //imprimimos la teclaBitmap
             pLabelNombreTecla[i]->setText(nombre_tecla);
@@ -306,7 +306,7 @@ public:
         delete pSpriteSheetBotonCambiarTecla;
         delete pSpriteSheetMensajeIntroducirTecla;
 
-        for(int i = 0; i < _TECLAS;i++){
+        for(int i = 0; i < ControlPlayer::N_TECLAS;i++){
             delete pSpriteSheetMensajeNombreTecla[i];
         }
         delete mLayoutParent;
@@ -321,15 +321,15 @@ private:
 
     SpriteSheet * pSpriteSheetBotonCambiarTecla;
     SpriteSheet * pSpriteSheetMensajeIntroducirTecla;
-    SpriteSheet * pSpriteSheetMensajeNombreTecla[_TECLAS];
+    SpriteSheet * pSpriteSheetMensajeNombreTecla[ControlPlayer::N_TECLAS];
     SpriteSheet * pSpriteSheetCarasBomberman;
 
-    LabelComponent * pLabelNombreTecla[_TECLAS];
+    LabelComponent * pLabelNombreTecla[ControlPlayer::N_TECLAS];
 
-    TeclaPlayer idTeclaCambiando;
+    ControlPlayer::TeclaPlayer idTeclaCambiando;
 
-    EstadoBoton estadoBotonTecla[_TECLAS] {BOTON_NORMAL};
-    BotonComponent * botonPlayer[_PLAYERS];
+    EstadoBoton estadoBotonTecla[ControlPlayer::N_TECLAS] {BOTON_NORMAL};
+    BotonComponent * botonPlayer[Player::N_PLAYERS];
     LayoutAbsolute * mLayoutParent;
     BotonComponent *botonGuardar;
     IdPlayer idPlayerConfigurandoTeclas;

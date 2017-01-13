@@ -58,7 +58,6 @@ class MenuListLabel : public InterfazGrafica{
 public:
 
     MenuListLabel(GameManagerInterfazUI *gameManagerInterfaz);
-
     virtual void prepare() override;
     virtual void createUI(SDL_Renderer *renderer)  override;
     virtual void resume() override;

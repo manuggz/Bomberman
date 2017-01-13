@@ -2,14 +2,23 @@
 #define CONTROL_PLAYER_HPP
 #include <iostream>
 #include <fstream>
-#include <string.h>
 #include <SDL2/SDL.h>
 #include "constantes.hpp"
 
-using namespace std;
 
 class ControlPlayer{
 public:
+    enum TeclaPlayer{
+        TECLA_ARRIBA,
+        TECLA_ABAJO,
+        TECLA_IZQUIERDA,
+        TECLA_DERECHA,
+        TECLA_ACCION,
+        TECLA_START,
+        TECLA_NULA=-1
+    };
+    static const int N_TECLAS = 6;
+
     ControlPlayer();
     bool cargar(char ruta[]);
     void guardar(char ruta[]);
@@ -26,12 +35,12 @@ public:
     void setDefaultKeys(IdPlayer id);
 
 private:
-    char guidJoystick[_TECLAS][100];
-    bool es_boton_joystick[_TECLAS];
-    bool es_direccion_joystick[_TECLAS];
+    char guidJoystick[N_TECLAS][100];
+    bool es_boton_joystick[N_TECLAS];
+    bool es_direccion_joystick[N_TECLAS];
 
-    SDL_Keycode keyboardMapping[_TECLAS];
-    Uint8 joybuttonMapping[_TECLAS];
+    SDL_Keycode keyboardMapping[N_TECLAS];
+    Uint8 joybuttonMapping[N_TECLAS];
 
     void reset();
 };

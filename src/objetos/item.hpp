@@ -2,9 +2,7 @@
 #define ITEM_HPP
 #include <SDL2/SDL.h>
 #include "../engine/sprites/animacion/animacion.hpp"
-//#include "Interfaces/juego.hpp"
 #include "../util/constantes.hpp"
-//#include "../personajes/player.hpp"
 
 class ModoJuegoMultiPlayer;
 class Player;
@@ -47,9 +45,7 @@ public:
     Player * getPlayerActivador(){
         return mpPlayerActivador;
     }
-        //void draw(SDL_Renderer * gRenderer);
 private:
-//Juego * juego;
     TipoItem mTipo;
     Player * mpPlayerActivador = nullptr;
 };

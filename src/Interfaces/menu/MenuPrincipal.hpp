@@ -55,7 +55,6 @@ public:
     void ejecutarAccionOpcionResaltada() {
         switch(mOpcionMenuResaltadaActual){
             case MENU_OPCION_NUEVO_JUEGO:
-                //cout << "MENU_OPCION_NUEVO_JUEGO"<< endl;
                 mGameManagerInterfaz->cambiarInterfaz(new MenuNuevoJuego(mGameManagerInterfaz));
                 break;
             //case MENU_OPCION_EDITOR:
