@@ -14,9 +14,9 @@ public:
 
     MenuNuevoJuego(GameManagerInterfazUI *game) : MenuListLabel(game) {
         SDL_Log("MenuNuevoJuego::MenuNuevoJuego");
-        mMenuOpcionesText.push_back("Historia");
+        //mMenuOpcionesText.push_back("Historia");
         mMenuOpcionesText.push_back("Multiplayer");
-        mMenuOpcionesText.push_back("Conexion");
+        //mMenuOpcionesText.push_back("Conexion");
     }
 
     void createUI(SDL_Renderer *renderer) override {
@@ -39,15 +39,15 @@ public:
     }
     void ejecutarAccionOpcionResaltada() {
         switch(mOpcionMenuResaltadaActual){
-            case MENU_OPCION_HISTORIA:
+            //case MENU_OPCION_HISTORIA:
                 //mGameManager->cambiarInterfaz(new JuegoHistoria(mGameManager));
-                break;
+            //    break;
             case MENU_OPCION_MULTIPLAYER:
                 mGameManagerInterfaz->cambiarInterfaz(new MenuModoMultijugador(mGameManagerInterfaz));
                 break;
-            case MENU_OPCION_CONEXION:
+            //case MENU_OPCION_CONEXION:
                 //cout << "MENU_OPCION_CONEXION"<< endl;
-                break;
+                //break;
             default:break;
         }
 
@@ -62,9 +62,9 @@ private:
 
 
     typedef enum{
-        MENU_OPCION_HISTORIA,
+        //MENU_OPCION_HISTORIA,
         MENU_OPCION_MULTIPLAYER,
-        MENU_OPCION_CONEXION,
+        //MENU_OPCION_CONEXION,
     }MenuOption;
     EfectoSonido * mpSfxCambiarOpcionResaltada;
 

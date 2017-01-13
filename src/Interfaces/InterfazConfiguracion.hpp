@@ -132,7 +132,6 @@ public:
     }
 
     void procesarEvento(SDL_Event *evento) override {
-        InterfazGrafica::procesarEvento(evento);
 
         for(int i = 0; i < _PLAYERS;i++){
             botonPlayer[i]->procesarEvento(evento);

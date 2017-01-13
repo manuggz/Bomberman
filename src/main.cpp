@@ -10,7 +10,7 @@
 */
 
 int main(int argc, char *argv[]){
-    GameManager juego ("DestructionBombs v0.9","",320,240,false);
+    GameManager juego ("DestructionBombs","",320,240,false);
 
     juego.cambiarInterfaz(new MenuPrincipal(&juego));
     juego.run();

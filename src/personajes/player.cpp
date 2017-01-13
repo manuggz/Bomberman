@@ -522,3 +522,7 @@ void Player::setMEstaEnfermo(bool mEstaEnfermo) {
     Player::mEstaEnfermo = mEstaEnfermo;
 }
 
+void Player::setVelocidad(int nuevaVelocidad) {
+    mVelocidad = nuevaVelocidad;
+}
+

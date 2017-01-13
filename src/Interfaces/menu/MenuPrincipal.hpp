@@ -10,6 +10,7 @@
 #include "../../engine/interfaces/MenuListLabel.hpp"
 #include "MenuNuevoJuego.hpp"
 #include "../InterfazConfiguracion.hpp"
+#include "../InterfazCreditos.hpp"
 
 class MenuPrincipal : public MenuListLabel{
 
@@ -18,7 +19,7 @@ public:
     MenuPrincipal(GameManagerInterfazUI *gameManager) : MenuListLabel(gameManager) {
         SDL_Log("MenuPrincipal::MenuPrincipal");
         mMenuOpcionesText.push_back("Nuevo Juego");
-        mMenuOpcionesText.push_back("Editor");
+        //mMenuOpcionesText.push_back("Editor");
         mMenuOpcionesText.push_back("Configurar");
         mMenuOpcionesText.push_back("Creditos");
 
@@ -57,16 +58,15 @@ public:
                 //cout << "MENU_OPCION_NUEVO_JUEGO"<< endl;
                 mGameManagerInterfaz->cambiarInterfaz(new MenuNuevoJuego(mGameManagerInterfaz));
                 break;
-            case MENU_OPCION_EDITOR:
+            //case MENU_OPCION_EDITOR:
                 //cout << "MENU_OPCION_EDITOR"<< endl;
                 //game->cambiarInterfaz(new Editor(game));
-                break;
+                //break;
             case MENU_OPCION_CONFIGURACION:
-                //cout << "MENU_OPCION_CONFIGURACION"<< endl;
                 mGameManagerInterfaz->cambiarInterfaz(new InterfazConfiguracion(mGameManagerInterfaz));
                 break;
             case MENU_OPCION_CREDITOS:
-                //cout << "MENU_OPCION_CREDITOS"<< endl;
+                mGameManagerInterfaz->cambiarInterfaz(new InterfazCreditos(mGameManagerInterfaz));
                 break;
             default:break;
         }
@@ -82,7 +82,7 @@ public:
 private:
     typedef enum{
         MENU_OPCION_NUEVO_JUEGO,
-        MENU_OPCION_EDITOR,
+        //MENU_OPCION_EDITOR,
         MENU_OPCION_CONFIGURACION,
         MENU_OPCION_CREDITOS,
     }MenuOption;

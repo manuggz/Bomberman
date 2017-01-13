@@ -88,6 +88,8 @@ public:
 	void setMEstaEnfermo(bool mEstaEnfermo);
     void cargarRecursos(SDL_Renderer *gRenderer);
 
+    void setVelocidad(int nuevaVelocidad);
+
 private:
 
 	IdPlayer mPlayerId = PLAYER_NONE;

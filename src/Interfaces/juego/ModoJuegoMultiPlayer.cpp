@@ -133,7 +133,7 @@ void ModoJuegoMultiPlayer::start() {
     PopUpCountDown *  mostrarMensajeTexto = new PopUpCountDown(mGameManagerInterfaz,"El juego comienza en ",3);
     mostrarMensajeTexto->setSizeText(20);
     mGameManagerInterfaz->showPopUp(mostrarMensajeTexto,ID_POPUP_JUEGO_COMIENZA);
-    mpMusicasFondo[rand()%1]->play();
+    mpMusicasFondo[rand()%2]->play();
 }
 
 
@@ -210,6 +210,7 @@ void ModoJuegoMultiPlayer::establecerValoresDeMapaPlayer(IdPlayer idPlayer){
         mPlayerSprite[idPlayer]->setMPuedeAtravesarBloques(false);
         mPlayerSprite[idPlayer]->setMPuedeAtravesarBombas(false);
         mPlayerSprite[idPlayer]->setMEstaEnfermo(false);
+        mPlayerSprite[idPlayer]->setVelocidad(1);
         mpVidasRestantesPlayer[idPlayer]->setText(std::to_string(mPlayerSprite[idPlayer]->getVidas()));
     }
 }
@@ -593,10 +594,11 @@ void ModoJuegoMultiPlayer::playerMuerto(Player * pPlayer,Sprite * pPlayerCausant
     }else {
 
         if (pPlayer->getVidas() > 0) {
+            int vidas_actuales = pPlayer->getVidas();
             establecerValoresDeMapaPlayer(pPlayer->getId());
             pPlayer->cambiarEstado(EstadoSprite::PARADO);
             pPlayer->setProteccion(5);
-            pPlayer->setVidas(pPlayer->getVidas() - 1);
+            pPlayer->setVidas(vidas_actuales - 1);
             mpVidasRestantesPlayer[pPlayer->getId()]->setText(std::to_string(pPlayer->getVidas()));
             mpSfxPlayerPerdioVida->play();
         } else {
@@ -753,6 +755,10 @@ void ModoJuegoMultiPlayer::reiniciarEstado() {
     mMapa.cargar(mGameRenderer,mRutaTerrenoMapa);
     establecerValoresDeMapaPlayers();
     agregarPlayersActivos();
+    if(mIsPlayingWarningSound){
+        mpMusicasFondo[rand()%2]->play();
+    }
+    mIsPlayingWarningSound = false;
     mGameTimer.start();
 }
 

@@ -75,7 +75,17 @@ public:
     virtual void stop(){mIsStopped = true;}; // La detiene marcandola  para eliminacion
     virtual void resume() {mIsPaused = false;};
 
-    virtual void procesarEvento(SDL_Event * event) {};
+    virtual void procesarEvento(SDL_Event * event) {
+        if(event->type==SDL_KEYDOWN) {
+            switch (event->key.keysym.sym) {
+                case SDLK_ESCAPE:
+                    mGameManagerInterfaz->goBack();
+                    break;
+                default:break;
+            }
+        }
+
+    };
     virtual void update(){};
     virtual void updateWhenPopUp(){};
     virtual void resultPopUp(void *result, int i) {};
