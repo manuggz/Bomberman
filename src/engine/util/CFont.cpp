@@ -23,7 +23,7 @@ bool CFont::loadFont(string pathFont,int size){
     mFont =  TTF_OpenFont(pathFont.c_str(), size );
 
     if(!mFont){
-        SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,"No se logró cargar la fuente : %s . %s",pathFont,TTF_GetError());
+        SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,"No se logró cargar la fuente : %s . %s",pathFont.c_str(),TTF_GetError());
         return false;
     }else{
         SDL_Log("Cargada Font: %s",pathFont.c_str());

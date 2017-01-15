@@ -31,6 +31,8 @@ public:
         mBackgroundColor.r = mBackgroundColor.g =mBackgroundColor.b = mBackgroundColor.a = 0;
         mEstablecidoColorFondo = false;
     }
+    virtual void procesarEvento(SDL_Event *pEvent) {
+    }
 
     void setLayoutParam(std::string nameParam,std::string valueParam){
         mLayoutParams[nameParam] = valueParam;
@@ -124,7 +126,7 @@ public:
         // Dibuja la imagen de background
         if(mTextureBackground != nullptr){
             SDL_Rect clip = {0,0,mDrawRect.w,mDrawRect.h};
-            mTextureBackground->render(gRenderer,mDrawRect.x,mDrawRect.y,&clip);
+            mTextureBackground->draw(gRenderer, mDrawRect.x, mDrawRect.y, &clip);
         }
 
 

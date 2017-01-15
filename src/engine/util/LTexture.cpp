@@ -94,7 +94,7 @@ bool LTexture::loadFromRenderedText(SDL_Renderer * gRenderer, TTF_Font * gFont, 
 	}
 	else
 	{
-        SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,"Unable to render text surface! SDL_ttf Error: %s.", TTF_GetError() );
+        SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION,"Unable to draw text surface! SDL_ttf Error: %s.", TTF_GetError() );
         return false;
 	}
 
@@ -137,10 +137,10 @@ void LTexture::setAlpha( Uint8 alpha )
     SDL_SetTextureAlphaMod( mTexture, alpha );
 }
 
-void LTexture::render( SDL_Renderer * gRenderer, int x, int y,
-                       SDL_Rect* clip , double angle ,SDL_Point* center,
-                       SDL_RendererFlip flip ) {
-    //Set rendering space and render to screen
+void LTexture::draw(SDL_Renderer *gRenderer, int x, int y,
+                    SDL_Rect *clip, double angle, SDL_Point *center,
+                    SDL_RendererFlip flip) {
+    //Set rendering space and draw to screen
     SDL_Rect renderQuad = { x, y, mWidth, mHeight };
 
     //Set clip rendering dimensions

@@ -69,6 +69,12 @@ public:
         }
     }
 
+    void procesarEvento(SDL_Event *event) override {
+        Component::procesarEvento(event);
+        for (auto & componente :mComponentes ) {
+            componente->procesarEvento(event);
+        }
+    }
     /**
      * Dibuja el layout y sus componentes de arriba hacia abajo / verticalmente
      * @param renderer

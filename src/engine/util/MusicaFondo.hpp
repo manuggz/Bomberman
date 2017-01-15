@@ -26,8 +26,8 @@ public:
     }
 
     void play(int volumen = MAX_VOLUMEN,int loops = -1){
-        Mix_VolumeMusic(volumen);
-        Mix_PlayMusic(mpRawMixMusic, loops);
+        //Mix_VolumeMusic(volumen);
+        //Mix_PlayMusic(mpRawMixMusic, loops);
     }
 
     /* Fade in music or a channel over "ms" milliseconds, same semantics as the "Play" functions */

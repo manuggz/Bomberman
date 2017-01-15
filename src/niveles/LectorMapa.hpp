@@ -33,7 +33,7 @@
 *
 */
 
-class NivelMapa: public Mapa {
+class LectorMapa: public Mapa {
 public:
 
     enum ExtremoColision{
@@ -44,7 +44,7 @@ public:
         BOTTOMLEFT
     };
 
-    NivelMapa(int x, int y);
+    LectorMapa(int x, int y);
 
     static SDL_Texture * getPreviewTerreno(char rutaMapa[],MetaData * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y);
     bool contain(SDL_Rect rect);

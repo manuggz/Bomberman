@@ -6,9 +6,11 @@
 #define BOMBERMAN_GAMEMANAGERINTERFAZUI_HPP
 #include <SDL2/SDL_mixer.h>
 #include "GameManagerPopUpInterfaz.hpp"
+//#include "../GameManager/GameManager.hpp"
 
 class InterfazGrafica;
 class PopUpInterfaz;
+class InterfazEstandarBackResult;
 /**
  * Esta es la interfaz que debe implemetar un GameManager si quiere utilizar interfaces.
  */
@@ -59,6 +61,7 @@ public:
      * @param pJuego
      */
     virtual void cambiarInterfaz(InterfazGrafica * pInterfaz) = 0;
+    virtual void cambiarInterfaz(InterfazGrafica * pInterfaz,int ID) = 0;
 
     /**
      * Regresa en la pila de navegación, si no hay nada en la pila se sale del juego.
@@ -67,5 +70,12 @@ public:
 
     virtual void playSound(Mix_Music * pMusic,Uint8 volumen) = 0;
     virtual void playFadeInSound(Mix_Music *music, Uint8 volumen) = 0;
+
+    virtual Uint32 getWindowPixelFormat() = 0;
+
+    virtual int getNativeWidth() = 0;
+    virtual int getNativeHeight() = 0;
+
+    virtual void goBack(InterfazEstandarBackResult *pResult) = 0;
 };
 #endif //BOMBERMAN_GAMEMANAGERINTERFAZ_HPP

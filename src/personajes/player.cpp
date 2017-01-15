@@ -2,7 +2,7 @@
 #include "player.hpp"
 #include "bomba.hpp"
 #include "../engine/util/LTimer.hpp"
-#include "../niveles/NivelMapa.hpp"
+#include "../niveles/LectorMapa.hpp"
 #include "../objetos/explosion.hpp"
 
 
@@ -394,37 +394,37 @@ void Player::mover_ip(int incremento_x, int incremento_y) {
      * DETECTAMOS ALGUNA COLISION CON EL MAPA
      */
     // Nos dice cual de los extremos colision con el mapa
-    NivelMapa::ExtremoColision extremoQueColisiona;
+    LectorMapa::ExtremoColision extremoQueColisiona;
     int numeroDeColisiones = 0;
     extremoQueColisiona    = mpJuego->colisionConMapa(rect, &numeroDeColisiones, mPuedeAtravesarBloques);
 
-    if(extremoQueColisiona != NivelMapa::ExtremoColision::NINGUNO){
+    if(extremoQueColisiona != LectorMapa::ExtremoColision::NINGUNO){
 
         // Si colision en una sola esquina entonces deslizamos un poco al personaje para que le sea más facil
         // manejarse por el mapa :)
         if(numeroDeColisiones == 1){
             if(estado_actual == EstadoSprite::IZQUIERDA){
-                if(extremoQueColisiona == NivelMapa::ExtremoColision::TOPLEFT){
+                if(extremoQueColisiona == LectorMapa::ExtremoColision::TOPLEFT){
                     y += 1; // Hacia Abajo
-                }else if(extremoQueColisiona == NivelMapa::ExtremoColision::BOTTOMLEFT){
+                }else if(extremoQueColisiona == LectorMapa::ExtremoColision::BOTTOMLEFT){
                     y -= 1; // Hacia Arriba
                 }
             }else if (estado_actual == EstadoSprite::DERECHA){
-                if(extremoQueColisiona == NivelMapa::ExtremoColision::TOPRIGHT){
+                if(extremoQueColisiona == LectorMapa::ExtremoColision::TOPRIGHT){
                     y += 1;// Hacia Abajo
-                }else if(extremoQueColisiona == NivelMapa::ExtremoColision::BOTTOMRIGHT){
+                }else if(extremoQueColisiona == LectorMapa::ExtremoColision::BOTTOMRIGHT){
                     y -= 1;// Hacia Arriba
                 }
             }else if(estado_actual == EstadoSprite::ARRIBA){
-                if(extremoQueColisiona == NivelMapa::ExtremoColision::TOPLEFT){
+                if(extremoQueColisiona == LectorMapa::ExtremoColision::TOPLEFT){
                     x += 1; // Hacia la derecha
-                }else if(extremoQueColisiona == NivelMapa::ExtremoColision::TOPRIGHT){
+                }else if(extremoQueColisiona == LectorMapa::ExtremoColision::TOPRIGHT){
                     x -= 1;// Hacia la izquierda
                 }
             }else if(estado_actual == EstadoSprite::ABAJO){
-                if(extremoQueColisiona == NivelMapa::ExtremoColision::BOTTOMRIGHT){
+                if(extremoQueColisiona == LectorMapa::ExtremoColision::BOTTOMRIGHT){
                     x -= 1;// Hacia la izquierda
-                }else if(extremoQueColisiona == NivelMapa::ExtremoColision::BOTTOMLEFT){
+                }else if(extremoQueColisiona == LectorMapa::ExtremoColision::BOTTOMLEFT){
                     x += 1;// Hacia la derecha
                 }
             }

@@ -7,6 +7,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_net.h>
 
 #include "../interfaces/InterfazGrafica.hpp"
 #include "../interfaces/PopUpInterfaz.hpp"
@@ -14,6 +15,14 @@
 #include "../util/LTimer.hpp"
 #include "../util/util.hpp"
 
+class InterfazEstandarBackResult{
+public:
+    std::string texto;
+    int entero;
+    ~InterfazEstandarBackResult(){
+
+    }
+};
 
 /**
  *
@@ -74,6 +83,16 @@ public:
     void play(Mix_Chunk *pSfxChunk) ;
     void playFadeInSound(Mix_Music *music, Uint8 volumen) ;
 
+    Uint32 getWindowPixelFormat() override;
+
+    void cambiarInterfaz(InterfazGrafica *pInterfaz, int ID) override;
+
+    void goBack(InterfazEstandarBackResult *pResult) override;
+
+    int getNativeWidth() override;
+
+    int getNativeHeight() override;
+
     float getScaleRatioW() const;
 
     void setScaleRatioW(float scaleRatioW);
@@ -90,6 +109,8 @@ public:
 
     void setNombreApp(const std::string &nombreApp);
     std::string obtenerPrefPath();
+
+    void setPuedeToglearPantallaCompleta(bool puedeToglear);
 
 private:
 
@@ -145,5 +166,9 @@ private:
     std::string nombreOrganization;
     std::string nombreApp;
 
+    int idInterfazActual;
+
+    bool puedeToglearPantallaCompleta = true;
+    InterfazEstandarBackResult *mpResultInterfazActual = nullptr;
 };
 #endif

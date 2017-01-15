@@ -82,7 +82,7 @@ void imprimir_desde_grilla(LTexture * src, int cuadro, SDL_Renderer *gRenderer,
     }else
         src->setAlpha(255);
 
-    src->render(gRenderer,x_dest,y_dest,&srcrect);
+    src->draw(gRenderer, x_dest, y_dest, &srcrect);
 }
 
 
@@ -107,7 +107,7 @@ int imprimir_letra (SDL_Renderer * gRenderer, LTexture * textureLetras,int x, in
             << "srcrect.w " << srcrect.w
             << "srcrect.h " << srcrect.h
              << std::endl;
-        textureLetras->render(gRenderer,x,y,&srcrect);
+        textureLetras->draw(gRenderer, x, y, &srcrect);
     }
 
 	return srcrect.w;

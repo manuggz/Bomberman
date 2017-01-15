@@ -41,7 +41,7 @@ ModoJuegoMultiPlayer::ModoJuegoMultiPlayer (GameManagerInterfazUI * gameManager,
 void ModoJuegoMultiPlayer::prepare() {
     InterfazGrafica::prepare();
 
-    //mMapa = new NivelMapa();
+    //mMapa = new LectorMapa();
     //crearPlayersActivos();
 
     //displayMensage("�Qu� gane el mejor!");//se presenta el mensage con el nivel actual
@@ -367,7 +367,7 @@ bool ModoJuegoMultiPlayer::estaPlayerActivo(IdPlayer playerId){
 void ModoJuegoMultiPlayer::drawBarra(SDL_Renderer * gRenderer){
 
 //    // Dibuja un cuadro anaranjado donde van a estar los datos
-    mpTextureTablero->render(gRenderer,0,0);
+    mpTextureTablero->draw(gRenderer, 0, 0);
 
     //PLAYER_1
     // Dibuja la cara del player
@@ -375,7 +375,7 @@ void ModoJuegoMultiPlayer::drawBarra(SDL_Renderer * gRenderer){
     mpSpriteSheetCarasBomberman->draw(gRenderer,1,6);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mpTextureCuadroPeque->render(gRenderer,15,3);
+    mpTextureCuadroPeque->draw(gRenderer, 15, 3);
 
     //PLAYER_2
     // Dibuja la cara del player
@@ -383,14 +383,14 @@ void ModoJuegoMultiPlayer::drawBarra(SDL_Renderer * gRenderer){
     mpSpriteSheetCarasBomberman->draw(gRenderer,32,6);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mpTextureCuadroPeque->render(gRenderer,48,3);
+    mpTextureCuadroPeque->draw(gRenderer, 48, 3);
 
     //PLAYER_3
     // Dibuja la cara del player
     mpSpriteSheetCarasBomberman->setCurrentCuadro(!(estaPlayerActivo(PLAYER_3)) + PLAYER_3*2);
     mpSpriteSheetCarasBomberman->draw(gRenderer,65,6);
 
-    mpTextureCuadroPeque->render(gRenderer,80,3);
+    mpTextureCuadroPeque->draw(gRenderer, 80, 3);
 
 //    //PLAYER_4
     // Dibuja la cara del player
@@ -398,7 +398,7 @@ void ModoJuegoMultiPlayer::drawBarra(SDL_Renderer * gRenderer){
     mpSpriteSheetCarasBomberman->draw(gRenderer,253,6);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mpTextureCuadroPeque->render(gRenderer,270,3);
+    mpTextureCuadroPeque->draw(gRenderer, 270, 3);
 
     //PLAYER_5
     // Dibuja la cara del player
@@ -406,10 +406,10 @@ void ModoJuegoMultiPlayer::drawBarra(SDL_Renderer * gRenderer){
     mpSpriteSheetCarasBomberman->draw(gRenderer,288,6);
 
     // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mpTextureCuadroPeque->render(gRenderer,304,3);
+    mpTextureCuadroPeque->draw(gRenderer, 304, 3);
 
     // Dibujamos el cuadro donde se dibujara el tiempo restante
-    mpTextureCuadroGrande->render(gRenderer,137,3);
+    mpTextureCuadroGrande->draw(gRenderer, 137, 3);
 
     // Calculamos y dibujamos el tiempo restante
     if(mGameTimer.isStarted()){
@@ -693,7 +693,7 @@ std::deque<Sprite *> ModoJuegoMultiPlayer::colisionConBombas(SDL_Rect  rect) {
     return mGrpBombas.collide(rect);
 }
 
-NivelMapa::ExtremoColision ModoJuegoMultiPlayer::colisionConMapa(SDL_Rect rect_coli, int *lado_colision, bool soloBloquesNoTraspasables){
+LectorMapa::ExtremoColision ModoJuegoMultiPlayer::colisionConMapa(SDL_Rect rect_coli, int *lado_colision, bool soloBloquesNoTraspasables){
     /*Comprueba si un rect colisiona con el nivel*/
     rect_coli.x -= mMapa.getX();
     rect_coli.y -= mMapa.getY();

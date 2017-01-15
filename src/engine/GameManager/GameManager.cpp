@@ -1,5 +1,7 @@
 #include "GameManager.hpp"
 
+class puedeToglearPantallaCompleta;
+
 /**
  * Inicia el juego
  *  Establece los controles iniciales
@@ -77,6 +79,12 @@ void GameManager::iniciarLibreriaSDL(){
         exit(EXIT_FAILURE);
     }
 
+    if(SDLNet_Init() == -1) {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"No se pudo inicializar SDL Net.%s",SDLNet_GetError());
+        SDL_Quit();
+        TTF_Quit();
+        exit(EXIT_FAILURE);
+    }
 }
 
 /**
@@ -210,26 +218,29 @@ bool GameManager::procesarEventos(){
 
                 if(!mISFullScreenPressed && evento.key.keysym.sym==SDLK_RETURN && evento.key.keysym.mod & SDLK_LSHIFT){
                     SDL_Log("Toggle Fullscreen Mode");
-                    if(mIsPantallaCompleta){
-                        if(!SDL_SetWindowFullscreen(mMainWindow,0)){
-                            mIsPantallaCompleta = false;
+                    if(puedeToglearPantallaCompleta){
+                        if(mIsPantallaCompleta){
+                            if(!SDL_SetWindowFullscreen(mMainWindow,0)){
+                                mIsPantallaCompleta = false;
+                            }else{
+                                SDL_LogCritical(SDL_LOG_CATEGORY_APPLICATION,
+                                                "No se pudo cambiar a modo windowed.%s",
+                                                SDL_GetError());
+                            }
                         }else{
-                            SDL_LogCritical(SDL_LOG_CATEGORY_APPLICATION,
-                                            "No se pudo cambiar a modo windowed.%s",
-                                    SDL_GetError());
+                            if(!SDL_SetWindowFullscreen(mMainWindow,SDL_WINDOW_FULLSCREEN)){
+                                mIsPantallaCompleta = true;
+                            }else{
+                                SDL_LogCritical(SDL_LOG_CATEGORY_APPLICATION,
+                                                "No se pudo cambiar a modo pantalla completa.%s",
+                                                SDL_GetError());
+                            }
                         }
-                    }else{
-                        if(!SDL_SetWindowFullscreen(mMainWindow,SDL_WINDOW_FULLSCREEN)){
-                            mIsPantallaCompleta = true;
-                        }else{
-                            SDL_LogCritical(SDL_LOG_CATEGORY_APPLICATION,
-                                            "No se pudo cambiar a modo pantalla completa.%s",
-                                            SDL_GetError());
-                        }
+                        mISFullScreenPressed = true;
+                        interfaz_actual->forceDraw();
+                        return false;
+
                     }
-                    mISFullScreenPressed = true;
-                    interfaz_actual->forceDraw();
-                    return false;
                 }
                 if(evento.key.keysym.sym==SDLK_F4 && evento.key.keysym.mod & SDLK_LALT){
                     salir_juego=true;
@@ -351,6 +362,11 @@ void GameManager::run(){
             // esta entonces estaba pausada(ver linea 214~ de este archivo, más arriba)
             if(interfaz_actual->isPaused()){
                 // Se resume la interfaz
+                if(mpResultInterfazActual) {
+                    interfaz_actual->resultInterfazAnterior(idInterfazActual, mpResultInterfazActual);
+                    delete mpResultInterfazActual;
+                    mpResultInterfazActual = nullptr;
+                }
                 interfaz_actual->resume();
             }else{ // Si no estaba pausada significa que es una completamente nueva
                 interfaz_actual->prepare();
@@ -485,6 +501,7 @@ GameManager::~GameManager(){
     if(mIniciadoModuloSonido)
         Mix_CloseAudio();
     TTF_Quit();
+    SDLNet_Quit();
     SDL_Quit();
 }
 
@@ -583,5 +600,31 @@ const std::string &GameManager::getNombreApp() const {
 
 void GameManager::setNombreApp(const std::string &nombreApp) {
     GameManager::nombreApp = nombreApp;
+}
+
+void GameManager::setPuedeToglearPantallaCompleta(bool puedeToglear) {
+    GameManager::puedeToglearPantallaCompleta = puedeToglear;
+}
+
+Uint32 GameManager::getWindowPixelFormat() {
+    return SDL_GetWindowPixelFormat(mMainWindow);
+}
+
+int GameManager::getNativeWidth() {
+    return nativeSize.w;
+}
+
+int GameManager::getNativeHeight() {
+    return nativeSize.h;
+}
+
+void GameManager::cambiarInterfaz(InterfazGrafica *pInterfaz, int ID) {
+    idInterfazActual = ID;
+    cambiarInterfaz(pInterfaz);
+}
+
+void GameManager::goBack(InterfazEstandarBackResult *pResult) {
+    mpResultInterfazActual = pResult;
+    GameManager::goBack();
 }
 

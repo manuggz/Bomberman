@@ -55,7 +55,7 @@ public:
 
         // Dibujamos el componente
         SDL_Rect clip ={0,0,mDrawRect.w,mDrawRect.h};
-        mTextureTexto->render(gRenderer,mDrawRect.x,mDrawRect.y,&clip);
+        mTextureTexto->draw(gRenderer, mDrawRect.x, mDrawRect.y, &clip);
 
     }
 

@@ -263,7 +263,7 @@ public:
     void draw(SDL_Renderer *gRenderer) override {
         static char nombre_tecla[20];
 
-        pTextureFondo->render(gRenderer,0,0);
+        pTextureFondo->draw(gRenderer, 0, 0);
         for( int i = 0 ; i < ControlPlayer::N_TECLAS ; i++){
 
             pSpriteSheetBotonCambiarTecla->setCurrentCuadro((idTeclaCambiando==i)?3:estadoBotonTecla[i]);

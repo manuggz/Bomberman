@@ -68,7 +68,7 @@ public:
     }
 
     void draw(SDL_Renderer * gRenderer,int x,int y){
-        mTexture->render(gRenderer,x,y,&mRectSource);
+        mTexture->draw(gRenderer, x, y, &mRectSource);
     }
 
     int getNColumnas() {

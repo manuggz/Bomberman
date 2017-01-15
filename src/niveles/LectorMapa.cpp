@@ -1,4 +1,4 @@
-#include "NivelMapa.hpp"
+#include "LectorMapa.hpp"
 
 
 
@@ -22,7 +22,7 @@
  *  3 --> extremo BOTTOM-RIGHT
  *  4 --> extremo BOTTOM-LEFT
  */
-NivelMapa::ExtremoColision NivelMapa::colision(SDL_Rect rect, int * num_colisiones,bool soloBloquesNoTraspasables) {
+LectorMapa::ExtremoColision LectorMapa::colision(SDL_Rect rect, int * num_colisiones,bool soloBloquesNoTraspasables) {
 //solo detecta la colision en las esquinas del rect
 
     int ret=0;
@@ -63,7 +63,7 @@ NivelMapa::ExtremoColision NivelMapa::colision(SDL_Rect rect, int * num_colision
     return (ExtremoColision) ret;
 }
 
-int NivelMapa::getTileAt(int x, int y) {
+int LectorMapa::getTileAt(int x, int y) {
     //solo detecta la colision en las esquinas del rect
 
     //int ret             = 0;
@@ -75,7 +75,7 @@ int NivelMapa::getTileAt(int x, int y) {
 
 }
 
-int NivelMapa::getIndiceFilaMapaAt(int y){
+int LectorMapa::getIndiceFilaMapaAt(int y){
     if(y < 0) return -1;
 
     auto index_fila    = y / mTileHeight;
@@ -85,7 +85,7 @@ int NivelMapa::getIndiceFilaMapaAt(int y){
     return index_fila;
 }
 
-int NivelMapa::getIndiceColumnaMapaAt(int x){
+int LectorMapa::getIndiceColumnaMapaAt(int x){
     if(x < 0) return -1;
     auto index_columna   = x / mTileWidth;
     if(index_columna  >= mMapWidth){
@@ -94,7 +94,7 @@ int NivelMapa::getIndiceColumnaMapaAt(int x){
     return index_columna;
 }
 
-int NivelMapa::getIndiceMapaAt(int x,int y){
+int LectorMapa::getIndiceMapaAt(int x,int y){
 
     int index_fila    = getIndiceFilaMapaAt(y);
     if(index_fila  == -1){
@@ -108,7 +108,7 @@ int NivelMapa::getIndiceMapaAt(int x,int y){
 
     return index_fila * mMapWidth + index_columna;;
 }
-SDL_Texture * NivelMapa::getPreviewTerreno(char rutaMapa[],MetaData * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y){
+SDL_Texture * LectorMapa::getPreviewTerreno(char rutaMapa[],MetaData * params,LTexture * img_tile,LTexture * imgs_players[],int x,int y){
 /*
     SDL_Surface * preview=SDL_GetVideoSurface(),*imagen_redimensionada;
     char ruta[50],mapa[MAXMAP + 1],variable[50];
@@ -142,21 +142,21 @@ SDL_Texture * NivelMapa::getPreviewTerreno(char rutaMapa[],MetaData * params,LTe
     return nullptr;
 }
 
-bool NivelMapa::contain(SDL_Rect rect) {
+bool LectorMapa::contain(SDL_Rect rect) {
     return !(rect.x < 0 || rect.y < 0
            ||rect.x+rect.w > 0 + mTmxParser->mapInfo.width*mTmxParser->mapInfo.tileWidth
            ||rect.y+rect.h > 0 + mTmxParser->mapInfo.height*mTmxParser->mapInfo.tileHeight);
 }
 
-int NivelMapa::getTileWidth() {
+int LectorMapa::getTileWidth() {
     return mTileWidth;
 }
 
-int NivelMapa::getTileHeight() {
+int LectorMapa::getTileHeight() {
     return mTileHeight;
 }
 
-bool NivelMapa::esBloqueSolido(int x, int y) {
+bool LectorMapa::esBloqueSolido(int x, int y) {
 
     int id_tile = getTileAt(x, y);
 
@@ -165,11 +165,11 @@ bool NivelMapa::esBloqueSolido(int x, int y) {
     }
     return false;
 }
-std::string NivelMapa::getPropertyTile(int id_tile, std::string clave){
+std::string LectorMapa::getPropertyTile(int id_tile, std::string clave){
     return mTmxParser->tilesetList[0].tilesMetaData[std::to_string(id_tile)].property[clave];
 }
 
-bool NivelMapa::esBloqueRompible(int x, int y) {
+bool LectorMapa::esBloqueRompible(int x, int y) {
     int id_tile = getTileAt(x, y);
 
     if(id_tile >= 0) { // Si existe tal tile
@@ -178,35 +178,35 @@ bool NivelMapa::esBloqueRompible(int x, int y) {
     return false;
 }
 
-int NivelMapa::getPosYPlayer(IdPlayer player) {
+int LectorMapa::getPosYPlayer(IdPlayer player) {
     return mTmxParser->objectGroup[OBJECTSGROUP_PLAYERS_NAME].object[OBJECT_PLAYER_NAME + std::to_string(player + 1)].y;
 }
 
-int NivelMapa::getPosXPlayer(IdPlayer player) {
+int LectorMapa::getPosXPlayer(IdPlayer player) {
     return mTmxParser->objectGroup[OBJECTSGROUP_PLAYERS_NAME].object[OBJECT_PLAYER_NAME + std::to_string(player + 1)].x;
 }
 
-std::vector<std::string> * NivelMapa::getAnimacionFrames(const std::string & id_tile) {
+std::vector<std::string> * LectorMapa::getAnimacionFrames(const std::string & id_tile) {
     return &mTmxParser->tilesetList[0].tilesMetaData[id_tile].animation;
 }
 
-SpriteSheet *NivelMapa::getSpriteSheetTiles() {
+SpriteSheet *LectorMapa::getSpriteSheetTiles() {
     return mSprtSTiles;
 }
 
-int NivelMapa::getNFilasTileSet() {
+int LectorMapa::getNFilasTileSet() {
     return mTmxParser->tilesetList[0].tileCount/mTmxParser->tilesetList[0].columns;
 }
 
-std::string NivelMapa::getRutaTileSet() {
+std::string LectorMapa::getRutaTileSet() {
     return mTmxParser->tilesetList[0].imgSource.source;
 }
 
-int NivelMapa::getNColumnasTileSet() {
+int LectorMapa::getNColumnasTileSet() {
     return mTmxParser->tilesetList[0].columns;
 }
 
-bool NivelMapa::romperBloque(int x, int y) {
+bool LectorMapa::romperBloque(int x, int y) {
 
     if(!esBloqueRompible(x,y)) return false;
 
@@ -247,13 +247,13 @@ bool NivelMapa::romperBloque(int x, int y) {
 
 }
 
-int NivelMapa::getX() {
+int LectorMapa::getX() {
     return mRectDest.x;
 }
-int NivelMapa::getY() {
+int LectorMapa::getY() {
     return mRectDest.y;
 }
 
-NivelMapa::NivelMapa(int x, int y) : Mapa(x, y) {}
+LectorMapa::LectorMapa(int x, int y) : Mapa(x, y) {}
 
 

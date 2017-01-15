@@ -90,7 +90,7 @@ class BotonComponent : public LayoutComponent{
                 srcrect.y = estado*mInternalRect.h;
                 srcrect.w = mInternalRect.w;
                 srcrect.h = mInternalRect.h;
-                imgGrillaBoton->render(gRenderer,mDrawRect.x,mDrawRect.y,&srcrect);
+                imgGrillaBoton->draw(gRenderer, mDrawRect.x, mDrawRect.y, &srcrect);
             }
         };
         

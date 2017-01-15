@@ -75,9 +75,9 @@ public:
     virtual void stop(){mIsStopped = true;}; // La detiene marcandola  para eliminacion
     virtual void resume() {mIsPaused = false;};
 
-    virtual void procesarEvento(SDL_Event * event) {
-        if(event->type==SDL_KEYDOWN) {
-            switch (event->key.keysym.sym) {
+    virtual void procesarEvento(SDL_Event * pEvento) {
+        if(pEvento->type==SDL_KEYDOWN) {
+            switch (pEvento->key.keysym.sym) {
                 case SDLK_ESCAPE:
                     mGameManagerInterfaz->goBack();
                     break;
@@ -95,6 +95,10 @@ public:
 
     // Esta funcion dibuja todos los elementos sin importar si fueron o no modificados anteriormente
     virtual void forceDraw() {}
+
+    virtual void resultInterfazAnterior(int id, InterfazEstandarBackResult *pResult) {
+
+    }
 
 protected:
 

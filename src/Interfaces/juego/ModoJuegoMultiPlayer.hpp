@@ -13,7 +13,7 @@
 #include "../../engine/mapa/TileEnLlamas.hpp"
 #include "../../engine/util/LTimer.hpp"
 
-#include "../../niveles/NivelMapa.hpp"
+#include "../../niveles/LectorMapa.hpp"
 #include "../../util/constantes.hpp"
 #include "PopUpJuegoMostrarRondasGan.hpp"
 
@@ -49,7 +49,7 @@ public:
     deque<Sprite *> colisionConExplosiones(SDL_Rect rect) ;;
     deque<Sprite *> colisionBloqueEnLlamas(SDL_Rect rect) ;
     deque<Sprite *> colisionConItems(SDL_Rect rect) ;
-    NivelMapa::ExtremoColision colisionConMapa(SDL_Rect rect_coli,
+    LectorMapa::ExtremoColision colisionConMapa(SDL_Rect rect_coli,
                                                int *lado_colision = nullptr,
                                                bool soloBloquesNoTraspasables=false) ;
 
@@ -97,7 +97,7 @@ protected:
     Group mGrpBloques;
 
 
-    NivelMapa mMapa;
+    LectorMapa mMapa;
     LTimer mGameTimer ;
 
     int      mRondasGanadas [Player::N_PLAYERS] {0};
