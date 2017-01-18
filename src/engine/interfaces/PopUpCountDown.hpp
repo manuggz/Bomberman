@@ -5,19 +5,19 @@
 #ifndef BOMBERMAN_POPUPCOUNTDOWN_HPP
 #define BOMBERMAN_POPUPCOUNTDOWN_HPP
 
-#include "PopUpMostrarMensajeTexto.hpp"
+#include "PopUpMostrarMensajeTextoTimer.hpp"
 
-class PopUpCountDown : public PopUpMostrarMensajeTexto{
+class PopUpCountDown : public PopUpMostrarMensajeTextoTimer{
 public:
     PopUpCountDown(GameManagerPopUpInterfaz *gameManager,std::string mensaje,Uint8 tiempoDeMuestraSegundos)
-            : PopUpMostrarMensajeTexto(gameManager,
+            : PopUpMostrarMensajeTextoTimer(gameManager,
                                        mensaje + std::to_string(tiempoDeMuestraSegundos) + "!",
                                        tiempoDeMuestraSegundos) {
         mpMensajeCrudo = mensaje;
     }
 
     void update() override {
-        PopUpMostrarMensajeTexto::update();
+        PopUpMostrarMensajeTextoTimer::update();
         mpMensajeTexto->setText(
                 mpMensajeCrudo + std::to_string(mTiempoDeMuestraSegundos - mControlTimer.getTicks()/1000) + " !"
         );

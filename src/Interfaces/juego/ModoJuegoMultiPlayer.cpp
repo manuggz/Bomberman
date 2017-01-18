@@ -55,60 +55,46 @@ void ModoJuegoMultiPlayer::prepare() {
 void ModoJuegoMultiPlayer::createUI(SDL_Renderer *gRenderer) {
 
 
-    mLayoutParent = new LayoutAbsolute();
-
-    SDL_Color color = {255,0,0,255}; // Red
-
-    // Componente para el tiempo restante de la ronda
-    mpTxtTiempoRestante = new LabelComponent();
-    mpTxtTiempoRestante->setText("0");
-    mpTxtTiempoRestante->setFont("data/fuentes/OpenSans-Bold.ttf",15);
-    mpTxtTiempoRestante->setTextColor(color);
-    mpTxtTiempoRestante->setLayoutParam(LAYOUT_PARAM_X,"152");
-    mpTxtTiempoRestante->setLayoutParam(LAYOUT_PARAM_Y,"1");
-
-    mLayoutParent->addComponent(mpTxtTiempoRestante);
 
     // Componente para las vidas restantes del player 1
     for(int i = 0; i < Player::N_PLAYERS ; i++){
-        mpVidasRestantesPlayer[i] = new LabelComponent();
-        mpVidasRestantesPlayer[i]->setText("0");
-        mpVidasRestantesPlayer[i]->setFont("data/fuentes/OpenSans-Bold.ttf",15);
-        mpVidasRestantesPlayer[i]->setTextColor(color);
-        mLayoutParent->addComponent(mpVidasRestantesPlayer[i]);
 
         if(mIsPlayerActivado[i]){
             mPlayerSprite[i]->cargarRecursos(gRenderer);
 
         }
     }
-    mpVidasRestantesPlayer[PLAYER_1]->setLayoutParam(LAYOUT_PARAM_X,"18");
-    mpVidasRestantesPlayer[PLAYER_1]->setLayoutParam(LAYOUT_PARAM_X,"18");
-    mpVidasRestantesPlayer[PLAYER_1]->setLayoutParam(LAYOUT_PARAM_Y,"1");
 
-    // Componente para las vidas restantes del player 2
-    mpVidasRestantesPlayer[PLAYER_2]->setLayoutParam(LAYOUT_PARAM_X,"51");
-    mpVidasRestantesPlayer[PLAYER_2]->setLayoutParam(LAYOUT_PARAM_Y,"1");
-
-    mpVidasRestantesPlayer[PLAYER_3]->setLayoutParam(LAYOUT_PARAM_X,"83");
-    mpVidasRestantesPlayer[PLAYER_3]->setLayoutParam(LAYOUT_PARAM_Y,"1");
-
-    mpVidasRestantesPlayer[PLAYER_4]->setLayoutParam(LAYOUT_PARAM_X,"273");
-    mpVidasRestantesPlayer[PLAYER_4]->setLayoutParam(LAYOUT_PARAM_Y,"1");
-
-    mpVidasRestantesPlayer[PLAYER_5]->setLayoutParam(LAYOUT_PARAM_X,"307");
-    mpVidasRestantesPlayer[PLAYER_5]->setLayoutParam(LAYOUT_PARAM_Y,"1");
-
-    mpTextureTablero = new LTexture();
-    mpTextureTablero->cargarDesdeArchivo("data/imagenes/objetos/tablero.bmp",gRenderer,true);
+    mpTextureHUD = new LTexture();
+    mpTextureHUD->cargarDesdeArchivo("data/imagenes/objetos/tablero.bmp",gRenderer,true);
 
     mpSpriteSheetCarasBomberman = new SpriteSheet(gRenderer,"data/imagenes/objetos/caras_bomberman.bmp",1,10,true);
 
-    mpTextureCuadroPeque  = new LTexture();
-    mpTextureCuadroPeque->cargarDesdeArchivo("data/imagenes/objetos/cuadro_1.png",gRenderer,false);
+    mBitmapFont[FUENTE_NORMAL] = new BitmapFont(gRenderer,   "data/fuentes/fuente2_16_normal.png");
+    mBitmapFont[FUENTE_RESALTADA] = new BitmapFont(gRenderer,"data/fuentes/fuente2_16_resaltado.png");
 
-    mpTextureCuadroGrande = new LTexture();
-    mpTextureCuadroGrande->cargarDesdeArchivo("data/imagenes/objetos/cuadro_3.png",gRenderer,false);
+    SpriteSheet *spriteSheet;
+    for(int i = 0; i < Player::N_PLAYERS;i++){
+        if(mIsPlayerActivado[i]) {
+            spriteSheet = new SpriteSheet(gRenderer, "data/imagenes/objetos/trofeo.bmp", 1, 13, true);
+            pAnimaTrofeos[i] = new Animacion(spriteSheet, "7,7,7,7,7,7,7,7,7,7,8,8,9,9,9,10,10,10,11,11,12,12,12",
+                                             19 + i * 60, 15);
+            pAnimaTrofeos[i]->setRepeticiones(-1);
+
+            mpBitmapValorCopasGanadas[i] = new BitmapFontRenderer(mBitmapFont[FUENTE_NORMAL], 42 + i * 60, 20);
+            mpBitmapValorCopasGanadas[i]->setText("0");
+
+            mGrpSprites.add(pAnimaTrofeos[i]);
+        }
+
+    }
+
+    spriteSheet = new SpriteSheet(gRenderer,"data/imagenes/objetos/trofeo.bmp",1,13,true);
+    mpAnimacionCopaMaxVictorias=new Animacion(spriteSheet,"7,7,7,7,7,7,7,7,7,7,8,8,9,9,9,10,10,10,11,11,12,12,12",139,-2);
+    mpAnimacionCopaMaxVictorias->setRepeticiones(-1);
+    mpBitmapValorCopasMax = new BitmapFontRenderer(mBitmapFont[FUENTE_NORMAL], 139 + 23,3);
+
+    mpBitmapMaxTimeRonda = new BitmapFontRenderer(mBitmapFont[FUENTE_NORMAL], 139 + 23,3);
 
 
     mpSfxCreadaExplosion = new EfectoSonido("data/sonidos/ping_5.wav",100);
@@ -119,6 +105,13 @@ void ModoJuegoMultiPlayer::createUI(SDL_Renderer *gRenderer) {
     mpMusicasFondo[1] = new MusicaFondo("data/sonidos/musica_6.mid");
     mpMusicaAdvertenciaTiempo = new MusicaFondo("data/sonidos/musica_4.mid");
 
+    if(!mNVictorias){
+        rectPlaceHolderTime.x =128;
+    }else {
+        rectPlaceHolderTime.x = 90;
+        mpBitmapValorCopasMax->setText(std::to_string(mNVictorias));
+        mGrpSprites.add(mpAnimacionCopaMaxVictorias);
+    }
     mGameRenderer = gRenderer;
 
 
@@ -139,25 +132,31 @@ void ModoJuegoMultiPlayer::start() {
 
 void ModoJuegoMultiPlayer::pause() {
     InterfazGrafica::pause();
-    mGameTimer.pause();
+    if(mMinutos)mGameTimer.pause();
 }
 
 void ModoJuegoMultiPlayer::resume() {
     InterfazGrafica::resume();
-    mGameTimer.resume();
+    if(mMinutos)mGameTimer.resume();
 }
 
-void ModoJuegoMultiPlayer::resultPopUp(void *result, int popUpCode) {
+void ModoJuegoMultiPlayer::resultPopUp(InterfazEstandarBackResult *result, int popUpCode) {
     InterfazGrafica::resultPopUp(result, popUpCode);
 
     switch(popUpCode){
         case ID_POPUP_JUEGO_NADIE_GANA_RONDA:
-            mGrpSprites.kill();
-            reiniciarEstado();
-            break;
         case ID_POPUP_JUEGO_MOSTRAR_GAN_CONTINUAR:
             mGrpSprites.kill();
             reiniciarEstado();
+            for(int i = 0; i < Player::N_PLAYERS;i++) {
+                if(mIsPlayerActivado[i]) {
+                    mGrpSprites.add(pAnimaTrofeos[i]);
+                    mpBitmapValorCopasGanadas[i]->setText(std::to_string(mRondasGanadas[i]));
+                }
+            }
+            if(mNVictorias > 0){
+                mGrpSprites.add(mpAnimacionCopaMaxVictorias);
+            }
             break;
         case ID_POPUP_JUEGO_MOSTRAR_GAN_TERMINAR:{
 
@@ -168,7 +167,7 @@ void ModoJuegoMultiPlayer::resultPopUp(void *result, int popUpCode) {
                 }
             }
 
-            PopUpMostrarMensajeTexto *  mostrarMensajeTexto = new PopUpMostrarMensajeTexto(mGameManagerInterfaz,
+            PopUpMostrarMensajeTextoTimer *  mostrarMensajeTexto = new PopUpMostrarMensajeTextoTimer(mGameManagerInterfaz,
                                                                                            "Player " + std::to_string(
                                                                                                    idPlayerActivo + 1) +
                                                                                            " ha ganado el juego!",3);
@@ -211,7 +210,6 @@ void ModoJuegoMultiPlayer::establecerValoresDeMapaPlayer(IdPlayer idPlayer){
         mPlayerSprite[idPlayer]->setMPuedeAtravesarBombas(false);
         mPlayerSprite[idPlayer]->setMEstaEnfermo(false);
         mPlayerSprite[idPlayer]->setVelocidad(1);
-        mpVidasRestantesPlayer[idPlayer]->setText(std::to_string(mPlayerSprite[idPlayer]->getVidas()));
     }
 }
 
@@ -228,7 +226,7 @@ void ModoJuegoMultiPlayer::agregarPlayersActivos() {
             mPlayerSprite[i]->cambiarEstado(EstadoSprite::PARADO);
             mPlayerSprite[i]->setProteccion(10);
 
-            if(!mPlayerSprite[i]->isActivo()){
+            if(! mGrpPlayers.contain(mPlayerSprite[i])){
                 mPlayerSprite[i]->setEnPantalla(true);
                 mGrpSprites.add(mPlayerSprite[i]);
                 mGrpPlayers.add(mPlayerSprite[i]);
@@ -269,6 +267,19 @@ int ModoJuegoMultiPlayer::getSegundosInicioNivel(){
 void ModoJuegoMultiPlayer::update(){
     const Uint8 *teclas= SDL_GetKeyboardState(NULL);//se obtiene el estado_actual actual del teclado
 
+    // Calculamos y dibujamos el tiempo restante
+    if(mGameTimer.isStarted()){
+        static char min_[3],seg[3],tiempo[6];
+
+        sprintf(min_,"%2d",(mMinutos*60 - getSegundosInicioNivel()) / 60);
+        if(min_[0]==' ')min_[0]='0';
+
+        sprintf(seg,"%2d",(mMinutos*60 - getSegundosInicioNivel()) % 60);
+        if(seg[0]==' ')seg[0]='0';
+
+        sprintf(tiempo,"%s:%s",min_,seg);
+        if(!(min_ < 0 || seg < 0))mpBitmapMaxTimeRonda->setText(tiempo);
+    }
     mGrpSprites.update(teclas);
     mMapa.update();
 
@@ -283,7 +294,7 @@ void ModoJuegoMultiPlayer::update(){
                     mPlayerSprite[i]->cambiarEstado(EstadoSprite::MURIENDO);
             }
         }
-        mGameTimer.stop();
+        if(mMinutos)mGameTimer.stop();
 
     }
 
@@ -306,6 +317,7 @@ void ModoJuegoMultiPlayer::update(){
 
         if(idPlayerActivo != PLAYER_NONE){
             mRondasGanadas[idPlayerActivo]++;
+            mpBitmapValorCopasGanadas[idPlayerActivo]->setText(std::to_string(mRondasGanadas[idPlayerActivo]));
             if((mIdLiderRondasGanadas==PLAYER_NONE)
                ||(mRondasGanadas[idPlayerActivo] > mRondasGanadas[mIdLiderRondasGanadas]))
                 mIdLiderRondasGanadas = idPlayerActivo;
@@ -314,7 +326,7 @@ void ModoJuegoMultiPlayer::update(){
                 mIdLiderRondasGanadas = PLAYER_NONE;
 
 
-            if(mRondasGanadas[idPlayerActivo] >= mNVictorias){
+            if(mRondasGanadas[idPlayerActivo] >= mNVictorias && mNVictorias > 0){
                 // Notar que dependiendo si se terminó el juego una vez que se muestre quien lleva la mayoria de copas
                 // se establece el codigo del POP UP, esto es para que una vez que se ha mostrado el pop up realizar
                 // una acción distinta y no tener que agregar una variable de más
@@ -325,7 +337,7 @@ void ModoJuegoMultiPlayer::update(){
             }
         }
     }else if(totalPlayersActivos==0){
-        PopUpMostrarMensajeTexto *  mostrarMensajeTexto = new PopUpMostrarMensajeTexto(mGameManagerInterfaz,
+        PopUpMostrarMensajeTextoTimer *  mostrarMensajeTexto = new PopUpMostrarMensajeTextoTimer(mGameManagerInterfaz,
                                                                                        "Nadie gana en esta ronda! :( ",3);
         mGameManagerInterfaz->showPopUp(mostrarMensajeTexto,ID_POPUP_JUEGO_NADIE_GANA_RONDA);
     }
@@ -364,65 +376,27 @@ bool ModoJuegoMultiPlayer::estaPlayerActivo(IdPlayer playerId){
  * Dibuja los datos que se muestran arriba del Mapa
  * @param gRenderer
  */
-void ModoJuegoMultiPlayer::drawBarra(SDL_Renderer * gRenderer){
+void ModoJuegoMultiPlayer::drawHUD(SDL_Renderer *gRenderer){
 
 //    // Dibuja un cuadro anaranjado donde van a estar los datos
-    mpTextureTablero->draw(gRenderer, 0, 0);
+    mpTextureHUD->draw(gRenderer, 0, 0);
 
-    //PLAYER_1
-    // Dibuja la cara del player
-    mpSpriteSheetCarasBomberman->setCurrentCuadro(!(estaPlayerActivo(PLAYER_1)) + PLAYER_1*2);
-    mpSpriteSheetCarasBomberman->draw(gRenderer,1,6);
+    for(int i=0;i<Player::N_PLAYERS;i++){
+        if(mIsPlayerActivado[i]){
+            mpSpriteSheetCarasBomberman->setCurrentCuadro(i*2 + !mPlayerSprite[i]->isActivo());
+            mpSpriteSheetCarasBomberman->draw(gRenderer,6+ i*60,20);
+            mpBitmapValorCopasGanadas[i]->draw(gRenderer);
+        }
+    }
 
-    // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mpTextureCuadroPeque->draw(gRenderer, 15, 3);
+    if(mNVictorias > 0){
+        mpBitmapValorCopasMax->draw(gRenderer, mpAnimacionCopaMaxVictorias->getX() + 23,3);
+    }
 
-    //PLAYER_2
-    // Dibuja la cara del player
-    mpSpriteSheetCarasBomberman->setCurrentCuadro(!(estaPlayerActivo(PLAYER_2)) + PLAYER_2*2);
-    mpSpriteSheetCarasBomberman->draw(gRenderer,32,6);
-
-    // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mpTextureCuadroPeque->draw(gRenderer, 48, 3);
-
-    //PLAYER_3
-    // Dibuja la cara del player
-    mpSpriteSheetCarasBomberman->setCurrentCuadro(!(estaPlayerActivo(PLAYER_3)) + PLAYER_3*2);
-    mpSpriteSheetCarasBomberman->draw(gRenderer,65,6);
-
-    mpTextureCuadroPeque->draw(gRenderer, 80, 3);
-
-//    //PLAYER_4
-    // Dibuja la cara del player
-    mpSpriteSheetCarasBomberman->setCurrentCuadro(!(estaPlayerActivo(PLAYER_4)) + PLAYER_4*2);
-    mpSpriteSheetCarasBomberman->draw(gRenderer,253,6);
-
-    // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mpTextureCuadroPeque->draw(gRenderer, 270, 3);
-
-    //PLAYER_5
-    // Dibuja la cara del player
-    mpSpriteSheetCarasBomberman->setCurrentCuadro(!(estaPlayerActivo(PLAYER_5)) + PLAYER_5*2);
-    mpSpriteSheetCarasBomberman->draw(gRenderer,288,6);
-
-    // Dibuja el cuadro que estara por debajo del texto con las vidas restantes
-    mpTextureCuadroPeque->draw(gRenderer, 304, 3);
-
-    // Dibujamos el cuadro donde se dibujara el tiempo restante
-    mpTextureCuadroGrande->draw(gRenderer, 137, 3);
-
-    // Calculamos y dibujamos el tiempo restante
-    if(mGameTimer.isStarted()){
-        static char min_[3],seg[3],tiempo[6];
-
-        sprintf(min_,"%2d",(mMinutos*60 - getSegundosInicioNivel()) / 60);
-        if(min_[0]==' ')min_[0]='0';
-
-        sprintf(seg,"%2d",(mMinutos*60 - getSegundosInicioNivel()) % 60);
-        if(seg[0]==' ')seg[0]='0';
-
-        sprintf(tiempo,"%s:%s",min_,seg);
-        mpTxtTiempoRestante->setText(tiempo);
+    if(mMinutos > 0){
+        SDL_SetRenderDrawColor(gRenderer,0,0,0,255);
+        SDL_RenderFillRect(gRenderer,&rectPlaceHolderTime);
+        mpBitmapMaxTimeRonda->draw(gRenderer,rectPlaceHolderTime.x + 5,rectPlaceHolderTime.y + 1);
     }
 
 }
@@ -435,21 +409,9 @@ SDL_Joystick * ModoJuegoMultiPlayer::getJoy(int id){
 
 void ModoJuegoMultiPlayer::draw(SDL_Renderer * gRenderer){
 
-    drawBarra(gRenderer);//imprimimos la barra mensage
     mMapa.draw(gRenderer);//imprimimos el nivel
+    drawHUD(gRenderer);//imprimimos la barra mensage
     mGrpSprites.draw(gRenderer);
-
-    if(mLayoutParent->isDisabled()){
-        packLayout(gRenderer);
-    }
-
-    mLayoutParent->draw(gRenderer);
-
-/*    if(pausado){
-        //imprimir_palabra(gRenderer, game->getTexture(IMG_FUENTE_5),80,100,"pausa",STR_NORMAL);
-        imprimir_desde_grilla(mGameManagerInterfaz->getTexture(IMG_CARAS_BOMBERMAN),id_quien_pauso*2 ,gRenderer,130,90,1,10,0);
-    }*/
-    //if(estado_actual==DISPLAY_MSG)imprimir_palabra (gRenderer,game->getTexture(IMG_FUENTE_6),x_msg,y_msg,msg_mostrar,STR_MAX_ESTENDIDA);
 }
 
 
@@ -599,7 +561,6 @@ void ModoJuegoMultiPlayer::playerMuerto(Player * pPlayer,Sprite * pPlayerCausant
             pPlayer->cambiarEstado(EstadoSprite::PARADO);
             pPlayer->setProteccion(5);
             pPlayer->setVidas(vidas_actuales - 1);
-            mpVidasRestantesPlayer[pPlayer->getId()]->setText(std::to_string(pPlayer->getVidas()));
             mpSfxPlayerPerdioVida->play();
         } else {
             pPlayer->setEnPantalla(false);
@@ -745,12 +706,6 @@ Bomba *ModoJuegoMultiPlayer::agregarBomba(Player * player) {
 }
 
 
-void ModoJuegoMultiPlayer::packLayout(SDL_Renderer *pRenderer) {
-    SDL_Rect rect = mGameManagerInterfaz->getRectScreen();
-    mLayoutParent->pack(pRenderer);
-    mLayoutParent->setRectDibujo(rect);
-}
-
 void ModoJuegoMultiPlayer::reiniciarEstado() {
     mMapa.cargar(mGameRenderer,mRutaTerrenoMapa);
     establecerValoresDeMapaPlayers();
@@ -759,22 +714,24 @@ void ModoJuegoMultiPlayer::reiniciarEstado() {
         mpMusicasFondo[rand()%2]->play();
     }
     mIsPlayingWarningSound = false;
-    mGameTimer.start();
+    if(mMinutos > 0) {
+        mGameTimer.start();
+    }
 }
 
 ModoJuegoMultiPlayer::~ModoJuegoMultiPlayer(){
     SDL_Log("ModoJuegoMultiPlayer::~ModoJuegoMultiPlayer");
     for(int i= 0;i<Player::N_PLAYERS;i++){
         delete mPlayerSprite[i];
-        delete mpVidasRestantesPlayer[i];
-    }
+        delete pAnimaTrofeos[i];
+        delete mpBitmapValorCopasGanadas[i];
 
-    delete mpTxtTiempoRestante;
-    delete mLayoutParent;
-    delete mpTextureTablero;
+    }
+    delete mBitmapFont[0];
+    delete mBitmapFont[1];
+
+    delete mpTextureHUD;
     delete mpSpriteSheetCarasBomberman;
-    delete mpTextureCuadroPeque;
-    delete mpTextureCuadroGrande;
 
     delete mpSfxCreadaExplosion;
     delete mpSfxPlayerRecogioItem;
@@ -783,6 +740,11 @@ ModoJuegoMultiPlayer::~ModoJuegoMultiPlayer(){
     delete mpMusicasFondo[0];
     delete mpMusicasFondo[1];
     delete mpMusicaAdvertenciaTiempo;
+
+    delete mpBitmapMaxTimeRonda;
+
+    delete mpBitmapValorCopasMax;
+    delete mpAnimacionCopaMaxVictorias;
 
 }
 

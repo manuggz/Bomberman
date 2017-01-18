@@ -86,5 +86,7 @@ public:
     int getX();
 
     int getY();
+
+    bool esMapaCargado();
 };
 #endif

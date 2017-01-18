@@ -262,7 +262,7 @@ bool GameManager::procesarEventos(){
         if(interfaz_actual && (!mpPopUp || !mpPopUp->isStarted()))
             interfaz_actual->procesarEvento(&evento);
 
-        if(mpPopUp && mpPopUp->isStarted())
+        if(mpPopUp && mpPopUp->isStarted() && !mpPopUp->isStopped())
             mpPopUp->procesarEvento(&evento);
     }
     return true;//se puede continuar
@@ -329,6 +329,7 @@ void GameManager::run(){
 
             if(interfaz_actual != nullptr){
                 interfaz_actual->resultPopUp(mpResultPopUp, mIDCodePopUp);
+                mpResultPopUp = nullptr;
                 if(!interfaz_actual->isStopped())
                     interfaz_actual->resume();
             }
@@ -390,10 +391,12 @@ void GameManager::run(){
             if(!interfaz_actual->isStopped()) {
 
                 if(mpPopUp && mpPopUp->isStarted()){
-                    mpPopUp->update();
-                    // A pesar que se esta mostrando un pop up, como esto es un juego
-                    // no implica que el juego se debe detener, pueden haber animaciones en el juego ejecutandose
-                    interfaz_actual->updateWhenPopUp();
+                    if(!mpPopUp->isStopped()) {
+                        mpPopUp->update();
+                        // A pesar que se esta mostrando un pop up, como esto es un juego
+                        // no implica que el juego se debe detener, pueden haber animaciones en el juego ejecutandose
+                        interfaz_actual->updateWhenPopUp();
+                    }
                 }else{ // Si n hay pop up entonces actualizamos la interfaz actual
                     interfaz_actual->update();
                 }
@@ -547,7 +550,7 @@ SDL_Rect GameManager::getRectScreen() {
     return {0,0,mWidth,mHeight};
 }
 
-void GameManager::closePopUp(void * result) {
+void GameManager::closePopUp(InterfazEstandarBackResult * result) {
 
     if(mpPopUp){
         if(!mpPopUp->isStopped())

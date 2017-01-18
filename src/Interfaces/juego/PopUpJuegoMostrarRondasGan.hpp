@@ -31,6 +31,7 @@ private:
     int animacion;
     int totalTrofeosCreados;
     SpriteSheet *mSpriteSheetCarasBomberman;
+    int id_trofeo_agregado = 0;
 };
 
 #endif

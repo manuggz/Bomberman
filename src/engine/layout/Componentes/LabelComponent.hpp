@@ -7,11 +7,9 @@
 
 
 #include <iostream>
-#include "../LayoutManager/LayoutComponent.hpp"
 #include "../../util/CFont.hpp"
 
-using  namespace std;
-class LabelComponent: public LayoutComponent{
+class LabelComponent: public Component{
 public:
     LabelComponent(){
         mTexto = "";
@@ -40,17 +38,23 @@ public:
         if(mTextureTexto != nullptr){
             mTextureTexto->free();
             delete mTextureTexto;
+            mTextureTexto = nullptr;
         }
 
         if(mTexto != ""){
             mTextureTexto = mFuente->createTextureFromText(gRenderer,mTexto);
             mInternalRect.w = mTextureTexto->getWidth();
             mInternalRect.h = mTextureTexto->getHeight();
+        }else{
+            mDrawRect.w = 0;
+            mDrawRect.h = 0;
+            mInternalRect.w = 0;
+            mInternalRect.h = 0;
         }
     }
 
     void draw(SDL_Renderer *gRenderer) override {
-        LayoutComponent::draw(gRenderer);
+        Component::draw(gRenderer);
         if(mTextureTexto == nullptr) return;
 
         // Dibujamos el componente

@@ -121,5 +121,18 @@ public:
         }
     }
 
+    void setFillParent(bool nuevoValor) {
+        if(nuevoValor){
+            setLayoutParam(LAYOUT_PARAM_FILL_PARENT_HEIGHT,LAYOUT_PARAM_TRUE);
+            setLayoutParam(LAYOUT_PARAM_FILL_PARENT_WIDTH,LAYOUT_PARAM_TRUE);
+            setLayoutParam(LAYOUT_PARAM_WRAP_WIDTH,LAYOUT_PARAM_FALSE);
+            setLayoutParam(LAYOUT_PARAM_WRAP_HEIGHT,LAYOUT_PARAM_FALSE);
+        }else{
+            setLayoutParam(LAYOUT_PARAM_FILL_PARENT_HEIGHT,LAYOUT_PARAM_FALSE);
+            setLayoutParam(LAYOUT_PARAM_FILL_PARENT_WIDTH,LAYOUT_PARAM_FALSE);
+            setLayoutParam(LAYOUT_PARAM_WRAP_WIDTH,LAYOUT_PARAM_TRUE);
+            setLayoutParam(LAYOUT_PARAM_WRAP_HEIGHT,LAYOUT_PARAM_TRUE);
+        }
+    }
 };
 #endif //BOMBERMAN_LAYOUTABSOLUTE_HPP

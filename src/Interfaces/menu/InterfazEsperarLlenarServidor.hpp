@@ -2,8 +2,43 @@
 // Created by manuggz on 14/01/17.
 //
 
+/**
+ *
+ * Parte 1: TCP
+ * CLIENTE ---> Conectar        {}                                                              -----> SERVIDOR
+ * CLIENTE <--- TieneMapa     {Nombre:uint8_t[100]}                                            <----- SERVIDOR
+ * CLIENTE ---> RespuestaTieneMapa     {tiene_mapa:uint8_t}                                            -----> SERVIDOR
+
+ * CLIENTE [NO TIENE MAPA]<--- DatosMapa  {linea:uint8_t[255]}xtodas                                            -----> SERVIDOR
+
+ * CLIENTE ---> Indentificarse  {NickName:uint8_t[8]}:8                                         -----> SERVIDOR
+ * CLIENTE <--- Reconocer      {id_cliente:uint16_t}:3                         -----  SERVIDOR
+ * CLIENTE <--- PuertoUdp      {n_puerto:uint16_t}:2                                            <-----  SERVIDOR
+ * CLIENTE ---> PuertoUdp      {n_puerto:uint16_t}:2                                            ----->  SERVIDOR
+ * CLIENTE ---> Desconectar    {} -----  SERVIDOR
+
+ * Parte 2: UDP
+ *
+ * CLIENTES <- UPDATE_ESTADO__ROOM {flair:uint8_t ,id_update:uint_32_t,
+ *                          tiempo_por_ronda:uint8_t,num_victorias:uint_8_t,
+ *                          is_activo:uint8_t,id_cliente:uint16_t ,id_player:uint8_t, nick_name:uint8_t[8],
+ *                          is_acti vo:uint8_t,id_cliente:uint16_t ,id_player:uint8_t, nick_name:uint8_t[8],
+ *                          is_activo:uint8_t,id_cliente:uint16_t ,id_player:uint8_t, nick_name:uint8_t[8],
+ *                          is_activo:uint8_t,id_cliente:uint16_t ,id_player:uint8_t, nick_name:uint8_t[8],
+ *                          is_activo:uint8_t,id_cliente:uint16_t ,id_player:uint8_t, nick_name:uint8_t[8],
+ *                          }:[67] <--- SERVIDOR
+
+ * CLIENTE --->  KEEP_ALIVE {flair:uint8_t,id_cliente:uint16_t,id_last_update:uint_32_t}: -----> SERVIDOR
+ * CLIENTE <--- ACK_KEEP_ALIVE  {flair:uint8_t} <----- SERVIDOR
+ *
+ * CLIENTES <--- START_GAME  {flair:uint8_t,idPlayer:uint8_t}: <----- SERVIDOR
+ * CLIENTE ---> ACK_START_GAME  {flair:uint8_t} -----> SERVIDOR
+ *
+ */
+
 #ifndef BOMBERMAN_INTERFAZESPERARLLENARSERVIDOR_HPP
 #define BOMBERMAN_INTERFAZESPERARLLENARSERVIDOR_HPP
+
 
 #include <SDL_net.h>
 #include "../../engine/interfaces/InterfazGrafica.hpp"
@@ -15,18 +50,25 @@
 #include "../../engine/util/MusicaFondo.hpp"
 #include "../../engine/sprites/CDrawGroup.hpp"
 #include "../../niveles/LectorMapa.hpp"
-
-class Cliente{
-
-};
+#include "PopUpInsertarTexto.hpp"
+#include "ConstantesServidor.hpp"
 
 class InterfazEsperarLlenarServidor: public InterfazGrafica, public UpdateGroupContainerInterfaz, public BotonInterfaz {
 public:
-    static const int MAX_SOCKETS = 5;
-
-
+    static const int ID_POP_UP_INSERTAR_NICK_SERVIDOR = 12;
     InterfazEsperarLlenarServidor(GameManagerInterfazUI *gameManagerInterfaz) : InterfazGrafica(gameManagerInterfaz),
-                                                                                mMapaTerrenoSeleccionado(0,32){}
+                                                                                mMapaTerrenoSeleccionado(0,32){
+        for(int i = 0; i < MAX_CLIENTES;i++){
+            clients[i] = new Cliente();
+            clients[i]->activo = false;
+        }
+        
+        mUltimoIdUtilizado = 0;
+        clients[0]->activo = true;
+        clients[0]->id_cliente = mUltimoIdUtilizado++;
+        clients[0]->id_player = PLAYER_1;
+        mNumClientes = 1;
+    }
 
     void createUI(SDL_Renderer *gRenderer) override {
         InterfazGrafica::createUI(gRenderer);
@@ -64,29 +106,15 @@ public:
         mSprites=new DrawGroup(this);
 
         //Animaciones para los personajes (Hace que parezcan que caminan) cuando se seleccionan
-        SpriteSheet * spriteSheetTmp = new SpriteSheet();
-        spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/personajes/player_1.bmp",1,12,true);
-        mAnimacionPlayer[0]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8");
-
-        spriteSheetTmp = new SpriteSheet();
-        spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/personajes/player_2.bmp",1,12,true);
-        mAnimacionPlayer[1]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8");
-
-        spriteSheetTmp = new SpriteSheet();
-        spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/personajes/player_3.bmp",1,12,true);
-        mAnimacionPlayer[2]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8");
-
-        spriteSheetTmp = new SpriteSheet();
-        spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/personajes/player_4.bmp",1,12,true);
-        mAnimacionPlayer[3]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8");
-
-        spriteSheetTmp = new SpriteSheet();
-        spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/personajes/player_5.bmp",1,12,true);
-        mAnimacionPlayer[4]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8");
-
+        SpriteSheet * spriteSheetTmp;
 
         for(int i=0;i<Player::N_PLAYERS;i++){
             // Animacion para cuando aun no se ha seleccionado el personaje(Hace que parpadee "presiona")
+
+            spriteSheetTmp = new SpriteSheet();
+            spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/personajes/player_" + std::to_string(i+1)+".bmp",1,12,true);
+            mAnimacionPlayer[i]=new Animacion(spriteSheetTmp,"6,6,7,7,8,8");
+
 
             spriteSheetTmp = new SpriteSheet();
             spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/textos/txt_presiona.png",2,1);
@@ -94,15 +122,16 @@ public:
             // Animacion para cuando se selecciono el personaje(Hace que parpadee "activado")
             spriteSheetTmp = new SpriteSheet();
             spriteSheetTmp->cargarDesdeArchivo(gRenderer,"data/imagenes/textos/txt_activado.png",2,1);
-            mAnimacionMensajeActivado[i]=new Animacion(spriteSheetTmp,"0,0,0,1,1,1");
+            //mAnimacionMensajeActivado[i]=new Animacion(spriteSheetTmp,"0,0,0,1,1,1");
 
             // Hace que las animaciones se repitan indefinidamente(Hasta que se eliminen desde el codigo)
             mAnimacionPlayer[i]->setRepeticiones(-1);
-            mAnimacionMensajeActivado[i]->setRepeticiones(-1);
-            //mAnimacionMensajePresiona[i]->setRepeticiones(-1);
 
-            // Las agrega al controlador que hace que se actualizen y se muestren
-            //mSprites->add(mAnimacionMensajePresiona[i]);
+            mpComponentTextoNickPlayer[i] = new LabelComponent();
+            mpComponentTextoNickPlayer[i]->setText("Esperando...");
+            mpComponentTextoNickPlayer[i]->setFont("data/fuentes/OpenSans-Bold.ttf",10);
+            mpComponentTextoNickPlayer[i]->setTextColor(SDL_Color {0,255,0,255});
+            mLayoutParent->addComponent(mpComponentTextoNickPlayer[i]);
         }
 
         SDL_Color color = {255,0,0,255};
@@ -166,7 +195,7 @@ public:
     void start() override {
         InterfazGrafica::start();
         IPaddress ip;
-        mTCPPuerto = 8099;
+        mTCPPuerto = TCP_DEFAULT_PUERTO;
 
         if(SDLNet_ResolveHost(&ip, NULL, mTCPPuerto) == -1) {
             SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"SDLNet_ResolveHost.%s",SDLNet_GetError());
@@ -181,14 +210,72 @@ public:
             return;
         }
 
-        socket_set = SDLNet_AllocSocketSet(MAX_SOCKETS);
+        //socket_set = SDLNet_AllocSocketSet(MAX_CLIENTES);
 
-        if(socket_set == NULL) {
-            fprintf(stderr, "ER: SDLNet_AllocSocketSet: %s\n", SDLNet_GetError());
-            exit(-1);
+        //if(socket_set == NULL) {
+        //    fprintf(stderr, "ER: SDLNet_AllocSocketSet: %s\n", SDLNet_GetError());
+         //   exit(-1);
+        //}
+
+        // create a UDPsocket on any available port (client)
+        //UDPsocket udpsock;
+
+        mUDPServerSocket=SDLNet_UDP_Open(0);
+        if(!mUDPServerSocket) {
+            printf("SDLNet_UDP_Open: %s\n", SDLNet_GetError());
+            mHaOcurridoError = true;
+            return;
+        }else{
+            IPaddress *address;
+
+            address=SDLNet_UDP_GetPeerAddress(mUDPServerSocket,-1);
+            if(!address) {
+                printf("SDLNet_UDP_GetPeerAddress: %s\n", SDLNet_GetError());
+                // do something because we failed to get the address
+                mHaOcurridoError = true;
+                return;
+            }
+            else {
+                // perhaps print out address->host and address->port
+                mUDPPuerto = address->port;
+                SDL_Log("Puerto asignado al udp servidor:%d.",mUDPPuerto);
+            }
         }
 
+        mUDPPacketEnviar=SDLNet_AllocPacket(MAX_TAM_UPDATE_ROOM);
+        if(!mUDPPacketEnviar) {
+            printf("SDLNet_AllocPacket: %s\n", SDLNet_GetError());
+            mHaOcurridoError = true;
+        }
+
+        mUDPPacketRecibir=SDLNet_AllocPacket(10);
+        if(!mUDPPacketRecibir) {
+            printf("SDLNet_AllocPacket: %s\n", SDLNet_GetError());
+            mHaOcurridoError = true;
+        }
+
+        PopUpInsertarTexto *popUpInsertarTexto = new PopUpInsertarTexto(mGameManagerInterfaz,
+                                                                        "Inserte su Nick:",
+                                                                        8
+        );
+        mGameManagerInterfaz->showPopUp(popUpInsertarTexto, ID_POP_UP_INSERTAR_NICK_SERVIDOR);
     }
+
+    void resultPopUp(InterfazEstandarBackResult *result, int i) override {
+        InterfazGrafica::resultPopUp(result, i);
+        switch(i){
+            case ID_POP_UP_INSERTAR_NICK_SERVIDOR:
+                if(result) {
+                    mMiNick = result->texto;;
+                    memcpy(clients[0]->nick_name,mMiNick.c_str(),8);
+                    cambiarEstadoPlayer(PLAYER_1);
+                    mpComponentTextoNickPlayer[PLAYER_1]->setText(mMiNick);
+                }
+                break;
+        }
+        delete result;
+    }
+
     /**
      * Funcion llamada por los botones de la interfaz cuando son presionados
      * @param control_click
@@ -237,8 +324,13 @@ public:
             //mAnimacionMensajePresiona[i]->setX(mAnimacionPlayer[i]->getX()-9);
             //mAnimacionMensajePresiona[i]->setY(mAnimacionPlayer[i]->getY()+20);
 
-            mAnimacionMensajeActivado[i]->setX(mAnimacionPlayer[i]->getX()-9);
-            mAnimacionMensajeActivado[i]->setY(mAnimacionPlayer[i]->getY()+20);
+            //mAnimacionMensajeActivado[i]->setX(mAnimacionPlayer[i]->getX()-9);
+            //mAnimacionMensajeActivado[i]->setY(mAnimacionPlayer[i]->getY()+20);
+
+            //mpComponentTextoNickPlayer[i]->setLayoutParam(LAYOUT_PARAM_X,"180");
+            //mpComponentTextoNickPlayer[i]->setLayoutParam(LAYOUT_PARAM_Y,"0");
+            mpComponentTextoNickPlayer[i]->setLayoutParam(LAYOUT_PARAM_X,std::to_string(mAnimacionPlayer[i]->getX()-9));
+            mpComponentTextoNickPlayer[i]->setLayoutParam(LAYOUT_PARAM_Y,std::to_string(mAnimacionPlayer[i]->getY()+20));
 
         }
         //indiceTerrenoActual = nuevoTerreno;
@@ -254,10 +346,12 @@ public:
             case MENU_BOTON_SUBIR_TIEMPO:
                 if(++minutosEscogidos>5)minutosEscogidos=1;
                 mTextLabelMinutos->setText(std::to_string(minutosEscogidos));
+                enviar_estado_room_clientes();
                 break;
             case MENU_BOTON_SUBIR_VICTORIAS:
                 if(++victoriasEscogidas>8)victoriasEscogidas=1;
                 mTextLabelVictorias->setText(std::to_string(victoriasEscogidas));
+                enviar_estado_room_clientes();
                 break;
             case MENU_BOTON_JUGAR:
                 int total_players=mIsPlayerActivado[PLAYER_1]+ mIsPlayerActivado[PLAYER_2]+ mIsPlayerActivado[PLAYER_3] + mIsPlayerActivado[PLAYER_4] + mIsPlayerActivado[PLAYER_5];
@@ -287,10 +381,10 @@ public:
                     ejecutarAccionBotonClicked();
                     break;
                 case SDLK_KP_1:case SDLK_KP_2:case SDLK_KP_3:case SDLK_KP_4:case SDLK_KP_5:
-                    //cambiarEstadoPlayer(event->key.keysym.sym-SDLK_KP_1); //seleccionamos el player con una formula mate. SDK_1:49 y SDLK_5:53
+                    //actualizarPlayerSprite(event->key.keysym.sym-SDLK_KP_1); //seleccionamos el player con una formula mate. SDK_1:49 y SDLK_5:53
                     break;
                 case SDLK_1:case SDLK_2:case SDLK_3:case SDLK_4:case SDLK_5:
-                    //cambiarEstadoPlayer(event->key.keysym.sym-SDLK_1); //seleccionamos el player con una formula mate. SDK_1:49 y SDLK_5:53
+                    //actualizarPlayerSprite(event->key.keysym.sym-SDLK_1); //seleccionamos el player con una formula mate. SDK_1:49 y SDLK_5:53
                     break;
                 default:
                     break;
@@ -309,12 +403,12 @@ public:
         if(mIsPlayerActivado[idPlayer]){ // Si debe agregarse al juego
             // Se activan/desactivan las animaciones
             mSprites->add(mAnimacionPlayer[idPlayer]);
-            mSprites->add(mAnimacionMensajeActivado[idPlayer]);
+            //mSprites->add(mAnimacionMensajeActivado[idPlayer]);
             //mSprites->erase(mAnimacionMensajePresiona[idPlayer]);
         }else{ // Si debe eliminarse del juego
             // Se activan/desactivan las animaciones
             mSprites->erase(mAnimacionPlayer[idPlayer]);
-            mSprites->erase(mAnimacionMensajeActivado[idPlayer]);
+            //mSprites->erase(mAnimacionMensajeActivado[idPlayer]);
             //mSprites->add(mAnimacionMensajePresiona[idPlayer]);
         }
 
@@ -329,53 +423,243 @@ public:
         mSprites->update(nullptr);
         mMapaTerrenoSeleccionado.update();
 
-        if(aceptarNuevoCliente()){
+        int index_nuevo_cliente;
+        if((index_nuevo_cliente = aceptarNuevoCliente()) > 0){
 
+            enviar_estado_room_clientes();
         }
-        if(mNumClientes >= MAX_SOCKETS){
 
+        if(SDLNet_UDP_Recv(mUDPServerSocket,mUDPPacketRecibir)) {
+            switch (mUDPPacketRecibir->data[OFFSET_PACKET_FLAG]) {
+                case FLAG_KEEP_ALIVE: {
+                    uint16_t id_cliente = mUDPPacketRecibir->data[1];
+                    for(int i = 1; i < MAX_CLIENTES;i++){
+                        if(clients[i]->activo && clients[i]->id_cliente == id_cliente){
+                            mControlTimer[i-1].start();
+                            id_updates_clientes[i - 1] = mUDPPacketRecibir->data[3];
+                            SDL_Log("FLAG_KEEP_ALIVE %d",id_cliente);
+                        }
+                    }
+
+                    }
+                    break;
+                case FLAG_DISCONNECT:
+                    for(int i = 1; i < MAX_CLIENTES;i++){
+                        if(clients[i]->activo && clients[i]->id_cliente == mUDPPacketRecibir->data[1]){
+                            desconectar_cliente(i);
+                            cambiarEstadoPlayer(clients[i]->id_player);
+                            SDL_Log("FLAG_DISCONNECT %d",mUDPPacketRecibir->data[1]);
+                        }
+                    }
+                    break;
+            }
+        }
+
+        for(int i = 1; i < MAX_CLIENTES;i++){
+            if(clients[i]->activo){
+                if(mControlTimer[i-1].getTicks() >= TIMEOUT_DISCONECT_CLIENT) {
+                    SDL_Log("Timeout %d",clients[i]->id_cliente);
+                    desconectar_cliente(i);
+                    cambiarEstadoPlayer(clients[i]->id_player);
+                }
+            }
         }
 
     }
 
-    bool aceptarNuevoCliente() {
-        if(mNumClientes >= MAX_SOCKETS) return false;
+    void desconectar_cliente(int indice){
+        clients[indice]->activo = false;
+        mpComponentTextoNickPlayer[clients[indice]->id_player]->setText("Esperando...");
+    }
+
+    void enviar_estado_room_clientes(){
+        mUDPPacketEnviar->len = MAX_TAM_UPDATE_ROOM;
+
+        Uint8 * data = new Uint8[MAX_TAM_UPDATE_ROOM];
+        construir_estado_room(data);
+        mUDPPacketEnviar->data = data;
+        for(int i = 1 ; i < MAX_CLIENTES;i++){
+            if(clients[i]->activo){
+                mUDPPacketEnviar->address.port = clients[i]->updsocketipadress.port;
+                mUDPPacketEnviar->address.host = clients[i]->updsocketipadress.host;
+                if(!SDLNet_UDP_Send(mUDPServerSocket, -1, mUDPPacketEnviar)){
+                    printf("SDLNet_UDP_Send: %s\n", SDLNet_GetError());
+                }
+            }
+        }
+        delete data;
+    }
+    void construir_estado_room(uint8_t *data){
+        data[OFFSET_PACKET_FLAG]                     = FLAG_UPDATE_ESTADO_ROOM;
+        (*(uint32_t*)&data[OFFSET_PACKET_ID_UPDATE]) = next_id_update++;
+        data[OFFSET_PACKET_MINUTOS_ESCOGIDOS]        = minutosEscogidos;
+        data[OFFSET_PACKET_VICTORIAS_ESCOGIDAS]      = victoriasEscogidas;
+
+        int offset_player = OFFSET_PACKET_PRIMER_CLIENTE;
+
+        for(int i = 0; i < MAX_CLIENTES;i++){
+            data[offset_player] = (Uint8) clients[i]->activo;
+            if(clients[i]->activo){
+                (*(uint16_t*)&data[offset_player + OFFSET_PACKET_ID_CLIENTE])  = clients[i]->id_cliente;
+                data[offset_player + OFFSET_PACKET_ID_PLAYER] = clients[i]->id_player;
+                memcpy(&data[offset_player + OFFSET_PACKET_NICK_NAME] , clients[i]->nick_name,MAX_NICK);
+            }
+            offset_player+=TAM_PACKET_BYTES_CLIENTE;
+
+        }
+    }
+    int aceptarNuevoCliente() {
+
+        if(mNumClientes >= MAX_CLIENTES) return -1;
 
         int index = 0;
-        for(index = 0;  index <MAX_SOCKETS; index++){
-            if(sockets[index] == nullptr) break;
+        for(index = 0;  index <MAX_CLIENTES; index++){
+            if(!clients[index]->activo) break;
         }
 
-        //if(sockets[index]) {
-        //    fprintf(stderr, "ER: Overriding socket at index %d.\n", index);
-        //    cerrarConeccionCliente(index);
-        //}
+        TCPsocket psocket= SDLNet_TCP_Accept(mTCPServerSocket);
+        if(psocket == nullptr) return -1;
 
-        sockets[index] = SDLNet_TCP_Accept(mTCPServerSocket);
-        if(sockets[index] == nullptr) return false;
+        int id_player_no_activado = 0;
+        while(mIsPlayerActivado[id_player_no_activado]&&id_player_no_activado<Player::N_PLAYERS){
+            id_player_no_activado++;
+        };
 
-        clients[index] = new Cliente();
-        cambiarEstadoPlayer(index); //seleccionamos el player con una formula mate. SDK_1:49 y SDLK_5:53
+        uint8_t pdata[MAX_TAM_TCP_PAQUETE];
+        int num_recv;
+        int result;
 
+        // Tiene Mapa
+        memcpy(pdata,mMapaEscogido.c_str(),MAX_NOMBRE_MAPA);
+
+        result = SDLNet_TCP_Send(psocket, pdata, MAX_NOMBRE_MAPA);
+        if(result<MAX_NOMBRE_MAPA) {
+            printf("SDLNet_TCP_Send: %s\n", SDLNet_GetError());
+            // It may be good to disconnect sock because it is likely invalid now.
+            SDLNet_TCP_Close(psocket);
+            return -1;
+        }
+
+        // Respuesta Tiene Mapa
+        num_recv = recibirDatos(psocket, pdata, 1);
+        if(num_recv <= 0){
+            SDLNet_TCP_Close(psocket);
+            return -1;
+        }else{
+            if(!pdata[0]){
+                SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"No tiene el mapa descargado! Sorry :(");
+                SDLNet_TCP_Close(psocket);
+                return -1;
+            }
+        }
+
+        // Identificarse
+        num_recv = recibirDatos(psocket, pdata, 8);
+        if(num_recv <= 0){
+            SDLNet_TCP_Close(psocket);
+            return -1;
+        }else{
+            memcpy(clients[index]->nick_name,pdata,MAX_NICK);
+        }
+
+        clients[index]->id_cliente = mUltimoIdUtilizado++;
+        clients[index]->id_player = (IdPlayer) id_player_no_activado;
+
+
+        // Reconocer
+        // Insertamos el id del cliente
+        *((uint16_t *) &pdata) = clients[index]->id_cliente;
+        // Insertamos el id del player
+        pdata[2] = clients[index]->id_player;
+        result = SDLNet_TCP_Send(psocket, pdata, 3);
+        if(result<3) {
+            printf("SDLNet_TCP_Send: %s\n", SDLNet_GetError());
+            // It may be good to disconnect sock because it is likely invalid now.
+            SDLNet_TCP_Close(psocket);
+            return -1;
+        }
+
+        // Puerto UDP
+        *((uint16_t *) &pdata) = mUDPPuerto;
+
+        result = SDLNet_TCP_Send(psocket, pdata, 2);
+        if(result<2) {
+            printf("SDLNet_TCP_Send: %s\n", SDLNet_GetError());
+            // It may be good to disconnect sock because it is likely invalid now.
+            SDLNet_TCP_Close(psocket);
+            return -1;
+
+        }
+
+        // Obtengo la IP address del socket tcp
+        IPaddress * ipadress = SDLNet_TCP_GetPeerAddress(psocket);
+        clients[index]->updsocketipadress.host = ipadress->host;
+        // Obtengo el Puerto UDP del socket udp del servidor
+        num_recv = recibirDatos(psocket, pdata, 2);
+        if(num_recv <= 0){
+            SDLNet_TCP_Close(psocket);
+            return -1;
+        }else{
+            // Asigno el puerto del socket udp del servidor a la estructura ipddress
+            clients[index]->updsocketipadress.port = *((uint16_t *) &pdata);
+        }
+
+        // Intenta enlazar la direccion del socket udp del cliente al channel usado en nuestro socket udp servidor
+        // Que es donde se van a hacer las actualizaciones del estado del room
+
+        SDLNet_TCP_Close(psocket);
+
+        clients[index]->activo = true;
+        cambiarEstadoPlayer(id_player_no_activado); //seleccionamos el player con una formula mate. SDK_1:49 y SDLK_5:53
+
+        char nombre[MAX_NICK + 1];
+        memcpy(nombre,clients[index]->nick_name,MAX_NICK);
+        nombre[MAX_NICK] = '\0';
+        mpComponentTextoNickPlayer[index]->setText(nombre);
+
+        mControlTimer[index - 1].start();
         mNumClientes++;
 
-        return true;
+        return index;
+    }
+
+
+    int recibirDatos(TCPsocket psocket,uint8_t * pBuffer,uint8_t length) {
+
+        //uint8_t temp_data[MAX_PACKET];
+        //uint8_t * pdata = new uint8_t[length];
+        int num_recv = SDLNet_TCP_Recv(psocket, pBuffer, length);
+
+        if(num_recv <= 0) {
+            const char* err = SDLNet_GetError();
+            if(strlen(err) == 0) {
+                printf("DB: client disconnected\n");
+            } else {
+                fprintf(stderr, "ER: SDLNet_TCP_Recv: %s\n", err);
+            }
+        } else {
+
+            //memcpy(pBuffer, &temp_data[offset], (num_recv-offset));
+        }
+
+        return num_recv;
     }
 
     void cerrarConeccionCliente(int index) {
-        if(sockets[index] == NULL) {
-            fprintf(stderr, "ER: Attempted to delete a NULL socket.\n");
-            return;
-        }
+        //if(clients[index] == NULL) {
+        //    fprintf(stderr, "ER: Attempted to delete a NULL socket.\n");
+        //    return;
+        //}
 
-        if(SDLNet_TCP_DelSocket(socket_set, sockets[index]) == -1) {
-            fprintf(stderr, "ER: SDLNet_TCP_DelSocket: %s\n", SDLNet_GetError());
-            exit(-1);
-        }
-        delete clients[index];
-        clients[index] = nullptr;
-        SDLNet_TCP_Close(sockets[index]);
-        sockets[index] = nullptr;
+        //if(SDLNet_TCP_DelSocket(socket_set, clients[index]->socket) == -1) {
+        //    fprintf(stderr, "ER: SDLNet_TCP_DelSocket: %s\n", SDLNet_GetError());
+        //    exit(-1);
+        //}
+        //delete clients[index];
+        //clients[index] = nullptr;
+
+        //SDLNet_TCP_Close(clients[index]->socket);
+        //sockets[index] = nullptr;
     }
 
     ~InterfazEsperarLlenarServidor() override {
@@ -385,18 +669,19 @@ public:
        // }
 
         SDLNet_TCP_Close(mTCPServerSocket);
+        SDLNet_UDP_Close(mUDPServerSocket);
+        SDLNet_FreePacket(mUDPPacketEnviar);
+        SDLNet_FreePacket(mUDPPacketRecibir);
 
-        int i;
-        for(i=0; i<MAX_SOCKETS; ++i) {
-            if(sockets[i] == nullptr) continue;
-            cerrarConeccionCliente(i);
+        for(int i=0; i<MAX_CLIENTES; ++i) {
+            delete clients[i];
         }
 
-        SDLNet_FreeSocketSet(socket_set);
+        //SDLNet_FreeSocketSet(socket_set);
         for(int i=0;i<Player::N_PLAYERS;i++){
             delete mAnimacionPlayer[i];
             //delete mAnimacionMensajePresiona[i];
-            delete mAnimacionMensajeActivado[i];
+            //delete mAnimacionMensajeActivado[i];
             delete mpSpriteSheetPlayer[i];
         }
         //delete mpSfxCambiarMapa;
@@ -419,7 +704,6 @@ public:
     }
 
     void draw(SDL_Renderer *gRenderer) override {
-        InterfazGrafica::draw(gRenderer);
         mpTextureTablero->draw(gRenderer, 0, 0);//imprimimos la barra mensage
         mpTextureCuadroPeque->draw(gRenderer, 177, 0);//imprimimos la barra mensage
         mpTextureCuadroPeque->draw(gRenderer, 280, 0);//imprimimos la barra mensage
@@ -442,36 +726,49 @@ public:
         if(mLayoutParent->isDisabled()){
             packLayout(gRenderer);
         }
+
         mLayoutParent->draw(gRenderer);
+
     }
+
     void resume() override {
         InterfazGrafica::resume();
         if(!Mix_PlayingMusic()){
             musicaFondoMenu->play();
         }
+
+        if(mHaOcurridoError){
+            mGameManagerInterfaz->goBack();
+        }
+
+
         SDL_ShowCursor(SDL_ENABLE);
+    }
+
+    void establecerMapa(string nombre) {
+        mMapaEscogido = nombre;
     }
 
 private:
     //int next_ind = 0;
     TCPsocket mTCPServerSocket;
 
-    Cliente * clients[MAX_SOCKETS];
+    Cliente * clients[MAX_CLIENTES];
     int mNumClientes = 0;
 
-    SDLNet_SocketSet socket_set;
+    //SDLNet_SocketSet socket_set;
 
-    TCPsocket sockets[MAX_SOCKETS] {nullptr};
+    //TCPsocket sockets[MAX_CLIENTES] {nullptr};
 
     bool mHaOcurridoError;
 
-    //UDPsocket mUDPServerSocket;
+    UDPsocket mUDPServerSocket;
 
     Uint16 mTCPPuerto;
     //bool estaRoomCompleto = false;
 
-    int minutosEscogidos   = 1;
-    int victoriasEscogidas = 1;
+    Uint8 minutosEscogidos   = 1;
+    Uint8 victoriasEscogidas = 1;
 
     SDL_Renderer * mGRenderer = nullptr;
     // Contiene las animaciones(los players que se mueven)
@@ -487,6 +784,8 @@ private:
 
     // Dice cuales estan activados
     bool mIsPlayerActivado[Player::N_PLAYERS] {false};
+
+    IdPlayer idPlayerUsuario;
     
     string mMapaEscogido;
 
@@ -500,7 +799,7 @@ private:
     // Animacion del texto "presiona"
     //Animacion * mAnimacionMensajePresiona[Player::N_PLAYERS] {nullptr};
     // Animacion del texto "activado"
-    Animacion * mAnimacionMensajeActivado[Player::N_PLAYERS] {nullptr};
+    //Animacion * mAnimacionMensajeActivado[Player::N_PLAYERS] {nullptr};
 
     // Controla los botones en un layout
     LayoutAbsolute *mLayoutParent = nullptr;
@@ -509,6 +808,8 @@ private:
     LabelComponent *mTextLabelMinutos = nullptr;
     // Muestra en la UI el numero de victorias escogidas
     LabelComponent *mTextLabelVictorias = nullptr;
+
+    LabelComponent * mpComponentTextoNickPlayer[Player::N_PLAYERS];
 
     EfectoSonido * mpSfxPressJugar;
     EfectoSonido * mpSfxTogglePlayerEstado;
@@ -533,5 +834,18 @@ private:
         MENU_BOTON_SUBIR_VICTORIAS,
         MENU_BOTON_JUGAR,
     };
+    string mMiNick;
+    uint16_t mUltimoIdUtilizado = 0;
+    uint16_t mUDPPuerto;
+    //int mChannel = -1;
+    UDPpacket *mUDPPacketEnviar = nullptr;
+
+    // Comenzamos las actualizaciones en 1 para que los clientes utilizen 0 como si fuera la actualizacion que
+    // reciben al conectarse al servidor
+    uint32_t next_id_update = 1;
+
+    uint32_t id_updates_clientes[MAX_CLIENTES  - 1] {0};
+    UDPpacket *mUDPPacketRecibir;
+    LTimer mControlTimer[MAX_CLIENTES -1];
 };
 #endif //BOMBERMAN_INTERFAZESPERARLLENARSERVIDOR_HPP

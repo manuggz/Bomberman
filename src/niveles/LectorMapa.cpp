@@ -256,4 +256,8 @@ int LectorMapa::getY() {
 
 LectorMapa::LectorMapa(int x, int y) : Mapa(x, y) {}
 
+bool LectorMapa::esMapaCargado() {
+    return mIsMapaCargado;
+}
+
 

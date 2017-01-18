@@ -4,7 +4,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "../../engine/interfaces/InterfazGrafica.hpp"
-#include "../../engine/interfaces/PopUpMostrarMensajeTexto.hpp"
+#include "../../engine/interfaces/PopUpMostrarMensajeTextoTimer.hpp"
 #include "../../engine/interfaces/PopUpCountDown.hpp"
 #include "../../engine/sprites/CGroup.hpp"
 #include "../../engine/sprites/CDrawGroup.hpp"
@@ -24,6 +24,7 @@
 #include "../../objetos/explosion.hpp"
 #include "../../engine/util/EfectoSonido.hpp"
 #include "../../engine/util/MusicaFondo.hpp"
+#include "../../engine/util/BitmapFont.hpp"
 
 
 class ModoJuegoMultiPlayer:public InterfazGrafica,public UpdateGroupContainerInterfaz{
@@ -69,7 +70,7 @@ public:
 
     void resume() override;
 
-    void resultPopUp(void *result, int popUpCode) override;
+    void resultPopUp(InterfazEstandarBackResult *result, int popUpCode) override;
 
 
 protected:
@@ -100,6 +101,13 @@ protected:
     LectorMapa mMapa;
     LTimer mGameTimer ;
 
+    enum{
+        FUENTE_NORMAL,
+        FUENTE_RESALTADA
+    };
+    //LayoutAbsolute *mLayoutParent = nullptr;
+
+    BitmapFont *mBitmapFont[2];
     int      mRondasGanadas [Player::N_PLAYERS] {0};
     //int      mPuntajePlayer [Player::N_PLAYERS] {0};
 
@@ -113,17 +121,8 @@ protected:
     IdPlayer mIdLiderRondasGanadas = PLAYER_NONE;
     SDL_Renderer * mGameRenderer;
 
-    LayoutAbsolute *     mLayoutParent;
-    LabelComponent * mpTxtTiempoRestante;
-    LabelComponent * mpVidasRestantesPlayer[Player::N_PLAYERS];
-
     bool mIsPlayingWarningSound = false;
 
-    SpriteSheet *mpSpriteSheetCarasBomberman;
-
-    LTexture * mpTextureTablero;
-    LTexture * mpTextureCuadroPeque;
-    LTexture * mpTextureCuadroGrande;
 
     EfectoSonido * mpSfxCreadaExplosion;
     EfectoSonido * mpSfxPlayerRecogioItem;
@@ -131,10 +130,24 @@ protected:
     MusicaFondo * mpMusicasFondo[2];
     MusicaFondo * mpMusicaAdvertenciaTiempo;
 
+    // HUD
+    LTexture * mpTextureHUD;
+    Animacion * pAnimaTrofeos[Player::N_PLAYERS] {nullptr};
+
+    SDL_Rect rectPlaceHolderTime {0,2,52,18};
+    BitmapFontRenderer *mpBitmapMaxTimeRonda;
+
+    SpriteSheet * mpSpriteSheetCarasBomberman;
+
+    BitmapFontRenderer *mpBitmapValorCopasGanadas[Player::N_PLAYERS] {nullptr};
+    BitmapFontRenderer *mpBitmapValorCopasMax;
+
+    Animacion *mpAnimacionCopaMaxVictorias;
+    // Fin HUD
+
     Item::TipoItem getTipoNuevoItem();
     void establecerValoresDeMapaPlayer(IdPlayer idPlayer);
-    void packLayout(SDL_Renderer *pRenderer);
-    void drawBarra(SDL_Renderer *);
+    void drawHUD(SDL_Renderer *);
     void establecerValoresDeMapaPlayers();
     void agregarPlayersActivos();
     bool estaPlayerActivo(IdPlayer);

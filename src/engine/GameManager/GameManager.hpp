@@ -17,8 +17,8 @@
 
 class InterfazEstandarBackResult{
 public:
-    std::string texto;
-    int entero;
+    std::string texto = "";
+    int entero = 0;
     ~InterfazEstandarBackResult(){
 
     }
@@ -74,7 +74,7 @@ public:
 
     SDL_Rect getRectScreen() ;
 
-    void closePopUp(void * result = nullptr) ;
+    void closePopUp(InterfazEstandarBackResult * result = nullptr) ;
 
     void showPopUp(PopUpInterfaz *pPopUp,int showPopUp) ;
     // Volumen 0-128
@@ -131,7 +131,7 @@ private:
     int mHeight = 0;
 
     PopUpInterfaz * mpPopUp = nullptr;
-    void *mpResultPopUp = nullptr;
+    InterfazEstandarBackResult *mpResultPopUp = nullptr;
     // IDentificador del Actual PopUp
     // USado para identificar en el codigo cual es el popup que se cerró
     int mIDCodePopUp;

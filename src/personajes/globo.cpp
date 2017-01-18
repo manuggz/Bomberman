@@ -143,8 +143,8 @@ void globo_actualizar_rect_colision(Globo * globo){
 void globo_avanzar_animacion (Globo * globo)
 {
 	static int animacion [7] = {0,1,2,3,4,5,-1};
-	if (++globo->delay > 15){
-		globo->delay = 0;
+	if (++globo->delayMovimientoHorizontal > 15){
+		globo->delayMovimientoHorizontal = 0;
 		if(animacion  [++globo->paso] == -1)
     		globo->paso = 0;
 	}

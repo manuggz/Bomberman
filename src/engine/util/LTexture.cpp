@@ -140,6 +140,7 @@ void LTexture::setAlpha( Uint8 alpha )
 void LTexture::draw(SDL_Renderer *gRenderer, int x, int y,
                     SDL_Rect *clip, double angle, SDL_Point *center,
                     SDL_RendererFlip flip) {
+    if(mTexture == nullptr) return;
     //Set rendering space and draw to screen
     SDL_Rect renderQuad = { x, y, mWidth, mHeight };
 

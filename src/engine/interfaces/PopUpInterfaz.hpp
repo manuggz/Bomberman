@@ -34,6 +34,9 @@ public:
      * @param gRenderer
      */
     virtual void draw(SDL_Renderer *gRenderer);
+    virtual ~PopUpInterfaz(){
+
+    }
 
 protected:
     SDL_Color mpColorOscurecer {0, 0, 0, 150};

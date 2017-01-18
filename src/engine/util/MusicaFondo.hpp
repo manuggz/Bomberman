@@ -33,7 +33,7 @@ public:
     /* Fade in music or a channel over "ms" milliseconds, same semantics as the "Play" functions */
     void playFadeIn(int ms= 2000,int volumen = MAX_VOLUMEN,int loops = -1){
         Mix_VolumeMusic(volumen);
-        Mix_FadeInMusic(mpRawMixMusic, -1,ms);
+        //Mix_FadeInMusic(mpRawMixMusic, -1,ms);
     }
 
     ~MusicaFondo(){

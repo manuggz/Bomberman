@@ -20,6 +20,17 @@ public :
     unsigned long size(){
         return v_personajes.size();
     }
+    bool contain(Sprite *pSprite){
+        auto pSpriteBusqueda = v_personajes.begin();
+        while(pSpriteBusqueda != v_personajes.end()){
+            if((*pSpriteBusqueda)==pSprite){
+                return true;
+            }
+            pSpriteBusqueda++;
+        }
+
+        return false;
+    }
 
     std::deque<Sprite *>::iterator begin(){ return v_personajes.begin();}
     std::deque<Sprite *>::iterator end(){ return v_personajes.end();}

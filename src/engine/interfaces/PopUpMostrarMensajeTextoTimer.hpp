@@ -15,7 +15,7 @@
 /**
  * PopUp que Muestra un Texto Centrado en la pantalla al usuario por cierto tiempo
  */
-class PopUpMostrarMensajeTexto : public PopUpInterfaz{
+class PopUpMostrarMensajeTextoTimer : public PopUpInterfaz{
 
 public:
 
@@ -24,7 +24,7 @@ public:
      * @param mensaje MEnsaje a mostrar
      * @param tiempoDeMuestraSegundos  segundos que durará el mensaje
      */
-    PopUpMostrarMensajeTexto(GameManagerPopUpInterfaz *gameManager1, std::string mensaje,
+    PopUpMostrarMensajeTextoTimer(GameManagerPopUpInterfaz *gameManager1, std::string mensaje,
                              Uint8 tiempoDeMuestraSegundos) : PopUpInterfaz(gameManager1) {
         mMensajeMostrar          = mensaje;
         mTiempoDeMuestraSegundos = tiempoDeMuestraSegundos;
@@ -82,7 +82,8 @@ public:
         PopUpInterfaz::update();
 
         if(mControlTimer.getTicks()/1000 >= mTiempoDeMuestraSegundos){
-            std::string * resultado = new std::string(mMensajeMostrar);
+            InterfazEstandarBackResult * resultado = new InterfazEstandarBackResult();
+            resultado->texto = mMensajeMostrar;
             mGameManager->closePopUp(resultado);
         }
     }
@@ -96,7 +97,9 @@ public:
         mLayoutParent->draw(gRenderer);
     }
 
-
+    ~PopUpMostrarMensajeTextoTimer(){
+        delete mLayoutParent;
+    }
 protected:
     std::string     mMensajeMostrar;
     LayoutAbsolute *mLayoutParent;

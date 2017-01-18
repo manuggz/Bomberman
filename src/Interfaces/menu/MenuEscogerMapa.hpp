@@ -12,19 +12,35 @@
 #include <sys/param.h>
 #include "../../engine/interfaces/InterfazGrafica.hpp"
 #include "../../engine/util/LTexture.hpp"
-#include "../../engine/layout/LayoutManager/LayoutAbsolute.hpp"
-#include "../../engine/layout/Componentes/BotonComponent.hpp"
 #include "../../engine/util/SpriteSheet.hpp"
 #include "../../niveles/LectorMapa.hpp"
+#include "SpriteFlecha.hpp"
+#include "../../engine/util/BitmapFont.hpp"
+#include "../../personajes/player.hpp"
+#include "../../engine/util/MusicaFondo.hpp"
+#include "../../engine/util/EfectoSonido.hpp"
 #include <unistd.h>
 #define GetCurrentDir getcwd
 
-static const int ID_BOTON_FLECHA_IZQUIERDA = 1;
-static const int ID_BOTON_FLECHA_DERECHA = 2;
 
+static const int MAX_MINUTOS = 8;
 
-class MenuEscogerMapa: public InterfazGrafica, public BotonInterfaz {
+static const int MAX_VICTORIAS = 8;
+
+class MenuEscogerMapa: public InterfazGrafica,public UpdateGroupContainerInterfaz {
 public:
+    enum MenuOption{
+        MENU_OPCION_TIEMPO_RONDA,
+        MENU_OPCION_MAX_VICTORIAS,
+        MENU_OPCION_MAPA,
+        MENU_OPCION_PLAYER_1,
+        MENU_OPCION_PLAYER_2,
+        MENU_OPCION_PLAYER_3,
+        MENU_OPCION_PLAYER_4,
+        MENU_OPCION_PLAYER_5,
+        _N_OPCIONES_MENU
+    };
+
     MenuEscogerMapa(GameManagerInterfazUI *gameManagerInterfaz) : InterfazGrafica(gameManagerInterfaz) {}
 
     static std::vector<std::string> getNombresMapas(){
@@ -76,242 +92,432 @@ public:
     void createUI(SDL_Renderer *gRenderer) override {
         InterfazGrafica::createUI(gRenderer);
 
-        mLayoutParent = new LayoutAbsolute();
-        mLayoutParent->setBackgroundTexture(gRenderer,"data/imagenes/fondos/fondo_escoja.bmp",false);
+        mpSfxCambiarOpcionMenuResaltada = new EfectoSonido("data/sonidos/ping_3.wav",100);
+        mpSfxCambiarValorOpcionMenuResaltada   = new EfectoSonido("data/sonidos/ping_2.wav",100);
+        mpSfxPressJugar   = new EfectoSonido("data/sonidos/ping_5.wav",100);
 
-        LTexture * lTexture = new LTexture();
-        lTexture->cargarDesdeArchivo("data/imagenes/botones/boton_flecha_2_izquierda.png",gRenderer,false);
-        botonFlechaIzquierda = new BotonComponent(lTexture, this, ID_BOTON_FLECHA_IZQUIERDA);
-        mLayoutParent->addComponent(botonFlechaIzquierda);
-        botonFlechaIzquierda->setLayoutParam(LAYOUT_PARAM_X,"17");
-        botonFlechaIzquierda->setLayoutParam(LAYOUT_PARAM_Y,"67");
+        mSprites=new DrawGroup(this);
 
-        lTexture = new LTexture();
-        lTexture->cargarDesdeArchivo("data/imagenes/botones/boton_flecha_2_derecha.png",gRenderer,false);
-        botonFlechaDerecha = new BotonComponent(lTexture, this, ID_BOTON_FLECHA_DERECHA);
-        mLayoutParent->addComponent(botonFlechaDerecha);
-        botonFlechaDerecha->setLayoutParam(LAYOUT_PARAM_X,"239");
-        botonFlechaDerecha->setLayoutParam(LAYOUT_PARAM_Y,"67");
+        //Animaciones para los personajes (Hace que parezcan que caminan) cuando se seleccionan
+        SpriteSheet *spriteSheetTmp;
+        for(int i = 0; i < Player::N_PLAYERS;i++) {
+            spriteSheetTmp = new SpriteSheet();
+            spriteSheetTmp->cargarDesdeArchivo(gRenderer, "data/imagenes/personajes/player_" + std::to_string(i+1)+".bmp", 1, 12, true);
+            mAnimacionPlayer[i] = new Animacion(spriteSheetTmp, "6,6,7,7,8,8");
+            mAnimacionPlayer[i]->setRepeticiones(-1);
+        }
 
-        pSpriteSheetBotonMapa = new SpriteSheet(gRenderer,"data/imagenes/botones/boton_estranyo.png",2,1,false);
+        musicaFondoMenu = new MusicaFondo("data/sonidos/musica_1.mid");
 
-        mpTexturePreviewMapa[0] = SDL_CreateTexture(gRenderer,
-                                                     mGameManagerInterfaz->getWindowPixelFormat(),
-                                                     SDL_TEXTUREACCESS_TARGET,
-                                                     mGameManagerInterfaz->getNativeWidth(),
-                                                     13*16);
+        LTexture *pTextureFlechaDerecha = new LTexture();
+        pTextureFlechaDerecha->cargarDesdeArchivo("data/imagenes/objetos/flecha_menu_apunta_hacia_derecha.png",gRenderer,false);
 
-        mpTexturePreviewMapa[1] = SDL_CreateTexture(gRenderer,
-                                                     mGameManagerInterfaz->getWindowPixelFormat(),
-                                                     SDL_TEXTUREACCESS_TARGET,
-                                                     mGameManagerInterfaz->getNativeWidth(),
-                                                    13*16);
+        LTexture * pTextureFlechaIzquierda = new LTexture();
+        pTextureFlechaIzquierda->cargarDesdeArchivo("data/imagenes/objetos/flecha_menu_apunta_hacia_izquierda.png",gRenderer,false);
 
+        flechaIzquierda = new FlechaDinamica(pTextureFlechaIzquierda);
+        flechaIzquierda->move(55,54);
+        flechaIzquierda->setYDestino(54);
 
-        mpSfxSeleccionarMapa = new EfectoSonido("data/sonidos/ping_2.wav",100);
-        mpSfxCambiarPagina  = new EfectoSonido("data/sonidos/ping_5.wav",100);
+        flechaDerecha = new FlechaDinamica(pTextureFlechaDerecha);
+        flechaDerecha->move(260,54);
+        flechaDerecha->setYDestino(54);
 
-        rectBotonMapa[0].x=26;
-        rectBotonMapa[0].y=102;
-        rectBotonMapa[0].w=111;
-        rectBotonMapa[0].h=121;
-        estadosBotonMapa[0]=BotonComponent::NORMAL;
+        mBitmapFont[FUENTE_NORMAL] = new BitmapFont(gRenderer,   "data/fuentes/fuente2_16_normal.png");
+        mBitmapFont[FUENTE_RESALTADA] = new BitmapFont(gRenderer,"data/fuentes/fuente2_16_resaltado.png");
 
-        rectBotonMapa[1].x=177;
-        rectBotonMapa[1].y=102;
-        rectBotonMapa[1].w=111;
-        rectBotonMapa[1].h=121;
-        estadosBotonMapa[1]=BotonComponent::NORMAL;
+        for(int i = 0; i < _N_OPCIONES_MENU;i++) {
+            mpBitmapTextoOpcionMenu[i] = new BitmapFontRenderer(mBitmapFont[FUENTE_NORMAL], 65, 54 + 20*i);
+            mpBitmapTextoValorOpcionMenu[i] = new BitmapFontRenderer(mBitmapFont[FUENTE_NORMAL], 0, 54 + 20*i);
+            mpBitmapTextoValorOpcionMenu[i]->setRight(255);
+        }
+        mpBitmapTextoOpcionMenu[MENU_OPCION_TIEMPO_RONDA]->setBitmapFont(mBitmapFont[FUENTE_RESALTADA]);
+        mpBitmapTextoValorOpcionMenu[MENU_OPCION_TIEMPO_RONDA]->setBitmapFont(mBitmapFont[FUENTE_RESALTADA]);
+
+        mpBitmapTextoOpcionMenu[MENU_OPCION_TIEMPO_RONDA]->setText("TIME X ROUND:");
+        mpBitmapTextoOpcionMenu[MENU_OPCION_MAX_VICTORIAS]->setText("MAX VICTORIES:");
+        mpBitmapTextoOpcionMenu[MENU_OPCION_MAPA]->setText("MAP:");
+
+        mpBitmapTextoValorOpcionMenu[MENU_OPCION_TIEMPO_RONDA]->setText("NO");
+        mpBitmapTextoValorOpcionMenu[MENU_OPCION_MAX_VICTORIAS]->setText("NO");
+
+        for(int i = 0; i < Player::N_PLAYERS;i++) {
+            mpBitmapTextoOpcionMenu[i + MENU_OPCION_PLAYER_1]->setText("PLAYER " + std::to_string(i+1)+":");
+            mpBitmapTextoValorOpcionMenu[i + MENU_OPCION_PLAYER_1]->setText((mIsPlayerActivado[i]) ? "YES" : "NO");
+            mpBitmapValorCopasGanadas[i] = new BitmapFontRenderer(mBitmapFont[FUENTE_NORMAL], 42+ i*60,20);
+            mpBitmapValorCopasGanadas[i]->setText("0");
+        }
+
+        mpTextureHUD = new LTexture();
+        mpTextureHUD->cargarDesdeArchivo("data/imagenes/objetos/tablero.bmp",gRenderer,true);
+
+        pTextureFondoMenu = new LTexture();
+        pTextureFondoMenu->cargarDesdeArchivo("data/imagenes/objetos/fondo_reglas_mapa.png",gRenderer,true);
+
+        for(int i = 0; i < Player::N_PLAYERS; i++) {
+            mpSpriteSheetPlayer[i] = new SpriteSheet(gRenderer, "data/imagenes/personajes/player_" + std::to_string(i + 1) + ".bmp", 1, 12,true);
+            mpSpriteSheetPlayer[i]->setAlpha(150);
+            mpSpriteSheetPlayer[i]->setCurrentCuadro(6);
+        }
+
+        mpSpriteSheetCarasBomberman = new SpriteSheet(gRenderer,"data/imagenes/objetos/caras_bomberman.bmp",1,10,true);
 
         mpGRenderer = gRenderer;
-        cambiarPagina(0);
-    }
 
-    void actualizarFlechasPaginas(){
-        botonFlechaIzquierda->setVisible(indicePaginaActual > 0);
-        botonFlechaDerecha->setVisible(indicePaginaActual + 2 < mNombreMapas.size());
-    }
-    void cargarMapasPaginaActual(SDL_Renderer *gRenderer){
-        for(int i = 0; i < 2;i++) {
-            if (cargarMapa(gRenderer, i)) {
-                esVisibleBotonMapa[i] = true;
-                capturarPreviewMapa(gRenderer,i);
-
-            }
+        SpriteSheet *spriteSheet;
+        for(int i = 0; i < Player::N_PLAYERS;i++){
+            spriteSheet = new SpriteSheet(gRenderer,"data/imagenes/objetos/trofeo.bmp",1,13,true);
+            pAnimaTrofeos[i]=new Animacion(spriteSheet,"7,7,7,7,7,7,7,7,7,7,8,8,9,9,9,10,10,10,11,11,12,12,12",19+ i*60,15);
+            pAnimaTrofeos[i]->setRepeticiones(-1);
+            mSprites->add(pAnimaTrofeos[i]);
         }
+
+        spriteSheet = new SpriteSheet(gRenderer,"data/imagenes/objetos/trofeo.bmp",1,13,true);
+        mpAnimacionCopaMaxVictorias=new Animacion(spriteSheet,"7,7,7,7,7,7,7,7,7,7,8,8,9,9,9,10,10,10,11,11,12,12,12",139,-2);
+        mpAnimacionCopaMaxVictorias->setRepeticiones(-1);
+        mpBitmapValorCopasMax = new BitmapFontRenderer(mBitmapFont[FUENTE_NORMAL], 139 + 23,3);
+
+        mpBitmapMaxTimeRonda = new BitmapFontRenderer(mBitmapFont[FUENTE_NORMAL], 139 + 23,3);
+        //mpBitmapValorCopasMax->setText("0");
+        //mSprites->add(mpAnimacionCopaMaxVictorias);
+
+     establecerTerrenoBatalla(0);
     }
 
-    void capturarPreviewMapa(SDL_Renderer * gRenderer,int lado){
-        SDL_SetRenderTarget(gRenderer, mpTexturePreviewMapa[lado]);
-        SDL_RenderClear(gRenderer);
-
-        mLectorMapas->draw(gRenderer);
-
-        SDL_SetRenderTarget(gRenderer, NULL);
+    virtual void eliminarSprite(Sprite *sprite) override {
     }
+    /**
+     *  Cambia el estado de un player lo establece activo/desactivado
+     * @param idPlayer
+     */
+
+    void cambiarEstadoPlayer(int idPlayer){
+        mIsPlayerActivado[idPlayer]=!mIsPlayerActivado[idPlayer];
+
+        mpBitmapTextoValorOpcionMenu[idPlayer + MENU_OPCION_PLAYER_1]->setText((mIsPlayerActivado[idPlayer]) ? "YES" : "NO");
+
+        if(mIsPlayerActivado[idPlayer]){ // Si debe agregarse al juego
+            // Se activan/desactivan las animaciones
+            mSprites->add(mAnimacionPlayer[idPlayer]);
+        }else{ // Si debe eliminarse del juego
+            // Se activan/desactivan las animaciones
+            mSprites->erase(mAnimacionPlayer[idPlayer]);
+        }
+
+        // Si hay mas de dos botones players activados se muestra el boton de jugar
+        //mpSfxTogglePlayerEstado->play();
+    }
+
     void resume() override {
         InterfazGrafica::resume();
-        SDL_ShowCursor(SDL_ENABLE);
+        if(!Mix_PlayingMusic()){
+            musicaFondoMenu->play();
+        }
+        SDL_ShowCursor(SDL_DISABLE);
     }
-
-    bool cargarMapa(SDL_Renderer * gRenderer, int lado){
-        if(indicePaginaActual * 2 + lado == mNombreMapas.size()) return false;
-
-        if(mLectorMapas == nullptr){
-            mLectorMapas= new LectorMapa(0,0);
+    virtual bool setOpcionResaltada(MenuOption nuevaOpcion) {
+        if(nuevaOpcion != mOpcionMenuResaltadaActual){
+            mpBitmapTextoOpcionMenu[mOpcionMenuResaltadaActual]->setBitmapFont(mBitmapFont[FUENTE_NORMAL]);
+            mpBitmapTextoValorOpcionMenu[mOpcionMenuResaltadaActual]->setBitmapFont(mBitmapFont[FUENTE_NORMAL]);
+            mpBitmapTextoOpcionMenu[nuevaOpcion]->setBitmapFont(mBitmapFont[FUENTE_RESALTADA]);
+            mpBitmapTextoValorOpcionMenu[nuevaOpcion]->setBitmapFont(mBitmapFont[FUENTE_RESALTADA]);
+            mOpcionMenuResaltadaActual =  nuevaOpcion;
+            flechaIzquierda->setYDestino(54 + 20*nuevaOpcion);
+            flechaDerecha->setYDestino(54   + 20*nuevaOpcion);
+            mpSfxCambiarOpcionMenuResaltada->play();
+            return true;
         }
 
-        if(!mLectorMapas->cargar(gRenderer,mNombreMapas[indicePaginaActual*2 + lado])){
-            SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"Error cargando el mapa %s.",mNombreMapas[indicePaginaActual*2 + lado].c_str());
-            return false;
-        }
-        return true;
+        return false;
     }
 
-    void onClickButton(int id) override {
-        switch(id){
-            case ID_BOTON_FLECHA_DERECHA:
-                cambiarPagina(indicePaginaActual + 1);
+    virtual bool configuracionAceptada() = 0;
+    /**
+ * Establece/Cambia el terreno en el que se jugara
+ * @param nuevoTerreno
+ * @return
+ */
+    bool establecerTerrenoBatalla(uint16_t nuevoTerreno) {
+
+        if(nuevoTerreno>=0 && nuevoTerreno < mNombreMapas.size()){
+
+            if(mLectorMapas == nullptr){
+                mLectorMapas = new LectorMapa(0,32);
+            }
+            static char ruta1[50],ruta2[50];
+            if(!mLectorMapas->cargar(mpGRenderer,"data/niveles/batalla/" + mNombreMapas[indiceTerrenoActual])){
+                SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"Error cambiando al mapa %s.",ruta1);
+                return false;
+            }
+
+            for(int i=0;i<Player::N_PLAYERS;i++){
+
+                mAnimacionPlayer[i]->setX(mLectorMapas->getPosXPlayer((IdPlayer)(PLAYER_1 + i)));
+                mAnimacionPlayer[i]->setY(mLectorMapas->getPosYPlayer((IdPlayer)(PLAYER_1 + i)));
+
+            }
+            indiceTerrenoActual = nuevoTerreno;
+            mpBitmapTextoValorOpcionMenu[MENU_OPCION_MAPA]->setText(
+                    mNombreMapas[indiceTerrenoActual].substr(
+                            0,
+                            mNombreMapas[indiceTerrenoActual].find_last_of('.')
+                    )
+            );
+            return true;
+        }
+
+        return false;
+
+    }
+    void ejecutarAccionOpcionMenu(MenuOption opcion,SDL_Keycode keycode) {
+        switch (opcion) {
+            case MENU_OPCION_TIEMPO_RONDA:
+                if(keycode == SDLK_RIGHT){
+                    minutosEscogidos= ( minutosEscogidos + 1) % MAX_MINUTOS;
+                }else{
+                    minutosEscogidos= (minutosEscogidos >0)?minutosEscogidos -1:MAX_MINUTOS - 1;
+                }
+                if(!minutosEscogidos){
+                    mpBitmapTextoValorOpcionMenu[opcion]->setText("NO");
+                }else{
+                    mpBitmapTextoValorOpcionMenu[opcion]->setText(std::to_string(minutosEscogidos));
+                    mpBitmapMaxTimeRonda->setText(std::to_string(minutosEscogidos) + ":00");
+                }
+                if(!victoriasEscogidas){
+                    rectPlaceHolderTime.x =128;
+                }else {
+                    rectPlaceHolderTime.x = 90;
+                }
                 break;
-            case ID_BOTON_FLECHA_IZQUIERDA:
-                cambiarPagina(indicePaginaActual - 1);
+            case MENU_OPCION_MAX_VICTORIAS:
+                if(keycode == SDLK_RIGHT){
+                    victoriasEscogidas= ( victoriasEscogidas + 1) % MAX_VICTORIAS;
+                }else{
+                    victoriasEscogidas= (victoriasEscogidas >0)?victoriasEscogidas -1:MAX_VICTORIAS - 1;
+                }
+                if(!victoriasEscogidas){
+                    mpBitmapTextoValorOpcionMenu[opcion]->setText("NO");
+                    mSprites->erase(mpAnimacionCopaMaxVictorias);
+                    rectPlaceHolderTime.x =128;
+                }else{
+                    rectPlaceHolderTime.x =90;
+                    mpBitmapTextoValorOpcionMenu[opcion]->setText(std::to_string(victoriasEscogidas));
+                    mpBitmapValorCopasMax->setText(std::to_string(victoriasEscogidas));
+                    if(!mSprites->contain(mpAnimacionCopaMaxVictorias)){
+                        mSprites->add(mpAnimacionCopaMaxVictorias);
+                    }
+                }
                 break;
+            case MENU_OPCION_MAPA:
+                if(keycode == SDLK_RIGHT){
+                    indiceTerrenoActual= ( indiceTerrenoActual + 1) % mNombreMapas.size();
+                }else{
+                    indiceTerrenoActual= (indiceTerrenoActual >0)?indiceTerrenoActual -1:mNombreMapas.size();
+                }
+                establecerTerrenoBatalla(indiceTerrenoActual);
+                break;
+            case MENU_OPCION_PLAYER_1:
+            case MENU_OPCION_PLAYER_2:
+            case MENU_OPCION_PLAYER_3:
+            case MENU_OPCION_PLAYER_4:
+            case MENU_OPCION_PLAYER_5:
+                cambiarEstadoPlayer(opcion - MENU_OPCION_PLAYER_1);
+                break;
+            case _N_OPCIONES_MENU:break;
         }
+        mpSfxCambiarValorOpcionMenuResaltada->play();
     }
-
-    float getScaleRatioW() override {
-        return mGameManagerInterfaz->getScaleRatioW();
-    }
-
-    float getScaleRatioH() override {
-        return mGameManagerInterfaz->getScaleRatioH();
-    }
-    void packLayout(SDL_Renderer * gRenderer){
-        SDL_Rect rect = mGameManagerInterfaz->getRectScreen();
-        mLayoutParent->pack(gRenderer);
-        mLayoutParent->setRectDibujo(rect);
-    }
-
-    void cambiarPagina(int nuevoIndice) {
-        indicePaginaActual = nuevoIndice;
-        actualizarFlechasPaginas();
-        cargarMapasPaginaActual(mpGRenderer);
-        mpSfxCambiarPagina->play();
-    }
-
     void procesarEvento(SDL_Event *pEvento) override {
         InterfazGrafica::procesarEvento(pEvento);
-        mLayoutParent->procesarEvento(pEvento);
 
         if(pEvento->type==SDL_KEYDOWN){
             switch(pEvento->key.keysym.sym){
-                case SDLK_1:
-                    if(esVisibleBotonMapa[0]){
-                        establecerMapaEscogido(indicePaginaActual*2);
-                    }
-                    break;
-                case SDLK_2:
-                    if(esVisibleBotonMapa[1]){
-                        establecerMapaEscogido(indicePaginaActual*2 + 1);
-                    }
-                    break;
                 case SDLK_LEFT:
-                    if(botonFlechaIzquierda->getVisible()){
-                        cambiarPagina(indicePaginaActual - 1);
-                    }
+                    ejecutarAccionOpcionMenu(mOpcionMenuResaltadaActual,SDLK_LEFT);
                     break;
                 case SDLK_RIGHT:
-                    if(botonFlechaDerecha->getVisible()){
-                        cambiarPagina(indicePaginaActual + 1);
+                    ejecutarAccionOpcionMenu(mOpcionMenuResaltadaActual,SDLK_RIGHT);
+                    break;
+                case SDLK_UP:
+                    setOpcionResaltada((MenuOption)((mOpcionMenuResaltadaActual > 0 ? mOpcionMenuResaltadaActual - 1 : _N_OPCIONES_MENU - 1)));
+                    break;
+                case SDLK_DOWN:
+                    setOpcionResaltada((MenuOption)((mOpcionMenuResaltadaActual + 1)%_N_OPCIONES_MENU));
+                    break;
+                case SDLK_RETURN:
+                    if(configuracionAceptada()){
+                        mpSfxPressJugar->play();
                     }
                     break;
                 default:
                     break;
             }
+        }else if(pEvento->type == SDL_JOYAXISMOTION&&pEvento->jaxis.type == SDL_JOYAXISMOTION){
+            if(pEvento->jaxis.axis == 1){
+                if(pEvento->jaxis.value > 10){
+                    setOpcionResaltada((MenuOption)((mOpcionMenuResaltadaActual + 1)%_N_OPCIONES_MENU));
+                }else if(pEvento->jaxis.value < -10){
+                    setOpcionResaltada((MenuOption)((mOpcionMenuResaltadaActual > 0 ? mOpcionMenuResaltadaActual - 1 : _N_OPCIONES_MENU - 1)));
+                }
+            }else{
+                if(pEvento->jaxis.value > 10){
+                    ejecutarAccionOpcionMenu(mOpcionMenuResaltadaActual,SDLK_RIGHT);
+                }else if(pEvento->jaxis.value < -10){
+                    ejecutarAccionOpcionMenu(mOpcionMenuResaltadaActual,SDLK_LEFT);
+                }
+            }
+        }else if(pEvento->type == SDL_JOYBUTTONDOWN){
+            if(pEvento->jbutton.type == SDL_JOYBUTTONDOWN)
+                if(pEvento->jbutton.button + 1==3) {
+                    if(configuracionAceptada()){
+                        mpSfxPressJugar->play();
+                    }
+                }else if(pEvento->jbutton.button + 1==1) {
+                    mGameManagerInterfaz->goBack();
+                }
 
-        }else if(pEvento->type == SDL_MOUSEBUTTONDOWN&&pEvento->button.button==SDL_BUTTON_LEFT) {
-            for(int i=0;i<2;i++){
-                if(esVisibleBotonMapa[i] && punto_en_rect(pEvento->motion.x,pEvento->motion.y,&rectBotonMapa[i])){
-                    estadosBotonMapa[i]=BotonComponent::PRESIONADO;
-                }
-            }
         }
-        else if(pEvento->type == SDL_MOUSEBUTTONUP&&pEvento->button.button==SDL_BUTTON_LEFT) {
-            for(int i=0;i<2;i++){
-                if(esVisibleBotonMapa[i] && estadosBotonMapa[i]==BotonComponent::PRESIONADO&& punto_en_rect(pEvento->motion.x,pEvento->motion.y,&rectBotonMapa[i])){
-                    establecerMapaEscogido(indicePaginaActual*2 + i);
-                    //game->play(SFX_TONO_SECO);
-                }
-                estadosBotonMapa[i]=BotonComponent::NORMAL;
-            }
-        }
+
 
     }
 
     void update() override {
         InterfazGrafica::update();
-    }
-
-    void establecerMapaEscogido(int indice){
-        SDL_Log("Mapa escogido: %s.",mNombreMapas[indice].c_str());
-
-        mpSfxSeleccionarMapa->play();
-
-        InterfazEstandarBackResult * result =  new InterfazEstandarBackResult();
-        result->texto = mNombreMapas[indice];
-        mGameManagerInterfaz->goBack(result);
+        mSprites->update(nullptr);
+        mLectorMapas->update();
+        flechaIzquierda->update(nullptr);
+        flechaDerecha->update(nullptr);
     }
 
     void draw(SDL_Renderer *gRenderer) override {
-        packLayout(gRenderer);
-        mLayoutParent->draw(gRenderer);
 
-        for(int i = 0; i < 2;i++) {
-            if (esVisibleBotonMapa[i]) {
-                pSpriteSheetBotonMapa->setCurrentCuadro(estadosBotonMapa[i] == BotonComponent::PRESIONADO);
-                pSpriteSheetBotonMapa->draw(gRenderer, rectBotonMapa[i].x, rectBotonMapa[i].y);
+        mLectorMapas->draw(gRenderer);//imprimimos el nivel
+        mpTextureHUD->draw(gRenderer, 0, 0);//imprimimos la barra mensage
 
-                static SDL_Rect destPreview;
-                destPreview.x = rectBotonMapa[i].x + 7;
-                destPreview.y = rectBotonMapa[i].y + 5;
-                destPreview.w = rectBotonMapa[i].w - 2;
-                destPreview.h = rectBotonMapa[i].h - 2;
-                SDL_RenderCopy(gRenderer, mpTexturePreviewMapa[i], NULL, &destPreview);
+        for(int i=0;i<Player::N_PLAYERS;i++){
+            if(!mIsPlayerActivado[i]){
+                mpSpriteSheetPlayer[i]->draw(gRenderer,mAnimacionPlayer[i]->getX(),mAnimacionPlayer[i]->getY());
             }
+            mpSpriteSheetCarasBomberman->setCurrentCuadro(i*2 + !mIsPlayerActivado[i]);
+            mpSpriteSheetCarasBomberman->draw(gRenderer,6+ i*60,20);
+            mpBitmapValorCopasGanadas[i]->draw(gRenderer);
 
         }
+
+        mSprites->draw(gRenderer);
+        pTextureFondoMenu->draw(gRenderer,40,40);
+
+        if(victoriasEscogidas > 0){
+            mpBitmapValorCopasMax->draw(gRenderer, mpAnimacionCopaMaxVictorias->getX() + 23,3);
+        }
+
+        if(minutosEscogidos > 0){
+            SDL_SetRenderDrawColor(gRenderer,0,0,0,255);
+            SDL_RenderFillRect(gRenderer,&rectPlaceHolderTime);
+            mpBitmapMaxTimeRonda->draw(gRenderer,rectPlaceHolderTime.x + 5,rectPlaceHolderTime.y + 1);
+        }
+
+        for(int i = 0; i < _N_OPCIONES_MENU;i++){
+            mpBitmapTextoOpcionMenu[i]->draw(gRenderer);
+            mpBitmapTextoValorOpcionMenu[i]->draw(gRenderer);
+        }
+        flechaIzquierda->draw(gRenderer);
+        flechaDerecha->draw(gRenderer);
 
     }
 
     ~MenuEscogerMapa() override {
-        delete mLayoutParent;
-        SDL_DestroyTexture(mpTexturePreviewMapa[0]);
-        SDL_DestroyTexture(mpTexturePreviewMapa[1]);
+        for(int i = 0; i < Player::N_PLAYERS;i++){
+            delete mAnimacionPlayer[i];
+            delete mpSpriteSheetPlayer[i];
+            delete pAnimaTrofeos[i];
+            delete mpBitmapValorCopasGanadas[i];
+        }
+        delete mpSpriteSheetCarasBomberman;
         delete mLectorMapas;
-        delete pSpriteSheetBotonMapa;
-        delete mpSfxSeleccionarMapa;
-        delete mpSfxCambiarPagina;
+        delete mpTextureHUD;
+        delete mBitmapFont[0];
+        delete mBitmapFont[1];
+
+        for(int i = 0; i < _N_OPCIONES_MENU;i++) {
+            delete mpBitmapTextoOpcionMenu[i];
+            delete mpBitmapTextoValorOpcionMenu[i];
+
+        }
+
+        delete mpSfxCambiarOpcionMenuResaltada;
+        delete mpSfxPressJugar;
+        delete mpSfxCambiarValorOpcionMenuResaltada;
+        delete musicaFondoMenu;
+        delete pTextureFondoMenu;
+        delete mSprites;
+        delete mpBitmapMaxTimeRonda;
+        delete flechaDerecha;
+        delete flechaIzquierda;
+        delete mpBitmapValorCopasMax;
+        delete mpAnimacionCopaMaxVictorias;
     }
 
 private:
 
-    std::vector<std::string> mNombreMapas;
-    int indicePaginaActual = 0;
-    LayoutAbsolute *mLayoutParent = nullptr;
 
-    BotonComponent *botonFlechaIzquierda = nullptr;
-    BotonComponent *botonFlechaDerecha = nullptr;
-
-    SDL_Texture *mpTexturePreviewMapa[2];
-
+    enum{
+        FUENTE_NORMAL,
+        FUENTE_RESALTADA
+    };
     LectorMapa  * mLectorMapas = nullptr;
-    SpriteSheet * pSpriteSheetBotonMapa = nullptr;
-    SDL_Rect rectBotonMapa[2];
-    BotonComponent::Estado estadosBotonMapa[2] {BotonComponent::NORMAL};
-    bool esVisibleBotonMapa[2] {false};
+
+    //LayoutAbsolute *mLayoutParent = nullptr;
+
+    BitmapFont *mBitmapFont[2];
+    BitmapFontRenderer *mpBitmapTextoOpcionMenu[_N_OPCIONES_MENU] {nullptr};
+    BitmapFontRenderer *mpBitmapTextoValorOpcionMenu[_N_OPCIONES_MENU] {nullptr};
+
+    // Animacion del personaje
+    Animacion * mAnimacionPlayer[Player::N_PLAYERS] {nullptr};
+
+
+    SpriteSheet * mpSpriteSheetPlayer[Player::N_PLAYERS];
+
     SDL_Renderer *mpGRenderer;
 
-    EfectoSonido * mpSfxSeleccionarMapa;
-    EfectoSonido * mpSfxCambiarPagina;
+    EfectoSonido * mpSfxCambiarOpcionMenuResaltada;
+    EfectoSonido * mpSfxPressJugar;
+    EfectoSonido * mpSfxCambiarValorOpcionMenuResaltada;
+
+    MenuOption mOpcionMenuResaltadaActual = MENU_OPCION_TIEMPO_RONDA;
+
+    MusicaFondo *musicaFondoMenu;
+
+    //EfectoSonido * mpSfxCambiarPagina;
+    DrawGroup *mSprites;
+    FlechaDinamica * flechaIzquierda;
+    FlechaDinamica * flechaDerecha;
+
+    LTexture * pTextureFondoMenu;
+
+    // Elementos del HUD
+    LTexture * mpTextureHUD;
+
+    Animacion * pAnimaTrofeos[Player::N_PLAYERS];
+
+    SDL_Rect rectPlaceHolderTime {0,2,48,18};
+    BitmapFontRenderer *mpBitmapMaxTimeRonda;
+
+    SpriteSheet * mpSpriteSheetCarasBomberman;
+
+    BitmapFontRenderer *mpBitmapValorCopasGanadas[Player::N_PLAYERS] {nullptr};
+    BitmapFontRenderer *mpBitmapValorCopasMax;
+
+    Animacion *mpAnimacionCopaMaxVictorias;
+
+protected:
+    bool mIsPlayerActivado[Player::N_PLAYERS] {false};
+    // Minutos Escogidos de duracion de cada ronda
+    uint8_t minutosEscogidos = 0;
+    std::vector<std::string> mNombreMapas;
+    // Victorias escogidas para acabar el juego
+    uint8_t victoriasEscogidas = 0;
+    uint16_t indiceTerrenoActual = 0;
 };
 #endif //BOMBERMAN_MENUESCOGERMAPA_HPP

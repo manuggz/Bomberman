@@ -17,6 +17,7 @@ static const int ID_BOTON_GUARDAR = 5;
 #include "../engine/util/CFont.hpp"
 #include "../engine/layout/Componentes/LabelComponent.hpp"
 #include "../engine/util/EfectoSonido.hpp"
+#include "../personajes/player.hpp"
 
 class InterfazConfiguracion: public InterfazGrafica, public BotonInterfaz {
 public:
@@ -60,7 +61,7 @@ public:
         mLayoutParent = new LayoutAbsolute();
 
         pTextureFondo = new LTexture();
-        pTextureFondo->cargarDesdeArchivo("data/imagenes/fondos/fondo_menu.bmp",gRenderer,false);
+        pTextureFondo->cargarDesdeArchivo("data/imagenes/fondos/fondo_menu.png",gRenderer,false);
 
         pSpriteSheetBotonCambiarTecla = new SpriteSheet(gRenderer,"data/imagenes/botones/boton_cambiar.png",4,1,false);
         pSpriteSheetMensajeIntroducirTecla = new SpriteSheet(gRenderer,"data/imagenes/objetos/entrada_texto.png",2,1,false);

@@ -33,20 +33,20 @@ public:
      */
     virtual  bool cargar(SDL_Renderer * gRenderer,std::string ruta){
         // Cargamos/ Parseamos el Mapa
-        if(mSprtSTiles != nullptr) {
+        if(mIsMapaCargado) {
             delete mSprtSTiles;
             delete []mLayerMapa;
             delete mTmxParser;
             mTmxParser = new TMX::Parser();
             mGrpTilesAnimados.clear();
+            mIsMapaCargado = false;
 
         }
 
         if(!mTmxParser->load(ruta.c_str())){
             return false;
         }
-
-
+        mIsMapaCargado = true;
         mSprtSTiles = new SpriteSheet();
         mSprtSTiles->cargarDesdeArchivo(gRenderer,mTmxParser->tilesetList[0].imgSource.source,
                                         mTmxParser->tilesetList[0].tileCount/mTmxParser->tilesetList[0].columns,
@@ -174,5 +174,6 @@ protected:
 
     DrawGroup mGrpTilesAnimados;
 
+    bool mIsMapaCargado = false;
 };
 #endif //BOMBERMAN_CMAPA_HPP
