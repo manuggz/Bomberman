@@ -43,6 +43,18 @@ Aun no
 #### Window
 Aun no
 
+## Capturas de Pantalla de algunas Escenas
+### Menu Principal
+![Menu Principal](http://i.imgur.com/VaqWWXf.png)
+### Configuración del Mapa GUI (Aparece también cuando se elije crear una partida en RED)
+![Configuración Mapa](http://i.imgur.com/gvRoRbw.png)
+### Actualmente se puede crear el servidor y se muestrauna GUI a espera de los demás players(a medias)
+![Game Server Creado](http://i.imgur.com/PV0362m.png)
+### Game Play(Admite 5 jugadores con controles configurados en joysticks o teclado)
+![Game Play](http://i.imgur.com/EzUM6PZ.png)
+### Configurar Teclas de los 5 players
+![Configurar Teclas](http://i.imgur.com/V1UpwgX.png)
+
 ### Versiones Anteriores
 Si quieres ver el progreso de la versión anterior puedes navegar las entradas publicadas aquí:
 https://baulprogramas.blogspot.com/search/label/bomberman
