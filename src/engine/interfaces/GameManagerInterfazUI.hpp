@@ -4,6 +4,8 @@
 
 #ifndef BOMBERMAN_GAMEMANAGERINTERFAZUI_HPP
 #define BOMBERMAN_GAMEMANAGERINTERFAZUI_HPP
+
+#include <iostream>
 #include <SDL2/SDL_mixer.h>
 #include "GameManagerPopUpInterfaz.hpp"
 //#include "../GameManager/GameManager.hpp"
@@ -11,12 +13,14 @@
 class InterfazGrafica;
 class PopUpInterfaz;
 class InterfazEstandarBackResult;
+class Toast;
 /**
  * Esta es la interfaz que debe implemetar un GameManager si quiere utilizar interfaces.
  */
 class GameManagerInterfazUI: public GameManagerPopUpInterfaz{
 public:
 
+    virtual void mostrarToast(Toast * toast) = 0;
     virtual float getScaleRatioW() const = 0;
 
     virtual void setScaleRatioW(float scaleRatioW) = 0;
@@ -75,6 +79,8 @@ public:
 
     virtual int getNativeWidth() = 0;
     virtual int getNativeHeight() = 0;
+
+    virtual std::string obtenerPrefPath()  = 0;
 
     virtual void goBack(InterfazEstandarBackResult *pResult) = 0;
 };

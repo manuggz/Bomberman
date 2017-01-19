@@ -88,7 +88,7 @@ public:
     };
     virtual void update(){};
     virtual void updateWhenPopUp(){};
-    virtual void resultPopUp(InterfazEstandarBackResult * result, int i) {};
+    virtual void resultPopUp(InterfazEstandarBackResult * result, int idPopUp) {};
     virtual void draw(SDL_Renderer * gRenderer) = 0;
 
     virtual ~InterfazGrafica(){};

@@ -20,10 +20,13 @@ public:
      * @param mensaje MEnsaje a mostrar
      * @param tiempoDeMuestraSegundos  segundos que durará el mensaje
      */
-    PopUpInsertarTexto(GameManagerPopUpInterfaz *gameManager1, std::string promptText,int n) :
+    PopUpInsertarTexto(GameManagerPopUpInterfaz *gameManager1, std::string promptText,int nMin,int nMax,
+                       std::string default_input = "") :
             PopUpInterfaz(gameManager1) {
         mMensajePrompt          = promptText;
-        mMaxCaracteres = n;
+        mMinCaracteres = nMin;
+        mMaxCaracteres = nMax;
+        textoActualIntroducido = default_input;
     }
 
 
@@ -64,7 +67,8 @@ public:
 
         mpComponenteTextoIntroducido = new LabelComponent();
 
-        //mpComponenteTextoIntroducido->setText("");
+        if(!textoActualIntroducido.empty())mpComponenteTextoIntroducido->setText(textoActualIntroducido);
+
         mpComponenteTextoIntroducido->setFont("data/fuentes/OpenSans-Bold.ttf",mSizeText);
         mpComponenteTextoIntroducido->setTextColor(SDL_Color {0,0,0,255});
         mpComponenteTextoIntroducido->setBackgroundColor(SDL_Color {255,255,255,255});
@@ -80,15 +84,32 @@ public:
 
         mpGameRenderer = gRenderer;
     }
-
+    int toggleMayus(char c){
+        if(isupper(c)){
+            return tolower(c);
+        }
+        return toupper(c);
+    }
     void procesarEvento(SDL_Event *event) override {
         if(event->type == SDL_KEYDOWN){
             char keyName[10];
-            if(((event->key.keysym.scancode>= SDL_SCANCODE_A &&
-                event->key.keysym.scancode<= SDL_SCANCODE_Z)||
-                    (event->key.keysym.scancode>= SDL_SCANCODE_1 &&
-                     event->key.keysym.scancode<= SDL_SCANCODE_0))&&textoActualIntroducido.size()<mMaxCaracteres){
+            if(((event->key.keysym.scancode>= SDL_SCANCODE_A &&event->key.keysym.scancode<= SDL_SCANCODE_0)||
+                    event->key.keysym.scancode == SDL_SCANCODE_PERIOD ||
+                    event->key.keysym.scancode == SDL_SCANCODE_KP_PERIOD
+               )&&textoActualIntroducido.size()<mMaxCaracteres){
                 sprintf(keyName,"%s",SDL_GetKeyName(event->key.keysym.sym));
+
+                if(event->key.keysym.mod & KMOD_CAPS){
+                    keyName[0] = toupper(keyName[0]);
+                }else{
+                    keyName[0] = tolower(keyName[0]);
+                }
+
+                if(event->key.keysym.mod & KMOD_LSHIFT ||
+                   event->key.keysym.mod & KMOD_RSHIFT){
+                    keyName[0] = toggleMayus(keyName[0]);
+                }
+
                 textoActualIntroducido += keyName[0];
                 mpComponenteTextoIntroducido->setText(textoActualIntroducido);
             }else{
@@ -100,9 +121,11 @@ public:
                         }
                         break;
                     case SDLK_RETURN:
-                        InterfazEstandarBackResult * resultado = new InterfazEstandarBackResult();
-                        resultado->texto = textoActualIntroducido;
-                        mGameManager->closePopUp(resultado);
+                        if(textoActualIntroducido.size() >= mMinCaracteres) {
+                            InterfazEstandarBackResult *resultado = new InterfazEstandarBackResult();
+                            resultado->texto = textoActualIntroducido;
+                            mGameManager->closePopUp(resultado);
+                        }
                         break;
                 }
             }
@@ -152,5 +175,6 @@ protected:
     LayoutAbsolute *mLayoutBackGround;
     std::string textoActualIntroducido;
     int mMaxCaracteres;
+    int mMinCaracteres = 0;
 };
 #endif //BOMBERMAN_POPUPINSERTARTEXTO_HPP

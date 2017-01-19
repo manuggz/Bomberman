@@ -281,7 +281,9 @@ public:
                     mpBitmapTextoValorOpcionMenu[opcion]->setText("NO");
                 }else{
                     mpBitmapTextoValorOpcionMenu[opcion]->setText(std::to_string(minutosEscogidos));
-                    mpBitmapMaxTimeRonda->setText(std::to_string(minutosEscogidos) + ":00");
+                    char tiempo[6];
+                    sprintf(tiempo,"0%d:00",minutosEscogidos);
+                    mpBitmapMaxTimeRonda->setText(tiempo);
                 }
                 if(!victoriasEscogidas){
                     rectPlaceHolderTime.x =128;
@@ -330,52 +332,57 @@ public:
     void procesarEvento(SDL_Event *pEvento) override {
         InterfazGrafica::procesarEvento(pEvento);
 
-        if(pEvento->type==SDL_KEYDOWN){
-            switch(pEvento->key.keysym.sym){
-                case SDLK_LEFT:
-                    ejecutarAccionOpcionMenu(mOpcionMenuResaltadaActual,SDLK_LEFT);
-                    break;
-                case SDLK_RIGHT:
-                    ejecutarAccionOpcionMenu(mOpcionMenuResaltadaActual,SDLK_RIGHT);
-                    break;
-                case SDLK_UP:
-                    setOpcionResaltada((MenuOption)((mOpcionMenuResaltadaActual > 0 ? mOpcionMenuResaltadaActual - 1 : _N_OPCIONES_MENU - 1)));
-                    break;
-                case SDLK_DOWN:
-                    setOpcionResaltada((MenuOption)((mOpcionMenuResaltadaActual + 1)%_N_OPCIONES_MENU));
-                    break;
-                case SDLK_RETURN:
-                    if(configuracionAceptada()){
-                        mpSfxPressJugar->play();
+        if(esMenuVisible) {
+            if (pEvento->type == SDL_KEYDOWN) {
+                switch (pEvento->key.keysym.sym) {
+                    case SDLK_LEFT:
+                        ejecutarAccionOpcionMenu(mOpcionMenuResaltadaActual, SDLK_LEFT);
+                        break;
+                    case SDLK_RIGHT:
+                        ejecutarAccionOpcionMenu(mOpcionMenuResaltadaActual, SDLK_RIGHT);
+                        break;
+                    case SDLK_UP:
+                        setOpcionResaltada(
+                                (MenuOption) ((mOpcionMenuResaltadaActual > 0 ? mOpcionMenuResaltadaActual - 1 :
+                                               _N_OPCIONES_MENU - 1)));
+                        break;
+                    case SDLK_DOWN:
+                        setOpcionResaltada((MenuOption) ((mOpcionMenuResaltadaActual + 1) % _N_OPCIONES_MENU));
+                        break;
+                    case SDLK_RETURN:
+                        if (configuracionAceptada()) {
+                            mpSfxPressJugar->play();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            } else if (pEvento->type == SDL_JOYAXISMOTION && pEvento->jaxis.type == SDL_JOYAXISMOTION) {
+                if (pEvento->jaxis.axis == 1) {
+                    if (pEvento->jaxis.value > 10) {
+                        setOpcionResaltada((MenuOption) ((mOpcionMenuResaltadaActual + 1) % _N_OPCIONES_MENU));
+                    } else if (pEvento->jaxis.value < -10) {
+                        setOpcionResaltada(
+                                (MenuOption) ((mOpcionMenuResaltadaActual > 0 ? mOpcionMenuResaltadaActual - 1 :
+                                               _N_OPCIONES_MENU - 1)));
                     }
-                    break;
-                default:
-                    break;
-            }
-        }else if(pEvento->type == SDL_JOYAXISMOTION&&pEvento->jaxis.type == SDL_JOYAXISMOTION){
-            if(pEvento->jaxis.axis == 1){
-                if(pEvento->jaxis.value > 10){
-                    setOpcionResaltada((MenuOption)((mOpcionMenuResaltadaActual + 1)%_N_OPCIONES_MENU));
-                }else if(pEvento->jaxis.value < -10){
-                    setOpcionResaltada((MenuOption)((mOpcionMenuResaltadaActual > 0 ? mOpcionMenuResaltadaActual - 1 : _N_OPCIONES_MENU - 1)));
-                }
-            }else{
-                if(pEvento->jaxis.value > 10){
-                    ejecutarAccionOpcionMenu(mOpcionMenuResaltadaActual,SDLK_RIGHT);
-                }else if(pEvento->jaxis.value < -10){
-                    ejecutarAccionOpcionMenu(mOpcionMenuResaltadaActual,SDLK_LEFT);
-                }
-            }
-        }else if(pEvento->type == SDL_JOYBUTTONDOWN){
-            if(pEvento->jbutton.type == SDL_JOYBUTTONDOWN)
-                if(pEvento->jbutton.button + 1==3) {
-                    if(configuracionAceptada()){
-                        mpSfxPressJugar->play();
+                } else {
+                    if (pEvento->jaxis.value > 10) {
+                        ejecutarAccionOpcionMenu(mOpcionMenuResaltadaActual, SDLK_RIGHT);
+                    } else if (pEvento->jaxis.value < -10) {
+                        ejecutarAccionOpcionMenu(mOpcionMenuResaltadaActual, SDLK_LEFT);
                     }
-                }else if(pEvento->jbutton.button + 1==1) {
-                    mGameManagerInterfaz->goBack();
                 }
-
+            } else if (pEvento->type == SDL_JOYBUTTONDOWN) {
+                if (pEvento->jbutton.type == SDL_JOYBUTTONDOWN)
+                    if (pEvento->jbutton.button + 1 == 3) {
+                        if (configuracionAceptada()) {
+                            mpSfxPressJugar->play();
+                        }
+                    } else if (pEvento->jbutton.button + 1 == 1) {
+                        mGameManagerInterfaz->goBack();
+                    }
+            }
         }
 
 
@@ -387,6 +394,10 @@ public:
         mLectorMapas->update();
         flechaIzquierda->update(nullptr);
         flechaDerecha->update(nullptr);
+    }
+
+    void setVisibilidadMenu(bool esMenuVisible){
+        MenuEscogerMapa::esMenuVisible = esMenuVisible;
     }
 
     void draw(SDL_Renderer *gRenderer) override {
@@ -405,7 +416,6 @@ public:
         }
 
         mSprites->draw(gRenderer);
-        pTextureFondoMenu->draw(gRenderer,40,40);
 
         if(victoriasEscogidas > 0){
             mpBitmapValorCopasMax->draw(gRenderer, mpAnimacionCopaMaxVictorias->getX() + 23,3);
@@ -417,12 +427,15 @@ public:
             mpBitmapMaxTimeRonda->draw(gRenderer,rectPlaceHolderTime.x + 5,rectPlaceHolderTime.y + 1);
         }
 
-        for(int i = 0; i < _N_OPCIONES_MENU;i++){
-            mpBitmapTextoOpcionMenu[i]->draw(gRenderer);
-            mpBitmapTextoValorOpcionMenu[i]->draw(gRenderer);
+        if(esMenuVisible) {
+            pTextureFondoMenu->draw(gRenderer, 40, 40);
+            for (int i = 0; i < _N_OPCIONES_MENU; i++) {
+                mpBitmapTextoOpcionMenu[i]->draw(gRenderer);
+                mpBitmapTextoValorOpcionMenu[i]->draw(gRenderer);
+            }
+            flechaIzquierda->draw(gRenderer);
+            flechaDerecha->draw(gRenderer);
         }
-        flechaIzquierda->draw(gRenderer);
-        flechaDerecha->draw(gRenderer);
 
     }
 
@@ -501,7 +514,7 @@ private:
 
     Animacion * pAnimaTrofeos[Player::N_PLAYERS];
 
-    SDL_Rect rectPlaceHolderTime {0,2,48,18};
+    SDL_Rect rectPlaceHolderTime {0,2,52,18};
     BitmapFontRenderer *mpBitmapMaxTimeRonda;
 
     SpriteSheet * mpSpriteSheetCarasBomberman;
@@ -519,5 +532,6 @@ protected:
     // Victorias escogidas para acabar el juego
     uint8_t victoriasEscogidas = 0;
     uint16_t indiceTerrenoActual = 0;
+    bool esMenuVisible = true;
 };
 #endif //BOMBERMAN_MENUESCOGERMAPA_HPP

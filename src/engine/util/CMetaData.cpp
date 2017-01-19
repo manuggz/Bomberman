@@ -122,7 +122,13 @@ MetaData::MetaData(std::string ruta,std::string delim){
  */
 bool MetaData::guardar(std::string rutaDestino,std::string delimitador){
 
-    std::string delimitadorAUsar = (mDelimitador.empty())?delimitador:mDelimitador;
+    std::string delimitadorAUsar;
+    if(mDelimitador.empty()){
+        delimitadorAUsar = delimitador;
+
+    }else{
+        delimitadorAUsar = mDelimitador;
+    }
 
     if(rutaDestino.empty()){
         rutaDestino = mRuta;

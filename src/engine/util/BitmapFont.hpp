@@ -19,6 +19,9 @@ public:
         identificarRects();
     }
 
+    int getHeight(){
+        return mTexture->getHeight();
+    }
 
     int calculateWidth(std::string texto){
         int dx = 0;
@@ -145,10 +148,6 @@ private:
         }
 
         std::cout<<"Econtré " <<indice_letra <<" letras en el archivo de fuentes\n";
-    }
-
-    int getHeight() {
-        return mTexture->getHeight();
     }
 };
 

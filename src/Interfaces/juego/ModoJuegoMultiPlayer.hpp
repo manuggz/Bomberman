@@ -31,7 +31,6 @@ class ModoJuegoMultiPlayer:public InterfazGrafica,public UpdateGroupContainerInt
 public:
 
     ModoJuegoMultiPlayer(GameManagerInterfazUI * gameManager,std::string rutaMapa, int nVictorias, int nMinutos, bool isPlayerActivo[Player::N_PLAYERS]);
-    void prepare() override;
     void createUI(SDL_Renderer *gRenderer) override;
     void start() override;
     void procesarEvento(SDL_Event * evento) override ;
@@ -122,7 +121,6 @@ protected:
     SDL_Renderer * mGameRenderer;
 
     bool mIsPlayingWarningSound = false;
-
 
     EfectoSonido * mpSfxCreadaExplosion;
     EfectoSonido * mpSfxPlayerRecogioItem;

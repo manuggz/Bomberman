@@ -14,6 +14,7 @@
 
 #include "../util/LTimer.hpp"
 #include "../util/util.hpp"
+#include "../util/Toast.hpp"
 
 class InterfazEstandarBackResult{
 public:
@@ -67,7 +68,6 @@ public:
     int getHeight();
 
     ~GameManager();
-
     void goBack() ;
 
     void setRoot(InterfazGrafica *nuevaInterfazRoot) ;
@@ -108,10 +108,11 @@ public:
     const std::string &getNombreApp() const;
 
     void setNombreApp(const std::string &nombreApp);
-    std::string obtenerPrefPath();
+    std::string obtenerPrefPath() override;
 
     void setPuedeToglearPantallaCompleta(bool puedeToglear);
 
+    void mostrarToast(Toast * toast);
 private:
 
     int mFPS = 60;
@@ -170,5 +171,7 @@ private:
 
     bool puedeToglearPantallaCompleta = true;
     InterfazEstandarBackResult *mpResultInterfazActual = nullptr;
+
+    Toast * mpToastMostrando = nullptr;
 };
 #endif

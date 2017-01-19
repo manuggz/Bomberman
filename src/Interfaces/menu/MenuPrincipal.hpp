@@ -12,6 +12,7 @@
 #include "../InterfazConfiguracion.hpp"
 #include "SpriteFlecha.hpp"
 #include "MenuEscogerMapaBattle.hpp"
+#include "MenuNetworkBattle.hpp"
 
 class MenuPrincipal : public InterfazGrafica{
 
@@ -94,7 +95,7 @@ public:
                 mGameManagerInterfaz->cambiarInterfaz(new MenuEscogerMapaBattle(mGameManagerInterfaz));
                 break;
             case MENU_OPCION_NETWORK_BATTLE_MODE:
-                //mGameManagerInterfaz->cambiarInterfaz(new InterfazConfiguracion(mGameManagerInterfaz));
+                mGameManagerInterfaz->cambiarInterfaz(new MenuNetworkBattle(mGameManagerInterfaz));
                 break;
             case MENU_OPCION_SETTINGS:
                 mGameManagerInterfaz->cambiarInterfaz(new InterfazConfiguracion(mGameManagerInterfaz));

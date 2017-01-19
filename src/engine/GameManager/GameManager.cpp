@@ -401,9 +401,21 @@ void GameManager::run(){
                     interfaz_actual->update();
                 }
 
+                if(mpToastMostrando){
+                    if(!mpToastMostrando->isStopped()) {
+                        mpToastMostrando->update();
+                    }else{
+                        delete mpToastMostrando;
+                        mpToastMostrando = nullptr;
+                    }
+                }
+
                 interfaz_actual->draw(gRenderer);
                 if(mpPopUp && mpPopUp->isStarted()){
                     mpPopUp->draw(gRenderer);
+                }
+                if(mpToastMostrando && !mpToastMostrando->isStopped()){
+                    mpToastMostrando->draw(gRenderer);
                 }
             }
         }
@@ -629,5 +641,17 @@ void GameManager::cambiarInterfaz(InterfazGrafica *pInterfaz, int ID) {
 void GameManager::goBack(InterfazEstandarBackResult *pResult) {
     mpResultInterfazActual = pResult;
     GameManager::goBack();
+}
+
+void GameManager::mostrarToast(Toast *toast) {
+    if(mpToastMostrando){
+        mpToastMostrando->stop();
+        delete mpToastMostrando;
+        mpToastMostrando = nullptr;
+    }
+    mpToastMostrando = toast;
+    mpToastMostrando->prepare();
+    mpToastMostrando->createUI(gRenderer);
+    mpToastMostrando->start();
 }
 

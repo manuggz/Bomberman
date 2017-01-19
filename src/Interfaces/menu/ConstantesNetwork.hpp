@@ -17,9 +17,9 @@ static const int MAX_TAM_UPDATE_ROOM = 67;
 
 static const int OFFSET_PACKET_FLAG = 0;
 static const int OFFSET_PACKET_ID_UPDATE = 1;
-static const int OFFSET_PACKET_MINUTOS_ESCOGIDOS = 5;
-static const int OFFSET_PACKET_VICTORIAS_ESCOGIDAS = 6;
-static const int OFFSET_PACKET_PRIMER_CLIENTE = 7;
+static const int OFFSET_PACKET_PRIMER_CLIENTE = OFFSET_PACKET_ID_UPDATE + 4; // 4 porque id_update es de 32 bits
+
+static const int TAM_PAQUETE_KEEP_ALIVE = 7;
 
 // OFFSETS respecto OFFSET_PACKET_PRIMER_CLIENTE
 static const int OFFSET_PACKET_ID_CLIENTE = 1;
@@ -36,14 +36,8 @@ static const int FLAG_DISCONNECT = 4;
 
 static const int TIMEOUT_DISCONECT_CLIENT = 5000;
 
-class Cliente{
-public:
-    bool activo = 0;
-    IdPlayer  id_player;
-    uint16_t  id_cliente;
-    uint8_t   nick_name[MAX_NICK];
-
-    IPaddress updsocketipadress;
-};
+static const int MAX_SERVER_NAME = 19;
+// MAx name para un servidor
+// Representa 9999.9999.9999.9999
 
 #endif //BOMBERMAN_CONSTANTESSERVIDOR_HPP

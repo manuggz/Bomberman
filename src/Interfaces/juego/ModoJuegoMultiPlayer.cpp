@@ -35,17 +35,6 @@ ModoJuegoMultiPlayer::ModoJuegoMultiPlayer (GameManagerInterfazUI * gameManager,
     mNVictorias      = nVictorias;
 }
 
-/**
- * Crea el Mapa los players y el timer
- */
-void ModoJuegoMultiPlayer::prepare() {
-    InterfazGrafica::prepare();
-
-    //mMapa = new LectorMapa();
-    //crearPlayersActivos();
-
-    //displayMensage("�Qu� gane el mejor!");//se presenta el mensage con el nivel actual
-}
 
 /**
  * Crea El layout que se encargara de dibujar los componentes necesarios para la interfaz
@@ -113,9 +102,6 @@ void ModoJuegoMultiPlayer::createUI(SDL_Renderer *gRenderer) {
         mGrpSprites.add(mpAnimacionCopaMaxVictorias);
     }
     mGameRenderer = gRenderer;
-
-
-    SDL_ShowCursor(SDL_DISABLE);
 }
 /**
  * Inicia el estado del juego
